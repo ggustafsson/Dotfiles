@@ -14,10 +14,10 @@ set winfmt %n %t
 set wingravity n
 set winname class
 
-definekey top F6  exec mpc prev
-definekey top F7  exec mpc toggle
-definekey top F8  exec mpc next
-definekey top F9  exec amixer sset Master mute
+definekey top F6 exec mpc prev
+definekey top F7 exec mpc toggle
+definekey top F8 exec mpc next
+definekey top F9 exec amixer sset Master mute
 definekey top F11 exec amixer sset Master 2- unmute
 definekey top F12 exec amixer sset Master 2+ unmute
 
@@ -26,10 +26,10 @@ unbind C-Down
 unbind C-Left
 unbind C-Right
 
-bind C-C-Down  exchangedown
-bind C-C-Left  exchangeleft
+bind C-C-Down exchangedown
+bind C-C-Left exchangeleft
 bind C-C-Right exchangeright
-bind C-C-Up    exchangeup
+bind C-C-Up exchangeup
 
 unbind S
 bind v hsplit
