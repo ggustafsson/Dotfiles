@@ -143,7 +143,6 @@ settings = {
     hide_server_tags = "yes";
     hilight_nick_matches = "yes";
     show_nickmode_empty = "yes";
-    autolog_ignore_targets = "&bitlbee";
     theme = "default";
     log_theme = "default";
     hilight_act_color = "%R";
