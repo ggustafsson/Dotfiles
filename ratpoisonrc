@@ -1,0 +1,47 @@
+# Göran Gustafsson (gustafsson.g@gmail.com)
+
+startup_message off
+
+escape C-q
+
+set barpadding 5 1
+set border 1
+set bwcolor #333333
+set font terminus:pixelsize=22:style=bold
+set fwcolor #333333
+set inputwidth 500
+set winfmt %n %t 
+set wingravity n
+set winname class
+
+definekey top F6  exec mpc prev
+definekey top F7  exec mpc toggle
+definekey top F8  exec mpc next
+definekey top F9  exec amixer sset Master mute
+definekey top F11 exec amixer sset Master 2- unmute
+definekey top F12 exec amixer sset Master 2+ unmute
+
+unbind C-Up
+unbind C-Down
+unbind C-Left
+unbind C-Right
+
+bind C-C-Down  exchangedown
+bind C-C-Left  exchangeleft
+bind C-C-Right exchangeright
+bind C-C-Up    exchangeup
+
+unbind S
+bind v hsplit
+
+bind c exec chromium
+bind d time
+bind t exec transmission-gtk
+bind v exec urxvt -e screen -S vim vim
+bind x exec urxvt
+
+exec xsetroot -solid black -cursor_name left_ptr
+
+exec autocutsel -selection PRIMARY -fork
+exec autocutsel -selection CLIPBOARD -fork
+

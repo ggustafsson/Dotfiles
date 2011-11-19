@@ -1,0 +1,33 @@
+# Göran Gustafsson (gustafsson.g@gmail.com)
+
+Xcursor.theme: Neutral
+
+URxvt*background: #111111
+URxvt*foreground: white
+
+#URxvt*font: -windows-dina-medium-r-*-*-15-*-*-*-*-*-*
+#URxvt*boldFont: -windows-dina-medium-r-*-*-15-*-*-*-*-*-*
+
+URxvt*font: -*-terminus-bold-r-*-*-20-*-*-*-*-*-*
+URxvt*boldFont: -*-terminus-bold-r-*-*-20-*-*-*-*-*-*
+
+URxvt*termName: rxvt
+
+URxvt*scrollBar: off
+URxvt*saveLines: 65000
+
+URxvt.perl-ext-common: default,matcher
+URxvt.urlLauncher: /usr/bin/chromium
+URxvt.matcher.button:  1
+
+URxvt*color1: #e82e2e
+URxvt*color4: #3878c8
+URxvt*color5: #ff29fc
+URxvt*color7: #bfbdc0
+URxvt*color8: #686773
+URxvt*color9: #fc5166
+URxvt*color10: #63ff54
+URxvt*color12: #766eff
+URxvt*color13: #e151ff
+URxvt*color15: #ffffff
+
