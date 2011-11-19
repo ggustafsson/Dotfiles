@@ -1,1 +1,6 @@
-/Users/Twiggy/.gitignore_global
+.DS_Store
+.Spotlight-V100
+.Trashes
+._*
+Icon?
+

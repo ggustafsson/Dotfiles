@@ -1,1 +1,5 @@
-/Users/Twiggy/.screenrc
+defutf8 on
+startup_message off
+term xterm-256color
+vbell off
+
