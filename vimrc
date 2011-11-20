@@ -51,7 +51,6 @@ set statusline+=%(%m\ %)
 set statusline+=%([%{(&fenc==\"\"?&enc:&fenc)}]\ %)
 set statusline+=%(%y\ %)
 "set statusline+=%(%{CheckPath()}\ %)
-set statusline+=%(%{fugitive#statusline()}\ %)
 set statusline+=%(%{&paste?'[paste]':''}\ %)
 set statusline+=%=
 set statusline+=%(%v,\ %)
@@ -80,16 +79,16 @@ if has("gui_running")
 	set guioptions=gt
 	set noantialias
 
-	if !exists("g:dont_resize_again")
-		set columns=130
-		set lines=30
-
-		let g:dont_resize_again = 1
-	endif
-
 	if has("mac")
 		set guicursor+=a:blinkon0
 		set guifont=Monaco:h12
+
+		if !exists("g:dont_resize_again")
+			set columns=130
+			set lines=30
+
+			let g:dont_resize_again = 1
+		endif
 	else
 		set guifont=Dina:h15
 	endif

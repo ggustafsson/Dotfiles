@@ -3,12 +3,8 @@
 export EDITOR="vim"
 export HISTSIZE="20000"
 export LC_COLLATE="C"
-export PAGER="less"
-
 export OS=$(uname)
-export TODO="~/Documents/Text Files/TODO - Things to Do.txt"
-
-export GIT_BRANCH="git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ \1/'"
+export PAGER="less"
 export PROMPT_COMMAND="history -a"
 
 if [ ! $TERM == "dumb" ] ; then
@@ -24,14 +20,14 @@ if [ $OS == "Darwin" ] ; then
 	export HOST=$(hostname -s)
 	export HOST_FIXED="${HOST[@]^}"
 
-	export PS1="\n$BRIGHT\u $YELLOW${HOST_FIXED} $NORMAL\w$GREEN\$($GIT_BRANCH)$NORMAL > "
+	export PS1="\n$BRIGHT\u $YELLOW${HOST_FIXED} $NORMAL\w > "
 
 	export FLACDIR="/Volumes/Black Disk/Music/FLAC"
 	export MP3DIR="/Volumes/Black Disk/Music/MP3"
 else
 	export PATH="/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/Scripts"
 
-	export PS1="\n$BRIGHT\u $YELLOW$\h $NORMAL\w$GREEN\$($GIT_BRANCH)$NORMAL > "
+	export PS1="\n$BRIGHT\u $YELLOW\h $NORMAL\w > "
 
 	export LS_COLORS="ln=01;34"
 	export LS_COLORS="$LS_COLORS:*.bmp=01;33:*.gif=01;33:*.ico=01;33:*.jpg=01;33:*.jpeg=01;33:*.png=01;33:*.svg=01;33:*.tiff=01;33"
@@ -48,6 +44,7 @@ set -o vi
 shopt -s cdspell checkwinsize cmdhist histappend no_empty_cmd_completion
 
 if [ $OS == "Darwin" ] ; then
+	alias c="clear"
 	alias dontsleep="pmset noidle"
 	alias f="open ."
 	alias ls="ls -Gh"
@@ -61,6 +58,7 @@ if [ $OS == "Darwin" ] ; then
 	alias vim="/Applications/MacVim.app/Contents/MacOS/Vim"
 	alias vimdiff="/Applications/MacVim.app/Contents/MacOS/Vim -d"
 else
+	alias c="clearcmd"
 	alias cal="cal -m"
 	alias ls="ls -h --color=auto"
 	alias paci="sudo pacman -S"
@@ -73,7 +71,6 @@ alias ...="cd ../.."
 alias ..="cd .."
 alias back="cd $OLDPWD"
 alias bc="bc -q"
-alias c="clearcmd"
 alias cdd="cd ~/Downloads"
 alias cp="cp -vi"
 alias d="ls -l"
@@ -101,26 +98,27 @@ alias pyweb="python3 -m http.server 8080"
 alias reload="source ~/.bashrc"
 alias s="screen"
 alias song="mpc current"
+alias t="cat ~/Documents/Text\ Files/TODO\ -\ Things\ to\ Do.txt"
 alias ti="timer.py"
 alias toggle="mpc toggle"
 alias top="top -o cpu"
 alias topme="top -o cpu -U twiggy"
-alias tv='vim "$TODO"'
+alias tv="vim ~/Documents/Text\ Files/TODO\ -\ Things\ to\ Do.txt"
 alias yt="youtube-dl -l"
 
-if [ $TERM == "rxvt-unicode" ] ; then
-	function clearcmd {
-		for ((i = 1; i < $LINES; i++)) ; do
-			echo
-		done
-
-		clear
-	}
-else
-	alias clearcmd="clear"
-fi
-
 if [ $OS == "Linux" ] ; then
+	if [ $TERM == "rxvt-unicode" ] ; then
+		function clearcmd {
+			for ((i = 1; i < $LINES; i++)) ; do
+				echo
+			done
+
+			clear
+		}
+	else
+		alias clearcmd="clear"
+	fi
+
 	function pacs {
 		local CL='\\e['
 		local RS='\\e[0;0m'
@@ -189,18 +187,6 @@ function permfix {
 function privatepermfix {
 	find "$PWD" -type d -exec chmod 700 "{}" \;
 	find "$PWD" -type f -exec chmod 600 "{}" \;
-}
-
-function t {
-	if [ -f "$TODO" ] ; then
-		if [ -s "$TODO" ] ; then
-			cat "$TODO"
-		else
-			echo "TODO file is empty."
-		fi
-	else
-		echo "TODO file doesn't exist."
-	fi
 }
 
 function unp {
