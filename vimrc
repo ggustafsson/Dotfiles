@@ -22,6 +22,7 @@ set number
 set scrolloff=3
 set showbreak=+
 set spelllang=en,sv
+set timeoutlen=2000
 set ttyfast
 set virtualedit=block,onemore
 
@@ -130,10 +131,10 @@ if has("mac")
 	nmap <Leader>o :silent !open "%"<CR>
 endif
 
-nmap <Leader>b :buffers<CR>
+nmap <Leader>b :shell<CR>
 nmap <Leader>c :cd %:p:h<CR>:pwd<CR>
 nmap <Leader>C :silent !chmod "%"<CR>
-nmap <Leader>d :bprevious<CR>:bdelete #<CR>
+nmap <Leader>d :call BufferClose()<CR>
 nmap <Leader>D :LustyFilesystemExplorer ~/Documents/Text\ Files/<CR>
 nmap <Leader>e :LustyFilesystemExplorerFromHere<CR>
 nmap <Leader>E :LustyFilesystemExplorer ~<CR>
@@ -141,10 +142,10 @@ nmap <Leader>g :Gist -a<CR>
 nmap <Leader>G :Gist<CR>
 nmap <Leader>l :!ls -l "%"<CR>
 nmap <Leader>L :!ls -la "%:p:h"<CR>
-nmap <Leader>n :new<CR>
+nmap <Leader>n :enew<CR>
 nmap <Leader>N :set number!<CR>
 nmap <Leader>p :set paste!<CR>
-nmap <Leader>s :shell<CR>
+nmap <Leader>s :new<CR>
 nmap <Leader>S :set spell!<CR>
 nmap <Leader>t :split ~/Documents/Text\ Files/TODO\ -\ Things\ to\ Do.txt<CR>
 nmap <Leader>T :NERDTreeToggle<CR>
@@ -184,6 +185,25 @@ vmap <Leader>s :sort<CR>
 vmap <Leader>v y:vnew<CR>P
 
 imap <C-Tab> <C-n>
+
+function! BufferClose()
+	if &modified
+		echohl ErrorMsg
+		echo "No write since last change. Not closing buffer."
+		echohl NONE
+	else
+		let s:total_nr_buffers = len(filter(range(1, bufnr('$')), 'buflisted(v:val)'))
+
+		if s:total_nr_buffers == 1
+			bdelete
+			echo "Buffer deleted. Opened new buffer."
+		else
+			bprevious
+			bdelete #
+			echo "Buffer deleted."
+		endif
+	endif
+endfunction
 
 function! BufferNr()
 	if &number == 1
