@@ -80,16 +80,16 @@ if has("gui_running")
 	set guioptions=gt
 	set noantialias
 
+	if !exists("g:dont_resize_again")
+		set columns=130
+		set lines=30
+
+		let g:dont_resize_again = 1
+	endif
+
 	if has("mac")
 		set guicursor+=a:blinkon0
 		set guifont=Monaco:h12
-
-		if !exists("g:dont_resize_again")
-			set columns=130
-			set lines=30
-
-			let g:dont_resize_again = 1
-		endif
 	else
 		set guifont=Dina:h15
 	endif
@@ -131,7 +131,7 @@ if has("mac")
 	nmap <Leader>o :silent !open "%"<CR>
 endif
 
-nmap <Leader>b :LustyBufferExplorer<CR>
+nmap <Leader>b :buffers<CR>
 nmap <Leader>c :cd %:p:h<CR>:pwd<CR>
 nmap <Leader>C :silent !chmod "%"<CR>
 nmap <Leader>d :bprevious<CR>:bdelete #<CR>
@@ -147,7 +147,7 @@ nmap <Leader>N :set number!<CR>
 nmap <Leader>p :set paste!<CR>
 nmap <Leader>s :shell<CR>
 nmap <Leader>S :set spell!<CR>
-nmap <Leader>t :edit ~/Documents/Text\ Files/TODO\ -\ Things\ to\ Do.txt<CR>
+nmap <Leader>t :split ~/Documents/Text\ Files/TODO\ -\ Things\ to\ Do.txt<CR>
 nmap <Leader>T :NERDTreeToggle<CR>
 nmap <Leader>u :edit!<CR>
 nmap <Leader>v :vnew<CR>
@@ -167,6 +167,7 @@ nmap - <C-w>-
 nmap < <C-w>>
 nmap > <C-w><
 
+nmap § :LustyBufferExplorer<CR>
 nmap vil ^vg_
 
 nmap <C-s> :!mpc current<CR>
