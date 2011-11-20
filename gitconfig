@@ -1,14 +1,14 @@
 [user]
-	name = Göran Gustafsson
+	name  = Göran Gustafsson
 	email = gustafsson.g@gmail.com
 
 [core]
 	excludesfile = ~/.gitignore_global
 
 [color]
-	branch = auto
-	diff = auto
+	branch      = auto
+	diff        = auto
 	interactive = auto
-	status = auto
-	ui = auto
+	status      = auto
+	ui          = auto
 

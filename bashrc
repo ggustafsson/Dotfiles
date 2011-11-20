@@ -126,9 +126,9 @@ if [ $OS == "Linux" ] ; then
 		local RS='\\e[0;0m'
 
 		echo -e "$(pacman -Ss "$*" | sed "
-		/^core/ s,.*,${CL}1;31m&${RS},
-		/^extra/ s,.*,${CL}0;32m&${RS},
-		/^community/ s,.*,${CL}1;35m&${RS},
+		/^core/         s,.*,${CL}1;31m&${RS},
+		/^extra/        s,.*,${CL}0;32m&${RS},
+		/^community/    s,.*,${CL}1;35m&${RS},
 		/^[^[:space:]]/ s,.*,${CL}0;36m&${RS},
 		")" | less -R
 	}
@@ -207,16 +207,16 @@ function unp {
 	if [ -f "$*" ] ; then
 		case "$*" in
 			*.tar.bz2) tar vxjf "$*";;
-			*.tar.gz) tar vxzf "$*";;
-			*.bz2) bunzip2 "$*";;
-			*.rar) unrar x "$*";;
-			*.gz) gunzip "$*";;
-			*.tar) tar vxf "$*";;
-			*.tbz2) tar vxjf "$*";;
-			*.tgz) tar vxzf "$*";;
-			*.zip) unzip "$*";;
-			*.Z) uncompress "$*";;
-			*.7z) 7z x "$*";;
+			*.tar.gz)  tar vxzf "$*";;
+			*.bz2)     bunzip2 "$*";;
+			*.rar)     unrar x "$*";;
+			*.gz)      gunzip "$*";;
+			*.tar)     tar vxf "$*";;
+			*.tbz2)    tar vxjf "$*";;
+			*.tgz)     tar vxzf "$*";;
+			*.zip)     unzip "$*";;
+			*.Z)       uncompress "$*";;
+			*.7z)      7z x "$*";;
 			*)
 				echo "'$*' cannot be extracted via unp."
 			;;

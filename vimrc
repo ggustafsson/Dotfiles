@@ -120,8 +120,8 @@ let g:NERDTreeMinimalUI = 1
 
 cabbrev help tab help
 
-cabbrev Q q
-cabbrev W w
+cabbrev Q  q
+cabbrev W  w
 cabbrev WQ wq
 cabbrev Wq wq
 cabbrev wQ wq
@@ -155,11 +155,11 @@ nmap <Leader>V :edit ~/.vimrc<CR>
 nmap <Leader>w :set wrap!<CR>
 
 nmap <Backspace> :nohlsearch<CR>
-nmap <Tab> :bnext<CR>
+nmap <Tab>       :bnext<CR>
 
-nmap <C-w><C-Up> <C-w>K
-nmap <C-w><C-Down> <C-w>J
-nmap <C-w><C-Left> <C-w>H
+nmap <C-w><C-Up>    <C-w>K
+nmap <C-w><C-Down>  <C-w>J
+nmap <C-w><C-Left>  <C-w>H
 nmap <C-w><C-Right> <C-w>L
 
 nmap + <C-w>+
@@ -167,7 +167,7 @@ nmap - <C-w>-
 nmap < <C-w>>
 nmap > <C-w><
 
-nmap § :LustyBufferExplorer<CR>
+nmap §   :LustyBufferExplorer<CR>
 nmap vil ^vg_
 
 nmap <C-s> :!mpc current<CR>
@@ -216,15 +216,15 @@ augroup Main
 	autocmd!
 
 	autocmd BufNewFile,BufRead *.txt,README,INSTALL,TODO setlocal filetype=text
-	autocmd BufNewFile,BufRead config setlocal filetype=conf
+	autocmd BufNewFile,BufRead config                    setlocal filetype=conf
 
-	autocmd BufNewFile *.css execute "0read ~/.vim/templates/template.css | 12"
+	autocmd BufNewFile *.css execute  "0read ~/.vim/templates/template.css  | 12"
 	autocmd BufNewFile *.html execute "0read ~/.vim/templates/template.html | 28"
-	autocmd BufNewFile *.php execute "0read ~/.vim/templates/template.php | 29"
-	autocmd BufNewFile *.py execute "0read ~/.vim/templates/template.py | 6"
-	autocmd BufNewFile *.sh execute "0read ~/.vim/templates/template.sh | 5"
+	autocmd BufNewFile *.php execute  "0read ~/.vim/templates/template.php  | 29"
+	autocmd BufNewFile *.py execute   "0read ~/.vim/templates/template.py   | 6"
+	autocmd BufNewFile *.sh execute   "0read ~/.vim/templates/template.sh   | 5"
 
-	autocmd Filetype help setlocal nospell colorcolumn=
+	autocmd Filetype help          setlocal nospell colorcolumn=
 	autocmd Filetype markdown,text setlocal colorcolumn=+1 spell textwidth=79
 
 	autocmd BufWritePost ~/.vimrc source %

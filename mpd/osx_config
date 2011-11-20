@@ -1,12 +1,12 @@
-db_file "~/.mpd/database"
-log_file "~/.mpd/log"
-music_directory "/Volumes/Black Disk/Music"
-pid_file "~/.mpd/pid"
+db_file            "~/.mpd/database"
+log_file           "~/.mpd/log"
+music_directory    "/Volumes/Black Disk/Music"
+pid_file           "~/.mpd/pid"
 playlist_directory "~/.mpd/playlists"
-state_file "~/.mpd/state"
-zeroconf_enabled "no"
+state_file         "~/.mpd/state"
+zeroconf_enabled   "no"
 
-user "Twiggy"
+user            "Twiggy"
 bind_to_address "127.0.0.1"
 
 audio_output {
