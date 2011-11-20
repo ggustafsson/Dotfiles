@@ -105,18 +105,18 @@ else
 endif
 
 let g:gist_open_browser_after_post = 1
-let g:html_ignore_folding          = 1
-let g:mapleader                    = ","
+let g:html_ignore_folding = 1
+let g:mapleader = ","
 
 let g:LustyFilesystemExplorerDefaultMappings = 0
-let g:LustyJugglerDefaultMappings            = 0
+let g:LustyJugglerDefaultMappings = 0
 
 let g:NERDCreateDefaultMappings = 0
-let g:NERDMenuMode              = 0
-let g:NERDSpaceDelims           = 1
+let g:NERDMenuMode = 0
+let g:NERDSpaceDelims = 1
 
 let g:NERDTreeAutoCenter = 0
-let g:NERDTreeMinimalUI  = 1
+let g:NERDTreeMinimalUI = 1
 
 cabbrev help tab help
 
