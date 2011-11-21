@@ -108,7 +108,7 @@ let g:gist_open_browser_after_post = 1
 let g:html_ignore_folding = 1
 let g:mapleader = ","
 
-let g:LustyFilesystemExplorerDefaultMappings = 0
+let g:LustyExplorerDefaultMappings = 0
 let g:LustyJugglerDefaultMappings = 0
 
 let g:NERDCreateDefaultMappings = 0
@@ -127,8 +127,8 @@ cabbrev Wq wq
 cabbrev wQ wq
 
 if has("mac")
-	nmap <Leader>f :silent !open "%:p:h"<CR>
-	nmap <Leader>o :silent !open "%"<CR>
+	nmap <Leader>fi :silent !open "%:p:h"<CR>
+	nmap <Leader>op :silent !open "%"<CR>
 endif
 
 nmap <Leader>bd :call BufferDelete()<CR>
