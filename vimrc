@@ -189,7 +189,7 @@ imap <C-Tab> <C-n>
 function! BufferClose()
 	if &modified
 		echohl ErrorMsg
-		echo "No write since last change. Not closing buffer."
+		echomsg "No write since last change. Not closing buffer."
 		echohl NONE
 	else
 		let s:total_nr_buffers = len(filter(range(1, bufnr('$')), 'buflisted(v:val)'))
