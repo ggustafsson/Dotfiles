@@ -197,7 +197,7 @@ function! BufferDelete()
 
 		if s:total_nr_buffers == 1
 			bdelete
-			echo "Buffer deleted. Opened new buffer."
+			echo "Buffer deleted. Created new buffer."
 		else
 			bprevious
 			bdelete #
