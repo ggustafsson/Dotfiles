@@ -131,28 +131,28 @@ if has("mac")
 	nmap <Leader>o :silent !open "%"<CR>
 endif
 
-nmap <Leader>b :shell<CR>
-nmap <Leader>c :cd %:p:h<CR>:pwd<CR>
-nmap <Leader>C :silent !chmod "%"<CR>
-nmap <Leader>d :call BufferClose()<CR>
-nmap <Leader>D :LustyFilesystemExplorer ~/Documents/Text\ Files/<CR>
-nmap <Leader>e :LustyFilesystemExplorerFromHere<CR>
-nmap <Leader>E :LustyFilesystemExplorer ~<CR>
-nmap <Leader>g :Gist -a<CR>
-nmap <Leader>G :Gist<CR>
-nmap <Leader>l :!ls -l "%"<CR>
-nmap <Leader>L :!ls -la "%:p:h"<CR>
-nmap <Leader>n :enew<CR>
-nmap <Leader>N :set number!<CR>
-nmap <Leader>p :set paste!<CR>
-nmap <Leader>s :new<CR>
-nmap <Leader>S :set spell!<CR>
-nmap <Leader>t :split ~/Documents/Text\ Files/TODO\ -\ Things\ to\ Do.txt<CR>
-nmap <Leader>T :NERDTreeToggle<CR>
-nmap <Leader>u :edit!<CR>
-nmap <Leader>v :vnew<CR>
-nmap <Leader>V :edit ~/.vimrc<CR>
-nmap <Leader>w :set wrap!<CR>
+nmap <Leader>bd :call BufferDelete()<CR>
+nmap <Leader>cd :cd %:p:h<CR>:pwd<CR>
+nmap <Leader>ch :silent !chmod "%"<CR>
+nmap <Leader>do :LustyFilesystemExplorer ~/Documents/Text\ Files/<CR>
+nmap <Leader>ed :LustyFilesystemExplorerFromHere<CR>
+nmap <Leader>eh :LustyFilesystemExplorer ~<CR>
+nmap <Leader>ga :Gist -a<CR>
+nmap <Leader>gg :Gist<CR>
+nmap <Leader>la :!ls -la "%:p:h"<CR>
+nmap <Leader>ls :!ls -l "%"<CR>
+nmap <Leader>ne :enew<CR>
+nmap <Leader>nu :set number!<CR>
+nmap <Leader>pa :set paste!<CR>
+nmap <Leader>sh :shell<CR>
+nmap <Leader>sn :new<CR>
+nmap <Leader>sp :set spell!<CR>
+nmap <Leader>to :split ~/Documents/Text\ Files/TODO\ -\ Things\ to\ Do.txt<CR>
+nmap <Leader>tr :NERDTreeToggle<CR>
+nmap <Leader>un :edit!<CR>
+nmap <Leader>vi :edit ~/.vimrc<CR>
+nmap <Leader>vn :vnew<CR>
+nmap <Leader>wr :set wrap!<CR>
 
 nmap <Backspace> :nohlsearch<CR>
 nmap <Tab>       :bnext<CR>
@@ -178,15 +178,16 @@ nmap <C-t> :silent !mpc toggle<CR>
 nmap <Leader><Space> <Plug>NERDCommenterToggle
 vmap <Leader><Space> <Plug>NERDCommenterToggle
 
-vmap <Leader>g :Gist -a<CR>
-vmap <Leader>G :Gist<CR>
-vmap <Leader>n y:new<CR>P
-vmap <Leader>s :sort<CR>
-vmap <Leader>v y:vnew<CR>P
+vmap <Leader>ga :Gist -a<CR>
+vmap <Leader>gg :Gist<CR>
+vmap <Leader>ne y:enew<CR>P
+vmap <Leader>sn y:new<CR>P
+vmap <Leader>so :sort<CR>
+vmap <Leader>vn y:vnew<CR>P
 
 imap <C-Tab> <C-n>
 
-function! BufferClose()
+function! BufferDelete()
 	if &modified
 		echohl ErrorMsg
 		echomsg "No write since last change. Not closing buffer."
