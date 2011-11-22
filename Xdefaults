@@ -11,7 +11,7 @@ URxvt*foreground: white
 URxvt*font:     -*-terminus-bold-r-*-*-20-*-*-*-*-*-*
 URxvt*boldFont: -*-terminus-bold-r-*-*-20-*-*-*-*-*-*
 
-URxvt*termName: rxvt
+URxvt*termName: rxvt-256color
 
 URxvt*scrollBar: off
 URxvt*saveLines: 65000
