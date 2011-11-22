@@ -12,7 +12,6 @@ if has("mac")
 	set shell=/usr/local/bin/bash
 endif
 
-set encoding=utf-8
 set gdefault
 set hidden
 set nofoldenable
@@ -22,7 +21,6 @@ set scrolloff=3
 set showbreak=+
 set spelllang=en,sv
 set timeoutlen=2000
-set ttyfast
 set virtualedit=block,onemore
 
 set autoindent
