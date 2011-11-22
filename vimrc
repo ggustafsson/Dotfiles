@@ -118,7 +118,8 @@ let g:NERDSpaceDelims = 1
 let g:NERDTreeAutoCenter = 0
 let g:NERDTreeMinimalUI = 1
 
-cabbrev help tab help
+cabbrev ht   tab help
+cabbrev htab tab help
 
 cabbrev Q  q
 cabbrev W  w
