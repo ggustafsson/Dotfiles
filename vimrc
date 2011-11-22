@@ -85,8 +85,8 @@ if has("gui_running")
 		set guifont=Monaco:h12
 
 		if !exists("g:dont_resize_again")
-			set columns=130
-			set lines=30
+			set columns=188
+			set lines=45
 
 			let g:dont_resize_again = 1
 		endif
@@ -239,11 +239,11 @@ augroup Main
 	autocmd BufNewFile,BufRead *.txt,README,INSTALL,TODO setlocal filetype=text
 	autocmd BufNewFile,BufRead config                    setlocal filetype=conf
 
-	autocmd BufNewFile *.css execute  "0read ~/.vim/templates/template.css  | 12"
+	autocmd BufNewFile *.css  execute "0read ~/.vim/templates/template.css  | 12"
 	autocmd BufNewFile *.html execute "0read ~/.vim/templates/template.html | 28"
-	autocmd BufNewFile *.php execute  "0read ~/.vim/templates/template.php  | 29"
-	autocmd BufNewFile *.py execute   "0read ~/.vim/templates/template.py   | 6"
-	autocmd BufNewFile *.sh execute   "0read ~/.vim/templates/template.sh   | 5"
+	autocmd BufNewFile *.php  execute "0read ~/.vim/templates/template.php  | 29"
+	autocmd BufNewFile *.py   execute "0read ~/.vim/templates/template.py   | 6"
+	autocmd BufNewFile *.sh   execute "0read ~/.vim/templates/template.sh   | 5"
 
 	autocmd Filetype help          setlocal nospell colorcolumn=
 	autocmd Filetype markdown,text setlocal colorcolumn=+1 spell textwidth=79
