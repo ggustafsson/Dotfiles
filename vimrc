@@ -15,7 +15,6 @@ endif
 set encoding=utf-8
 set gdefault
 set hidden
-set modelines=0
 set nofoldenable
 set nowrap
 set number
@@ -135,6 +134,7 @@ endif
 nmap <Leader>bd :call BufferDelete()<CR>
 nmap <Leader>cd :cd %:p:h<CR>:pwd<CR>
 nmap <Leader>ch :silent !chmod "%"<CR>
+nmap <Leader>di :diffthis<CR>
 nmap <Leader>do :LustyFilesystemExplorer ~/Documents/Text\ Files/<CR>
 nmap <Leader>ed :LustyFilesystemExplorerFromHere<CR>
 nmap <Leader>eh :LustyFilesystemExplorer ~<CR>
