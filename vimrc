@@ -85,8 +85,8 @@ if has("gui_running")
 		set guifont=Monaco:h12
 
 		if !exists("g:dont_resize_again")
-			set columns=188
-			set lines=45
+			set columns=130
+			set lines=30
 
 			let g:dont_resize_again = 1
 		endif
@@ -145,6 +145,7 @@ nmap <Leader>ls :!ls -l "%"<CR>
 nmap <Leader>ne :enew<CR>
 nmap <Leader>nu :set number!<CR>
 nmap <Leader>pa :set paste!<CR>
+nmap <Leader>sg :call <SID>SyntaxGroup()<CR>
 nmap <Leader>sh :shell<CR>
 nmap <Leader>sn :new<CR>
 nmap <Leader>sp :set spell!<CR>
@@ -231,6 +232,14 @@ function! CheckPath()
 	endif
 
 	return b:checkpath
+endfunction
+
+function! <SID>SyntaxGroup()
+	if !exists("*synstack")
+		return
+	endif
+
+	echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
 endfunction
 
 augroup Main
