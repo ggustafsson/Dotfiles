@@ -1,10 +1,5 @@
 # Göran Gustafsson (gustafsson.g@gmail.com)
 
-if [ $(tty) == "/dev/tty1" ] ; then
-	startx
-	logout
-fi
-
 export EDITOR="vim"
 export HISTSIZE="20000"
 export LC_COLLATE="C"
@@ -42,6 +37,11 @@ else
 
 	export FLACDIR="~/Music/FLAC"
 	export MP3DIR="~/Music/MP3"
+
+	if [ $(tty) == "/dev/tty1" ] ; then
+		startx
+		logout
+	fi
 fi
 
 complete -cf man
