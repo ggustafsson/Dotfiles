@@ -31,13 +31,18 @@ bind C-C-Down  exchangedown
 bind C-C-Left  exchangeleft
 bind C-C-Right exchangeright
 
+unbind Q
+bind o only
+
+unbind R
+bind c remove
+
 unbind S
 bind v hsplit
 
-bind c exec chromium
+bind b exec chromium
 bind d time
 bind t exec transmission-gtk
-bind v exec urxvt -e screen -S vim vim
 bind x exec urxvt
 
 exec xsetroot -solid black -cursor_name left_ptr
