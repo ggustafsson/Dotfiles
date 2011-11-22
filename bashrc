@@ -1,5 +1,10 @@
 # Göran Gustafsson (gustafsson.g@gmail.com)
 
+if [ $(tty) == "/dev/tty1" ] ; then
+	startx
+	logout
+fi
+
 export EDITOR="vim"
 export HISTSIZE="20000"
 export LC_COLLATE="C"
