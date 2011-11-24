@@ -83,7 +83,7 @@ if has("gui_running")
 
 		if !exists("g:dont_resize_again")
 			set columns=130
-			set lines=30
+			set lines=38
 
 			let g:dont_resize_again = 1
 		endif
@@ -143,6 +143,7 @@ nmap <Leader>ne :enew<CR>
 nmap <Leader>nu :set number!<CR>
 nmap <Leader>pa :set paste!<CR>
 nmap <Leader>pw :pwd<CR>
+nmap <Leader>re :%s/
 nmap <Leader>sg :call <SID>SyntaxGroup()<CR>
 nmap <Leader>sh :shell<CR>
 nmap <Leader>sn :new<CR>
