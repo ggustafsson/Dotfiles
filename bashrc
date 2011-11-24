@@ -1,6 +1,5 @@
 # Göran Gustafsson (gustafsson.g@gmail.com)
 
-export EDITOR="vim"
 export HISTSIZE="20000"
 export LC_COLLATE="C"
 export OS=$(uname)
@@ -15,6 +14,7 @@ if [ ! $TERM == "dumb" ] ; then
 fi
 
 if [ $OS == "Darwin" ] ; then
+	export EDITOR="/Applications/MacVim.app/Contents/MacOS/Vim -g --remote-tab-silent"
 	export PATH="/usr/local/bin:/usr/local/sbin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/X11/bin:~/Scripts"
 
 	export HOST=$(hostname -s)
@@ -25,6 +25,7 @@ if [ $OS == "Darwin" ] ; then
 	export FLACDIR="/Volumes/Black Disk/Music/FLAC"
 	export MP3DIR="/Volumes/Black Disk/Music/MP3"
 else
+	export EDITOR="vim"
 	export PATH="/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/Scripts"
 
 	export PS1="\n$BRIGHT\u $YELLOW\h $NORMAL\w > "
