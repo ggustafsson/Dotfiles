@@ -148,7 +148,7 @@ nmap <Leader>sg :call <SID>SyntaxGroup()<CR>
 nmap <Leader>sh :shell<CR>
 nmap <Leader>sn :new<CR>
 nmap <Leader>sp :set spell!<CR>
-nmap <Leader>to :split ~/Documents/Text\ Files/TODO\ -\ Things\ to\ Do.txt<CR>
+nmap <Leader>to :split ~/Documents/Text\ Files/Things\ to\ Do.txt<CR>
 nmap <Leader>tr :NERDTreeToggle<CR>
 nmap <Leader>un :edit!<CR>
 nmap <Leader>vi :edit ~/.vimrc<CR>
