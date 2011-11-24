@@ -2,9 +2,11 @@
 
 export HISTSIZE="20000"
 export LC_COLLATE="C"
-export OS=$(uname)
 export PAGER="less"
 export PROMPT_COMMAND="history -a"
+
+export GEM_HOME="~/.ruby"
+export OS=$(uname)
 
 if [ ! $TERM == "dumb" ] ; then
 	export NORMAL="\[\033[0m\]"
@@ -16,6 +18,7 @@ fi
 if [ $OS == "Darwin" ] ; then
 	export EDITOR="/Applications/MacVim.app/Contents/MacOS/Vim -g --remote-tab-silent"
 	export PATH="/usr/local/bin:/usr/local/sbin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/X11/bin:~/Scripts"
+	export VISUAL="$EDITOR"
 
 	export HOST=$(hostname -s)
 	export HOST_FIXED="${HOST[@]^}"
@@ -27,6 +30,7 @@ if [ $OS == "Darwin" ] ; then
 else
 	export EDITOR="vim"
 	export PATH="/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/Scripts"
+	export VISUAL="$EDITOR"
 
 	export PS1="\n$BRIGHT\u $YELLOW\h $NORMAL\w > "
 
@@ -45,6 +49,10 @@ else
 	fi
 fi
 
+for dir in ~/.ruby/gems/*/bin; do
+	export PATH="$PATH:$dir"
+done
+
 complete -cf man
 set -o vi
 shopt -s cdspell checkwinsize cmdhist histappend no_empty_cmd_completion
@@ -53,16 +61,17 @@ if [ $OS == "Darwin" ] ; then
 	alias c="clear"
 	alias dontsleep="pmset noidle"
 	alias f="open ."
+	alias head="ghead"
 	alias ls="ls -Gh"
-	alias mvim="/Applications/MacVim.app/Contents/MacOS/Vim -g --remote-tab-silent"
-	alias mvimdiff="/Applications/MacVim.app/Contents/MacOS/Vim -d -g"
 	alias o="open"
 	alias ql="qlmanage -p \"$@\" >& /dev/null"
 	alias rmds='find "$PWD" -name ".DS_Store" -depth -exec rm {} \;'
+	alias sed="gsed"
 	alias startmpd="mpd ~/.mpd/config"
 	alias stopmpd="killall mpd"
-	alias vim="/Applications/MacVim.app/Contents/MacOS/Vim"
-	alias vimdiff="/Applications/MacVim.app/Contents/MacOS/Vim -d"
+	alias tail="gtail"
+	alias vim="/Applications/MacVim.app/Contents/MacOS/Vim -g --remote-tab-silent"
+	alias vimdiff="/Applications/MacVim.app/Contents/MacOS/Vim -d -g"
 else
 	alias c="clearcmd"
 	alias cal="cal -m"
@@ -85,12 +94,14 @@ alias dal="da | less"
 alias df="df -h"
 alias dl="d | less"
 alias favs="cat ~/.mpd/playlists/Favorites.m3u > ~/.mpd/tmp.playlist; sort ~/.mpd/tmp.playlist | uniq > ~/.mpd/playlists/Favorites.m3u"
+alias g="grep"
 alias grep="grep --color"
 alias ip="internet_ip.py"
 alias irssi="irssi"
 alias ka="killall"
 alias l1="ls -1"
 alias l1l="ls -1 | less"
+alias l="less"
 alias la="ls -a"
 alias lal="la | less"
 alias lsl="ls | less"
@@ -166,11 +177,7 @@ function h {
 	if [ -z $1 ] ; then
 		history | less
 	else
-		if [ $OS == "Darwin" ] ; then
-			history | grep -i "$*"
-		else
-			history | grep -i "$*" | head -n -1
-		fi
+		history | grep -i "$*" | head -n -1
 	fi
 }
 
@@ -178,11 +185,7 @@ function p {
 	if [ -z $1 ] ; then
 		ps ax
 	else
-		if [ $OS == "Darwin" ] ; then
-			ps ax | grep -i "$*"
-		else
-			ps ax | grep -i "$*" | head -n -1
-		fi
+		ps ax | grep -i "$*" | head -n -1
 	fi
 }
 
