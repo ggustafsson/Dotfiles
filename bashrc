@@ -59,6 +59,10 @@ shopt -s cdspell checkwinsize cmdhist histappend no_empty_cmd_completion
 
 if [ $OS == "Darwin" ] ; then
 	alias c="clear"
+	alias dae="ls -lae"
+	alias dael="ls -lae | less"
+	alias de="ls -le"
+	alias del="ls -le | less"
 	alias dontsleep="pmset noidle"
 	alias f="open ."
 	alias head="ghead"
@@ -72,6 +76,7 @@ if [ $OS == "Darwin" ] ; then
 	alias tail="gtail"
 	alias vim="/Applications/MacVim.app/Contents/MacOS/Vim -g --remote-tab-silent"
 	alias vimdiff="/Applications/MacVim.app/Contents/MacOS/Vim -d -g"
+	alias vimp="/Applications/MacVim.app/Contents/MacOS/Vim - -g"
 else
 	alias c="clearcmd"
 	alias cal="cal -m"
@@ -89,22 +94,21 @@ alias bc="bc -q"
 alias cdd="cd ~/Downloads"
 alias cp="cp -vi"
 alias d="ls -l"
-alias da="d -a"
-alias dal="da | less"
+alias da="ls -la"
+alias dal="ls -la | less"
 alias df="df -h"
-alias dl="d | less"
+alias dl="ls -l | less"
 alias favs="cat ~/.mpd/playlists/Favorites.m3u > ~/.mpd/tmp.playlist; sort ~/.mpd/tmp.playlist | uniq > ~/.mpd/playlists/Favorites.m3u"
 alias g="grep"
 alias grep="grep --color"
-alias ip="internet_ip.py"
+alias ip="curl -s http://automation.whatismyip.com/n09230945.asp | html2text"
 alias irssi="irssi"
 alias ka="killall"
 alias l1="ls -1"
 alias l1l="ls -1 | less"
 alias l="less"
 alias la="ls -a"
-alias lal="la | less"
-alias lsl="ls | less"
+alias lal="ls -a | less"
 alias mv="mv -vi"
 alias next="mpc next"
 alias ping="ping -c 10"
@@ -124,7 +128,12 @@ alias tv="vim ~/Documents/Text\ Files/Things\ to\ Do.txt"
 alias v="vim"
 alias yt="youtube-dl -l"
 
-if [ $OS == "Linux" ] ; then
+if [ $OS == "Darwin" ] ; then
+	function clearxattr {
+		find "$PWD" -type d -exec xattr -c "{}" \;
+		find "$PWD" -type f -exec xattr -c "{}" \;
+	}
+else
 	if [ $TERM == "rxvt-unicode" ] ; then
 		function clearcmd {
 			for ((i = 1; i < $LINES; i++)) ; do
@@ -190,13 +199,23 @@ function p {
 }
 
 function permfix {
-	find "$PWD" -type d -exec chmod 755 "{}" \;
-	find "$PWD" -type f -exec chmod 644 "{}" \;
+	if [ $OS == "Darwin" ] ; then
+		find "$PWD" -type d -exec chmod -N 755 "{}" \;
+		find "$PWD" -type f -exec chmod -N 644 "{}" \;
+	else
+		find "$PWD" -type d -exec chmod 755 "{}" \;
+		find "$PWD" -type f -exec chmod 644 "{}" \;
+	fi
 }
 
 function privatepermfix {
-	find "$PWD" -type d -exec chmod 700 "{}" \;
-	find "$PWD" -type f -exec chmod 600 "{}" \;
+	if [ $OS == "Darwin" ] ; then
+		find "$PWD" -type d -exec chmod -N 700 "{}" \;
+		find "$PWD" -type f -exec chmod -N 600 "{}" \;
+	else
+		find "$PWD" -type d -exec chmod 700 "{}" \;
+		find "$PWD" -type f -exec chmod 600 "{}" \;
+	fi
 }
 
 function unp {
