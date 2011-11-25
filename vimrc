@@ -133,8 +133,10 @@ nmap <Leader>cd :cd %:p:h<CR>:pwd<CR>
 nmap <Leader>ch :silent !chmod "%"<CR>
 nmap <Leader>di :diffthis<CR>
 nmap <Leader>do :LustyFilesystemExplorer ~/Documents/Text\ Files/<CR>
+nmap <Leader>e2 :setlocal expandtab shiftwidth=2 tabstop=2<CR>
 nmap <Leader>ed :LustyFilesystemExplorerFromHere<CR>
 nmap <Leader>eh :LustyFilesystemExplorer ~<CR>
+nmap <Leader>et :setlocal expandtab<CR>
 nmap <Leader>ga :Gist -a<CR>
 nmap <Leader>gg :Gist<CR>
 nmap <Leader>la :!ls -la "%:p:h"<CR>
@@ -147,7 +149,7 @@ nmap <Leader>re :%s/
 nmap <Leader>sg :call <SID>SyntaxGroup()<CR>
 nmap <Leader>sh :shell<CR>
 nmap <Leader>sn :new<CR>
-nmap <Leader>sp :set spell!<CR>
+nmap <Leader>sp :setlocal spell!<CR>
 nmap <Leader>to :split ~/Documents/Text\ Files/Things\ to\ Do.txt<CR>
 nmap <Leader>tr :NERDTreeToggle<CR>
 nmap <Leader>un :edit!<CR>
@@ -247,9 +249,9 @@ augroup Main
 	autocmd BufNewFile,BufRead *.txt,README,INSTALL,TODO setlocal filetype=text
 	autocmd BufNewFile,BufRead config                    setlocal filetype=conf
 
-	autocmd BufNewFile *.css  execute "0read ~/.vim/templates/template.css  | 12"
-	autocmd BufNewFile *.html execute "0read ~/.vim/templates/template.html | 28"
-	autocmd BufNewFile *.php  execute "0read ~/.vim/templates/template.php  | 29"
+	autocmd BufNewFile *.css  execute "0read ~/.vim/templates/template.css  | 17"
+	autocmd BufNewFile *.html execute "0read ~/.vim/templates/template.html | 32"
+	autocmd BufNewFile *.php  execute "0read ~/.vim/templates/template.php  | 33"
 	autocmd BufNewFile *.py   execute "0read ~/.vim/templates/template.py   | 6"
 	autocmd BufNewFile *.sh   execute "0read ~/.vim/templates/template.sh   | 5"
 

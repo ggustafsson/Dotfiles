@@ -17,11 +17,15 @@
 				font-family: "Helvetica Neu", Helvetica, Verdana, "Bitstream Vera Sans", sans-serif;
 				font-size: 14px;
 			}
+
+			* {
+				margin:0px;
+				padding:0px;
+			}
 		</style>
 
-		<script>
-
-		</script>
+		<script src=""></script>
+		<script></script>
 	</head>
 	<body>
 
