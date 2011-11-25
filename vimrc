@@ -12,6 +12,7 @@ if has("mac")
 	set shell=/usr/local/bin/bash
 endif
 
+set confirm
 set gdefault
 set hidden
 set nofoldenable
@@ -74,7 +75,7 @@ set wildignore+=*.avi,*.flv,*.f4v,*.mkv,*.mov,*.mpg,*.mpeg,*.mp4,*.m4v,*.wmv
 set wildignore+=*.dmg,*.iso,*.rar,*.tar,*.tar.bz2,*.tar.gz,*.zip
 
 if has("gui_running")
-	set guioptions=gt
+	set guioptions=cgt
 	set noantialias
 
 	if has("mac")
