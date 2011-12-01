@@ -9,7 +9,7 @@ syntax enable
 colorscheme ninja
 
 if has("mac")
-	set shell=/usr/local/bin/bash
+	set shell=/usr/local/bin/zsh
 endif
 
 set confirm
@@ -84,7 +84,7 @@ if has("gui_running")
 
 		if !exists("g:dont_resize_again")
 			set columns=130
-			set lines=38
+			set lines=40
 
 			let g:dont_resize_again = 1
 		endif
@@ -135,9 +135,9 @@ nmap <Leader>ch :silent !chmod "%"<CR>
 nmap <Leader>di :diffthis<CR>
 nmap <Leader>do :LustyFilesystemExplorer ~/Documents/Text\ Files/<CR>
 nmap <Leader>e2 :setlocal expandtab shiftwidth=2 tabstop=2<CR>
+nmap <Leader>e4 :setlocal expandtab shiftwidth=4 tabstop=4<CR>
 nmap <Leader>ed :LustyFilesystemExplorerFromHere<CR>
 nmap <Leader>eh :LustyFilesystemExplorer ~<CR>
-nmap <Leader>et :setlocal expandtab<CR>
 nmap <Leader>ga :Gist -a<CR>
 nmap <Leader>gg :Gist<CR>
 nmap <Leader>la :!ls -la "%:p:h"<CR>
@@ -151,7 +151,7 @@ nmap <Leader>sg :call <SID>SyntaxGroup()<CR>
 nmap <Leader>sh :shell<CR>
 nmap <Leader>sn :new<CR>
 nmap <Leader>sp :setlocal spell!<CR>
-nmap <Leader>to :split ~/Documents/Text\ Files/Things\ to\ Do.txt<CR>
+nmap <Leader>to :10split ~/Documents/Text\ Files/Things\ to\ Do.txt<CR>
 nmap <Leader>tr :NERDTreeToggle<CR>
 nmap <Leader>un :edit!<CR>
 nmap <Leader>vi :edit ~/.vimrc<CR>
