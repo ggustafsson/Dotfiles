@@ -41,7 +41,6 @@ set incsearch
 set smartcase
 
 set laststatus=2
-set showcmd
 set statusline=%(%{BufferNr()}\ %)
 set statusline+=%(%F\ %)
 set statusline+=%(%r\ %)
@@ -56,6 +55,9 @@ set statusline+=%(%l/%L\ %)
 
 set list
 set listchars=tab:>-,trail:·,precedes:<,extends:>
+
+set number
+set numberwidth=3
 
 set shiftwidth=4
 set tabstop=4
