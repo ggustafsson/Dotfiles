@@ -17,7 +17,6 @@ set gdefault
 set hidden
 set nofoldenable
 set nowrap
-set number
 set scrolloff=3
 set showbreak=+
 set spelllang=en,sv

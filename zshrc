@@ -63,8 +63,8 @@ fi
 
 autoload -U compinit && compinit -i
 
-zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
-zstyle ':completion:*:cd:*' ignore-parents parent pwd
+zstyle ':completion:*'          matcher-list 'm:{a-zA-Z}={A-Za-z}'
+zstyle ':completion:*:cd:*'     ignore-parents parent pwd
 zstyle ':completion:*:warnings' format "zsh: no matches."
 
 precmd() {
