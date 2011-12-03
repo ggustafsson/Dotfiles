@@ -41,7 +41,7 @@ else
 fi
 
 setopt appendhistory
-setopt autocd
+setopt combiningchars
 setopt correctall
 setopt extendedhistory
 setopt histexpiredupsfirst
@@ -63,10 +63,12 @@ fi
 
 autoload -U compinit && compinit
 
-zstyle ':completion:*'          matcher-list 'm:{a-zA-Z}={A-Za-z}'
+zstyle ':completion:*'          matcher-list 'm:{a-z}={A-Z}'
 zstyle ':completion:*'          special-dirs true
 zstyle ':completion:*:cd:*'     ignore-parents parent pwd
 zstyle ':completion:*:warnings' format "zsh: no matches found."
+
+compdef _path_files cd;
 
 precmd() {
 	echo
@@ -155,6 +157,7 @@ alias cw="wc -w"
 alias g="grep"
 alias he="head"
 alias l="less"
+alias rg="grep -r"
 alias so="sort"
 alias ta="tail"
 alias un="uniq"
@@ -267,27 +270,33 @@ function p {
 	if [ -z $* ]; then
 		ps ax
 	else
-		ps ax | grep "$*" | grep -v "grep --color -i $*"
+		ps ax | grep -v "grep --color -i $*" | grep "$*"
 	fi
 }
 
 function permfix {
 	if [[ $OS == "Darwin" ]]; then
-		find "$PWD" -type d -exec chmod -N 755 "{}" \;
-		find "$PWD" -type f -exec chmod -N 644 "{}" \;
+		find . -type d -exec chmod 755 "{}" \;
+		find . -type f -exec chmod 644 "{}" \;
+
+		find . -type f -exec chmod -N "{}" \;
+		find . -type d -exec chmod -N "{}" \;
 	else
-		find "$PWD" -type d -exec chmod 755 "{}" \;
-		find "$PWD" -type f -exec chmod 644 "{}" \;
+		find . -type d -exec chmod 755 "{}" \;
+		find . -type f -exec chmod 644 "{}" \;
 	fi
 }
 
 function privatepermfix {
 	if [[ $OS == "Darwin" ]]; then
-		find "$PWD" -type d -exec chmod -N 700 "{}" \;
-		find "$PWD" -type f -exec chmod -N 600 "{}" \;
+		find . -type d -exec chmod 700 "{}" \;
+		find . -type f -exec chmod 600 "{}" \;
+
+		find . -type d -exec chmod -N "{}" \;
+		find . -type f -exec chmod -N "{}" \;
 	else
-		find "$PWD" -type d -exec chmod 700 "{}" \;
-		find "$PWD" -type f -exec chmod 600 "{}" \;
+		find . -type d -exec chmod 700 "{}" \;
+		find . -type f -exec chmod 600 "{}" \;
 	fi
 }
 
