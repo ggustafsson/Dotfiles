@@ -69,7 +69,8 @@ zstyle ':completion:*'          special-dirs true
 zstyle ':completion:*:cd:*'     ignore-parents parent pwd
 zstyle ':completion:*:warnings' format "zsh: no matches found."
 
-compdef _path_files cd;
+compdef _man man-preview
+compdef _path_files cd
 
 precmd() {
 	echo
@@ -99,7 +100,6 @@ RPROMPT='%B$(git_branch) %{$fg[cyan]%}$(todo_entries)%{$reset_color%}%b'
 if [[ $OS == "Darwin" ]]; then
 	alias c="clear"
 	alias dontsleep="pmset noidle"
-	alias ql="qlmanage -p '$@' >& /dev/null"
 
 	alias cvim="/Applications/MacVim.app/Contents/MacOS/Vim"
 	alias vimdiff="/Applications/MacVim.app/Contents/MacOS/Vim -d -g"
@@ -135,6 +135,7 @@ fi
 alias bc="bc -q"
 alias df="df -h"
 alias favs="cat ~/.mpd/playlists/Favorites.m3u > ~/.mpd/tmp.playlist && sort ~/.mpd/tmp.playlist | uniq > ~/.mpd/playlists/Favorites.m3u"
+alias ff='find . -name'
 alias grep="grep --color -i"
 alias hi="history"
 alias ip="curl -s http://automation.whatismyip.com/n09230945.asp | html2text"
@@ -196,6 +197,18 @@ if [[ $OS == "Darwin" ]]; then
 		rm -rf ~/Library/Caches/com.apple.Safari/Webpage\ Previews
 		rm -rf ~/Library/Caches/Homebrew
 		rm -rf ~/Library/iTunes/iPhone\ Software\ Updates
+	}
+
+	function man-preview {
+		if [ ! -z $1 ]; then
+			man -t "$@" | open -f -a Preview
+		fi
+	}
+
+	function ql {
+		if [ ! -z $1 ]; then
+			qlmanage -p $* >& /dev/null
+		fi
 	}
 
 	function vim {
