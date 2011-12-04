@@ -17,7 +17,7 @@ set gdefault
 set hidden
 set nofoldenable
 set nowrap
-set scrolloff=3
+set number
 set showbreak=+
 set spelllang=en,sv
 set timeoutlen=2000
@@ -55,9 +55,6 @@ set statusline+=%(%l/%L\ %)
 
 set list
 set listchars=tab:>-,trail:·,precedes:<,extends:>
-
-set number
-set numberwidth=3
 
 set shiftwidth=4
 set tabstop=4
