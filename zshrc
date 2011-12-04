@@ -72,6 +72,11 @@ zstyle ':completion:*:warnings' format "zsh: no matches found."
 compdef _man man-preview
 compdef _path_files cd
 
+_autocd() {
+	_path_commands
+	_path_files
+}
+
 precmd() {
 	echo
 }
