@@ -62,6 +62,7 @@ if [[ ! $TERM == "dumb" ]]; then
 fi
 
 autoload -U compinit && compinit
+autoload -U url-quote-magic && zle -N self-insert url-quote-magic
 
 zstyle ':completion:*'          matcher-list 'm:{a-z}={A-Z}'
 zstyle ':completion:*'          special-dirs true
