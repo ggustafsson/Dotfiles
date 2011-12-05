@@ -64,8 +64,7 @@ autoload -U url-quote-magic && zle -N self-insert url-quote-magic
 
 bindkey -v
 bindkey '^?' backward-delete-char
-
-bindkey -M vicmd 'R'  custom-vi-replace
+bindkey -M vicmd 'R' custom-vi-replace
 
 zstyle ':completion:*'          matcher-list 'm:{a-z}={A-Z}'
 zstyle ':completion:*'          special-dirs true
@@ -108,9 +107,9 @@ function zsh_mode {
 	if [[ $KEYMAP == vicmd ]]; then
 		echo "%B%{$fg[red]%}E%{$reset_color%}%b"
 	elif [[ $REPLACE == 1 ]]; then
-		echo "%B%{$fg[blue]%}R%{$reset_color%}%b"
+		echo "%B%{$fg[magenta]%}R%{$reset_color%}%b"
 	else
-		echo "%B%{$fg[cyan]%}$%{$reset_color%}%b"
+		echo "%B%{$fg[blue]%}$%{$reset_color%}%b"
 	fi
 }
 
