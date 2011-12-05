@@ -41,6 +41,7 @@ else
 fi
 
 setopt appendhistory
+setopt autocd
 setopt combiningchars
 setopt correctall
 setopt extendedhistory
@@ -54,15 +55,15 @@ setopt noclobber
 setopt notify
 setopt promptsubst
 
-bindkey -v
-bindkey '^?' backward-delete-char
-
 if [[ ! $TERM == "dumb" ]]; then
 	autoload -U colors && colors
 fi
 
 autoload -U compinit && compinit
 autoload -U url-quote-magic && zle -N self-insert url-quote-magic
+
+bindkey -v
+bindkey '^?' backward-delete-char
 
 zstyle ':completion:*'          matcher-list 'm:{a-z}={A-Z}'
 zstyle ':completion:*'          special-dirs true
@@ -73,7 +74,7 @@ compdef _man man-preview
 compdef _path_files cd
 
 _autocd() {
-	_path_commands
+	_command_names
 	_path_files
 }
 

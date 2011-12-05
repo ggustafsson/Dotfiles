@@ -138,7 +138,7 @@ statusbar = {
 
 settings = {
   "fe-common/core" = {
-    autolog = "no";
+    autolog = "yes";
     autolog_path = "~/.irssi/logs/$tag/$0.log";
     hide_server_tags = "yes";
     hilight_nick_matches = "yes";
