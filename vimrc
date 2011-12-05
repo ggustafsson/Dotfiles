@@ -136,9 +136,11 @@ nmap <Leader>e2 :setlocal expandtab shiftwidth=2 tabstop=2<CR>
 nmap <Leader>e4 :setlocal expandtab shiftwidth=4 tabstop=4<CR>
 nmap <Leader>ed :LustyFilesystemExplorerFromHere<CR>
 nmap <Leader>eh :LustyFilesystemExplorer ~<CR>
+nmap <Leader>fa :call FancyView()<CR>
 nmap <Leader>ga :Gist -a<CR>
 nmap <Leader>gg :Gist<CR>
 nmap <Leader>la :!ls -la "%:p:h"<CR>
+nmap <Leader>li :set list!<CR>
 nmap <Leader>ls :!ls -l "%"<CR>
 nmap <Leader>ne :enew<CR>
 nmap <Leader>nu :set number!<CR>
@@ -232,6 +234,13 @@ function! CheckPath()
 	endif
 
 	return b:checkpath
+endfunction
+
+function! FancyView()
+	set antialias
+	set guifont=Inconsolata:h28
+	set nolist
+	set nonumber
 endfunction
 
 function! <SID>SyntaxGroup()
