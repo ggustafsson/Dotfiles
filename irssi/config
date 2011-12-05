@@ -185,9 +185,7 @@ settings = {
 };
 
 logs = { };
-ignores = (
-  { level = "JOINS PARTS QUITS MODES NICKS"; channels = ( "#vim" ); },
-);
+ignores = ( );
 hilights = (
   { text = "twiggy"; nick = "yes"; word = "yes"; },
   { text = "twigg"; nick = "yes"; word = "yes"; },

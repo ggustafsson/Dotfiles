@@ -4,14 +4,13 @@ export GEM_HOME=~/.ruby
 export LC_COLLATE=C
 export PAGER=less
 
-OS=$(uname)
 TODO_FILE="$HOME/Documents/Text Files/Things to Do.txt"
 
 HISTFILE=~/.zsh_histfile
 HISTSIZE=2000
 SAVEHIST=4000
 
-if [[ $OS == "Darwin" ]]; then
+if [[ $OSTYPE == darwin* ]]; then
 	export EDITOR="/Applications/MacVim.app/Contents/MacOS/Vim -g --remote-tab-silent"
 	export VISUAL=$EDITOR
 
@@ -49,15 +48,14 @@ setopt histexpiredupsfirst
 setopt histignoredups
 setopt histverify
 setopt incappendhistory
+setopt longlistjobs
 setopt noautomenu
 setopt nobeep
 setopt noclobber
 setopt notify
 setopt promptsubst
 
-if [[ ! $TERM == "dumb" ]]; then
-	autoload -U colors && colors
-fi
+[[ ! $TERM == "dumb" ]] && autoload -U colors && colors
 
 autoload -U compinit && compinit
 autoload -U url-quote-magic && zle -N self-insert url-quote-magic
@@ -95,21 +93,18 @@ function git_branch {
 function todo_entries {
 	ref=$(sed '/^\s*$/d' $TODO_FILE | wc -l 2> /dev/null) || return
 
-	if [[ $ref != 0 ]]; then
-		echo $ref
-	fi
+	[[ $ref != 0 ]] && echo $ref
 }
 
 PROMPT="%B%n %{$fg[yellow]%}%m %{$reset_color%}%b%~ > "
 RPROMPT='%B$(git_branch) %{$fg[cyan]%}$(todo_entries)%{$reset_color%}%b'
 
-if [[ $OS == "Darwin" ]]; then
+if [[ $OSTYPE == darwin* ]]; then
 	alias c="clear"
 	alias dontsleep="pmset noidle"
 
 	alias cvim="/Applications/MacVim.app/Contents/MacOS/Vim"
-	alias vimdiff="/Applications/MacVim.app/Contents/MacOS/Vim -d -g"
-	alias vimp="/Applications/MacVim.app/Contents/MacOS/Vim - -g"
+	alias vimp="/Applications/MacVim.app/Contents/MacOS/Vim - -g >& /dev/null"
 
 	alias dae="ls -lae"
 	alias de="ls -le"
@@ -198,7 +193,7 @@ alias v="vim"
 alias vd="vimdiff"
 alias vp="vimp"
 
-if [[ $OS == "Darwin" ]]; then
+if [[ $OSTYPE == darwin* ]]; then
 	function freespace {
 		rm -rf ~/Library/Caches/com.apple.Safari/Webpage\ Previews
 		rm -rf ~/Library/Caches/Homebrew
@@ -206,23 +201,27 @@ if [[ $OS == "Darwin" ]]; then
 	}
 
 	function man-preview {
-		if [ ! -z $1 ]; then
-			man -t "$@" | open -f -a Preview
-		fi
+		for arg in $*; do
+			man -t $arg | open -f -a Preview
+		done
 	}
 
 	function ql {
-		if [ ! -z $1 ]; then
+		for arg in $*; do
 			qlmanage -p $* >& /dev/null
-		fi
+		done
 	}
 
 	function vim {
 		if [ -z $1 ]; then
 			/Applications/MacVim.app/Contents/MacOS/Vim -g
 		else
-			/Applications/MacVim.app/Contents/MacOS/Vim -g --remote-tab-silent "$*"
+			/Applications/MacVim.app/Contents/MacOS/Vim -g --remote-tab-silent $*
 		fi
+	}
+
+	function vimdiff {
+		/Applications/MacVim.app/Contents/MacOS/Vim -d -g $* >& /dev/null
 	}
 else
 	if [[ $TERM == "rxvt-unicode" ]]; then
@@ -295,29 +294,23 @@ function p {
 }
 
 function permfix {
-	if [[ $OS == "Darwin" ]]; then
-		find . -type d -exec chmod 755 "{}" \;
-		find . -type f -exec chmod 644 "{}" \;
-
+	if [[ $OSTYPE == darwin* ]]; then
 		find . -type f -exec chmod -N "{}" \;
 		find . -type d -exec chmod -N "{}" \;
-	else
-		find . -type d -exec chmod 755 "{}" \;
-		find . -type f -exec chmod 644 "{}" \;
 	fi
+
+	find . -type d -exec chmod 755 "{}" \;
+	find . -type f -exec chmod 644 "{}" \;
 }
 
 function privatepermfix {
-	if [[ $OS == "Darwin" ]]; then
-		find . -type d -exec chmod 700 "{}" \;
-		find . -type f -exec chmod 600 "{}" \;
-
+	if [[ $OSTYPE == darwin* ]]; then
 		find . -type d -exec chmod -N "{}" \;
 		find . -type f -exec chmod -N "{}" \;
-	else
-		find . -type d -exec chmod 700 "{}" \;
-		find . -type f -exec chmod 600 "{}" \;
 	fi
+
+	find . -type d -exec chmod 700 "{}" \;
+	find . -type f -exec chmod 600 "{}" \;
 }
 
 function unp {
