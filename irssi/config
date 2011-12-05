@@ -185,7 +185,7 @@ settings = {
 };
 
 logs = { };
-ignores = ( { level = "JOINS PARTS QUITS"; } );
+ignores = ( { level = "JOINS PARTS QUITS NICKS"; } );
 hilights = (
   { text = "twiggy"; nick = "yes"; word = "yes"; },
   { text = "twigg"; nick = "yes"; word = "yes"; },

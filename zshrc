@@ -63,8 +63,9 @@ autoload -U compinit && compinit
 autoload -U url-quote-magic && zle -N self-insert url-quote-magic
 
 bindkey -v
-bindkey -M vicmd '^?' backward-delete-char
-bindkey -M vicmd 'R' custom-vi-replace
+bindkey '^?' backward-delete-char
+
+bindkey -M vicmd 'R'  custom-vi-replace
 
 zstyle ':completion:*'          matcher-list 'm:{a-z}={A-Z}'
 zstyle ':completion:*'          special-dirs true
@@ -87,9 +88,9 @@ function git_branch {
 	ref=$(git symbolic-ref HEAD 2> /dev/null) || return
 
 	if [[ -n $(git status -s 2> /dev/null) ]]; then
-		echo " %{$fg[red]%}[${ref#refs/heads/}]"
+		echo "%B%{$fg[red]%}${ref#refs/heads/}%{$reset_color%}%b"
 	else
-		echo " %{$fg[green]%}[${ref#refs/heads/}]"
+		echo "%B%{$fg[green]%}${ref#refs/heads/}%{$reset_color%}%b"
 	fi
 }
 
@@ -99,20 +100,22 @@ function custom-vi-replace {
 zle -N custom-vi-replace
 
 function zle-line-init zle-keymap-select {
-	if [[ $KEYMAP == vicmd ]]; then
-		RPROMPT="%B%{$fg[red]%}EDIT MODE%{$reset_color%}%b"
-	elif [[ $REPLACE == 1 ]]; then
-		RPROMPT="%B%{$fg[cyan]%}REPLACE MODE%{$reset_color%}%b"
-	else
-		RPROMPT=""
-	fi
-
 	zle reset-prompt
 }
 zle -N zle-line-init && zle -N zle-keymap-select
 
-PROMPT='%B%n %{$fg[yellow]%}%m %{$reset_color%}%b%~%B$(git_branch)%b $ '
-RPROMPT=""
+function zsh_mode {
+	if [[ $KEYMAP == vicmd ]]; then
+		echo "%B%{$fg[red]%}E%{$reset_color%}%b"
+	elif [[ $REPLACE == 1 ]]; then
+		echo "%B%{$fg[blue]%}R%{$reset_color%}%b"
+	else
+		echo "%B%{$fg[cyan]%}$%{$reset_color%}%b"
+	fi
+}
+
+PROMPT='%B%n %{$fg[yellow]%}%m%b %{$reset_color%}%b%~ $(zsh_mode) '
+RPROMPT='$(git_branch)'
 
 if [[ $OSTYPE == darwin* ]]; then
 	alias c="clear"
