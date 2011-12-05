@@ -4,7 +4,7 @@ export GEM_HOME=~/.ruby
 export LC_COLLATE=C
 export PAGER=less
 
-TODO_FILE="$HOME/Documents/Text Files/Things to Do.txt"
+TODO_FILE=~/Documents/Text\ Files/Things\ to\ Do.txt
 
 HISTFILE=~/.zsh_histfile
 HISTSIZE=2000
@@ -33,35 +33,38 @@ else
 
 	path=(/bin /sbin /usr/bin /usr/sbin /usr/local/bin /usr/local/sbin ~/Scripts)
 
-	if [[ $(tty) == "/dev/tty1" ]]; then
+	if [[ $(tty) == /dev/tty1 ]]; then
 		startx
 		exit
 	fi
 fi
 
-setopt appendhistory
-setopt autocd
-setopt combiningchars
 setopt correctall
-setopt extendedhistory
-setopt histexpiredupsfirst
-setopt histignoredups
-setopt histverify
-setopt incappendhistory
+setopt interactivecomments
 setopt longlistjobs
-setopt noautomenu
 setopt nobeep
 setopt noclobber
 setopt notify
 setopt promptsubst
 
-[[ ! $TERM == "dumb" ]] && autoload -U colors && colors
+setopt appendhistory
+setopt extendedhistory
+setopt histexpiredupsfirst
+setopt histignoredups
+setopt histverify
+setopt incappendhistory
 
+setopt autocd
+setopt combiningchars
+setopt noautomenu
+
+[[ ! $TERM == dumb ]] && autoload -U colors && colors
 autoload -U compinit && compinit
 autoload -U url-quote-magic && zle -N self-insert url-quote-magic
 
 bindkey -v
-bindkey '^?' backward-delete-char
+bindkey -M vicmd '^?' backward-delete-char
+bindkey -M vicmd 'R' custom-vi-replace
 
 zstyle ':completion:*'          matcher-list 'm:{a-z}={A-Z}'
 zstyle ':completion:*'          special-dirs true
@@ -84,20 +87,32 @@ function git_branch {
 	ref=$(git symbolic-ref HEAD 2> /dev/null) || return
 
 	if [[ -n $(git status -s 2> /dev/null) ]]; then
-		echo "%{$fg[red]%}${ref#refs/heads/}"
+		echo " %{$fg[red]%}[${ref#refs/heads/}]"
 	else
-		echo "%{$fg[green]%}${ref#refs/heads/}"
+		echo " %{$fg[green]%}[${ref#refs/heads/}]"
 	fi
 }
 
-function todo_entries {
-	ref=$(sed '/^\s*$/d' $TODO_FILE | wc -l 2> /dev/null) || return
-
-	[[ $ref != 0 ]] && echo $ref
+function custom-vi-replace {
+	REPLACE=1 && zle vi-replace && REPLACE=0
 }
+zle -N custom-vi-replace
 
-PROMPT="%B%n %{$fg[yellow]%}%m %{$reset_color%}%b%~ > "
-RPROMPT='%B$(git_branch) %{$fg[cyan]%}$(todo_entries)%{$reset_color%}%b'
+function zle-line-init zle-keymap-select {
+	if [[ $KEYMAP == vicmd ]]; then
+		RPROMPT="%B%{$fg[red]%}EDIT MODE%{$reset_color%}%b"
+	elif [[ $REPLACE == 1 ]]; then
+		RPROMPT="%B%{$fg[cyan]%}REPLACE MODE%{$reset_color%}%b"
+	else
+		RPROMPT=""
+	fi
+
+	zle reset-prompt
+}
+zle -N zle-line-init && zle -N zle-keymap-select
+
+PROMPT='%B%n %{$fg[yellow]%}%m %{$reset_color%}%b%~%B$(git_branch)%b $ '
+RPROMPT=""
 
 if [[ $OSTYPE == darwin* ]]; then
 	alias c="clear"
@@ -224,7 +239,7 @@ if [[ $OSTYPE == darwin* ]]; then
 		/Applications/MacVim.app/Contents/MacOS/Vim -d -g $* >& /dev/null
 	}
 else
-	if [[ $TERM == "rxvt-unicode" ]]; then
+	if [[ $TERM == rxvt-unicode ]]; then
 		function clearcmd {
 			for ((i = 1; i < $LINES; i++)); do
 				echo
