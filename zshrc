@@ -153,7 +153,7 @@ fi
 alias bc="bc -q"
 alias df="df -h"
 alias favs="cat ~/.mpd/playlists/Favorites.m3u > ~/.mpd/tmp.playlist && sort ~/.mpd/tmp.playlist | uniq > ~/.mpd/playlists/Favorites.m3u"
-alias ff='find . -name'
+alias ff='find . -iname'
 alias grep="grep --color -i"
 alias hi="history"
 alias ip="curl -s http://automation.whatismyip.com/n09230945.asp | html2text"
