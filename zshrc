@@ -35,7 +35,8 @@ else
 
 	if [[ $(tty) == /dev/tty1 ]]; then
 		startx
-		exit
+
+		[ $? -eq 0 ] && exit
 	fi
 fi
 
@@ -161,6 +162,7 @@ alias pyweb="python3 -m http.server 8080"
 alias reload="source ~/.zshrc"
 alias s="screen"
 alias ti="timer.py"
+alias tv="vim '$TODO_FILE'"
 alias yt="youtube-dl -l"
 
 alias -- -="cd -"
@@ -195,9 +197,6 @@ alias mn="mpc next"
 alias mp="mpc prev"
 alias ms="mpc current"
 alias mt="mpc toggle"
-
-alias t="cat '$TODO_FILE'"
-alias tv="vim '$TODO_FILE'"
 
 alias top="top -o cpu"
 alias topme="top -o cpu -U twiggy"
@@ -307,40 +306,52 @@ function p {
 }
 
 function permfix {
-	if [[ $OSTYPE == darwin* ]]; then
-		find . -type f -exec chmod -N "{}" \;
-		find . -type d -exec chmod -N "{}" \;
-	fi
+	[[ $OSTYPE == darwin* ]] && find . -exec chmod -N "{}" \;
 
 	find . -type d -exec chmod 755 "{}" \;
 	find . -type f -exec chmod 644 "{}" \;
 }
 
 function privatepermfix {
-	if [[ $OSTYPE == darwin* ]]; then
-		find . -type d -exec chmod -N "{}" \;
-		find . -type f -exec chmod -N "{}" \;
-	fi
+	[[ $OSTYPE == darwin* ]] && find . -exec chmod -N "{}" \;
 
 	find . -type d -exec chmod 700 "{}" \;
 	find . -type f -exec chmod 600 "{}" \;
+}
+
+function t {
+	if [ ! -f $TODO_FILE ]; then
+		echo "TODO file does not exist."
+
+		return
+	elif [ ! -s $TODO_FILE ]; then
+		echo "TODO file is currently empty."
+
+		return
+	fi
+
+	if [ -z $* ]; then
+		cat $TODO_FILE
+	else
+		echo "$*" >> $TODO_FILE
+	fi
 }
 
 function unp {
 	for arg in $*; do
 		if [ -f $arg ]; then
 			case $arg in
+				*.7z)      7z x       $arg;;
+				*.Z)       uncompress $arg;;
+				*.bz2)     bunzip2    $arg;;
+				*.gz)      gunzip     $arg;;
+				*.rar)     unrar x    $arg;;
+				*.tar)     tar vxf    $arg;;
 				*.tar.bz2) tar vxjf   $arg;;
 				*.tar.gz)  tar vxzf   $arg;;
-				*.bz2)     bunzip2    $arg;;
-				*.rar)     unrar x    $arg;;
-				*.gz)      gunzip     $arg;;
-				*.tar)     tar vxf    $arg;;
 				*.tbz2)    tar vxjf   $arg;;
 				*.tgz)     tar vxzf   $arg;;
 				*.zip)     unzip      $arg;;
-				*.Z)       uncompress $arg;;
-				*.7z)      7z x       $arg;;
 				*)
 					echo "File $arg cannot be extracted via unp."
 				;;
