@@ -17,7 +17,6 @@ set gdefault
 set hidden
 set nofoldenable
 set nowrap
-set number
 set showbreak=+
 set spelllang=en,sv
 set timeoutlen=2000
@@ -43,7 +42,6 @@ set smartcase
 set laststatus=2
 set statusline=%(%{BufferNr()}\ %)
 set statusline+=%(%F\ %)
-set statusline+=%(%r\ %)
 set statusline+=%(%m\ %)
 set statusline+=%([%{(&fenc==\"\"?&enc:&fenc)}]\ %)
 set statusline+=%(%y\ %)
@@ -200,13 +198,10 @@ imap <C-Tab> <C-n>
 if has("mac")
 	if has("gui_running")
 		function! FancyView()
-			set fullscreen
+			set nolist
 
 			set antialias
 			set guifont=Inconsolata:h28
-
-			set nolist
-			set nonumber
 		endfunction
 	endif
 endif

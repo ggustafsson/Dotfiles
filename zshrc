@@ -54,7 +54,6 @@ setopt histignoredups
 setopt histverify
 setopt incappendhistory
 
-setopt autocd
 setopt combiningchars
 setopt noautomenu
 
@@ -73,11 +72,6 @@ zstyle ':completion:*:warnings' format "zsh: no matches found."
 
 compdef _man man-preview
 compdef _path_files cd
-
-_autocd() {
-	_command_names
-	_path_files
-}
 
 precmd() {
 	echo
