@@ -81,8 +81,8 @@ if has("gui_running")
 		set guifont=Monaco:h12
 
 		if !exists("g:dont_resize_again")
-			set columns=188
-			set lines=45
+			set columns=130
+			set lines=40
 
 			let g:dont_resize_again = 1
 		endif
