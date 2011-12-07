@@ -21,7 +21,7 @@ set number
 set showbreak=+
 set spelllang=en,sv
 set timeoutlen=2000
-set virtualedit=block
+set virtualedit=block,onemore
 
 set autoindent
 set smartindent
@@ -81,8 +81,8 @@ if has("gui_running")
 		set guifont=Monaco:h12
 
 		if !exists("g:dont_resize_again")
-			set columns=130
-			set lines=40
+			set columns=188
+			set lines=45
 
 			let g:dont_resize_again = 1
 		endif
@@ -102,6 +102,7 @@ endif
 let g:gist_open_browser_after_post = 1
 let g:html_ignore_folding = 1
 let g:mapleader = ","
+let g:surround_no_mappings = 1
 
 let g:LustyExplorerDefaultMappings = 0
 let g:LustyJugglerDefaultMappings = 0
@@ -123,6 +124,10 @@ cabbrev Wq wq
 cabbrev wQ wq
 
 if has("mac")
+	if has("gui_running")
+		nmap <Leader>fa :call FancyView()<CR>
+	endif
+
 	nmap <Leader>fi :silent !open "%:p:h"<CR>
 	nmap <Leader>op :silent !open "%"<CR>
 endif
@@ -136,7 +141,6 @@ nmap <Leader>e2 :setlocal expandtab shiftwidth=2 tabstop=2<CR>
 nmap <Leader>e4 :setlocal expandtab shiftwidth=4 tabstop=4<CR>
 nmap <Leader>ed :LustyFilesystemExplorerFromHere<CR>
 nmap <Leader>eh :LustyFilesystemExplorer ~<CR>
-nmap <Leader>fa :call FancyView()<CR>
 nmap <Leader>ga :Gist -a<CR>
 nmap <Leader>gg :Gist<CR>
 nmap <Leader>la :!ls -la "%:p:h"<CR>
@@ -151,6 +155,7 @@ nmap <Leader>sg :call <SID>SyntaxGroup()<CR>
 nmap <Leader>sh :shell<CR>
 nmap <Leader>sn :new<CR>
 nmap <Leader>sp :setlocal spell!<CR>
+nmap <Leader>su ^vg_<Plug>VSurround
 nmap <Leader>to :10split ~/Documents/Text\ Files/Things\ to\ Do.txt<CR>
 nmap <Leader>tr :NERDTreeToggle<CR>
 nmap <Leader>un :edit!<CR>
@@ -187,9 +192,24 @@ vmap <Leader>gg :Gist<CR>
 vmap <Leader>ne y:enew<CR>P
 vmap <Leader>sn y:new<CR>P
 vmap <Leader>so :sort<CR>
+vmap <Leader>su <Plug>VSurround
 vmap <Leader>vn y:vnew<CR>P
 
 imap <C-Tab> <C-n>
+
+if has("mac")
+	if has("gui_running")
+		function! FancyView()
+			set fullscreen
+
+			set antialias
+			set guifont=Inconsolata:h28
+
+			set nolist
+			set nonumber
+		endfunction
+	endif
+endif
 
 function! BufferDelete()
 	if &modified
@@ -236,13 +256,6 @@ function! CheckPath()
 	return b:checkpath
 endfunction
 
-function! FancyView()
-	set antialias
-	set guifont=Inconsolata:h28
-	set nolist
-	set nonumber
-endfunction
-
 function! <SID>SyntaxGroup()
 	if !exists("*synstack")
 		return
@@ -254,6 +267,7 @@ endfunction
 augroup Main
 	autocmd!
 
+	autocmd BufNewFile,BufRead *.php                     setlocal filetype=html
 	autocmd BufNewFile,BufRead *.txt,README,INSTALL,TODO setlocal filetype=text
 	autocmd BufNewFile,BufRead config                    setlocal filetype=conf
 
