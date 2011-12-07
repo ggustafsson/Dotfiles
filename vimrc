@@ -21,7 +21,7 @@ set number
 set showbreak=+
 set spelllang=en,sv
 set timeoutlen=2000
-set virtualedit=block,onemore
+set virtualedit=block
 
 set autoindent
 set smartindent

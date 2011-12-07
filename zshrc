@@ -130,6 +130,7 @@ if [[ $OSTYPE == darwin* ]]; then
 	alias f="open ."
 	alias o="open"
 
+	alias awk="gawk"
 	alias head="ghead"
 	alias sed="gsed"
 	alias sort="gsort"
@@ -153,7 +154,7 @@ fi
 alias bc="bc -q"
 alias df="df -h"
 alias favs="cat ~/.mpd/playlists/Favorites.m3u > ~/.mpd/tmp.playlist && sort ~/.mpd/tmp.playlist | uniq > ~/.mpd/playlists/Favorites.m3u"
-alias fetch="wget --recursive --no-clobber --page-requisites --adjust-extension --convert-links"
+alias fetch="wget --no-clobber --page-requisites --adjust-extension --convert-links"
 alias ff='find . -iname'
 alias grep="grep --color=auto -i"
 alias hi="history"
