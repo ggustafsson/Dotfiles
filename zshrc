@@ -132,7 +132,7 @@ if [[ $OSTYPE == darwin* ]]; then
 	alias tail="gtail"
 	alias wc="gwc"
 
-	alias startmpd="mpd ~/.mpd/config"
+	alias startmpd="mpd"
 	alias stopmpd="mpc stop; mpd --kill"
 else
 	alias c="clearcmd"
