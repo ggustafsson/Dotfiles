@@ -139,6 +139,7 @@ nmap <Leader>e2 :setlocal expandtab shiftwidth=2 tabstop=2<CR>
 nmap <Leader>e4 :setlocal expandtab shiftwidth=4 tabstop=4<CR>
 nmap <Leader>ed :LustyFilesystemExplorerFromHere<CR>
 nmap <Leader>eh :LustyFilesystemExplorer ~<CR>
+nmap <Leader>ft :set filetype=
 nmap <Leader>ga :Gist -a<CR>
 nmap <Leader>gg :Gist<CR>
 nmap <Leader>la :!ls -la "%:p:h"<CR>

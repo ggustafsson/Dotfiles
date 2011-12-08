@@ -157,11 +157,11 @@ alias ip="curl -s http://automation.whatismyip.com/n09230945.asp | html2text"
 alias ka="killall"
 alias mkdir="mkdir -pv"
 alias ping="ping -c 10"
-alias pomo="timer.py -i 15"
+alias pomo="tim.sh -i"
 alias pyweb="python3 -m http.server 8080"
 alias reload="source ~/.zshrc"
 alias s="screen"
-alias ti="timer.py"
+alias ti="tim.sh"
 alias tv="vim '$TODO_FILE'"
 alias yt="youtube-dl -l"
 
@@ -341,17 +341,17 @@ function unp {
 	for arg in $*; do
 		if [ -f $arg ]; then
 			case $arg in
-				*.7z)      7z x       $arg;;
-				*.Z)       uncompress $arg;;
-				*.bz2)     bunzip2    $arg;;
-				*.gz)      gunzip     $arg;;
-				*.rar)     unrar x    $arg;;
-				*.tar)     tar vxf    $arg;;
-				*.tar.bz2) tar vxjf   $arg;;
-				*.tar.gz)  tar vxzf   $arg;;
-				*.tbz2)    tar vxjf   $arg;;
-				*.tgz)     tar vxzf   $arg;;
-				*.zip)     unzip      $arg;;
+				*.7z)      7z x       $arg ;;
+				*.Z)       uncompress $arg ;;
+				*.bz2)     bunzip2    $arg ;;
+				*.gz)      gunzip     $arg ;;
+				*.rar)     unrar x    $arg ;;
+				*.tar)     tar vxf    $arg ;;
+				*.tar.bz2) tar vxjf   $arg ;;
+				*.tar.gz)  tar vxzf   $arg ;;
+				*.tbz2)    tar vxjf   $arg ;;
+				*.tgz)     tar vxzf   $arg ;;
+				*.zip)     unzip      $arg ;;
 				*)
 					echo "File $arg cannot be extracted via unp."
 				;;
