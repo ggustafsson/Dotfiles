@@ -14,8 +14,8 @@ if [[ $OSTYPE == darwin* ]]; then
 	export EDITOR="/Applications/MacVim.app/Contents/MacOS/Vim -g --remote-tab-silent"
 	export VISUAL=$EDITOR
 
-	FLACDIR="/Volumes/Black Disk/Music/FLAC"
-	MP3DIR="/Volumes/Black Disk/Music/MP3"
+	FLACDIR=/Volumes/Black\ Disk/Music/FLAC
+	MP3DIR=/Volumes/Black\ Disk/Music/MP3
 
 	path=(/usr/local/bin /usr/local/sbin /bin /sbin /usr/bin /usr/sbin /usr/X11/bin ~/Scripts ~/.ruby/gems/*/bin)
 else
@@ -28,8 +28,8 @@ else
 	export LS_COLORS="$LS_COLORS:*.avi=01;36:*.flv=01;36:*.f4v=01;36:*.mkv=01;36:*.mov=01;36:*.mpg=01;36:*.mpeg=01;36:*.mp4=01;36:*.m4v=01;36:*.wmv=01;36"
 	export LS_COLORS="$LS_COLORS:*.dmg=01;31:*.iso=01;31:*.rar=01;31:*.tar=01;31:*.tar.bz2=01;31:*.tar.gz=01;31:*.zip=01;31"
 
-	FLACDIR="~/Music/FLAC"
-	MP3DIR="~/Music/MP3"
+	FLACDIR=~/Music/FLAC
+	MP3DIR=~/Music/MP3
 
 	path=(/bin /sbin /usr/bin /usr/sbin /usr/local/bin /usr/local/sbin ~/Scripts)
 
