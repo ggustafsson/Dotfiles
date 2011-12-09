@@ -20,7 +20,7 @@ set nowrap
 set showbreak=+
 set spelllang=en,sv
 set timeoutlen=2000
-set virtualedit=block
+set virtualedit=block,onemore
 
 set autoindent
 set smartindent
@@ -131,6 +131,7 @@ if has("mac")
 endif
 
 nmap <Leader>bd :call BufferDelete()<CR>
+nmap <Leader>cc :call ColorColumn()<CR>
 nmap <Leader>cd :cd %:p:h<CR>:pwd<CR>
 nmap <Leader>ch :silent !chmod "%"<CR>
 nmap <Leader>di :diffthis<CR>
@@ -250,6 +251,14 @@ function! CheckPath()
 	endif
 
 	return b:checkpath
+endfunction
+
+function! ColorColumn()
+	if empty(&colorcolumn)
+		set colorcolumn=80
+	else
+		set colorcolumn=
+	endif
 endfunction
 
 function! <SID>SyntaxGroup()
