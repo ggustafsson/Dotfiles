@@ -80,11 +80,12 @@ precmd() {
 
 function git_branch {
 	ref=$(git symbolic-ref HEAD 2> /dev/null) || return
+	BRANCH_FIXED=$(echo "${ref#refs/heads/}" | sed 's/^./\U&/')
 
 	if [[ -n $(git status -s 2> /dev/null) ]]; then
-		echo "%B%{$fg[red]%}${ref#refs/heads/}%{$reset_color%}%b"
+		echo "%{$fg[red]%}$BRANCH_FIXED%{$reset_color%}"
 	else
-		echo "%B%{$fg[green]%}${ref#refs/heads/}%{$reset_color%}%b"
+		echo "%{$fg[green]%}$BRANCH_FIXED%{$reset_color%}"
 	fi
 }
 
@@ -100,16 +101,24 @@ zle -N zle-line-init && zle -N zle-keymap-select
 
 function zsh_mode {
 	if [[ $KEYMAP == vicmd ]]; then
-		echo "%B%{$fg[red]%}E%{$reset_color%}%b"
+		echo "%{$fg[red]%}E%{$reset_color%}"
 	elif [[ $REPLACE == 1 ]]; then
-		echo "%B%{$fg[magenta]%}R%{$reset_color%}%b"
+		echo "%{$fg[magenta]%}R%{$reset_color%}"
 	else
-		echo "%B%{$fg[blue]%}$%{$reset_color%}%b"
+		echo "%{$fg[blue]%}$%{$reset_color%}"
 	fi
 }
 
-PROMPT='%B%n %{$fg[yellow]%}%m%b %{$reset_color%}%b%~ $(zsh_mode) '
-RPROMPT='$(git_branch)'
+if [[ $OSTYPE == darwin* ]]; then
+	SED=gsed
+else
+	SED=sed
+fi
+USER_FIXED=$(echo $USER | $SED 's/^./\U&/')
+HOST_FIXED=$(hostname -s | $SED 's/^./\U&/')
+
+PROMPT='%B$USER_FIXED %{$fg[yellow]%}$HOST_FIXED%{$reset_color%} %~ $(zsh_mode)%b '
+RPROMPT='%B$(git_branch)%b'
 
 if [[ $OSTYPE == darwin* ]]; then
 	alias c="clear"

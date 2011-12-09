@@ -1,0 +1,6 @@
+defutf8 on
+shell /usr/local/bin/zsh
+startup_message off
+term xterm-256color
+vbell off
+
