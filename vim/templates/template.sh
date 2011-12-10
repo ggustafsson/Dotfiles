@@ -1,5 +1,5 @@
 #!/bin/bash
 
-# Göran Gustafsson <gustafsson.g@gmail.com>
+# Written by Göran Gustafsson <gustafsson.g@gmail.com>.
 
 

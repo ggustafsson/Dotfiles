@@ -78,20 +78,14 @@ precmd() {
 	echo
 }
 
-if [[ $OSTYPE == darwin* ]]; then
-	SED=gsed
-else
-	SED=sed
-fi
-
 function git_branch {
 	ref=$(git symbolic-ref HEAD 2> /dev/null) || return
-	BRANCH_FIXED=$(echo "${ref#refs/heads/}" | sed 's/^./\U&/')
+	BRANCH=${(C)ref#refs/heads/}
 
 	if [[ -n $(git status -s 2> /dev/null) ]]; then
-		echo "%{$fg[red]%}$BRANCH_FIXED%{$reset_color%}"
+		echo "%{$fg[red]%}$BRANCH%{$reset_color%}"
 	else
-		echo "%{$fg[green]%}$BRANCH_FIXED%{$reset_color%}"
+		echo "%{$fg[green]%}$BRANCH%{$reset_color%}"
 	fi
 }
 
@@ -115,10 +109,7 @@ function zsh_mode {
 	fi
 }
 
-USER_FIXED=$(echo $USER | $SED 's/^./\U&/')
-HOST_FIXED=$(hostname -s | $SED 's/^./\U&/')
-
-PROMPT='%B$USER_FIXED %{$fg[yellow]%}$HOST_FIXED%{$reset_color%} %~ $(zsh_mode)%b '
+PROMPT='%B${(C)USER} %{$fg[yellow]%}${(C)HOST%%.*}%{$reset_color%} %~ $(zsh_mode)%b '
 RPROMPT='%B$(git_branch)%b'
 
 if [[ $OSTYPE == darwin* ]]; then
