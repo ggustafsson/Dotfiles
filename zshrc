@@ -118,6 +118,7 @@ if [[ $OSTYPE == darwin* ]]; then
 	alias eject="osascript -e 'tell application \"Finder\" to eject (every disk whose ejectable is true)'"
 
 	alias cvim="/Applications/MacVim.app/Contents/MacOS/Vim"
+	alias vimdiff="/Applications/MacVim.app/Contents/MacOS/Vim -d -g $* > /dev/null"
 	alias vimp="/Applications/MacVim.app/Contents/MacOS/Vim - -g > /dev/null"
 
 	alias dae="ls -lae"
@@ -135,7 +136,7 @@ if [[ $OSTYPE == darwin* ]]; then
 	alias wc="gwc"
 
 	alias startmpd="mpd"
-	alias stopmpd="mpc stop; mpd --kill"
+	alias stopmpd="mpc stop && mpd --kill"
 else
 	alias c="clearcmd"
 	alias cal="cal -m"
@@ -152,7 +153,6 @@ alias bc="bc -q"
 alias df="df -h"
 alias favs="mv -f ~/.mpd/playlists/Favorites.m3u ~/.mpd/tmp.playlist > /dev/null && sort ~/.mpd/tmp.playlist | uniq > ~/.mpd/playlists/Favorites.m3u"
 alias fetch="wget --no-clobber --page-requisites --adjust-extension --convert-links"
-alias ff='find . -iname'
 alias grep="grep --color=auto -i"
 alias hi="history"
 alias ip="curl -s http://automation.whatismyip.com/n09230945.asp | html2text"
@@ -196,10 +196,10 @@ alias int="tim.sh -i"
 alias pomo="tim.sh -p"
 alias ti="tim.sh"
 
-alias next="mpc next"
-alias prev="mpc prev"
+alias next="mpc next | head -n 1"
+alias prev="mpc prev | head -n 1"
 alias song="mpc current"
-alias toggle="mpc toggle"
+alias toggle="mpc toggle | head -n 2"
 
 alias top="top -o cpu"
 alias topme="top -o cpu -U twiggy"
@@ -228,15 +228,11 @@ if [[ $OSTYPE == darwin* ]]; then
 	}
 
 	function vim {
-		if [ -z $1 ]; then
+		if [ -z $* ]; then
 			/Applications/MacVim.app/Contents/MacOS/Vim -g
 		else
 			/Applications/MacVim.app/Contents/MacOS/Vim -g --remote-tab-silent $*
 		fi
-	}
-
-	function vimdiff {
-		/Applications/MacVim.app/Contents/MacOS/Vim -d -g $* >& /dev/null
 	}
 else
 	if [[ $TERM == rxvt-unicode ]]; then
@@ -287,8 +283,16 @@ function checkmusic {
 	find "$MP3DIR" -type f ! -iname *.mp3
 }
 
+function ff {
+	[ ! -z $* ] && find . -iname $* | sed 's/.\///'
+}
+
+function fff {
+	[ ! -z $* ] && find "$PWD" -iname $*
+}
+
 function h {
-	if [ -z $1 ]; then
+	if [ -z $* ]; then
 		history -i 1 | less +G
 	else
 		history -i 1 | grep "$*"
@@ -296,12 +300,14 @@ function h {
 }
 
 function mkcd {
-	mkdir -p "$*"
-	cd "$*"
+	if [ ! -z $* ]; then
+		mkdir -p "$*"
+		cd "$*"
+	fi
 }
 
 function p {
-	if [ -z $1 ]; then
+	if [ -z $* ]; then
 		ps ax
 	else
 		ps ax | grep -v "grep --color -i $*" | grep "$*"
@@ -333,7 +339,7 @@ function t {
 		return
 	fi
 
-	if [ -z $1 ]; then
+	if [ -z $* ]; then
 		cat $TODO_FILE
 	else
 		echo "$*" >> $TODO_FILE
