@@ -7,8 +7,8 @@ export PAGER=less
 TODO_FILE=~/Documents/Text\ Files/Things\ to\ Do.txt
 
 HISTFILE=~/.zsh_histfile
-HISTSIZE=2000
-SAVEHIST=4000
+HISTSIZE=2500
+SAVEHIST=5000
 
 if [[ $OSTYPE == darwin* ]]; then
 	export EDITOR="/Applications/MacVim.app/Contents/MacOS/Vim -g --remote-tab-silent"
@@ -40,7 +40,7 @@ else
 	fi
 fi
 
-setopt correctall
+setopt correct
 setopt interactivecomments
 setopt longlistjobs
 setopt nobeep
@@ -109,8 +109,8 @@ function zsh_mode {
 	fi
 }
 
-PROMPT='%B${(C)USER} %{$fg[yellow]%}${(C)HOST%%.*}%{$reset_color%} %~ %B$(zsh_mode) '
-RPROMPT='%B$(git_branch)'
+PROMPT='%B${(C)USER} %{$fg[yellow]%}${(C)HOST%%.*}%{$reset_color%}%b %~ %B$(zsh_mode)%b '
+RPROMPT='%B$(git_branch)%b'
 
 if [[ $OSTYPE == darwin* ]]; then
 	alias c="clear"
@@ -118,7 +118,7 @@ if [[ $OSTYPE == darwin* ]]; then
 	alias eject="osascript -e 'tell application \"Finder\" to eject (every disk whose ejectable is true)'"
 
 	alias cvim="/Applications/MacVim.app/Contents/MacOS/Vim"
-	alias vimp="/Applications/MacVim.app/Contents/MacOS/Vim - -g >& /dev/null"
+	alias vimp="/Applications/MacVim.app/Contents/MacOS/Vim - -g > /dev/null"
 
 	alias dae="ls -lae"
 	alias de="ls -le"

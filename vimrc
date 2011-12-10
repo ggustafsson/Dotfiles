@@ -230,9 +230,9 @@ endfunction
 
 function! ColorColumn()
 	if empty(&colorcolumn)
-		set colorcolumn=80
+		setlocal colorcolumn=80
 	else
-		set colorcolumn=
+		setlocal colorcolumn=
 	endif
 endfunction
 
