@@ -174,7 +174,7 @@ settings = {
     awl_hide_data = "3";
     awl_position = "0";
     awl_sbar_maxlength = "no";
-    beep_cmd = "afplay ~/.irssi/beep.wav";
+    beep_cmd = "~/Scripts/irssi_beep.sh";
   };
   "irc/core" = {
     alternate_nick = "twiggz";
