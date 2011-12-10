@@ -335,7 +335,7 @@ function t {
 		echo "TODO file does not exist."
 
 		return
-	elif [ -s $TODO_FILE ]; then
+	elif [ ! -s $TODO_FILE ]; then
 		echo "TODO file is currently empty."
 
 		return
