@@ -44,6 +44,7 @@ setopt correctall
 setopt interactivecomments
 setopt longlistjobs
 setopt nobeep
+setopt noclobber
 setopt notify
 setopt promptsubst
 
@@ -158,7 +159,7 @@ fi
 
 alias bc="bc -q"
 alias df="df -h"
-alias favs="cat ~/.mpd/playlists/Favorites.m3u > ~/.mpd/tmp.playlist && sort ~/.mpd/tmp.playlist | uniq > ~/.mpd/playlists/Favorites.m3u"
+alias favs="mv -f ~/.mpd/playlists/Favorites.m3u ~/.mpd/tmp.playlist > /dev/null && sort ~/.mpd/tmp.playlist | uniq > ~/.mpd/playlists/Favorites.m3u"
 alias fetch="wget --no-clobber --page-requisites --adjust-extension --convert-links"
 alias ff='find . -iname'
 alias grep="grep --color=auto -i"
