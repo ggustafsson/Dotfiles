@@ -129,6 +129,7 @@ if [[ $OSTYPE == darwin* ]]; then
 	alias o="open"
 
 	alias awk="gawk"
+	alias cal="gcal -s 1"
 	alias head="ghead"
 	alias sed="gsed"
 	alias sort="gsort"
@@ -284,11 +285,19 @@ function checkmusic {
 }
 
 function ff {
-	[ ! -z $* ] && find . -iname $* | sed 's/.\///'
+	if [ ! -z $* ]; then
+		find . -iname $* | sed 's/.\///'
+	else
+		echo "Usage: $0 [PATTERN]..."
+	fi
 }
 
 function fff {
-	[ ! -z $* ] && find "$PWD" -iname $*
+	if [ ! -z $* ]; then
+		find "$PWD" -iname $*
+	else
+		echo "Usage: $0 [PATTERN]..."
+	fi
 }
 
 function h {
@@ -303,6 +312,8 @@ function mkcd {
 	if [ ! -z $* ]; then
 		mkdir -p "$*"
 		cd "$*"
+	else
+		echo "Usage: $0 [NAME]..."
 	fi
 }
 
@@ -347,6 +358,12 @@ function t {
 }
 
 function unp {
+	if [ -z $* ]; then
+		echo "Usage: $0 [FILENAME]..."
+
+		return
+	fi
+
 	for arg in $*; do
 		if [ -f $arg ]; then
 			case $arg in
