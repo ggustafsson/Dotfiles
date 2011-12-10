@@ -109,8 +109,8 @@ function zsh_mode {
 	fi
 }
 
-PROMPT='%B${(C)USER} %{$fg[yellow]%}${(C)HOST%%.*}%{$reset_color%} %~ $(zsh_mode)%b '
-RPROMPT='%B$(git_branch)%b'
+PROMPT='%B${(C)USER} %{$fg[yellow]%}${(C)HOST%%.*}%{$reset_color%} %~ %B$(zsh_mode) '
+RPROMPT='%B$(git_branch)'
 
 if [[ $OSTYPE == darwin* ]]; then
 	alias c="clear"
