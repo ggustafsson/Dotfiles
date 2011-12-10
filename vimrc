@@ -40,12 +40,12 @@ set incsearch
 set smartcase
 
 set laststatus=2
-set statusline=%(%{BufferNr()}\ %)
+set statusline=%(%{StatuslineBufferNr()}\ %)
 set statusline+=%(%F\ %)
 set statusline+=%(%m\ %)
 set statusline+=%([%{(&fenc==\"\"?&enc:&fenc)}]\ %)
 set statusline+=%(%y\ %)
-"set statusline+=%(%{CheckPath()}\ %)
+"set statusline+=%(%{StatuslineCheckPath()}\ %)
 set statusline+=%(%{&paste?'[paste]':''}\ %)
 set statusline+=%=
 set statusline+=%(%v,\ %)
@@ -162,6 +162,7 @@ nmap <Leader>un :edit!<CR>
 nmap <Leader>vi :edit ~/.vimrc<CR>
 nmap <Leader>vn :vnew<CR>
 nmap <Leader>wr :set wrap!<CR>
+nmap <Leader>zs :edit ~/.zshrc<CR>
 
 nmap <Backspace> :nohlsearch<CR>
 nmap <Tab>       :bnext<CR>
@@ -227,7 +228,15 @@ function! BufferDelete()
 	endif
 endfunction
 
-function! BufferNr()
+function! ColorColumn()
+	if empty(&colorcolumn)
+		set colorcolumn=80
+	else
+		set colorcolumn=
+	endif
+endfunction
+
+function! StatuslineBufferNr()
 	if &number == 1
 		let b:bnumber = strlen(bufnr("%"))
 		let b:blines = strlen(line("$"))
@@ -243,7 +252,7 @@ function! BufferNr()
 	endif
 endfunction
 
-function! CheckPath()
+function! StatuslineCheckPath()
 	let b:checkpath = ""
 
 	if expand("%:p:h") != getcwd()
@@ -251,14 +260,6 @@ function! CheckPath()
 	endif
 
 	return b:checkpath
-endfunction
-
-function! ColorColumn()
-	if empty(&colorcolumn)
-		set colorcolumn=80
-	else
-		set colorcolumn=
-	endif
 endfunction
 
 function! <SID>SyntaxGroup()

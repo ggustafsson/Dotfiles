@@ -44,7 +44,6 @@ setopt correctall
 setopt interactivecomments
 setopt longlistjobs
 setopt nobeep
-setopt noclobber
 setopt notify
 setopt promptsubst
 
@@ -78,6 +77,12 @@ precmd() {
 	echo
 }
 
+if [[ $OSTYPE == darwin* ]]; then
+	SED=gsed
+else
+	SED=sed
+fi
+
 function git_branch {
 	ref=$(git symbolic-ref HEAD 2> /dev/null) || return
 	BRANCH_FIXED=$(echo "${ref#refs/heads/}" | sed 's/^./\U&/')
@@ -109,11 +114,6 @@ function zsh_mode {
 	fi
 }
 
-if [[ $OSTYPE == darwin* ]]; then
-	SED=gsed
-else
-	SED=sed
-fi
 USER_FIXED=$(echo $USER | $SED 's/^./\U&/')
 HOST_FIXED=$(hostname -s | $SED 's/^./\U&/')
 
@@ -123,6 +123,7 @@ RPROMPT='%B$(git_branch)%b'
 if [[ $OSTYPE == darwin* ]]; then
 	alias c="clear"
 	alias dontsleep="pmset noidle"
+	alias eject="osascript -e 'tell application \"Finder\" to eject (every disk whose ejectable is true)'"
 
 	alias cvim="/Applications/MacVim.app/Contents/MacOS/Vim"
 	alias vimp="/Applications/MacVim.app/Contents/MacOS/Vim - -g >& /dev/null"
@@ -166,11 +167,9 @@ alias ip="curl -s http://automation.whatismyip.com/n09230945.asp | html2text"
 alias ka="killall"
 alias mkdir="mkdir -pv"
 alias ping="ping -c 10"
-alias pomo="tim.sh -i"
 alias pyweb="python3 -m http.server 8080"
 alias reload="source ~/.zshrc"
 alias s="screen"
-alias ti="tim.sh"
 alias tv="vim '$TODO_FILE'"
 alias yt="youtube-dl -l"
 
@@ -201,11 +200,14 @@ alias la="ls -a"
 alias gd="popd"
 alias sd="pushd"
 
-alias mm="ncmpcpp"
-alias mn="mpc next"
-alias mp="mpc prev"
-alias ms="mpc current"
-alias mt="mpc toggle"
+alias int="tim.sh -i"
+alias pomo="tim.sh -p"
+alias ti="tim.sh"
+
+alias next="mpc next"
+alias prev="mpc prev"
+alias song="mpc current"
+alias toggle="mpc toggle"
 
 alias top="top -o cpu"
 alias topme="top -o cpu -U twiggy"
@@ -307,7 +309,7 @@ function mkcd {
 }
 
 function p {
-	if [ -z $* ]; then
+	if [ -z $1 ]; then
 		ps ax
 	else
 		ps ax | grep -v "grep --color -i $*" | grep "$*"
@@ -333,13 +335,13 @@ function t {
 		echo "TODO file does not exist."
 
 		return
-	elif [ ! -s $TODO_FILE ]; then
+	elif [ -s $TODO_FILE ]; then
 		echo "TODO file is currently empty."
 
 		return
 	fi
 
-	if [ -z $* ]; then
+	if [ -z $1 ]; then
 		cat $TODO_FILE
 	else
 		echo "$*" >> $TODO_FILE
