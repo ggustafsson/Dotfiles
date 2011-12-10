@@ -33,7 +33,7 @@ else
 
 	path=(/bin /sbin /usr/bin /usr/sbin /usr/local/bin /usr/local/sbin ~/Scripts)
 
-	if [[ $(tty) == /dev/tty1 ]]; then
+	if [[ $TTY == /dev/tty1 ]]; then
 		startx
 
 		[ $? -eq 0 ] && exit
