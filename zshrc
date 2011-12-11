@@ -4,10 +4,11 @@ export GEM_HOME=~/.ruby
 export LC_COLLATE=C
 export PAGER=less
 
+DIRSTACKSIZE=17
 TODO_FILE=~/Documents/Text\ Files/Things\ to\ Do.txt
 
 HISTFILE=~/.zsh_histfile
-HISTSIZE=2500
+HISTSIZE=2000
 SAVEHIST=5000
 
 if [[ $OSTYPE == darwin* ]]; then
@@ -52,8 +53,12 @@ setopt appendhistory
 setopt extendedhistory
 setopt histexpiredupsfirst
 setopt histignoredups
+setopt histreduceblanks
 setopt histverify
 setopt incappendhistory
+
+setopt autopushd
+setopt pushdignoredups
 
 setopt combiningchars
 setopt noautomenu
@@ -137,7 +142,7 @@ if [[ $OSTYPE == darwin* ]]; then
 	alias wc="gwc"
 
 	alias startmpd="mpd"
-	alias stopmpd="mpc stop && mpd --kill"
+	alias stopmpd="mpc -q stop && mpd --kill"
 else
 	alias c="clearcmd"
 	alias cal="cal -m"
@@ -152,6 +157,7 @@ fi
 
 alias bc="bc -q"
 alias df="df -h"
+alias dh="dirs -v | tail -n +2"
 alias favs="mv -f ~/.mpd/playlists/Favorites.m3u ~/.mpd/tmp.playlist > /dev/null && sort ~/.mpd/tmp.playlist | uniq > ~/.mpd/playlists/Favorites.m3u"
 alias fetch="wget --no-clobber --page-requisites --adjust-extension --convert-links"
 alias grep="grep --color=auto -i"
@@ -164,6 +170,7 @@ alias pyweb="python3 -m http.server 8080"
 alias reload="source ~/.zshrc"
 alias s="screen"
 alias tv="vim '$TODO_FILE'"
+alias ycal="cal `date +%Y`"
 alias yt="youtube-dl -l"
 
 alias -- -="cd -"
@@ -190,8 +197,8 @@ alias da="ls -la"
 alias l1="ls -1"
 alias la="ls -a"
 
-alias gd="popd"
-alias sd="pushd"
+alias gd='echo "Change directory to saved PATH." && cd $SAVE_DIR'
+alias sd='echo "Saving current PATH." && SAVE_DIR=$PWD'
 
 alias int="tim.sh -i"
 alias pomo="tim.sh -p"
@@ -208,6 +215,10 @@ alias topme="top -o cpu -U twiggy"
 alias v="vim"
 alias vd="vimdiff"
 alias vp="vimp"
+
+for x in {1..16}; do
+	alias +$x="cd +$x > /dev/null"
+done
 
 if [[ $OSTYPE == darwin* ]]; then
 	function freespace {
@@ -379,7 +390,7 @@ function unp {
 				*.tgz)     tar vxzf   $arg ;;
 				*.zip)     unzip      $arg ;;
 				*)
-					echo "File $arg cannot be extracted via unp."
+					echo "File $arg cannot be extracted via $0."
 				;;
 			esac
 		else

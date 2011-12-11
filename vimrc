@@ -79,8 +79,8 @@ if has("gui_running")
 		set guifont=Monaco:h12
 
 		if !exists("g:dont_resize_again")
-			set columns=130
-			set lines=40
+			set columns=187
+			set lines=45
 
 			let g:dont_resize_again = 1
 		endif
@@ -201,8 +201,6 @@ imap <C-Tab> <C-n>
 if has("mac")
 	if has("gui_running")
 		function! FancyView()
-			set nolist
-
 			set antialias
 			set guifont=Inconsolata:h28
 		endfunction
