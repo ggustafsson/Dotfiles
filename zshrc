@@ -120,7 +120,7 @@ RPROMPT='%B$(git_branch)%b'
 if [[ $OSTYPE == darwin* ]]; then
 	alias c="clear"
 	alias dontsleep="pmset noidle"
-	alias eject="osascript -e 'tell application \"Finder\" to eject (every disk whose ejectable is true)'"
+	alias eject="osascript -e 'tell application \"Finder\" to eject (every disk whose ejectable is true)' && echo 'All external drives ejected!'"
 
 	alias cvim="/Applications/MacVim.app/Contents/MacOS/Vim"
 	alias vimdiff="/Applications/MacVim.app/Contents/MacOS/Vim -d -g $* > /dev/null"
@@ -141,8 +141,8 @@ if [[ $OSTYPE == darwin* ]]; then
 	alias tail="gtail"
 	alias wc="gwc"
 
-	alias startmpd="mpd"
-	alias stopmpd="mpc -q stop && mpd --kill"
+	alias startmpd="echo 'Starting MPD daemon.' && mpd"
+	alias stopmpd="echo 'Stopping MPD daemon.' && mpc -q stop && mpd --kill"
 else
 	alias c="clearcmd"
 	alias cal="cal -m"
@@ -312,10 +312,10 @@ function fff {
 }
 
 function h {
-	if [ -z $* ]; then
-		history -i 1 | less +G
-	else
+	if [ ! -z $* ]; then
 		history -i 1 | grep "$*"
+	else
+		history -i 1 | less +G
 	fi
 }
 
@@ -329,10 +329,10 @@ function mkcd {
 }
 
 function p {
-	if [ -z $* ]; then
-		ps ax
-	else
+	if [ ! -z $* ]; then
 		ps ax | grep -v "grep --color -i $*" | grep "$*"
+	else
+		ps ax
 	fi
 }
 
