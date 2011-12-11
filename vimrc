@@ -79,7 +79,7 @@ if has("gui_running")
 		set guifont=Monaco:h12
 
 		if !exists("g:dont_resize_again")
-			set columns=187
+			set columns=172
 			set lines=45
 
 			let g:dont_resize_again = 1
@@ -89,6 +89,7 @@ if has("gui_running")
 	endif
 else
 	set mouse=v
+	set title
 endif
 
 if has("mac")

@@ -85,7 +85,7 @@ precmd() {
 
 function git_branch {
 	ref=$(git symbolic-ref HEAD 2> /dev/null) || return
-	BRANCH=${(C)ref#refs/heads/}
+	BRANCH=${ref#refs/heads/}
 
 	if [[ -n $(git status -s 2> /dev/null) ]]; then
 		echo "%{$fg[red]%}$BRANCH%{$reset_color%}"
@@ -116,6 +116,8 @@ function zsh_mode {
 
 PROMPT='%B${(C)USER} %{$fg[yellow]%}${(C)HOST%%.*}%{$reset_color%}%b %~ %B$(zsh_mode)%b '
 RPROMPT='%B$(git_branch)%b'
+
+print -Pn "\e]0;Zsh\a"
 
 if [[ $OSTYPE == darwin* ]]; then
 	alias c="clear"
@@ -157,7 +159,7 @@ fi
 
 alias bc="bc -q"
 alias df="df -h"
-alias dh="dirs -v | tail -n +2"
+alias dh="dirs -v"
 alias favs="mv -f ~/.mpd/playlists/Favorites.m3u ~/.mpd/tmp.playlist > /dev/null && sort ~/.mpd/tmp.playlist | uniq > ~/.mpd/playlists/Favorites.m3u"
 alias fetch="wget --no-clobber --page-requisites --adjust-extension --convert-links"
 alias grep="grep --color=auto -i"
@@ -170,7 +172,7 @@ alias pyweb="python3 -m http.server 8080"
 alias reload="source ~/.zshrc"
 alias s="screen"
 alias tv="vim '$TODO_FILE'"
-alias ycal="cal `date +%Y`"
+alias ycal="cal $(date +%Y)"
 alias yt="youtube-dl -l"
 
 alias -- -="cd -"
@@ -192,13 +194,25 @@ alias cp="cp -vi"
 alias mv="mv -vi"
 alias rm="rm -v"
 
+alias csd='echo "Change directory to saved PATH." && cd $SAVE_DIR'
+alias sd='echo "Saving current PATH." && SAVE_DIR=$PWD'
+
 alias d="ls -l"
 alias da="ls -la"
 alias l1="ls -1"
 alias la="ls -a"
 
-alias gd='echo "Change directory to saved PATH." && cd $SAVE_DIR'
-alias sd='echo "Saving current PATH." && SAVE_DIR=$PWD'
+alias gad="git add"
+alias gca="git commit -v -a"
+alias gcl="git clone"
+alias gco="git commit -v"
+alias gdi="git diff"
+alias git="hub"
+alias glo="git log"
+alias gpl="git pull"
+alias gpu="git push"
+alias gsb="git shortlog -s"
+alias gst="git status -s"
 
 alias int="tim.sh -i"
 alias pomo="tim.sh -p"
@@ -249,7 +263,7 @@ if [[ $OSTYPE == darwin* ]]; then
 else
 	if [[ $TERM == rxvt-unicode ]]; then
 		function clearcmd {
-			for ((i = 1; i < $LINES; i++)); do
+			for x in {1..$LINES}; do
 				echo
 			done
 
