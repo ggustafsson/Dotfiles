@@ -99,9 +99,11 @@ else
 endif
 
 let g:gist_open_browser_after_post = 1
-let g:html_ignore_folding = 1
 let g:mapleader = ","
 let g:surround_no_mappings = 1
+
+let g:html_ignore_folding = 1
+let g:html_number_lines = 0
 
 let g:LustyExplorerDefaultMappings = 0
 let g:LustyJugglerDefaultMappings = 0

@@ -161,7 +161,7 @@ alias bc="bc -q"
 alias df="df -h"
 alias dh="dirs -v"
 alias favs="mv -f ~/.mpd/playlists/Favorites.m3u ~/.mpd/tmp.playlist > /dev/null && sort ~/.mpd/tmp.playlist | uniq > ~/.mpd/playlists/Favorites.m3u"
-alias fetch="wget --no-clobber --page-requisites --adjust-extension --convert-links"
+alias fetch="wget --page-requisites --adjust-extension --convert-links"
 alias grep="grep --color=auto -i"
 alias hi="history"
 alias ip="curl -s http://automation.whatismyip.com/n09230945.asp | html2text"
@@ -392,17 +392,27 @@ function unp {
 	for arg in $*; do
 		if [ -f $arg ]; then
 			case $arg in
-				*.7z)      7z x       $arg ;;
-				*.Z)       uncompress $arg ;;
-				*.bz2)     bunzip2    $arg ;;
-				*.gz)      gunzip     $arg ;;
-				*.rar)     unrar x    $arg ;;
-				*.tar)     tar vxf    $arg ;;
-				*.tar.bz2) tar vxjf   $arg ;;
-				*.tar.gz)  tar vxzf   $arg ;;
-				*.tbz2)    tar vxjf   $arg ;;
-				*.tgz)     tar vxzf   $arg ;;
-				*.zip)     unzip      $arg ;;
+				*.gz)
+					if [[ $arg == *.tar.gz ]]; then
+						tar zxvf $arg
+					else
+						gunzip $arg
+					fi
+				;;
+				*.bz2)
+					if [[ $arg == *.tar.bz2 ]]; then
+						tar xvjf $arg
+					else
+						bunzip2 $arg
+					fi
+				;;
+				*.tar)  tar xvf    $arg ;;
+				*.tgz)  tar xvzf   $arg ;;
+				*.tbz2) tar xvjf   $arg ;;
+				*.zip)  unzip      $arg ;;
+				*.rar)  unrar x    $arg ;;
+				*.Z)    uncompress $arg ;;
+				*.7z)   7z x       $arg ;;
 				*)
 					echo "File $arg cannot be extracted via $0."
 				;;
