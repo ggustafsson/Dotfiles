@@ -11,7 +11,7 @@ servers = (
     use_ssl = "yes";
     ssl_verify = "yes";
     ssl_capath = "/etc/ssl/certs";
-  },
+  }
 );
 
 aliases = {
@@ -174,7 +174,7 @@ settings = {
     awl_hide_data = "3";
     awl_position = "0";
     awl_sbar_maxlength = "no";
-    beep_cmd = "~/Scripts/irssi_beep.sh";
+    beep_cmd = "~/Scripts/irssi_beep.zsh";
   };
   "irc/core" = {
     alternate_nick = "twiggz";
@@ -196,5 +196,5 @@ hilights = (
 channels = (
   { name = "#degiz"; chatnet = "Quakenet"; autojoin = "yes"; },
   { name = "#vim"; chatnet = "Freenode"; autojoin = "yes"; },
-  { name = "#zsh"; chatnet = "Freenode"; autojoin = "yes"; },
+  { name = "#zsh"; chatnet = "Freenode"; autojoin = "yes"; }
 );

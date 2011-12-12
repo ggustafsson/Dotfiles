@@ -2,6 +2,7 @@
 
 export GEM_HOME=~/.ruby
 export LC_COLLATE=C
+export LESS=R
 export PAGER=less
 
 DIRSTACKSIZE=17
@@ -13,12 +14,15 @@ SAVEHIST=5000
 
 if [[ $OSTYPE == darwin* ]]; then
 	export EDITOR="/Applications/MacVim.app/Contents/MacOS/Vim -g --remote-tab-silent"
+	export GIT_EDITOR="/Applications/MacVim.app/Contents/MacOS/Vim"
 	export VISUAL=$EDITOR
 
 	FLACDIR=/Volumes/Black\ Disk/Music/FLAC
 	MP3DIR=/Volumes/Black\ Disk/Music/MP3
 
 	path=(/usr/local/bin /usr/local/sbin /bin /sbin /usr/bin /usr/sbin /usr/X11/bin ~/Scripts ~/.ruby/gems/*/bin)
+
+	print -Pn "\e]0;Zsh\a"
 else
 	export EDITOR=vim
 	export VISUAL=$EDITOR
@@ -117,8 +121,6 @@ function zsh_mode {
 PROMPT='%B${(C)USER} %{$fg[yellow]%}${(C)HOST%%.*}%{$reset_color%}%b %~ %B$(zsh_mode)%b '
 RPROMPT='%B$(git_branch)%b'
 
-print -Pn "\e]0;Zsh\a"
-
 if [[ $OSTYPE == darwin* ]]; then
 	alias c="clear"
 	alias dontsleep="pmset noidle"
@@ -176,11 +178,13 @@ alias s="screen"
 alias tv="vim '$TODO_FILE'"
 alias ycal="cal $(date +%Y)"
 alias yt="youtube-dl -l"
+alias zv="vim ~/.zshrc"
 
 alias -- -="cd -"
 alias ...="cd ../.."
 alias ..="cd .."
 alias cdd="cd ~/Downloads"
+alias cdp="cd ~Projects"
 
 alias cl="wc -l"
 alias cw="wc -w"
@@ -204,22 +208,16 @@ alias da="ls -la"
 alias l1="ls -1"
 alias la="ls -a"
 
-alias gad="git add"
-alias gca="git commit -v -a"
-alias gcl="git clone"
-alias gco="git commit -v"
-alias gdi="git diff"
-alias gin="git init"
+alias gc="git commit -a -v"
+alias gd="git diff"
 alias git="hub"
-alias glo="git log"
-alias gpl="git pull"
-alias gpu="git push"
-alias gsb="git shortlog -s"
-alias gst="git status -s"
+alias gl="git log"
+alias gp="git push"
+alias gs="git status -s -b"
 
-alias int="tim.sh -i"
-alias pomo="tim.sh -p"
-alias ti="tim.sh"
+alias int="tim.zsh -i"
+alias pomo="tim.zsh -p"
+alias ti="tim.zsh"
 
 alias next="mpc next | head -n 1"
 alias prev="mpc prev | head -n 1"
@@ -314,23 +312,24 @@ function chkm {
 }
 
 function chkp {
-	for dirs in ~/Projects/*; do
-		cd $dirs
+	local CURRENT_DIR=$PWD
+	local CLEAN_BRANCH
+
+	for dir in ~/Projects/*; do
+		cd $dir
 
 		if [[ -n $(git status -s 2> /dev/null) ]]; then
-			echo "\033[1;31m$dirs:t\033[0m"
+			echo "\033[1;31m$dir:t:\033[0m"
 			git status -s
 			echo
+		else
+			CLEAN_BRANCH="$CLEAN_BRANCH * $dir:t\n"
 		fi
 	done
 
-	for dirs in ~/Projects/*; do
-		cd $dirs
+	echo -n "\033[1;34mClean branches:\033[0m\n$CLEAN_BRANCH"
 
-		if [[ ! -n $(git status -s 2> /dev/null) ]]; then
-			echo "* $dirs:t"
-		fi
-	done
+	cd $CURRENT_DIR
 }
 
 function ff {
