@@ -178,7 +178,6 @@ alias ping="ping -c 10"
 alias pyweb="python3 -m http.server 8080"
 alias reload="source ~/.zshrc"
 alias s="screen"
-alias tv="vim '$TODO_FILE'"
 alias ycal="cal $(date +%Y)"
 alias yt="youtube-dl -l"
 alias zv="vim ~/.zshrc"
@@ -235,6 +234,9 @@ alias next="mpc next | head -n 1"
 alias prev="mpc prev | head -n 1"
 alias song="mpc current"
 alias toggle="mpc toggle | head -n 2"
+
+alias ptv="vim '$PWD/TODO.txt'"
+alias tv="vim '$TODO_FILE'"
 
 alias top="top -o cpu"
 alias topme="top -o cpu -U twiggy"
@@ -418,20 +420,30 @@ function systemu {
 }
 
 function t {
-	if [ ! -f $TODO_FILE ]; then
+	if [[ $1 == '--pwd' ]]; then
+		SELECTED_TODO_FILE=$PWD/TODO.txt
+	else
+		SELECTED_TODO_FILE=$TODO_FILE
+	fi
+
+	if [ ! -f $SELECTED_TODO_FILE ]; then
 		echo "TODO file does not exist."
 
 		return
-	elif [ ! -s $TODO_FILE ]; then
+	elif [ ! -s $SELECTED_TODO_FILE ]; then
 		echo "TODO file is currently empty."
 
 		return
 	fi
 
-	if [ -z $* ]; then
-		cat $TODO_FILE
+	if ([[ -z $* ]] || [[ $* == '--pwd' ]]); then
+		cat $SELECTED_TODO_FILE
 	else
-		echo "$*" >> $TODO_FILE
+		if [[ $1 == '--pwd' ]]; then
+			echo "$*" | sed 's/^--pwd //' >> $SELECTED_TODO_FILE
+		else
+			echo "$*" >> $SELECTED_TODO_FILE
+		fi
 	fi
 }
 
