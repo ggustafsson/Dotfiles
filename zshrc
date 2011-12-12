@@ -92,7 +92,9 @@ function git_branch {
 
 	[[ -f TODO.txt ]] && echo -n "$(sed '/^\s*$/d' TODO.txt | wc -l 2> /dev/null) "
 
-	if [[ -n $(git status -s 2> /dev/null) ]]; then
+	if $(echo "$(git log origin/$BRANCH..HEAD 2> /dev/null)" | grep '^commit' > /dev/null); then
+		echo "%{$fg[cyan]%}$BRANCH%{$reset_color%}"
+	elif [[ -n $(git status -s 2> /dev/null) ]]; then
 		echo "%{$fg[red]%}$BRANCH%{$reset_color%}"
 	else
 		echo "%{$fg[green]%}$BRANCH%{$reset_color%}"
@@ -330,7 +332,7 @@ function chkp {
 
 		if [[ -n $(git status -s 2> /dev/null) ]]; then
 			echo "\033[1;31m$dir:t:\033[0m"
-			git status -s
+			git status -s -b
 			echo
 		else
 			CLEAN_BRANCH="$CLEAN_BRANCH * $dir:t\n"
