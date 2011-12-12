@@ -76,7 +76,7 @@ zstyle ':completion:*'          special-dirs true
 zstyle ':completion:*:cd:*'     ignore-parents parent pwd
 zstyle ':completion:*:warnings' format "zsh: no matches found."
 
-compdef _man man-preview
+compdef _man manp
 compdef _path_files cd
 
 precmd() {
@@ -123,7 +123,9 @@ if [[ $OSTYPE == darwin* ]]; then
 	alias c="clear"
 	alias dontsleep="pmset noidle"
 	alias eject="osascript -e 'tell application \"Finder\" to eject (every disk whose ejectable is true)' && echo 'All external drives ejected!'"
+	alias cdb="cd /Volumes/Black\ Disk"
 
+	alias cv="cvim"
 	alias cvim="/Applications/MacVim.app/Contents/MacOS/Vim"
 	alias vimdiff="/Applications/MacVim.app/Contents/MacOS/Vim -d -g $* > /dev/null"
 	alias vimp="/Applications/MacVim.app/Contents/MacOS/Vim - -g > /dev/null"
@@ -207,6 +209,7 @@ alias gca="git commit -v -a"
 alias gcl="git clone"
 alias gco="git commit -v"
 alias gdi="git diff"
+alias gin="git init"
 alias git="hub"
 alias glo="git log"
 alias gpl="git pull"
@@ -235,13 +238,14 @@ for x in {1..16}; do
 done
 
 if [[ $OSTYPE == darwin* ]]; then
-	function freespace {
-		rm -rf ~/Library/Caches/com.apple.Safari/Webpage\ Previews
+	function frees {
 		rm -rf ~/Library/Caches/Homebrew
+		rm -rf ~/Library/Caches/com.apple.Safari/Webpage\ Previews
+		rm -rf ~/Library/Mail Downloads
 		rm -rf ~/Library/iTunes/iPhone\ Software\ Updates
 	}
 
-	function man-preview {
+	function manp {
 		for arg in $*; do
 			man -t $arg | open -f -a Preview
 		done
@@ -304,9 +308,29 @@ else
 	}
 fi
 
-function checkmusic {
-	find "$FLACDIR" -type f ! -iname *.flac ! -iname *.log
-	find "$MP3DIR" -type f ! -iname *.mp3
+function chkm {
+	find "$FLACDIR" -type f ! -iname "*.flac" ! -iname "*.log"
+	find "$MP3DIR" -type f ! -iname "*.mp3"
+}
+
+function chkp {
+	for dirs in ~/Projects/*; do
+		cd $dirs
+
+		if [[ -n $(git status -s 2> /dev/null) ]]; then
+			echo "\033[1;31m$dirs:t\033[0m"
+			git status -s
+			echo
+		fi
+	done
+
+	for dirs in ~/Projects/*; do
+		cd $dirs
+
+		if [[ ! -n $(git status -s 2> /dev/null) ]]; then
+			echo "* $dirs:t"
+		fi
+	done
 }
 
 function ff {
@@ -350,14 +374,14 @@ function p {
 	fi
 }
 
-function permfix {
+function permf {
 	[[ $OSTYPE == darwin* ]] && find . -exec chmod -N "{}" \;
 
 	find . -type d -exec chmod 755 "{}" \;
 	find . -type f -exec chmod 644 "{}" \;
 }
 
-function privatepermfix {
+function ppermf {
 	[[ $OSTYPE == darwin* ]] && find . -exec chmod -N "{}" \;
 
 	find . -type d -exec chmod 700 "{}" \;
@@ -407,7 +431,7 @@ function unp {
 					fi
 				;;
 				*.tar)  tar xvf    $arg ;;
-				*.tgz)  tar xvzf   $arg ;;
+				*.tgz)  tar zxvf   $arg ;;
 				*.tbz2) tar xvjf   $arg ;;
 				*.zip)  unzip      $arg ;;
 				*.rar)  unrar x    $arg ;;
