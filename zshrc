@@ -45,7 +45,6 @@ else
 	fi
 fi
 
-setopt correct
 setopt interactivecomments
 setopt longlistjobs
 setopt nobeep
@@ -91,6 +90,8 @@ function git_branch {
 	ref=$(git symbolic-ref HEAD 2> /dev/null) || return
 	BRANCH=${ref#refs/heads/}
 
+	[[ -f TODO.txt ]] && echo -n "$(sed '/^\s*$/d' TODO.txt | wc -l 2> /dev/null) "
+
 	if [[ -n $(git status -s 2> /dev/null) ]]; then
 		echo "%{$fg[red]%}$BRANCH%{$reset_color%}"
 	else
@@ -118,7 +119,7 @@ function zsh_mode {
 	fi
 }
 
-PROMPT='%B${(C)USER} %{$fg[yellow]%}${(C)HOST%%.*}%{$reset_color%}%b %~ %B$(zsh_mode)%b '
+PROMPT="%B${(C)USER} %{$fg[yellow]%}${(C)HOST%%.*}%{$reset_color%}%b %~ %B$(zsh_mode)%b "
 RPROMPT='%B$(git_branch)%b'
 
 if [[ $OSTYPE == darwin* ]]; then
@@ -183,6 +184,7 @@ alias zv="vim ~/.zshrc"
 alias -- -="cd -"
 alias ...="cd ../.."
 alias ..="cd .."
+
 alias cdd="cd ~/Downloads"
 alias cdp="cd ~Projects"
 
@@ -208,12 +210,20 @@ alias da="ls -la"
 alias l1="ls -1"
 alias la="ls -a"
 
-alias gc="git commit -a -v"
-alias gd="git diff"
+alias gad="git add"
+alias gbr="git branch"
+alias gca="git commit -a -v"
+alias gch="git checkout"
+alias gcl="git clone"
+alias gco="git commit -v"
+alias gdi="git diff"
+alias gfe="git fetch"
 alias git="hub"
-alias gl="git log"
-alias gp="git push"
-alias gs="git status -s -b"
+alias glo="git log"
+alias gme="git merge"
+alias gpl="git pull"
+alias gpu="git push"
+alias gst="git status -s -b"
 
 alias int="tim.zsh -i"
 alias pomo="tim.zsh -p"
@@ -374,17 +384,35 @@ function p {
 }
 
 function permf {
-	[[ $OSTYPE == darwin* ]] && find . -exec chmod -N "{}" \;
-
-	find . -type d -exec chmod 755 "{}" \;
-	find . -type f -exec chmod 644 "{}" \;
+	if [[ $OSTYPE == darwin* ]]; then
+		find . -type d -exec chmod -N 755 "{}" \;
+		find . -type f -exec chmod -N 644 "{}" \;
+	else
+		find . -type d -exec chmod 755 "{}" \;
+		find . -type f -exec chmod 644 "{}" \;
+	fi
 }
 
 function ppermf {
-	[[ $OSTYPE == darwin* ]] && find . -exec chmod -N "{}" \;
+	if [[ $OSTYPE == darwin* ]]; then
+		find . -type d -exec chmod -N 700 "{}" \;
+		find . -type f -exec chmod -N 600 "{}" \;
+	else
+		find . -type d -exec chmod 700 "{}" \;
+		find . -type f -exec chmod 600 "{}" \;
+	fi
+}
 
-	find . -type d -exec chmod 700 "{}" \;
-	find . -type f -exec chmod 600 "{}" \;
+function systemu {
+	if [[ $OSTYPE == darwin* ]]; then
+		brew update
+		brew upgrade
+	else
+		pacu
+	fi
+
+	gem update
+	cheat --new
 }
 
 function t {
@@ -406,11 +434,7 @@ function t {
 }
 
 function unp {
-	if [ -z $* ]; then
-		echo "Usage: $0 [FILENAME]..."
-
-		return
-	fi
+	[ -z $* ] && echo "Usage: $0 [FILENAME]..." && return
 
 	for arg in $*; do
 		if [ -f $arg ]; then

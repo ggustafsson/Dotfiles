@@ -152,6 +152,7 @@ nmap <Leader>ls :!ls -l "%"<CR>
 nmap <Leader>ne :enew<CR>
 nmap <Leader>nu :set number!<CR>
 nmap <Leader>pa :set paste!<CR>
+nmap <Leader>pt :edit %:p:h/TODO.txt<CR>
 nmap <Leader>pw :pwd<CR>
 nmap <Leader>re :%s/
 nmap <Leader>sg :call <SID>SyntaxGroup()<CR>
