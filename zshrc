@@ -371,7 +371,10 @@ function fff {
 
 function gifit {
 	if [[ ! -z $1 ]]; then
-		convert -delay 20 -loop 0 $* animated_$(date '+%Y-%m-%d_%H:%M').gif
+		local FILENAME=animated_$(date '+%Y-%m-%d_%H:%M').gif
+		convert -delay 20 -loop 0 $* $FILENAME
+
+		[[ $OSTYPE == darwin* ]] && qlmanage -p $FILENAME > /dev/null
 	fi
 }
 
