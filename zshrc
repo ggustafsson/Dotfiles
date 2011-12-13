@@ -90,7 +90,7 @@ function git_branch {
 	ref=$(git symbolic-ref HEAD 2> /dev/null) || return
 	BRANCH=${ref#refs/heads/}
 
-	if [[ -n $(git status -s -b 2> /dev/null | grep 'ahead') ]]; then
+	if [[ -n $(git status -s -b 2> /dev/null | grep ' \[ahead ') ]]; then
 		echo "%{$fg[cyan]%}$BRANCH%{$reset_color%}"
 	elif [[ -n $(git status -s 2> /dev/null) ]]; then
 		echo "%{$fg[red]%}$BRANCH%{$reset_color%}"
@@ -328,7 +328,7 @@ function chkp {
 	for dir in ~/Projects/*; do
 		cd $dir
 
-		if [[ -n $(git status -s -b 2> /dev/null | grep 'ahead') ]]; then
+		if [[ -n $(git status -s -b 2> /dev/null | grep ' \[ahead ') ]]; then
 			echo "\033[1;36m$dir:t:\033[0m"
 			git status -s -b
 			echo
