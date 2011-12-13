@@ -142,7 +142,7 @@ if [[ $OSTYPE == darwin* ]]; then
 	alias de="ls -le"
 	alias ls="ls -Gh"
 
-	alias f="open ."
+	alias f="open -a Finder"
 	alias o="open"
 
 	alias awk="gawk"

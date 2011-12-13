@@ -184,10 +184,10 @@ nmap > <C-w><
 nmap §   :LustyBufferExplorer<CR>
 nmap vil ^vg_
 
-nmap <C-s> :!mpc current<CR>
-nmap <C-n> :silent !mpc next<CR>
-nmap <C-p> :silent !mpc prev<CR>
-nmap <C-t> :silent !mpc toggle<CR>
+nmap <C-m>s :!mpc current<CR>
+nmap <C-m>n :silent !mpc next<CR>
+nmap <C-m>p :silent !mpc prev<CR>
+nmap <C-m>t :silent !mpc toggle<CR>
 
 nmap <Leader><Space> <Plug>NERDCommenterToggle
 vmap <Leader><Space> <Plug>NERDCommenterToggle
