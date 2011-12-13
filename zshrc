@@ -124,9 +124,14 @@ RPROMPT='%B$(git_branch)%b'
 
 if [[ $OSTYPE == darwin* ]]; then
 	alias c="clear"
+	alias capit="imagesnap -t 2 -w 1"
+	alias cdb="cd /Volumes/Black\ Disk"
+	alias cdpb="cd ~/Pictures/Photo\ Booth\ Library/Pictures"
 	alias dontsleep="pmset noidle"
 	alias eject="osascript -e 'tell application \"Finder\" to eject (every disk whose ejectable is true)' && echo 'All external drives ejected!'"
-	alias cdb="cd /Volumes/Black\ Disk"
+
+	alias console="open -a Console"
+	alias safari="open -a Safari"
 
 	alias cv="cvim"
 	alias cvim="/Applications/MacVim.app/Contents/MacOS/Vim"
@@ -186,7 +191,7 @@ alias ...="cd ../.."
 alias ..="cd .."
 
 alias cdd="cd ~/Downloads"
-alias cdp="cd ~Projects"
+alias cdp="cd ~/Projects"
 
 alias cl="wc -l"
 alias cw="wc -w"
@@ -361,6 +366,12 @@ function fff {
 		find "$PWD" -iname $*
 	else
 		echo "Usage: $0 [PATTERN]..."
+	fi
+}
+
+function gifit {
+	if [[ ! -z $1 ]]; then
+		convert -delay 20 -loop 0 $* animated_$(date '+%Y-%m-%d_%H:%M').gif
 	fi
 }
 
