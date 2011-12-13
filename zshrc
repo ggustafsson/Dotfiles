@@ -90,7 +90,7 @@ function git_branch {
 	ref=$(git symbolic-ref HEAD 2> /dev/null) || return
 	BRANCH=${ref#refs/heads/}
 
-	if [[ -n $(git status -s -b 2> /dev/null | grep ' \[ahead ') ]]; then
+	if [[ -n $(git rev-list origin..HEAD 2> /dev/null) ]]; then
 		echo "%{$fg[cyan]%}$BRANCH%{$reset_color%}"
 	elif [[ -n $(git status -s 2> /dev/null) ]]; then
 		echo "%{$fg[red]%}$BRANCH%{$reset_color%}"
@@ -260,13 +260,15 @@ if [[ $OSTYPE == darwin* ]]; then
 	}
 
 	function ql {
-		for arg in $*; do
-			qlmanage -p $* >& /dev/null
-		done
+		if [ ! -z $1 ]; then
+			qlmanage -p $* > /dev/null
+		else
+			qlmanage -h
+		fi
 	}
 
 	function vim {
-		if [ -z $* ]; then
+		if [ -z $1 ]; then
 			/Applications/MacVim.app/Contents/MacOS/Vim -g
 		else
 			/Applications/MacVim.app/Contents/MacOS/Vim -g --remote-tab-silent $*
@@ -328,7 +330,7 @@ function chkp {
 	for dir in ~/Projects/*; do
 		cd $dir
 
-		if [[ -n $(git status -s -b 2> /dev/null | grep ' \[ahead ') ]]; then
+		if [[ -n $(git rev-list origin..HEAD 2> /dev/null) ]]; then
 			echo "\033[1;36m$dir:t:\033[0m"
 			git status -s -b
 			echo
@@ -347,7 +349,7 @@ function chkp {
 }
 
 function ff {
-	if [ ! -z $* ]; then
+	if [ ! -z $1 ]; then
 		find . -iname $* | sed 's/.\///'
 	else
 		echo "Usage: $0 [PATTERN]..."
@@ -355,7 +357,7 @@ function ff {
 }
 
 function fff {
-	if [ ! -z $* ]; then
+	if [ ! -z $1 ]; then
 		find "$PWD" -iname $*
 	else
 		echo "Usage: $0 [PATTERN]..."
@@ -363,7 +365,7 @@ function fff {
 }
 
 function h {
-	if [ ! -z $* ]; then
+	if [ ! -z $1 ]; then
 		history -i 1 | grep "$*"
 	else
 		history -i 1 | less +G
@@ -371,7 +373,7 @@ function h {
 }
 
 function mkcd {
-	if [ ! -z $* ]; then
+	if [ ! -z $1 ]; then
 		mkdir -p "$*"
 		cd "$*"
 	else
@@ -380,7 +382,7 @@ function mkcd {
 }
 
 function p {
-	if [ ! -z $* ]; then
+	if [ ! -z $1 ]; then
 		ps ax | grep -v "grep --color -i $*" | grep "$*"
 	else
 		ps ax
@@ -430,7 +432,7 @@ function t {
 		return
 	fi
 
-	if [ -z $* ]; then
+	if [ -z $1 ]; then
 		cat $TODO_FILE
 	else
 		echo "$*" >> $TODO_FILE
@@ -438,7 +440,7 @@ function t {
 }
 
 function unp {
-	[ -z $* ] && echo "Usage: $0 [FILENAME]..." && return
+	[ -z $1 ] && echo "Usage: $0 [FILENAME]..." && return
 
 	for arg in $*; do
 		if [ -f $arg ]; then
