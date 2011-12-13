@@ -337,7 +337,7 @@ function chkp {
 		fi
 	done
 
-	echo -n "\033[1;34mClean branches:\033[0m\n$CLEAN_BRANCH"
+	echo -n "\033[1;32mClean branches:\033[0m\n$CLEAN_BRANCH"
 
 	cd $CURRENT_DIR
 }

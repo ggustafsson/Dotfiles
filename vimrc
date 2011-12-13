@@ -154,12 +154,13 @@ nmap <Leader>nu :set number!<CR>
 nmap <Leader>pa :set paste!<CR>
 nmap <Leader>pw :pwd<CR>
 nmap <Leader>re :%s/
+nmap <Leader>sc :split ~/Documents/Text\ Files/Scratch\ Notes.txt<CR>
 nmap <Leader>sg :call <SID>SyntaxGroup()<CR>
 nmap <Leader>sh :shell<CR>
 nmap <Leader>sn :new<CR>
 nmap <Leader>sp :setlocal spell!<CR>
 nmap <Leader>su ^vg_<Plug>VSurround
-nmap <Leader>to :edit ~/Documents/Text\ Files/Things\ to\ Do.txt<CR>
+nmap <Leader>to :split ~/Documents/Text\ Files/Things\ to\ Do.txt<CR>
 nmap <Leader>tr :NERDTreeToggle<CR>
 nmap <Leader>un :edit!<CR>
 nmap <Leader>vi :edit ~/.vimrc<CR>
