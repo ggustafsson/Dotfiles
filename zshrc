@@ -90,8 +90,6 @@ function git_branch {
 	ref=$(git symbolic-ref HEAD 2> /dev/null) || return
 	BRANCH=${ref#refs/heads/}
 
-	[[ -f TODO.txt ]] && echo -n "$(sed '/^\s*$/d' TODO.txt | wc -l 2> /dev/null) "
-
 	if $(echo "$(git log origin/$BRANCH..HEAD 2> /dev/null)" | grep '^commit' > /dev/null); then
 		echo "%{$fg[cyan]%}$BRANCH%{$reset_color%}"
 	elif [[ -n $(git status -s 2> /dev/null) ]]; then
