@@ -39,7 +39,7 @@ else
 	path=(/bin /sbin /usr/bin /usr/sbin /usr/local/bin /usr/local/sbin ~/Scripts)
 
 	if [[ $TTY == /dev/tty1 ]]; then
-		startx
+		startx &
 
 		[ $? -eq 0 ] && exit
 	fi
@@ -91,7 +91,11 @@ function git_branch {
 	BRANCH=${ref#refs/heads/}
 
 	if [[ -n $(git rev-list origin..HEAD 2> /dev/null) ]]; then
-		echo "%{$fg[cyan]%}$BRANCH%{$reset_color%}"
+		if [[ -n $(git status -s 2> /dev/null) ]]; then
+			echo "%{$fg[cyan]%}ahead %{$fg[red]%}$BRANCH%{$reset_color%}"
+		else
+			echo "%{$fg[cyan]%}ahead %{$fg[green]%}$BRANCH%{$reset_color%}"
+		fi
 	elif [[ -n $(git status -s 2> /dev/null) ]]; then
 		echo "%{$fg[red]%}$BRANCH%{$reset_color%}"
 	else

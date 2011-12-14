@@ -171,11 +171,6 @@ nmap <Leader>zs :edit ~/.zshrc<CR>
 nmap <Backspace> :nohlsearch<CR>
 nmap <Tab>       :bnext<CR>
 
-nmap <C-w><C-Up>    <C-w>K
-nmap <C-w><C-Down>  <C-w>J
-nmap <C-w><C-Left>  <C-w>H
-nmap <C-w><C-Right> <C-w>L
-
 nmap + <C-w>+
 nmap - <C-w>-
 nmap < <C-w>>
