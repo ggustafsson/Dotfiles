@@ -10,7 +10,7 @@ TODO_FILE=~/Documents/Text\ Files/Things\ to\ Do.txt
 
 HISTFILE=~/.zsh_histfile
 HISTSIZE=2000
-SAVEHIST=5000
+SAVEHIST=6000
 
 if [[ $OSTYPE == darwin* ]]; then
 	export EDITOR="/Applications/MacVim.app/Contents/MacOS/Vim -g --remote-tab-silent"

@@ -134,6 +134,7 @@ if has("mac")
 endif
 
 nmap <Leader>bd :call BufferDelete()<CR>
+nmap <Leader>bl :read ~/.vim/templates/template.license<CR>
 nmap <Leader>cc :call ColorColumn()<CR>
 nmap <Leader>cd :cd %:p:h<CR>:pwd<CR>
 nmap <Leader>ch :silent !chmod "%"<CR>
