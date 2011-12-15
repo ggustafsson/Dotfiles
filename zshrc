@@ -376,9 +376,9 @@ function fff {
 function gifit {
 	if [[ ! -z $1 ]]; then
 		local FILENAME=animated_$(date '+%Y-%m-%d_%H:%M').gif
-		convert -delay 20 -loop 0 $* $FILENAME
+		convert -delay 30 -loop 0 $* $FILENAME
 
-		[[ $OSTYPE == darwin* ]] && qlmanage -p $FILENAME > /dev/null
+		[[ $OSTYPE == darwin* ]] && open -a Safari $FILENAME
 	fi
 }
 
