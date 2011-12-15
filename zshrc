@@ -92,14 +92,14 @@ function git_branch {
 
 	if [[ -n $(git rev-list origin..HEAD 2> /dev/null) ]]; then
 		if [[ -n $(git status -s 2> /dev/null) ]]; then
-			echo "%{$fg[cyan]%}ahead %{$fg[red]%}$BRANCH%{$reset_color%}"
+			echo "%F{cyan}ahead %F{red}$BRANCH%f"
 		else
-			echo "%{$fg[cyan]%}ahead %{$fg[green]%}$BRANCH%{$reset_color%}"
+			echo "%F{cyan}ahead %F{green}$BRANCH%f"
 		fi
 	elif [[ -n $(git status -s 2> /dev/null) ]]; then
-		echo "%{$fg[red]%}$BRANCH%{$reset_color%}"
+		echo "%F{red}$BRANCH%f"
 	else
-		echo "%{$fg[green]%}$BRANCH%{$reset_color%}"
+		echo "%F{green}$BRANCH%f"
 	fi
 }
 
@@ -115,15 +115,15 @@ zle -N zle-line-init && zle -N zle-keymap-select
 
 function zsh_mode {
 	if [[ $KEYMAP == vicmd ]]; then
-		echo "%{$fg[red]%}E%{$reset_color%}"
+		echo "%F{red}E%f"
 	elif [[ $REPLACE == 1 ]]; then
-		echo "%{$fg[magenta]%}R%{$reset_color%}"
+		echo "%F{magenta}R%f"
 	else
-		echo "%{$fg[blue]%}$%{$reset_color%}"
+		echo "%F{blue}$%f"
 	fi
 }
 
-PROMPT='%B${(C)USER} %{$fg[yellow]%}${(C)HOST%%.*}%{$reset_color%}%b %~ %B$(zsh_mode)%b '
+PROMPT='%B${(C)USER} %F{yellow}${(C)HOST%%.*}%f%b %~ %B$(zsh_mode)%b '
 RPROMPT='%B$(git_branch)%b'
 
 if [[ $OSTYPE == darwin* ]]; then
