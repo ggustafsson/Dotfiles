@@ -1,12 +1,16 @@
 " Göran Gustafsson <gustafsson.g@gmail.com>
 
+let s:uname = system("uname")
+
 call pathogen#infect()
 call pathogen#helptags()
 
 filetype plugin indent on
 
 syntax enable
-colorscheme ninja
+if ( has("gui_running") || (&t_Co == 256) )
+	colorscheme ninja
+endif
 
 if has("mac")
 	set shell=/usr/local/bin/zsh
@@ -168,6 +172,12 @@ nmap <Leader>vi :edit ~/.vimrc<CR>
 nmap <Leader>vn :vnew<CR>
 nmap <Leader>wr :set wrap!<CR>
 nmap <Leader>zs :edit ~/.zshrc<CR>
+
+if s:uname == "OpenBSD"
+	nmap <Leader>do :edit ~/Documents/Text\ Files/<CR>
+	nmap <Leader>ed :edit
+	nmap <Leader>eh :edit ~/
+endif
 
 nmap <Backspace> :nohlsearch<CR>
 nmap <Tab>       :bnext<CR>
