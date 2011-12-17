@@ -79,7 +79,7 @@ zstyle ':completion:*'          special-dirs true
 zstyle ':completion:*:cd:*'     ignore-parents parent pwd
 zstyle ':completion:*:warnings' format "zsh: no matches found."
 
-compdef _man manp
+[[ $OSTYPE == darwin* ]] && compdef _man manp
 compdef _path_files cd
 
 precmd() {
