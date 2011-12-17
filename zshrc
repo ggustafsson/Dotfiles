@@ -104,9 +104,7 @@ function zsh_mode {
 
 RPROMPT='%B$(git_branch)%b'
 
-if ! $(type -p hub > /dev/null); then
-	alias git="hub"
-fi
+type hub > /dev/null && alias git="hub"
 
 alias bc="bc -q"
 alias c="clearcmd"
@@ -309,13 +307,9 @@ function ppermf {
 
 function t {
 	if [ ! -f $TODO_FILE ]; then
-		echo "TODO file does not exist."
-
-		return
+		echo "TODO file does not exist." && return
 	elif [ ! -s $TODO_FILE ]; then
-		echo "TODO file is currently empty."
-
-		return
+		echo "TODO file is currently empty." && return
 	fi
 
 	if [ -z $1 ]; then
