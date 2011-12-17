@@ -104,6 +104,10 @@ function zsh_mode {
 
 RPROMPT='%B$(git_branch)%b'
 
+if ! $(type -p hub > /dev/null); then
+	alias git="hub"
+fi
+
 alias bc="bc -q"
 alias c="clearcmd"
 alias df="df -h"
@@ -427,7 +431,7 @@ if [[ $OSTYPE == darwin* ]]; then
 		if [ ! -z $1 ]; then
 			qlmanage -p $* > /dev/null
 		else
-			qlmanage -h
+			qlmanage
 		fi
 	}
 
@@ -461,7 +465,6 @@ if [[ $OSTYPE == linux* ]]; then
 	fi
 
 	alias cal="cal -m"
-	alias git="hub"
 	alias ls="ls -h --color=auto"
 	alias vl="tail -n $LINES -f /var/log/everything.log"
 
@@ -539,10 +542,13 @@ if [[ $OSTYPE == openbsd* ]]; then
 	alias cal="cal -m"
 	alias grep="grep -i"
 	alias ls="ls -h"
+	alias mkdir="mkdir -p"
 	alias vl="tail -n $LINES -f /var/log/messages"
 
-	alias cp="cp"
-	alias mv="mv"
-	alias rm="rm"
+	alias next="mpc next"
+	alias prev="mpc prev"
+	alias toggle="mpc toggle"
+
+	unalias cp mv rm
 fi
 
