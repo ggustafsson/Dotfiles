@@ -21,7 +21,7 @@ HISTFILE=~/.zsh_histfile
 HISTSIZE=2000
 SAVEHIST=6000
 
-path+=(~/Scripts ~/.ruby/gems/*/bin)
+path+=(~/Scripts ~/.ruby/gems/*/bin(N))
 
 setopt correct
 setopt interactivecomments
@@ -59,6 +59,7 @@ zstyle ':completion:*:cd:*'     ignore-parents parent pwd
 zstyle ':completion:*:warnings' format "zsh: no matches found."
 
 compdef _path_files cd
+compdef _path_files git add
 
 precmd() {
 	echo
@@ -369,7 +370,7 @@ if [[ $OSTYPE == darwin* ]]; then
 
 	PROMPT='%B${(C)USER} %F{yellow}${(C)HOST%%.*}%f%b %~ %B$(zsh_mode)%b '
 
-	path=(/usr/local/bin /usr/local/sbin /bin /sbin /usr/bin /usr/sbin /usr/X11/bin ~/Scripts ~/.ruby/gems/*/bin)
+	path=(/usr/local/bin /usr/local/sbin /bin /sbin /usr/bin /usr/sbin /usr/X11/bin ~/Scripts ~/.ruby/gems/*/bin(N))
 
 	compdef _man manp
 
