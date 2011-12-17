@@ -273,7 +273,9 @@ function mkcd {
 }
 
 function p {
-	if [ ! -z $1 ]; then
+	if [[ $OSTYPE == openbsd* ]] && [ ! -z $1 ]; then
+		ps ax | grep -v "grep -i $*" | grep "$*"
+	elif [ ! -z $1 ]; then
 		ps ax | grep -v "grep --color -i $*" | grep "$*"
 	else
 		ps ax
@@ -534,8 +536,13 @@ fi
 if [[ $OSTYPE == openbsd* ]]; then
 	PROMPT='%B${(C)USER} %F{blue}${(C)HOST%%.*}%f%b %~ %B$(zsh_mode)%b '
 
-	alias ls="ls -h"
 	alias cal="cal -m"
+	alias grep="grep -i"
+	alias ls="ls -h"
 	alias vl="tail -n $LINES -f /var/log/messages"
+
+	alias cp="cp"
+	alias mv="mv"
+	alias rm="rm"
 fi
 
