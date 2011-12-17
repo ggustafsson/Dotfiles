@@ -1,6 +1,6 @@
 " Göran Gustafsson <gustafsson.g@gmail.com>
 
-let s:uname = system("uname")
+let s:uname = substitute(system('uname'), "\n", "", "")
 
 call pathogen#infect()
 call pathogen#helptags()
@@ -102,6 +102,7 @@ endif
 if has("mac")
 	let g:gist_clip_command = "pbcopy"
 elseif s:uname == "OpenBSD"
+	let g:LustyExplorerSuppressRubyWarning = 1
 	let g:LustyJugglerSuppressRubyWarning = 1
 else
 	let g:gist_clip_command = "xclip -selection primary"
@@ -182,7 +183,13 @@ if s:uname == "OpenBSD"
 	nmap <Leader>do :edit ~/Documents/Text\ Files/<CR>
 	nmap <Leader>ed :edit
 	nmap <Leader>eh :edit ~/
+
+	nmap § :buffers<CR>
+else
+	nmap § :LustyBufferExplorer<CR>
 endif
+
+nmap vil ^vg_
 
 nmap <Backspace> :nohlsearch<CR>
 nmap <Tab>       :bnext<CR>
@@ -191,9 +198,6 @@ nmap + <C-w>+
 nmap - <C-w>-
 nmap < <C-w>>
 nmap > <C-w><
-
-nmap §   :LustyBufferExplorer<CR>
-nmap vil ^vg_
 
 nmap <C-s> :!mpc current<CR>
 nmap <C-n> :silent !mpc next<CR>
