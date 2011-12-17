@@ -35,6 +35,9 @@ set directory=~/.vim/backups
 set undofile
 set undodir=~/.vim/undos
 
+set encoding=utf-8
+set fileencoding=utf-8
+
 set history=2000
 set undolevels=2000
 
