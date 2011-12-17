@@ -98,6 +98,8 @@ endif
 
 if has("mac")
 	let g:gist_clip_command = "pbcopy"
+elseif &s:uname == "OpenBSD"
+	let g:LustyJugglerSuppressRubyWarning = 1
 else
 	let g:gist_clip_command = "xclip -selection primary"
 endif
