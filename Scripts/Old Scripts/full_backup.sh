@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Göran Gustafsson <gustafsson.g@gmail.com>
 # Last modified: Thu 17 Feb 18:59:26 CET 2011

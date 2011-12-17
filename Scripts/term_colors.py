@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 # coding=utf-8
 
 print('\033[1;30m 1;30m = Gray like Ghost\033[0m')
