@@ -8,15 +8,19 @@ case $OSTYPE in
 	linux*) pacu ;;
 	freebsd*)
 		less /usr/ports/UPDATING
-		# ask + do something ;;
-	openbsd*) # do something ;;
+		echo "Do you want to update? [y/n]"
+		read update
+		if [[ $update == y ]] || [[ $update == yes ]]; then
+			# do something
+		else
+			echo "Skipping update."
+		fi
+	;;
+	openbsd*)
+		# do something
+	;;
 esac
 
-if ! $(type -p gem > /dev/null); then
-	gem update
-fi
-
-if ! $(type -p gem > /dev/null); then
-	cheat --new
-fi
+type gem >& /dev/null && gem update
+type cheat >& /dev/null && cheat --new
 

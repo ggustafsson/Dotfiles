@@ -104,13 +104,13 @@ function zsh_mode {
 
 RPROMPT='%B$(git_branch)%b'
 
-type hub > /dev/null && alias git="hub"
+type hub >& /dev/null && alias git="hub"
 
 alias bc="bc -q"
 alias c="clearcmd"
 alias df="df -h"
 alias dh="dirs -v"
-alias favs="mv -f ~/.mpd/playlists/Favorites.m3u ~/.mpd/tmp.playlist > /dev/null && sort ~/.mpd/tmp.playlist | uniq > ~/.mpd/playlists/Favorites.m3u"
+alias favs="mv -f ~/.mpd/playlists/Favorites.m3u ~/.mpd/tmp.playlist >& /dev/null && sort ~/.mpd/tmp.playlist | uniq > ~/.mpd/playlists/Favorites.m3u"
 alias fetch="wget --page-requisites --adjust-extension --convert-links"
 alias grep="grep --color=auto -i"
 alias hi="history"
@@ -188,7 +188,7 @@ alias vimp="vim -"
 alias vp="vimp"
 
 for x in {1..16}; do
-	alias +$x="cd +$x > /dev/null"
+	alias +$x="cd +$x >& /dev/null"
 done
 
 if [[ $TERM == rxvt-unicode ]]; then
@@ -396,8 +396,8 @@ if [[ $OSTYPE == darwin* ]]; then
 
 	alias cv="cvim"
 	alias cvim="/Applications/MacVim.app/Contents/MacOS/Vim"
-	alias vimdiff="/Applications/MacVim.app/Contents/MacOS/Vim -d -g $* > /dev/null"
-	alias vimp="/Applications/MacVim.app/Contents/MacOS/Vim - -g > /dev/null"
+	alias vimdiff="/Applications/MacVim.app/Contents/MacOS/Vim -d -g $* >& /dev/null"
+	alias vimp="/Applications/MacVim.app/Contents/MacOS/Vim - -g >& /dev/null"
 
 	alias dae="ls -lae"
 	alias de="ls -le"
@@ -424,7 +424,7 @@ if [[ $OSTYPE == darwin* ]]; then
 
 	function ql {
 		if [ ! -z $1 ]; then
-			qlmanage -p $* > /dev/null
+			qlmanage -p $* >& /dev/null
 		else
 			qlmanage
 		fi

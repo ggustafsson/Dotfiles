@@ -12,7 +12,7 @@ username = ''
 password = ''
 
 arguments = len(sys.argv)
-clipboardProgram = 'xclip -selection primary 2> /dev/null'
+clipboardProgram = 'xclip -selection primary >& /dev/null'
 counter = 0
 
 def status(block):

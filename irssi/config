@@ -15,17 +15,54 @@ servers = (
 );
 
 aliases = {
+  "MANUAL-WINDOWS" = "set use_status_window off;set autocreate_windows off;set autocreate_query_level none;set autoclose_windows off;set reuse_unused_windows on;save";
+  ATAG = "WINDOW SERVER";
   B = "ban";
+  BANS = "ban";
+  BEER = "say FREE BEER! https://github.com/ggustafsson/Free-Beer";
+  BYE = "quit";
   C = "clear";
+  CALC = "exec - if command -v bc >/dev/null 2>&1\\; then printf '%s=' '$*'\\; echo '$*' | bc -l\\; else echo bc was not found\\; fi";
+  CHAT = "dcc chat";
+  CL = "clear";
+  DATE = "time";
+  DESCRIBE = "action";
+  EXEMPTLIST = "mode $C +e";
+  EXIT = "quit";
+  GOTO = "sb goto";
+  HOST = "userhost";
+  IG = "ignore";
+  INVITELIST = "mode $C +I";
   J = "join";
   K = "kick";
   KB = "kickban";
+  KN = "knockout";
+  LAST = "lastlog";
+  LEAVE = "part";
+  M = "msg";
+  MUB = "unban *";
   N = "names";
   Q = "QUERY";
+  RESET = "set -default";
+  RUN = "SCRIPT LOAD";
+  SAY = "msg *";
+  SB = "scrollback";
+  SBAR = "STATUSBAR";
+  SIGNOFF = "quit";
+  SV = "say Irssi $J ($V) - http://irssi.org/";
   T = "topic";
   UB = "unban";
-  W = "whois";
+  UMODE = "mode $N";
+  UNIG = "unignore";
+  UNSET = "set -clear";
+  W = "who";
   WC = "window close";
+  WI = "whois";
+  WII = "whois $0 $0";
+  WJOIN = "join -window";
+  WN = "window new hide";
+  WQUERY = "query -window";
+  WW = "whowas";
 };
 
 statusbar = {
@@ -185,7 +222,7 @@ settings = {
 };
 
 logs = { };
-ignores = ( { level = "JOINS PARTS QUITS NICKS"; } );
+ignores = ( { level = "JOINS PARTS QUITS MODES NICKS"; } );
 hilights = (
   { text = "twiggy"; nick = "yes"; word = "yes"; },
   { text = "twigg"; nick = "yes"; word = "yes"; },
@@ -196,5 +233,6 @@ hilights = (
 channels = (
   { name = "#degiz"; chatnet = "Quakenet"; autojoin = "yes"; },
   { name = "#vim"; chatnet = "Freenode"; autojoin = "yes"; },
-  { name = "#zsh"; chatnet = "Freenode"; autojoin = "yes"; }
+  { name = "#zsh"; chatnet = "Freenode"; autojoin = "yes"; },
+  { name = "#irssi"; chatnet = "Freenode"; autojoin = "yes"; }
 );
