@@ -170,10 +170,6 @@ alias gpl="git pull"
 alias gpu="git push"
 alias gst="git status -s -b"
 
-alias int="tim.zsh -i"
-alias pomo="tim.zsh -p"
-alias ti="tim.zsh"
-
 alias next="mpc next | head -n 1"
 alias prev="mpc prev | head -n 1"
 alias song="mpc current"
