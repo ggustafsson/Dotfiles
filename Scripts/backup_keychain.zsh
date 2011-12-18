@@ -1,7 +1,8 @@
 #!/usr/bin/env zsh
 
-sparsebundle=/Volumes/Keychain/Backup.sparseimage
-backup_location=/Volumes/Backup
+device_name=Keychain
+encrypted_image=/Volumes/Keychain/Backup.sparseimage
+backup_destination=/Volumes/Backup
 
 directories=(
 	Development
@@ -18,12 +19,12 @@ directories=(
 	"Web Archives"
 )
 
-hdiutil attach -noverify $sparsebundle
+hdiutil attach -noverify $encrypted_image
 
 for directory in $directories; do
-	rsync -ah --progress --delete ~/$directory $backup_location
+	rsync -ah --progress --delete ~/$directory $backup_destination
 done
 
-hdiutil detach $backup_location
-diskutil eject Keychain
+hdiutil detach $backup_destination
+diskutil eject $device_name
 
