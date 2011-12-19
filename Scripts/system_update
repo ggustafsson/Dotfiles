@@ -2,6 +2,7 @@
 
 case $OSTYPE in
 	darwin*)
+		echo "Updating Homebrew."
 		brew update
 		brew upgrade
 	;;
@@ -11,16 +12,17 @@ case $OSTYPE in
 		echo "Do you want to update? [y/n]"
 		read update
 		if [[ $update == y ]] || [[ $update == yes ]]; then
+			echo "Updating FreeBSD."
 			# do something
 		else
-			echo "Skipping update."
+			echo "Skipping updating."
 		fi
 	;;
 	openbsd*)
+		echo "Updating OpenBSD."
 		# do something
 	;;
 esac
 
-type gem >& /dev/null && gem update
-type cheat >& /dev/null && cheat --new
+#type gem >& /dev/null && echo "Updating Ruby gems." && gem update
 
