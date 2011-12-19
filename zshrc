@@ -378,6 +378,7 @@ if [[ $OSTYPE == darwin* ]]; then
 	alias cdpb="cd ~/Pictures/Photo\ Booth\ Library/Pictures"
 	alias dontsleep="pmset noidle"
 	alias eject="osascript -e 'tell application \"Finder\" to eject (every disk whose ejectable is true)' && echo 'All external drives ejected!'"
+	alias o="open"
 
 	alias awk="gawk"
 	alias cal="gcal -s 1"
@@ -399,11 +400,16 @@ if [[ $OSTYPE == darwin* ]]; then
 	alias de="ls -le"
 	alias ls="ls -Gh"
 
-	alias f="open -a Finder"
-	alias o="open"
-
 	alias startmpd="echo 'Starting MPD daemon.' && mpd"
 	alias stopmpd="echo 'Stopping MPD daemon.' && mpc -q stop && mpd --kill"
+
+	function f {
+		if [ ! -z $1 ]; then
+			open -a Finder $*
+		else
+			open .
+		fi
+	}
 
 	function frees {
 		rm -rf ~/Library/Caches/Homebrew
