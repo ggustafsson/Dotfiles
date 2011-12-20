@@ -5,8 +5,8 @@
 FILE=~/.irssi/beep.wav
 
 if [[ $OSTYPE == darwin* ]]; then
-	afplay $FILE
+  afplay $FILE
 else
-	aplay $FILE
+  aplay $FILE
 fi
 

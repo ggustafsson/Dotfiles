@@ -1,27 +1,27 @@
 #!/usr/bin/env zsh
 
 case $OSTYPE in
-	darwin*)
-		echo "Updating Homebrew."
-		brew update
-		brew upgrade
-	;;
-	linux*) pacu ;;
-	freebsd*)
-		less /usr/ports/UPDATING
-		echo "Do you want to update? [y/n]"
-		read update
-		if [[ $update == y ]] || [[ $update == yes ]]; then
-			echo "Updating FreeBSD."
-			# do something
-		else
-			echo "Skipping updating."
-		fi
-	;;
-	openbsd*)
-		echo "Updating OpenBSD."
-		# do something
-	;;
+  darwin*)
+    echo "Updating Homebrew."
+    brew update
+    brew upgrade
+  ;;
+  linux*) pacu ;;
+  freebsd*)
+    less /usr/ports/UPDATING
+    echo "Do you want to update? [y/n]"
+    read update
+    if [[ $update == y ]] || [[ $update == yes ]]; then
+      echo "Updating FreeBSD."
+      # do something
+    else
+      echo "Skipping updating."
+    fi
+  ;;
+  openbsd*)
+    echo "Updating OpenBSD."
+    # do something
+  ;;
 esac
 
 #type gem >& /dev/null && echo "Updating Ruby gems." && gem update

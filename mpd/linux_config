@@ -10,8 +10,8 @@ user            "twiggy"
 bind_to_address "127.0.0.1"
 
 audio_output {
-	type          "alsa"
-	name          "Audio Device"
-	mixer_control "Master"
+  type          "alsa"
+  name          "Audio Device"
+  mixer_control "Master"
 }
 

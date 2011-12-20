@@ -10,7 +10,7 @@ user            "Twiggy"
 bind_to_address "127.0.0.1"
 
 audio_output {
-	type "osx"
-	name "Audio Device"
+  type "osx"
+  name "Audio Device"
 }
 

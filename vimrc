@@ -9,22 +9,24 @@ filetype plugin indent on
 
 syntax enable
 if ( has("gui_running") || (&t_Co == 256) )
-	colorscheme ninja
+  colorscheme ninja
 endif
 
 if has("mac")
-	set shell=/usr/local/bin/zsh
+  set shell=/usr/local/bin/zsh
 endif
 
 set confirm
+set formatoptions+=n
 set gdefault
 set hidden
 set nofoldenable
+set nostartofline
 set nowrap
 set showbreak=+
 set spelllang=en,sv
 set timeoutlen=2000
-set virtualedit=block,onemore
+set virtualedit=block
 
 set autoindent
 set smartindent
@@ -37,6 +39,11 @@ set undodir=~/.vim/undos
 
 set encoding=utf-8
 set fileencoding=utf-8
+
+set expandtab
+set shiftwidth=2
+set softtabstop=2
+set tabstop=4
 
 set history=2000
 set undolevels=2000
@@ -61,9 +68,6 @@ set statusline+=%(%l/%L\ %)
 set list
 set listchars=tab:>-,trail:·,precedes:<,extends:>
 
-set shiftwidth=4
-set tabstop=4
-
 set splitbelow
 set splitright
 
@@ -78,34 +82,34 @@ set wildignore+=*.avi,*.flv,*.f4v,*.mkv,*.mov,*.mpg,*.mpeg,*.mp4,*.m4v,*.wmv
 set wildignore+=*.dmg,*.iso,*.rar,*.tar,*.tar.bz2,*.tar.gz,*.zip
 
 if has("gui_running")
-	set guioptions=cgt
-	set noantialias
+  set guioptions=cgt
+  set noantialias
 
-	if has("mac")
-		set guicursor+=a:blinkon0
-		set guifont=Monaco:h12
+  if has("mac")
+    set guicursor+=a:blinkon0
+    set guifont=Monaco:h12
 
-		if !exists("g:dont_resize_again")
-			set columns=172
-			set lines=45
+    if !exists("g:dont_resize_again")
+      set columns=172
+      set lines=45
 
-			let g:dont_resize_again = 1
-		endif
-	else
-		set guifont=Dina:h15
-	endif
+      let g:dont_resize_again = 1
+    endif
+  else
+    set guifont=Dina:h15
+  endif
 else
-	set mouse=v
-	set title
+  set mouse=v
+  set title
 endif
 
 if has("mac")
-	let g:gist_clip_command = "pbcopy"
+  let g:gist_clip_command = "pbcopy"
 elseif s:uname == "OpenBSD"
-	let g:LustyExplorerSuppressRubyWarning = 1
-	let g:LustyJugglerSuppressRubyWarning = 1
+  let g:LustyExplorerSuppressRubyWarning = 1
+  let g:LustyJugglerSuppressRubyWarning = 1
 else
-	let g:gist_clip_command = "xclip -selection primary"
+  let g:gist_clip_command = "xclip -selection primary"
 endif
 
 let g:gist_open_browser_after_post = 1
@@ -123,6 +127,7 @@ let g:NERDMenuMode = 0
 let g:NERDSpaceDelims = 1
 
 let g:NERDTreeAutoCenter = 0
+let g:NERDTreeDirArrows = 0
 let g:NERDTreeMinimalUI = 1
 
 cabbrev ht   tab help
@@ -135,12 +140,12 @@ cabbrev Wq wq
 cabbrev wQ wq
 
 if has("mac")
-	if has("gui_running")
-		nmap <Leader>fa :call FancyView()<CR>
-	endif
+  if has("gui_running")
+    nmap <Leader>fa :call FancyView()<CR>
+  endif
 
-	nmap <Leader>fi :silent !open "%:p:h"<CR>
-	nmap <Leader>op :silent !open "%"<CR>
+  nmap <Leader>fi :silent !open "%:p:h"<CR>
+  nmap <Leader>op :silent !open "%"<CR>
 endif
 
 nmap <Leader>bd :call BufferDelete()<CR>
@@ -150,8 +155,6 @@ nmap <Leader>cd :cd %:p:h<CR>:pwd<CR>
 nmap <Leader>ch :silent !chmod "%"<CR>
 nmap <Leader>di :diffthis<CR>
 nmap <Leader>do :LustyFilesystemExplorer ~/Documents/Text\ Files/<CR>
-nmap <Leader>e2 :setlocal expandtab shiftwidth=2 tabstop=2<CR>
-nmap <Leader>e4 :setlocal expandtab shiftwidth=4 tabstop=4<CR>
 nmap <Leader>ed :LustyFilesystemExplorerFromHere<CR>
 nmap <Leader>eh :LustyFilesystemExplorer ~<CR>
 nmap <Leader>ft :set filetype=
@@ -171,6 +174,8 @@ nmap <Leader>sh :shell<CR>
 nmap <Leader>sn :new<CR>
 nmap <Leader>sp :setlocal spell!<CR>
 nmap <Leader>su ^vg_<Plug>VSurround
+nmap <Leader>t4 :set tabstop=4<CR>
+nmap <Leader>t8 :set tabstop=8<CR>
 nmap <Leader>to :split ~/Documents/Text\ Files/Things\ to\ Do.txt<CR>
 nmap <Leader>tr :NERDTreeToggle<CR>
 nmap <Leader>un :edit!<CR>
@@ -180,13 +185,13 @@ nmap <Leader>wr :set wrap!<CR>
 nmap <Leader>zs :edit ~/.zshrc<CR>
 
 if s:uname == "OpenBSD"
-	nmap <Leader>do :edit ~/Documents/Text\ Files/<CR>
-	nmap <Leader>ed :edit
-	nmap <Leader>eh :edit ~/
+  nmap <Leader>do :edit ~/Documents/Text\ Files/<CR>
+  nmap <Leader>ed :edit
+  nmap <Leader>eh :edit ~/
 
-	nmap § :buffers<CR>
+  nmap § :buffers<CR>
 else
-	nmap § :LustyBufferExplorer<CR>
+  nmap § :LustyBufferExplorer<CR>
 endif
 
 nmap vil ^vg_
@@ -218,92 +223,92 @@ vmap <Leader>vn y:vnew<CR>P
 imap <C-Tab> <C-n>
 
 if has("mac")
-	if has("gui_running")
-		function! FancyView()
-			set antialias
-			set guifont=Inconsolata:h28
-		endfunction
-	endif
+  if has("gui_running")
+    function! FancyView()
+      set antialias
+      set guifont=Inconsolata:h28
+    endfunction
+  endif
 endif
 
 function! BufferDelete()
-	if &modified
-		echohl ErrorMsg
-		echomsg "No write since last change. Not closing buffer."
-		echohl NONE
-	else
-		let s:total_nr_buffers = len(filter(range(1, bufnr('$')), 'buflisted(v:val)'))
+  if &modified
+    echohl ErrorMsg
+    echomsg "No write since last change. Not closing buffer."
+    echohl NONE
+  else
+    let s:total_nr_buffers = len(filter(range(1, bufnr('$')), 'buflisted(v:val)'))
 
-		if s:total_nr_buffers == 1
-			bdelete
-			echo "Buffer deleted. Created new buffer."
-		else
-			bprevious
-			bdelete #
-			echo "Buffer deleted."
-		endif
-	endif
+    if s:total_nr_buffers == 1
+      bdelete
+      echo "Buffer deleted. Created new buffer."
+    else
+      bprevious
+      bdelete #
+      echo "Buffer deleted."
+    endif
+  endif
 endfunction
 
 function! ColorColumn()
-	if empty(&colorcolumn)
-		setlocal colorcolumn=80
-	else
-		setlocal colorcolumn=
-	endif
+  if empty(&colorcolumn)
+    setlocal colorcolumn=80
+  else
+    setlocal colorcolumn=
+  endif
 endfunction
 
 function! StatuslineBufferNr()
-	if &number == 1
-		let b:bnumber = strlen(bufnr("%"))
-		let b:blines = strlen(line("$"))
-		let b:spaces = max([&numberwidth - b:bnumber, b:blines - b:bnumber + 1])
+  if &number == 1
+    let b:bnumber = strlen(bufnr("%"))
+    let b:blines = strlen(line("$"))
+    let b:spaces = max([&numberwidth - b:bnumber, b:blines - b:bnumber + 1])
 
-		let b:statusline = repeat(" ", b:spaces) . bufnr("%")
+    let b:statusline = repeat(" ", b:spaces) . bufnr("%")
 
-		return b:statusline
-	else
-		let b:statusline = "  " . bufnr("%")
+    return b:statusline
+  else
+    let b:statusline = "  " . bufnr("%")
 
-		return b:statusline
-	endif
+    return b:statusline
+  endif
 endfunction
 
 function! StatuslineCheckPath()
-	let b:checkpath = ""
+  let b:checkpath = ""
 
-	if expand("%:p:h") != getcwd()
-		let b:checkpath = "[!= PWD]"
-	endif
+  if expand("%:p:h") != getcwd()
+    let b:checkpath = "[!= PWD]"
+  endif
 
-	return b:checkpath
+  return b:checkpath
 endfunction
 
 function! <SID>SyntaxGroup()
-	if !exists("*synstack")
-		return
-	endif
+  if !exists("*synstack")
+    return
+  endif
 
-	echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
 endfunction
 
 augroup Main
-	autocmd!
+  autocmd!
 
-	autocmd BufNewFile,BufRead *.php                     setlocal filetype=html
-	autocmd BufNewFile,BufRead *.txt,README,INSTALL,TODO setlocal filetype=text
-	autocmd BufNewFile,BufRead config                    setlocal filetype=conf
+  autocmd BufNewFile,BufRead *.php                     setlocal filetype=html
+  autocmd BufNewFile,BufRead *.txt,README,INSTALL,TODO setlocal filetype=text
+  autocmd BufNewFile,BufRead config                    setlocal filetype=conf
 
-	autocmd BufNewFile *.css  execute "0read ~/.vim/templates/template.css  | 18"
-	autocmd BufNewFile *.html execute "0read ~/.vim/templates/template.html | 33"
-	autocmd BufNewFile *.php  execute "0read ~/.vim/templates/template.php  | 34"
-	autocmd BufNewFile *.py   execute "0read ~/.vim/templates/template.py   | 6"
-	autocmd BufNewFile *.sh   execute "0read ~/.vim/templates/template.sh   | 5"
+  autocmd BufNewFile *.css  execute "0read ~/.vim/templates/template.css  | 18"
+  autocmd BufNewFile *.html execute "0read ~/.vim/templates/template.html | 33"
+  autocmd BufNewFile *.php  execute "0read ~/.vim/templates/template.php  | 34"
+  autocmd BufNewFile *.py   execute "0read ~/.vim/templates/template.py   | 6"
+  autocmd BufNewFile *.sh   execute "0read ~/.vim/templates/template.sh   | 5"
 
-	autocmd FileType gitcommit     setlocal spell
-	autocmd Filetype help          setlocal nospell colorcolumn=
-	autocmd Filetype markdown,text setlocal colorcolumn=+1 spell textwidth=79
+  autocmd FileType gitcommit     setlocal spell
+  autocmd Filetype help          setlocal nospell colorcolumn=
+  autocmd Filetype markdown,text setlocal colorcolumn=+1 spell textwidth=79
 
-	autocmd BufWritePost ~/.vimrc source %
+  autocmd BufWritePost ~/.vimrc source %
 augroup END
 

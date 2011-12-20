@@ -53,6 +53,7 @@ bindkey -v
 bindkey '^?' backward-delete-char
 bindkey -M vicmd 'R' custom-vi-replace
 
+zstyle ':completion:*'          insert-tab pending
 zstyle ':completion:*'          matcher-list 'm:{a-z}={A-Z}'
 zstyle ':completion:*'          special-dirs true
 zstyle ':completion:*:cd:*'     ignore-parents parent pwd
@@ -62,44 +63,44 @@ compdef _path_files cd
 compdef _path_files git add
 
 precmd() {
-	echo
+  echo
 }
 
 function git_branch {
-	ref=$(git symbolic-ref HEAD 2> /dev/null) || return
-	BRANCH=${ref#refs/heads/}
+  ref=$(git symbolic-ref HEAD 2> /dev/null) || return
+  BRANCH=${ref#refs/heads/}
 
-	if [[ -n $(git rev-list origin..HEAD 2> /dev/null) ]]; then
-		if [[ -n $(git status -s 2> /dev/null) ]]; then
-			echo "%F{cyan}ahead %F{red}$BRANCH%f"
-		else
-			echo "%F{cyan}ahead %F{green}$BRANCH%f"
-		fi
-	elif [[ -n $(git status -s 2> /dev/null) ]]; then
-		echo "%F{red}$BRANCH%f"
-	else
-		echo "%F{green}$BRANCH%f"
-	fi
+  if [[ -n $(git rev-list origin..HEAD 2> /dev/null) ]]; then
+    if [[ -n $(git status -s 2> /dev/null) ]]; then
+      echo "%F{cyan}ahead %F{red}$BRANCH%f"
+    else
+      echo "%F{cyan}ahead %F{green}$BRANCH%f"
+    fi
+  elif [[ -n $(git status -s 2> /dev/null) ]]; then
+    echo "%F{red}$BRANCH%f"
+  else
+    echo "%F{green}$BRANCH%f"
+  fi
 }
 
 function custom-vi-replace {
-	REPLACE=1 && zle vi-replace && REPLACE=0
+  REPLACE=1 && zle vi-replace && REPLACE=0
 }
 zle -N custom-vi-replace
 
 function zle-line-init zle-keymap-select {
-	zle reset-prompt
+  zle reset-prompt
 }
 zle -N zle-line-init && zle -N zle-keymap-select
 
 function zsh_mode {
-	if [[ $KEYMAP == vicmd ]]; then
-		echo "%F{red}E%f"
-	elif [[ $REPLACE == 1 ]]; then
-		echo "%F{magenta}R%f"
-	else
-		echo "%F{blue}$%f"
-	fi
+  if [[ $KEYMAP == vicmd ]]; then
+    echo "%F{red}E%f"
+  elif [[ $REPLACE == 1 ]]; then
+    echo "%F{magenta}R%f"
+  else
+    echo "%F{blue}$%f"
+  fi
 }
 
 RPROMPT='%B$(git_branch)%b'
@@ -184,172 +185,172 @@ alias vimp="vim -"
 alias vp="vimp"
 
 for x in {1..16}; do
-	alias +$x="cd +$x >& /dev/null"
+  alias +$x="cd +$x >& /dev/null"
 done
 
 if [[ $TERM == rxvt-unicode ]]; then
-	function clearcmd {
-		for x in {1..$LINES}; do
-			echo
-		done
+  function clearcmd {
+    for x in {1..$LINES}; do
+      echo
+    done
 
-		clear
-	}
+    clear
+  }
 else
-	alias clearcmd="clear"
+  alias clearcmd="clear"
 fi
 
 function chkm {
-	find "$FLACDIR" -type f ! -iname "*.flac" ! -iname "*.log"
-	find "$MP3DIR" -type f ! -iname "*.mp3"
+  find "$FLACDIR" -type f ! -iname "*.flac" ! -iname "*.log"
+  find "$MP3DIR" -type f ! -iname "*.mp3"
 }
 
 function chkp {
-	local CURRENT_DIR=$PWD
-	local CLEAN_BRANCH
+  local CURRENT_DIR=$PWD
+  local CLEAN_BRANCH
 
-	for dir in ~/Projects/*; do
-		cd $dir
+  for dir in ~/Projects/*; do
+    cd $dir
 
-		if [[ -n $(git rev-list origin..HEAD 2> /dev/null) ]]; then
-			echo "\033[1;36m$dir:t:\033[0m"
-			git status -s -b
-			echo
-		elif [[ -n $(git status -s 2> /dev/null) ]]; then
-			echo "\033[1;31m$dir:t:\033[0m"
-			git status -s -b
-			echo
-		else
-			CLEAN_BRANCH="$CLEAN_BRANCH * $dir:t\n"
-		fi
-	done
+    if [[ -n $(git rev-list origin..HEAD 2> /dev/null) ]]; then
+      echo "\033[1;36m$dir:t:\033[0m"
+      git status -s -b
+      echo
+    elif [[ -n $(git status -s 2> /dev/null) ]]; then
+      echo "\033[1;31m$dir:t:\033[0m"
+      git status -s -b
+      echo
+    else
+      CLEAN_BRANCH="$CLEAN_BRANCH * $dir:t\n"
+    fi
+  done
 
-	echo -n "\033[1;32mClean branches:\033[0m\n$CLEAN_BRANCH"
+  echo -n "\033[1;32mClean branches:\033[0m\n$CLEAN_BRANCH"
 
-	cd $CURRENT_DIR
+  cd $CURRENT_DIR
 }
 
 function ff {
-	if [ ! -z $1 ]; then
-		find . -iname $* | sed 's/.\///'
-	else
-		echo "Usage: $0 [PATTERN]..."
-	fi
+  if [ ! -z $1 ]; then
+    find . -iname $* | sed 's/.\///'
+  else
+    echo "Usage: $0 [PATTERN]..."
+  fi
 }
 
 function fff {
-	if [ ! -z $1 ]; then
-		find "$PWD" -iname $*
-	else
-		echo "Usage: $0 [PATTERN]..."
-	fi
+  if [ ! -z $1 ]; then
+    find "$PWD" -iname $*
+  else
+    echo "Usage: $0 [PATTERN]..."
+  fi
 }
 
 function gifit {
-	if [[ ! -z $1 ]]; then
-		local FILENAME=animated_$(date '+%Y-%m-%d_%H:%M').gif
-		convert -delay 30 -loop 0 $* $FILENAME
+  if [[ ! -z $1 ]]; then
+    local FILENAME=animated_$(date '+%Y-%m-%d_%H:%M').gif
+    convert -delay 30 -loop 0 $* $FILENAME
 
-		[[ $OSTYPE == darwin* ]] && open -a Safari $FILENAME
-	fi
+    [[ $OSTYPE == darwin* ]] && open -a Safari $FILENAME
+  fi
 }
 
 function h {
-	if [ ! -z $1 ]; then
-		history -i 1 | grep "$*"
-	else
-		history -i 1 | less +G
-	fi
+  if [ ! -z $1 ]; then
+    history -i 1 | grep "$*"
+  else
+    history -i 1 | less +G
+  fi
 }
 
 function mkcd {
-	if [ ! -z $1 ]; then
-		mkdir -p "$*"
-		cd "$*"
-	else
-		echo "Usage: $0 [NAME]..."
-	fi
+  if [ ! -z $1 ]; then
+    mkdir -p "$*"
+    cd "$*"
+  else
+    echo "Usage: $0 [NAME]..."
+  fi
 }
 
 function p {
-	if [[ $OSTYPE == openbsd* ]] && [ ! -z $1 ]; then
-		ps ax | grep -v "grep -i $*" | grep "$*"
-	elif [ ! -z $1 ]; then
-		ps ax | grep -v "grep --color -i $*" | grep "$*"
-	else
-		ps ax
-	fi
+  if [[ $OSTYPE == openbsd* ]] && [ ! -z $1 ]; then
+    ps ax | grep -v "grep -i $*" | grep "$*"
+  elif [ ! -z $1 ]; then
+    ps ax | grep -v "grep --color -i $*" | grep "$*"
+  else
+    ps ax
+  fi
 }
 
 function permf {
-	if [[ $OSTYPE == darwin* ]]; then
-		find . -type d -exec chmod -N 755 "{}" \;
-		find . -type f -exec chmod -N 644 "{}" \;
-	else
-		find . -type d -exec chmod 755 "{}" \;
-		find . -type f -exec chmod 644 "{}" \;
-	fi
+  if [[ $OSTYPE == darwin* ]]; then
+    find . -type d -exec chmod -N 755 "{}" \;
+    find . -type f -exec chmod -N 644 "{}" \;
+  else
+    find . -type d -exec chmod 755 "{}" \;
+    find . -type f -exec chmod 644 "{}" \;
+  fi
 }
 
 function ppermf {
-	if [[ $OSTYPE == darwin* ]]; then
-		find . -type d -exec chmod -N 700 "{}" \;
-		find . -type f -exec chmod -N 600 "{}" \;
-	else
-		find . -type d -exec chmod 700 "{}" \;
-		find . -type f -exec chmod 600 "{}" \;
-	fi
+  if [[ $OSTYPE == darwin* ]]; then
+    find . -type d -exec chmod -N 700 "{}" \;
+    find . -type f -exec chmod -N 600 "{}" \;
+  else
+    find . -type d -exec chmod 700 "{}" \;
+    find . -type f -exec chmod 600 "{}" \;
+  fi
 }
 
 function t {
-	if [ ! -f $TODO_FILE ]; then
-		echo "TODO file does not exist." && return
-	elif [ ! -s $TODO_FILE ]; then
-		echo "TODO file is currently empty." && return
-	fi
+  if [ ! -f $TODO_FILE ]; then
+    echo "TODO file does not exist." && return
+  elif [ ! -s $TODO_FILE ]; then
+    echo "TODO file is currently empty." && return
+  fi
 
-	if [ -z $1 ]; then
-		cat $TODO_FILE
-	else
-		echo "$*" >> $TODO_FILE
-	fi
+  if [ -z $1 ]; then
+    cat $TODO_FILE
+  else
+    echo "$*" >> $TODO_FILE
+  fi
 }
 
 function unp {
-	[ -z $1 ] && echo "Usage: $0 [FILENAME]..." && return
+  [ -z $1 ] && echo "Usage: $0 [FILENAME]..." && return
 
-	for arg in $*; do
-		if [ -f $arg ]; then
-			case $arg in
-				*.gz)
-					if [[ $arg == *.tar.gz ]]; then
-						tar zxvf $arg
-					else
-						gunzip $arg
-					fi
-				;;
-				*.bz2)
-					if [[ $arg == *.tar.bz2 ]]; then
-						tar xvjf $arg
-					else
-						bunzip2 $arg
-					fi
-				;;
-				*.tar)  tar xvf    $arg ;;
-				*.tgz)  tar zxvf   $arg ;;
-				*.tbz2) tar xvjf   $arg ;;
-				*.zip)  unzip      $arg ;;
-				*.rar)  unrar x    $arg ;;
-				*.Z)    uncompress $arg ;;
-				*.7z)   7z x       $arg ;;
-				*)
-					echo "File $arg cannot be extracted via $0."
-				;;
-			esac
-		else
-			echo "File $arg does not exist."
-		fi
-	done
+  for arg in $*; do
+    if [ -f $arg ]; then
+      case $arg in
+        *.gz)
+          if [[ $arg == *.tar.gz ]]; then
+            tar zxvf $arg
+          else
+            gunzip $arg
+          fi
+        ;;
+        *.bz2)
+          if [[ $arg == *.tar.bz2 ]]; then
+            tar xvjf $arg
+          else
+            bunzip2 $arg
+          fi
+        ;;
+        *.tar)  tar xvf    $arg ;;
+        *.tgz)  tar zxvf   $arg ;;
+        *.tbz2) tar xvjf   $arg ;;
+        *.zip)  unzip      $arg ;;
+        *.rar)  unrar x    $arg ;;
+        *.Z)    uncompress $arg ;;
+        *.7z)   7z x       $arg ;;
+        *)
+          echo "File $arg cannot be extracted via $0."
+        ;;
+      esac
+    else
+      echo "File $arg does not exist."
+    fi
+  done
 }
 
 
@@ -358,87 +359,87 @@ function unp {
 ###############################################################################
 
 if [[ $OSTYPE == darwin* ]]; then
-	export EDITOR="/Applications/MacVim.app/Contents/MacOS/Vim -g --remote-tab-silent"
-	export GIT_EDITOR="/Applications/MacVim.app/Contents/MacOS/Vim"
-	export VISUAL=$EDITOR
+  export EDITOR="/Applications/MacVim.app/Contents/MacOS/Vim -g --remote-tab-silent"
+  export GIT_EDITOR="/Applications/MacVim.app/Contents/MacOS/Vim"
+  export VISUAL=$EDITOR
 
-	FLACDIR=/Volumes/Black\ Disk/Music/FLAC
-	MP3DIR=/Volumes/Black\ Disk/Music/MP3
+  FLACDIR=/Volumes/Black\ Disk/Music/FLAC
+  MP3DIR=/Volumes/Black\ Disk/Music/MP3
 
-	PROMPT='%B${(C)USER} %F{yellow}${(C)HOST%%.*}%f%b %~ %B$(zsh_mode)%b '
+  PROMPT='%B${(C)USER} %F{yellow}${(C)HOST%%.*}%f%b %~ %B$(zsh_mode)%b '
 
-	path=(/usr/local/bin /usr/local/sbin /bin /sbin /usr/bin /usr/sbin /usr/X11/bin ~/Scripts ~/.ruby/gems/*/bin(N))
+  path=(/usr/local/bin /usr/local/sbin /bin /sbin /usr/bin /usr/sbin /usr/X11/bin ~/Scripts ~/.ruby/gems/*/bin(N))
 
-	compdef _man manp
+  compdef _man manp
 
-	print -Pn "\e]0;Zsh\a"
+  print -Pn "\e]0;Zsh\a"
 
-	alias capit="imagesnap -t 2 -w 1"
-	alias cdb="cd /Volumes/Black\ Disk"
-	alias cdpb="cd ~/Pictures/Photo\ Booth\ Library/Pictures"
-	alias dontsleep="pmset noidle"
-	alias eject="osascript -e 'tell application \"Finder\" to eject (every disk whose ejectable is true)' && echo 'All external drives ejected!'"
-	alias o="open"
+  alias capit="imagesnap -t 2 -w 1"
+  alias cdb="cd /Volumes/Black\ Disk"
+  alias cdpb="cd ~/Pictures/Photo\ Booth\ Library/Pictures"
+  alias dontsleep="pmset noidle"
+  alias eject="osascript -e 'tell application \"Finder\" to eject (every disk whose ejectable is true)' && echo 'All external drives ejected!'"
+  alias o="open"
 
-	alias awk="gawk"
-	alias cal="gcal -s 1"
-	alias head="ghead"
-	alias sed="gsed"
-	alias sort="gsort"
-	alias tail="gtail"
-	alias wc="gwc"
+  alias awk="gawk"
+  alias cal="gcal -s 1"
+  alias head="ghead"
+  alias sed="gsed"
+  alias sort="gsort"
+  alias tail="gtail"
+  alias wc="gwc"
 
-	alias console="open -a Console"
-	alias safari="open -a Safari"
+  alias console="open -a Console"
+  alias safari="open -a Safari"
 
-	alias cv="cvim"
-	alias cvim="/Applications/MacVim.app/Contents/MacOS/Vim"
-	alias vimdiff="/Applications/MacVim.app/Contents/MacOS/Vim -d -g $* >& /dev/null"
-	alias vimp="/Applications/MacVim.app/Contents/MacOS/Vim - -g >& /dev/null"
+  alias cv="cvim"
+  alias cvim="/Applications/MacVim.app/Contents/MacOS/Vim"
+  alias vimdiff="/Applications/MacVim.app/Contents/MacOS/Vim -d -g $* >& /dev/null"
+  alias vimp="/Applications/MacVim.app/Contents/MacOS/Vim - -g >& /dev/null"
 
-	alias dae="ls -lae"
-	alias de="ls -le"
-	alias ls="ls -Gh"
+  alias dae="ls -lae"
+  alias de="ls -le"
+  alias ls="ls -Gh"
 
-	alias startmpd="echo 'Starting MPD daemon.' && mpd"
-	alias stopmpd="echo 'Stopping MPD daemon.' && mpc -q stop && mpd --kill"
+  alias startmpd="echo 'Starting MPD daemon.' && mpd"
+  alias stopmpd="echo 'Stopping MPD daemon.' && mpc -q stop && mpd --kill"
 
-	function f {
-		if [ ! -z $1 ]; then
-			open -a Finder $*
-		else
-			open .
-		fi
-	}
+  function f {
+    if [ ! -z $1 ]; then
+      open -a Finder $*
+    else
+      open .
+    fi
+  }
 
-	function frees {
-		rm -rf ~/Library/Caches/Homebrew
-		rm -rf ~/Library/Caches/com.apple.Safari/Webpage\ Previews
-		rm -rf ~/Library/Mail Downloads
-		rm -rf ~/Library/iTunes/iPhone\ Software\ Updates
-	}
+  function frees {
+    mv ~/Library/Caches/Homebrew ~/.Trash
+    mv ~/Library/Caches/com.apple.Safari/Webpage\ Previews ~/.Trash
+    mv ~/Library/Mail\ Downloads ~/.Trash
+    mv ~/Library/iTunes/iPhone\ Software\ Updates ~/.Trash
+  }
 
-	function manp {
-		for arg in $*; do
-			man -t $arg | open -f -a Preview
-		done
-	}
+  function manp {
+    for arg in $*; do
+      man -t $arg | open -f -a Preview
+    done
+  }
 
-	function ql {
-		if [ ! -z $1 ]; then
-			qlmanage -p $* >& /dev/null
-		else
-			qlmanage
-		fi
-	}
+  function ql {
+    if [ ! -z $1 ]; then
+      qlmanage -p $* >& /dev/null
+    else
+      qlmanage
+    fi
+  }
 
-	function vim {
-		if [ -z $1 ]; then
-			/Applications/MacVim.app/Contents/MacOS/Vim -g
-		else
-			/Applications/MacVim.app/Contents/MacOS/Vim -g --remote-tab-silent $*
-		fi
-	}
+  function vim {
+    if [ -z $1 ]; then
+      /Applications/MacVim.app/Contents/MacOS/Vim -g
+    else
+      /Applications/MacVim.app/Contents/MacOS/Vim -g --remote-tab-silent $*
+    fi
+  }
 fi
 
 
@@ -447,57 +448,57 @@ fi
 ###############################################################################
 
 if [[ $OSTYPE == linux* ]]; then
-	export LS_COLORS="ln=01;34"
-	export LS_COLORS="$LS_COLORS:*.bmp=01;33:*.gif=01;33:*.ico=01;33:*.jpg=01;33:*.jpeg=01;33:*.png=01;33:*.svg=01;33:*.tiff=01;33"
-	export LS_COLORS="$LS_COLORS:*.flac=01;35:*.nsf=01;35:*.nsfe=01;35:*.m4r=01;35:*.mp3=01;35:*.ogg=01;35:*.wav=01;35"
-	export LS_COLORS="$LS_COLORS:*.avi=01;36:*.flv=01;36:*.f4v=01;36:*.mkv=01;36:*.mov=01;36:*.mpg=01;36:*.mpeg=01;36:*.mp4=01;36:*.m4v=01;36:*.wmv=01;36"
-	export LS_COLORS="$LS_COLORS:*.dmg=01;31:*.iso=01;31:*.rar=01;31:*.tar=01;31:*.tar.bz2=01;31:*.tar.gz=01;31:*.zip=01;31"
+  export LS_COLORS="ln=01;34"
+  export LS_COLORS="$LS_COLORS:*.bmp=01;33:*.gif=01;33:*.ico=01;33:*.jpg=01;33:*.jpeg=01;33:*.png=01;33:*.svg=01;33:*.tiff=01;33"
+  export LS_COLORS="$LS_COLORS:*.flac=01;35:*.nsf=01;35:*.nsfe=01;35:*.m4r=01;35:*.mp3=01;35:*.ogg=01;35:*.wav=01;35"
+  export LS_COLORS="$LS_COLORS:*.avi=01;36:*.flv=01;36:*.f4v=01;36:*.mkv=01;36:*.mov=01;36:*.mpg=01;36:*.mpeg=01;36:*.mp4=01;36:*.m4v=01;36:*.wmv=01;36"
+  export LS_COLORS="$LS_COLORS:*.dmg=01;31:*.iso=01;31:*.rar=01;31:*.tar=01;31:*.tar.bz2=01;31:*.tar.gz=01;31:*.zip=01;31"
 
-	PROMPT='%B${(C)USER} %F{cyan}${(C)HOST%%.*}%f%b %~ %B$(zsh_mode)%b '
+  PROMPT='%B${(C)USER} %F{cyan}${(C)HOST%%.*}%f%b %~ %B$(zsh_mode)%b '
 
-	if [[ $TTY == /dev/tty1 ]]; then
-		startx &
+  if [[ $TTY == /dev/tty1 ]]; then
+    startx &
 
-		[ $? -eq 0 ] && exit
-	fi
+    [ $? -eq 0 ] && exit
+  fi
 
-	alias cal="cal -m"
-	alias ls="ls -h --color=auto"
-	alias vl="tail -n $LINES -f /var/log/everything.log"
+  alias cal="cal -m"
+  alias ls="ls -h --color=auto"
+  alias vl="tail -n $LINES -f /var/log/everything.log"
 
-	alias paci="sudo pacman -S"
-	alias pacr="sudo pacman -Rs"
-	alias pacu="sudo pacman -Syu"
+  alias paci="sudo pacman -S"
+  alias pacr="sudo pacman -Rs"
+  alias pacu="sudo pacman -Syu"
 
-	function pacs {
-		CL='\\e['
-		RS='\\e[0;0m'
+  function pacs {
+    CL='\\e['
+    RS='\\e[0;0m'
 
-		echo -e "$(pacman -Ss "$*" | sed "
-			/^core/         s,.*,${CL}1;31m&${RS},
-			/^extra/        s,.*,${CL}0;32m&${RS},
-			/^community/    s,.*,${CL}1;35m&${RS},
-			/^[^[:space:]]/ s,.*,${CL}0;36m&${RS},
-		")" | less -R
-	}
+    echo -e "$(pacman -Ss "$*" | sed "
+      /^core/         s,.*,${CL}1;31m&${RS},
+      /^extra/        s,.*,${CL}0;32m&${RS},
+      /^community/    s,.*,${CL}1;35m&${RS},
+      /^[^[:space:]]/ s,.*,${CL}0;36m&${RS},
+    ")" | less -R
+  }
 
-	function restart {
-		for arg in $*; do
-			sudo /etc/rc.d/$arg restart
-		done
-	}
+  function restart {
+    for arg in $*; do
+      sudo /etc/rc.d/$arg restart
+    done
+  }
 
-	function start {
-		for arg in $*; do
-			sudo /etc/rc.d/$arg start
-		done
-	}
+  function start {
+    for arg in $*; do
+      sudo /etc/rc.d/$arg start
+    done
+  }
 
-	function stop {
-		for arg in $*; do
-			sudo /etc/rc.d/$arg stop
-		done
-	}
+  function stop {
+    for arg in $*; do
+      sudo /etc/rc.d/$arg stop
+    done
+  }
 fi
 
 
@@ -505,28 +506,28 @@ fi
 # SETTINGS FOR FREEBSD                                                        #
 ###############################################################################
 if [[ $OSTYPE == freebsd* ]]; then
-	PROMPT='%B${(C)USER} %F{red}${(C)HOST%%.*}%f%b %~ %B$(zsh_mode)%b '
+  PROMPT='%B${(C)USER} %F{red}${(C)HOST%%.*}%f%b %~ %B$(zsh_mode)%b '
 
-	alias ls="ls -Gh"
-	alias vl="tail -n $LINES -f /var/log/messages"
+  alias ls="ls -Gh"
+  alias vl="tail -n $LINES -f /var/log/messages"
 
-	function restart {
-		for arg in $*; do
-			sudo /etc/rc.d/$arg restart
-		done
-	}
+  function restart {
+    for arg in $*; do
+      sudo /etc/rc.d/$arg restart
+    done
+  }
 
-	function start {
-		for arg in $*; do
-			sudo /etc/rc.d/$arg start
-		done
-	}
+  function start {
+    for arg in $*; do
+      sudo /etc/rc.d/$arg start
+    done
+  }
 
-	function stop {
-		for arg in $*; do
-			sudo /etc/rc.d/$arg stop
-		done
-	}
+  function stop {
+    for arg in $*; do
+      sudo /etc/rc.d/$arg stop
+    done
+  }
 fi
 
 
@@ -534,18 +535,18 @@ fi
 # SETTINGS FOR OPENBSD                                                        #
 ###############################################################################
 if [[ $OSTYPE == openbsd* ]]; then
-	PROMPT='%B${(C)USER} %F{blue}${(C)HOST%%.*}%f%b %~ %B$(zsh_mode)%b '
+  PROMPT='%B${(C)USER} %F{blue}${(C)HOST%%.*}%f%b %~ %B$(zsh_mode)%b '
 
-	alias cal="cal -m"
-	alias grep="grep -i"
-	alias ls="ls -h"
-	alias mkdir="mkdir -p"
-	alias vl="tail -n $LINES -f /var/log/messages"
+  alias cal="cal -m"
+  alias grep="grep -i"
+  alias ls="ls -h"
+  alias mkdir="mkdir -p"
+  alias vl="tail -n $LINES -f /var/log/messages"
 
-	alias next="mpc next"
-	alias prev="mpc prev"
-	alias toggle="mpc toggle"
+  alias next="mpc next"
+  alias prev="mpc prev"
+  alias toggle="mpc toggle"
 
-	unalias cp mv rm
+  unalias cp mv rm
 fi
 
