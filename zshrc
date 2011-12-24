@@ -415,7 +415,6 @@ if [[ $OSTYPE == darwin* ]]; then
   function frees {
     mv ~/Library/Caches/Homebrew ~/.Trash
     mv ~/Library/Caches/com.apple.Safari/Webpage\ Previews ~/.Trash
-    mv ~/Library/Mail\ Downloads ~/.Trash
     mv ~/Library/iTunes/iPhone\ Software\ Updates ~/.Trash
   }
 

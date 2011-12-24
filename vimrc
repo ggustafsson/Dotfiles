@@ -26,7 +26,7 @@ set nowrap
 set showbreak=+
 set spelllang=en,sv
 set timeoutlen=2000
-set virtualedit=block
+set virtualedit=block,onemore
 
 set autoindent
 set smartindent
@@ -43,7 +43,6 @@ set fileencoding=utf-8
 set expandtab
 set shiftwidth=2
 set softtabstop=2
-set tabstop=4
 
 set history=2000
 set undolevels=2000
@@ -157,6 +156,7 @@ nmap <Leader>di :diffthis<CR>
 nmap <Leader>do :LustyFilesystemExplorer ~/Documents/Text\ Files/<CR>
 nmap <Leader>ed :LustyFilesystemExplorerFromHere<CR>
 nmap <Leader>eh :LustyFilesystemExplorer ~<CR>
+nmap <Leader>fe :Sex<CR>
 nmap <Leader>ft :set filetype=
 nmap <Leader>ga :Gist -a<CR>
 nmap <Leader>gg :Gist<CR>
@@ -174,8 +174,9 @@ nmap <Leader>sh :shell<CR>
 nmap <Leader>sn :new<CR>
 nmap <Leader>sp :setlocal spell!<CR>
 nmap <Leader>su ^vg_<Plug>VSurround
-nmap <Leader>t4 :set tabstop=4<CR>
-nmap <Leader>t8 :set tabstop=8<CR>
+nmap <Leader>t2 :set expandtab softtabstop=2 shiftwidth=2 tabstop=8<CR>
+nmap <Leader>t4 :set noexpandtab softtabstop=0 shiftwidth=4 tabstop=4<CR>
+nmap <Leader>t8 :set noexpandtab softtabstop=0 shiftwidth=8 tabstop=8<CR>
 nmap <Leader>to :split ~/Documents/Text\ Files/Things\ to\ Do.txt<CR>
 nmap <Leader>tr :NERDTreeToggle<CR>
 nmap <Leader>un :edit!<CR>
