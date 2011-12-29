@@ -23,6 +23,8 @@ SAVEHIST=6000
 
 path+=(~/Scripts ~/.ruby/gems/*/bin(N))
 
+umask 077
+
 setopt correct
 setopt interactivecomments
 setopt longlistjobs
@@ -369,6 +371,8 @@ if [[ $OSTYPE == darwin* ]]; then
   PROMPT='%B${(C)USER} %F{yellow}${(C)HOST%%.*}%f%b %~ %B$(zsh_mode)%b '
 
   path=(/usr/local/bin /usr/local/sbin /bin /sbin /usr/bin /usr/sbin /usr/X11/bin ~/Scripts ~/.ruby/gems/*/bin(N))
+
+  umask 022
 
   compdef _man manp
 
