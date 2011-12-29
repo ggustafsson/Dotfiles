@@ -117,7 +117,7 @@ alias favs="mv -f ~/.mpd/playlists/Favorites.m3u ~/.mpd/tmp.playlist >& /dev/nul
 alias fetch="wget --page-requisites --adjust-extension --convert-links"
 alias grep="grep --color=auto -i"
 alias hi="history"
-alias ip="curl -s http://automation.whatismyip.com/n09230945.asp | html2text"
+alias iip="curl -s http://automation.whatismyip.com/n09230945.asp | html2text"
 alias ka="killall"
 alias mkdir="mkdir -pv"
 alias ping="ping -c 10"
@@ -171,6 +171,7 @@ alias gme="git merge"
 alias gmv="git mv"
 alias gpl="git pull"
 alias gpu="git push"
+alias grm="git rm"
 alias gst="git status -s -b"
 
 alias next="mpc next | head -n 1"
@@ -451,8 +452,7 @@ fi
 ###############################################################################
 
 if [[ $OSTYPE == linux* ]]; then
-  export LS_COLORS="ln=01;34"
-  export LS_COLORS="$LS_COLORS:*.bmp=01;33:*.gif=01;33:*.ico=01;33:*.jpg=01;33:*.jpeg=01;33:*.png=01;33:*.svg=01;33:*.tiff=01;33"
+  export LS_COLORS="*.bmp=01;33:*.gif=01;33:*.ico=01;33:*.jpg=01;33:*.jpeg=01;33:*.png=01;33:*.svg=01;33:*.tiff=01;33"
   export LS_COLORS="$LS_COLORS:*.flac=01;35:*.nsf=01;35:*.nsfe=01;35:*.m4r=01;35:*.mp3=01;35:*.ogg=01;35:*.wav=01;35"
   export LS_COLORS="$LS_COLORS:*.avi=01;36:*.flv=01;36:*.f4v=01;36:*.mkv=01;36:*.mov=01;36:*.mpg=01;36:*.mpeg=01;36:*.mp4=01;36:*.m4v=01;36:*.wmv=01;36"
   export LS_COLORS="$LS_COLORS:*.dmg=01;31:*.iso=01;31:*.rar=01;31:*.tar=01;31:*.tar.bz2=01;31:*.tar.gz=01;31:*.zip=01;31"

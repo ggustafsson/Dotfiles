@@ -40,9 +40,12 @@ bind c remove
 unbind S
 bind v hsplit
 
-bind b exec chromium
 bind d time
+bind f exec firefox
+bind g exec geeqie
+bind p exec evince
 bind t exec transmission-gtk
+bind v exec urxvt -e vim
 bind x exec urxvt
 
 exec xsetroot -solid black -cursor_name left_ptr
