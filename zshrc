@@ -23,8 +23,6 @@ SAVEHIST=6000
 
 path+=(~/Scripts ~/.ruby/gems/*/bin(N))
 
-umask 077
-
 setopt correct
 setopt interactivecomments
 setopt longlistjobs
@@ -358,6 +356,58 @@ function unp {
 
 
 ###############################################################################
+# SETTINGS FOR GNU/LINUX                                                      #
+###############################################################################
+
+if [[ $OSTYPE == linux* ]]; then
+  export LS_COLORS="*.bmp=01;33:*.gif=01;33:*.ico=01;33:*.jpg=01;33:*.jpeg=01;33:*.png=01;33:*.svg=01;33:*.tiff=01;33"
+  export LS_COLORS="$LS_COLORS:*.flac=01;35:*.nsf=01;35:*.nsfe=01;35:*.m4r=01;35:*.mp3=01;35:*.ogg=01;35:*.wav=01;35"
+  export LS_COLORS="$LS_COLORS:*.avi=01;36:*.flv=01;36:*.f4v=01;36:*.mkv=01;36:*.mov=01;36:*.mpg=01;36:*.mpeg=01;36:*.mp4=01;36:*.m4v=01;36:*.wmv=01;36"
+  export LS_COLORS="$LS_COLORS:*.dmg=01;31:*.iso=01;31:*.rar=01;31:*.tar=01;31:*.tar.bz2=01;31:*.tar.gz=01;31:*.zip=01;31"
+
+  PROMPT='%B${(C)USER} %F{yellow}${(C)HOST%%.*}%f%b %~ %B$(zsh_mode)%b '
+
+  alias cal="cal -m"
+  alias ls="ls -h --color=auto"
+  alias vl="tail -n $LINES -f /var/log/everything.log"
+
+  alias paci="sudo pacman -S"
+  alias pacr="sudo pacman -Rs"
+  alias pacu="sudo pacman -Syu"
+
+  function pacs {
+    CL='\\e['
+    RS='\\e[0;0m'
+
+    echo -e "$(pacman -Ss "$*" | sed "
+      /^core/         s,.*,${CL}1;31m&${RS},
+      /^extra/        s,.*,${CL}0;32m&${RS},
+      /^community/    s,.*,${CL}1;35m&${RS},
+      /^[^[:space:]]/ s,.*,${CL}0;36m&${RS},
+    ")" | less -R
+  }
+
+  function restart {
+    for arg in $*; do
+      sudo /etc/rc.d/$arg restart
+    done
+  }
+
+  function start {
+    for arg in $*; do
+      sudo /etc/rc.d/$arg start
+    done
+  }
+
+  function stop {
+    for arg in $*; do
+      sudo /etc/rc.d/$arg stop
+    done
+  }
+fi
+
+
+###############################################################################
 # SETTINGS FOR MAC OS X                                                       #
 ###############################################################################
 
@@ -369,11 +419,9 @@ if [[ $OSTYPE == darwin* ]]; then
   FLACDIR=/Volumes/Black\ Disk/Music/FLAC
   MP3DIR=/Volumes/Black\ Disk/Music/MP3
 
-  PROMPT='%B${(C)USER} %F{yellow}${(C)HOST%%.*}%f%b %~ %B$(zsh_mode)%b '
+  PROMPT='%B${(C)USER} %F{cyan}${(C)HOST%%.*}%f%b %~ %B$(zsh_mode)%b '
 
   path=(/usr/local/bin /usr/local/sbin /bin /sbin /usr/bin /usr/sbin /usr/X11/bin ~/Scripts ~/.ruby/gems/*/bin(N))
-
-  umask 022
 
   compdef _man manp
 
@@ -443,64 +491,6 @@ if [[ $OSTYPE == darwin* ]]; then
     else
       /Applications/MacVim.app/Contents/MacOS/Vim -g --remote-tab-silent $*
     fi
-  }
-fi
-
-
-###############################################################################
-# SETTINGS FOR GNU/LINUX                                                      #
-###############################################################################
-
-if [[ $OSTYPE == linux* ]]; then
-  export LS_COLORS="*.bmp=01;33:*.gif=01;33:*.ico=01;33:*.jpg=01;33:*.jpeg=01;33:*.png=01;33:*.svg=01;33:*.tiff=01;33"
-  export LS_COLORS="$LS_COLORS:*.flac=01;35:*.nsf=01;35:*.nsfe=01;35:*.m4r=01;35:*.mp3=01;35:*.ogg=01;35:*.wav=01;35"
-  export LS_COLORS="$LS_COLORS:*.avi=01;36:*.flv=01;36:*.f4v=01;36:*.mkv=01;36:*.mov=01;36:*.mpg=01;36:*.mpeg=01;36:*.mp4=01;36:*.m4v=01;36:*.wmv=01;36"
-  export LS_COLORS="$LS_COLORS:*.dmg=01;31:*.iso=01;31:*.rar=01;31:*.tar=01;31:*.tar.bz2=01;31:*.tar.gz=01;31:*.zip=01;31"
-
-  PROMPT='%B${(C)USER} %F{cyan}${(C)HOST%%.*}%f%b %~ %B$(zsh_mode)%b '
-
-  if [[ $TTY == /dev/tty1 ]]; then
-    startx &
-
-    [ $? -eq 0 ] && exit
-  fi
-
-  alias cal="cal -m"
-  alias ls="ls -h --color=auto"
-  alias vl="tail -n $LINES -f /var/log/everything.log"
-
-  alias paci="sudo pacman -S"
-  alias pacr="sudo pacman -Rs"
-  alias pacu="sudo pacman -Syu"
-
-  function pacs {
-    CL='\\e['
-    RS='\\e[0;0m'
-
-    echo -e "$(pacman -Ss "$*" | sed "
-      /^core/         s,.*,${CL}1;31m&${RS},
-      /^extra/        s,.*,${CL}0;32m&${RS},
-      /^community/    s,.*,${CL}1;35m&${RS},
-      /^[^[:space:]]/ s,.*,${CL}0;36m&${RS},
-    ")" | less -R
-  }
-
-  function restart {
-    for arg in $*; do
-      sudo /etc/rc.d/$arg restart
-    done
-  }
-
-  function start {
-    for arg in $*; do
-      sudo /etc/rc.d/$arg start
-    done
-  }
-
-  function stop {
-    for arg in $*; do
-      sudo /etc/rc.d/$arg stop
-    done
   }
 fi
 

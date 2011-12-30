@@ -1,0 +1,23 @@
+# Göran Gustafsson (gustafsson.g@gmail.com)
+
+alignment top_left
+double_buffer yes
+draw_shades no
+format_human_readable yes
+gap_x 5
+gap_y 2
+if_up_strictness address
+minimum_size 1910
+music_player_interval 0.5
+override_utf8_locale yes
+uppercase yes
+use_xft yes
+
+xftfont dina-10
+
+color0 white
+color1 cyan
+color2 yellow
+
+TEXT
+${color0}CPU ${color2}${cpu}%   ${color0}SSD ${color1}${fs_free /}   ${color0}UPTIME ${color1}${uptime_short}   ${color0}${if_up eth0}ETHERNET ${color1}${addr eth0}${endif}   ${color0}${if_up wlan0}WIFI ${color1}${addr wlan0}${endif}   ${alignr}${if_mpd_playing}${color0}${mpd_status} ${color1}${mpd_artist} - ${mpd_title}${endif}   ${color0}Vol ${color1}${if_mixer_mute}---${else}${mixer}%${endif}   ${color2}${time %a %d %b %H:%M}

@@ -1,0 +1,17 @@
+# vim: ft=sh
+
+#TIMER_CMD=""
+#TIMER_REPEAT_ALARM=
+
+#INTERVAL=
+
+WORK_CMD="say start working again"
+BREAK_CMD="say take a little break"
+
+POMODORO_CMD="say working session is over. take a break"
+#POMODORO_REPEAT_ALARM=
+
+#POMODORO_WORK=
+#POMODORO_BREAK=
+#POMODORO_STOP=
+
