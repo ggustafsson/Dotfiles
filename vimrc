@@ -8,9 +8,7 @@ call pathogen#helptags()
 filetype plugin indent on
 
 syntax enable
-if ( has("gui_running") || (&t_Co == 256) )
-  colorscheme ninja
-endif
+colorscheme ninja
 
 if has("mac")
   set shell=/usr/local/bin/zsh

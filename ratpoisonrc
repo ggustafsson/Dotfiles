@@ -10,6 +10,7 @@ set bwcolor #333333
 set font terminus:pixelsize=22:style=bold
 set fwcolor #333333
 set inputwidth 500
+set padding 0 19 0 0
 set winfmt %n %t 
 set wingravity n
 set winname class
@@ -41,9 +42,9 @@ unbind S
 bind v hsplit
 
 bind d time
+bind e exec evince
 bind f exec firefox
 bind g exec geeqie
-bind p exec evince
 bind t exec transmission-gtk
 bind v exec urxvt -e vim
 bind x exec urxvt
@@ -52,4 +53,6 @@ exec xsetroot -solid black -cursor_name left_ptr
 
 exec autocutsel -selection PRIMARY -fork
 exec autocutsel -selection CLIPBOARD -fork
+
+exec urxvt
 

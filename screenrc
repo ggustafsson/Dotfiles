@@ -1,5 +1,11 @@
-defutf8 on
+caption         always "%{=b kK} %-w%{=b Y}%n %t%{-}%+w %-= %Y-%m-%d  %c "
+defscrollback   5000
+defutf8         on
+sorendition     wb
 startup_message off
-term xterm-256color
-vbell off
+vbell           off
+
+bind l lockscreen
+bind r redisplay
+bind x screen
 

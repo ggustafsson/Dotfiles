@@ -4,6 +4,8 @@
 # SETTINGS FOR ALL SYSTEMS                                                    #
 ###############################################################################
 
+#[[ $TTY == /dev/tty1 ]] && screen -R console && exit
+
 export EDITOR=vim
 export GEM_HOME=~/.ruby
 export LC_COLLATE=C
@@ -122,6 +124,7 @@ alias ping="ping -c 10"
 alias pyweb="python3 -m http.server 8080"
 alias reload="source ~/.zshrc"
 alias s="screen"
+alias topme="top U twiggy"
 alias tv="vim '$TODO_FILE'"
 alias ycal="cal $(date +%Y)"
 alias yt="youtube-dl -l"
@@ -176,9 +179,6 @@ alias next="mpc next | head -n 1"
 alias prev="mpc prev | head -n 1"
 alias song="mpc current"
 alias toggle="mpc toggle | head -n 2"
-
-alias top="top -o cpu"
-alias topme="top -o cpu -U twiggy"
 
 alias v="vim"
 alias vd="vimdiff"
@@ -277,7 +277,7 @@ function p {
   if [[ $OSTYPE == openbsd* ]] && [ ! -z $1 ]; then
     ps ax | grep -v "grep -i $*" | grep "$*"
   elif [ ! -z $1 ]; then
-    ps ax | grep -v "grep --color -i $*" | grep "$*"
+    ps ax | grep -v "grep --color=auto -i $*" | grep "$*"
   else
     ps ax
   fi
@@ -456,6 +456,9 @@ if [[ $OSTYPE == darwin* ]]; then
 
   alias startmpd="echo 'Starting MPD daemon.' && mpd"
   alias stopmpd="echo 'Stopping MPD daemon.' && mpc -q stop && mpd --kill"
+
+  alias top="top -o cpu"
+  alias topme="top -o cpu -U twiggy"
 
   function f {
     if [ ! -z $1 ]; then
