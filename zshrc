@@ -14,7 +14,7 @@ export PAGER=less
 export VISUAL=$EDITOR
 
 DIRSTACKSIZE=17
-TODO_FILE=~/Documents/Text\ Files/Things\ to\ Do.txt
+TODO_FILE=~/Documents/To-do\ List.txt
 
 FLACDIR=~/Music/FLAC
 MP3DIR=~/Music/MP3
@@ -108,6 +108,7 @@ function zsh_mode {
 RPROMPT='%B$(git_branch)%b'
 
 type hub >& /dev/null && alias git="hub"
+type ip >& /dev/null && alias lip="ip addr" || alias lip="ifconfig"
 
 alias bc="bc -q"
 alias c="clearcmd"

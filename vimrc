@@ -251,7 +251,7 @@ endfunction
 
 function! ColorColumn()
   if empty(&colorcolumn)
-    setlocal colorcolumn=80
+    setlocal colorcolumn=+1
   else
     setlocal colorcolumn=
   endif
@@ -306,6 +306,7 @@ augroup Main
 
   autocmd FileType gitcommit     setlocal spell
   autocmd Filetype help          setlocal nospell colorcolumn=
+  autocmd Filetype mail          setlocal colorcolumn=+1
   autocmd Filetype markdown,text setlocal colorcolumn=+1 spell textwidth=79
 
   autocmd BufWritePost ~/.vimrc source %

@@ -197,6 +197,7 @@ settings = {
     recode = "yes";
     recode_fallback = "ISO-8859-1";
     recode_autodetect_utf8 = "yes";
+    quit_message = "Bye!";
   };
   "fe-text" = {
     actlist_sort = "refnum";
@@ -232,6 +233,7 @@ hilights = (
 );
 channels = (
   { name = "#degiz"; chatnet = "Quakenet"; autojoin = "yes"; },
+  { name = "#archlinux"; chatnet = "Freenode"; autojoin = "yes"; },
   { name = "#vim"; chatnet = "Freenode"; autojoin = "yes"; },
   { name = "#zsh"; chatnet = "Freenode"; autojoin = "yes"; },
   { name = "#irssi"; chatnet = "Freenode"; autojoin = "yes"; }
