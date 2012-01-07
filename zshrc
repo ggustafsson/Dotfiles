@@ -127,6 +127,7 @@ alias reload="source ~/.zshrc"
 alias s="screen"
 alias topme="top U twiggy"
 alias tv="vim '$TODO_FILE'"
+alias x="startx"
 alias ycal="cal $(date +%Y)"
 alias yt="youtube-dl -l"
 alias zv="vim ~/.zshrc"
@@ -372,8 +373,11 @@ if [[ $OSTYPE == linux* ]]; then
   alias ls="ls -h --color=auto"
   alias vl="tail -n $LINES -f /var/log/everything.log"
 
-  alias mblack="sudo cryptsetup luksOpen /dev/disk/by-uuid/6d79009d-b880-4ddc-999c-3a5067d91168 black && sudo mount /dev/mapper/black /media/Black"
+  alias mblack="sudo cryptsetup luksOpen /dev/disk/by-uuid/112D-120C black && sudo mount /dev/mapper/black /media/Black"
   alias umblack="sudo umount /dev/mapper/black && sudo cryptsetup luksClose black"
+
+  alias mkeychain="sudo cryptsetup luksOpen /dev/disk/by-uuid/bfbc82a5-22a9-4020-b4e3-eab10d4d5a8a keychain && sudo mount /dev/mapper/keychain /media/Keychain"
+  alias umkeychain="sudo umount /dev/mapper/keychain && sudo cryptsetup luksClose keychain"
 
   alias paci="sudo pacman -S"
   alias pacr="sudo pacman -Rs"
