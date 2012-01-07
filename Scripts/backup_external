@@ -2,8 +2,8 @@
 
 backup_device=/dev/disk/by-uuid/6d79009d-b880-4ddc-999c-3a5067d91168
 backup_mappername=black
-backup_mountpoint=/media/USB
-backup_destination=/media/USB/Backup
+backup_mountpoint=/media/Black
+backup_destination=/media/Black/Backup
 
 directories=(
   "/etc"

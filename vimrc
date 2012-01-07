@@ -166,7 +166,7 @@ nmap <Leader>nu :set number!<CR>
 nmap <Leader>pa :set paste!<CR>
 nmap <Leader>pw :pwd<CR>
 nmap <Leader>re :%s/
-nmap <Leader>sc :split ~/Documents/Text\ Files/Scratch\ Notes.txt<CR>
+nmap <Leader>sc :split ~/Documents/Scratch\ Notes.txt<CR>
 nmap <Leader>sg :call <SID>SyntaxGroup()<CR>
 nmap <Leader>sh :shell<CR>
 nmap <Leader>sn :new<CR>

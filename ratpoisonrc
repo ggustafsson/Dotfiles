@@ -46,7 +46,6 @@ bind e exec evince
 bind f exec firefox
 bind g exec geeqie
 bind t exec transmission-gtk
-bind v exec urxvt -e vim
 bind x exec urxvt
 
 exec xsetroot -solid black -cursor_name left_ptr
@@ -54,5 +53,6 @@ exec xsetroot -solid black -cursor_name left_ptr
 exec autocutsel -selection PRIMARY -fork
 exec autocutsel -selection CLIPBOARD -fork
 
+exec conky
 exec urxvt
 

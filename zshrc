@@ -372,6 +372,9 @@ if [[ $OSTYPE == linux* ]]; then
   alias ls="ls -h --color=auto"
   alias vl="tail -n $LINES -f /var/log/everything.log"
 
+  alias mblack="sudo cryptsetup luksOpen /dev/disk/by-uuid/6d79009d-b880-4ddc-999c-3a5067d91168 black && sudo mount /dev/mapper/black /media/Black"
+  alias umblack="sudo umount /dev/mapper/black && sudo cryptsetup luksClose black"
+
   alias paci="sudo pacman -S"
   alias pacr="sudo pacman -Rs"
   alias pacu="sudo pacman -Syu"
