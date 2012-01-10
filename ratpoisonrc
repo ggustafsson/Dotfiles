@@ -10,15 +10,14 @@ set bwcolor #333333
 set font terminus:pixelsize=22:style=bold
 set fwcolor #333333
 set inputwidth 500
-set padding 0 19 0 0
 set winfmt %n %t 
 set wingravity n
 set winname class
 
-definekey top F6  exec mpc prev
-definekey top F7  exec mpc toggle
-definekey top F8  exec mpc next
-definekey top F9  exec amixer sset Master mute
+definekey top F7  exec mpc prev
+definekey top F8  exec mpc toggle
+definekey top F9  exec mpc next
+definekey top F10 exec amixer sset Master mute
 definekey top F11 exec amixer sset Master 2- unmute
 definekey top F12 exec amixer sset Master 2+ unmute
 
@@ -53,6 +52,5 @@ exec xsetroot -solid black -cursor_name left_ptr
 exec autocutsel -selection PRIMARY -fork
 exec autocutsel -selection CLIPBOARD -fork
 
-exec conky
 exec urxvt
 

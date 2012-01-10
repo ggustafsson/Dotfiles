@@ -1,9 +1,3 @@
-#
-# Catch-all evdev loader for udev-based systems
-# We don't simply match on any device since that also adds accelerometers
-# and other devices that we don't really want to use. The list below
-# matches everything but joysticks.
-
 Section "InputClass"
         Identifier "evdev pointer catchall"
         MatchIsPointer "on"
@@ -17,6 +11,7 @@ Section "InputClass"
         MatchDevicePath "/dev/input/event*"
         Driver "evdev"
         Option "XkbLayout" "se"
+	Option "AutoRepeat" "250 20"
 EndSection
 
 Section "InputClass"
@@ -39,3 +34,4 @@ Section "InputClass"
         MatchDevicePath "/dev/input/event*"
         Driver "evdev"
 EndSection
+
