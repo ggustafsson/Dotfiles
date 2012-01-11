@@ -1,9 +1,9 @@
-caption         always "%{=b kK} %-w%{=b Y}%n %t%{-}%+w %-= %Y-%m-%d  %c "
+caption         always "%{=b dK} %-w%{=b Y}%n %t%{-}%+w %-= %Y-%m-%d  %c "
 defscrollback   5000
 defutf8         on
 sorendition     wb
 startup_message off
-term            screen-256color
+#term            screen-256color
 vbell           off
 
 bind l lockscreen

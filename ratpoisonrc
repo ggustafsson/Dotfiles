@@ -5,11 +5,12 @@ startup_message off
 escape C-q
 
 set barpadding 5 1
-set border 1
-set bwcolor #333333
+set border 2
+set bwcolor #444444
 set font terminus:pixelsize=22:style=bold
-set fwcolor #333333
+set fwcolor #444444
 set inputwidth 500
+set padding 0 1 0 0
 set winfmt %n %t 
 set wingravity n
 set winname class

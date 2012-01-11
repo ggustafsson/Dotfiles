@@ -11,7 +11,6 @@ Section "InputClass"
         MatchDevicePath "/dev/input/event*"
         Driver "evdev"
         Option "XkbLayout" "se"
-	Option "AutoRepeat" "250 20"
 EndSection
 
 Section "InputClass"
