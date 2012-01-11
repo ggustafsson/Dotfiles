@@ -1,0 +1,38 @@
+#!/usr/bin/env zsh
+
+backup_device=/dev/disk/by-uuid/6d79009d-b880-4ddc-999c-3a5067d91168
+backup_mappername=black
+backup_mountpoint=/media/Black
+backup_destination=/media/Black/Backup
+
+directories=(
+  "/etc"
+  "/home/twiggy"
+  "/srv"
+  "/var/lib/bitlbee"
+)
+
+if [ ! -b $backup_device ]; then
+  echo "Device: $backup_device doesn't exist!"
+  return 1
+fi
+cryptsetup luksOpen $backup_device $backup_mappername
+
+if [ ! -b /dev/mapper/$backup_mappername ]; then
+  echo "Device: /dev/mapper/$backup_mappername doesn't exist!"
+  return 1
+fi
+mount /dev/mapper/$backup_mappername $backup_mountpoint
+
+if [ ! -d $backup_destination ]; then
+  echo "Directory: $backup_destination doesn't exist!"
+  return 1
+fi
+
+for directory in $directories; do
+  rsync -ah --progress --delete $directory $backup_destination
+done
+
+umount $backup_device
+cryptsetup luksClose $backup_mappername
+

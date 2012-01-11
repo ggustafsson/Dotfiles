@@ -1,0 +1,40 @@
+#!/usr/bin/env zsh
+
+device_name=Keychain
+encrypted_image=/Volumes/Keychain/Backup.sparseimage
+backup_destination=/Volumes/Backup
+
+directories=(
+  Development
+  Documents
+  "Library/Application Support/1Password"
+  "Library/Application Support/Adium 2.0"
+  Movies/Personal
+  Music/Ringtones
+  Pictures
+  Projects
+  Scripts
+  Sites
+  Storage
+  "Web Archives"
+)
+
+if [ ! -f $encrypted_image ]; then
+  echo "File: $encrypted_image doesn't exist!"
+  return 1
+fi
+
+hdiutil attach -noverify $encrypted_image
+
+if [ ! -d $backup_destination ]; then
+  echo "Directory: $backup_destination doesn't exist!"
+  return 1
+fi
+
+for directory in $directories; do
+  rsync -ah --progress --delete ~/$directory $backup_destination
+done
+
+hdiutil detach $backup_destination
+diskutil eject $device_name
+
