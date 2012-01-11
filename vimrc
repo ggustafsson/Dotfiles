@@ -87,7 +87,7 @@ if has("gui_running")
     set guifont=Monaco:h12
 
     if !exists("g:dont_resize_again")
-      set columns=172
+      set columns=171
       set lines=45
 
       let g:dont_resize_again = 1
@@ -172,9 +172,9 @@ nmap <Leader>sh :shell<CR>
 nmap <Leader>sn :new<CR>
 nmap <Leader>sp :setlocal spell!<CR>
 nmap <Leader>su ^vg_<Plug>VSurround
-nmap <Leader>t2 :set expandtab softtabstop=2 shiftwidth=2 tabstop=8<CR>
-nmap <Leader>t4 :set noexpandtab softtabstop=0 shiftwidth=4 tabstop=4<CR>
-nmap <Leader>t8 :set noexpandtab softtabstop=0 shiftwidth=8 tabstop=8<CR>
+nmap <Leader>t2 :set expandtab softtabstop=2 shiftwidth=2 tabstop=2<CR>
+nmap <Leader>t4 :set expandtab softtabstop=4 shiftwidth=4 tabstop=4<CR>
+nmap <Leader>t8 :set expandtab softtabstop=8 shiftwidth=8 tabstop=8<CR>
 nmap <Leader>to :split ~/Documents/Text\ Files/Things\ to\ Do.txt<CR>
 nmap <Leader>tr :NERDTreeToggle<CR>
 nmap <Leader>un :edit!<CR>

@@ -5,10 +5,10 @@
 
 #INTERVAL=
 
-#WORK_CMD=""
-#BREAK_CMD=""
+WORK_CMD="say start working again"
+BREAK_CMD="say take a little break"
 
-#POMODORO_CMD=""
+POMODORO_CMD="say working session is over. take a break"
 #POMODORO_REPEAT_ALARM=
 
 #POMODORO_WORK=

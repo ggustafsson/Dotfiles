@@ -1,7 +1,0 @@
-/dev/mapper/root /         ext4    defaults,noatime,discard 0 1
-/dev/sda4        /boot     ext4    defaults,noatime,discard 0 2
-/dev/sda1        /boot/efi vfat    defaults,noatime,discard 0 0
-/dev/sda2        /mnt/OSX  hfsplus defaults,ro              0 0
-/swapfile        swap      swap    defaults                 0 0
-tmpfs            /tmp      tmpfs   nodev,nosuid             0 0
-

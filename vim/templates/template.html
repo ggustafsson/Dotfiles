@@ -14,7 +14,7 @@
     body {
       background-color: #ffffff;
       color: #000000;
-      font-family: "Helvetica Neu", Helvetica, Verdana, "Bitstream Vera Sans", sans-serif;
+      font-family: Helvetica, Verdana, "Bitstream Vera Sans", sans-serif;
       font-size: 14px;
       line-height: 1.5em;
     }

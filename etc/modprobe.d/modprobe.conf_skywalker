@@ -1,9 +1,0 @@
-#
-# /etc/modprobe.d/modprobe.conf
-#
-
-blacklist b43
-blacklist bcma
-blacklist btusb
-blacklist pcspkr
-
