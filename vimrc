@@ -166,7 +166,7 @@ nmap <Leader>nu :set number!<CR>
 nmap <Leader>pa :set paste!<CR>
 nmap <Leader>pw :pwd<CR>
 nmap <Leader>re :%s/
-nmap <Leader>sc :split ~/Documents/Scratch\ Notes.txt<CR>
+nmap <Leader>sc :split ~/Documents/Text\ Files/Scratch\ Notes.txt<CR>
 nmap <Leader>sg :call <SID>SyntaxGroup()<CR>
 nmap <Leader>sh :shell<CR>
 nmap <Leader>sn :new<CR>
@@ -175,7 +175,7 @@ nmap <Leader>su ^vg_<Plug>VSurround
 nmap <Leader>t2 :set expandtab softtabstop=2 shiftwidth=2 tabstop=2<CR>
 nmap <Leader>t4 :set expandtab softtabstop=4 shiftwidth=4 tabstop=4<CR>
 nmap <Leader>t8 :set expandtab softtabstop=8 shiftwidth=8 tabstop=8<CR>
-nmap <Leader>to :split ~/Documents/Text\ Files/Things\ to\ Do.txt<CR>
+nmap <Leader>to :split ~/Documents/Text\ Files/To-do\ List.txt<CR>
 nmap <Leader>tr :NERDTreeToggle<CR>
 nmap <Leader>un :edit!<CR>
 nmap <Leader>vi :edit ~/.vimrc<CR>

@@ -4,8 +4,6 @@
 # SETTINGS FOR ALL SYSTEMS                                                    #
 ###############################################################################
 
-#[[ $TTY == /dev/tty1 ]] && screen -R console && exit
-
 export EDITOR=vim
 export GEM_HOME=~/.ruby
 export LC_COLLATE=C
@@ -14,7 +12,7 @@ export PAGER=less
 export VISUAL=$EDITOR
 
 DIRSTACKSIZE=17
-TODO_FILE=~/Documents/To-do\ List.txt
+TODO_FILE=~/Documents/Text\ Files/To-do\ List.txt
 
 FLACDIR=~/Music/FLAC
 MP3DIR=~/Music/MP3
@@ -306,14 +304,14 @@ function ppermf {
 }
 
 function t {
-  if [ ! -f $TODO_FILE ]; then
-    echo "TODO file does not exist." && return
-  elif [ ! -s $TODO_FILE ]; then
-    echo "TODO file is currently empty." && return
-  fi
+  [ ! -f $TODO_FILE ] && echo "TODO file does not exist." && return
 
   if [ -z $1 ]; then
-    cat $TODO_FILE
+    if [ ! -s $TODO_FILE ]; then
+      echo "TODO file is currently empty." && return
+    else
+      cat $TODO_FILE
+    fi
   else
     echo "$*" >> $TODO_FILE
   fi
