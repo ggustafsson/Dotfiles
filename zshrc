@@ -13,9 +13,6 @@ export PAGER=less
 DIRSTACKSIZE=17
 TODO_FILE=~/Documents/Text\ Files/To-do\ List.txt
 
-FLACDIR=/Volumes/Black\ Disk/Music/FLAC
-MP3DIR=/Volumes/Black\ Disk/Music/MP3
-
 HISTFILE=~/.zsh_histfile
 HISTSIZE=2000
 SAVEHIST=6000
@@ -109,11 +106,11 @@ RPROMPT='%B$(git_branch)%b'
 alias bc="bc -q"
 alias c="clear"
 alias capit="imagesnap -t 2 -w 1"
+alias chkm="find ~/Music -type f ! -iname '*.mp3'"
 alias df="df -h"
 alias dh="dirs -v | sort -r"
 alias dontsleep="pmset noidle"
 alias eject="osascript -e 'tell application \"Finder\" to eject (every disk whose ejectable is true)' && echo 'All external drives ejected!'"
-alias favs="mv -f ~/.mpd/playlists/Favorites.m3u ~/.mpd/tmp.playlist >& /dev/null && sort ~/.mpd/tmp.playlist | uniq > ~/.mpd/playlists/Favorites.m3u"
 alias fetch="wget --page-requisites --adjust-extension --convert-links"
 alias grep="grep --color=auto -i"
 alias hi="history"
@@ -204,9 +201,6 @@ alias prev="mpc prev | head -n 1"
 alias song="mpc current"
 alias toggle="mpc toggle | head -n 2"
 
-alias startmpd="echo 'Starting MPD daemon.' && mpd"
-alias stopmpd="echo 'Stopping MPD daemon.' && mpc -q stop && mpd --kill"
-
 alias top="top -o cpu"
 alias topme="top -o cpu -U $USER"
 
@@ -218,11 +212,6 @@ alias vp="vimp"
 for x in {1..16}; do
   alias +$x="cd +$x >& /dev/null"
 done
-
-function chkm {
-  find "$FLACDIR" -type f ! -iname "*.flac" ! -iname "*.log"
-  find "$MP3DIR" -type f ! -iname "*.mp3"
-}
 
 function chkp {
   local CURRENT_DIR=$PWD
