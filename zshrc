@@ -1,27 +1,26 @@
 # Göran Gustafsson <gustafsson.g@gmail.com>
 
-###############################################################################
-# SETTINGS FOR ALL SYSTEMS                                                    #
-###############################################################################
-
-export EDITOR=vim
 export GEM_HOME=~/.ruby
 export LC_COLLATE=C
+
+export EDITOR="/Applications/MacVim.app/Contents/MacOS/Vim -g --remote-tab-silent"
+export GIT_EDITOR="/Applications/MacVim.app/Contents/MacOS/Vim"
+export VISUAL=$EDITOR
+
 export LESS=R
 export PAGER=less
-export VISUAL=$EDITOR
 
 DIRSTACKSIZE=17
 TODO_FILE=~/Documents/Text\ Files/To-do\ List.txt
 
-FLACDIR=~/Music/FLAC
-MP3DIR=~/Music/MP3
+FLACDIR=/Volumes/Black\ Disk/Music/FLAC
+MP3DIR=/Volumes/Black\ Disk/Music/MP3
 
 HISTFILE=~/.zsh_histfile
 HISTSIZE=2000
 SAVEHIST=6000
 
-path+=(~/Scripts ~/.ruby/gems/*/bin(N))
+path=(/usr/local/bin /usr/local/sbin /bin /sbin /usr/bin /usr/sbin /usr/X11/bin ~/Scripts ~/.ruby/gems/*/bin(N))
 
 setopt correct
 setopt interactivecomments
@@ -59,6 +58,7 @@ zstyle ':completion:*'          special-dirs true
 zstyle ':completion:*:cd:*'     ignore-parents parent pwd
 zstyle ':completion:*:warnings' format "zsh: no matches found."
 
+compdef _man manp
 compdef _path_files cd
 compdef _path_files git add
 
@@ -103,39 +103,48 @@ function zsh_mode {
   fi
 }
 
+PROMPT='%B${(C)USER} %F{yellow}${(C)HOST%%.*}%f%b %~ %B$(zsh_mode)%b '
 RPROMPT='%B$(git_branch)%b'
-
-type hub >& /dev/null && alias git="hub"
-type ip >& /dev/null && alias lip="ip addr" || alias lip="ifconfig"
 
 alias bc="bc -q"
 alias c="clearcmd"
+alias capit="imagesnap -t 2 -w 1"
 alias df="df -h"
 alias dh="dirs -v | sort -r"
+alias dontsleep="pmset noidle"
+alias eject="osascript -e 'tell application \"Finder\" to eject (every disk whose ejectable is true)' && echo 'All external drives ejected!'"
 alias favs="mv -f ~/.mpd/playlists/Favorites.m3u ~/.mpd/tmp.playlist >& /dev/null && sort ~/.mpd/tmp.playlist | uniq > ~/.mpd/playlists/Favorites.m3u"
 alias fetch="wget --page-requisites --adjust-extension --convert-links"
 alias grep="grep --color=auto -i"
 alias hi="history"
-alias iip="curl -s http://automation.whatismyip.com/n09230945.asp | html2text"
 alias ka="killall"
 alias mkdir="mkdir -pv"
+alias o="open"
 alias ping="ping -c 10"
 alias pyweb="python3 -m http.server 8080"
 alias reload="source ~/.zshrc"
 alias s="screen"
-alias topme="top U twiggy"
 alias tv="vim '$TODO_FILE'"
-alias x="startx"
+alias update="brew update && brew upgrade"
 alias ycal="cal $(date +%Y)"
 alias yt="youtube-dl -l"
-alias zv="vim ~/.zshrc"
 
 alias -- -="cd -"
 alias ...="cd ../.."
 alias ..="cd .."
 
+alias awk="gawk"
+alias cal="gcal -s 1"
+alias head="ghead"
+alias sed="gsed"
+alias sort="gsort"
+alias tail="gtail"
+alias wc="gwc"
+
+alias cdb="cd /Volumes/Black\ Disk"
 alias cdd="cd ~/Downloads"
 alias cdp="cd ~/Projects"
+alias cdpb="cd ~/Pictures/Photo\ Booth\ Library/Pictures"
 
 alias cl="wc -l"
 alias cw="wc -w"
@@ -147,6 +156,9 @@ alias so="sort"
 alias ta="tail"
 alias un="uniq"
 
+alias console="open -a Console"
+alias safari="open -a Safari"
+
 alias cp="cp -vi"
 alias mv="mv -vi"
 alias rm="rm -v"
@@ -154,10 +166,18 @@ alias rm="rm -v"
 alias csd='echo "Change directory to saved PATH." && cd $SAVE_DIR'
 alias sd='echo "Saving current PATH." && SAVE_DIR=$PWD'
 
+alias cv="cvim"
+alias cvim="/Applications/MacVim.app/Contents/MacOS/Vim"
+alias vimdiff="/Applications/MacVim.app/Contents/MacOS/Vim -d -g $* >& /dev/null"
+alias vimp="/Applications/MacVim.app/Contents/MacOS/Vim - -g >& /dev/null"
+
 alias d="ls -l"
 alias da="ls -la"
+alias dae="ls -lae"
+alias de="ls -le"
 alias l1="ls -1"
 alias la="ls -a"
+alias ls="ls -Gh"
 
 alias gad="git add"
 alias gbr="git branch"
@@ -167,6 +187,7 @@ alias gcl="git clone"
 alias gco="git commit -v"
 alias gdi="git diff"
 alias gfe="git fetch"
+alias git="hub"
 alias glo="git log"
 alias gme="git merge"
 alias gmv="git mv"
@@ -175,10 +196,19 @@ alias gpu="git push"
 alias grm="git rm"
 alias gst="git status -s -b"
 
+alias ip="ifconfig"
+alias iip="curl -s http://automation.whatismyip.com/n09230945.asp | html2text"
+
 alias next="mpc next | head -n 1"
 alias prev="mpc prev | head -n 1"
 alias song="mpc current"
 alias toggle="mpc toggle | head -n 2"
+
+alias startmpd="echo 'Starting MPD daemon.' && mpd"
+alias stopmpd="echo 'Stopping MPD daemon.' && mpc -q stop && mpd --kill"
+
+alias top="top -o cpu"
+alias topme="top -o cpu -U $USER"
 
 alias v="vim"
 alias vd="vimdiff"
@@ -188,18 +218,6 @@ alias vp="vimp"
 for x in {1..16}; do
   alias +$x="cd +$x >& /dev/null"
 done
-
-if [[ $TERM == rxvt-unicode ]]; then
-  function clearcmd {
-    for x in {1..$LINES}; do
-      echo
-    done
-
-    clear
-  }
-else
-  alias clearcmd="clear"
-fi
 
 function chkm {
   find "$FLACDIR" -type f ! -iname "*.flac" ! -iname "*.log"
@@ -231,6 +249,14 @@ function chkp {
   cd $CURRENT_DIR
 }
 
+function f {
+  if [ ! -z $1 ]; then
+    open -a Finder $*
+  else
+    open .
+  fi
+}
+
 function ff {
   if [ ! -z $1 ]; then
     find . -iname $* | sed 's/.\///'
@@ -247,12 +273,18 @@ function fff {
   fi
 }
 
+function frees {
+  mv ~/Library/Caches/Homebrew ~/.Trash
+  mv ~/Library/Caches/com.apple.Safari/Webpage\ Previews ~/.Trash
+  mv ~/Library/iTunes/iPhone\ Software\ Updates ~/.Trash
+}
+
 function gifit {
   if [[ ! -z $1 ]]; then
     local FILENAME=animated_$(date '+%Y-%m-%d_%H:%M').gif
     convert -delay 30 -loop 0 $* $FILENAME
 
-    [[ $OSTYPE == darwin* ]] && open -a Safari $FILENAME
+    open -a Safari $FILENAME
   fi
 }
 
@@ -262,6 +294,12 @@ function h {
   else
     history -i 1 | less +G
   fi
+}
+
+function manp {
+  for arg in $*; do
+    man -t $arg | open -f -a Preview
+  done
 }
 
 function mkcd {
@@ -274,9 +312,7 @@ function mkcd {
 }
 
 function p {
-  if [[ $OSTYPE == openbsd* ]] && [ ! -z $1 ]; then
-    ps ax | grep -v "grep -i $*" | grep "$*"
-  elif [ ! -z $1 ]; then
+  if [ ! -z $1 ]; then
     ps ax | grep -v "grep --color=auto -i $*" | grep "$*"
   else
     ps ax
@@ -284,22 +320,20 @@ function p {
 }
 
 function permf {
-  if [[ $OSTYPE == darwin* ]]; then
-    find . -type d -exec chmod -N 755 "{}" \;
-    find . -type f -exec chmod -N 644 "{}" \;
-  else
-    find . -type d -exec chmod 755 "{}" \;
-    find . -type f -exec chmod 644 "{}" \;
-  fi
+  find . -type d -exec chmod -N 755 "{}" \;
+  find . -type f -exec chmod -N 644 "{}" \;
 }
 
 function ppermf {
-  if [[ $OSTYPE == darwin* ]]; then
-    find . -type d -exec chmod -N 700 "{}" \;
-    find . -type f -exec chmod -N 600 "{}" \;
+  find . -type d -exec chmod -N 700 "{}" \;
+  find . -type f -exec chmod -N 600 "{}" \;
+}
+
+function ql {
+  if [ ! -z $1 ]; then
+    qlmanage -p $* >& /dev/null
   else
-    find . -type d -exec chmod 700 "{}" \;
-    find . -type f -exec chmod 600 "{}" \;
+    qlmanage
   fi
 }
 
@@ -354,199 +388,11 @@ function unp {
   done
 }
 
-
-###############################################################################
-# SETTINGS FOR MAC OS X                                                       #
-###############################################################################
-
-if [[ $OSTYPE == darwin* ]]; then
-  export EDITOR="/Applications/MacVim.app/Contents/MacOS/Vim -g --remote-tab-silent"
-  export GIT_EDITOR="/Applications/MacVim.app/Contents/MacOS/Vim"
-  export VISUAL=$EDITOR
-
-  FLACDIR=/Volumes/Black\ Disk/Music/FLAC
-  MP3DIR=/Volumes/Black\ Disk/Music/MP3
-
-  PROMPT='%B${(C)USER} %F{yellow}${(C)HOST%%.*}%f%b %~ %B$(zsh_mode)%b '
-
-  path=(/usr/local/bin /usr/local/sbin /bin /sbin /usr/bin /usr/sbin /usr/X11/bin ~/Scripts ~/.ruby/gems/*/bin(N))
-
-  compdef _man manp
-
-  alias capit="imagesnap -t 2 -w 1"
-  alias cdb="cd /Volumes/Black\ Disk"
-  alias cdpb="cd ~/Pictures/Photo\ Booth\ Library/Pictures"
-  alias dontsleep="pmset noidle"
-  alias eject="osascript -e 'tell application \"Finder\" to eject (every disk whose ejectable is true)' && echo 'All external drives ejected!'"
-  alias o="open"
-
-  alias awk="gawk"
-  alias cal="gcal -s 1"
-  alias head="ghead"
-  alias sed="gsed"
-  alias sort="gsort"
-  alias tail="gtail"
-  alias wc="gwc"
-
-  alias console="open -a Console"
-  alias safari="open -a Safari"
-
-  alias cv="cvim"
-  alias cvim="/Applications/MacVim.app/Contents/MacOS/Vim"
-  alias vimdiff="/Applications/MacVim.app/Contents/MacOS/Vim -d -g $* >& /dev/null"
-  alias vimp="/Applications/MacVim.app/Contents/MacOS/Vim - -g >& /dev/null"
-
-  alias dae="ls -lae"
-  alias de="ls -le"
-  alias ls="ls -Gh"
-
-  alias startmpd="echo 'Starting MPD daemon.' && mpd"
-  alias stopmpd="echo 'Stopping MPD daemon.' && mpc -q stop && mpd --kill"
-
-  alias top="top -o cpu"
-  alias topme="top -o cpu -U twiggy"
-
-  function f {
-    if [ ! -z $1 ]; then
-      open -a Finder $*
-    else
-      open .
-    fi
-  }
-
-  function frees {
-    mv ~/Library/Caches/Homebrew ~/.Trash
-    mv ~/Library/Caches/com.apple.Safari/Webpage\ Previews ~/.Trash
-    mv ~/Library/iTunes/iPhone\ Software\ Updates ~/.Trash
-  }
-
-  function manp {
-    for arg in $*; do
-      man -t $arg | open -f -a Preview
-    done
-  }
-
-  function ql {
-    if [ ! -z $1 ]; then
-      qlmanage -p $* >& /dev/null
-    else
-      qlmanage
-    fi
-  }
-
-  function vim {
-    if [ -z $1 ]; then
-      /Applications/MacVim.app/Contents/MacOS/Vim -g
-    else
-      /Applications/MacVim.app/Contents/MacOS/Vim -g --remote-tab-silent $*
-    fi
-  }
-fi
-
-
-###############################################################################
-# SETTINGS FOR GNU/LINUX                                                      #
-###############################################################################
-
-if [[ $OSTYPE == linux* ]]; then
-  export LS_COLORS="*.bmp=01;33:*.gif=01;33:*.ico=01;33:*.jpg=01;33:*.jpeg=01;33:*.png=01;33:*.svg=01;33:*.tiff=01;33"
-  export LS_COLORS="$LS_COLORS:*.flac=01;35:*.nsf=01;35:*.nsfe=01;35:*.m4r=01;35:*.mp3=01;35:*.ogg=01;35:*.wav=01;35"
-  export LS_COLORS="$LS_COLORS:*.avi=01;36:*.flv=01;36:*.f4v=01;36:*.mkv=01;36:*.mov=01;36:*.mpg=01;36:*.mpeg=01;36:*.mp4=01;36:*.m4v=01;36:*.wmv=01;36"
-  export LS_COLORS="$LS_COLORS:*.dmg=01;31:*.iso=01;31:*.rar=01;31:*.tar=01;31:*.tar.bz2=01;31:*.tar.gz=01;31:*.zip=01;31"
-
-  PROMPT='%B${(C)USER} %F{cyan}${(C)HOST%%.*}%f%b %~ %B$(zsh_mode)%b '
-
-  alias cal="cal -m"
-  alias ls="ls -h --color=auto"
-  alias vl="tail -n $LINES -f /var/log/everything.log"
-
-  alias mblack="sudo cryptsetup luksOpen /dev/disk/by-uuid/112D-120C black && sudo mount /dev/mapper/black /media/Black"
-  alias umblack="sudo umount /dev/mapper/black && sudo cryptsetup luksClose black"
-
-  alias mkeychain="sudo cryptsetup luksOpen /dev/disk/by-uuid/bfbc82a5-22a9-4020-b4e3-eab10d4d5a8a keychain && sudo mount /dev/mapper/keychain /media/Keychain"
-  alias umkeychain="sudo umount /dev/mapper/keychain && sudo cryptsetup luksClose keychain"
-
-  alias paci="sudo pacman -S"
-  alias pacr="sudo pacman -Rs"
-  alias pacu="sudo pacman -Syu"
-
-  function pacs {
-    CL='\\e['
-    RS='\\e[0;0m'
-
-    echo -e "$(pacman -Ss "$*" | sed "
-      /^core/         s,.*,${CL}1;31m&${RS},
-      /^extra/        s,.*,${CL}0;32m&${RS},
-      /^community/    s,.*,${CL}1;35m&${RS},
-      /^[^[:space:]]/ s,.*,${CL}0;36m&${RS},
-    ")" | less -R
-  }
-
-  function restart {
-    for arg in $*; do
-      sudo /etc/rc.d/$arg restart
-    done
-  }
-
-  function start {
-    for arg in $*; do
-      sudo /etc/rc.d/$arg start
-    done
-  }
-
-  function stop {
-    for arg in $*; do
-      sudo /etc/rc.d/$arg stop
-    done
-  }
-fi
-
-
-###############################################################################
-# SETTINGS FOR FREEBSD                                                        #
-###############################################################################
-if [[ $OSTYPE == freebsd* ]]; then
-  PROMPT='%B${(C)USER} %F{red}${(C)HOST%%.*}%f%b %~ %B$(zsh_mode)%b '
-
-  alias ls="ls -Gh"
-  alias vl="tail -n $LINES -f /var/log/messages"
-
-  function restart {
-    for arg in $*; do
-      sudo /etc/rc.d/$arg restart
-    done
-  }
-
-  function start {
-    for arg in $*; do
-      sudo /etc/rc.d/$arg start
-    done
-  }
-
-  function stop {
-    for arg in $*; do
-      sudo /etc/rc.d/$arg stop
-    done
-  }
-fi
-
-
-###############################################################################
-# SETTINGS FOR OPENBSD                                                        #
-###############################################################################
-if [[ $OSTYPE == openbsd* ]]; then
-  PROMPT='%B${(C)USER} %F{blue}${(C)HOST%%.*}%f%b %~ %B$(zsh_mode)%b '
-
-  alias cal="cal -m"
-  alias grep="grep -i"
-  alias ls="ls -h"
-  alias mkdir="mkdir -p"
-  alias vl="tail -n $LINES -f /var/log/messages"
-
-  alias next="mpc next"
-  alias prev="mpc prev"
-  alias toggle="mpc toggle"
-
-  unalias cp mv rm
-fi
+function vim {
+  if [ -z $1 ]; then
+    /Applications/MacVim.app/Contents/MacOS/Vim -g
+  else
+    /Applications/MacVim.app/Contents/MacOS/Vim -g --remote-tab-silent $*
+  fi
+}
 
