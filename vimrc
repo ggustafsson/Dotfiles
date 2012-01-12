@@ -174,11 +174,6 @@ nmap - <C-w>-
 nmap < <C-w>>
 nmap > <C-w><
 
-nmap <C-s> :!mpc current<CR>
-nmap <C-n> :silent !mpc next<CR>
-nmap <C-p> :silent !mpc prev<CR>
-nmap <C-t> :silent !mpc toggle<CR>
-
 nmap <Leader><Space> <Plug>NERDCommenterToggle
 vmap <Leader><Space> <Plug>NERDCommenterToggle
 
