@@ -107,7 +107,7 @@ PROMPT='%B${(C)USER} %F{yellow}${(C)HOST%%.*}%f%b %~ %B$(zsh_mode)%b '
 RPROMPT='%B$(git_branch)%b'
 
 alias bc="bc -q"
-alias c="clearcmd"
+alias c="clear"
 alias capit="imagesnap -t 2 -w 1"
 alias df="df -h"
 alias dh="dirs -v | sort -r"
