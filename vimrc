@@ -1,7 +1,5 @@
 " Göran Gustafsson <gustafsson.g@gmail.com>
 
-let s:uname = substitute(system('uname'), "\n", "", "")
-
 call pathogen#infect()
 call pathogen#helptags()
 
@@ -10,10 +8,6 @@ filetype plugin indent on
 syntax enable
 colorscheme ninja
 
-if has("mac")
-  set shell=/usr/local/bin/zsh
-endif
-
 set confirm
 set formatoptions+=n
 set gdefault
@@ -21,6 +15,7 @@ set hidden
 set nofoldenable
 set nostartofline
 set nowrap
+set shell=/usr/local/bin/zsh
 set showbreak=+
 set spelllang=en,sv
 set timeoutlen=2000
@@ -79,39 +74,28 @@ set wildignore+=*.avi,*.flv,*.f4v,*.mkv,*.mov,*.mpg,*.mpeg,*.mp4,*.m4v,*.wmv
 set wildignore+=*.dmg,*.iso,*.rar,*.tar,*.tar.bz2,*.tar.gz,*.zip
 
 if has("gui_running")
+  set guicursor+=a:blinkon0
   set guioptions=cgt
+
+  set guifont=Monaco:h12
   set noantialias
 
-  if has("mac")
-    set guicursor+=a:blinkon0
-    set guifont=Monaco:h12
+  if !exists("g:dont_resize_again")
+    set columns=171
+    set lines=45
 
-    if !exists("g:dont_resize_again")
-      set columns=171
-      set lines=45
-
-      let g:dont_resize_again = 1
-    endif
-  else
-    set guifont=Dina:h15
+    let g:dont_resize_again = 1
   endif
 else
   set mouse=v
   set title
 endif
 
-if has("mac")
-  let g:gist_clip_command = "pbcopy"
-elseif s:uname == "OpenBSD"
-  let g:LustyExplorerSuppressRubyWarning = 1
-  let g:LustyJugglerSuppressRubyWarning = 1
-else
-  let g:gist_clip_command = "xclip -selection primary"
-endif
-
-let g:gist_open_browser_after_post = 1
 let g:mapleader = ","
 let g:surround_no_mappings = 1
+
+let g:gist_clip_command = "pbcopy"
+let g:gist_open_browser_after_post = 1
 
 let g:html_ignore_folding = 1
 let g:html_number_lines = 0
@@ -136,17 +120,11 @@ cabbrev WQ wq
 cabbrev Wq wq
 cabbrev wQ wq
 
-if has("mac")
-  if has("gui_running")
-    nmap <Leader>fa :call FancyView()<CR>
-  endif
-
-  nmap <Leader>fi :silent !open "%:p:h"<CR>
-  nmap <Leader>op :silent !open "%"<CR>
+if has("gui_running")
+  nmap <Leader>fa :call FancyView()<CR>
 endif
 
 nmap <Leader>bd :call BufferDelete()<CR>
-nmap <Leader>bl :read ~/.vim/templates/template.license<CR>
 nmap <Leader>cc :call ColorColumn()<CR>
 nmap <Leader>cd :cd %:p:h<CR>:pwd<CR>
 nmap <Leader>ch :silent !chmod "%"<CR>
@@ -154,15 +132,17 @@ nmap <Leader>di :diffthis<CR>
 nmap <Leader>do :LustyFilesystemExplorer ~/Documents/Text\ Files/<CR>
 nmap <Leader>ed :LustyFilesystemExplorerFromHere<CR>
 nmap <Leader>eh :LustyFilesystemExplorer ~<CR>
-nmap <Leader>fe :Sex<CR>
+nmap <Leader>fi :silent !open "%:p:h"<CR>
 nmap <Leader>ft :set filetype=
 nmap <Leader>ga :Gist -a<CR>
 nmap <Leader>gg :Gist<CR>
+nmap <Leader>il :read ~/.vim/templates/template.license<CR>
 nmap <Leader>la :!ls -la "%:p:h"<CR>
 nmap <Leader>li :set list!<CR>
 nmap <Leader>ls :!ls -l "%"<CR>
 nmap <Leader>ne :enew<CR>
 nmap <Leader>nu :set number!<CR>
+nmap <Leader>op :silent !open "%"<CR>
 nmap <Leader>pa :set paste!<CR>
 nmap <Leader>pw :pwd<CR>
 nmap <Leader>re :%s/
@@ -183,17 +163,8 @@ nmap <Leader>vn :vnew<CR>
 nmap <Leader>wr :set wrap!<CR>
 nmap <Leader>zs :edit ~/.zshrc<CR>
 
-if s:uname == "OpenBSD"
-  nmap <Leader>do :edit ~/Documents/Text\ Files/<CR>
-  nmap <Leader>ed :edit
-  nmap <Leader>eh :edit ~/
-
-  nmap § :buffers<CR>
-else
-  nmap § :LustyBufferExplorer<CR>
-endif
-
 nmap vil ^vg_
+nmap §   :LustyBufferExplorer<CR>
 
 nmap <Backspace> :nohlsearch<CR>
 nmap <Tab>       :bnext<CR>
@@ -221,13 +192,11 @@ vmap <Leader>vn y:vnew<CR>P
 
 imap <C-Tab> <C-n>
 
-if has("mac")
-  if has("gui_running")
-    function! FancyView()
-      set antialias
-      set guifont=Inconsolata:h28
-    endfunction
-  endif
+if has("gui_running")
+  function! FancyView()
+    set antialias
+    set guifont=Inconsolata:h28
+  endfunction
 endif
 
 function! BufferDelete()
@@ -306,7 +275,6 @@ augroup Main
 
   autocmd FileType gitcommit     setlocal spell
   autocmd Filetype help          setlocal nospell colorcolumn=
-  autocmd Filetype mail          setlocal colorcolumn=+1
   autocmd Filetype markdown,text setlocal colorcolumn=+1 spell textwidth=79
 
   autocmd BufWritePost ~/.vimrc source %
