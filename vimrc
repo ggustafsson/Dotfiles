@@ -215,7 +215,11 @@ endfunction
 
 function! ColorColumn()
   if empty(&colorcolumn)
-    setlocal colorcolumn=+1
+    if empty(&textwidth)
+      setlocal colorcolumn=79
+    else
+      setlocal colorcolumn=+1
+    endif
   else
     setlocal colorcolumn=
   endif

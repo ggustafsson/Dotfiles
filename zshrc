@@ -142,7 +142,6 @@ alias wc="gwc"
 alias cdb="cd /Volumes/Black\ Disk"
 alias cdd="cd ~/Downloads"
 alias cdp="cd ~/Projects"
-alias cdpb="cd ~/Pictures/Photo\ Booth\ Library/Pictures"
 
 alias cl="wc -l"
 alias cw="wc -w"
