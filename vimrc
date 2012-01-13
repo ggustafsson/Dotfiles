@@ -137,6 +137,7 @@ nmap <Leader>ft :set filetype=
 nmap <Leader>ga :Gist -a<CR>
 nmap <Leader>gg :Gist<CR>
 nmap <Leader>il :read ~/.vim/templates/template.license<CR>
+nmap <Leader>it :0read ~/.vim/templates/template.
 nmap <Leader>la :!ls -la "%:p:h"<CR>
 nmap <Leader>li :set list!<CR>
 nmap <Leader>ls :!ls -l "%"<CR>
@@ -146,15 +147,16 @@ nmap <Leader>op :silent !open "%"<CR>
 nmap <Leader>pa :set paste!<CR>
 nmap <Leader>pw :pwd<CR>
 nmap <Leader>re :%s/
+nmap <Leader>s2 :set expandtab softtabstop=2 shiftwidth=2<CR>
+nmap <Leader>s4 :set expandtab softtabstop=4 shiftwidth=4<CR>
 nmap <Leader>sc :split ~/Documents/Text\ Files/Scratch\ Notes.txt<CR>
 nmap <Leader>sg :call <SID>SyntaxGroup()<CR>
 nmap <Leader>sh :shell<CR>
 nmap <Leader>sn :new<CR>
 nmap <Leader>sp :setlocal spell!<CR>
 nmap <Leader>su ^vg_<Plug>VSurround
-nmap <Leader>t2 :set expandtab softtabstop=2 shiftwidth=2 tabstop=2<CR>
-nmap <Leader>t4 :set expandtab softtabstop=4 shiftwidth=4 tabstop=4<CR>
-nmap <Leader>t8 :set expandtab softtabstop=8 shiftwidth=8 tabstop=8<CR>
+nmap <Leader>t4 :set noexpandtab softtabstop=0 shiftwidth=4 tabstop=4<CR>
+nmap <Leader>t8 :set noexpandtab softtabstop=0 shiftwidth=8 tabstop=8<CR>
 nmap <Leader>to :split ~/Documents/Text\ Files/To-do\ List.txt<CR>
 nmap <Leader>tr :NERDTreeToggle<CR>
 nmap <Leader>un :edit!<CR>
@@ -262,7 +264,6 @@ endfunction
 augroup Main
   autocmd!
 
-  autocmd BufNewFile,BufRead *.php                     setlocal filetype=html
   autocmd BufNewFile,BufRead *.txt,README,INSTALL,TODO setlocal filetype=text
   autocmd BufNewFile,BufRead config                    setlocal filetype=conf
 

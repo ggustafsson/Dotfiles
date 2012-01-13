@@ -8,15 +8,16 @@ directories=(
   Development
   Documents
   "Library/Application Support/1Password"
-  "Library/Application Support/Adium 2.0"
   Movies/Personal
+  Music/GBS
+  Music/NFSe
   Music/Ringtones
   Pictures
   Projects
-  Scripts
   Sites
   Storage
   "Web Archives"
+  YouTube
 )
 
 if [ ! -f $encrypted_image ]; then
