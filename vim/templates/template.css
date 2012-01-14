@@ -15,4 +15,12 @@ body {
   padding:0px;
 }
 
+a {
+  color: #0057e0;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
 

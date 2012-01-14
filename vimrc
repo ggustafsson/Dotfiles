@@ -267,9 +267,9 @@ augroup Main
   autocmd BufNewFile,BufRead *.txt,README,INSTALL,TODO setlocal filetype=text
   autocmd BufNewFile,BufRead config                    setlocal filetype=conf
 
-  autocmd BufNewFile *.css  execute "0read ~/.vim/templates/template.css  | 18"
-  autocmd BufNewFile *.html execute "0read ~/.vim/templates/template.html | 33"
-  autocmd BufNewFile *.php  execute "0read ~/.vim/templates/template.php  | 34"
+  autocmd BufNewFile *.css  execute "0read ~/.vim/templates/template.css  | 26"
+  autocmd BufNewFile *.html execute "0read ~/.vim/templates/template.html | 41"
+  autocmd BufNewFile *.php  execute "0read ~/.vim/templates/template.php  | 42"
   autocmd BufNewFile *.py   execute "0read ~/.vim/templates/template.py   | 6"
   autocmd BufNewFile *.sh   execute "0read ~/.vim/templates/template.sh   | 5"
   autocmd BufNewFile *.zsh  execute "0read ~/.vim/templates/template.zsh  | 5"

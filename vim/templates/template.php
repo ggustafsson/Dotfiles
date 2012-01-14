@@ -23,6 +23,14 @@
       margin:0px;
       padding:0px;
     }
+
+    a {
+      color: #0057e0;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
   </style>
 
   <script src=""></script>

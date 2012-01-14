@@ -7,7 +7,7 @@ export EDITOR="/Applications/MacVim.app/Contents/MacOS/Vim -g --remote-tab-silen
 export GIT_EDITOR="/Applications/MacVim.app/Contents/MacOS/Vim"
 export VISUAL=$EDITOR
 
-export LESS=R
+export LESS=FRX
 export PAGER=less
 
 DIRSTACKSIZE=17
