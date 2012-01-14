@@ -1,7 +1,10 @@
 #!/usr/bin/env zsh
 
-# Usage:
 # Written by Göran Gustafsson <gustafsson.g@gmail.com>.
+
+# Usage: convertflac <file>
+#        convertflac *.flac
+#        find . -type f -iname "*.flac" -exec convertflac "{}" \;
 
 [ -z $1 ] && echo "Usage: $0 [FILENAME]..." && return
 
