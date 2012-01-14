@@ -21,14 +21,14 @@ directories=(
 )
 
 if [ ! -f $encrypted_image ]; then
-  echo "File: $encrypted_image doesn't exist!"
+  echo "File $encrypted_image doesn't exist!"
   return 1
 fi
 
 hdiutil attach -noverify $encrypted_image
 
 if [ ! -d $backup_destination ]; then
-  echo "Directory: $backup_destination doesn't exist!"
+  echo "Directory $backup_destination doesn't exist!"
   return 1
 fi
 

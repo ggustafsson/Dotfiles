@@ -272,6 +272,7 @@ augroup Main
   autocmd BufNewFile *.php  execute "0read ~/.vim/templates/template.php  | 34"
   autocmd BufNewFile *.py   execute "0read ~/.vim/templates/template.py   | 6"
   autocmd BufNewFile *.sh   execute "0read ~/.vim/templates/template.sh   | 5"
+  autocmd BufNewFile *.zsh  execute "0read ~/.vim/templates/template.zsh  | 5"
 
   autocmd FileType gitcommit     setlocal spell
   autocmd Filetype help          setlocal nospell colorcolumn=

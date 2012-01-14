@@ -233,7 +233,6 @@ hilights = (
 );
 channels = (
   { name = "#degiz"; chatnet = "Quakenet"; autojoin = "yes"; },
-  { name = "#archlinux"; chatnet = "Freenode"; autojoin = "yes"; },
   { name = "#vim"; chatnet = "Freenode"; autojoin = "yes"; },
   { name = "#zsh"; chatnet = "Freenode"; autojoin = "yes"; },
   { name = "#irssi"; chatnet = "Freenode"; autojoin = "yes"; }

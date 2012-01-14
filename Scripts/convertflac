@@ -1,0 +1,44 @@
+#!/usr/bin/env zsh
+
+# Usage:
+# Written by Göran Gustafsson <gustafsson.g@gmail.com>.
+
+[ -z $1 ] && echo "Usage: $0 [FILENAME]..." && return
+
+echo "Converting FLAC files to MP3!"
+
+for FILE in $*; do
+  if [ -f $FILE ]; then
+    if [[ $FILE == *.flac ]]; then
+      TAGS=(TITLE ARTIST ALBUM TRACKNUMBER TOTALTRACKS GENRE DATE)
+
+      # Set all tag information as shell variables.
+      for x in $TAGS; do
+        TMP=$(metaflac --show-tag=$x $FILE)
+        typeset -g $x=${TMP#*=}
+      done
+
+      echo
+
+      # Print out all tag information.
+      for x in $TAGS; do
+        echo $x=${(P)x}
+      done
+
+      # Decode flac file with "flac" and encode it to mp3 with "lame".
+      flac -dc $FILE | lame -b 320 -h --ignore-tag-errors --tt "$TITLE" \
+        --ta "$ARTIST" \
+        --tl "$ALBUM" \
+        --tn "$TRACKNUMBER/$TOTALTRACKS" \
+        --tg "$GENRE" \
+        --ty "$DATE" \
+        --add-id3v2 \
+        - "$FILE:r.mp3"
+    else
+      echo "\nFile $FILE does not end with *.flac."
+    fi
+  else
+    echo "\nFile $FILE does not exist."
+  fi
+done
+
