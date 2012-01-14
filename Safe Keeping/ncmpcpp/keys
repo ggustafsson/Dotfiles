@@ -1,0 +1,14 @@
+key_playlist      = '1'
+key_media_library = '2'
+key_browser       = '3'
+
+key_search_engine   = '8'
+key_tag_editor      = '9'
+key_playlist_editor = '0'
+
+key_pause = 't'
+key_next  = 'n'
+key_prev  = 'p'
+
+key_help = 'h'
+
