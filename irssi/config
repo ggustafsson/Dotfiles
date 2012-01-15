@@ -9,6 +9,8 @@ servers = (
     chatnet = "Freenode";
     port = "7000";
     use_ssl = "yes";
+    #ssl_verify = "yes";
+    #ssl_capath = "/etc/ssl/certs";
   }
 );
 
@@ -210,7 +212,7 @@ settings = {
     awl_hide_data = "3";
     awl_position = "0";
     awl_sbar_maxlength = "no";
-    beep_cmd = "~/Scripts/irssi_beep";
+    beep_cmd = "afplay ~/.irssi/beep.wav";
   };
   "irc/core" = {
     alternate_nick = "twiggz";
@@ -236,3 +238,4 @@ channels = (
   { name = "#vim"; chatnet = "Freenode"; autojoin = "yes"; },
   { name = "#irssi"; chatnet = "Freenode"; autojoin = "yes"; }
 );
+
