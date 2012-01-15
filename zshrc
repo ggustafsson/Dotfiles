@@ -177,8 +177,8 @@ alias l1="ls -1"
 alias la="ls -a"
 alias ls="ls -Gh"
 
-alias fleia="sftp twiggy@leia.lan"
-alias leia="ssh twiggy@leia.lan"
+alias fleia="sftp twiggy@192.168.1.82"
+alias leia="ssh twiggy@192.168.1.82"
 
 alias gad="git add"
 alias gbr="git branch"
