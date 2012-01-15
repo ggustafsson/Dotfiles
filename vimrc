@@ -10,7 +10,6 @@ colorscheme ninja
 
 set confirm
 set formatoptions+=n
-set gdefault
 set hidden
 set nofoldenable
 set nostartofline
@@ -30,9 +29,6 @@ set directory=~/.vim/backups
 set undofile
 set undodir=~/.vim/undos
 
-set encoding=utf-8
-set fileencoding=utf-8
-
 set expandtab
 set shiftwidth=2
 set softtabstop=2
@@ -51,7 +47,6 @@ set statusline+=%(%F\ %)
 set statusline+=%(%m\ %)
 set statusline+=%([%{(&fenc==\"\"?&enc:&fenc)}]\ %)
 set statusline+=%(%y\ %)
-"set statusline+=%(%{StatuslineCheckPath()}\ %)
 set statusline+=%(%{&paste?'[paste]':''}\ %)
 set statusline+=%=
 set statusline+=%(%v,\ %)
@@ -241,16 +236,6 @@ function! StatuslineBufferNr()
 
     return b:statusline
   endif
-endfunction
-
-function! StatuslineCheckPath()
-  let b:checkpath = ""
-
-  if expand("%:p:h") != getcwd()
-    let b:checkpath = "[!= PWD]"
-  endif
-
-  return b:checkpath
 endfunction
 
 function! <SID>SyntaxGroup()
