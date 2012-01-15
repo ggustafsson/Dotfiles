@@ -119,12 +119,13 @@ alias mkdir="mkdir -pv"
 alias o="open"
 alias ping="ping -c 10"
 alias pyweb="python3 -m http.server 8080"
+alias random='FILES=(*) && echo $FILES[$RANDOM%$#FILES+1]'
 alias re="ls -t | head -n 5"
 alias reload="source ~/.zshrc"
 alias s="screen"
-alias tv="vim '$TODO_FILE'"
+alias tv='vim "$TODO_FILE"'
 alias update="brew update && brew upgrade"
-alias ycal="cal $(date +%Y)"
+alias ycal='cal $(date +%Y)'
 alias yt="youtube-dl -l"
 
 alias -- -="cd -"
@@ -177,8 +178,8 @@ alias l1="ls -1"
 alias la="ls -a"
 alias ls="ls -Gh"
 
-alias fleia="sftp twiggy@192.168.1.82"
-alias leia="ssh twiggy@192.168.1.82"
+alias fleia="sftp twiggy@leia.lan"
+alias leia="ssh twiggy@leia.lan"
 
 alias gad="git add"
 alias gbr="git branch"
