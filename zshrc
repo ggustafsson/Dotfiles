@@ -100,8 +100,12 @@ function zsh_mode {
   fi
 }
 
-PROMPT='%B${(C)USER} %F{yellow}${(C)HOST%%.*}%f%b %~ %B$(zsh_mode)%b '
-RPROMPT='%B$(git_branch)%b'
+if [[ $TERM == dumb ]]; then
+  PROMPT='%~ $ '
+else
+  PROMPT='%B${(C)USER} %F{yellow}${(C)HOST%%.*}%f%b %~ %B$(zsh_mode)%b '
+  RPROMPT='%B$(git_branch)%b'
+fi
 
 alias bc="bc -q"
 alias c="clear"
@@ -216,6 +220,7 @@ done
 function chkp {
   local CURRENT_DIR=$PWD
   local CLEAN_BRANCH
+  local NO_REPOSITORY
 
   for dir in ~/Projects/*; do
     cd $dir
@@ -229,11 +234,16 @@ function chkp {
       git status -s -b
       echo
     else
-      CLEAN_BRANCH="$CLEAN_BRANCH * $dir:t\n"
+      if [ ! -d ".git" ]; then
+        NO_REPOSITORY="$NO_REPOSITORY * $dir:t\n"
+      else
+        CLEAN_BRANCH="$CLEAN_BRANCH * $dir:t\n"
+      fi
     fi
   done
 
-  echo -n "\033[1;32mClean branches:\033[0m\n$CLEAN_BRANCH"
+  [ ! -z $CLEAN_BRANCH  ] && echo -n "\033[1;32mClean branches:\033[0m\n$CLEAN_BRANCH" && [ ! -z $NO_REPOSITORY ] && echo
+  [ ! -z $NO_REPOSITORY ] && echo -n "\033[1;36mNot Git repo:\033[0m\n$NO_REPOSITORY"
 
   cd $CURRENT_DIR
 }

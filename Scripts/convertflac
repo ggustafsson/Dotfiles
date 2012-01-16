@@ -18,7 +18,7 @@ for FILE in $*; do
       # Set all tag information as shell variables.
       for x in $TAGS; do
         TMP=$(metaflac --show-tag=$x $FILE)
-        typeset -g $x=${TMP#*=}
+        local $x=${TMP#*=}
       done
 
       echo
