@@ -213,11 +213,14 @@ endfunction
 function! ColorColumn()
   if empty(&colorcolumn)
     if empty(&textwidth)
-      setlocal colorcolumn=79
+      echo "colorcolumn=80"
+      setlocal colorcolumn=80
     else
+      echo "colorcolumn=+1 (" . (&textwidth + 1) . ")"
       setlocal colorcolumn=+1
     endif
   else
+    echo "colorcolumn="
     setlocal colorcolumn=
   endif
 endfunction
