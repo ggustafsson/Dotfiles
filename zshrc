@@ -148,6 +148,7 @@ alias cdb="cd /Volumes/Black\ Disk"
 alias cdd="cd ~/Downloads"
 alias cdp="cd ~/Projects"
 alias cds="cd ~/Sites"
+alias cdt="cd ~/Documents/Text\ Files"
 
 alias cl="wc -l"
 alias cw="wc -w"
@@ -184,6 +185,7 @@ alias ls="ls -Gh"
 
 alias fleia="sftp twiggy@leia.lan"
 alias leia="ssh twiggy@leia.lan"
+alias yoda="ssh -p 666 root@192.168.1.1"
 
 alias gad="git add"
 alias gbr="git branch"

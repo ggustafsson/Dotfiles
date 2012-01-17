@@ -10,6 +10,7 @@ colorscheme ninja
 
 set confirm
 set formatoptions+=n
+set gdefault
 set hidden
 set nofoldenable
 set nostartofline
