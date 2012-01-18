@@ -3,8 +3,6 @@
 # Written by Göran Gustafsson <gustafsson.g@gmail.com>.
 
 CURRENT_DIR=$PWD
-CLEAN_BRANCH
-NO_REPOSITORY
 
 for dir in ~/Projects/*; do
   cd $dir

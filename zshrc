@@ -141,14 +141,12 @@ if [[ $OSTYPE == darwin* ]]; then
   alias cv="cvim"
   alias cvim="/Applications/MacVim.app/Contents/MacOS/Vim"
   alias vimdiff="/Applications/MacVim.app/Contents/MacOS/Vim -d -g $* >& /dev/null"
-  alias vimp="/Applications/MacVim.app/Contents/MacOS/Vim - -g >& /dev/null"
 
   alias dae="ls -lae"
   alias de="ls -le"
 else
   alias cal="cal -m"
   alias ls="ls -h --color=auto"
-  alias vimp="vim -"
   alias vl="tail -n $LINES -f /var/log/everything.log"
 
   alias paci="sudo pacman -S"
@@ -161,7 +159,7 @@ type ip >& /dev/null && alias lip="ip addr" || alias lip="ifconfig"
 
 alias bc="bc -q"
 alias c="clear"
-alias chkm="find ~/Music -type f ! -iname '*.mp3'"
+alias chkm="find ~/Music/MP3 -type f ! -iname '*.mp3'"
 alias df="df -h"
 alias dh="dirs -v | sort -r"
 alias fetch="wget --page-requisites --adjust-extension --convert-links"
@@ -232,13 +230,14 @@ alias gun="git reset --soft HEAD^"
 
 alias int="tim -i"
 alias pomo="tim -p"
+alias rint="tim -ri"
+alias rpomo="tim -rp"
 
 alias top="top -o cpu"
 alias topme="top -o cpu -U $USER"
 
 alias v="vim"
 alias vd="vimdiff"
-alias vp="vimp"
 
 for x in $SSH_HOSTS; do
   alias $x="ssh $x"
