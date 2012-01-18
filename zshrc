@@ -3,12 +3,18 @@
 export GEM_HOME=~/.ruby
 export LC_COLLATE=C
 
-export EDITOR="/Applications/MacVim.app/Contents/MacOS/Vim -g --remote-tab-silent"
-export GIT_EDITOR="/Applications/MacVim.app/Contents/MacOS/Vim"
-export VISUAL=$EDITOR
-
 export LESS=FRX
 export PAGER=less
+
+if [[ $OSTYPE == darwin* ]]; then
+  export EDITOR="/Applications/MacVim.app/Contents/MacOS/Vim -g --remote-tab-silent"
+  export GIT_EDITOR="/Applications/MacVim.app/Contents/MacOS/Vim"
+  export VISUAL=$EDITOR
+else
+  export EDITOR=vim
+  export GIT_EDITOR=$EDITOR
+  export VISUAL=$EDITOR
+fi
 
 DIRSTACKSIZE=17
 SSH_HOSTS=($(sed -ne 's/^Host //p' < .ssh/config))
@@ -18,7 +24,11 @@ HISTFILE=~/.zsh_histfile
 HISTSIZE=2000
 SAVEHIST=6000
 
-path=(/usr/local/bin /usr/local/sbin /bin /sbin /usr/bin /usr/sbin /usr/X11/bin ~/Scripts ~/.ruby/gems/*/bin(N))
+if [[ $OSTYPE == darwin* ]]; then
+  path=(/usr/local/bin /usr/local/sbin /bin /sbin /usr/bin /usr/sbin /usr/X11/bin ~/Scripts ~/.ruby/gems/*/bin(N))
+else
+  path=($PATH ~/Scripts ~/.ruby/gems/*/bin(N))
+fi
 
 setopt correct
 setopt interactivecomments
@@ -56,7 +66,7 @@ zstyle ':completion:*'          special-dirs true
 zstyle ':completion:*:cd:*'     ignore-parents parent pwd
 zstyle ':completion:*:warnings' format "zsh: no matches found."
 
-compdef _man manp
+[[ $OSTYPE == darwin* ]] && compdef _man manp
 compdef _path_files cd
 compdef _path_files git add
 
@@ -108,28 +118,65 @@ else
   RPROMPT='%B$(git_branch)%b'
 fi
 
+if [[ $OSTYPE == darwin* ]]; then
+  alias capit="imagesnap -t 2 -w 1"
+  alias cdb="cd /Volumes/Black\ Disk"
+  alias dontsleep="pmset noidle"
+  alias eject="osascript -e 'tell application \"Finder\" to eject (every disk whose ejectable is true)' && echo 'All external drives ejected!'"
+  alias ls="ls -Gh"
+  alias o="open"
+  alias update="brew update && brew upgrade"
+
+  alias awk="gawk"
+  alias cal="gcal -s 1"
+  alias head="ghead"
+  alias sed="gsed"
+  alias sort="gsort"
+  alias tail="gtail"
+  alias wc="gwc"
+
+  alias console="open -a Console"
+  alias safari="open -a Safari"
+
+  alias cv="cvim"
+  alias cvim="/Applications/MacVim.app/Contents/MacOS/Vim"
+  alias vimdiff="/Applications/MacVim.app/Contents/MacOS/Vim -d -g $* >& /dev/null"
+  alias vimp="/Applications/MacVim.app/Contents/MacOS/Vim - -g >& /dev/null"
+
+  alias dae="ls -lae"
+  alias de="ls -le"
+else
+  alias cal="cal -m"
+  alias ls="ls -h --color=auto"
+  alias vimp="vim -"
+  alias vl="tail -n $LINES -f /var/log/everything.log"
+
+  alias paci="sudo pacman -S"
+  alias pacr="sudo pacman -Rs"
+  alias pacu="sudo pacman -Syu"
+fi
+
+type hub >& /dev/null && alias git="hub"
+type ip >& /dev/null && alias lip="ip addr" || alias lip="ifconfig"
+
 alias bc="bc -q"
 alias c="clear"
-alias capit="imagesnap -t 2 -w 1"
 alias chkm="find ~/Music -type f ! -iname '*.mp3'"
 alias df="df -h"
 alias dh="dirs -v | sort -r"
-alias dontsleep="pmset noidle"
-alias eject="osascript -e 'tell application \"Finder\" to eject (every disk whose ejectable is true)' && echo 'All external drives ejected!'"
 alias fetch="wget --page-requisites --adjust-extension --convert-links"
 alias grep="grep --color=auto -i"
 alias hi="history"
+alias iip="curl -s http://automation.whatismyip.com/n09230945.asp | html2text"
 alias ka="killall"
 alias mkdir="mkdir -pv"
-alias o="open"
 alias ping="ping -c 10"
 alias pyweb="python3 -m http.server 8080"
 alias random='FILES=(*) && echo $FILES[$RANDOM%$#FILES+1]'
-alias re="ls -t | head -n 5"
 alias reload="source ~/.zshrc"
+alias rf="ls -t | head -n 5"
 alias s="screen"
 alias tv='vim "$TODO_FILE"'
-alias update="brew update && brew upgrade"
 alias ycal='cal $(date +%Y)'
 alias yt="youtube-dl -l"
 
@@ -137,15 +184,6 @@ alias -- -="cd -"
 alias ...="cd ../.."
 alias ..="cd .."
 
-alias awk="gawk"
-alias cal="gcal -s 1"
-alias head="ghead"
-alias sed="gsed"
-alias sort="gsort"
-alias tail="gtail"
-alias wc="gwc"
-
-alias cdb="cd /Volumes/Black\ Disk"
 alias cdd="cd ~/Downloads"
 alias cdp="cd ~/Projects"
 alias cds="cd ~/Sites"
@@ -161,9 +199,6 @@ alias so="sort"
 alias ta="tail"
 alias un="uniq"
 
-alias console="open -a Console"
-alias safari="open -a Safari"
-
 alias cp="cp -vi"
 alias mv="mv -vi"
 alias rm="rm -v"
@@ -171,18 +206,10 @@ alias rm="rm -v"
 alias csd='echo "Change directory to saved PATH." && cd $SAVE_DIR'
 alias sd='echo "Saving current PATH." && SAVE_DIR=$PWD'
 
-alias cv="cvim"
-alias cvim="/Applications/MacVim.app/Contents/MacOS/Vim"
-alias vimdiff="/Applications/MacVim.app/Contents/MacOS/Vim -d -g $* >& /dev/null"
-alias vimp="/Applications/MacVim.app/Contents/MacOS/Vim - -g >& /dev/null"
-
 alias d="ls -l"
 alias da="ls -la"
-alias dae="ls -lae"
-alias de="ls -le"
 alias l1="ls -1"
 alias la="ls -a"
-alias ls="ls -Gh"
 
 alias gad="git add"
 alias gbr="git branch"
@@ -192,7 +219,6 @@ alias gcl="git clone"
 alias gco="git commit -v"
 alias gdi="git diff"
 alias gfe="git fetch"
-alias git="hub"
 alias glo="git log"
 alias gme="git merge"
 alias gmv="git mv"
@@ -201,15 +227,11 @@ alias gpu="git push"
 alias grm="git rm"
 alias gst="git status -s -b"
 
-alias ip="ifconfig"
-alias iip="curl -s http://automation.whatismyip.com/n09230945.asp | html2text"
-
 alias top="top -o cpu"
 alias topme="top -o cpu -U $USER"
 
 alias v="vim"
 alias vd="vimdiff"
-alias vimp="vim -"
 alias vp="vimp"
 
 for x in $SSH_HOSTS; do
@@ -219,6 +241,78 @@ done
 for x in {1..16}; do
   alias +$x="cd +$x >& /dev/null"
 done
+
+if [[ $OSTYPE == darwin* ]]; then
+  function f {
+    if [ ! -z $1 ]; then
+      open -a Finder $*
+    else
+      open .
+    fi
+  }
+
+  function frees {
+    mv ~/Library/Caches/Homebrew ~/.Trash
+    mv ~/Library/Caches/com.apple.Safari/Webpage\ Previews ~/.Trash
+    mv ~/Library/iTunes/iPhone\ Software\ Updates ~/.Trash
+  }
+
+  function manp {
+    if [[ ! -z $1 ]]; then
+      for arg in $*; do
+        man -t $arg | open -f -a Preview
+      done
+    else
+      echo "Usage: $0 [MAN PAGE]..."
+    fi
+  }
+
+  function ql {
+    if [ ! -z $1 ]; then
+      qlmanage -p $* >& /dev/null
+    else
+      qlmanage
+    fi
+  }
+
+  function vim {
+    if [ -z $1 ]; then
+      /Applications/MacVim.app/Contents/MacOS/Vim -g
+    else
+      /Applications/MacVim.app/Contents/MacOS/Vim -g --remote-tab-silent $*
+    fi
+  }
+else
+  function pacs {
+    CL='\\e['
+    RS='\\e[0;0m'
+
+    echo -e "$(pacman -Ss "$*" | sed "
+      /^core/         s,.*,${CL}1;31m&${RS},
+      /^extra/        s,.*,${CL}0;32m&${RS},
+      /^community/    s,.*,${CL}1;35m&${RS},
+      /^[^[:space:]]/ s,.*,${CL}0;36m&${RS},
+    ")" | less -R
+  }
+
+  function restart {
+    for arg in $*; do
+      sudo /etc/rc.d/$arg restart
+    done
+  }
+
+  function start {
+    for arg in $*; do
+      sudo /etc/rc.d/$arg start
+    done
+  }
+
+  function stop {
+    for arg in $*; do
+      sudo /etc/rc.d/$arg stop
+    done
+  }
+fi
 
 function chkp {
   local CURRENT_DIR=$PWD
@@ -251,14 +345,6 @@ function chkp {
   cd $CURRENT_DIR
 }
 
-function f {
-  if [ ! -z $1 ]; then
-    open -a Finder $*
-  else
-    open .
-  fi
-}
-
 function ff {
   if [ ! -z $1 ]; then
     find . -iname $* | sed 's/.\///'
@@ -275,18 +361,18 @@ function fff {
   fi
 }
 
-function frees {
-  mv ~/Library/Caches/Homebrew ~/.Trash
-  mv ~/Library/Caches/com.apple.Safari/Webpage\ Previews ~/.Trash
-  mv ~/Library/iTunes/iPhone\ Software\ Updates ~/.Trash
-}
-
 function gifit {
-  if [[ ! -z $1 ]]; then
+  if [[ ! -z $1 ]] && [[ $# > 1 ]]; then
+    for file in $*; do
+      [ ! -f $file ] && echo "File $file doesn't not exist. Terminating." && return 1
+    done
+
     local FILENAME=animated_$(date '+%Y-%m-%d_%H:%M').gif
     convert -delay 30 -loop 0 $* $FILENAME
 
-    open -a Safari $FILENAME
+    [[ $OSTYPE == darwin* ]] && open -a Safari $FILENAME
+  else
+    echo "Usage: $0 [FILES]..."
   fi
 }
 
@@ -296,12 +382,6 @@ function h {
   else
     history -i 1 | less +G
   fi
-}
-
-function manp {
-  for arg in $*; do
-    man -t $arg | open -f -a Preview
-  done
 }
 
 function mkcd {
@@ -322,20 +402,22 @@ function p {
 }
 
 function permf {
-  find . -type d -exec chmod -N 755 "{}" \;
-  find . -type f -exec chmod -N 644 "{}" \;
+  if [[ $OSTYPE == darwin* ]]; then
+    find . -type d -exec chmod -N 755 "{}" \;
+    find . -type f -exec chmod -N 644 "{}" \;
+  else
+    find . -type d -exec chmod 755 "{}" \;
+    find . -type f -exec chmod 644 "{}" \;
+  fi
 }
 
 function ppermf {
-  find . -type d -exec chmod -N 700 "{}" \;
-  find . -type f -exec chmod -N 600 "{}" \;
-}
-
-function ql {
-  if [ ! -z $1 ]; then
-    qlmanage -p $* >& /dev/null
+  if [[ $OSTYPE == darwin* ]]; then
+    find . -type d -exec chmod -N 700 "{}" \;
+    find . -type f -exec chmod -N 600 "{}" \;
   else
-    qlmanage
+    find . -type d -exec chmod 700 "{}" \;
+    find . -type f -exec chmod 600 "{}" \;
   fi
 }
 
@@ -388,13 +470,5 @@ function unp {
       echo "File $arg does not exist."
     fi
   done
-}
-
-function vim {
-  if [ -z $1 ]; then
-    /Applications/MacVim.app/Contents/MacOS/Vim -g
-  else
-    /Applications/MacVim.app/Contents/MacOS/Vim -g --remote-tab-silent $*
-  fi
 }
 

@@ -8,6 +8,10 @@ filetype plugin indent on
 syntax enable
 colorscheme ninja
 
+if has("mac")
+  set shell=/usr/local/bin/zsh
+endif
+
 set confirm
 set formatoptions+=n
 set gdefault
@@ -15,7 +19,6 @@ set hidden
 set nofoldenable
 set nostartofline
 set nowrap
-set shell=/usr/local/bin/zsh
 set showbreak=+
 set spelllang=en,sv
 set timeoutlen=2000
