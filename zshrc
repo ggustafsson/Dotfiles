@@ -75,8 +75,8 @@ precmd() {
 }
 
 function git_branch {
-  ref=$(git symbolic-ref HEAD 2> /dev/null) || return
-  BRANCH=${ref#refs/heads/}
+  REFERENCE=$(git symbolic-ref HEAD 2> /dev/null) || return
+  BRANCH=${REFERENCE#REFERENCE/heads/}
 
   if [[ -n $(git rev-list origin..HEAD 2> /dev/null) ]]; then
     if [[ -n $(git status -s 2> /dev/null) ]]; then
@@ -239,12 +239,12 @@ alias topme="top -o cpu -U $USER"
 alias v="vim"
 alias vd="vimdiff"
 
-for x in $SSH_HOSTS; do
-  alias $x="ssh $x"
+for X in $SSH_HOSTS; do
+  alias $X="ssh $X"
 done
 
-for x in {1..16}; do
-  alias +$x="cd +$x >& /dev/null"
+for X in {1..16}; do
+  alias +$X="cd +$X >& /dev/null"
 done
 
 if [[ $OSTYPE == darwin* ]]; then
@@ -264,8 +264,8 @@ if [[ $OSTYPE == darwin* ]]; then
 
   function manp {
     if [[ ! -z $1 ]]; then
-      for arg in $*; do
-        man -t $arg | open -f -a Preview
+      for ARGUMENT in $*; do
+        man -t $ARGUMENT | open -f -a Preview
       done
     else
       echo "Usage: $0 [MAN PAGE]..."
@@ -301,20 +301,20 @@ else
   }
 
   function restart {
-    for arg in $*; do
-      sudo /etc/rc.d/$arg restart
+    for ARGUMENT in $*; do
+      sudo /etc/rc.d/$ARGUMENT restart
     done
   }
 
   function start {
-    for arg in $*; do
-      sudo /etc/rc.d/$arg start
+    for ARGUMENT in $*; do
+      sudo /etc/rc.d/$ARGUMENT start
     done
   }
 
   function stop {
-    for arg in $*; do
-      sudo /etc/rc.d/$arg stop
+    for ARGUMENT in $*; do
+      sudo /etc/rc.d/$ARGUMENT stop
     done
   }
 fi

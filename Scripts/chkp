@@ -4,22 +4,22 @@
 
 CURRENT_DIR=$PWD
 
-for dir in ~/Projects/*; do
-  cd $dir
+for DIRERCTORY in ~/Projects/*; do
+  cd $DIRRECTORY
 
   if [[ -n $(git rev-list origin..HEAD 2> /dev/null) ]]; then
-    echo "\033[1;36m$dir:t:\033[0m"
+    echo "\033[1;36m$DIRRECTORY:t:\033[0m"
     git status -s -b
     echo
   elif [[ -n $(git status -s 2> /dev/null) ]]; then
-    echo "\033[1;31m$dir:t:\033[0m"
+    echo "\033[1;31m$DIRRECTORY:t:\033[0m"
     git status -s -b
     echo
   else
     if [ ! -d ".git" ]; then
-      NO_REPOSITORY="$NO_REPOSITORY * $dir:t\n"
+      NO_REPOSITORY="$NO_REPOSITORY * $DIRRECTORY:t\n"
     else
-      CLEAN_BRANCH="$CLEAN_BRANCH * $dir:t\n"
+      CLEAN_BRANCH="$CLEAN_BRANCH * $DIRRECTORY:t\n"
     fi
   fi
 done

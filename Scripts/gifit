@@ -3,11 +3,11 @@
 # Written by Göran Gustafsson <gustafsson.g@gmail.com>.
 
 if [[ ! -z $1 ]] && [[ $# > 1 ]]; then
-  for file in $*; do
-    [ ! -f $file ] && echo "File $file doesn't not exist. Terminating." && return 1
+  for FILE in $*; do
+    [ ! -f $FILE ] && echo "File $FILE doesn't not exist. Terminating." && return 1
   done
 
-  local FILENAME=animated_$(date '+%Y-%m-%d_%H:%M').gif
+  FILENAME=animated_$(date '+%Y-%m-%d_%H:%M').gif
   convert -delay 30 -loop 0 $* $FILENAME
 
   [[ $OSTYPE == darwin* ]] && open -a Safari $FILENAME

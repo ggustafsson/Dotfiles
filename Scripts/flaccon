@@ -16,16 +16,16 @@ for FILE in $*; do
       TAGS=(TITLE ARTIST ALBUM TRACKNUMBER TOTALTRACKS GENRE DATE)
 
       # Set all tag information as shell variables.
-      for x in $TAGS; do
-        TMP=$(metaflac --show-tag=$x $FILE)
-        local $x=${TMP#*=}
+      for X in $TAGS; do
+        TMP=$(metaflac --show-tag=$X $FILE)
+        typeset -g $X=${TMP#*=}
       done
 
       echo
 
       # Print out all tag information.
-      for x in $TAGS; do
-        echo $x=${(P)x}
+      for X in $TAGS; do
+        echo $X=${(P)X}
       done
 
       # Decode flac file with "flac" and encode it to mp3 with "lame".

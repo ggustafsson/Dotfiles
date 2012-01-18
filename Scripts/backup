@@ -3,11 +3,11 @@
 # Original by Zach Holman <https://github.com/holman/dotfiles/blob/master/bin/backup>.
 # Modified by Göran Gustafsson <gustafsson.g@gmail.com>.
 
-device_name=Keychain
-encrypted_image=/Volumes/Keychain/Backup.sparseimage
-backup_destination=/Volumes/Backup
+DEVICE_NAME=Keychain
+ENCRYPTED_IMAGE=/Volumes/Keychain/Backup.sparseimage
+BACKUP_DESTINATION=/Volumes/Backup
 
-directories=(
+DIRECTORIES=(
   Development
   Documents
   "Library/Application Support/1Password"
@@ -23,22 +23,22 @@ directories=(
   YouTube
 )
 
-if [ ! -f $encrypted_image ]; then
-  echo "File $encrypted_image doesn't exist!"
+if [ ! -f $ENCRYPTED_IMAGE ]; then
+  echo "File $ENCRYPTED_IMAGE doesn't exist!"
   return 1
 fi
 
-hdiutil attach -noverify $encrypted_image
+hdiutil attach -noverify $ENCRYPTED_IMAGE
 
-if [ ! -d $backup_destination ]; then
-  echo "Directory $backup_destination doesn't exist!"
+if [ ! -d $BACKUP_DESTINATION ]; then
+  echo "Directory $BACKUP_DESTINATION doesn't exist!"
   return 1
 fi
 
-for directory in $directories; do
-  rsync -ah --progress --delete ~/$directory $backup_destination
+for DIRECTORY in $DIRECTORIES; do
+  rsync -ah --progress --delete ~/$DIRECTORY $BACKUP_DESTINATION
 done
 
-hdiutil detach $backup_destination
-diskutil eject $device_name
+hdiutil detach $BACKUP_DESTINATION
+diskutil eject $DEVICE_NAME
 

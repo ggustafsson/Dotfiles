@@ -4,36 +4,36 @@
 
 [ -z $1 ] && echo "Usage: $0 [FILENAME]..." && return
 
-for arg in $*; do
-  if [ -f $arg ]; then
-    case $arg in
+for ARGUMENT in $*; do
+  if [ -f $ARGUMENT ]; then
+    case $ARGUMENT in
       *.gz)
-        if [[ $arg == *.tar.gz ]]; then
-          tar zxvf $arg
+        if [[ $ARGUMENT == *.tar.gz ]]; then
+          tar zxvf $ARGUMENT
         else
-          gunzip $arg
+          gunzip $ARGUMENT
         fi
       ;;
       *.bz2)
-        if [[ $arg == *.tar.bz2 ]]; then
-          tar xvjf $arg
+        if [[ $ARGUMENT == *.tar.bz2 ]]; then
+          tar xvjf $ARGUMENT
         else
-          bunzip2 $arg
+          bunzip2 $ARGUMENT
         fi
       ;;
-      *.tar)  tar xvf    $arg ;;
-      *.tgz)  tar zxvf   $arg ;;
-      *.tbz2) tar xvjf   $arg ;;
-      *.zip)  unzip      $arg ;;
-      *.rar)  unrar x    $arg ;;
-      *.Z)    uncompress $arg ;;
-      *.7z)   7z x       $arg ;;
+      *.tar)  tar xvf    $ARGUMENT ;;
+      *.tgz)  tar zxvf   $ARGUMENT ;;
+      *.tbz2) tar xvjf   $ARGUMENT ;;
+      *.zip)  unzip      $ARGUMENT ;;
+      *.rar)  unrar x    $ARGUMENT ;;
+      *.Z)    uncompress $ARGUMENT ;;
+      *.7z)   7z x       $ARGUMENT ;;
       *)
-        echo "File $arg cannot be extracted via $0."
+        echo "File $ARGUMENT cannot be extracted via $0."
       ;;
     esac
   else
-    echo "File $arg does not exist."
+    echo "File $ARGUMENT does not exist."
   fi
 done
 
