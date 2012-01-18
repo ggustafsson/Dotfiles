@@ -1,0 +1,39 @@
+#!/usr/bin/env zsh
+
+# Written by Göran Gustafsson <gustafsson.g@gmail.com>.
+
+[ -z $1 ] && echo "Usage: $0 [FILENAME]..." && return
+
+for arg in $*; do
+  if [ -f $arg ]; then
+    case $arg in
+      *.gz)
+        if [[ $arg == *.tar.gz ]]; then
+          tar zxvf $arg
+        else
+          gunzip $arg
+        fi
+      ;;
+      *.bz2)
+        if [[ $arg == *.tar.bz2 ]]; then
+          tar xvjf $arg
+        else
+          bunzip2 $arg
+        fi
+      ;;
+      *.tar)  tar xvf    $arg ;;
+      *.tgz)  tar zxvf   $arg ;;
+      *.tbz2) tar xvjf   $arg ;;
+      *.zip)  unzip      $arg ;;
+      *.rar)  unrar x    $arg ;;
+      *.Z)    uncompress $arg ;;
+      *.7z)   7z x       $arg ;;
+      *)
+        echo "File $arg cannot be extracted via $0."
+      ;;
+    esac
+  else
+    echo "File $arg does not exist."
+  fi
+done
+

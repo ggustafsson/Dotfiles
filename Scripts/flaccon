@@ -2,9 +2,9 @@
 
 # Written by Göran Gustafsson <gustafsson.g@gmail.com>.
 
-# Usage: convertflac <file>
-#        convertflac *.flac
-#        find . -type f -iname "*.flac" -exec convertflac "{}" \;
+# Usage: flaccon <file>
+#        flaccon *.flac
+#        find . -type f -iname "*.flac" -exec flaccon "{}" \;
 
 [ -z $1 ] && echo "Usage: $0 [FILENAME]..." && return
 

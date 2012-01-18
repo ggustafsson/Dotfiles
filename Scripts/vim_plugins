@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# Göran Gustafsson <gustafsson.g@gmail.com>
+# Written by Göran Gustafsson <gustafsson.g@gmail.com>.
 
 rm -rf ~/.vim/backups/bundle
 rm -rf ~/.vim/backups/vim-pathogen

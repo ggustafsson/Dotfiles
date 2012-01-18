@@ -1,0 +1,33 @@
+#!/usr/bin/env zsh
+
+# Written by Göran Gustafsson <gustafsson.g@gmail.com>.
+
+CURRENT_DIR=$PWD
+CLEAN_BRANCH
+NO_REPOSITORY
+
+for dir in ~/Projects/*; do
+  cd $dir
+
+  if [[ -n $(git rev-list origin..HEAD 2> /dev/null) ]]; then
+    echo "\033[1;36m$dir:t:\033[0m"
+    git status -s -b
+    echo
+  elif [[ -n $(git status -s 2> /dev/null) ]]; then
+    echo "\033[1;31m$dir:t:\033[0m"
+    git status -s -b
+    echo
+  else
+    if [ ! -d ".git" ]; then
+      NO_REPOSITORY="$NO_REPOSITORY * $dir:t\n"
+    else
+      CLEAN_BRANCH="$CLEAN_BRANCH * $dir:t\n"
+    fi
+  fi
+done
+
+[ ! -z $CLEAN_BRANCH  ] && echo -n "\033[1;32mClean branches:\033[0m\n$CLEAN_BRANCH" && [ ! -z $NO_REPOSITORY ] && echo
+[ ! -z $NO_REPOSITORY ] && echo -n "\033[1;36mNot Git repo:\033[0m\n$NO_REPOSITORY"
+
+cd $CURRENT_DIR
+

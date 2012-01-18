@@ -16,7 +16,7 @@ else
   export VISUAL=$EDITOR
 fi
 
-[[ -f ~/.ssh/config ]] && SSH_HOSTS=($(sed -ne 's/^Host //p' < .ssh/config))
+[[ -f ~/.ssh/config ]] && SSH_HOSTS=($(sed -ne 's/^Host //p' < ~/.ssh/config))
 DIRSTACKSIZE=17
 TODO_FILE=~/Documents/Text\ Files/To-do\ List.txt
 
@@ -175,6 +175,7 @@ alias pyweb="python3 -m http.server 8080"
 alias random='FILES=(*) && echo $FILES[$RANDOM%$#FILES+1]'
 alias reload="source ~/.zshrc"
 alias rf="ls -t | head -n 5"
+alias rgrep="grep -r"
 alias s="screen"
 alias tv='vim "$TODO_FILE"'
 alias ycal='cal $(date +%Y)'
@@ -227,6 +228,7 @@ alias gpl="git pull"
 alias gpu="git push"
 alias grm="git rm"
 alias gst="git status -s -b"
+alias gun="git reset --soft HEAD^"
 
 alias int="tim -i"
 alias pomo="tim -p"
@@ -318,37 +320,6 @@ else
   }
 fi
 
-function chkp {
-  local CURRENT_DIR=$PWD
-  local CLEAN_BRANCH
-  local NO_REPOSITORY
-
-  for dir in ~/Projects/*; do
-    cd $dir
-
-    if [[ -n $(git rev-list origin..HEAD 2> /dev/null) ]]; then
-      echo "\033[1;36m$dir:t:\033[0m"
-      git status -s -b
-      echo
-    elif [[ -n $(git status -s 2> /dev/null) ]]; then
-      echo "\033[1;31m$dir:t:\033[0m"
-      git status -s -b
-      echo
-    else
-      if [ ! -d ".git" ]; then
-        NO_REPOSITORY="$NO_REPOSITORY * $dir:t\n"
-      else
-        CLEAN_BRANCH="$CLEAN_BRANCH * $dir:t\n"
-      fi
-    fi
-  done
-
-  [ ! -z $CLEAN_BRANCH  ] && echo -n "\033[1;32mClean branches:\033[0m\n$CLEAN_BRANCH" && [ ! -z $NO_REPOSITORY ] && echo
-  [ ! -z $NO_REPOSITORY ] && echo -n "\033[1;36mNot Git repo:\033[0m\n$NO_REPOSITORY"
-
-  cd $CURRENT_DIR
-}
-
 function ff {
   if [ ! -z $1 ]; then
     find . -iname $* | sed 's/.\///'
@@ -357,26 +328,11 @@ function ff {
   fi
 }
 
-function fff {
+function ffp {
   if [ ! -z $1 ]; then
     find "$PWD" -iname $*
   else
     echo "Usage: $0 [PATTERN]..."
-  fi
-}
-
-function gifit {
-  if [[ ! -z $1 ]] && [[ $# > 1 ]]; then
-    for file in $*; do
-      [ ! -f $file ] && echo "File $file doesn't not exist. Terminating." && return 1
-    done
-
-    local FILENAME=animated_$(date '+%Y-%m-%d_%H:%M').gif
-    convert -delay 30 -loop 0 $* $FILENAME
-
-    [[ $OSTYPE == darwin* ]] && open -a Safari $FILENAME
-  else
-    echo "Usage: $0 [FILES]..."
   fi
 }
 
@@ -437,42 +393,5 @@ function t {
   else
     echo "$*" >> $TODO_FILE
   fi
-}
-
-function unp {
-  [ -z $1 ] && echo "Usage: $0 [FILENAME]..." && return
-
-  for arg in $*; do
-    if [ -f $arg ]; then
-      case $arg in
-        *.gz)
-          if [[ $arg == *.tar.gz ]]; then
-            tar zxvf $arg
-          else
-            gunzip $arg
-          fi
-        ;;
-        *.bz2)
-          if [[ $arg == *.tar.bz2 ]]; then
-            tar xvjf $arg
-          else
-            bunzip2 $arg
-          fi
-        ;;
-        *.tar)  tar xvf    $arg ;;
-        *.tgz)  tar zxvf   $arg ;;
-        *.tbz2) tar xvjf   $arg ;;
-        *.zip)  unzip      $arg ;;
-        *.rar)  unrar x    $arg ;;
-        *.Z)    uncompress $arg ;;
-        *.7z)   7z x       $arg ;;
-        *)
-          echo "File $arg cannot be extracted via $0."
-        ;;
-      esac
-    else
-      echo "File $arg does not exist."
-    fi
-  done
 }
 

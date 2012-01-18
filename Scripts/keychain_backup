@@ -1,5 +1,8 @@
 #!/usr/bin/env zsh
 
+# Original by Zach Holman <https://github.com/holman/dotfiles/blob/master/bin/backup>.
+# Modified by Göran Gustafsson <gustafsson.g@gmail.com>.
+
 device_name=Keychain
 encrypted_image=/Volumes/Keychain/Backup.sparseimage
 backup_destination=/Volumes/Backup
