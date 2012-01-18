@@ -57,7 +57,7 @@ set statusline+=%(%v,\ %)
 set statusline+=%(%l/%L\ %)
 
 set list
-set listchars=tab:>-,trail:·,precedes:<,extends:>
+set listchars=tab:>-,trail:-,precedes:<,extends:>
 
 set splitbelow
 set splitright

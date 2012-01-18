@@ -16,8 +16,8 @@ else
   export VISUAL=$EDITOR
 fi
 
+[[ -f ~/.ssh/config ]] && SSH_HOSTS=($(sed -ne 's/^Host //p' < .ssh/config))
 DIRSTACKSIZE=17
-SSH_HOSTS=($(sed -ne 's/^Host //p' < .ssh/config))
 TODO_FILE=~/Documents/Text\ Files/To-do\ List.txt
 
 HISTFILE=~/.zsh_histfile
