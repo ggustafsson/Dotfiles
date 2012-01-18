@@ -90,11 +90,13 @@ else
   set title
 endif
 
+if has("mac")
+  let g:gist_clip_command = "pbcopy"
+endif
+
+let g:gist_open_browser_after_post = 1
 let g:mapleader = ","
 let g:surround_no_mappings = 1
-
-let g:gist_clip_command = "pbcopy"
-let g:gist_open_browser_after_post = 1
 
 let g:html_ignore_folding = 1
 let g:html_number_lines = 0
@@ -123,6 +125,11 @@ if has("gui_running")
   nmap <Leader>fa :call FancyView()<CR>
 endif
 
+if has("mac")
+  nmap <Leader>fi :silent !open "%:p:h"<CR>
+  nmap <Leader>sa :silent !open -a Safari "%"<CR>
+endif
+
 nmap <Leader>bd :call BufferDelete()<CR>
 nmap <Leader>cc :call ColorColumn()<CR>
 nmap <Leader>cd :cd %:p:h<CR>:pwd<CR>
@@ -131,7 +138,6 @@ nmap <Leader>di :diffthis<CR>
 nmap <Leader>do :LustyFilesystemExplorer ~/Documents/Text\ Files/<CR>
 nmap <Leader>ed :LustyFilesystemExplorerFromHere<CR>
 nmap <Leader>eh :LustyFilesystemExplorer ~<CR>
-nmap <Leader>fi :silent !open "%:p:h"<CR>
 nmap <Leader>ft :set filetype=
 nmap <Leader>ga :Gist -a<CR>
 nmap <Leader>gg :Gist<CR>
@@ -142,7 +148,6 @@ nmap <Leader>li :set list!<CR>
 nmap <Leader>ls :!ls -l "%"<CR>
 nmap <Leader>ne :enew<CR>
 nmap <Leader>nu :set number!<CR>
-nmap <Leader>op :silent !open "%"<CR>
 nmap <Leader>pa :set paste!<CR>
 nmap <Leader>pw :pwd<CR>
 nmap <Leader>re :%s/

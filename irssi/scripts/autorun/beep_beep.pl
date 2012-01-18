@@ -45,7 +45,7 @@ sub beep_beep() {
 	}
 }
 
-Irssi::settings_add_str("lookandfeel", "beep_cmd", "afplay ~/.irssi/receive.aif");
+Irssi::settings_add_str("lookandfeel", "beep_cmd", "afplay ~/.irssi/beep.wav");
 Irssi::settings_add_int("lookandfeel", "beep_flood", 250);
 Irssi::signal_add("beep", "beep_beep");
 
