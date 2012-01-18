@@ -16,7 +16,7 @@ else
   export VISUAL=$EDITOR
 fi
 
-[[ -f ~/.ssh/config ]] && SSH_HOSTS=($(sed -ne 's/^Host //p' < ~/.ssh/config))
+[ -f ~/.ssh/config ] && SSH_HOSTS=($(sed -ne 's/^Host //p' < ~/.ssh/config))
 DIRSTACKSIZE=17
 TODO_FILE=~/Documents/Text\ Files/To-do\ List.txt
 
@@ -76,7 +76,7 @@ precmd() {
 
 function git_branch {
   REFERENCE=$(git symbolic-ref HEAD 2> /dev/null) || return
-  BRANCH=${REFERENCE#REFERENCE/heads/}
+  BRANCH=${REFERENCE#refs/heads/}
 
   if [[ -n $(git rev-list origin..HEAD 2> /dev/null) ]]; then
     if [[ -n $(git status -s 2> /dev/null) ]]; then
@@ -231,7 +231,6 @@ alias gun="git reset --soft HEAD^"
 alias int="tim -i"
 alias pomo="tim -p"
 alias rint="tim -ri"
-alias rpomo="tim -rp"
 
 alias top="top -o cpu"
 alias topme="top -o cpu -U $USER"
@@ -263,7 +262,7 @@ if [[ $OSTYPE == darwin* ]]; then
   }
 
   function manp {
-    if [[ ! -z $1 ]]; then
+    if [ ! -z $1 ]; then
       for ARGUMENT in $*; do
         man -t $ARGUMENT | open -f -a Preview
       done
