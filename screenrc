@@ -5,7 +5,3 @@ sorendition     wb
 startup_message off
 vbell           off
 
-bind l lockscreen
-bind r redisplay
-bind x screen
-

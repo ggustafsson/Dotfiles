@@ -11,6 +11,7 @@ export LESS=FRX
 export PAGER=less
 
 DIRSTACKSIZE=17
+SSH_HOSTS=($(sed -ne 's/^Host //p' < .ssh/config))
 TODO_FILE=~/Documents/Text\ Files/To-do\ List.txt
 
 HISTFILE=~/.zsh_histfile
@@ -183,10 +184,6 @@ alias l1="ls -1"
 alias la="ls -a"
 alias ls="ls -Gh"
 
-alias fleia="sftp twiggy@leia.lan"
-alias leia="ssh twiggy@leia.lan"
-alias yoda="ssh -p 666 root@192.168.1.1"
-
 alias gad="git add"
 alias gbr="git branch"
 alias gca="git commit -a -v"
@@ -214,6 +211,10 @@ alias v="vim"
 alias vd="vimdiff"
 alias vimp="vim -"
 alias vp="vimp"
+
+for x in $SSH_HOSTS; do
+  alias $x="ssh $x"
+done
 
 for x in {1..16}; do
   alias +$x="cd +$x >& /dev/null"

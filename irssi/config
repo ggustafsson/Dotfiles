@@ -9,8 +9,8 @@ servers = (
     chatnet = "Freenode";
     port = "7000";
     use_ssl = "yes";
-    #ssl_verify = "yes";
-    #ssl_capath = "/etc/ssl/certs";
+    ssl_verify = "yes";
+    ssl_capath = "/etc/ssl/certs";
   }
 );
 
@@ -233,6 +233,7 @@ hilights = (
 );
 channels = (
   { name = "#degiz"; chatnet = "Quakenet"; autojoin = "yes"; },
+  { name = "#archlinux"; chatnet = "Freenode"; autojoin = "yes"; },
   { name = "#openbsd"; chatnet = "Freenode"; autojoin = "yes"; },
   { name = "#zsh"; chatnet = "Freenode"; autojoin = "yes"; },
   { name = "#vim"; chatnet = "Freenode"; autojoin = "yes"; },
