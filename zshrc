@@ -27,7 +27,7 @@ SAVEHIST=6000
 if [[ $OSTYPE == darwin* ]]; then
   path=(/usr/local/bin /usr/local/sbin /bin /sbin /usr/bin /usr/sbin /usr/X11/bin ~/Scripts ~/.ruby/gems/*/bin(N))
 else
-  path=($PATH ~/Scripts ~/.ruby/gems/*/bin(N))
+  path+=(~/Scripts ~/.ruby/gems/*/bin(N))
 fi
 
 setopt correct
