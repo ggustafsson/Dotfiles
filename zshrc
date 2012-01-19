@@ -139,7 +139,9 @@ if [[ $OSTYPE == darwin* ]]; then
   alias safari="open -a Safari"
 
   alias cv="cvim"
+  alias cvd="cvimdiff"
   alias cvim="/Applications/MacVim.app/Contents/MacOS/Vim"
+  alias cvimdiff="/Applications/MacVim.app/Contents/MacOS/Vim -d"
   alias vimdiff="/Applications/MacVim.app/Contents/MacOS/Vim -d -g $* >& /dev/null"
 
   alias dae="ls -lae"

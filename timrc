@@ -5,7 +5,7 @@
 
 #INTERVAL=
 
-WORK_CMD="say start working again"
+WORK_CMD="say start working now"
 BREAK_CMD="say take a little break"
 
 POMODORO_CMD="say working session is over. take a break"
