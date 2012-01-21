@@ -106,6 +106,10 @@ let g:html_number_lines = 0
 let g:LustyExplorerDefaultMappings = 0
 let g:LustyJugglerDefaultMappings = 0
 
+let g:minesweeper_custom_colors = 1
+let g:minesweeper_statusline = " MineSweeper"
+let g:minesweeper_title = "MineSweeper"
+
 let g:NERDCreateDefaultMappings = 0
 let g:NERDMenuMode = 0
 let g:NERDSpaceDelims = 1
@@ -149,6 +153,7 @@ nmap <Leader>it :0read ~/.vim/templates/template.
 nmap <Leader>la :!ls -la "%:p:h"<CR>
 nmap <Leader>li :set list!<CR>
 nmap <Leader>ls :!ls -l "%"<CR>
+nmap <Leader>mi :MineSweeper hard<CR>
 nmap <Leader>ne :enew<CR>
 nmap <Leader>nu :set number!<CR>
 nmap <Leader>ny :source ~/.vim/bundle/nyancat-vim/nyancat2.vim<CR>

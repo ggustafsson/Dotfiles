@@ -16,6 +16,7 @@ cd ~/.vim/bundle
 
 echo; git clone git://github.com/koron/nyancat-vim.git
 echo; git clone git://github.com/mattn/gist-vim.git
+echo; git clone git://github.com/mfumi/viminesweeper.git
 echo; git clone git://github.com/msanders/snipmate.vim.git
 echo; git clone git://github.com/scrooloose/nerdcommenter.git
 echo; git clone git://github.com/scrooloose/nerdtree.git
