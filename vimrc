@@ -97,6 +97,7 @@ endif
 
 let g:gist_open_browser_after_post = 1
 let g:mapleader = ","
+let g:nyancat_display_statusline = 1
 let g:surround_no_mappings = 1
 
 let g:html_ignore_folding = 1

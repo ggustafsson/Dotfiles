@@ -12,6 +12,8 @@ cd ~/Sites/Frameworks
 git clone git://github.com/bartaz/impress.js.git; echo
 git clone git://github.com/dawanda/jquery-rss.git; echo
 git clone git://github.com/imakewebthings/deck.js.git; echo
+git clone git://github.com/necolas/css3-facebook-buttons.git; echo
+git clone git://github.com/necolas/css3-github-buttons.git; echo
 git clone git://github.com/twitter/bootstrap.git; echo
 
 mkdir ~/Sites/Frameworks/jQuery
