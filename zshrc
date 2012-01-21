@@ -61,7 +61,7 @@ bindkey '^?' backward-delete-char
 bindkey -M vicmd 'R' custom-vi-replace
 
 zstyle ':completion:*'          insert-tab pending
-zstyle ':completion:*'          matcher-list 'm:{a-z}={A-Z}'
+zstyle ':completion:*'          matcher-list 'm:{[:lower:]}={[:upper:]}'
 zstyle ':completion:*'          special-dirs true
 zstyle ':completion:*:cd:*'     ignore-parents parent pwd
 zstyle ':completion:*:warnings' format "zsh: no matches found."
@@ -249,6 +249,14 @@ for X in {1..16}; do
 done
 
 if [[ $OSTYPE == darwin* ]]; then
+  function dict {
+    if [ ! -z $1 ]; then
+      open "dict://$1"
+    else
+      echo "Usage: $0 [WORD]..."
+    fi
+  }
+
   function f {
     if [ ! -z $1 ]; then
       open -a Finder $*
@@ -281,11 +289,27 @@ if [[ $OSTYPE == darwin* ]]; then
     fi
   }
 
+  function smb {
+    if [ ! -z $1 ]; then
+      open "smb://$1"
+    else
+      echo "Usage: $0 [IP/DNS]..."
+    fi
+  }
+
   function vim {
     if [ -z $1 ]; then
       /Applications/MacVim.app/Contents/MacOS/Vim -g
     else
       /Applications/MacVim.app/Contents/MacOS/Vim -g --remote-tab-silent $*
+    fi
+  }
+
+  function vnc {
+    if [ ! -z $1 ]; then
+      open "vnc://$1"
+    else
+      echo "Usage: $0 [IP/DNS]..."
     fi
   }
 else

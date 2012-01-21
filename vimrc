@@ -13,6 +13,7 @@ if has("mac")
 endif
 
 set confirm
+set encoding=utf-8
 set formatoptions+=n
 set hidden
 set nofoldenable
@@ -74,6 +75,7 @@ set wildignore+=*.dmg,*.iso,*.rar,*.tar,*.tar.bz2,*.tar.gz,*.zip
 if has("gui_running")
   set guicursor+=a:blinkon0
   set guioptions=cgt
+  set showcmd
 
   set guifont=Monaco:h12
   set noantialias
@@ -110,6 +112,7 @@ let g:NERDSpaceDelims = 1
 let g:NERDTreeAutoCenter = 0
 let g:NERDTreeDirArrows = 0
 let g:NERDTreeMinimalUI = 1
+let g:NERDTreeStatusline = " NERDTree"
 
 cabbrev ht   tab help
 cabbrev htab tab help
@@ -147,6 +150,7 @@ nmap <Leader>li :set list!<CR>
 nmap <Leader>ls :!ls -l "%"<CR>
 nmap <Leader>ne :enew<CR>
 nmap <Leader>nu :set number!<CR>
+nmap <Leader>ny :source ~/.vim/bundle/nyancat-vim/nyancat2.vim<CR>
 nmap <Leader>pa :set paste!<CR>
 nmap <Leader>pw :pwd<CR>
 nmap <Leader>re :%s/
