@@ -153,7 +153,7 @@ nmap <Leader>it :0read ~/.vim/templates/template.
 nmap <Leader>la :!ls -la "%:p:h"<CR>
 nmap <Leader>li :set list!<CR>
 nmap <Leader>ls :!ls -l "%"<CR>
-nmap <Leader>mi :MineSweeper hard<CR>
+nmap <Leader>mi :MineSweeper normal<CR>
 nmap <Leader>ne :enew<CR>
 nmap <Leader>nu :set number!<CR>
 nmap <Leader>ny :source ~/.vim/bundle/nyancat-vim/nyancat2.vim<CR>
