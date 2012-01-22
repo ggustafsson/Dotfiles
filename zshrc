@@ -14,6 +14,8 @@ else
   export EDITOR=vim
   export GIT_EDITOR=$EDITOR
   export VISUAL=$EDITOR
+
+  eval $(ssh-agent) >& /dev/null
 fi
 
 [ -f ~/.ssh/config ] && SSH_HOSTS=($(sed -ne 's/^Host //p' < ~/.ssh/config))
