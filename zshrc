@@ -14,8 +14,6 @@ else
   export EDITOR=vim
   export GIT_EDITOR=$EDITOR
   export VISUAL=$EDITOR
-
-  eval $(ssh-agent) >& /dev/null
 fi
 
 [ -f ~/.ssh/config ] && SSH_HOSTS=($(sed -ne 's/^Host //p' < ~/.ssh/config))
@@ -121,6 +119,7 @@ else
 fi
 
 if [[ $OSTYPE == darwin* ]]; then
+  alias agentadd="eval $(ssh-agent) >& /dev/null && ssh-add"
   alias capit="imagesnap -t 2 -w 1"
   alias cdb="cd /Volumes/Black\ Disk"
   alias dontsleep="pmset noidle"
