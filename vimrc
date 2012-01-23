@@ -77,14 +77,18 @@ if has("gui_running")
   set guioptions=cgt
   set showcmd
 
-  set guifont=Monaco:h12
-  set noantialias
+  function! FontSetup()
+    set guifont=Monaco:h12
+    set noantialias
 
-  if !exists("g:dont_resize_again")
     set columns=171
     set lines=45
+  endfunction
 
-    let g:dont_resize_again = 1
+  if !exists("g:dont_load_again")
+    call FontSetup()
+
+    let g:dont_load_again = 1
   endif
 else
   set mouse=v
@@ -170,7 +174,8 @@ nmap <Leader>sp :setlocal spell!<CR>
 nmap <Leader>su ^vg_<Plug>VSurround
 nmap <Leader>t4 :set noexpandtab softtabstop=0 shiftwidth=4 tabstop=4<CR>
 nmap <Leader>t8 :set noexpandtab softtabstop=0 shiftwidth=8 tabstop=8<CR>
-nmap <Leader>to :split ~/Documents/Text\ Files/To-do\ List.txt<CR>
+nmap <Leader>to :split ~/Documents/Text\ Files/To-do\ List.todo<CR>
+nmap <Leader>TO :edit ~/Documents/Text\ Files/To-do\ List.todo<CR>
 nmap <Leader>tr :NERDTreeToggle<CR>
 nmap <Leader>un :edit!<CR>
 nmap <Leader>vi :edit ~/.vimrc<CR>
@@ -204,8 +209,12 @@ imap <C-Tab> <C-n>
 
 if has("gui_running")
   function! FancyView()
-    set antialias
-    set guifont=Inconsolata:h28
+    if &guifont != "Inconsolata:h28"
+      set antialias
+      set guifont=Inconsolata:h28
+    else
+      call FontSetup()
+    endif
   endfunction
 endif
 
@@ -232,7 +241,7 @@ function! ColorColumn()
   if empty(&colorcolumn)
     if empty(&textwidth)
       echo "colorcolumn=80"
-      setlocal colorcolumn=80
+      setlocal colorcolumn=79
     else
       echo "colorcolumn=+1 (" . (&textwidth + 1) . ")"
       setlocal colorcolumn=+1
@@ -271,6 +280,7 @@ augroup Main
   autocmd!
 
   autocmd BufNewFile,BufRead *.txt,README,INSTALL,TODO setlocal filetype=text
+  autocmd BufNewFile,BufRead *.todo                    setlocal filetype=todo
   autocmd BufNewFile,BufRead config                    setlocal filetype=conf
 
   autocmd BufNewFile *.css  execute "0read ~/.vim/templates/template.css  | 26"
@@ -282,7 +292,7 @@ augroup Main
 
   autocmd FileType gitcommit     setlocal spell
   autocmd Filetype help          setlocal nospell colorcolumn=
-  autocmd Filetype markdown,text setlocal colorcolumn=+1 spell textwidth=79
+  autocmd Filetype markdown,text setlocal colorcolumn=+1 spell textwidth=78
 
   autocmd BufWritePost ~/.vimrc source %
 augroup END

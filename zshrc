@@ -18,7 +18,7 @@ fi
 
 [ -f ~/.ssh/config ] && SSH_HOSTS=($(sed -ne 's/^Host //p' < ~/.ssh/config))
 DIRSTACKSIZE=17
-TODO_FILE=~/Documents/Text\ Files/To-do\ List.txt
+TODO_FILE=~/Documents/Text\ Files/To-do\ List.todo
 
 HISTFILE=~/.zsh_histfile
 HISTSIZE=2000
@@ -119,7 +119,6 @@ else
 fi
 
 if [[ $OSTYPE == darwin* ]]; then
-  alias agentadd="eval $(ssh-agent) >& /dev/null && ssh-add"
   alias capit="imagesnap -t 2 -w 1"
   alias cdb="cd /Volumes/Black\ Disk"
   alias dontsleep="pmset noidle"
@@ -148,6 +147,7 @@ if [[ $OSTYPE == darwin* ]]; then
   alias dae="ls -lae"
   alias de="ls -le"
 else
+  alias agentadd="eval $(ssh-agent) >& /dev/null && ssh-add"
   alias cal="cal -m"
   alias ls="ls -h --color=auto"
   alias vl="tail -n $LINES -f /var/log/everything.log"
