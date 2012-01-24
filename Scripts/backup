@@ -13,7 +13,7 @@ DIRECTORIES=(
   "Library/Application Support/1Password"
   Movies/Personal
   Music/GBS
-  Music/NFSe
+  Music/NSFe
   Music/Ringtones
   Pictures
   Projects
@@ -23,22 +23,33 @@ DIRECTORIES=(
   YouTube
 )
 
-if [ ! -f $ENCRYPTED_IMAGE ]; then
-  echo "File $ENCRYPTED_IMAGE doesn't exist!"
-  return 1
-fi
-
-hdiutil attach -noverify $ENCRYPTED_IMAGE
-
-if [ ! -d $BACKUP_DESTINATION ]; then
-  echo "Directory $BACKUP_DESTINATION doesn't exist!"
-  return 1
-fi
-
 for DIRECTORY in $DIRECTORIES; do
-  rsync -ah --progress --delete ~/$DIRECTORY $BACKUP_DESTINATION
+  du -sh $DIRECTORY
 done
 
-hdiutil detach $BACKUP_DESTINATION
-diskutil eject $DEVICE_NAME
+echo -en "\nProced with backup? [y/n] "
+read QUESTION
+
+if [[ $QUESTION == yes ]] || [[ $QUESTION == y ]]; then
+  if [ ! -f $ENCRYPTED_IMAGE ]; then
+    echo "File $ENCRYPTED_IMAGE doesn't exist!"
+    return 1
+  fi
+
+  hdiutil attach -noverify $ENCRYPTED_IMAGE
+
+  if [ ! -d $BACKUP_DESTINATION ]; then
+    echo "Directory $BACKUP_DESTINATION doesn't exist!"
+    return 1
+  fi
+
+  for DIRECTORY in $DIRECTORIES; do
+    rsync -ah --progress --delete ~/$DIRECTORY $BACKUP_DESTINATION
+  done
+
+  hdiutil detach $BACKUP_DESTINATION
+  diskutil eject $DEVICE_NAME
+else
+  echo -e "\nSkipping backup!"
+fi
 

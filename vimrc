@@ -102,7 +102,6 @@ endif
 let g:gist_open_browser_after_post = 1
 let g:mapleader = ","
 let g:nyancat_display_statusline = 1
-let g:surround_no_mappings = 1
 
 let g:html_ignore_folding = 1
 let g:html_number_lines = 0
@@ -164,7 +163,7 @@ nmap <Leader>ny :source ~/.vim/bundle/nyancat-vim/nyancat2.vim<CR>
 nmap <Leader>pa :set paste!<CR>
 nmap <Leader>pw :pwd<CR>
 nmap <Leader>re :%s/
-nmap <Leader>s2 :set expandtab softtabstop=2 shiftwidth=2<CR>
+nmap <Leader>s2 :set <p>expandtab</p> softtabstop=2 shiftwidth=2<CR>
 nmap <Leader>s4 :set expandtab softtabstop=4 shiftwidth=4<CR>
 nmap <Leader>sc :split ~/Documents/Text\ Files/Scratch\ Notes.txt<CR>
 nmap <Leader>sg :call <SID>SyntaxGroup()<CR>
@@ -204,6 +203,8 @@ vmap <Leader>sn y:new<CR>P
 vmap <Leader>so :sort<CR>
 vmap <Leader>su <Plug>VSurround
 vmap <Leader>vn y:vnew<CR>P
+
+vmap s <Plug>VSurround
 
 imap <C-Tab> <C-n>
 
@@ -282,6 +283,7 @@ augroup Main
   autocmd BufNewFile,BufRead *.txt,README,INSTALL,TODO setlocal filetype=text
   autocmd BufNewFile,BufRead *.todo                    setlocal filetype=todo
   autocmd BufNewFile,BufRead config                    setlocal filetype=conf
+  autocmd BufNewFile,BufRead MineSweeper               setlocal virtualedit=
 
   autocmd BufNewFile *.css  execute "0read ~/.vim/templates/template.css  | 26"
   autocmd BufNewFile *.html execute "0read ~/.vim/templates/template.html | 41"
@@ -290,9 +292,9 @@ augroup Main
   autocmd BufNewFile *.sh   execute "0read ~/.vim/templates/template.sh   | 5"
   autocmd BufNewFile *.zsh  execute "0read ~/.vim/templates/template.zsh  | 5"
 
-  autocmd FileType gitcommit     setlocal spell
-  autocmd Filetype help          setlocal nospell colorcolumn=
-  autocmd Filetype markdown,text setlocal colorcolumn=+1 spell textwidth=78
+  autocmd FileType gitcommit          setlocal spell
+  autocmd Filetype help               setlocal nospell colorcolumn=
+  autocmd Filetype markdown,text,todo setlocal colorcolumn=+1 spell textwidth=78
 
   autocmd BufWritePost ~/.vimrc source %
 augroup END
