@@ -16,12 +16,6 @@
       color: #000000;
       font-family: Helvetica, Verdana, "Bitstream Vera Sans", sans-serif;
       font-size: 14px;
-      line-height: 1.5em;
-    }
-
-    * {
-      margin:0px;
-      padding:0px;
     }
 
     a {
