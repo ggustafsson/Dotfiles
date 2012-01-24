@@ -136,7 +136,7 @@ endif
 
 if has("mac")
   nmap <Leader>fi :silent !open "%:p:h"<CR>
-  nmap <Leader>sa :silent !open -a Safari "%"<CR>
+  nmap <Leader>op :silent !open -a Safari "%"<CR>
 endif
 
 nmap <Leader>bd :call BufferDelete()<CR>
@@ -171,7 +171,6 @@ nmap <Leader>sp :setlocal spell!<CR>
 nmap <Leader>t4 :set noexpandtab softtabstop=0 shiftwidth=4 tabstop=4<CR>
 nmap <Leader>t8 :set noexpandtab softtabstop=0 shiftwidth=8 tabstop=8<CR>
 nmap <Leader>to :split ~/Documents/Text\ Files/To-do\ List.todo<CR>
-nmap <Leader>TO :edit ~/Documents/Text\ Files/To-do\ List.todo<CR>
 nmap <Leader>tr :NERDTreeToggle<CR>
 nmap <Leader>un :edit!<CR>
 nmap <Leader>vi :edit ~/.vimrc<CR>
@@ -198,7 +197,6 @@ vmap <Leader>gg :Gist<CR>
 vmap <Leader>ne y:enew<CR>P
 vmap <Leader>sn y:new<CR>P
 vmap <Leader>so :sort<CR>
-vmap <Leader>su <Plug>VSurround
 vmap <Leader>vn y:vnew<CR>P
 
 vmap s <Plug>VSurround
@@ -240,7 +238,7 @@ function! ColorColumn()
   if empty(&colorcolumn)
     if empty(&textwidth)
       echo "colorcolumn=80"
-      setlocal colorcolumn=79
+      setlocal colorcolumn=80
     else
       echo "colorcolumn=+1 (" . (&textwidth + 1) . ")"
       setlocal colorcolumn=+1
@@ -284,7 +282,7 @@ augroup Main
 
   autocmd FileType gitcommit          setlocal spell
   autocmd FileType help               setlocal nospell colorcolumn=
-  autocmd FileType markdown,text,todo setlocal colorcolumn=+1 spell textwidth=78
+  autocmd FileType markdown,text,todo setlocal colorcolumn=+1 spell textwidth=79
   autocmd FileType python             setlocal expandtab shiftwidth=4 softtabstop=4
 
   autocmd BufWritePost ~/.vimrc source %
