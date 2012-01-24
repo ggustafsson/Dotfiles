@@ -115,7 +115,6 @@ let g:minesweeper_title = "MineSweeper"
 
 let g:NERDCreateDefaultMappings = 0
 let g:NERDMenuMode = 0
-let g:NERDSpaceDelims = 1
 
 let g:NERDTreeAutoCenter = 0
 let g:NERDTreeDirArrows = 0
@@ -163,14 +162,12 @@ nmap <Leader>ny :source ~/.vim/bundle/nyancat-vim/nyancat2.vim<CR>
 nmap <Leader>pa :set paste!<CR>
 nmap <Leader>pw :pwd<CR>
 nmap <Leader>re :%s/
-nmap <Leader>s2 :set <p>expandtab</p> softtabstop=2 shiftwidth=2<CR>
+nmap <Leader>s2 :set expandtab softtabstop=2 shiftwidth=2<CR>
 nmap <Leader>s4 :set expandtab softtabstop=4 shiftwidth=4<CR>
 nmap <Leader>sc :split ~/Documents/Text\ Files/Scratch\ Notes.txt<CR>
-nmap <Leader>sg :call <SID>SyntaxGroup()<CR>
 nmap <Leader>sh :shell<CR>
 nmap <Leader>sn :new<CR>
 nmap <Leader>sp :setlocal spell!<CR>
-nmap <Leader>su ^vg_<Plug>VSurround
 nmap <Leader>t4 :set noexpandtab softtabstop=0 shiftwidth=4 tabstop=4<CR>
 nmap <Leader>t8 :set noexpandtab softtabstop=0 shiftwidth=8 tabstop=8<CR>
 nmap <Leader>to :split ~/Documents/Text\ Files/To-do\ List.todo<CR>
@@ -206,7 +203,8 @@ vmap <Leader>vn y:vnew<CR>P
 
 vmap s <Plug>VSurround
 
-imap <C-Tab> <C-n>
+vmap <Tab>   >gv
+vmap <S-Tab> <gv
 
 if has("gui_running")
   function! FancyView()
@@ -269,19 +267,11 @@ function! StatuslineBufferNr()
   endif
 endfunction
 
-function! <SID>SyntaxGroup()
-  if !exists("*synstack")
-    return
-  endif
-
-  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
-endfunction
-
 augroup Main
   autocmd!
 
-  autocmd BufNewFile,BufRead *.txt,README,INSTALL,TODO setlocal filetype=text
   autocmd BufNewFile,BufRead *.todo                    setlocal filetype=todo
+  autocmd BufNewFile,BufRead *.txt,README,INSTALL,TODO setlocal filetype=text
   autocmd BufNewFile,BufRead config                    setlocal filetype=conf
   autocmd BufNewFile,BufRead MineSweeper               setlocal virtualedit=
 
@@ -293,8 +283,9 @@ augroup Main
   autocmd BufNewFile *.zsh  execute "0read ~/.vim/templates/template.zsh  | 5"
 
   autocmd FileType gitcommit          setlocal spell
-  autocmd Filetype help               setlocal nospell colorcolumn=
-  autocmd Filetype markdown,text,todo setlocal colorcolumn=+1 spell textwidth=78
+  autocmd FileType help               setlocal nospell colorcolumn=
+  autocmd FileType markdown,text,todo setlocal colorcolumn=+1 spell textwidth=78
+  autocmd FileType python             setlocal expandtab shiftwidth=4 softtabstop=4
 
   autocmd BufWritePost ~/.vimrc source %
 augroup END
