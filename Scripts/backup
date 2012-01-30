@@ -24,7 +24,7 @@ DIRECTORIES=(
 )
 
 for DIRECTORY in $DIRECTORIES; do
-  du -sh $DIRECTORY
+  du -sh ~/$DIRECTORY
 done
 
 echo -en "\nProced with backup? [y/n] "
