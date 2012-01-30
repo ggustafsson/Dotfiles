@@ -125,6 +125,7 @@ if [[ $OSTYPE == darwin* ]]; then
   alias eject="osascript -e 'tell application \"Finder\" to eject (every disk whose ejectable is true)' && echo 'All external drives ejected!'"
   alias ls="ls -Gh"
   alias o="open"
+  alias screen="screen -s zsh"
   alias update="brew update && brew upgrade"
 
   alias awk="gawk"

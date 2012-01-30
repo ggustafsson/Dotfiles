@@ -281,7 +281,7 @@ augroup Main
   autocmd BufNewFile *.sh   execute "0read ~/.vim/templates/template.sh   | 5"
   autocmd BufNewFile *.zsh  execute "0read ~/.vim/templates/template.zsh  | 5"
 
-  autocmd FileType gitcommit          setlocal spell
+  autocmd FileType gitcommit          setlocal colorcolumn=+1 spell
   autocmd FileType help               setlocal nospell colorcolumn=
   autocmd FileType markdown,text,todo setlocal colorcolumn=+1 spell textwidth=79
   autocmd FileType python             setlocal expandtab shiftwidth=4 softtabstop=4

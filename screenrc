@@ -1,6 +1,5 @@
 defscrollback   5000
 defutf8         on
-shell           /usr/local/bin/zsh
 sorendition     wb
 startup_message off
 vbell           off
