@@ -1,0 +1,98 @@
+snippet body
+	<body>
+
+		${1}
+
+	</body>
+snippet charset
+	<meta charset="UTF-8">
+snippet description
+	<meta name="description" content="${1}">
+snippet div
+	<div>
+		${1}
+	</div>
+snippet doctype
+	<!DOCTYPE HTML>
+snippet h1
+	<h1>${1}</h1>
+snippet h2
+	<h2>${1}</h2>
+snippet h3
+	<h3>${1}</h3>
+snippet h4
+	<h4>${1}</h4>
+snippet h5
+	<h5>${1}</h5>
+snippet h6
+	<h6>${1}</h6>
+snippet head
+	<head>
+		<title>${1}</title>${2}
+	</head>
+snippet html Full template.
+	<!DOCTYPE html>
+
+	<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="description" content="">
+		<meta name="keywords" content="">
+
+		<title></title>
+
+		<link rel="stylesheet" href="style.css">
+
+		<style>
+			body {
+				background-color: #ffffff;
+				color: #000000;
+				font-family: Helvetica, Verdana, "Bitstream Vera Sans", sans-serif;
+				font-size: 14px;
+			}
+
+			a {
+				color: #0057e0;
+				text-decoration: none;
+			}
+			a:hover {
+				text-decoration: underline;
+			}
+		</style>
+
+		<script src=""></script>
+		<script></script>
+	</head>
+	<body>
+
+		${1}
+
+	</body>
+	</html>
+
+snippet html Normal <html> tags.
+	<html lang="${1:en}">
+	${2}
+	</html>
+snippet keywords
+	<meta name="keywords" content="${1}">
+snippet link
+	<link rel="stylesheet" href="${1:style.css}">
+snippet mailto Normal mailto href.
+	<a href="mailto:${1:gustafsson.g@gmail.com}>${2}</a>
+snippet mailto Mailto href with subject line.
+	<a href="mailto:${1:gustafsson.g@gmail.com}?subject=${2}">${3}</a>
+snippet nbsp
+	&nbsp;
+snippet title
+	<title>${1}</title>
+snippet script Normal <script> tags.
+	<script>
+		${1}
+	</script>
+snippet script Small <script> tags with src.
+	<script src="${1}"></script>
+snippet style
+	<style>
+		${1}
+	</style>

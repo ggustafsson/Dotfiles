@@ -21,7 +21,7 @@ echo; git clone git://github.com/msanders/snipmate.vim.git
 echo; git clone git://github.com/scrooloose/nerdcommenter.git
 echo; git clone git://github.com/scrooloose/nerdtree.git
 echo; git clone git://github.com/sjbach/lusty.git
-echo; git clone git://github.com/tpope/vim-endwise.git
+echo; git clone git://github.com/sjl/gundo.vim.git
 echo; git clone git://github.com/tpope/vim-surround.git
 
 date > latest_update.txt

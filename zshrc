@@ -189,7 +189,6 @@ alias ..="cd .."
 
 alias cdd="cd ~/Downloads"
 alias cdp="cd ~/Projects"
-alias cds="cd ~/Sites"
 alias cdt="cd ~/Documents/Text\ Files"
 
 alias cl="wc -l"

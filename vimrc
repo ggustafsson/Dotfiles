@@ -102,6 +102,11 @@ endif
 let g:gist_open_browser_after_post = 1
 let g:mapleader = ","
 let g:nyancat_display_statusline = 1
+let g:snippets_dir = "~/.vim/snippets"
+
+let g:gundo_help = 0
+let g:gundo_preview_statusline = " Gundo Preview"
+let g:gundo_tree_statusline = " Gundo Tree"
 
 let g:html_ignore_folding = 1
 let g:html_number_lines = 0
@@ -150,8 +155,6 @@ nmap <Leader>eh :LustyFilesystemExplorer ~<CR>
 nmap <Leader>ft :set filetype=
 nmap <Leader>ga :Gist -a<CR>
 nmap <Leader>gg :Gist<CR>
-nmap <Leader>il :read ~/.vim/templates/template.license<CR>
-nmap <Leader>it :0read ~/.vim/templates/template.
 nmap <Leader>la :!ls -la "%:p:h"<CR>
 nmap <Leader>li :set list!<CR>
 nmap <Leader>ls :!ls -l "%"<CR>
@@ -182,8 +185,9 @@ nmap <Leader>zs :edit ~/.zshrc<CR>
 nmap vil ^vg_
 nmap §   :LustyBufferExplorer<CR>
 
-nmap <Backspace> :nohlsearch<CR>
-nmap <Tab>       :bnext<CR>
+nmap <Backspace>   :nohlsearch<CR>
+nmap <C-Backspace> :GundoToggle<CR>
+nmap <Tab>         :bnext<CR>
 
 nmap + <C-w>+
 nmap - <C-w>-
@@ -274,17 +278,13 @@ augroup Main
   autocmd BufNewFile,BufRead config                    setlocal filetype=conf
   autocmd BufNewFile,BufRead MineSweeper               setlocal virtualedit=
 
-  autocmd BufNewFile *.css  execute "0read ~/.vim/templates/template.css  | 20"
-  autocmd BufNewFile *.html execute "0read ~/.vim/templates/template.html | 35"
-  autocmd BufNewFile *.php  execute "0read ~/.vim/templates/template.php  | 36"
-  autocmd BufNewFile *.py   execute "0read ~/.vim/templates/template.py   | 6"
-  autocmd BufNewFile *.sh   execute "0read ~/.vim/templates/template.sh   | 5"
-  autocmd BufNewFile *.zsh  execute "0read ~/.vim/templates/template.zsh  | 5"
-
   autocmd FileType gitcommit          setlocal colorcolumn=+1 spell
   autocmd FileType help               setlocal nospell colorcolumn=
+  autocmd FileType html               setlocal filetype=html.css
   autocmd FileType markdown,text,todo setlocal colorcolumn=+1 spell textwidth=79
+  autocmd FileType php                setlocal filetype=php.html.css
   autocmd FileType python             setlocal expandtab shiftwidth=4 softtabstop=4
+  autocmd FileType snippet            setlocal noexpandtab shiftwidth=8 softtabstop=0
 
   autocmd BufWritePost ~/.vimrc source %
 augroup END
