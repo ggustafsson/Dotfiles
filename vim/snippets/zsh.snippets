@@ -1,3 +1,41 @@
+snippet #!
+	#!/usr/bin/env zsh
+snippet case
+	case ${1} in
+		${2})
+			${3}
+		;;${6}
+		*)
+			${4}
+		;;
+	esac${5}
+snippet cases
+	case ${1} in
+		${2}) ${3} ;;${6}
+		*) ${4} ;;
+	esac${5}
+snippet elif
+	elif [[ ${1} ]]; then
+		${2}
+	${4}fi${3}
+snippet else
+	else
+		${1}
+	fi${2}
+snippet for
+	for ${1} in ${2}; do
+		${3}
+	done${4}
+snippet function
+	function ${1} {
+		${2}
+	}${3}
+snippet if
+	if [[ ${1} ]]; then
+		${2}
+	${4}fi${3}
+snippet ifs
+	[[ ${1} ]] && ${2}
 snippet zsh
 	#!/usr/bin/env zsh
 
@@ -5,5 +43,3 @@ snippet zsh
 
 	${1}
 
-snippet #!
-	#!/usr/bin/env zsh

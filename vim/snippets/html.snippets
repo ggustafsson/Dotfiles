@@ -1,98 +1,116 @@
+snippet <!
+	<!-- ${1} -->${2}
+snippet a
+	<a href="${1}">${2}</a>${3}
+snippet audio
+	<audio src="${1}" controls></audio>${2}
 snippet body
 	<body>
 
 		${1}
 
-	</body>
+	</body>${2}
+snippet br
+	<br>
+snippet center
+	<center>${1}</center>${2}
 snippet charset
 	<meta charset="UTF-8">
 snippet description
-	<meta name="description" content="${1}">
+	<meta name="description" content="${1}">${2}
 snippet div
 	<div>
 		${1}
-	</div>
+	</div>${2}
 snippet doctype
 	<!DOCTYPE HTML>
+snippet favicon
+	<link rel="shortcut icon" href="${1:favicon.ico}">${2}
+snippet form
+	<form>
+		${1}
+	</form>${2}
 snippet h1
-	<h1>${1}</h1>
+	<h1>${1}</h1>${2}
 snippet h2
-	<h2>${1}</h2>
+	<h2>${1}</h2>${2}
 snippet h3
-	<h3>${1}</h3>
+	<h3>${1}</h3>${2}
 snippet h4
-	<h4>${1}</h4>
+	<h4>${1}</h4>${2}
 snippet h5
-	<h5>${1}</h5>
+	<h5>${1}</h5>${2}
 snippet h6
-	<h6>${1}</h6>
+	<h6>${1}</h6>${2}
 snippet head
 	<head>
 		<title>${1}</title>${2}
-	</head>
-snippet html Full template.
+	</head>${3}
+snippet html
+	<html lang="${1:en}">
+	${2}
+	</html>
+snippet htmlt
 	<!DOCTYPE html>
 
-	<html lang="en">
+	<html lang="${1:en}">
 	<head>
 		<meta charset="UTF-8">
-		<meta name="description" content="">
-		<meta name="keywords" content="">
 
-		<title></title>
-
-		<link rel="stylesheet" href="style.css">
-
-		<style>
-			body {
-				background-color: #ffffff;
-				color: #000000;
-				font-family: Helvetica, Verdana, "Bitstream Vera Sans", sans-serif;
-				font-size: 14px;
-			}
-
-			a {
-				color: #0057e0;
-				text-decoration: none;
-			}
-			a:hover {
-				text-decoration: underline;
-			}
-		</style>
-
-		<script src=""></script>
-		<script></script>
+		<title>${2}</title>${3}
 	</head>
 	<body>
 
-		${1}
+		${4}
 
 	</body>
 	</html>
 
-snippet html Normal <html> tags.
-	<html lang="${1:en}">
-	${2}
-	</html>
+snippet i
+	<i>${1}</i>${2}
+snippet img
+	<img src="${1}" alt="${2}">${3}
+snippet input
+	<input type="${1}">${2}
 snippet keywords
-	<meta name="keywords" content="${1}">
-snippet link
-	<link rel="stylesheet" href="${1:style.css}">
-snippet mailto Normal mailto href.
-	<a href="mailto:${1:gustafsson.g@gmail.com}>${2}</a>
-snippet mailto Mailto href with subject line.
-	<a href="mailto:${1:gustafsson.g@gmail.com}?subject=${2}">${3}</a>
+	<meta name="keywords" content="${1}">${2}
+snippet li
+	<li>${1}</li>${2}
+snippet mailto
+	<a href="mailto:${1:gustafsson.g@gmail.com}>${2}</a>${3}
 snippet nbsp
 	&nbsp;
-snippet title
-	<title>${1}</title>
-snippet script Normal <script> tags.
+snippet ol
+	<ol>
+		<li>${1}</li>${2}
+	</ol>${3}
+snippet option
+	<option>${1}</option>${2}
+snippet p
+	<p>${1}</p>${2}
+snippet script
 	<script>
 		${1}
-	</script>
-snippet script Small <script> tags with src.
-	<script src="${1}"></script>
+	</script>${2}
+snippet scripts
+	<script src="${1}"></script>${2}
+snippet span
+	<span>${1}</span>${2}
+snippet strong
+	<strong>${1}</strong>${2}
 snippet style
 	<style>
 		${1}
-	</style>
+	</style>${2}
+snippet stylesheet
+	<link rel="stylesheet" href="${1:style.css}">${2}
+snippet textarea
+	<textarea placeholder="${1}">${2}</textarea>${3}
+snippet title
+	<title>${1}</title>${2}
+snippet ul
+	<ul>
+		<li>${1}</li>${2}
+	</ul>${3}
+snippet video
+	<video src="${1}" controls></video>${2}

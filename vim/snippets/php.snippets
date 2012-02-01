@@ -1,14 +1,39 @@
-snippet php Full template.
+snippet echo
+	echo "${1}";${2}
+snippet else
+	else {
+		${1}
+	}${2}
+snippet for
+	for ($i = 0; $i < ${1};$i++) {
+		${2}
+	}${3}
+snippet foreach
+	for (${1}) {
+		${2}
+	}${3}
+snippet if
+	if (${1}) {
+		${2}
+	}${3}
+snippet include
+	include "${1}";${2}
+snippet php
+	<?php
+		${1}
+	?>${2}
+snippet phps
+	<?php ${1} ?>${2}
+snippet phpt
 	<?php
 		// Written by Göran Gustafsson <gustafsson.g@gmail.com>.
 
 		${1}
 	?>
 
-snippet php Normal <?php ?> tags.
-	<?php
-		${1}
-	?>
-
-snippet php Small <?php ?> tags.
-	<?php ${1} ?>
+snippet require
+	require "${1}";${2}
+snippet while
+	while ($1) {
+		${2}
+	}${3}
