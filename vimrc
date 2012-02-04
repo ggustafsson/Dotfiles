@@ -6,6 +6,7 @@ call pathogen#helptags()
 filetype plugin indent on
 
 syntax enable
+let g:ninja_fancy_statusline = 1
 colorscheme ninja
 
 if has("mac")
@@ -261,13 +262,11 @@ function! StatuslineBufferNr()
     let b:spaces = max([&numberwidth - b:bnumber, b:blines - b:bnumber + 1])
 
     let b:statusline = repeat(" ", b:spaces) . bufnr("%")
-
-    return b:statusline
   else
     let b:statusline = "  " . bufnr("%")
-
-    return b:statusline
   endif
+
+  return b:statusline
 endfunction
 
 augroup Main
