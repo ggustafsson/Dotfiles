@@ -171,8 +171,8 @@ nmap <Leader>sc :split ~/Documents/Text\ Files/Scratch\ Notes.txt<CR>
 nmap <Leader>sh :shell<CR>
 nmap <Leader>sn :new<CR>
 nmap <Leader>sp :setlocal spell!<CR>
-nmap <Leader>t4 :set noexpandtab softtabstop=0 shiftwidth=4 tabstop=4<CR>
-nmap <Leader>t8 :set noexpandtab softtabstop=0 shiftwidth=8 tabstop=8<CR>
+nmap <Leader>t4 :set noexpandtab shiftwidth=4 softtabstop=0 tabstop=4<CR>
+nmap <Leader>t8 :set noexpandtab shiftwidth=8 softtabstop=0 tabstop=8<CR>
 nmap <Leader>to :split ~/Documents/Text\ Files/To-do\ List.todo<CR>
 nmap <Leader>tr :NERDTreeToggle<CR>
 nmap <Leader>tw :setlocal textwidth=79<CR>
@@ -278,8 +278,8 @@ augroup Main
   autocmd BufNewFile,BufRead config                    setlocal filetype=conf
   autocmd BufNewFile,BufRead MineSweeper               setlocal virtualedit=
 
-  autocmd FileType gitcommit          setlocal colorcolumn=+1 spell
-  autocmd FileType help               setlocal nospell colorcolumn=
+  autocmd FileType gitcommit          setlocal colorcolumn=+1 nolist spell
+  autocmd FileType help               setlocal colorcolumn= nolist nospell
   autocmd FileType html               setlocal filetype=html.css
   autocmd FileType markdown,text,todo setlocal colorcolumn=+1 spell textwidth=79
   autocmd FileType php                setlocal filetype=php.html.css

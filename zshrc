@@ -120,7 +120,7 @@ fi
 
 if [[ $OSTYPE == darwin* ]]; then
   alias capit="imagesnap -t 2 -w 1"
-  alias cdb="cd /Volumes/Black\ Disk"
+  alias cde="cd /Volumes/External"
   alias dontsleep="pmset noidle"
   alias eject="osascript -e 'tell application \"Finder\" to eject (every disk whose ejectable is true)' && echo 'All external drives ejected!'"
   alias ls="ls -Gh"
