@@ -6,7 +6,7 @@ call pathogen#helptags()
 filetype plugin indent on
 
 syntax enable
-let g:ninja_fancy_statusline = 1
+"let g:ninja_fancy_statusline = 1
 colorscheme ninja
 
 if has("mac")
@@ -37,6 +37,7 @@ set undodir=~/.vim/undos
 set expandtab
 set shiftwidth=2
 set softtabstop=2
+set tabstop=4
 
 set history=2000
 set undolevels=2000
@@ -283,7 +284,7 @@ augroup Main
   autocmd FileType markdown,text,todo setlocal colorcolumn=+1 spell textwidth=79
   autocmd FileType php                setlocal filetype=php.html.css
   autocmd FileType python             setlocal expandtab shiftwidth=4 softtabstop=4
-  autocmd FileType snippet            setlocal noexpandtab shiftwidth=8 softtabstop=0
+  autocmd FileType snippet            setlocal noexpandtab shiftwidth=4 softtabstop=0 tabstop=4
 
   autocmd BufWritePost ~/.vimrc source %
 augroup END
