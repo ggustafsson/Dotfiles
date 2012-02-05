@@ -19,6 +19,7 @@ set hidden
 set nofoldenable
 set nostartofline
 set nowrap
+set scrolloff=3
 set showbreak=+
 set spelllang=en,sv
 set timeoutlen=2000
@@ -59,6 +60,9 @@ set statusline+=%(%l/%L\ %)
 
 set list
 set listchars=tab:>-,trail:-,precedes:<,extends:>
+
+set numberwidth=3
+set relativenumber
 
 set splitbelow
 set splitright
@@ -161,7 +165,7 @@ nmap <Leader>li :set list!<CR>
 nmap <Leader>ls :!ls -l "%"<CR>
 nmap <Leader>mi :MineSweeper normal<CR>
 nmap <Leader>ne :enew<CR>
-nmap <Leader>nu :set number!<CR>
+nmap <Leader>nu :set relativenumber!<CR>
 nmap <Leader>ny :source ~/.vim/bundle/nyancat-vim/nyancat2.vim<CR>
 nmap <Leader>pa :set paste!<CR>
 nmap <Leader>pw :pwd<CR>
@@ -209,11 +213,6 @@ vmap s <Plug>VSurround
 
 vmap <Tab>   >gv
 vmap <S-Tab> <gv
-
-cmap <C-e> <ESC>
-imap <C-e> <ESC>
-nmap <C-e> <ESC>
-vmap <C-e> <ESC>
 
 if has("gui_running")
   function! FancyView()

@@ -126,7 +126,6 @@ if [[ $OSTYPE == darwin* ]]; then
   alias ls="ls -Gh"
   alias o="open"
   alias screen="screen -s zsh"
-  alias update="brew update && brew upgrade"
 
   alias awk="gawk"
   alias cal="gcal -s 1"
@@ -135,6 +134,10 @@ if [[ $OSTYPE == darwin* ]]; then
   alias sort="gsort"
   alias tail="gtail"
   alias wc="gwc"
+
+  alias brewi="brew install"
+  alias brewr="brew uninstall"
+  alias brewu="brew update && brew upgrade"
 
   alias console="open -a Console"
   alias safari="open -a Safari"
