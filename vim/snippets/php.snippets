@@ -1,9 +1,27 @@
+snippet /*
+	/*
+	 * ${1}
+	 */${2}
+snippet GET
+	$_GET['${1}']${2}
+snippet REQUEST
+	$_REQUEST['${1}']${2}
+snippet array
+	array(${1});${2}
+snippet case
+	case '${1}':
+		${2}
+		break;${3}
 snippet echo
-	echo "${1}";${2}
+	echo "${1}"${2};${3}
 snippet else
 	else {
 		${1}
 	}${2}
+snippet elseif
+	elseif (${1}) {
+		${2}
+	}${3}
 snippet for
 	for ($i = 0; $i < ${1};$i++) {
 		${2}
@@ -12,6 +30,10 @@ snippet foreach
 	for (${1}) {
 		${2}
 	}${3}
+snippet function
+	function ${1}(${2}) {
+		${3}
+	}${4}
 snippet if
 	if (${1}) {
 		${2}
@@ -33,6 +55,15 @@ snippet phpt
 
 snippet require
 	require "${1}";${2}
+snippet switch
+	switch ($${1}) {
+		case '${2}':
+			${3}
+			break;${6}
+		default:
+			${4}
+			break;
+	}${5}
 snippet while
 	while ($1) {
 		${2}

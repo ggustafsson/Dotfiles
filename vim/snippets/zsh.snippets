@@ -17,7 +17,7 @@ snippet cases
 snippet elif
 	elif [[ ${1} ]]; then
 		${2}
-	${4}fi${3}
+	fi${3}
 snippet else
 	else
 		${1}
@@ -33,10 +33,10 @@ snippet function
 snippet if
 	if [[ ${1} ]]; then
 		${2}
-	${4}fi${3}
+	fi${3}
 snippet ifs
 	[[ ${1} ]] && ${2}
-snippet zsh
+snippet zsht
 	#!/usr/bin/env zsh
 
 	# Written by Göran Gustafsson <gustafsson.g@gmail.com>.

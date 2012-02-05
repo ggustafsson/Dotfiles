@@ -6,7 +6,6 @@ call pathogen#helptags()
 filetype plugin indent on
 
 syntax enable
-"let g:ninja_fancy_statusline = 1
 colorscheme ninja
 
 if has("mac")
@@ -211,6 +210,11 @@ vmap s <Plug>VSurround
 vmap <Tab>   >gv
 vmap <S-Tab> <gv
 
+cmap <C-e> <ESC>
+imap <C-e> <ESC>
+nmap <C-e> <ESC>
+vmap <C-e> <ESC>
+
 if has("gui_running")
   function! FancyView()
     if &guifont != "Inconsolata:h28"
@@ -284,7 +288,7 @@ augroup Main
   autocmd FileType markdown,text,todo setlocal colorcolumn=+1 spell textwidth=79
   autocmd FileType php                setlocal filetype=php.html.css
   autocmd FileType python             setlocal expandtab shiftwidth=4 softtabstop=4
-  autocmd FileType snippet            setlocal noexpandtab shiftwidth=4 softtabstop=0 tabstop=4
+  autocmd FileType snippet            setlocal noexpandtab shiftwidth=8 softtabstop=0 tabstop=8
 
   autocmd BufWritePost ~/.vimrc source %
 augroup END
