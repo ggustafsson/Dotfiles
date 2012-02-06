@@ -37,7 +37,6 @@ set undodir=~/.vim/undos
 set expandtab
 set shiftwidth=2
 set softtabstop=2
-set tabstop=4
 
 set history=2000
 set undolevels=2000
@@ -176,6 +175,7 @@ nmap <Leader>sc :split ~/Documents/Text\ Files/Scratch\ Notes.txt<CR>
 nmap <Leader>sh :shell<CR>
 nmap <Leader>sn :new<CR>
 nmap <Leader>sp :setlocal spell!<CR>
+nmap <Leader>su :w !sudo tee %<CR>
 nmap <Leader>t4 :set noexpandtab shiftwidth=4 softtabstop=0 tabstop=4<CR>
 nmap <Leader>t8 :set noexpandtab shiftwidth=8 softtabstop=0 tabstop=8<CR>
 nmap <Leader>to :split ~/Documents/Text\ Files/To-do\ List.todo<CR>
