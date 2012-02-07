@@ -180,7 +180,6 @@ alias pyweb="python3 -m http.server 8080"
 alias random='FILES=(*) && echo $FILES[$RANDOM%$#FILES+1]'
 alias reload="source ~/.zshrc"
 alias rf="ls -t | head -n 5"
-alias rgrep="grep -r"
 alias s="screen"
 alias tv='vim "$TODO_FILE"'
 alias ycal='cal $(date +%Y)'
@@ -199,7 +198,7 @@ alias cw="wc -w"
 alias g="grep"
 alias he="head"
 alias l="less"
-alias rg="grep -r"
+alias rg="rgrep"
 alias so="sort"
 alias ta="tail"
 alias un="uniq"
@@ -254,7 +253,7 @@ done
 
 if [[ $OSTYPE == darwin* ]]; then
   function dict {
-    if [ ! -z $1 ]; then
+    if [ ! -z $1 ] && [[ $# < 2 ]]; then
       open "dict://$1"
     else
       echo "Usage: $0 [WORD]..."
@@ -294,7 +293,7 @@ if [[ $OSTYPE == darwin* ]]; then
   }
 
   function smb {
-    if [ ! -z $1 ]; then
+    if [ ! -z $1 ] && [[ $# < 2 ]]; then
       open "smb://$1"
     else
       echo "Usage: $0 [IP/DNS]..."
@@ -310,7 +309,7 @@ if [[ $OSTYPE == darwin* ]]; then
   }
 
   function vnc {
-    if [ ! -z $1 ]; then
+    if [ ! -z $1 ] && [[ $# < 2 ]]; then
       open "vnc://$1"
     else
       echo "Usage: $0 [IP/DNS]..."
@@ -349,7 +348,7 @@ else
 fi
 
 function ff {
-  if [ ! -z $1 ]; then
+  if [ ! -z $1 ] && [[ $# < 2 ]]; then
     find . -iname $* | sed 's/.\///'
   else
     echo "Usage: $0 [PATTERN]..."
@@ -357,7 +356,7 @@ function ff {
 }
 
 function ffp {
-  if [ ! -z $1 ]; then
+  if [ ! -z $1 ] && [[ $# < 2 ]]; then
     find "$PWD" -iname $*
   else
     echo "Usage: $0 [PATTERN]..."
@@ -406,6 +405,16 @@ function ppermf {
   else
     find . -type d -exec chmod 700 "{}" \;
     find . -type f -exec chmod 600 "{}" \;
+  fi
+}
+
+function rgrep {
+  if [ ! -z $1 ] && [[ $# == 1 ]]; then
+    grep -r $* .
+  elif [ ! -z $1 ] && [[ $# == 2 ]]; then
+    grep -r $*
+  else
+    echo "Usage: $0 [PATTERN]..."
   fi
 }
 
