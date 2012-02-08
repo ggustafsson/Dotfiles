@@ -24,7 +24,10 @@ for DIRECTORY in ~/Projects/*; do
   fi
 done
 
-[ ! -z $CLEAN_BRANCH  ] && echo -n "\033[1;32mClean branches:\033[0m\n$CLEAN_BRANCH" && [ ! -z $NO_REPOSITORY ] && echo
+if [ ! -z $CLEAN_BRANCH  ]; then
+  echo -n "\033[1;32mClean branches:\033[0m\n$CLEAN_BRANCH"
+  [ ! -z $NO_REPOSITORY ] && echo
+fi
 [ ! -z $NO_REPOSITORY ] && echo -n "\033[1;36mNot Git repo:\033[0m\n$NO_REPOSITORY"
 
 cd $CURRENT_DIRECTORY
