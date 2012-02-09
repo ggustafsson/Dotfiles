@@ -15,6 +15,7 @@ endif
 set confirm
 set encoding=utf-8
 set formatoptions+=n
+set gdefault
 set hidden
 set nofoldenable
 set nostartofline
@@ -153,7 +154,7 @@ nmap <Leader>cc :call ColorColumn()<CR>
 nmap <Leader>cd :cd %:p:h<CR>:pwd<CR>
 nmap <Leader>ch :silent !chmod "%"<CR>
 nmap <Leader>di :diffthis<CR>
-nmap <Leader>do :LustyFilesystemExplorer ~/Documents/Text\ Files/<CR>
+nmap <Leader>do :LustyFilesystemExplorer ~/Documents/Text\ Files<CR>
 nmap <Leader>ed :LustyFilesystemExplorerFromHere<CR>
 nmap <Leader>eh :LustyFilesystemExplorer ~<CR>
 nmap <Leader>ft :set filetype=
@@ -168,7 +169,7 @@ nmap <Leader>nu :set relativenumber!<CR>
 nmap <Leader>ny :source ~/.vim/bundle/nyancat-vim/nyancat2.vim<CR>
 nmap <Leader>pa :set paste!<CR>
 nmap <Leader>pw :pwd<CR>
-nmap <Leader>re :%s/
+nmap <Leader>re :%s//c<Left><Left>
 nmap <Leader>s2 :set expandtab softtabstop=2 shiftwidth=2<CR>
 nmap <Leader>s4 :set expandtab softtabstop=4 shiftwidth=4<CR>
 nmap <Leader>sc :split ~/Documents/Text\ Files/Scratch\ Notes.txt<CR>
@@ -216,9 +217,9 @@ vmap <S-Tab> <gv
 
 if has("gui_running")
   function! FancyView()
-    if &guifont != "Inconsolata:h28"
+    if &guifont != "Inconsolata:h26"
       set antialias
-      set guifont=Inconsolata:h28
+      set guifont=Inconsolata:h26
     else
       call FontSetup()
     endif

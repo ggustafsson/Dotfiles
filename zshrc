@@ -137,6 +137,7 @@ if [[ $OSTYPE == darwin* ]]; then
 
   alias brewi="brew install"
   alias brewr="brew uninstall"
+  alias brews="brew search"
   alias brewu="brew update && brew upgrade"
 
   alias console="open -a Console"
@@ -176,6 +177,7 @@ alias iip="curl -s http://automation.whatismyip.com/n09230945.asp | html2text"
 alias ka="killall"
 alias mkdir="mkdir -pv"
 alias ping="ping -c 10"
+alias py="python3"
 alias pyweb="python3 -m http.server 8080"
 alias random='FILES=(*) && echo $FILES[$RANDOM%$#FILES+1]'
 alias reload="source ~/.zshrc"
