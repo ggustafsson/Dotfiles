@@ -152,8 +152,6 @@ endif
 nmap <Leader>bd :call BufferDelete()<CR>
 nmap <Leader>cc :call ColorColumn()<CR>
 nmap <Leader>cd :cd %:p:h<CR>:pwd<CR>
-nmap <Leader>ch :silent !chmod "%"<CR>
-nmap <Leader>di :diffthis<CR>
 nmap <Leader>do :LustyFilesystemExplorer ~/Documents/Text\ Files<CR>
 nmap <Leader>ed :LustyFilesystemExplorerFromHere<CR>
 nmap <Leader>eh :LustyFilesystemExplorer ~<CR>
@@ -179,9 +177,9 @@ nmap <Leader>sp :setlocal spell!<CR>
 nmap <Leader>su :w !sudo tee %<CR>
 nmap <Leader>t4 :set noexpandtab shiftwidth=4 softtabstop=0 tabstop=4<CR>
 nmap <Leader>t8 :set noexpandtab shiftwidth=8 softtabstop=0 tabstop=8<CR>
+nmap <Leader>tm :split ~/Downloads/Temporary.txt<CR>
 nmap <Leader>to :split ~/Documents/Text\ Files/To-do\ List.todo<CR>
 nmap <Leader>tr :NERDTreeToggle<CR>
-nmap <Leader>tw :setlocal textwidth=79<CR>
 nmap <Leader>un :edit!<CR>
 nmap <Leader>vi :edit ~/.vimrc<CR>
 nmap <Leader>vn :vnew<CR>
@@ -283,9 +281,9 @@ augroup Main
   autocmd BufNewFile,BufRead MineSweeper               setlocal virtualedit=
 
   autocmd FileType gitcommit          setlocal colorcolumn=+1 nolist spell
-  autocmd FileType help               setlocal colorcolumn= nolist nospell
+  autocmd FileType help               setlocal colorcolumn=
   autocmd FileType html               setlocal filetype=html.css
-  autocmd FileType markdown,text,todo setlocal colorcolumn=+1 spell textwidth=79
+  autocmd FileType markdown,text,todo setlocal colorcolumn=+1 textwidth=79
   autocmd FileType php                setlocal filetype=php.html.css
   autocmd FileType python             setlocal expandtab shiftwidth=4 softtabstop=4
   autocmd FileType snippet            setlocal noexpandtab shiftwidth=8 softtabstop=0 tabstop=8
