@@ -215,9 +215,9 @@ vmap <S-Tab> <gv
 
 if has("gui_running")
   function! FancyView()
-    if &guifont != "Inconsolata:h26"
+    if &guifont != "Inconsolata:h22"
       set antialias
-      set guifont=Inconsolata:h26
+      set guifont=Inconsolata:h22
     else
       call FontSetup()
     endif
