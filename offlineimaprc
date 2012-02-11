@@ -10,9 +10,10 @@ type = Maildir
 localfolders = ~/Storage/Mail
 
 [Repository Remote]
-type = IMAP
+type = Gmail
 remotehost = imap.gmail.com
 remoteuser = gustafsson.g@gmail.com
 remotepass =
 ssl = yes
+readonly = True
 
