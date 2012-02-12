@@ -146,7 +146,12 @@ endif
 
 if has("mac")
   nmap <Leader>fi :silent !open "%:p:h"<CR>
+  nmap <Leader>ll :!gls -lh "%"<CR>
+  nmap <Leader>ls :!gls -lha "%:p:h"<CR>
   nmap <Leader>op :silent !open -a Safari "%"<CR>
+else
+  nmap <Leader>ll :!ls -lh "%"<CR>
+  nmap <Leader>ls :!ls -lha "%:p:h"<CR>
 endif
 
 nmap <Leader>bd :call BufferDelete()<CR>
@@ -158,9 +163,7 @@ nmap <Leader>eh :LustyFilesystemExplorer ~<CR>
 nmap <Leader>ft :set filetype=
 nmap <Leader>ga :Gist -a<CR>
 nmap <Leader>gg :Gist<CR>
-nmap <Leader>la :!ls -la "%:p:h"<CR>
 nmap <Leader>li :set list!<CR>
-nmap <Leader>ls :!ls -l "%"<CR>
 nmap <Leader>mi :MineSweeper normal<CR>
 nmap <Leader>ne :enew<CR>
 nmap <Leader>nu :set relativenumber!<CR>
