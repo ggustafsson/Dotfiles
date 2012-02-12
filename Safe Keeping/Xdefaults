@@ -24,7 +24,7 @@ URxvt.matcher.button:  1
 URxvt*color8: #666666
 
 ! Bright Red
-URxvt*color9: #ff4421
+URxvt*color9: #ff633f
 
 ! Bright Green
 URxvt*color10: #79fd47
@@ -33,10 +33,10 @@ URxvt*color10: #79fd47
 URxvt*color11: #fafa47
 
 ! Bright Blue
-URxvt*color12: #4c80ff
+URxvt*color12: #7282ff
 
 ! Bright Mangenta
-URxvt*color13: #ff43ff
+URxvt*color13: #ff53d4
 
 ! Bright Cyan
 URxvt*color14: #40fefc
