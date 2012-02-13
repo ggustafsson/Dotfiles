@@ -33,7 +33,7 @@ URxvt*color10: #79fd47
 URxvt*color11: #fafa47
 
 ! Bright Blue
-URxvt*color12: #7282ff
+URxvt*color12: #4c80ff
 
 ! Bright Mangenta
 URxvt*color13: #ff53d4
