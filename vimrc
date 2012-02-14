@@ -141,6 +141,7 @@ cabbrev Wq wq
 cabbrev wQ wq
 
 if has("gui_running")
+  nmap <Leader>cl :call CleanView()<CR>
   nmap <Leader>fa :call FancyView()<CR>
 endif
 
@@ -192,14 +193,14 @@ nmap <Leader>zs :edit ~/.zshrc<CR>
 nmap vil ^vg_
 nmap §   :LustyBufferExplorer<CR>
 
-nmap <Backspace>   :nohlsearch<CR>
-nmap <C-Backspace> :GundoToggle<CR>
-nmap <Tab>         :bnext<CR>
-
 nmap + <C-w>+
 nmap - <C-w>-
 nmap < <C-w>>
 nmap > <C-w><
+
+nmap <Backspace>   :nohlsearch<CR>
+nmap <C-Backspace> :GundoToggle<CR>
+nmap <Tab>         :bnext<CR>
 
 nmap <Leader><Space> <Plug>NERDCommenterToggle
 vmap <Leader><Space> <Plug>NERDCommenterToggle
@@ -213,6 +214,9 @@ vmap <Leader>vn y:vnew<CR>P
 
 vmap s <Plug>VSurround
 
+vmap + :m'>+<CR>gv=`<my`>mzgv`yo`z
+vmap - :m'<-2<CR>gv=`>my`<mzgv`yo`z
+
 vmap <Tab>   >gv
 vmap <S-Tab> <gv
 
@@ -223,6 +227,16 @@ if has("gui_running")
       set guifont=Inconsolata:h22
     else
       call FontSetup()
+    endif
+  endfunction
+
+  function! CleanView()
+    if &laststatus == 2
+      set laststatus=1
+      set norelativenumber
+    else
+      set laststatus=2
+      set relativenumber
     endif
   endfunction
 endif
