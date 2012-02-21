@@ -134,7 +134,7 @@ if [[ $OSTYPE == darwin* ]]; then
   alias awk="gawk"
   alias cal="gcal -s 1"
   alias head="ghead"
-  alias ls="gls -h --color=auto"
+  alias ls="gls -Fh --color=auto"
   alias sed="gsed"
   alias sort="gsort"
   alias tail="gtail"
@@ -159,7 +159,7 @@ if [[ $OSTYPE == darwin* ]]; then
 else
   alias agentadd="eval $(ssh-agent) >& /dev/null && ssh-add"
   alias cal="cal -m"
-  alias ls="ls -h --color=auto"
+  alias ls="ls -Fh --color=auto"
   alias vl="tail -n $LINES -f /var/log/everything.log"
 
   alias paci="sudo pacman -S"
@@ -188,6 +188,7 @@ alias random='FILES=(*) && echo $FILES[$RANDOM%$#FILES+1]'
 alias reload="source ~/.zshrc"
 alias rf="ls -t | head -n 5"
 alias s="screen"
+alias sp="du -sh"
 alias tv='vim "$TODO_FILE"'
 alias ycal='cal $(date +%Y)'
 alias yt="youtube-dl -l"
@@ -354,6 +355,12 @@ else
   }
 fi
 
+function 256colors {
+  for i in {0..255} ; do
+    printf "\x1b[38;5;${i}mColor ${i}\n"
+  done
+}
+
 function ff {
   if [ ! -z $1 ] && [[ $# < 2 ]]; then
     find . -iname $* | sed 's/.\///'
@@ -437,5 +444,24 @@ function t {
   else
     echo "$*" >> $TODO_FILE
   fi
+}
+
+function tcolors {
+  echo -n "\033[1;30m1;30m\033[0m "
+  echo -n "\033[1;31m1;31m\033[0m "
+  echo -n "\033[1;32m1;32m\033[0m "
+  echo -n "\033[1;33m1;33m\033[0m "
+  echo -n "\033[1;34m1;34m\033[0m "
+  echo -n "\033[1;35m1;35m\033[0m "
+  echo -n "\033[1;36m1;36m\033[0m "
+  echo "\033[1;37m1;37m\033[0m "
+
+  echo -n "      \033[1;41m1;41m\033[0m "
+  echo -n "\033[1;42m1;42m\033[0m "
+  echo -n "\033[1;43m1;43m\033[0m "
+  echo -n "\033[1;44m1;44m\033[0m "
+  echo -n "\033[1;45m1;45m\033[0m "
+  echo -n "\033[1;46m1;46m\033[0m "
+  echo "\033[1;47m1;47m\033[0m"
 }
 
