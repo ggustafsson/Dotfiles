@@ -60,7 +60,6 @@ setopt noautomenu
 [[ ! $TERM == dumb ]] && autoload -U colors && colors
 autoload -U compinit && compinit
 autoload -U url-quote-magic && zle -N self-insert url-quote-magic
-autoload -U vcs_info
 
 bindkey -v
 bindkey '^?' backward-delete-char
@@ -72,19 +71,29 @@ zstyle ':completion:*'          special-dirs true
 zstyle ':completion:*:cd:*'     ignore-parents parent pwd
 zstyle ':completion:*:warnings' format "zsh: no matches found."
 
-zstyle ':vcs_info:*' enable git
-zstyle ':vcs_info:*' check-for-changes true
-zstyle ':vcs_info:*' formats '%F{green}%u%c%b%f'
-zstyle ':vcs_info:*' stagedstr '%F{cyan}ahead %f'
-zstyle ':vcs_info:*' unstagedstr '%F{red}'
-
 [[ $OSTYPE == darwin* ]] && compdef _man manp
 compdef _path_files cd
 compdef _path_files git add
 
 precmd() {
   echo
-  vcs_info
+}
+
+function git_branch {
+  REFERENCE=$(git symbolic-ref HEAD 2> /dev/null) || return
+  BRANCH=${REFERENCE#refs/heads/}
+
+  if [[ -n $(git rev-list origin..HEAD 2> /dev/null) ]]; then
+    if [[ -n $(git status -s 2> /dev/null) ]]; then
+      echo "%F{cyan}ahead %F{red}$BRANCH%f"
+    else
+      echo "%F{cyan}ahead %F{green}$BRANCH%f"
+    fi
+  elif [[ -n $(git status -s 2> /dev/null) ]]; then
+    echo "%F{red}$BRANCH%f"
+  else
+    echo "%F{green}$BRANCH%f"
+  fi
 }
 
 function custom-vi-replace {
@@ -111,7 +120,7 @@ if [[ $TERM == dumb ]]; then
   PROMPT='%~ $ '
 else
   PROMPT='%B${(C)USER} %F{yellow}${(C)HOST%%.*}%f%b %~ %B$(zsh_mode)%b '
-  RPROMPT='%B${vcs_info_msg_0_}%b'
+  RPROMPT='%B$(git_branch)%b'
 fi
 
 if [[ $OSTYPE == darwin* ]]; then
