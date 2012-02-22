@@ -2,28 +2,27 @@
 
 # Written by Göran Gustafsson <gustafsson.g@gmail.com>.
 
-rm -rf ~/.vim/backups/bundle ~/.vim/backups/vim-pathogen
+rm -rf ~/.vim/backups/bundle ~/.vim/backups/pathogen
 
-mv ~/.vim/vim-pathogen ~/.vim/backups/
-cd ~/.vim
+mv ~/.vim/pathogen ~/.vim/backups/
 
-git clone git://github.com/tpope/vim-pathogen.git
+git clone git://github.com/tpope/vim-pathogen.git ~/.vim/pathogen
 
 mv ~/.vim/bundle ~/.vim/backups/
 mkdir ~/.vim/bundle
 
 cd ~/.vim/bundle
 
-echo; git clone git://github.com/koron/nyancat-vim.git
-echo; git clone git://github.com/mattn/gist-vim.git
+echo; git clone git://github.com/koron/nyancat-vim.git nyancat
+echo; git clone git://github.com/mattn/gist-vim.git gist
 echo; git clone git://github.com/mfumi/viminesweeper.git
-echo; git clone git://github.com/msanders/snipmate.vim.git
+echo; git clone git://github.com/msanders/snipmate.vim.git snipmate
 echo; git clone git://github.com/scrooloose/nerdcommenter.git
 echo; git clone git://github.com/scrooloose/nerdtree.git
 echo; git clone git://github.com/sjbach/lusty.git
-echo; git clone git://github.com/sjl/gundo.vim.git
-echo; git clone git://github.com/tpope/vim-surround.git
-echo; git clone git://github.com/vim-scripts/YankRing.vim.git
+echo; git clone git://github.com/sjl/gundo.vim.git gundo
+echo; git clone git://github.com/tpope/vim-surround.git surround
+echo; git clone git://github.com/vim-scripts/YankRing.vim.git yankring
 
 date > latest_update.txt
 
