@@ -131,6 +131,9 @@ let g:NERDTreeDirArrows = 0
 let g:NERDTreeMinimalUI = 1
 let g:NERDTreeStatusline = " NERDTree"
 
+let g:yankring_history_dir = "~/.vim"
+let g:yankring_window_height = 14
+
 cabbrev ht   tab help
 cabbrev htab tab help
 
@@ -203,6 +206,7 @@ nmap > <C-w><
 nmap <Backspace>   :nohlsearch<CR>
 nmap <C-Backspace> :GundoToggle<CR>
 nmap <Tab>         :bnext<CR>
+nmap <C-y>         :YRShow<CR>
 
 nmap <Leader><Space> <Plug>NERDCommenterToggle
 vmap <Leader><Space> <Plug>NERDCommenterToggle

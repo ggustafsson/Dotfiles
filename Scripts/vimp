@@ -23,6 +23,7 @@ echo; git clone git://github.com/scrooloose/nerdtree.git
 echo; git clone git://github.com/sjbach/lusty.git
 echo; git clone git://github.com/sjl/gundo.vim.git
 echo; git clone git://github.com/tpope/vim-surround.git
+echo; git clone git://github.com/vim-scripts/YankRing.vim.git
 
 date > latest_update.txt
 
