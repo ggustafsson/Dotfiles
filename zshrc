@@ -277,9 +277,9 @@ if [[ $OSTYPE == darwin* ]]; then
   }
 
   function frees {
-    mv ~/Library/Caches/Homebrew ~/.Trash
-    mv ~/Library/Caches/com.apple.Safari/Webpage\ Previews ~/.Trash
-    mv ~/Library/iTunes/iPhone\ Software\ Updates ~/.Trash
+    [ -d ~/Library/Caches/Homebrew ] && rm -rf ~/Library/Caches/Homebrew
+    [ -d ~/Library/Caches/com.apple.Safari/Webpage\ Previews ] && rm -rf ~/Library/Caches/com.apple.Safari/Webpage\ Previews
+    [ -d ~/Library/iTunes/iPhone\ Software\ Updates ] && rm -rf ~/Library/iTunes/iPhone\ Software\ Updates
   }
 
   function manp {
