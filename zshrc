@@ -30,9 +30,9 @@ HISTSIZE=2000
 SAVEHIST=6000
 
 if [[ $OSTYPE == darwin* ]]; then
-  path=(/usr/local/bin /usr/local/sbin /bin /sbin /usr/bin /usr/sbin /usr/X11/bin ~/Scripts ~/.ruby/gems/*/bin(N))
+  path=(/usr/local/bin /usr/local/sbin /bin /sbin /usr/bin /usr/sbin /usr/X11/bin ~/Scripts ~/.ruby/bin(N) ~/.ruby/gems/*/bin(N))
 else
-  path+=(~/Scripts ~/.ruby/gems/*/bin(N))
+  path+=(~/Scripts ~/.ruby/bin(N) ~/.ruby/gems/*/bin(N))
 fi
 
 setopt correct
@@ -143,7 +143,7 @@ if [[ $OSTYPE == darwin* ]]; then
   alias brewi="brew install"
   alias brewr="brew uninstall"
   alias brews="brew search"
-  alias brewu="brew update && brew upgrade"
+  alias brewu="brew update && brew upgrade && gem update"
 
   alias console="open -a Console"
   alias safari="open -a Safari"

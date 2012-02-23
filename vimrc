@@ -86,8 +86,8 @@ if has("gui_running")
     set guifont=Monaco:h12
     set noantialias
 
-    set columns=171
-    set lines=45
+    set columns=120
+    set lines=30
   endfunction
 
   if !exists("g:dont_load_again")
