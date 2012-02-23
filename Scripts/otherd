@@ -1,0 +1,12 @@
+#!/usr/bin/env zsh
+
+# Written by Göran Gustafsson <gustafsson.g@gmail.com>.
+
+if [ -d ~/Development/Hello\ World ]; then
+  echo "\033[1;32mChecking for hello world updates.\033[0m"
+  cd ~/Development/Hello\ World
+  git pull
+else
+  git clone git://github.com/leachim6/hello-world.git ~/Development/Hello\ World
+fi
+

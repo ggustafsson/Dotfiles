@@ -1,25 +1,83 @@
-#!/usr/bin/env bash
+#!/usr/bin/env zsh
 
 # Written by Göran Gustafsson <gustafsson.g@gmail.com>.
 
+DLPATH=~/Sites/Frameworks
+
 rm -rf ~/Sites/Frameworks\ Backups
+cp -R $DLPATH ~/Sites/Frameworks\ Backups
 
-mv ~/Sites/Frameworks ~/Sites/Frameworks\ Backups
-mkdir ~/Sites/Frameworks
+if [ -d $DLPATH/bootstrap ]; then
+  echo "\033[1;32mChecking for bootstrap updates.\033[0m"
+  cd $DLPATH/bootstrap
+  git pull
+else
+  git clone git://github.com/twitter/bootstrap.git $DLPATH/bootstrap
+fi
 
-cd ~/Sites/Frameworks
+echo
 
-git clone git://github.com/bartaz/impress.js.git; echo
-git clone git://github.com/dawanda/jquery-rss.git; echo
-git clone git://github.com/harvesthq/chosen.git; echo
-git clone git://github.com/imakewebthings/deck.js.git; echo
-git clone git://github.com/necolas/css3-facebook-buttons.git; echo
-git clone git://github.com/necolas/css3-github-buttons.git; echo
-git clone git://github.com/twitter/bootstrap.git; echo
+if [ -d $DLPATH/chosen ]; then
+  echo "\033[1;32mChecking for chosen updates.\033[0m"
+  cd $DLPATH/chosen
+  git pull
+else
+  git clone git://github.com/harvesthq/chosen.git $DLPATH/chosen
+fi
 
-mkdir ~/Sites/Frameworks/jQuery
+echo
+
+if [ -d $DLPATH/css3-facebook-buttons ]; then
+  echo "\033[1;32mChecking for css3 facebook buttons updates.\033[0m"
+  cd $DLPATH/css3-facebook-buttons
+  git pull
+else
+  git clone git://github.com/necolas/css3-facebook-buttons.git $DLPATH/css3-facebook-buttons
+fi
+
+echo
+
+if [ -d $DLPATH/css3-github-buttons ]; then
+  echo "\033[1;32mChecking for css3 github buttons updates.\033[0m"
+  cd $DLPATH/css3-github-buttons
+  git pull
+else
+  git clone git://github.com/necolas/css3-github-buttons.git $DLPATH/css3-github-buttons
+fi
+
+echo
+
+if [ -d $DLPATH/deck.js ]; then
+  echo "\033[1;32mChecking for deck.js updates.\033[0m"
+  cd $DLPATH/deck.js
+  git pull
+else
+  git clone git://github.com/imakewebthings/deck.js.git $DLPATH/deck.js
+fi
+
+echo
+
+if [ -d $DLPATH/impress.js ]; then
+  echo "\033[1;32mChecking for impress.js updates.\033[0m"
+  cd $DLPATH/impress.js
+  git pull
+else
+  git clone git://github.com/bartaz/impress.js.git $DLPATH/impress.js
+fi
+
+echo
+
+if [ -d $DLPATH/jquery-rss ]; then
+  echo "\033[1;32mChecking for jquery rss updates.\033[0m"
+  cd $DLPATH/jquery-rss
+  git pull
+else
+  git clone git://github.com/dawanda/jquery-rss.git $DLPATH/jquery-rss
+fi
+
+mkdir $DLPATH/jQuery
 
 open 'http://docs.jquery.com/Downloading_jQuery#Current_Release'
 
-date > ~/Sites/Frameworks/latest_update.txt
+date > $DLPATH/latest_update.txt
 

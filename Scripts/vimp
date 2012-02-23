@@ -1,28 +1,121 @@
-#!/usr/bin/env bash
+#!/usr/bin/env zsh
 
 # Written by Göran Gustafsson <gustafsson.g@gmail.com>.
 
+DLPATH=~/.vim/bundle
+
 rm -rf ~/.vim/backups/bundle ~/.vim/backups/pathogen
+cp -R ~/.vim/pathogen ~/.vim/backups/pathogen
 
-mv ~/.vim/pathogen ~/.vim/backups/
+if [ -d ~/.vim/pathogen ]; then
+  echo "\033[1;32mChecking for pathogen updates.\033[0m"
+  cd ~/.vim/pathogen
+  git pull
+else
+  git clone git://github.com/tpope/vim-pathogen.git ~/.vim/pathogen
+fi
 
-git clone git://github.com/tpope/vim-pathogen.git ~/.vim/pathogen
+echo
 
-mv ~/.vim/bundle ~/.vim/backups/
-mkdir ~/.vim/bundle
+cp -R $DLPATH ~/.vim/backups/bundle
 
-cd ~/.vim/bundle
+if [ -d $DLPATH/gist ]; then
+  echo "\033[1;32mChecking for gist updates.\033[0m"
+  cd $DLPATH/gist
+  git pull
+else
+  git clone git://github.com/mattn/gist-vim.git $DLPATH/gist
+fi
 
-echo; git clone git://github.com/koron/nyancat-vim.git nyancat
-echo; git clone git://github.com/mattn/gist-vim.git gist
-echo; git clone git://github.com/mfumi/viminesweeper.git
-echo; git clone git://github.com/msanders/snipmate.vim.git snipmate
-echo; git clone git://github.com/scrooloose/nerdcommenter.git
-echo; git clone git://github.com/scrooloose/nerdtree.git
-echo; git clone git://github.com/sjbach/lusty.git
-echo; git clone git://github.com/sjl/gundo.vim.git gundo
-echo; git clone git://github.com/tpope/vim-surround.git surround
-echo; git clone git://github.com/vim-scripts/YankRing.vim.git yankring
+echo
 
-date > latest_update.txt
+if [ -d $DLPATH/gundo ]; then
+  echo "\033[1;32mChecking for gundo updates.\033[0m"
+  cd $DLPATH/gundo
+  git pull
+else
+  git clone git://github.com/sjl/gundo.vim.git $DLPATH/gundo
+fi
+
+echo
+
+if [ -d $DLPATH/lusty ]; then
+  echo "\033[1;32mChecking for lusty updates.\033[0m"
+  cd $DLPATH/lusty
+  git pull
+else
+  git clone git://github.com/sjbach/lusty.git $DLPATH/lusty
+fi
+
+echo
+
+if [ -d $DLPATH/nerdcommenter ]; then
+  echo "\033[1;32mChecking for nerdcommenter updates.\033[0m"
+  cd $DLPATH/nerdcommenter
+  git pull
+else
+  git clone git://github.com/scrooloose/nerdcommenter.git $DLPATH/nerdcommenter
+fi
+
+echo
+
+if [ -d $DLPATH/nerdtree ]; then
+  echo "\033[1;32mChecking for nerdtree updates.\033[0m"
+  cd $DLPATH/nerdtree
+  git pull
+else
+  git clone git://github.com/scrooloose/nerdtree.git $DLPATH/nerdtree
+fi
+
+echo
+
+if [ -d $DLPATH/nyancat ]; then
+  echo "\033[1;32mChecking for nyancat updates.\033[0m"
+  cd $DLPATH/nyancat
+  git pull
+else
+  git clone git://github.com/koron/nyancat-vim.git $DLPATH/nyancat
+fi
+
+echo
+
+if [ -d $DLPATH/snipmate ]; then
+  echo "\033[1;32mChecking for snipmate updates.\033[0m"
+  cd $DLPATH/snipmate
+  git pull
+else
+  git clone git://github.com/msanders/snipmate.vim.git $DLPATH/snipmate
+fi
+
+echo
+
+if [ -d $DLPATH/surround ]; then
+  echo "\033[1;32mChecking for surround updates.\033[0m"
+  cd $DLPATH/surround
+  git pull
+else
+  git clone git://github.com/tpope/vim-surround.git $DLPATH/surround
+fi
+
+echo
+
+if [ -d $DLPATH/viminesweeper ]; then
+  echo "\033[1;32mChecking for viminesweeper updates.\033[0m"
+  cd $DLPATH/viminesweeper
+  git pull
+else
+  git clone git://github.com/mfumi/viminesweeper.git $DLPATH/viminesweeper
+fi
+
+echo
+
+if [ -d $DLPATH/yankring ]; then
+  echo "\033[1;32mChecking for yankring updates.\033[0m"
+  cd $DLPATH/yankring
+  git pull
+else
+  git clone git://github.com/vim-scripts/YankRing.vim.git $DLPATH/yankring
+fi
+
+date > $DLPATH/latest_update.txt
 
