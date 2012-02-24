@@ -131,9 +131,6 @@ let g:NERDTreeDirArrows = 0
 let g:NERDTreeMinimalUI = 1
 let g:NERDTreeStatusline = " NERDTree"
 
-let g:yankring_history_dir = "~/.vim"
-let g:yankring_window_height = 14
-
 cabbrev ht   tab help
 cabbrev htab tab help
 

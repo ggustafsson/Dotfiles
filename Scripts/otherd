@@ -3,10 +3,80 @@
 # Written by Göran Gustafsson <gustafsson.g@gmail.com>.
 
 if [ -d ~/Development/Hello\ World ]; then
-  echo "\033[1;32mChecking for hello world updates.\033[0m"
+  echo "\033[1;32mChecking for Hello World updates.\033[0m"
   cd ~/Development/Hello\ World
   git pull
 else
   git clone git://github.com/leachim6/hello-world.git ~/Development/Hello\ World
+fi
+
+echo
+
+if [ -d ~/Storage/Fonts/Blackout ]; then
+  echo "\033[1;32mChecking for Blackout updates.\033[0m"
+  cd ~/Storage/Fonts/Blackout
+  git pull
+else
+  git clone git://github.com/theleagueof/blackout.git ~/Storage/Fonts/Blackout
+fi
+
+echo
+
+if [ -d ~/Storage/Fonts/knewave ]; then
+  echo "\033[1;32mChecking for Knewave updates.\033[0m"
+  cd ~/Storage/Fonts/knewave
+  git pull
+else
+  git clone git://github.com/theleagueof/knewave.git ~/Storage/Fonts/Knewave
+fi
+
+echo
+
+if [ -d ~/Storage/Fonts/League\ Gothic ]; then
+  echo "\033[1;32mChecking for League Gothic updates.\033[0m"
+  cd ~/Storage/Fonts/League\ Gothic
+  git pull
+else
+  git clone git://github.com/theleagueof/league-gothic.git ~/Storage/Fonts/League\ Gothic
+fi
+
+echo
+
+if [ -d ~/Storage/Fonts/Orbitron ]; then
+  echo "\033[1;32mChecking for Orbitron updates.\033[0m"
+  cd ~/Storage/Fonts/Orbitron
+  git pull
+else
+  git clone git://github.com/theleagueof/orbitron.git ~/Storage/Fonts/Orbitron
+fi
+
+echo
+
+if [ -d ~/Storage/Fonts/Ostrich\ Sans ]; then
+  echo "\033[1;32mChecking for Ostrich Sans updates.\033[0m"
+  cd ~/Storage/Fonts/Ostrich\ Sans
+  git pull
+else
+  git clone git://github.com/theleagueof/ostrich-sans.git ~/Storage/Fonts/Ostrich\ Sans
+fi
+
+echo
+
+if [ -d ~/Storage/Fonts/Prociono ]; then
+  echo "\033[1;32mChecking for Prociono updates.\033[0m"
+  cd ~/Storage/Fonts/Prociono
+  git pull
+else
+  git clone git://github.com/theleagueof/prociono.git ~/Storage/Fonts/Prociono
+fi
+
+echo
+
+if [ -d ~/Storage/Fonts/Sniglet ]; then
+  echo "\033[1;32mChecking for Sniglet updates.\033[0m"
+  cd ~/Storage/Fonts/Sniglet
+  git pull
+else
+  git clone git://github.com/theleagueof/sniglet.git ~/Storage/Fonts/Sniglet
 fi
 

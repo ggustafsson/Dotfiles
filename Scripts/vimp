@@ -8,7 +8,7 @@ rm -rf ~/.vim/backups/bundle ~/.vim/backups/pathogen
 cp -R ~/.vim/pathogen ~/.vim/backups/pathogen
 
 if [ -d ~/.vim/pathogen ]; then
-  echo "\033[1;32mChecking for pathogen updates.\033[0m"
+  echo "\033[1;32mChecking for Pathogen updates.\033[0m"
   cd ~/.vim/pathogen
   git pull
 else
@@ -20,7 +20,7 @@ echo
 cp -R $DLPATH ~/.vim/backups/bundle
 
 if [ -d $DLPATH/gist ]; then
-  echo "\033[1;32mChecking for gist updates.\033[0m"
+  echo "\033[1;32mChecking for Gist updates.\033[0m"
   cd $DLPATH/gist
   git pull
 else
@@ -30,7 +30,7 @@ fi
 echo
 
 if [ -d $DLPATH/gundo ]; then
-  echo "\033[1;32mChecking for gundo updates.\033[0m"
+  echo "\033[1;32mChecking for Gundo updates.\033[0m"
   cd $DLPATH/gundo
   git pull
 else
@@ -40,7 +40,7 @@ fi
 echo
 
 if [ -d $DLPATH/lusty ]; then
-  echo "\033[1;32mChecking for lusty updates.\033[0m"
+  echo "\033[1;32mChecking for Lusty updates.\033[0m"
   cd $DLPATH/lusty
   git pull
 else
@@ -50,7 +50,7 @@ fi
 echo
 
 if [ -d $DLPATH/nerdcommenter ]; then
-  echo "\033[1;32mChecking for nerdcommenter updates.\033[0m"
+  echo "\033[1;32mChecking for NERDCommenter updates.\033[0m"
   cd $DLPATH/nerdcommenter
   git pull
 else
@@ -60,7 +60,7 @@ fi
 echo
 
 if [ -d $DLPATH/nerdtree ]; then
-  echo "\033[1;32mChecking for nerdtree updates.\033[0m"
+  echo "\033[1;32mChecking for NERDTree updates.\033[0m"
   cd $DLPATH/nerdtree
   git pull
 else
@@ -70,7 +70,7 @@ fi
 echo
 
 if [ -d $DLPATH/nyancat ]; then
-  echo "\033[1;32mChecking for nyancat updates.\033[0m"
+  echo "\033[1;32mChecking for NyanCat updates.\033[0m"
   cd $DLPATH/nyancat
   git pull
 else
@@ -80,7 +80,7 @@ fi
 echo
 
 if [ -d $DLPATH/snipmate ]; then
-  echo "\033[1;32mChecking for snipmate updates.\033[0m"
+  echo "\033[1;32mChecking for snipMate updates.\033[0m"
   cd $DLPATH/snipmate
   git pull
 else
@@ -90,7 +90,7 @@ fi
 echo
 
 if [ -d $DLPATH/surround ]; then
-  echo "\033[1;32mChecking for surround updates.\033[0m"
+  echo "\033[1;32mChecking for Surround updates.\033[0m"
   cd $DLPATH/surround
   git pull
 else
@@ -100,7 +100,7 @@ fi
 echo
 
 if [ -d $DLPATH/viminesweeper ]; then
-  echo "\033[1;32mChecking for viminesweeper updates.\033[0m"
+  echo "\033[1;32mChecking for Viminesweeper updates.\033[0m"
   cd $DLPATH/viminesweeper
   git pull
 else
@@ -108,14 +108,6 @@ else
 fi
 
 echo
-
-if [ -d $DLPATH/yankring ]; then
-  echo "\033[1;32mChecking for yankring updates.\033[0m"
-  cd $DLPATH/yankring
-  git pull
-else
-  git clone git://github.com/vim-scripts/YankRing.vim.git $DLPATH/yankring
-fi
 
 date > $DLPATH/latest_update.txt
 
