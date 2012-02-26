@@ -75,8 +75,9 @@ else
   git clone git://github.com/dawanda/jquery-rss.git $DLPATH/jquery-rss
 fi
 
-mkdir $DLPATH/jQuery
-
+if [ ! -d $DLPATH/jquery-rss ]; then
+  mkdir $DLPATH/jQuery
+fi
 open 'http://docs.jquery.com/Downloading_jQuery#Current_Release'
 
 date > $DLPATH/latest_update.txt

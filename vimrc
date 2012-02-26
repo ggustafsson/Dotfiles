@@ -86,8 +86,8 @@ if has("gui_running")
     set guifont=Monaco:h12
     set noantialias
 
-    set columns=120
-    set lines=30
+    set columns=130
+    set lines=34
   endfunction
 
   if !exists("g:dont_load_again")
@@ -159,7 +159,6 @@ nmap <Leader>bd :call BufferDelete()<CR>
 nmap <Leader>cc :call ColorColumn()<CR>
 nmap <Leader>cd :cd %:p:h<CR>:pwd<CR>
 nmap <Leader>do :LustyFilesystemExplorer ~/Documents/Text\ Files<CR>
-nmap <Leader>ed :LustyFilesystemExplorerFromHere<CR>
 nmap <Leader>eh :LustyFilesystemExplorer ~<CR>
 nmap <Leader>ft :set filetype=
 nmap <Leader>ga :Gist -a<CR>
@@ -185,7 +184,6 @@ nmap <Leader>t4 :set noexpandtab shiftwidth=4 softtabstop=0 tabstop=4<CR>
 nmap <Leader>t8 :set noexpandtab shiftwidth=8 softtabstop=0 tabstop=8<CR>
 nmap <Leader>tm :split ~/Downloads/Temporary.txt<CR>
 nmap <Leader>to :split ~/Documents/Text\ Files/To-do\ List.todo<CR>
-nmap <Leader>tr :NERDTreeToggle<CR>
 nmap <Leader>un :edit!<CR>
 nmap <Leader>vi :edit ~/.vimrc<CR>
 nmap <Leader>vn :vnew<CR>
@@ -202,8 +200,9 @@ nmap > <C-w><
 
 nmap <Backspace>   :nohlsearch<CR>
 nmap <C-Backspace> :GundoToggle<CR>
+nmap <C-f>         :LustyFilesystemExplorerFromHere<CR>
+nmap <C-t>         :NERDTreeToggle<CR>
 nmap <Tab>         :bnext<CR>
-nmap <C-y>         :YRShow<CR>
 
 nmap <Leader><Space> <Plug>NERDCommenterToggle
 vmap <Leader><Space> <Plug>NERDCommenterToggle
