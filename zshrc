@@ -143,7 +143,7 @@ if [[ $OSTYPE == darwin* ]]; then
   alias brewi="brew install"
   alias brewr="brew uninstall"
   alias brews="brew search"
-  alias brewu="brew update && brew upgrade && gem update"
+  alias brewu="brew update && brew upgrade"
 
   alias console="open -a Console"
   alias safari="open -a Safari"
