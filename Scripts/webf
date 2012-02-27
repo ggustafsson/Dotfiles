@@ -7,75 +7,75 @@ DLPATH=~/Sites/Frameworks
 rm -rf ~/Sites/Frameworks\ Backups
 cp -R $DLPATH ~/Sites/Frameworks\ Backups
 
-if [ -d $DLPATH/bootstrap ]; then
+if [ -d $DLPATH/Bootstrap ]; then
   echo "\033[1;32mChecking for Bootstrap updates.\033[0m"
-  cd $DLPATH/bootstrap
+  cd $DLPATH/Bootstrap
   git pull
 else
-  git clone git://github.com/twitter/bootstrap.git $DLPATH/bootstrap
+  git clone git://github.com/twitter/bootstrap.git $DLPATH/Bootstrap
 fi
 
 echo
 
-if [ -d $DLPATH/chosen ]; then
+if [ -d $DLPATH/Chosen ]; then
   echo "\033[1;32mChecking for Chosen updates.\033[0m"
-  cd $DLPATH/chosen
+  cd $DLPATH/Chosen
   git pull
 else
-  git clone git://github.com/harvesthq/chosen.git $DLPATH/chosen
+  git clone git://github.com/harvesthq/chosen.git $DLPATH/Chosen
 fi
 
 echo
 
-if [ -d $DLPATH/css3-facebook-buttons ]; then
+if [ -d $DLPATH/CSS3\ Facebook\ Buttons ]; then
   echo "\033[1;32mChecking for CSS3 Facebook Buttons updates.\033[0m"
-  cd $DLPATH/css3-facebook-buttons
+  cd $DLPATH/CSS3\ Facebook\ Buttons
   git pull
 else
-  git clone git://github.com/necolas/css3-facebook-buttons.git $DLPATH/css3-facebook-buttons
+  git clone git://github.com/necolas/css3-facebook-buttons.git $DLPATH/CSS3\ Facebook\ Buttons
 fi
 
 echo
 
-if [ -d $DLPATH/css3-github-buttons ]; then
+if [ -d $DLPATH/CSS3\ GitHub\ Buttons ]; then
   echo "\033[1;32mChecking for CSS3 GitHub Buttons updates.\033[0m"
-  cd $DLPATH/css3-github-buttons
+  cd $DLPATH/CSS3\ GitHub\ Buttons
   git pull
 else
-  git clone git://github.com/necolas/css3-github-buttons.git $DLPATH/css3-github-buttons
+  git clone git://github.com/necolas/css3-github-buttons.git $DLPATH/CSS3\ GitHub\ Buttons
 fi
 
 echo
 
-if [ -d $DLPATH/deck.js ]; then
+if [ -d $DLPATH/Deck.js ]; then
   echo "\033[1;32mChecking for Deck.js updates.\033[0m"
-  cd $DLPATH/deck.js
+  cd $DLPATH/Deck.js
   git pull
 else
-  git clone git://github.com/imakewebthings/deck.js.git $DLPATH/deck.js
+  git clone git://github.com/imakewebthings/deck.js.git $DLPATH/Deck.js
 fi
 
 echo
 
-if [ -d $DLPATH/impress.js ]; then
+if [ -d $DLPATH/Impress.js ]; then
   echo "\033[1;32mChecking for Impress.js updates.\033[0m"
-  cd $DLPATH/impress.js
+  cd $DLPATH/Impress.js
   git pull
 else
-  git clone git://github.com/bartaz/impress.js.git $DLPATH/impress.js
+  git clone git://github.com/bartaz/impress.js.git $DLPATH/Impress.js
 fi
 
 echo
 
-if [ -d $DLPATH/jquery-rss ]; then
+if [ -d $DLPATH/jQuery\ RSS ]; then
   echo "\033[1;32mChecking for jQuery RSS updates.\033[0m"
-  cd $DLPATH/jquery-rss
+  cd $DLPATH/jQuery\ RSS
   git pull
 else
-  git clone git://github.com/dawanda/jquery-rss.git $DLPATH/jquery-rss
+  git clone git://github.com/dawanda/jquery-rss.git $DLPATH/jQuery\ RSS
 fi
 
-if [ ! -d $DLPATH/jquery-rss ]; then
+if [ ! -d $DLPATH/jQuery ]; then
   mkdir $DLPATH/jQuery
 fi
 open 'http://docs.jquery.com/Downloading_jQuery#Current_Release'
