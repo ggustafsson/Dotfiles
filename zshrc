@@ -126,6 +126,7 @@ fi
 if [[ $OSTYPE == darwin* ]]; then
   alias capit="imagesnap -t 2 -w 1"
   alias cde="cd /Volumes/External"
+  alias cf="say command finished"
   alias dontsleep="pmset noidle"
   alias eject="osascript -e 'tell application \"Finder\" to eject (every disk whose ejectable is true)' && echo 'All external drives ejected!'"
   alias o="open"
@@ -256,7 +257,7 @@ for X in $SSH_HOSTS; do
 done
 
 for X in {1..16}; do
-  alias +$X="cd +$X >& /dev/null"
+  alias d$X="cd +$X >& /dev/null"
 done
 
 if [[ $OSTYPE == darwin* ]]; then

@@ -202,7 +202,7 @@ nmap < <C-w>>
 nmap > <C-w><
 
 nmap <Backspace> :nohlsearch<CR>
-nmap <C-Tab>     :bnext<CR>
+nmap <Tab>       :bnext<CR>
 
 nmap <Leader><Space> <Plug>NERDCommenterToggle
 vmap <Leader><Space> <Plug>NERDCommenterToggle
