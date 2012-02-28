@@ -156,13 +156,16 @@ else
 endif
 
 nmap <Leader>bd :call BufferDelete()<CR>
+nmap <Leader>bu :LustyBufferExplorer<CR>
 nmap <Leader>cc :call ColorColumn()<CR>
 nmap <Leader>cd :cd %:p:h<CR>:pwd<CR>
 nmap <Leader>do :LustyFilesystemExplorer ~/Documents/Text\ Files<CR>
+nmap <Leader>ed :LustyFilesystemExplorerFromHere<CR>
 nmap <Leader>eh :LustyFilesystemExplorer ~<CR>
 nmap <Leader>ft :set filetype=
 nmap <Leader>ga :Gist -a<CR>
 nmap <Leader>gg :Gist<CR>
+nmap <Leader>gu :GundoToggle<CR>
 nmap <Leader>li :set list!<CR>
 nmap <Leader>mi :MineSweeper normal<CR>
 nmap <Leader>ne :enew<CR>
@@ -184,6 +187,7 @@ nmap <Leader>t4 :set noexpandtab shiftwidth=4 softtabstop=0 tabstop=4<CR>
 nmap <Leader>t8 :set noexpandtab shiftwidth=8 softtabstop=0 tabstop=8<CR>
 nmap <Leader>tm :split ~/Downloads/Temporary.txt<CR>
 nmap <Leader>to :split ~/Documents/Text\ Files/To-do\ List.todo<CR>
+nmap <Leader>tr :NERDTreeToggle<CR>
 nmap <Leader>un :edit!<CR>
 nmap <Leader>vi :edit ~/.vimrc<CR>
 nmap <Leader>vn :vnew<CR>
@@ -191,18 +195,14 @@ nmap <Leader>wr :set wrap!<CR>
 nmap <Leader>zs :edit ~/.zshrc<CR>
 
 nmap vil ^vg_
-nmap §   :LustyBufferExplorer<CR>
 
 nmap + <C-w>+
 nmap - <C-w>-
 nmap < <C-w>>
 nmap > <C-w><
 
-nmap <Backspace>   :nohlsearch<CR>
-nmap <C-Backspace> :GundoToggle<CR>
-nmap <C-f>         :LustyFilesystemExplorerFromHere<CR>
-nmap <C-t>         :NERDTreeToggle<CR>
-nmap <Tab>         :bnext<CR>
+nmap <Backspace> :nohlsearch<CR>
+nmap <C-Tab>     :bnext<CR>
 
 nmap <Leader><Space> <Plug>NERDCommenterToggle
 vmap <Leader><Space> <Plug>NERDCommenterToggle
