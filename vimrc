@@ -182,7 +182,6 @@ nmap <Leader>sh :shell<CR>
 nmap <Leader>sn :new<CR>
 nmap <Leader>sp :setlocal spell!<CR>
 nmap <Leader>ss :mksession ~/.vim/session.vim<CR>
-nmap <Leader>su :w !sudo tee %<CR>
 nmap <Leader>t4 :set noexpandtab shiftwidth=4 softtabstop=0 tabstop=4<CR>
 nmap <Leader>t8 :set noexpandtab shiftwidth=8 softtabstop=0 tabstop=8<CR>
 nmap <Leader>tm :split ~/Downloads/Temporary.txt<CR>

@@ -169,7 +169,7 @@ else
 fi
 
 type hub >& /dev/null && alias git="hub"
-type ip >& /dev/null && alias lip="ip addr" || alias lip="ifconfig"
+type ip >& /dev/null  && alias lip="ip addr" || alias lip="ifconfig"
 
 alias bc="bc -q"
 alias c="clear"
@@ -181,6 +181,7 @@ alias grep="grep --color=auto -i"
 alias hi="history"
 alias iip="curl -s http://automation.whatismyip.com/n09230945.asp | html2text"
 alias ka="killall"
+alias minecraft="cd ~/.minecraft && java -Xmx1024M -Xms1024M -jar minecraft_server.jar nogui"
 alias mkdir="mkdir -pv"
 alias ping="ping -c 10"
 alias py="python3"
@@ -278,9 +279,9 @@ if [[ $OSTYPE == darwin* ]]; then
   }
 
   function frees {
-    [ -d ~/Library/Caches/Homebrew ] && rm -rf ~/Library/Caches/Homebrew
+    [ -d ~/Library/Caches/Homebrew ]                           && rm -rf ~/Library/Caches/Homebrew
     [ -d ~/Library/Caches/com.apple.Safari/Webpage\ Previews ] && rm -rf ~/Library/Caches/com.apple.Safari/Webpage\ Previews
-    [ -d ~/Library/iTunes/iPhone\ Software\ Updates ] && rm -rf ~/Library/iTunes/iPhone\ Software\ Updates
+    [ -d ~/Library/iTunes/iPhone\ Software\ Updates ]          && rm -rf ~/Library/iTunes/iPhone\ Software\ Updates
   }
 
   function manp {
