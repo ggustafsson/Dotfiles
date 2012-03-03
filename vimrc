@@ -156,7 +156,6 @@ else
 endif
 
 nmap <Leader>bd :call BufferDelete()<CR>
-nmap <Leader>bu :LustyBufferExplorer<CR>
 nmap <Leader>cc :call ColorColumn()<CR>
 nmap <Leader>cd :cd %:p:h<CR>:pwd<CR>
 nmap <Leader>do :LustyFilesystemExplorer ~/Documents/Text\ Files<CR>
@@ -194,6 +193,7 @@ nmap <Leader>wr :set wrap!<CR>
 nmap <Leader>zs :edit ~/.zshrc<CR>
 
 nmap vil ^vg_
+nmap §   :LustyBufferExplorer<CR>
 
 nmap + <C-w>+
 nmap - <C-w>-
