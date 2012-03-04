@@ -107,7 +107,5 @@ else
   git clone git://github.com/mfumi/viminesweeper.git $DLPATH/viminesweeper
 fi
 
-echo
-
 date > $DLPATH/latest_update.txt
 

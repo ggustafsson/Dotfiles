@@ -87,7 +87,7 @@ if has("gui_running")
     set noantialias
 
     set columns=130
-    set lines=34
+    set lines=45
   endfunction
 
   if !exists("g:dont_load_again")
