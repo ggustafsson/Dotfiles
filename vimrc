@@ -86,7 +86,7 @@ if has("gui_running")
     set guifont=Monaco:h12
     set noantialias
 
-    set columns=130
+    set columns=171
     set lines=45
   endfunction
 
@@ -161,6 +161,8 @@ nmap <Leader>cd :cd %:p:h<CR>:pwd<CR>
 nmap <Leader>do :LustyFilesystemExplorer ~/Documents/Text\ Files<CR>
 nmap <Leader>ed :LustyFilesystemExplorerFromHere<CR>
 nmap <Leader>eh :LustyFilesystemExplorer ~<CR>
+nmap <Leader>es :split<CR>:LustyFilesystemExplorerFromHere<CR>
+nmap <Leader>ev :vsplit<CR>:LustyFilesystemExplorerFromHere<CR>
 nmap <Leader>ft :set filetype=
 nmap <Leader>ga :Gist -a<CR>
 nmap <Leader>gg :Gist<CR>
@@ -168,7 +170,9 @@ nmap <Leader>gu :GundoToggle<CR>
 nmap <Leader>li :set list!<CR>
 nmap <Leader>mi :MineSweeper normal<CR>
 nmap <Leader>ne :enew<CR>
+nmap <Leader>ns :new<CR>
 nmap <Leader>nu :set relativenumber!<CR>
+nmap <Leader>nv :vnew<CR>
 nmap <Leader>ny :source ~/.vim/bundle/nyancat-vim/nyancat2.vim<CR>
 nmap <Leader>pa :set paste!<CR>
 nmap <Leader>pw :pwd<CR>
@@ -178,7 +182,6 @@ nmap <Leader>s2 :set expandtab softtabstop=2 shiftwidth=2<CR>
 nmap <Leader>s4 :set expandtab softtabstop=4 shiftwidth=4<CR>
 nmap <Leader>sc :split ~/Documents/Text\ Files/Scratch\ Notes.txt<CR>
 nmap <Leader>sh :shell<CR>
-nmap <Leader>sn :new<CR>
 nmap <Leader>sp :setlocal spell!<CR>
 nmap <Leader>ss :mksession ~/.vim/session.vim<CR>
 nmap <Leader>t4 :set noexpandtab shiftwidth=4 softtabstop=0 tabstop=4<CR>
@@ -188,7 +191,6 @@ nmap <Leader>to :split ~/Documents/Text\ Files/To-do\ List.todo<CR>
 nmap <Leader>tr :NERDTreeToggle<CR>
 nmap <Leader>un :edit!<CR>
 nmap <Leader>vi :edit ~/.vimrc<CR>
-nmap <Leader>vn :vnew<CR>
 nmap <Leader>wr :set wrap!<CR>
 nmap <Leader>zs :edit ~/.zshrc<CR>
 
