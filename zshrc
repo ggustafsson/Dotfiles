@@ -30,9 +30,9 @@ HISTSIZE=2000
 SAVEHIST=6000
 
 if [[ $OSTYPE == darwin* ]]; then
-  path=(/usr/local/bin /usr/local/sbin /bin /sbin /usr/bin /usr/sbin /usr/X11/bin ~/Scripts ~/.ruby/bin(N) ~/.ruby/gems/*/bin(N))
+  path=(/usr/local/bin /usr/local/sbin /bin /sbin /usr/bin /usr/sbin /usr/X11/bin ~/Scripts ~/Scripts/OSX ~/.ruby/bin(N) ~/.ruby/gems/*/bin(N))
 else
-  path+=(~/Scripts ~/.ruby/bin(N) ~/.ruby/gems/*/bin(N))
+  path+=(~/Scripts ~/Scripts/Linux ~/.ruby/bin(N) ~/.ruby/gems/*/bin(N))
 fi
 
 setopt correct
@@ -131,6 +131,7 @@ if [[ $OSTYPE == darwin* ]]; then
   alias eject="osascript -e 'tell application \"Finder\" to eject (every disk whose ejectable is true)' && echo 'All external drives ejected!'"
   alias o="open"
   alias screen="screen -s zsh"
+  alias wifi="/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport -s"
 
   alias awk="gawk"
   alias cal="gcal -s 1"

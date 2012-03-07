@@ -1,0 +1,29 @@
+#!/usr/bin/env zsh
+
+# Written by Göran Gustafsson <gustafsson.g@gmail.com>.
+
+# TODO
+# Hide and show the WiFI menu item automatically.
+
+function disable_wifi {
+  networksetup -setairportpower en0 off
+}
+
+function enable_wifi {
+  echo -n "Type 'yesiamfuckingsureiwantwifi' to enable WiFi: "
+  read areyoufuckingsure
+  if [[ $areyoufuckingsure == yesiamfuckingsureiwantwifi ]]; then
+    networksetup -setairportpower en0 on
+  else
+    print -P "\n%B%F{red}NO WIFI FOR YOU!%f%b"
+  fi
+}
+
+if [[ $# == 0 ]]; then
+  disable_wifi
+elif [[ $# == 1 ]] && [[ $1 == on ]]; then
+  enable_wifi
+else
+  echo "Usage: $0:t [ON]..."
+fi
+
