@@ -304,6 +304,7 @@ augroup Main
   autocmd FileType help               setlocal colorcolumn=
   autocmd FileType html               setlocal filetype=html.css
   autocmd FileType markdown,text,todo setlocal colorcolumn=+1 textwidth=79
+  autocmd FileType eruby              setlocal filetype=eruby.html
   autocmd FileType php                setlocal filetype=php.html.css
   autocmd FileType python             setlocal expandtab shiftwidth=4 softtabstop=4
   autocmd FileType snippet            setlocal noexpandtab shiftwidth=8 softtabstop=0 tabstop=8
