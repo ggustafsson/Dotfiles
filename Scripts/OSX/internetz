@@ -2,10 +2,10 @@
 
 # Written by Göran Gustafsson <gustafsson.g@gmail.com>.
 
-# TODO
-# Hide and show the WiFI menu item automatically.
-
 function disable_wifi {
+  echo "Turning off WiFi."
+  /usr/libexec/PlistBuddy -c 'Delete :menuExtras:1' ~/Library/Preferences/com.apple.systemuiserver.plist
+  killall SystemUIServer
   networksetup -setairportpower en0 off
 }
 
@@ -13,17 +13,19 @@ function enable_wifi {
   echo -n "Type 'yesiamfuckingsureiwantwifi' to enable WiFi: "
   read areyoufuckingsure
   if [[ $areyoufuckingsure == yesiamfuckingsureiwantwifi ]]; then
+    /usr/libexec/PlistBuddy -c 'Add :menuExtras:1 string "/System/Library/CoreServices/Menu Extras/AirPort.menu"' ~/Library/Preferences/com.apple.systemuiserver.plist
+    killall SystemUIServer
     networksetup -setairportpower en0 on
   else
     print -P "\n%B%F{red}NO WIFI FOR YOU!%f%b"
   fi
 }
 
-if [[ $# == 0 ]]; then
-  disable_wifi
-elif [[ $# == 1 ]] && [[ $1 == on ]]; then
+if [[ $# == 1 ]] && [[ $1 == on ]]; then
   enable_wifi
+elif [[ $# == 1 ]] && [[ $1 == off ]]; then
+  disable_wifi
 else
-  echo "Usage: $0:t [ON]..."
+  echo "Usage: $0:t [on/off]..."
 fi
 
