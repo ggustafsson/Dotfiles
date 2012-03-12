@@ -13,19 +13,25 @@ function enable_wifi {
   echo -n "Type 'yesiamfuckingsureiwantwifi' to enable WiFi: "
   read areyoufuckingsure
   if [[ $areyoufuckingsure == yesiamfuckingsureiwantwifi ]]; then
-    /usr/libexec/PlistBuddy -c 'Add :menuExtras:1 string "/System/Library/CoreServices/Menu Extras/AirPort.menu"' ~/Library/Preferences/com.apple.systemuiserver.plist
-    killall SystemUIServer
-    networksetup -setairportpower en0 on
+    enable_wifi_noninteractive
   else
     print -P "\n%B%F{red}NO WIFI FOR YOU!%f%b"
   fi
 }
 
+function enable_wifi_noninteractive {
+  /usr/libexec/PlistBuddy -c 'Add :menuExtras:1 string "/System/Library/CoreServices/Menu Extras/AirPort.menu"' ~/Library/Preferences/com.apple.systemuiserver.plist
+  killall SystemUIServer
+  networksetup -setairportpower en0 on
+}
+
 if [[ $# == 1 ]] && [[ $1 == on ]]; then
   enable_wifi
+elif [[ $# == 1 ]] && [[ $1 == on_noninteractive ]]; then
+  enable_wifi_noninteractive
 elif [[ $# == 1 ]] && [[ $1 == off ]]; then
   disable_wifi
 else
-  echo "Usage: $0:t [on/off]..."
+  echo "Usage: $0:t [on/on_noninteractive/off]..."
 fi
 

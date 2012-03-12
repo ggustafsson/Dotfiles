@@ -5,8 +5,8 @@
 
 #INTERVAL=
 
-WORK_CMD="say start working now"
-BREAK_CMD="say take a little break"
+WORK_CMD="say start working now && internetz off >& /dev/null"
+BREAK_CMD="say take a little break && internetz on_noninteractive"
 
 POMODORO_CMD="say working session is over. take a break"
 #POMODORO_REPEAT_ALARM=

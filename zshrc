@@ -244,7 +244,7 @@ alias grm="git rm"
 alias gst="git status -s -b"
 alias gun="git reset --soft HEAD^"
 
-alias int="tim -i"
+alias int="internetz off >& /dev/null && tim -i"
 alias pomo="tim -p"
 alias rint="tim -ri"
 
