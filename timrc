@@ -1,15 +1,15 @@
 # vim: ft=sh
 
 #TIMER_CMD=""
-#TIMER_REPEAT_ALARM=
+#TIMER_REPEAT_CMD=
 
 #INTERVAL=
 
 WORK_CMD="say start working now && internetz off >& /dev/null"
 BREAK_CMD="say take a little break && internetz on_noninteractive"
 
-POMODORO_CMD="say working session is over. take a break"
-#POMODORO_REPEAT_ALARM=
+POMODORO_CMD="say working session is over. you win && open ~/Storage/Celebrate.flv"
+#POMODORO_REPEAT_CMD=
 
 #POMODORO_WORK=
 #POMODORO_BREAK=
