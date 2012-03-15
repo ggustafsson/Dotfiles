@@ -121,6 +121,8 @@ if [[ $TERM == dumb ]]; then
 else
   PROMPT='%B${(C)USER} %F{yellow}${(C)HOST%%.*}%f%b %~ %B$(zsh_mode)%b '
   RPROMPT='%B$(git_branch)%b'
+
+  cd ~/Downloads
 fi
 
 if [[ $OSTYPE == darwin* ]]; then
@@ -384,7 +386,7 @@ function h {
   if [ ! -z $1 ]; then
     history -i 1 | grep "$*"
   else
-    history -i 1 | less +G
+    history -i 1
   fi
 }
 
