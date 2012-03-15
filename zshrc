@@ -279,12 +279,6 @@ if [[ $OSTYPE == darwin* ]]; then
     fi
   }
 
-  function frees {
-    [ -d ~/Library/Caches/Homebrew ]                           && rm -rf ~/Library/Caches/Homebrew
-    [ -d ~/Library/Caches/com.apple.Safari/Webpage\ Previews ] && rm -rf ~/Library/Caches/com.apple.Safari/Webpage\ Previews
-    [ -d ~/Library/iTunes/iPhone\ Software\ Updates ]          && rm -rf ~/Library/iTunes/iPhone\ Software\ Updates
-  }
-
   function manp {
     if [ ! -z $1 ]; then
       for ARGUMENT in $*; do
