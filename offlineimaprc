@@ -13,7 +13,6 @@ localfolders = ~/Storage/Mail
 type = Gmail
 remotehost = imap.gmail.com
 remoteuser = gustafsson.g@gmail.com
-remotepass =
 ssl = yes
 readonly = True
 

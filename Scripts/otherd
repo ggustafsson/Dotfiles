@@ -42,16 +42,6 @@ fi
 
 echo
 
-if [ -d ~/Storage/Fonts/Blackout ]; then
-  echo "\033[1;32mChecking for Blackout updates.\033[0m"
-  cd ~/Storage/Fonts/Blackout
-  git pull
-else
-  git clone git://github.com/theleagueof/blackout.git ~/Storage/Fonts/Blackout
-fi
-
-echo
-
 if [ -d ~/Storage/Fonts/knewave ]; then
   echo "\033[1;32mChecking for Knewave updates.\033[0m"
   cd ~/Storage/Fonts/knewave

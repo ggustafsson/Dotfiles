@@ -171,7 +171,7 @@ nmap <Leader>li :set list!<CR>
 nmap <Leader>mi :MineSweeper normal<CR>
 nmap <Leader>ne :enew<CR>
 nmap <Leader>ns :new<CR>
-nmap <Leader>nu :set relativenumber!<CR>
+nmap <Leader>nu :call LineNumber()<CR>
 nmap <Leader>nv :vnew<CR>
 nmap <Leader>ny :source ~/.vim/bundle/nyancat-vim/nyancat2.vim<CR>
 nmap <Leader>pa :set paste!<CR>
@@ -278,6 +278,16 @@ function! ColorColumn()
   endif
 endfunction
 
+function! LineNumber()
+  if &relativenumber == 1
+    set number
+  elseif &number == 1
+    set nonumber
+  else
+    set relativenumber
+  endif
+endfunction
+
 function! StatuslineBufferNr()
   if &number == 1
     let b:bnumber = strlen(bufnr("%"))
@@ -304,7 +314,6 @@ augroup Main
   autocmd FileType help               setlocal colorcolumn=
   autocmd FileType html               setlocal filetype=html.css
   autocmd FileType markdown,text,todo setlocal colorcolumn=+1 textwidth=79
-  autocmd FileType eruby              setlocal filetype=eruby.html
   autocmd FileType php                setlocal filetype=php.html.css
   autocmd FileType python             setlocal expandtab shiftwidth=4 softtabstop=4
   autocmd FileType snippet            setlocal noexpandtab shiftwidth=8 softtabstop=0 tabstop=8
