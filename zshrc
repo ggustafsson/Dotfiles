@@ -21,7 +21,7 @@ else
   export VISUAL=$EDITOR
 fi
 
-[ -f ~/.ssh/config ] && SSH_HOSTS=($(sed -ne 's/^Host //p' < ~/.ssh/config))
+[ -f ~/.ssh/config ] && SSH_HOSTS=($(sed -n 's/^Host //p' ~/.ssh/config))
 DIRSTACKSIZE=17
 TODO_FILE=~/Documents/Text\ Files/To-do\ List.todo
 
@@ -436,10 +436,12 @@ function t {
     if [ ! -s $TODO_FILE ]; then
       echo "TODO file is currently empty." && return
     else
-      cat $TODO_FILE
+      sed '/^[#tab]*$/d' $TODO_FILE
     fi
   else
-    echo "$*" >> $TODO_FILE
+    sed '/^[#tab]*$/d' $TODO_FILE > $TODO_FILE.tmp
+    echo "  $*\n" >> $TODO_FILE.tmp
+    mv -f $TODO_FILE.tmp $TODO_FILE >& /dev/null
   fi
 }
 
@@ -453,7 +455,8 @@ function tcolors {
   echo -n "\033[1;36m1;36m\033[0m "
   echo "\033[1;37m1;37m\033[0m "
 
-  echo -n "      \033[1;41m1;41m\033[0m "
+  echo -n "      "
+  echo -n "\033[1;41m1;41m\033[0m "
   echo -n "\033[1;42m1;42m\033[0m "
   echo -n "\033[1;43m1;43m\033[0m "
   echo -n "\033[1;44m1;44m\033[0m "
