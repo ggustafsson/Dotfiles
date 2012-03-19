@@ -96,6 +96,11 @@ function git_branch {
   fi
 }
 
+function todo_info {
+  REFERENCE=$(grep '^  ' $TODO_FILE | egrep -v '^   ' | wc -l)
+  [[ ! $REFERENCE == 0 ]] && echo "%F{green}$REFERENCE%f "
+}
+
 function custom-vi-replace {
   REPLACE=1 && zle vi-replace && REPLACE=0
 }
@@ -119,7 +124,7 @@ function zsh_mode {
 if [[ $TERM == dumb ]]; then
   PROMPT='%~ $ '
 else
-  PROMPT='%B${(C)USER} %F{yellow}${(C)HOST%%.*}%f%b %~ %B$(zsh_mode)%b '
+  PROMPT='%B${(C)USER} %F{yellow}${(C)HOST%%.*}%f%b %~ %B$(todo_info)%b%B$(zsh_mode)%b '
   RPROMPT='%B$(git_branch)%b'
 fi
 

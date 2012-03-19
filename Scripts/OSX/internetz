@@ -4,8 +4,6 @@
 
 function disable_wifi {
   echo "Turning off WiFi."
-  /usr/libexec/PlistBuddy -c 'Delete :menuExtras:1' ~/Library/Preferences/com.apple.systemuiserver.plist
-  killall SystemUIServer
   networksetup -setairportpower en0 off
 }
 
@@ -20,8 +18,6 @@ function enable_wifi {
 }
 
 function enable_wifi_noninteractive {
-  /usr/libexec/PlistBuddy -c 'Add :menuExtras:1 string "/System/Library/CoreServices/Menu Extras/AirPort.menu"' ~/Library/Preferences/com.apple.systemuiserver.plist
-  killall SystemUIServer
   networksetup -setairportpower en0 on
 }
 
