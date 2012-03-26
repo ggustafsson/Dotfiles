@@ -97,7 +97,7 @@ function git_branch {
 }
 
 function todo_info {
-  REFERENCE=$(grep '^  ' $TODO_FILE | egrep -v '^   ' | wc -l)
+  REFERENCE=$(grep '^  ' $TODO_FILE 2> /dev/null | egrep -v '^   ' | wc -l)
   [[ ! $REFERENCE == 0 ]] && echo "%F{green}$REFERENCE%f "
 }
 
@@ -184,6 +184,7 @@ alias df="df -h"
 alias dh="dirs -v | sort -r"
 alias fetch="wget --page-requisites --adjust-extension --convert-links"
 alias grep="grep --color=auto -i"
+alias egrep="egrep --color=auto -i"
 alias hi="history"
 alias iip="curl -s http://automation.whatismyip.com/n09230945.asp | html2text"
 alias ka="killall"
@@ -244,7 +245,7 @@ alias glo="git log"
 alias gme="git merge"
 alias gmv="git mv"
 alias gpl="git pull"
-alias gpu="git push"
+alias gpu="git push && [[ $OSTYPE == darwin* ]] && say fuck yeah"
 alias grm="git rm"
 alias gst="git status -s -b"
 alias gun="git reset --soft HEAD^"
