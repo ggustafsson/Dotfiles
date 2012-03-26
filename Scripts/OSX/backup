@@ -10,6 +10,7 @@ BACKUP_DESTINATION=/Volumes/Backup
 DIRECTORIES=(
   Development
   Documents
+  Dropbox
   "Library/Application Support/1Password"
   Movies/Personal
   Music/GBS
