@@ -135,6 +135,7 @@ if [[ $OSTYPE == darwin* ]]; then
   alias dontsleep="pmset noidle"
   alias eject="osascript -e 'tell application \"Finder\" to eject (every disk whose ejectable is true)' && echo 'All external drives ejected!'"
   alias o="open"
+  alias safari="open -a Safari"
   alias wifi="/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport -s"
 
   alias awk="gawk"
@@ -150,9 +151,6 @@ if [[ $OSTYPE == darwin* ]]; then
   alias brewr="brew uninstall"
   alias brews="brew search"
   alias brewu="brew update && brew upgrade"
-
-  alias console="open -a Console"
-  alias safari="open -a Safari"
 
   alias dae="ls -lae"
   alias de="ls -le"
@@ -187,8 +185,6 @@ alias iip="curl -s http://automation.whatismyip.com/n09230945.asp | html2text"
 alias ka="killall"
 alias mkdir="mkdir -pv"
 alias ping="ping -c 10"
-alias py="python3"
-alias pyweb="python3 -m http.server 8080"
 alias random='FILES=(*) && echo $FILES[$RANDOM%$#FILES+1]'
 alias reload="source ~/.zshrc"
 alias rf="ls -t | head -n 5"
@@ -220,6 +216,9 @@ alias cp="cp -vi"
 alias mv="mv -vi"
 alias rm="rm -v"
 
+alias cpass="openssl rand -base64 20"
+alias pass="vim ~/Documents/Text\ Files/Passwords.txt"
+
 alias csd='echo "Change directory to saved PATH." && cd $SAVE_DIR'
 alias sd='echo "Saving current PATH." && SAVE_DIR=$PWD'
 
@@ -249,6 +248,9 @@ alias gun="git reset --soft HEAD^"
 alias int="internetz off >& /dev/null && tim -i"
 alias pomo="tim -p"
 alias rint="tim -ri"
+
+alias py="python3"
+alias pyweb="python3 -m http.server 8080"
 
 alias top="top -o cpu"
 alias topme="top -o cpu -U $USER"

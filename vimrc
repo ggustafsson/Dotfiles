@@ -8,6 +8,7 @@ filetype plugin indent on
 syntax enable
 colorscheme ninja
 
+set cryptmethod=blowfish
 set confirm
 set encoding=utf-8
 set formatoptions+=n
