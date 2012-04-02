@@ -8,10 +8,6 @@ filetype plugin indent on
 syntax enable
 colorscheme ninja
 
-if has("mac")
-  set shell=/usr/local/bin/zsh
-endif
-
 set confirm
 set encoding=utf-8
 set formatoptions+=n
@@ -141,7 +137,6 @@ cabbrev Wq wq
 cabbrev wQ wq
 
 if has("gui_running")
-  nmap <Leader>cl :call CleanView()<CR>
   nmap <Leader>fa :call FancyView()<CR>
 endif
 
@@ -186,7 +181,6 @@ nmap <Leader>sp :setlocal spell!<CR>
 nmap <Leader>ss :mksession ~/.vim/session.vim<CR>
 nmap <Leader>t4 :set noexpandtab shiftwidth=4 softtabstop=0 tabstop=4<CR>
 nmap <Leader>t8 :set noexpandtab shiftwidth=8 softtabstop=0 tabstop=8<CR>
-nmap <Leader>tm :split ~/Downloads/Temporary.txt<CR>
 nmap <Leader>to :split ~/Documents/Text\ Files/To-do\ List.todo<CR>
 nmap <Leader>tr :NERDTreeToggle<CR>
 nmap <Leader>un :edit!<CR>
@@ -217,8 +211,8 @@ vmap <Leader>vn y:vnew<CR>P
 
 vmap s <Plug>VSurround
 
-vmap + :m'>+<CR>gv=`<my`>mzgv`yo`z
-vmap - :m'<-2<CR>gv=`>my`<mzgv`yo`z
+vmap + :m'<-2<CR>gv=`>my`<mzgv`yo`z
+vmap - :m'>+<CR>gv=`<my`>mzgv`yo`z
 
 vmap <Tab>   >gv
 vmap <S-Tab> <gv
@@ -230,16 +224,6 @@ if has("gui_running")
       set guifont=Inconsolata:h22
     else
       call FontSetup()
-    endif
-  endfunction
-
-  function! CleanView()
-    if &laststatus == 2
-      set laststatus=1
-      set norelativenumber
-    else
-      set laststatus=2
-      set relativenumber
     endif
   endfunction
 endif
@@ -308,7 +292,6 @@ augroup Main
   autocmd BufNewFile,BufRead *.todo                    setlocal filetype=todo
   autocmd BufNewFile,BufRead *.txt,README,INSTALL,TODO setlocal filetype=text
   autocmd BufNewFile,BufRead config                    setlocal filetype=conf
-  autocmd BufNewFile,BufRead MineSweeper               setlocal virtualedit=
 
   autocmd FileType gitcommit          setlocal colorcolumn=+1 nolist spell
   autocmd FileType help               setlocal colorcolumn=
