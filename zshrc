@@ -97,8 +97,8 @@ function git_branch {
 }
 
 function todo_info {
-  REFERENCE=$(grep '^  ' $TODO_FILE 2> /dev/null | egrep -v '^   ' | wc -l)
-  [[ ! $REFERENCE == 0 ]] && echo "%F{green}$REFERENCE%f "
+  REFERENCE=$(grep '^  ' $TODO_FILE 2> /dev/null | egrep -v '^   ' | wc -l) || return
+  echo "%F{green}$REFERENCE%f "
 }
 
 function custom-vi-replace {
@@ -157,12 +157,12 @@ if [[ $OSTYPE == darwin* ]]; then
 
   alias tvim="/Applications/MacVim.app/Contents/MacOS/Vim"
   alias tvimdiff="/Applications/MacVim.app/Contents/MacOS/Vim -d"
-  alias vimdiff="/Applications/MacVim.app/Contents/MacOS/Vim -d -g $* >& /dev/null"
+  alias vimdiff='/Applications/MacVim.app/Contents/MacOS/Vim -d -g $* >& /dev/null'
 else
-  alias agentadd="eval $(ssh-agent) >& /dev/null && ssh-add"
+  alias agentadd='eval $(ssh-agent) >& /dev/null && ssh-add'
   alias cal="cal -m"
   alias ls="ls -Fh --color=auto"
-  alias vl="tail -n $LINES -f /var/log/everything.log"
+  alias vl='tail -n $LINES -f /var/log/everything.log'
 
   alias paci="sudo pacman -S"
   alias pacr="sudo pacman -Rs"
@@ -240,7 +240,7 @@ alias glo="git log"
 alias gme="git merge"
 alias gmv="git mv"
 alias gpl="git pull"
-alias gpu="git push && [[ $OSTYPE == darwin* ]] && say fuck yeah"
+alias gpu='git push && [[ $OSTYPE == darwin* ]] && say fuck yeah'
 alias grm="git rm"
 alias gst="git status -s -b"
 alias gun="git reset --soft HEAD^"
@@ -253,7 +253,7 @@ alias py="python3"
 alias pyweb="python3 -m http.server 8080"
 
 alias top="top -o cpu"
-alias topme="top -o cpu -U $USER"
+alias topme='top -o cpu -U $USER'
 
 alias v="vim"
 alias vd="vimdiff"

@@ -11,7 +11,6 @@ DIRECTORIES=(
   Development
   Documents
   Dropbox
-  "Library/Application Support/1Password"
   Movies/Personal
   Music/GBS
   Music/NSFe
