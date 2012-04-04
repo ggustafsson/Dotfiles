@@ -15,7 +15,6 @@ set formatoptions+=n
 set gdefault
 set hidden
 set nofoldenable
-set nostartofline
 set nowrap
 set scrolloff=3
 set showbreak=+
