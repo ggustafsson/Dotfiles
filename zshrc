@@ -98,7 +98,7 @@ function git_branch {
 
 function todo_info {
   REFERENCE=$(grep '^  ' $TODO_FILE 2> /dev/null | egrep -v '^   ' | wc -l) || return
-  echo "%F{green}$REFERENCE%f "
+  [[ ! $REFERENCE == 0 ]] && echo "%F{green}$REFERENCE%f "
 }
 
 function custom-vi-replace {
@@ -152,9 +152,6 @@ if [[ $OSTYPE == darwin* ]]; then
   alias brews="brew search"
   alias brewu="brew update && brew upgrade"
 
-  alias dae="ls -lae"
-  alias de="ls -le"
-
   alias tvim="/Applications/MacVim.app/Contents/MacOS/Vim"
   alias tvimdiff="/Applications/MacVim.app/Contents/MacOS/Vim -d"
   alias vimdiff='/Applications/MacVim.app/Contents/MacOS/Vim -d -g $* >& /dev/null'
@@ -182,6 +179,7 @@ alias c="clear"
 alias chkm="find ~/Music/MP3 -type f ! -iname '*.mp3'"
 alias df="df -h"
 alias dh="dirs -v | sort -r"
+alias du="du -sh"
 alias egrep="egrep --color=auto -i"
 alias fetch="wget --page-requisites --adjust-extension --convert-links"
 alias grep="grep --color=auto -i"
@@ -191,10 +189,9 @@ alias ka="killall"
 alias mkdir="mkdir -pv"
 alias ping="ping -c 10"
 alias random='FILES=(*) && echo $FILES[$RANDOM%$#FILES+1]'
+alias re="ls -t | head -n 5"
 alias reload="source ~/.zshrc"
-alias rf="ls -t | head -n 5"
 alias s="screen"
-alias sp="du -sh"
 alias tv='vim "$TODO_FILE"'
 alias ycal='cal $(date +%Y)'
 alias yt="youtube-dl -l"
@@ -267,7 +264,7 @@ for X in $SSH_HOSTS; do
 done
 
 for X in {1..16}; do
-  alias d$X="cd +$X >& /dev/null"
+  alias cd$X="cd +$X >& /dev/null"
 done
 
 if [[ $OSTYPE == darwin* ]]; then
