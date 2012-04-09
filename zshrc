@@ -134,9 +134,9 @@ if [[ $OSTYPE == darwin* ]]; then
   alias cf="say command finished"
   alias dontsleep="pmset noidle"
   alias eject="osascript -e 'tell application \"Finder\" to eject (every disk whose ejectable is true)' && echo 'All external drives ejected!'"
+  alias int="networksetup -setairportpower en0 off && tim -i"
   alias o="open"
   alias safari="open -a Safari"
-  alias wifi="/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport -s"
 
   alias awk="gawk"
   alias cal="gcal -s 1"
@@ -158,9 +158,14 @@ if [[ $OSTYPE == darwin* ]]; then
   alias tvim="/Applications/MacVim.app/Contents/MacOS/Vim"
   alias tvimdiff="/Applications/MacVim.app/Contents/MacOS/Vim -d"
   alias vimdiff='/Applications/MacVim.app/Contents/MacOS/Vim -d -g $* >& /dev/null'
+
+  alias wifioff="networksetup -setairportpower en0 off"
+  alias wifion="networksetup -setairportpower en0 on"
+  alias wifiscan="/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport -s"
 else
   alias agentadd='eval $(ssh-agent) >& /dev/null && ssh-add'
   alias cal="cal -m"
+  alias int="tim -i"
   alias ls="ls -Fh --color=auto"
   alias vl='tail -n $LINES -f /var/log/everything.log'
 
@@ -245,7 +250,6 @@ alias grm="git rm"
 alias gst="git status -s -b"
 alias gun="git reset --soft HEAD^"
 
-alias int="internetz off >& /dev/null && tim -i"
 alias pomo="tim -p"
 alias rint="tim -ri"
 
