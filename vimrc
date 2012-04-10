@@ -187,9 +187,9 @@ nmap <Leader>un :edit!<CR>
 nmap <Leader>vi :edit ~/.vimrc<CR>
 nmap <Leader>wr :set wrap!<CR>
 nmap <Leader>zs :edit ~/.zshrc<CR>
+nmap <Leader>bu :LustyBufferExplorer<CR>
 
 nmap vil ^vg_
-nmap §   :LustyBufferExplorer<CR>
 
 nmap + <C-w>+
 nmap - <C-w>-
@@ -198,6 +198,11 @@ nmap > <C-w><
 
 nmap <Backspace> :nohlsearch<CR>
 nmap <Tab>       :bnext<CR>
+
+nmap <Up> <nop>
+nmap <Down> <nop>
+nmap <Left> <nop>
+nmap <Right> <nop>
 
 nmap <Leader><Space> <Plug>NERDCommenterToggle
 vmap <Leader><Space> <Plug>NERDCommenterToggle
