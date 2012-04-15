@@ -199,11 +199,6 @@ nmap > <C-w><
 nmap <Backspace> :nohlsearch<CR>
 nmap <Tab>       :bnext<CR>
 
-nmap <Up> <nop>
-nmap <Down> <nop>
-nmap <Left> <nop>
-nmap <Right> <nop>
-
 nmap <Leader><Space> <Plug>NERDCommenterToggle
 vmap <Leader><Space> <Plug>NERDCommenterToggle
 
