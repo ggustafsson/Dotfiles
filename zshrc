@@ -152,6 +152,9 @@ if [[ $OSTYPE == darwin* ]]; then
   alias brews="brew search"
   alias brewu="brew update && brew upgrade"
 
+  alias top="top -o cpu"
+  alias topme='top -o cpu -U $USER'
+
   alias tvim="/Applications/MacVim.app/Contents/MacOS/Vim"
   alias tvimdiff="/Applications/MacVim.app/Contents/MacOS/Vim -d"
   alias vimdiff='/Applications/MacVim.app/Contents/MacOS/Vim -d -g $* >& /dev/null'
@@ -252,9 +255,6 @@ alias rint="tim -ri"
 
 alias py="python3"
 alias pyweb="python3 -m http.server 8080"
-
-alias top="top -o cpu"
-alias topme='top -o cpu -U $USER'
 
 alias v="vim"
 alias vd="vimdiff"
