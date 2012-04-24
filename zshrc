@@ -152,12 +152,14 @@ if [[ $OSTYPE == darwin* ]]; then
   alias brews="brew search"
   alias brewu="brew update && brew upgrade"
 
-  alias top="top -o cpu"
-  alias topme='top -o cpu -U $USER'
-
+  alias sv="sudo /Applications/MacVim.app/Contents/MacOS/Vim"
+  alias svim="sudo /Applications/MacVim.app/Contents/MacOS/Vim"
   alias tvim="/Applications/MacVim.app/Contents/MacOS/Vim"
   alias tvimdiff="/Applications/MacVim.app/Contents/MacOS/Vim -d"
   alias vimdiff='/Applications/MacVim.app/Contents/MacOS/Vim -d -g $* >& /dev/null'
+
+  alias top="top -o cpu"
+  alias topme='top -o cpu -U $USER'
 
   alias wifioff="networksetup -setairportpower en0 off"
   alias wifion="networksetup -setairportpower en0 on"
@@ -172,6 +174,9 @@ else
   alias paci="sudo pacman -S"
   alias pacr="sudo pacman -Rs"
   alias pacu="sudo pacman -Syu"
+
+  alias sv="sudo vim"
+  alias svim="sudo vim"
 fi
 
 type hub >& /dev/null && alias git="hub"

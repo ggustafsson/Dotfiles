@@ -5,11 +5,11 @@ Xcursor.theme: Neutral
 URxvt*background: #060606
 URxvt*foreground: white
 
-URxvt*font:     -windows-dina-medium-r-*-*-15-*-*-*-*-*-*
-URxvt*boldFont: -windows-dina-medium-r-*-*-15-*-*-*-*-*-*
+#URxvt*font:     -windows-dina-medium-r-*-*-15-*-*-*-*-*-*
+#URxvt*boldFont: -windows-dina-medium-r-*-*-15-*-*-*-*-*-*
 
-#URxvt*font:     -*-terminus-medium-r-*-*-18-*-*-*-*-*-*
-#URxvt*boldFont: -*-terminus-medium-r-*-*-18-*-*-*-*-*-*
+URxvt*font:     -*-terminus-bold-r-*-*-18-*-*-*-*-*-*
+URxvt*boldFont: -*-terminus-bold-r-*-*-18-*-*-*-*-*-*
 
 URxvt*termName: rxvt-256color
 
