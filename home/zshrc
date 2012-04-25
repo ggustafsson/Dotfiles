@@ -152,16 +152,12 @@ if [[ $OSTYPE == darwin* ]]; then
   alias brews="brew search"
   alias brewu="brew update && brew upgrade"
 
-  alias sv="sudo /Applications/MacVim.app/Contents/MacOS/Vim"
-  alias svim="sudo /Applications/MacVim.app/Contents/MacOS/Vim"
-  alias tv="tvim"
-  alias tvd="tvimdiff"
+  alias top="top -o cpu"
+  alias topme='top -o cpu -U $USER'
+
   alias tvim="/Applications/MacVim.app/Contents/MacOS/Vim"
   alias tvimdiff="/Applications/MacVim.app/Contents/MacOS/Vim -d"
   alias vimdiff='/Applications/MacVim.app/Contents/MacOS/Vim -d -g $* >& /dev/null'
-
-  alias top="top -o cpu"
-  alias topme='top -o cpu -U $USER'
 
   alias wifioff="networksetup -setairportpower en0 off"
   alias wifion="networksetup -setairportpower en0 on"
@@ -177,9 +173,6 @@ else
   alias paci="sudo pacman -S"
   alias pacr="sudo pacman -Rs"
   alias pacu="sudo pacman -Syu"
-
-  alias sv="sudo vim"
-  alias svim="sudo vim"
 fi
 
 type hub >& /dev/null && alias git="hub"
@@ -203,7 +196,7 @@ alias random='FILES=(*) && echo $FILES[$RANDOM%$#FILES+1]'
 alias re="ls -t | head -n 5"
 alias reload="source ~/.zshrc"
 alias s="screen"
-alias te='vim "$TODO_FILE"'
+alias tv='vim "$TODO_FILE"'
 alias ycal='cal $(date +%Y)'
 alias yt="youtube-dl -l"
 
@@ -263,9 +256,6 @@ alias rint="tim -ri"
 
 alias py="python3"
 alias pyweb="python3 -m http.server 8080"
-
-alias v="vim"
-alias vd="vimdiff"
 
 for X in $SSH_HOSTS; do
   alias $X="ssh $X"
