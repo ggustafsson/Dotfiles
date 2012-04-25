@@ -1,0 +1,8 @@
+# 
+# /etc/fstab: static file system information
+#
+
+/dev/sda4        /boot ext4  defaults                 0 2 
+/dev/mapper/root /     ext4  defaults,discard,noatime 0 1
+tmpfs            /tmp  tmpfs nodev,nosuid             0 0
+
