@@ -5,3 +5,6 @@ startup_message off
 term            screen-256color
 vbell           off
 
+bind x screen
+bind c kill
+

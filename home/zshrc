@@ -154,6 +154,8 @@ if [[ $OSTYPE == darwin* ]]; then
 
   alias sv="sudo /Applications/MacVim.app/Contents/MacOS/Vim"
   alias svim="sudo /Applications/MacVim.app/Contents/MacOS/Vim"
+  alias tv="tvim"
+  alias tvd="tvimdiff"
   alias tvim="/Applications/MacVim.app/Contents/MacOS/Vim"
   alias tvimdiff="/Applications/MacVim.app/Contents/MacOS/Vim -d"
   alias vimdiff='/Applications/MacVim.app/Contents/MacOS/Vim -d -g $* >& /dev/null'
@@ -200,7 +202,7 @@ alias random='FILES=(*) && echo $FILES[$RANDOM%$#FILES+1]'
 alias re="ls -t | head -n 5"
 alias reload="source ~/.zshrc"
 alias s="screen"
-alias tv='vim "$TODO_FILE"'
+alias te='vim "$TODO_FILE"'
 alias ycal='cal $(date +%Y)'
 alias yt="youtube-dl -l"
 
