@@ -1,17 +1,34 @@
 # vim: ft=sh
 
-#TIMER_CMD=""
-#TIMER_REPEAT_CMD=
+if [[ $OSTYPE == darwin* ]]; then
+  #TIMER_CMD=
+  #TIMER_REPEAT_CMD=
 
-#INTERVAL=
+  #INTERVAL=
 
-WORK_CMD="say start working now && networksetup -setairportpower en0 off"
-BREAK_CMD="say take a little break && networksetup -setairportpower en0 on"
+  WORK_CMD="say start working now && networksetup -setairportpower en0 off"
+  BREAK_CMD="say take a little break && networksetup -setairportpower en0 on"
 
-POMODORO_CMD="say working session is over. you win && open ~/Storage/Celebrate.flv"
-#POMODORO_REPEAT_CMD=
+  POMODORO_CMD="say working session is over. you win && open ~/Storage/Celebrate.flv"
+  #POMODORO_REPEAT_CMD=
 
-#POMODORO_WORK=
-#POMODORO_BREAK=
-#POMODORO_STOP=
+  #POMODORO_WORK=
+  #POMODORO_BREAK=
+  #POMODORO_STOP=
+else
+  #TIMER_CMD=
+  #TIMER_REPEAT_CMD=
+
+  #INTERVAL=
+
+  #WORK_CMD=
+  #BREAK_CMD=
+
+  #POMODORO_CMD=
+  #POMODORO_REPEAT_CMD=
+
+  #POMODORO_WORK=
+  #POMODORO_BREAK=
+  #POMODORO_STOP=
+fi
 

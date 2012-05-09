@@ -33,13 +33,14 @@ if [[ $OSTYPE == darwin* ]]; then
   path=(/usr/local/bin /usr/local/sbin /bin /sbin /usr/bin /usr/sbin /usr/X11/bin ~/Scripts ~/Scripts/OSX ~/.ruby/bin(N) ~/.ruby/gems/*/bin(N))
 else
   path+=(~/Scripts ~/Scripts/Linux ~/.ruby/bin(N) ~/.ruby/gems/*/bin(N))
+
+  umask 077
 fi
 
 setopt correct
 setopt interactivecomments
 setopt longlistjobs
 setopt nobeep
-setopt noclobber
 setopt notify
 setopt promptsubst
 
@@ -402,7 +403,7 @@ function p {
   fi
 }
 
-function permf {
+function perm22 {
   if [[ $OSTYPE == darwin* ]]; then
     find . -type d -exec chmod -N 755 "{}" \;
     find . -type f -exec chmod -N 644 "{}" \;
@@ -412,7 +413,7 @@ function permf {
   fi
 }
 
-function ppermf {
+function perm77 {
   if [[ $OSTYPE == darwin* ]]; then
     find . -type d -exec chmod -N 700 "{}" \;
     find . -type f -exec chmod -N 600 "{}" \;
