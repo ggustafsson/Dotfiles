@@ -1,0 +1,10 @@
+#!/usr/bin/env zsh
+
+# Written by Göran Gustafsson <gustafsson.g@gmail.com>.
+
+if [[ $OSTYPE == darwin* ]]; then
+  afplay ~/.irssi/beep.wav
+else
+  aplay ~/.irssi/beep.wav >& /dev/null
+fi
+

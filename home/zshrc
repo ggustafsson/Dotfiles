@@ -169,7 +169,7 @@ else
   alias int="tim -i"
   alias ls="ls -Fh --color=auto"
   alias vl='tail -n $LINES -f /var/log/everything.log'
-  alias x="startx 1> /dev/null"
+  alias x="startx"
 
   alias paci="sudo pacman -S"
   alias pacr="sudo pacman -Rs"

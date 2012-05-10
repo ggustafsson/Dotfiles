@@ -1,8 +1,8 @@
 servers = (
   {
-    address = "wineasy.se.quakenet.org";
-    chatnet = "Quakenet";
-    port = "6667";
+    address = "127.0.0.1";
+    chatnet = "Bitlbee";
+    port = "7000";
   },
   {
     address = "leguin.freenode.net";
@@ -14,12 +14,22 @@ servers = (
   }
 );
 
+chatnets = {
+  Freenode = {
+    type = "IRC";
+    #autosendcmd = "";
+  };
+  Bitlbee = {
+    type = "IRC";
+    #autosendcmd = "";
+  };
+};
+
 aliases = {
   "MANUAL-WINDOWS" = "set use_status_window off;set autocreate_windows off;set autocreate_query_level none;set autoclose_windows off;set reuse_unused_windows on;save";
   ATAG = "WINDOW SERVER";
   B = "ban";
   BANS = "ban";
-  BEER = "say FREE BEER! https://github.com/ggustafsson/Free-Beer";
   BYE = "quit";
   C = "clear";
   CALC = "exec - if command -v bc >/dev/null 2>&1\\; then printf '%s=' '$*'\\; echo '$*' | bc -l\\; else echo bc was not found\\; fi";
@@ -212,7 +222,7 @@ settings = {
     awl_hide_data = "3";
     awl_position = "0";
     awl_sbar_maxlength = "no";
-    beep_cmd = "afplay ~/.irssi/beep.wav";
+    beep_cmd = "irssi_beep";
   };
   "irc/core" = {
     alternate_nick = "twiggz";
@@ -232,9 +242,7 @@ hilights = (
   { text = "göran"; nick = "yes"; word = "yes"; }
 );
 channels = (
-  { name = "#degiz"; chatnet = "Quakenet"; autojoin = "yes"; },
   { name = "#archlinux"; chatnet = "Freenode"; autojoin = "yes"; },
-  { name = "#openbsd"; chatnet = "Freenode"; autojoin = "yes"; },
   { name = "#zsh"; chatnet = "Freenode"; autojoin = "yes"; },
   { name = "#vim"; chatnet = "Freenode"; autojoin = "yes"; },
   { name = "#irssi"; chatnet = "Freenode"; autojoin = "yes"; }
