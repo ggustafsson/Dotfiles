@@ -1,4 +1,4 @@
-# vim: ft=sh
+# vim: ft=zsh
 
 if [[ $OSTYPE == darwin* ]]; then
   #TIMER_CMD=

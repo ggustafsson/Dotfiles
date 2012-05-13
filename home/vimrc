@@ -6,7 +6,12 @@ call pathogen#helptags()
 filetype plugin indent on
 
 syntax enable
-colorscheme ninja
+
+if has("mac")
+  colorscheme ninja
+else
+  colorscheme minimal
+endif
 
 set cryptmethod=blowfish
 set confirm
@@ -169,7 +174,7 @@ nmap <Leader>ne :enew<CR>
 nmap <Leader>ns :new<CR>
 nmap <Leader>nu :call LineNumber()<CR>
 nmap <Leader>nv :vnew<CR>
-nmap <Leader>ny :source ~/.vim/bundle/nyancat-vim/nyancat2.vim<CR>
+nmap <Leader>ny :Nyancat2<CR>
 nmap <Leader>pa :set paste!<CR>
 nmap <Leader>pw :pwd<CR>
 nmap <Leader>re :%s//c<Left><Left>

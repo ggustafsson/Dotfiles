@@ -1,0 +1,4 @@
+term screen-16color
+
+source $HOME/.screenrc_all
+

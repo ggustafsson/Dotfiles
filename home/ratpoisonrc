@@ -1,11 +1,11 @@
-# Göran Gustafsson (gustafsson.g@gmail.com)
+# Göran Gustafsson <gustafsson.g@gmail.com>
 
 startup_message off
 
 escape C-q
 
 set barpadding 5 1
-set border 2
+set border 1
 set bwcolor #444444
 set font terminus:pixelsize=22:style=bold
 set fwcolor #444444
@@ -18,9 +18,12 @@ set winname class
 definekey top F7  exec mpc prev
 definekey top F8  exec mpc toggle
 definekey top F9  exec mpc next
-definekey top F10 exec amixer sset Master mute
-definekey top F11 exec amixer sset Master 2- unmute
-definekey top F12 exec amixer sset Master 2+ unmute
+definekey top F10 exec amixer sset Master toggle
+definekey top F11 exec amixer sset Master 3- unmute
+definekey top F12 exec amixer sset Master 3+ unmute
+
+definekey top M-F1 rpws1
+definekey top M-F2 rpws2
 
 unbind C-Up
 unbind C-Down
@@ -41,17 +44,12 @@ bind c remove
 unbind S
 bind v hsplit
 
+bind b exec ratpoison -c "echo $(acpi)"
 bind d time
-bind e exec evince
+bind e exec menu
 bind f exec firefox
-bind g exec geeqie
-bind t exec transmission-gtk
 bind x exec urxvt
 
 exec xsetroot -solid black -cursor_name left_ptr
-
-exec autocutsel -selection PRIMARY -fork
-exec autocutsel -selection CLIPBOARD -fork
-
-exec urxvt
+exec rpws init 2 -a
 

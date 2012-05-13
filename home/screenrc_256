@@ -1,0 +1,4 @@
+term screen-256color
+
+source $HOME/.screenrc_all
+

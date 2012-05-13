@@ -5,20 +5,17 @@ Xcursor.theme: Neutral
 URxvt*background: #060606
 URxvt*foreground: white
 
-#URxvt*font:     -windows-dina-medium-r-*-*-15-*-*-*-*-*-*
-#URxvt*boldFont: -windows-dina-medium-r-*-*-15-*-*-*-*-*-*
+URxvt*font:     -*-terminus-medium-r-*-*-14-*-*-*-*-*-*
+URxvt*boldFont: -*-terminus-medium-r-*-*-14-*-*-*-*-*-*
 
-URxvt*font:     -*-terminus-bold-r-*-*-18-*-*-*-*-*-*
-URxvt*boldFont: -*-terminus-bold-r-*-*-18-*-*-*-*-*-*
-
-URxvt*termName: rxvt-256color
+URxvt*termName: rxvt-16color
 
 URxvt*scrollBar: off
 URxvt*saveLines: 65000
 
-URxvt.perl-ext-common: default,matcher
-URxvt.urlLauncher:     /usr/bin/firefox
-URxvt.matcher.button:  1
+#URxvt.perl-ext-common: default,matcher
+#URxvt.urlLauncher:     /usr/bin/firefox
+#URxvt.matcher.button:  1
 
 ! Dark Grey
 URxvt*color8: #666666
@@ -40,7 +37,4 @@ URxvt*color13: #ff53d4
 
 ! Bright Cyan
 URxvt*color14: #40fefc
-
-! White
-URxvt*color15: #ffffff
 

@@ -3,6 +3,7 @@ servers = (
     address = "127.0.0.1";
     chatnet = "Bitlbee";
     port = "7000";
+    password = "";
   },
   {
     address = "leguin.freenode.net";
@@ -17,11 +18,11 @@ servers = (
 chatnets = {
   Freenode = {
     type = "IRC";
-    #autosendcmd = "";
+    autosendcmd = "/^MSG -freenode NickServ identify twiggy ";
   };
   Bitlbee = {
     type = "IRC";
-    #autosendcmd = "";
+    autosendcmd = "/^MSG -bitlbee root identify ";
   };
 };
 
@@ -233,7 +234,7 @@ settings = {
 };
 
 logs = { };
-ignores = ( { level = "JOINS PARTS QUITS MODES NICKS"; } );
+ignores = ( );
 hilights = (
   { text = "twiggy"; nick = "yes"; word = "yes"; },
   { text = "twigg"; nick = "yes"; word = "yes"; },
@@ -243,8 +244,8 @@ hilights = (
 );
 channels = (
   { name = "#archlinux"; chatnet = "Freenode"; autojoin = "yes"; },
-  { name = "#zsh"; chatnet = "Freenode"; autojoin = "yes"; },
   { name = "#vim"; chatnet = "Freenode"; autojoin = "yes"; },
+  { name = "#zsh"; chatnet = "Freenode"; autojoin = "yes"; },
   { name = "#irssi"; chatnet = "Freenode"; autojoin = "yes"; }
 );
 
