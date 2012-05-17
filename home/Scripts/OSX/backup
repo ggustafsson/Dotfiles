@@ -10,7 +10,6 @@ BACKUP_DESTINATION=/Volumes/Backup
 DIRECTORIES=(
   Development
   Documents
-  Dropbox
   Movies/Personal
   Music/GBS
   Music/NSFe
