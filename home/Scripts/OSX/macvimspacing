@@ -1,0 +1,12 @@
+#!/usr/bin/env zsh
+
+# This script adds more border spacing to the MacVim window so it looks more
+# like Terminal.app windows. MMTextInsetBottom should probably be higher to
+# look exactly like Terminal.app but it fits perfectly for my 11" Macbook Air.
+
+# Written by Göran Gustafsson <gustafsson.g@gmail.com>.
+
+defaults write org.vim.MacVim MMTextInsetLeft 5
+defaults write org.vim.MacVim MMTextInsetRight 5
+defaults write org.vim.MacVim MMTextInsetBottom 2
+

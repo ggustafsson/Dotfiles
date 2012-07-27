@@ -1,0 +1,19 @@
+#!/usr/bin/env zsh
+
+# Written by Göran Gustafsson <gustafsson.g@gmail.com>.
+
+# Put the Dock at the left/top (i use the Dock on the top left side).
+defaults write com.apple.dock pinning -string start
+killall dock
+
+# Disable window animations.
+defaults write NSGlobalDomain NSAutomaticWindowAnimationsEnabled -bool NO
+
+# Disable all Mail animations.
+defaults write com.apple.Mail DisableReplyAnimations -bool YES
+defaults write com.apple.Mail DisableSendAnimations -bool YES
+
+# Disable webpage screenshots in Safari.
+defaults write com.apple.Safari DebugSnapshotsUpdatePolicy -int 2
+rm ~/Library/Caches/com.apple.Safari/Webpage\ Previews/*
+

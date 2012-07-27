@@ -10,12 +10,14 @@ BACKUP_DESTINATION=/Volumes/Backup
 DIRECTORIES=(
   Development
   Documents
+  Dropbox
+  Library
   Movies/Personal
   Music/GBS
   Music/NSFe
   Music/Ringtones
   Pictures
-  Projects
+  School
   Sites
   Storage
   "Web Archives"
@@ -26,7 +28,7 @@ for DIRECTORY in $DIRECTORIES; do
   du -sh ~/$DIRECTORY
 done
 
-echo -en "\nProced with backup? [y/n] "
+echo -n "\nProced with backup? [y/n] "
 read QUESTION
 
 if [[ $QUESTION == yes ]] || [[ $QUESTION == y ]]; then
@@ -49,6 +51,6 @@ if [[ $QUESTION == yes ]] || [[ $QUESTION == y ]]; then
   hdiutil detach $BACKUP_DESTINATION
   diskutil eject $DEVICE_NAME
 else
-  echo -e "\nSkipping backup!"
+  echo "\nSkipping backup!"
 fi
 
