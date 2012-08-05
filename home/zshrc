@@ -133,7 +133,6 @@ if [[ $OSTYPE == darwin* ]]; then
   alias capit="imagesnap -t 2 -w 1"
   alias cde="cd /Volumes/External"
   alias cf="say command finished"
-  alias dontsleep="pmset noidle"
   alias eject="osascript -e 'tell application \"Finder\" to eject (every disk whose ejectable is true)' && echo 'All external drives ejected!'"
   alias int="networksetup -setairportpower en0 off && tim -i"
   alias o="open"
@@ -211,6 +210,7 @@ alias ..="cd .."
 
 alias cdd="cd ~/Downloads"
 alias cdp="cd ~/Projects"
+alias cds="cd ~/School"
 alias cdt="cd ~/Documents/Text\ Files"
 
 alias cl="wc -l"
