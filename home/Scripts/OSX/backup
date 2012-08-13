@@ -45,8 +45,12 @@ if [[ $QUESTION == yes ]] || [[ $QUESTION == y ]]; then
   fi
 
   for DIRECTORY in $DIRECTORIES; do
-    rsync -ah --progress --delete ~/$DIRECTORY $BACKUP_DESTINATION
+    echo
+    rsync -ah --progress --delete --exclude=Library/Caches ~/$DIRECTORY $BACKUP_DESTINATION
   done
+
+  echo
+  rsync -ah --progress --delete --exclude=.Trash ~/.* $BACKUP_DESTINATION
 
   hdiutil detach $BACKUP_DESTINATION
   diskutil eject $DEVICE_NAME

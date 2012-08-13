@@ -1,0 +1,16 @@
+#!/usr/bin/env zsh
+
+# Written by Göran Gustafsson <gustafsson.g@gmail.com>.
+
+offlineimap
+echo
+backup
+echo
+brew update && brew upgrade
+echo
+otherd
+echo
+vimp
+echo
+webf
+

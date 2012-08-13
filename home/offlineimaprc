@@ -14,5 +14,6 @@ type = Gmail
 remotehost = imap.gmail.com
 remoteuser = gustafsson.g@gmail.com
 ssl = yes
+cert_fingerprint=f3043dd689a2e7dddfbef82703a6c65ea9b634c1
 readonly = True
 
