@@ -98,7 +98,7 @@ function git_branch {
 }
 
 function todo_info {
-  REFERENCE=$(grep '^  ' $TODO_FILE 2> /dev/null | egrep -v '^   ' | wc -l) || return
+  REFERENCE=$(egrep "(^- |^! )" $TODO_FILE | wc -l) || return
   [[ ! $REFERENCE == 0 ]] && echo "%F{green}$REFERENCE%f "
 }
 
@@ -195,6 +195,7 @@ alias hi="history"
 alias iip="curl -s http://automation.whatismyip.com/n09230945.asp | html2text"
 alias ka="killall"
 alias mkdir="mkdir -pv"
+alias phpweb="php -S 0.0.0.0:8080"
 alias ping="ping -c 10"
 alias random='FILES=(*) && echo $FILES[$RANDOM%$#FILES+1]'
 alias re="ls -t | head -n 5"
@@ -448,7 +449,7 @@ function t {
     fi
   else
     sed '/^[#tab]*$/d' $TODO_FILE > $TODO_FILE.tmp
-    echo "  $*\n" >> $TODO_FILE.tmp
+    echo "- $*\n" >> $TODO_FILE.tmp
     mv -f $TODO_FILE.tmp $TODO_FILE >& /dev/null
   fi
 }
