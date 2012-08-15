@@ -134,7 +134,6 @@ if [[ $OSTYPE == darwin* ]]; then
   alias cde="cd /Volumes/External"
   alias cf="say command finished"
   alias eject="osascript -e 'tell application \"Finder\" to eject (every disk whose ejectable is true)' && echo 'All external drives ejected!'"
-  alias int="networksetup -setairportpower en0 off && tim -i"
   alias o="open"
   alias safari="open -a Safari"
 
@@ -168,7 +167,6 @@ else
 
   alias agentadd='eval $(ssh-agent) >& /dev/null && ssh-add'
   alias cal="cal -m"
-  alias int="tim -i"
   alias ls="ls -Fh --color=auto"
   alias vl='tail -n $LINES -f /var/log/everything.log'
   alias x="xinit -nolisten tcp"
@@ -192,7 +190,8 @@ alias egrep="egrep --color=auto -i"
 alias fetch="wget --page-requisites --adjust-extension --convert-links"
 alias grep="grep --color=auto -i"
 alias hi="history"
-alias iip="curl -s http://automation.whatismyip.com/n09230945.asp | html2text"
+alias iip="curl icanhazip.com"
+alias int="tim -i"
 alias ka="killall"
 alias mkdir="mkdir -pv"
 alias phpweb="php -S 0.0.0.0:8080"

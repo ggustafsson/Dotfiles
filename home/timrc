@@ -6,8 +6,10 @@ if [[ $OSTYPE == darwin* ]]; then
 
   #INTERVAL=
 
-  WORK_CMD="say start working now && networksetup -setairportpower en0 off"
-  BREAK_CMD="say take a little break && networksetup -setairportpower en0 on"
+  WORK_CMD="say start working now"
+  BREAK_CMD="say take a little break"
+  #WORK_CMD="say start working now && networksetup -setairportpower en0 off"
+  #BREAK_CMD="say take a little break && networksetup -setairportpower en0 on"
 
   POMODORO_CMD="say working session is over. you win && open ~/Storage/Celebrate.flv"
   #POMODORO_REPEAT_CMD=
