@@ -8,6 +8,8 @@ backup
 echo
 brew update && brew upgrade
 echo
+gem update
+echo
 otherd
 echo
 vimp
