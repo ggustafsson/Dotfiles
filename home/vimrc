@@ -173,19 +173,19 @@ nmap <Leader>nu :call LineNumber()<CR>
 nmap <Leader>nv :vnew<CR>
 nmap <Leader>ny :Nyancat2<CR>
 nmap <Leader>pa :set paste!<CR>
-nmap <Leader>pw :edit ~/Documents/Text\ Files/Passwords.txt<CR>
+nmap <Leader>pw :edit ~/Documents/Text\ Files/Passwords.blowfish<CR>
 nmap <Leader>re :%s//c<Left><Left>
 nmap <Leader>rs :source ~/.vim/session.vim<CR>
 nmap <Leader>s2 :set expandtab softtabstop=2 shiftwidth=2<CR>
 nmap <Leader>s4 :set expandtab softtabstop=4 shiftwidth=4<CR>
-nmap <Leader>sc :split ~/Documents/Text\ Files/Scratch\ Notes.txt<CR>
+nmap <Leader>sc :edit ~/Documents/Text\ Files/Scratch\ Notes.txt<CR>
 nmap <Leader>sh :shell<CR>
 nmap <Leader>sp :setlocal spell!<CR>
 nmap <Leader>ss :mksession ~/.vim/session.vim<CR>
 nmap <Leader>t4 :set noexpandtab shiftwidth=4 softtabstop=0 tabstop=4<CR>
 nmap <Leader>t8 :set noexpandtab shiftwidth=8 softtabstop=0 tabstop=8<CR>
-nmap <Leader>tm :split ~/Documents/Text\ Files/Temporary.txt<CR>
-nmap <Leader>to :split ~/Documents/Text\ Files/To-do\ List.todo<CR>
+nmap <Leader>tm :edit ~/Documents/Text\ Files/Temporary.blowfish<CR>
+nmap <Leader>to :edit ~/Documents/Text\ Files/To-do\ List.todo<CR>
 nmap <Leader>tr :NERDTreeToggle<CR>
 nmap <Leader>un :edit!<CR>
 nmap <Leader>vi :edit ~/.vimrc<CR>

@@ -48,6 +48,7 @@ setopt appendhistory
 setopt extendedhistory
 setopt histexpiredupsfirst
 setopt histignoredups
+setopt histignorespace
 setopt histreduceblanks
 setopt histverify
 setopt incappendhistory
@@ -191,7 +192,6 @@ alias fetch="wget --page-requisites --adjust-extension --convert-links"
 alias grep="grep --color=auto -i"
 alias hi="history"
 alias iip="curl icanhazip.com"
-alias int="tim -i"
 alias ka="killall"
 alias mkdir="mkdir -pv"
 alias phpweb="php -S 0.0.0.0:8080"
@@ -228,7 +228,7 @@ alias mv="mv -vi"
 alias rm="rm -v"
 
 alias cpass="openssl rand -base64 20"
-alias pass="vim ~/Documents/Text\ Files/Passwords.txt"
+alias pass="vim ~/Documents/Text\ Files/Passwords.blowfish"
 
 alias csd='echo "Change directory to saved PATH." && cd $SAVE_DIR'
 alias sd='echo "Saving current PATH." && SAVE_DIR=$PWD'
@@ -256,6 +256,7 @@ alias grm="git rm"
 alias gst="git status -s -b"
 alias gun="git reset --soft HEAD^"
 
+alias int="tim -i"
 alias pomo="tim -p"
 alias rint="tim -ri"
 
