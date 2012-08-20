@@ -2,9 +2,9 @@
 
 # Written by Göran Gustafsson <gustafsson.g@gmail.com>.
 
-offlineimap
-echo
 backup
+echo
+offlineimap
 echo
 brew update && brew upgrade
 echo
@@ -15,4 +15,7 @@ echo
 vimp
 echo
 webf
+
+open /Applications/App\ Store.app
+open /Applications/Xcode.app
 

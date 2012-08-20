@@ -107,5 +107,15 @@ else
   git clone git://github.com/mfumi/viminesweeper.git $DLPATH/viminesweeper
 fi
 
+echo
+
+if [ -d $DLPATH/webapi ]; then
+  echo "\033[1;32mChecking for WebAPI updates.\033[0m"
+  cd $DLPATH/webapi
+  git pull
+else
+  git clone git://github.com/mattn/webapi-vim.git $DLPATH/webapi
+fi
+
 date > $DLPATH/latest_update.txt
 

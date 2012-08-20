@@ -1,5 +1,6 @@
 [general]
 accounts = Gmail
+pythonfile = ~/.offlineimap.py
 
 [Account Gmail]
 localrepository = Local
@@ -13,6 +14,7 @@ localfolders = ~/Storage/Mail
 type = Gmail
 remotehost = imap.gmail.com
 remoteuser = gustafsson.g@gmail.com
+remotepasseval = get_keychain_pass(account="gustafsson.g", server="imap.gmail.com")
 ssl = yes
 cert_fingerprint=f3043dd689a2e7dddfbef82703a6c65ea9b634c1
 readonly = True

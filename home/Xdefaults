@@ -13,9 +13,9 @@ URxvt*termName: rxvt-16color
 URxvt*scrollBar: off
 URxvt*saveLines: 65000
 
-#URxvt.perl-ext-common: default,matcher
-#URxvt.urlLauncher:     /usr/bin/firefox
-#URxvt.matcher.button:  1
+URxvt.perl-ext-common: default,matcher
+URxvt.urlLauncher:     /usr/bin/firefox
+URxvt.matcher.button:  1
 
 ! Dark Grey
 URxvt*color8: #7c7e7e

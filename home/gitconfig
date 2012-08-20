@@ -12,7 +12,3 @@
   status      = auto
   ui          = auto
 
-[github]
-  user  = ggustafsson
-  token =
-
