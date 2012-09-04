@@ -99,7 +99,7 @@ function git_branch {
 }
 
 function todo_info {
-  REFERENCE=$(egrep "(^- |^! )" $TODO_FILE | wc -l) || return
+  REFERENCE=$(egrep "(^- |^! |^=)" $TODO_FILE | wc -l) || return
   [[ ! $REFERENCE == 0 ]] && echo "%F{green}$REFERENCE%f "
 }
 
