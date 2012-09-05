@@ -30,6 +30,8 @@ HISTSIZE=2000
 SAVEHIST=6000
 
 if [[ $OSTYPE == darwin* ]]; then
+  WIRESHARK=($(ls /usr/local/Cellar/wireshark/*/bin/ | uniq))
+
   path=(/usr/local/bin /usr/local/sbin /bin /sbin /usr/bin /usr/sbin /usr/X11/bin ~/Scripts ~/Scripts/OSX ~/.ruby/bin(N) ~/.ruby/gems/*/bin(N))
 else
   path+=(~/Scripts ~/Scripts/Linux ~/.ruby/bin(N) ~/.ruby/gems/*/bin(N))
@@ -162,6 +164,10 @@ if [[ $OSTYPE == darwin* ]]; then
   alias wifioff="networksetup -setairportpower en0 off"
   alias wifion="networksetup -setairportpower en0 on"
   alias wifiscan="/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport -s"
+
+  for X in $WIRESHARK; do
+    alias $X="wiresharkfix $X"
+  done
 else
   type ifconfig >& /dev/null || alias ifconfig="ip addr"
   type netstat >& /dev/null  || alias netstat="ss"
