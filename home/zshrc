@@ -263,7 +263,6 @@ alias gst="git status -s -b"
 alias gun="git reset --soft HEAD^"
 
 alias int="tim -i"
-alias pomo="tim -p"
 alias rint="tim -ri"
 
 alias py="python3"

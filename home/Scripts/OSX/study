@@ -1,0 +1,10 @@
+#!/usr/bin/env zsh
+
+# Written by Göran Gustafsson <gustafsson.g@gmail.com>.
+
+osascript -e 'tell application "Adium" to quit'
+osascript -e 'tell application "Mail" to quit'
+osascript -e 'tell application "Reeder" to quit'
+
+tim -p
+
