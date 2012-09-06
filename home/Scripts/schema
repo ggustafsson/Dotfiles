@@ -1,0 +1,22 @@
+#!/usr/bin/env zsh
+
+# Written by Göran Gustafsson <gustafsson.g@gmail.com>.
+
+URL='http://timeedit.lnu.se/4DACTION/iCal_downloadReservations/timeedit.ics?from=1236&to=1240&id1=35970000&id2=35971000&id3=35972000&id4=35979000&id5=30149000&branch=2&lang=1'
+FILE=~/School/Schema.ics
+TMPFILE=~/School/Schema\ Tmp.ics
+
+curl -s $URL -o $TMPFILE
+
+REFERENCE=$(diff $TMPFILE $FILE | wc -l | sed 's/ //g')
+
+if [[ $REFERENCE > 4 ]]; then
+  echo "Calendar file has been modified! Replacing old calendar."
+
+  mv -f $TMPFILE $FILE >& /dev/null
+else
+  echo "Calendar file is up-to-date!"
+
+  rm $TMPFILE
+fi
+
