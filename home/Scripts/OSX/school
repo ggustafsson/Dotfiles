@@ -5,15 +5,5 @@
 osascript -e 'tell application "Adium" to quit'
 osascript -e 'tell application "Mail" to quit'
 osascript -e 'tell application "Reeder" to quit'
-
-tim -p
-
-echo -n "\nRelaunch applications? [y/n] "
-read ANSWER
-
-if [[ $ANSWER == yes ]] || [[ $ANSWER == y ]]; then
-  open -a Adium
-  open -a Mail
-  open -a Reeder
-fi
+osascript -e 'tell application "Transmission" to quit'
 

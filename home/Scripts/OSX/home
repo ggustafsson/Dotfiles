@@ -1,0 +1,9 @@
+#!/usr/bin/env zsh
+
+# Written by Göran Gustafsson <gustafsson.g@gmail.com>.
+
+open -a Adium
+open -a Mail
+open -a Reeder
+open -a Transmission
+
