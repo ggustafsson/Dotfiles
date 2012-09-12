@@ -18,11 +18,10 @@ webf
 
 terminal-notifier -group wedsun -title wedsun -message "Backup and updating almost finished."
 
-echo -n "\nLaunch App Store and Xcode? [y/n] "
+echo -n "\nLaunch Xcode? [y/n] "
 read ANSWER
 
 if [[ $ANSWER == yes ]] || [[ $ANSWER == y ]]; then
-  open -a "App Store"
   open -a Xcode
 fi
 
