@@ -7,3 +7,5 @@ osascript -e 'tell application "Mail" to quit'
 osascript -e 'tell application "Reeder" to quit'
 osascript -e 'tell application "Transmission" to quit'
 
+osascript -e 'tell application "Finder" to eject (every disk whose ejectable is true)'
+

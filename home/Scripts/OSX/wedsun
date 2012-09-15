@@ -16,14 +16,5 @@ vimp
 echo
 webf
 
-terminal-notifier -group wedsun -title wedsun -message "Backup and updating almost finished."
-
-echo -n "\nLaunch Xcode? [y/n] "
-read ANSWER
-
-if [[ $ANSWER == yes ]] || [[ $ANSWER == y ]]; then
-  open -a Xcode
-fi
-
-terminal-notifier -remove wedsun
+open -a Xcode
 

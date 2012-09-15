@@ -1,0 +1,7 @@
+#!/usr/bin/env zsh
+
+# Written by Göran Gustafsson <gustafsson.g@gmail.com>.
+
+rm -rf ~/Library/Caches/com.apple.dt.Xcode/Downloads/
+rm -rf ~/Library/Caches/Google/Chrome/Default/Cache/
+

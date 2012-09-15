@@ -151,7 +151,6 @@ if has("mac")
 endif
 
 nmap <Leader>bd :call BufferDelete()<CR>
-nmap <Leader>bu :LustyBufferExplorer<CR>
 nmap <Leader>cc :call ColorColumn()<CR>
 nmap <Leader>cd :cd %:p:h<CR>:pwd<CR>
 nmap <Leader>do :LustyFilesystemExplorer ~/Documents/Text\ Files<CR>
@@ -181,7 +180,7 @@ nmap <Leader>s4 :set expandtab softtabstop=4 shiftwidth=4<CR>
 nmap <Leader>sc :edit ~/Documents/Text\ Files/Scratch\ Notes.txt<CR>
 nmap <Leader>sh :shell<CR>
 nmap <Leader>sp :setlocal spell!<CR>
-nmap <Leader>ss :mksession ~/.vim/session.vim<CR>
+nmap <Leader>ss :mksession! ~/.vim/session.vim<CR>
 nmap <Leader>t4 :set noexpandtab shiftwidth=4 softtabstop=0 tabstop=4<CR>
 nmap <Leader>t8 :set noexpandtab shiftwidth=8 softtabstop=0 tabstop=8<CR>
 nmap <Leader>tm :edit ~/Documents/Text\ Files/Temporary.blowfish<CR>
@@ -192,6 +191,7 @@ nmap <Leader>vi :edit ~/.vimrc<CR>
 nmap <Leader>wr :set wrap!<CR>
 nmap <Leader>zs :edit ~/.zshrc<CR>
 
+nmap §   :LustyBufferExplorer<CR>
 nmap vil ^vg_
 
 nmap + <C-w>+
