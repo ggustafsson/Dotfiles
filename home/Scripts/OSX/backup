@@ -26,7 +26,15 @@ DIRECTORIES=(
 
 if [ ! -f $ENCRYPTED_IMAGE ]; then
   echo "File $ENCRYPTED_IMAGE doesn't exist!"
-  return 1
+
+  echo -n "Try again? [y/n] "
+  read TRY_AGAIN
+
+  if [[ $TRY_AGAIN == (y|yes) ]]; then
+
+  else
+    return 1
+  fi
 fi
 
 hdiutil attach -noverify $ENCRYPTED_IMAGE

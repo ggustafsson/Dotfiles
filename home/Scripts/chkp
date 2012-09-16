@@ -16,7 +16,7 @@ for DIRECTORY in ~/Projects/*; do
     git status -s -b
     echo
   else
-    if [ ! -d ".git" ]; then
+    if [ ! -d .git ]; then
       NO_REPOSITORY="$NO_REPOSITORY * $DIRECTORY:t\n"
     else
       CLEAN_BRANCH="$CLEAN_BRANCH * $DIRECTORY:t\n"

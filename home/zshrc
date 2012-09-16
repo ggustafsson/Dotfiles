@@ -280,7 +280,7 @@ done
 
 if [[ $OSTYPE == darwin* ]]; then
   function dict {
-    if [ ! -z $1 ] && [[ $# < 2 ]]; then
+    if [[ $# == 1 ]]; then
       open "dict://$1"
     else
       echo "Usage: $0 [WORD]..."
@@ -288,7 +288,7 @@ if [[ $OSTYPE == darwin* ]]; then
   }
 
   function f {
-    if [ ! -z $1 ]; then
+    if [[ $# > 0 ]]; then
       open -a Finder $*
     else
       open .
@@ -296,17 +296,17 @@ if [[ $OSTYPE == darwin* ]]; then
   }
 
   function manp {
-    if [ ! -z $1 ]; then
+    if [[ $# > 0 ]]; then
       for ARGUMENT in $*; do
         man -t $ARGUMENT | open -f -a Preview
       done
     else
-      echo "Usage: $0 [MAN PAGE]..."
+      echo "Usage: $0 [MAN PAGE(S)]..."
     fi
   }
 
   function ql {
-    if [ ! -z $1 ]; then
+    if [[ $# > 0 ]]; then
       qlmanage -p $* >& /dev/null
     else
       qlmanage
@@ -314,7 +314,7 @@ if [[ $OSTYPE == darwin* ]]; then
   }
 
   function smb {
-    if [ ! -z $1 ] && [[ $# < 2 ]]; then
+    if [[ $# == 1 ]]; then
       open "smb://$1"
     else
       echo "Usage: $0 [IP/DNS]..."
@@ -322,15 +322,15 @@ if [[ $OSTYPE == darwin* ]]; then
   }
 
   function vim {
-    if [ -z $1 ]; then
-      /Applications/MacVim.app/Contents/MacOS/Vim -g
-    else
+    if [[ $# > 0 ]]; then
       /Applications/MacVim.app/Contents/MacOS/Vim -g --remote-tab-silent $*
+    else
+      /Applications/MacVim.app/Contents/MacOS/Vim -g
     fi
   }
 
   function vnc {
-    if [ ! -z $1 ] && [[ $# < 2 ]]; then
+    if [[ $# == 1 ]]; then
       open "vnc://$1"
     else
       echo "Usage: $0 [IP/DNS]..."
@@ -375,23 +375,23 @@ function 256colors {
 }
 
 function ff {
-  if [ ! -z $1 ] && [[ $# < 2 ]]; then
-    find . -iname $* | sed 's/.\///'
+  if [[ $# == 1 ]]; then
+    find . -iname $1 | sed 's/.\///'
   else
     echo "Usage: $0 [PATTERN]..."
   fi
 }
 
 function ffp {
-  if [ ! -z $1 ] && [[ $# < 2 ]]; then
-    find "$PWD" -iname $*
+  if [[ $# == 1 ]]; then
+    find "$PWD" -iname $1
   else
     echo "Usage: $0 [PATTERN]..."
   fi
 }
 
 function h {
-  if [ ! -z $1 ]; then
+  if [[ $# > 0 ]]; then
     history -i 1 | grep "$*"
   else
     history -i 1
@@ -399,7 +399,7 @@ function h {
 }
 
 function mkcd {
-  if [ ! -z $1 ]; then
+  if [[ $# == 1 ]]; then
     mkdir -p "$*"
     cd "$*"
   else
@@ -408,7 +408,7 @@ function mkcd {
 }
 
 function p {
-  if [ ! -z $1 ]; then
+  if [[ $# > 0 ]]; then
     ps ax | grep -v "grep --color=auto -i $*" | grep "$*"
   else
     ps ax
@@ -436,28 +436,28 @@ function perm77 {
 }
 
 function rgrep {
-  if [ ! -z $1 ] && [[ $# == 1 ]]; then
+  if [[ $# == 1 ]]; then
     grep -r $* .
-  elif [ ! -z $1 ] && [[ $# == 2 ]]; then
+  elif [[ $# == 2 ]]; then
     grep -r $*
   else
-    echo "Usage: $0 [PATTERN]..."
+    echo "Usage: $0 [PATTERN] [FILE]..."
   fi
 }
 
 function t {
   [ ! -f $TODO_FILE ] && echo "TODO file does not exist." && return
 
-  if [ -z $1 ]; then
+  if [[ $# > 0 ]]; then
+    sed '/^[#tab]*$/d' $TODO_FILE > $TODO_FILE.tmp
+    echo "- $*\n" >> $TODO_FILE.tmp
+    mv -f $TODO_FILE.tmp $TODO_FILE >& /dev/null
+  else
     if [ ! -s $TODO_FILE ]; then
       echo "TODO file is currently empty." && return
     else
       sed '/^[#tab]*$/d' $TODO_FILE
     fi
-  else
-    sed '/^[#tab]*$/d' $TODO_FILE > $TODO_FILE.tmp
-    echo "- $*\n" >> $TODO_FILE.tmp
-    mv -f $TODO_FILE.tmp $TODO_FILE >& /dev/null
   fi
 }
 

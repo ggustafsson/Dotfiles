@@ -4,11 +4,11 @@
 
 # Not finished. Saving for future reference.
 
-if [ ! -z $1 ] && [[ $# < 2 ]] && [ -f $1 ]; then
+if [[ $# == 1 && -f $1 ]]; then
   WORDS=""
 
   egrep --color=auto -n -i "$WORDS" $1
 else
-  echo "Usage: $0 [FILENAME]..."
+  echo "Usage: $0:t [FILENAME]..."
 fi
 

@@ -2,7 +2,7 @@
 
 # Written by Göran Gustafsson <gustafsson.g@gmail.com>.
 
-if [ ! -z $1 ] && [[ $# > 1 ]]; then
+if [[ $# > 1 ]]; then
   for FILE in $*; do
     [ ! -f $FILE ] && echo "File $FILE doesn't not exist. Terminating." && return 1
   done
@@ -12,6 +12,6 @@ if [ ! -z $1 ] && [[ $# > 1 ]]; then
 
   [[ $OSTYPE == darwin* ]] && open -a Safari $FILENAME
 else
-  echo "Usage: $0 [FILES]..."
+  echo "Usage: $0:t [FILES]..."
 fi
 
