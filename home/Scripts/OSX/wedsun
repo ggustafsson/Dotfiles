@@ -8,6 +8,8 @@ offlineimap
 echo
 brew update && brew upgrade
 echo
+brew cleanup
+echo
 gem update
 echo
 otherd

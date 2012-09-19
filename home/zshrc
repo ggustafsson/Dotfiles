@@ -31,14 +31,15 @@ HISTSIZE=2000
 SAVEHIST=6000
 
 if [[ $OSTYPE == darwin* ]]; then
-  WIRESHARK=($(ls /usr/local/Cellar/wireshark/*/bin/ | uniq))
+  WIRESHARK=(/usr/local/Cellar/wireshark/*/bin/*(N:t))
 
-  path=(/usr/local/bin /usr/local/sbin /bin /sbin /usr/bin /usr/sbin /usr/X11/bin ~/Scripts ~/Scripts/OSX ~/.ruby/bin(N) ~/.ruby/gems/*/bin(N))
+  path=(/usr/local/bin /usr/local/sbin /bin /sbin /usr/bin /usr/sbin /usr/X11/bin ~/Scripts/OSX)
 else
-  path+=(~/Scripts ~/Scripts/Linux ~/.ruby/bin(N) ~/.ruby/gems/*/bin(N))
+  path+=(~/Scripts/Linux)
 
   umask 077
 fi
+path+=(~/Scripts ~/.ruby/bin(N) ~/.ruby/gems/*/bin(N))
 
 setopt correct
 setopt interactivecomments
