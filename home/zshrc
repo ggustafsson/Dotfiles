@@ -31,6 +31,7 @@ HISTSIZE=2000
 SAVEHIST=6000
 
 if [[ $OSTYPE == darwin* ]]; then
+  CURL=(/usr/local/Cellar/curl/*/bin/curl(N))
   WIRESHARK=(/usr/local/Cellar/wireshark/*/bin/*(N:t))
 
   path=(/usr/local/bin /usr/local/sbin /bin /sbin /usr/bin /usr/sbin /usr/X11/bin ~/Scripts/OSX)
@@ -138,6 +139,7 @@ if [[ $OSTYPE == darwin* ]]; then
   alias capit="imagesnap -t 2 -w 1"
   alias cde="cd /Volumes/External"
   alias cf="say command finished"
+  alias curl="$CURL"
   alias eject="osascript -e 'tell application \"Finder\" to eject (every disk whose ejectable is true)' && echo 'All external drives ejected!'"
   alias o="open"
   alias safari="open -a Safari"
