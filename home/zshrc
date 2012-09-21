@@ -143,6 +143,7 @@ if [[ $OSTYPE == darwin* ]]; then
   alias eject="osascript -e 'tell application \"Finder\" to eject (every disk whose ejectable is true)' && echo 'All external drives ejected!'"
   alias o="open"
   alias safari="open -a Safari"
+  alias study="school && tim -p"
 
   alias awk="gawk"
   alias cal="gcal -s 1"
@@ -412,7 +413,7 @@ function mkcd {
 
 function p {
   if [[ $# > 0 ]]; then
-    ps ax | grep -v "grep --color=auto -i $*" | grep "$*"
+    ps ax | tail -n +2 | grep -v "grep --color=auto -i $*" | grep "$*"
   else
     ps ax
   fi
