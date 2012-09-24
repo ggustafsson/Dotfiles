@@ -47,6 +47,14 @@ fi
 
 echo
 
+if [ -d $DLPATH/jQuery\ RSS ]; then
+  echo "\033[1;32mChecking for jQuery RSS updates.\033[0m"
+  cd $DLPATH/jQuery\ RSS
+  git pull
+else
+  git clone git://github.com/sdepold/jquery-rss.git $DLPATH/jQuery\ RSS
+fi
+
 if [ ! -d $DLPATH/jQuery ]; then
   mkdir $DLPATH/jQuery
 fi
