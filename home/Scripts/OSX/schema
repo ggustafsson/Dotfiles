@@ -12,7 +12,12 @@ if [ -f $FILE ]; then
   REFERENCE=$(diff $TMPFILE $FILE | wc -l | sed 's/ //g')
 
   if [[ $REFERENCE -gt 4 ]]; then
-    echo "Calendar file has been modified! Replacing old calendar."
+    echo "Calendar file has been modified!"
+
+    echo -n "\nView diff of files? [y/n] "
+    read VIEW_DIFF
+
+    [[ $VIEW_DIFF == (y|yes) ]] && diff $TMPFILE $FILE | less
 
     mv -f $TMPFILE $FILE >& /dev/null
   else
