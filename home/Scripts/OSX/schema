@@ -6,17 +6,23 @@ URL='http://timeedit.lnu.se/4DACTION/iCal_downloadReservations/timeedit.ics?from
 FILE=~/School/Schema.ics
 TMPFILE=~/School/Schema\ Tmp.ics
 
-curl -s $URL -o $TMPFILE
+if [ -f $FILE ]; then
+  curl -s $URL -o $TMPFILE
 
-REFERENCE=$(diff $TMPFILE $FILE | wc -l | sed 's/ //g')
+  REFERENCE=$(diff $TMPFILE $FILE | wc -l | sed 's/ //g')
 
-if [[ $REFERENCE > 4 ]]; then
-  echo "Calendar file has been modified! Replacing old calendar."
+  if [[ $REFERENCE -gt 4 ]]; then
+    echo "Calendar file has been modified! Replacing old calendar."
 
-  mv -f $TMPFILE $FILE >& /dev/null
+    mv -f $TMPFILE $FILE >& /dev/null
+  else
+    echo "Calendar file is up-to-date!"
+
+    rm $TMPFILE
+  fi
 else
-  echo "Calendar file is up-to-date!"
+  echo "Downloading calendar file."
 
-  rm $TMPFILE
+  curl -s $URL -o $FILE
 fi
 

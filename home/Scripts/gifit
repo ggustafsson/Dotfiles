@@ -2,7 +2,7 @@
 
 # Written by Göran Gustafsson <gustafsson.g@gmail.com>.
 
-if [[ $# > 1 ]]; then
+if [[ $# -gt 1 ]]; then
   for FILE in $*; do
     [ ! -f $FILE ] && echo "File $FILE doesn't not exist. Terminating." && return 1
   done

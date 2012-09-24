@@ -292,7 +292,7 @@ if [[ $OSTYPE == darwin* ]]; then
   }
 
   function f {
-    if [[ $# > 0 ]]; then
+    if [[ $# -gt 0 ]]; then
       open -a Finder $*
     else
       open .
@@ -300,7 +300,7 @@ if [[ $OSTYPE == darwin* ]]; then
   }
 
   function manp {
-    if [[ $# > 0 ]]; then
+    if [[ $# -gt 0 ]]; then
       for ARGUMENT in $*; do
         man -t $ARGUMENT | open -f -a Preview
       done
@@ -310,7 +310,7 @@ if [[ $OSTYPE == darwin* ]]; then
   }
 
   function ql {
-    if [[ $# > 0 ]]; then
+    if [[ $# -gt 0 ]]; then
       qlmanage -p $* >& /dev/null
     else
       qlmanage
@@ -326,7 +326,7 @@ if [[ $OSTYPE == darwin* ]]; then
   }
 
   function vim {
-    if [[ $# > 0 ]]; then
+    if [[ $# -gt 0 ]]; then
       /Applications/MacVim.app/Contents/MacOS/Vim -g --remote-tab-silent $*
     else
       /Applications/MacVim.app/Contents/MacOS/Vim -g
@@ -395,7 +395,7 @@ function ffp {
 }
 
 function h {
-  if [[ $# > 0 ]]; then
+  if [[ $# -gt 0 ]]; then
     history -i 1 | grep "$*"
   else
     history -i 1
@@ -412,7 +412,7 @@ function mkcd {
 }
 
 function p {
-  if [[ $# > 0 ]]; then
+  if [[ $# -gt 0 ]]; then
     ps ax | tail -n +2 | grep -v "grep --color=auto -i $*" | grep "$*"
   else
     ps ax
@@ -421,8 +421,8 @@ function p {
 
 function perm22 {
   if [[ $OSTYPE == darwin* ]]; then
-    find . -type d -exec chmod -N 755 "{}" \;
-    find . -type f -exec chmod -N 644 "{}" \;
+    find . -type d -exec chmod -N "{}" \; -exec chmod 755 "{}" \;
+    find . -type f -exec chmod -N "{}" \; -exec chmod 644 "{}" \;
   else
     find . -type d -exec chmod 755 "{}" \;
     find . -type f -exec chmod 644 "{}" \;
@@ -431,8 +431,8 @@ function perm22 {
 
 function perm77 {
   if [[ $OSTYPE == darwin* ]]; then
-    find . -type d -exec chmod -N 700 "{}" \;
-    find . -type f -exec chmod -N 600 "{}" \;
+    find . -type d -exec chmod -N "{}" \; -exec chmod 700 "{}" \;
+    find . -type f -exec chmod -N "{}" \; -exec chmod 600 "{}" \;
   else
     find . -type d -exec chmod 700 "{}" \;
     find . -type f -exec chmod 600 "{}" \;
@@ -452,7 +452,7 @@ function rgrep {
 function t {
   [ ! -f $TODO_FILE ] && echo "TODO file does not exist." && return
 
-  if [[ $# > 0 ]]; then
+  if [[ $# -gt 0 ]]; then
     sed '/^[#tab]*$/d' $TODO_FILE > $TODO_FILE.tmp
     echo "- $*\n" >> $TODO_FILE.tmp
     mv -f $TODO_FILE.tmp $TODO_FILE >& /dev/null
