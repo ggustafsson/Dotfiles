@@ -25,14 +25,14 @@ DIRECTORIES=(
 )
 
 if [ ! -f $ENCRYPTED_IMAGE ]; then
-  echo "File $ENCRYPTED_IMAGE doesn't exist!"
+  echo "File $ENCRYPTED_IMAGE does not exist!"
   return 1
 fi
 
 hdiutil attach -noverify $ENCRYPTED_IMAGE
 
 if [ ! -d $BACKUP_DESTINATION ]; then
-  echo "Directory $BACKUP_DESTINATION doesn't exist!"
+  echo "Directory $BACKUP_DESTINATION does not exist!"
   return 1
 fi
 

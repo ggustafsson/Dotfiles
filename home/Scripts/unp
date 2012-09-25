@@ -2,7 +2,7 @@
 
 # Written by Göran Gustafsson <gustafsson.g@gmail.com>.
 
-[ -z $1 ] && echo "Usage: $0 [FILENAME]..." && return
+[ -z $1 ] && echo "Usage: $0:t [FILENAME]..." && return
 
 for ARGUMENT in $*; do
   if [ -f $ARGUMENT ]; then
@@ -29,7 +29,7 @@ for ARGUMENT in $*; do
       *.Z)    uncompress $ARGUMENT ;;
       *.7z)   7z x       $ARGUMENT ;;
       *)
-        echo "File $ARGUMENT cannot be extracted via $0."
+        echo "File $ARGUMENT cannot be extracted via $0:t."
       ;;
     esac
   else

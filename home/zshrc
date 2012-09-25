@@ -10,7 +10,7 @@ export LS_COLORS="ln=01;35"
 export LS_COLORS="$LS_COLORS:*.bmp=01;33:*.gif=01;33:*.ico=01;33:*.jpg=01;33:*.jpeg=01;33:*.png=01;33:*.pxi=01;33:*.svg=01;33:*.tiff=01;33"
 export LS_COLORS="$LS_COLORS:*.flac=01;35:*.nsf=01;35:*.nsfe=01;35:*.m4r=01;35:*.mp3=01;35:*.ogg=01;35:*.wav=01;35"
 export LS_COLORS="$LS_COLORS:*.avi=01;36:*.flv=01;36:*.f4v=01;36:*.mkv=01;36:*.mov=01;36:*.mpg=01;36:*.mpeg=01;36:*.mp4=01;36:*.m4v=01;36:*.wmv=01;36"
-export LS_COLORS="$LS_COLORS:*.dmg=01;31:*.iso=01;31:*.rar=01;31:*.tar=01;31:*.tar.bz2=01;31:*.tar.gz=01;31:*.zip=01;31"
+export LS_COLORS="$LS_COLORS:*.dmg=01;31:*.iso=01;31:*.rar=01;31:*.tar=01;31:*.tar.bz2=01;31:*.tar.gz=01;31:*.tgz=01;31:*.zip=01;31:*.7z=01;31"
 
 if [[ $OSTYPE == darwin* ]]; then
   export EDITOR="/Applications/MacVim.app/Contents/MacOS/Vim -g --remote-tab-silent"
@@ -105,7 +105,7 @@ function git_branch {
 
 function todo_info {
   REFERENCE=$(egrep "(^- |^! |^=)" $TODO_FILE 2> /dev/null | wc -l) || return
-  [[ ! $REFERENCE == 0 ]] && echo "%F{green}$REFERENCE%f "
+  [[ $REFERENCE -gt 0 ]] && echo "%F{green}$REFERENCE%f "
 }
 
 function custom-vi-replace {
@@ -380,7 +380,7 @@ function 256colors {
 
 function ff {
   if [[ $# == 1 ]]; then
-    find . -iname $1 | sed 's/.\///'
+    find -L . -iname $1 | sed 's/.\///'
   else
     echo "Usage: $0 [PATTERN]..."
   fi
@@ -388,7 +388,7 @@ function ff {
 
 function ffp {
   if [[ $# == 1 ]]; then
-    find "$PWD" -iname $1
+    find -L "$PWD" -iname $1
   else
     echo "Usage: $0 [PATTERN]..."
   fi
@@ -420,22 +420,30 @@ function p {
 }
 
 function perm22 {
-  if [[ $OSTYPE == darwin* ]]; then
-    find . -type d -exec chmod -N "{}" \; -exec chmod 755 "{}" \;
-    find . -type f -exec chmod -N "{}" \; -exec chmod 644 "{}" \;
+  if [[ $# -gt 0 ]]; then
+    if [[ $OSTYPE == darwin* ]]; then
+      find $* -type d -exec chmod -N "{}" \; -exec chmod 755 "{}" \;
+      find $* -type f -exec chmod -N "{}" \; -exec chmod 644 "{}" \;
+    else
+      find $* -type d -exec chmod 755 "{}" \;
+      find $* -type f -exec chmod 644 "{}" \;
+    fi
   else
-    find . -type d -exec chmod 755 "{}" \;
-    find . -type f -exec chmod 644 "{}" \;
+    echo "Usage: $0 [PATH]..."
   fi
 }
 
 function perm77 {
-  if [[ $OSTYPE == darwin* ]]; then
-    find . -type d -exec chmod -N "{}" \; -exec chmod 700 "{}" \;
-    find . -type f -exec chmod -N "{}" \; -exec chmod 600 "{}" \;
+  if [[ $# -gt 0 ]]; then
+    if [[ $OSTYPE == darwin* ]]; then
+      find $* -type d -exec chmod -N "{}" \; -exec chmod 700 "{}" \;
+      find $* -type f -exec chmod -N "{}" \; -exec chmod 600 "{}" \;
+    else
+      find $* -type d -exec chmod 700 "{}" \;
+      find $* -type f -exec chmod 600 "{}" \;
+    fi
   else
-    find . -type d -exec chmod 700 "{}" \;
-    find . -type f -exec chmod 600 "{}" \;
+    echo "Usage: $0 [PATH]..."
   fi
 }
 
