@@ -4,7 +4,7 @@
 
 if [[ $# -gt 1 ]]; then
   for FILE in $*; do
-    [ ! -f $FILE ] && echo "File $FILE does not exist. Terminating." && return 1
+    [ ! -f $FILE ] && echo "File $FILE does not exist." && return 1
   done
 
   FILENAME=animated_$(date '+%Y-%m-%d_%H:%M').gif

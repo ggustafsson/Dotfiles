@@ -2,8 +2,7 @@
 
 # Written by Göran Gustafsson <gustafsson.g@gmail.com>.
 
+rm -rfv /Library/Caches/Homebrew
 rm -rfv ~/Library/Caches/com.apple.dt.Xcode/Downloads
-rm -rfv ~/Library/Caches/Firefox/Profiles/sma3npoh.default/Cache
-rm -rfv ~/Library/Caches/Google/Chrome/Default/Cache
 rm -rfv ~/Library/iTunes/iPhone\ Software\ Updates
 

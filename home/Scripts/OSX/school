@@ -3,6 +3,7 @@
 # Written by Göran Gustafsson <gustafsson.g@gmail.com>.
 
 osascript -e 'tell application "Adium" to quit'
+osascript -e 'tell application "Dropbox" to quit'
 osascript -e 'tell application "Mail" to quit'
 osascript -e 'tell application "Reeder" to quit'
 osascript -e 'tell application "Transmission" to quit'

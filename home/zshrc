@@ -1,5 +1,7 @@
 # Göran Gustafsson <gustafsson.g@gmail.com>
 
+cd ~/Downloads
+
 export GEM_HOME=~/.ruby
 export LC_COLLATE=C
 

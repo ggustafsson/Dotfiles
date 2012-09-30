@@ -2,8 +2,16 @@
 
 # Written by Göran Gustafsson <gustafsson.g@gmail.com>.
 
-backup
-echo
+ENCRYPTED_IMAGE=/Volumes/Keychain/Backup.sparseimage
+
+if [ -f $ENCRYPTED_IMAGE ]; then
+  backup
+  echo
+else
+  echo "File $ENCRYPTED_IMAGE does not exist!"
+  return 1
+fi
+
 offlineimap
 echo
 brew update && brew upgrade
