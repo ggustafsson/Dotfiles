@@ -2,7 +2,7 @@
 
 # Written by Göran Gustafsson <gustafsson.g@gmail.com>.
 
-[ -z $1 ] && echo "Usage: $0:t [FILENAME]..." && return
+[[ $# == 0 ]] && echo "Usage: $0:t [FILENAME(S)]..." && return
 
 for ARGUMENT in $*; do
   if [ -f $ARGUMENT ]; then

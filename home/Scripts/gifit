@@ -4,7 +4,10 @@
 
 if [[ $# -gt 1 ]]; then
   for FILE in $*; do
-    [ ! -f $FILE ] && echo "File $FILE does not exist." && return 1
+    if [ ! -f $FILE ]; then
+      echo "File $FILE does not exist."
+      return 1
+    fi
   done
 
   FILENAME=animated_$(date '+%Y-%m-%d_%H:%M').gif
@@ -12,6 +15,6 @@ if [[ $# -gt 1 ]]; then
 
   [[ $OSTYPE == darwin* ]] && open -a Safari $FILENAME
 else
-  echo "Usage: $0:t [FILES]..."
+  echo "Usage: $0:t [FILENAMES]..."
 fi
 

@@ -407,7 +407,7 @@ function mkcd {
     mkdir -p "$*"
     cd "$*"
   else
-    echo "Usage: $0 [NAME]..."
+    echo "Usage: $0 [PATH]..."
   fi
 }
 
@@ -453,12 +453,12 @@ function rgrep {
   elif [[ $# == 2 ]]; then
     grep -r $*
   else
-    echo "Usage: $0 [PATTERN] [FILE]..."
+    echo "Usage: $0 [PATTERN] [FILENAME]..."
   fi
 }
 
 function t {
-  [ ! -f $TODO_FILE ] && echo "TODO file does not exist." && return
+  [ ! -f $TODO_FILE ] && echo "TODO file does not exist." && return 1
 
   if [[ $# -gt 0 ]]; then
     sed '/^[#tab]*$/d' $TODO_FILE > $TODO_FILE.tmp
