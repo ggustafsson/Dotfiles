@@ -1,5 +1,7 @@
 # Göran Gustafsson <gustafsson.g@gmail.com>
 
+[[ ! -n $DONTCD && -d ~/Downloads ]] && cd ~/Downloads && DONTCD=1
+
 export GEM_HOME=~/.ruby
 export LC_COLLATE=C
 
@@ -141,6 +143,7 @@ if [[ $OSTYPE == darwin* ]]; then
   alias cf="say command finished"
   alias curl="$CURL"
   alias eject="osascript -e 'tell application \"Finder\" to eject (every disk whose ejectable is true)' && echo 'All external drives ejected!'"
+  alias mvrm='cd /Volumes/External/Music/FLAC && mv "$(random)" ~/Music/Trial && cd -'
   alias o="open"
   alias safari="open -a Safari"
   alias study="school && tim -p"
