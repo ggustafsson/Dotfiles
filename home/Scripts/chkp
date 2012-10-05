@@ -8,27 +8,21 @@ for DIRECTORY in ~/Projects/*; do
   cd $DIRECTORY
 
   if [[ -n $(git rev-list origin..HEAD 2> /dev/null) ]]; then
-    echo "\033[1;36m$DIRECTORY:t:\033[0m"
+    print -P "%B%F{cyan}$DIRECTORY:t:%f%b"
     git status -s -b
     echo
   elif [[ -n $(git status -s 2> /dev/null) ]]; then
-    echo "\033[1;31m$DIRECTORY:t:\033[0m"
+    print -P "%B%F{red}$DIRECTORY:t:%f%b"
     git status -s -b
     echo
-  else
-    if [ ! -d .git ]; then
-      NO_REPOSITORY="$NO_REPOSITORY * $DIRECTORY:t\n"
-    else
-      CLEAN_BRANCH="$CLEAN_BRANCH * $DIRECTORY:t\n"
-    fi
+  elif [ -d .git ]; then
+    CLEAN_BRANCH="$CLEAN_BRANCH * $DIRECTORY:t\n"
   fi
 done
 
-if [ ! -z $CLEAN_BRANCH  ]; then
-  echo -n "\033[1;32mClean branches:\033[0m\n$CLEAN_BRANCH"
-  [ ! -z $NO_REPOSITORY ] && echo
-fi
-[ ! -z $NO_REPOSITORY ] && echo -n "\033[1;36mNot Git repo:\033[0m\n$NO_REPOSITORY"
+print -P "%B%F{green}Clean branches:%f%b"
+echo -n "$CLEAN_BRANCH"
+[ -z $CLEAN_BRANCH ] && echo
 
 cd $CURRENT_DIRECTORY
 

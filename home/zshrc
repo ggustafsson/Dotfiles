@@ -66,8 +66,11 @@ setopt pushdignoredups
 autoload -U compinit && compinit
 autoload -U url-quote-magic && zle -N self-insert url-quote-magic
 
+bindkey -e
+
 zstyle ':completion:*'          insert-tab pending
 zstyle ':completion:*'          matcher-list 'm:{[:lower:]}={[:upper:]}'
+zstyle ':completion:*'          menu select
 zstyle ':completion:*'          special-dirs true
 zstyle ':completion:*:cd:*'     ignore-parents parent pwd
 zstyle ':completion:*:warnings' format "zsh: no matches found."

@@ -4,6 +4,8 @@ sorendition     wb
 startup_message off
 vbell           off
 
+escape ^Tt
+
 bind x screen
 bind c kill
 
