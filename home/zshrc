@@ -1,7 +1,5 @@
 # Göran Gustafsson <gustafsson.g@gmail.com>
 
-[[ ! -n $DONTCD && -d ~/Downloads ]] && cd ~/Downloads && DONTCD=1
-
 export GEM_HOME=~/.ruby
 export LC_COLLATE=C
 
@@ -44,6 +42,7 @@ else
 fi
 path+=(~/Scripts ~/.ruby/bin(N) ~/.ruby/gems/*/bin(N))
 
+setopt combiningchars
 setopt correct
 setopt interactivecomments
 setopt longlistjobs
@@ -63,16 +62,9 @@ setopt incappendhistory
 setopt autopushd
 setopt pushdignoredups
 
-setopt combiningchars
-setopt noautomenu
-
 [[ ! $TERM == dumb ]] && autoload -U colors && colors
 autoload -U compinit && compinit
 autoload -U url-quote-magic && zle -N self-insert url-quote-magic
-
-bindkey -v
-bindkey '^?' backward-delete-char
-bindkey -M vicmd 'R' custom-vi-replace
 
 zstyle ':completion:*'          insert-tab pending
 zstyle ':completion:*'          matcher-list 'm:{[:lower:]}={[:upper:]}'
@@ -82,7 +74,6 @@ zstyle ':completion:*:warnings' format "zsh: no matches found."
 
 [[ $OSTYPE == darwin* ]] && compdef _man manp
 compdef _path_files cd
-compdef _path_files git add
 
 precmd() {
   echo
@@ -110,30 +101,10 @@ function todo_info {
   [[ $REFERENCE -gt 0 ]] && echo "%F{green}$REFERENCE%f "
 }
 
-function custom-vi-replace {
-  REPLACE=1 && zle vi-replace && REPLACE=0
-}
-zle -N custom-vi-replace
-
-function zle-line-init zle-keymap-select {
-  zle reset-prompt
-}
-zle -N zle-line-init && zle -N zle-keymap-select
-
-function zsh_mode {
-  if [[ $KEYMAP == vicmd ]]; then
-    echo "%F{red}E%f"
-  elif [[ $REPLACE == 1 ]]; then
-    echo "%F{magenta}R%f"
-  else
-    echo "%F{blue}$%f"
-  fi
-}
-
 if [[ $TERM == dumb ]]; then
   PROMPT='%~ $ '
 else
-  PROMPT='%B${(C)USER} %F{yellow}${(C)HOST%%.*}%f%b %~ %B$(todo_info)%b%B$(zsh_mode)%b '
+  PROMPT='%B${(C)USER} %F{yellow}${(C)HOST%%.*}%f%b %~ %B$(todo_info)%F{blue}$%f%b '
   RPROMPT='%B$(git_branch)%b'
 fi
 
