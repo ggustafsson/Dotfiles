@@ -249,6 +249,9 @@ alias rint="tim -ri"
 alias py="python3"
 alias pyweb="python3 -m http.server 8080"
 
+alias tm="tmux"
+alias tma="tmux attach"
+
 for X in $SSH_HOSTS; do
   alias $X="ssh $X"
 done
