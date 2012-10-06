@@ -170,7 +170,6 @@ type ip >& /dev/null  && alias lip="ip addr" || alias lip="ifconfig"
 
 alias bc="bc -q"
 alias c="clear"
-alias chat="screen -R chat irssi"
 alias chkm="find ~/Music/MP3 -type f ! -iname '*.mp3'"
 alias df="df -h"
 alias dh="dirs -v | sort -r"
@@ -187,7 +186,6 @@ alias ping="ping -c 10"
 alias random='FILES=(*) && echo $FILES[$RANDOM%$#FILES+1]'
 alias re="ls -t | head -n 5"
 alias reload="source ~/.zshrc"
-alias s="screen"
 alias tv='vim "$TODO_FILE"'
 alias ycal='cal $(date +%Y)'
 alias yt="youtube-dl -l"
