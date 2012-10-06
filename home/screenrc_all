@@ -6,6 +6,6 @@ vbell           off
 
 escape ^Tt
 
-bind x screen
 bind c kill
+bind x screen
 

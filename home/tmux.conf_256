@@ -1,0 +1,4 @@
+set -g default-terminal "screen-256color"
+
+source-file ~/.tmux.conf_all
+
