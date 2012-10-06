@@ -1,4 +1,0 @@
-set -g default-terminal "screen-16color"
-
-source-file ~/.tmux.conf_all
-

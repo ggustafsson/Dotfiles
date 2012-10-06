@@ -151,18 +151,18 @@ if [[ $OSTYPE == darwin* ]]; then
     alias $X="wiresharkfix $X"
   done
 else
+  if type pacman >& /dev/null; then
+    alias paci="sudo pacman -S"
+    alias pacr="sudo pacman -Rs"
+    alias pacu="sudo pacman -Syu"
+  fi
+
   type ifconfig >& /dev/null || alias ifconfig="ip addr"
   type netstat >& /dev/null  || alias netstat="ss"
 
-  alias agentadd='eval $(ssh-agent) >& /dev/null && ssh-add'
   alias cal="cal -m"
   alias ls="ls -Fh --color=auto"
   alias vl='tail -n $LINES -f /var/log/everything.log'
-  alias x="xinit -nolisten tcp"
-
-  alias paci="sudo pacman -S"
-  alias pacr="sudo pacman -Rs"
-  alias pacu="sudo pacman -Syu"
 fi
 
 type hub >& /dev/null && alias git="hub"
@@ -319,35 +319,19 @@ if [[ $OSTYPE == darwin* ]]; then
     fi
   }
 else
-  function pacs {
-    CL='\\e['
-    RS='\\e[0;0m'
+  if type pacman >& /dev/null; then
+    function pacs {
+      CL='\\e['
+      RS='\\e[0;0m'
 
-    echo -e "$(pacman -Ss "$*" | sed "
-      /^core/         s,.*,${CL}1;31m&${RS},
-      /^extra/        s,.*,${CL}0;32m&${RS},
-      /^community/    s,.*,${CL}1;35m&${RS},
-      /^[^[:space:]]/ s,.*,${CL}0;36m&${RS},
-    ")" | less -R
-  }
-
-  function restart {
-    for ARGUMENT in $*; do
-      sudo /etc/rc.d/$ARGUMENT restart
-    done
-  }
-
-  function start {
-    for ARGUMENT in $*; do
-      sudo /etc/rc.d/$ARGUMENT start
-    done
-  }
-
-  function stop {
-    for ARGUMENT in $*; do
-      sudo /etc/rc.d/$ARGUMENT stop
-    done
-  }
+      echo -e "$(pacman -Ss "$*" | sed "
+        /^core/         s,.*,${CL}1;31m&${RS},
+        /^extra/        s,.*,${CL}0;32m&${RS},
+        /^community/    s,.*,${CL}1;35m&${RS},
+        /^[^[:space:]]/ s,.*,${CL}0;36m&${RS},
+      ")" | less -R
+    }
+  fi
 fi
 
 function 256colors {

@@ -6,12 +6,7 @@ call pathogen#helptags()
 filetype plugin indent on
 
 syntax enable
-
-if has("mac")
-  colorscheme ninja
-else
-  colorscheme minimal
-endif
+colorscheme ninja
 
 set cryptmethod=blowfish
 set confirm
