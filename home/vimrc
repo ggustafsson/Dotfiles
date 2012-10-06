@@ -220,6 +220,8 @@ vmap - :m'>+<CR>gv=`<my`>mzgv`yo`z
 vmap <Tab>   >gv
 vmap <S-Tab> <gv
 
+imap <C-e> <C-p>
+
 if has("gui_running")
   function! FancyView()
     if &guifont != "Inconsolata:h22"

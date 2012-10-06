@@ -16,13 +16,27 @@ for DIRECTORY in ~/Projects/*; do
     git status -s -b
     echo
   elif [ -d .git ]; then
-    CLEAN_BRANCH="$CLEAN_BRANCH * $DIRECTORY:t\n"
+    CLEAN_REPO+=($DIRECTORY:t)
+  else
+    NOT_REPO+=($DIRECTORY:t)
   fi
 done
 
-print -P "%B%F{green}Clean branches:%f%b"
-echo -n "$CLEAN_BRANCH"
-[ -z $CLEAN_BRANCH ] && echo
-
 cd $CURRENT_DIRECTORY
+
+if [ ${#CLEAN_REPO} -gt 0 ]; then
+  print -P "%B%F{green}Clean repo:%f%b"
+  for X in $CLEAN_REPO; do
+    echo " * $X"
+  done
+fi
+
+[[ ${#CLEAN_REPO} -gt 0 && ${#NOT_REPO} -gt 0 ]] && echo
+
+if [ ${#NOT_REPO} -gt 0 ]; then
+  print -P "%B%F{blue}Not Git repo:%f%b"
+  for X in $NOT_REPO; do
+    echo " * $X"
+  done
+fi
 
