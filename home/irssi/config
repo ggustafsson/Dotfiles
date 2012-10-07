@@ -243,9 +243,10 @@ hilights = (
   { text = "göran"; nick = "yes"; word = "yes"; }
 );
 channels = (
-  { name = "#archlinux"; chatnet = "Freenode"; autojoin = "yes"; },
-  { name = "#vim"; chatnet = "Freenode"; autojoin = "yes"; },
   { name = "#zsh"; chatnet = "Freenode"; autojoin = "yes"; },
+  { name = "#MacOSX"; chatnet = "Freenode"; autojoin = "yes"; },
+  { name = "#vim"; chatnet = "Freenode"; autojoin = "yes"; },
+  { name = "#archlinux"; chatnet = "Freenode"; autojoin = "yes"; },
   { name = "#tmux"; chatnet = "Freenode"; autojoin = "yes"; },
   { name = "#irssi"; chatnet = "Freenode"; autojoin = "yes"; }
 );
