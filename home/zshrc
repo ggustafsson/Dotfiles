@@ -101,13 +101,13 @@ function git_branch {
 
 function todo_info {
   REFERENCE=$(egrep "(^- |^! |^=)" $TODO_FILE 2> /dev/null | wc -l) || return
-  [[ $REFERENCE -gt 0 ]] && echo "%F{green}$REFERENCE%f "
+  [[ $REFERENCE -gt 0 ]] && echo "%F{green}$REFERENCE%f"
 }
 
 if [[ $TERM == dumb ]]; then
   PROMPT='%~ $ '
 else
-  PROMPT='%B${(C)USER} %F{yellow}${(C)HOST%%.*}%f%b %~ %B$(todo_info)%F{blue}$%f%b '
+  PROMPT='%B${(C)USER} %F{yellow}${(C)HOST%%.*}%f%b %~ %B$(todo_info) %(?..%F{red}%?%f )%F{blue}$%f%b '
   RPROMPT='%B$(git_branch)%b'
 fi
 

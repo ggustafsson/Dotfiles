@@ -3,7 +3,7 @@
 # Written by Göran Gustafsson <gustafsson.g@gmail.com>.
 
 if [ -d ~/Development/Hello\ World ]; then
-  echo "\033[1;32mChecking for Hello World updates.\033[0m"
+  print -P "%B%F{green}Checking for Hello World updates.%f%b"
   cd ~/Development/Hello\ World
   git pull
 else
@@ -13,7 +13,7 @@ fi
 echo
 
 if [ -d ~/Documents/Reading/Dive\ Into\ HTML5/HTML ]; then
-  echo "\033[1;32mChecking for Dive Into HTML5 updates.\033[0m"
+  print -P "%B%F{green}Checking for Dive Into HTML5 updates.%f%b"
   cd ~/Documents/Reading/Dive\ Into\ HTML5/HTML
   git pull
 else
@@ -23,7 +23,7 @@ fi
 echo
 
 if [ -d ~/Documents/Reading/Dive\ Into\ Python\ 3/HTML ]; then
-  echo "\033[1;32mChecking for Dive Into Python 3 updates.\033[0m"
+  print -P "%B%F{green}Checking for Dive Into Python 3 updates.%f%b"
   cd ~/Documents/Reading/Dive\ Into\ Python\ 3/HTML
   git pull
 else
@@ -33,7 +33,7 @@ fi
 echo
 
 if [ -d ~/Documents/Reading/Learn\ Vimscript\ the\ Hard\ Way ]; then
-  echo "\033[1;32mChecking for Learn Vimscript the Hard Way updates.\033[0m"
+  print -P "%B%F{green}Checking for Learn Vimscript the Hard Way updates.%f%b"
   cd ~/Documents/Reading/Learn\ Vimscript\ the\ Hard\ Way
   git pull
 else
@@ -43,7 +43,7 @@ fi
 echo
 
 if [ -d ~/Projects/Tim\ Fork ]; then
-  echo "\033[1;32mChecking for Tim (hdonnay fork) updates.\033[0m"
+  print -P "%B%F{green}Checking for Tim (hdonnay fork) updates.%f%b"
   cd ~/Projects/Tim\ Fork
   git pull
 else
@@ -53,7 +53,7 @@ fi
 echo
 
 if [ -d ~/Storage/Fonts/Blackout ]; then
-  echo "\033[1;32mChecking for Blackout updates.\033[0m"
+  print -P "%B%F{green}Checking for Blackout updates.%f%b"
   cd ~/Storage/Fonts/Blackout
   git pull
 else
@@ -63,7 +63,7 @@ fi
 echo
 
 if [ -d ~/Storage/Fonts/Knewave ]; then
-  echo "\033[1;32mChecking for Knewave updates.\033[0m"
+  print -P "%B%F{green}Checking for Knewave updates.%f%b"
   cd ~/Storage/Fonts/Knewave
   git pull
 else
@@ -73,7 +73,7 @@ fi
 echo
 
 if [ -d ~/Storage/Fonts/League\ Gothic ]; then
-  echo "\033[1;32mChecking for League Gothic updates.\033[0m"
+  print -P "%B%F{green}Checking for League Gothic updates.%f%b"
   cd ~/Storage/Fonts/League\ Gothic
   git pull
 else
@@ -83,7 +83,7 @@ fi
 echo
 
 if [ -d ~/Storage/Fonts/Orbitron ]; then
-  echo "\033[1;32mChecking for Orbitron updates.\033[0m"
+  print -P "%B%F{green}Checking for Orbitron updates.%f%b"
   cd ~/Storage/Fonts/Orbitron
   git pull
 else
@@ -93,7 +93,7 @@ fi
 echo
 
 if [ -d ~/Storage/Fonts/Ostrich\ Sans ]; then
-  echo "\033[1;32mChecking for Ostrich Sans updates.\033[0m"
+  print -P "%B%F{green}Checking for Ostrich Sans updates.%f%b"
   cd ~/Storage/Fonts/Ostrich\ Sans
   git pull
 else
@@ -103,7 +103,7 @@ fi
 echo
 
 if [ -d ~/Storage/Fonts/Prociono ]; then
-  echo "\033[1;32mChecking for Prociono updates.\033[0m"
+  print -P "%B%F{green}Checking for Prociono updates.%f%b"
   cd ~/Storage/Fonts/Prociono
   git pull
 else
@@ -113,7 +113,7 @@ fi
 echo
 
 if [ -d ~/Storage/Fonts/Sniglet ]; then
-  echo "\033[1;32mChecking for Sniglet updates.\033[0m"
+  print -P "%B%F{green}Checking for Sniglet updates.%f%b"
   cd ~/Storage/Fonts/Sniglet
   git pull
 else

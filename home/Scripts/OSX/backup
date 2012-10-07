@@ -29,21 +29,23 @@ if [ ! -f $ENCRYPTED_IMAGE ]; then
   return 1
 fi
 
+echo "Mounting encrypted image file."
 hdiutil attach -noverify $ENCRYPTED_IMAGE
 
 if [ ! -d $BACKUP_DESTINATION ]; then
-  echo "Directory $BACKUP_DESTINATION does not exist!"
+  echo "\nDirectory $BACKUP_DESTINATION does not exist!"
   return 1
 fi
 
 for DIRECTORY in $DIRECTORIES; do
-  echo
+  print -P "\n%B%F{green}Backing up directory ~/$DIRECTORY.%f%b"
   rsync -ah --progress --delete --exclude=Library/Caches ~/$DIRECTORY $BACKUP_DESTINATION
 done
 
-echo
+print -P "\n%B%F{green}Backing up ~/.* files/directories.%f%b"
 rsync -ah --progress --delete --exclude=.Trash ~/.* $BACKUP_DESTINATION
 
+echo "\nUnmounting encrypted image file and device."
 hdiutil detach $BACKUP_DESTINATION
 sleep 5
 diskutil eject $DEVICE_NAME

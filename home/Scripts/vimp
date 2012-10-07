@@ -8,7 +8,7 @@ rm -rf ~/.vim/backups/bundle ~/.vim/backups/pathogen
 cp -R ~/.vim/pathogen ~/.vim/backups/pathogen
 
 if [ -d ~/.vim/pathogen ]; then
-  echo "\033[1;32mChecking for Pathogen updates.\033[0m"
+  print -P "%B%F{green}Checking for Pathogen updates.%f%b"
   cd ~/.vim/pathogen
   git pull
 else
@@ -20,7 +20,7 @@ echo
 cp -R $DLPATH ~/.vim/backups/bundle
 
 if [ -d $DLPATH/gist ]; then
-  echo "\033[1;32mChecking for Gist updates.\033[0m"
+  print -P "%B%F{green}Checking for Gist updates.%f%b"
   cd $DLPATH/gist
   git pull
 else
@@ -30,7 +30,7 @@ fi
 echo
 
 if [ -d $DLPATH/gundo ]; then
-  echo "\033[1;32mChecking for Gundo updates.\033[0m"
+  print -P "%B%F{green}Checking for Gundo updates.%f%b"
   cd $DLPATH/gundo
   git pull
 else
@@ -40,7 +40,7 @@ fi
 echo
 
 if [ -d $DLPATH/lusty ]; then
-  echo "\033[1;32mChecking for Lusty updates.\033[0m"
+  print -P "%B%F{green}Checking for Lusty updates.%f%b"
   cd $DLPATH/lusty
   git pull
 else
@@ -50,7 +50,7 @@ fi
 echo
 
 if [ -d $DLPATH/nerdcommenter ]; then
-  echo "\033[1;32mChecking for NERDCommenter updates.\033[0m"
+  print -P "%B%F{green}Checking for NERDCommenter updates.%f%b"
   cd $DLPATH/nerdcommenter
   git pull
 else
@@ -60,7 +60,7 @@ fi
 echo
 
 if [ -d $DLPATH/nerdtree ]; then
-  echo "\033[1;32mChecking for NERDTree updates.\033[0m"
+  print -P "%B%F{green}Checking for NERDTree updates.%f%b"
   cd $DLPATH/nerdtree
   git pull
 else
@@ -70,7 +70,7 @@ fi
 echo
 
 if [ -d $DLPATH/nyancat ]; then
-  echo "\033[1;32mChecking for NyanCat updates.\033[0m"
+  print -P "%B%F{green}Checking for NyanCat updates.%f%b"
   cd $DLPATH/nyancat
   git pull
 else
@@ -80,7 +80,7 @@ fi
 echo
 
 if [ -d $DLPATH/snipmate ]; then
-  echo "\033[1;32mChecking for snipMate updates.\033[0m"
+  print -P "%B%F{green}Checking for snipMate updates.%f%b"
   cd $DLPATH/snipmate
   git pull
 else
@@ -90,7 +90,7 @@ fi
 echo
 
 if [ -d $DLPATH/surround ]; then
-  echo "\033[1;32mChecking for Surround updates.\033[0m"
+  print -P "%B%F{green}Checking for Surround updates.%f%b"
   cd $DLPATH/surround
   git pull
 else
@@ -100,7 +100,7 @@ fi
 echo
 
 if [ -d $DLPATH/viminesweeper ]; then
-  echo "\033[1;32mChecking for Viminesweeper updates.\033[0m"
+  print -P "%B%F{green}Checking for Viminesweeper updates.%f%b"
   cd $DLPATH/viminesweeper
   git pull
 else
@@ -110,7 +110,7 @@ fi
 echo
 
 if [ -d $DLPATH/webapi ]; then
-  echo "\033[1;32mChecking for WebAPI updates.\033[0m"
+  print -P "%B%F{green}Checking for WebAPI updates.%f%b"
   cd $DLPATH/webapi
   git pull
 else

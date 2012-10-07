@@ -5,20 +5,27 @@
 ENCRYPTED_IMAGE=/Volumes/Keychain/Backup.sparseimage
 
 if [ -f $ENCRYPTED_IMAGE ]; then
-  backup && echo
+  backup
+  echo
 else
   echo "File $ENCRYPTED_IMAGE does not exist!"
   return 1
 fi
 
-offlineimap  && echo
-brew update  && echo
-brew upgrade && echo
-brew cleanup && echo
-gem update   && echo
-otherd       && echo
-vimp         && echo
-webf         && echo
+offlineimap
+echo
+brew update
+brew upgrade
+brew cleanup
+echo
+gem update
+echo
+otherd
+echo
+vimp
+echo
+webf
+echo
 frees
 
 open -a Xcode
