@@ -79,11 +79,11 @@ if has("gui_running")
   set showcmd
 
   function! FontSetup()
-    set guifont=Monaco:h12
-    set noantialias
+    set guifont=Inconsolata:h14
+    set linespace=1
 
     set columns=171
-    set lines=45
+    set lines=44
   endfunction
 
   if !exists("g:dont_load_again")
