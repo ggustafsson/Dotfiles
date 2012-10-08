@@ -1,12 +1,13 @@
 # Göran Gustafsson <gustafsson.g@gmail.com>
 
 export GEM_HOME=~/.ruby
+export GREP_OPTIONS="--color=auto -i"
 export LC_COLLATE=C
 
 export LESS=FRSX
 export PAGER=less
 
-export LS_COLORS="ln=01;35"
+export LS_COLORS="rs=0:di=01;34:ln=01;35:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=01;31;01:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32"
 export LS_COLORS="$LS_COLORS:*.bmp=01;33:*.gif=01;33:*.ico=01;33:*.jpg=01;33:*.jpeg=01;33:*.png=01;33:*.pxi=01;33:*.svg=01;33:*.tiff=01;33"
 export LS_COLORS="$LS_COLORS:*.flac=01;35:*.nsf=01;35:*.nsfe=01;35:*.m4r=01;35:*.mp3=01;35:*.ogg=01;35:*.wav=01;35"
 export LS_COLORS="$LS_COLORS:*.avi=01;36:*.flv=01;36:*.f4v=01;36:*.mkv=01;36:*.mov=01;36:*.mpg=01;36:*.mpeg=01;36:*.mp4=01;36:*.m4v=01;36:*.wmv=01;36"
@@ -23,12 +24,12 @@ else
 fi
 
 [ -f ~/.ssh/config ] && SSH_HOSTS=($(sed -n 's/^Host //p' ~/.ssh/config))
-DIRSTACKSIZE=17
+DIRSTACKSIZE=20
 TODO_FILE=~/Documents/Text\ Files/To-do\ List.todo
 
 HISTFILE=~/.zsh_histfile
-HISTSIZE=2000
-SAVEHIST=6000
+HISTSIZE=1000
+SAVEHIST=8000
 
 if [[ $OSTYPE == darwin* ]]; then
   CURL=(/usr/local/Cellar/curl/*/bin/curl(N))
@@ -69,6 +70,7 @@ autoload -U url-quote-magic && zle -N self-insert url-quote-magic
 bindkey -e
 
 zstyle ':completion:*'          insert-tab pending
+zstyle ':completion:*'          list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*'          matcher-list 'm:{[:lower:]}={[:upper:]}'
 zstyle ':completion:*'          menu select
 zstyle ':completion:*'          special-dirs true
@@ -124,10 +126,10 @@ if [[ $OSTYPE == darwin* ]]; then
 
   alias awk="gawk"
   alias cal="gcal -s 1"
+  alias dircolors="gdircolors"
   alias head="ghead"
   alias ls="gls -Fh --color=auto"
   alias sed="gsed"
-  alias sort="gsort"
   alias tail="gtail"
   alias wc="gwc"
 
@@ -170,23 +172,21 @@ type ip >& /dev/null  && alias lip="ip addr" || alias lip="ifconfig"
 
 alias bc="bc -q"
 alias c="clear"
+alias cdh="dirs -v | sort -r"
 alias chkm="find ~/Music/MP3 -type f ! -iname '*.mp3'"
 alias df="df -h"
-alias dh="dirs -v | sort -r"
 alias du="du -sh"
-alias egrep="egrep --color=auto -i"
-alias fetch="wget --page-requisites --adjust-extension --convert-links"
-alias grep="grep --color=auto -i"
-alias hi="history"
+alias hist="history -i 1"
 alias iip="curl icanhazip.com"
 alias ka="killall"
 alias mkdir="mkdir -pv"
 alias phpweb="php -S 0.0.0.0:8080"
 alias ping="ping -c 10"
 alias random='FILES=(*) && echo $FILES[$RANDOM%$#FILES+1]'
-alias re="ls -t | head -n 5"
+alias ref="ls -t | head -n 5"
 alias reload="source ~/.zshrc"
 alias tv='vim "$TODO_FILE"'
+alias wgetp="wget --page-requisites --adjust-extension --convert-links"
 alias ycal='cal $(date +%Y)'
 alias yt="youtube-dl -l"
 
@@ -216,7 +216,7 @@ alias rm="rm -v"
 alias cpass="openssl rand -base64 20"
 alias pass="vim ~/Documents/Text\ Files/Passwords.blowfish"
 
-alias csd='echo "Change directory to saved PATH." && cd $SAVE_DIR'
+alias cdsd='echo "Change directory to saved PATH." && cd $SAVE_DIR'
 alias sd='echo "Saving current PATH." && SAVE_DIR=$PWD'
 
 alias d="ls -l"
@@ -246,6 +246,9 @@ alias int="tim -i"
 alias pomo="tim -p"
 alias rint="tim -ri"
 
+alias ps="ps aux"
+alias psme="\ps ux"
+
 alias py="python3"
 alias pyweb="python3 -m http.server 8080"
 
@@ -254,10 +257,6 @@ alias tma="tmux attach"
 
 for X in $SSH_HOSTS; do
   alias $X="ssh $X"
-done
-
-for X in {1..16}; do
-  alias cd$X="cd +$X >& /dev/null"
 done
 
 if [[ $OSTYPE == darwin* ]]; then
@@ -329,14 +328,14 @@ else
         /^extra/        s,.*,${CL}0;32m&${RS},
         /^community/    s,.*,${CL}1;35m&${RS},
         /^[^[:space:]]/ s,.*,${CL}0;36m&${RS},
-      ")" | less -R
+      ")" | less
     }
   fi
 fi
 
 function 256colors {
   for i in {0..255} ; do
-    printf "\x1b[38;5;${i}mColor ${i}\n"
+    echo "\x1b[38;5;${i}mColor ${i}"
   done
 }
 
@@ -360,14 +359,14 @@ function h {
   if [[ $# -gt 0 ]]; then
     history -i 1 | grep "$*"
   else
-    history -i 1
+    history -i -30
   fi
 }
 
 function mkcd {
   if [[ $# == 1 ]]; then
-    mkdir -p "$*"
-    cd "$*"
+    mkdir -p $1
+    cd $1
   else
     echo "Usage: $0 [PATH]..."
   fi
@@ -375,13 +374,13 @@ function mkcd {
 
 function p {
   if [[ $# -gt 0 ]]; then
-    ps ax | tail -n +2 | grep -v "grep --color=auto -i $*" | grep "$*"
+    ps | tail -n +2 | grep -v "grep $*" | grep "$*"
   else
-    ps ax
+    ps
   fi
 }
 
-function perm22 {
+function perml {
   if [[ $# -gt 0 ]]; then
     if [[ $OSTYPE == darwin* ]]; then
       find $* -type d -exec chmod -N "{}" \; -exec chmod 755 "{}" \;
@@ -395,7 +394,7 @@ function perm22 {
   fi
 }
 
-function perm77 {
+function perms {
   if [[ $# -gt 0 ]]; then
     if [[ $OSTYPE == darwin* ]]; then
       find $* -type d -exec chmod -N "{}" \; -exec chmod 700 "{}" \;
@@ -411,7 +410,7 @@ function perm77 {
 
 function rgrep {
   if [[ $# == 1 ]]; then
-    grep -r $* .
+    grep -r $1 .
   elif [[ $# == 2 ]]; then
     grep -r $*
   else
@@ -436,22 +435,17 @@ function t {
 }
 
 function tcolors {
-  echo -n "\033[1;30m1;30m\033[0m "
-  echo -n "\033[1;31m1;31m\033[0m "
-  echo -n "\033[1;32m1;32m\033[0m "
-  echo -n "\033[1;33m1;33m\033[0m "
-  echo -n "\033[1;34m1;34m\033[0m "
-  echo -n "\033[1;35m1;35m\033[0m "
-  echo -n "\033[1;36m1;36m\033[0m "
-  echo "\033[1;37m1;37m\033[0m "
-
-  echo -n "      "
-  echo -n "\033[1;41m1;41m\033[0m "
-  echo -n "\033[1;42m1;42m\033[0m "
-  echo -n "\033[1;43m1;43m\033[0m "
-  echo -n "\033[1;44m1;44m\033[0m "
-  echo -n "\033[1;45m1;45m\033[0m "
-  echo -n "\033[1;46m1;46m\033[0m "
-  echo "\033[1;47m1;47m\033[0m"
+  for i in {30..37} ; do
+    echo -n "\033[0;${i}m0;${i}m\033[0m "
+  done
+  echo
+  for i in {30..37} ; do
+    echo -n "\033[1;${i}m1;${i}m\033[0m "
+  done
+  echo
+  for i in {40..47} ; do
+    echo -n "\033[1;${i}m1;${i}m\033[0m "
+  done
+  echo
 }
 

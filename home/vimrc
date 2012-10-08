@@ -71,7 +71,7 @@ set wildignore=*.doc,*.pdf,.DS_Store
 set wildignore+=*.bmp,*.gif,*.ico,*.jpg,*.jpeg,*.png,*.svg,*.tiff
 set wildignore+=*.flac,*.nsf,*.nsfe,*.m4r,*.mp3,*.ogg,*.wav
 set wildignore+=*.avi,*.flv,*.f4v,*.mkv,*.mov,*.mpg,*.mpeg,*.mp4,*.m4v,*.wmv
-set wildignore+=*.dmg,*.iso,*.rar,*.tar,*.tar.bz2,*.tar.gz,*.zip
+set wildignore+=*.dmg,*.iso,*.rar,*.tar,*.tar.bz2,*.tar.gz,*.zip,*.7z
 
 if has("gui_running")
   set guicursor+=a:blinkon0
@@ -151,20 +151,17 @@ nmap <Leader>cd :cd %:p:h<CR>:pwd<CR>
 nmap <Leader>do :LustyFilesystemExplorer ~/Documents/Text\ Files<CR>
 nmap <Leader>ed :LustyFilesystemExplorerFromHere<CR>
 nmap <Leader>eh :LustyFilesystemExplorer ~<CR>
-nmap <Leader>es :split<CR>:LustyFilesystemExplorerFromHere<CR>
-nmap <Leader>ev :vsplit<CR>:LustyFilesystemExplorerFromHere<CR>
 nmap <Leader>ft :set filetype=
 nmap <Leader>ga :Gist -a<CR>
 nmap <Leader>gg :Gist<CR>
 nmap <Leader>gu :GundoToggle<CR>
 nmap <Leader>li :set list!<CR>
-nmap <Leader>ll :!ls -lh "%"<CR>
-nmap <Leader>ls :!ls -lha "%:p:h"<CR>
+nmap <Leader>ll :!ls -lFh "%"<CR>
+nmap <Leader>la :!ls -lFha "%:p:h"<CR>
+nmap <Leader>ls :!ls -lFh "%:p:h"<CR>
 nmap <Leader>mi :MineSweeper normal<CR>
 nmap <Leader>ne :enew<CR>
-nmap <Leader>ns :new<CR>
 nmap <Leader>nu :call LineNumber()<CR>
-nmap <Leader>nv :vnew<CR>
 nmap <Leader>ny :Nyancat2<CR>
 nmap <Leader>pa :set paste!<CR>
 nmap <Leader>pw :edit ~/Documents/Text\ Files/Passwords.blowfish<CR>
@@ -172,10 +169,12 @@ nmap <Leader>re :%s//c<Left><Left>
 nmap <Leader>rs :source ~/.vim/session.vim<CR>
 nmap <Leader>s2 :set expandtab softtabstop=2 shiftwidth=2<CR>
 nmap <Leader>s4 :set expandtab softtabstop=4 shiftwidth=4<CR>
+nmap <Leader>s8 :set expandtab softtabstop=8 shiftwidth=8<CR>
 nmap <Leader>sc :edit ~/Documents/Text\ Files/Scratch\ Notes.txt<CR>
 nmap <Leader>sh :shell<CR>
 nmap <Leader>sp :setlocal spell!<CR>
 nmap <Leader>ss :mksession! ~/.vim/session.vim<CR>
+nmap <Leader>t2 :set noexpandtab shiftwidth=2 softtabstop=0 tabstop=2<CR>
 nmap <Leader>t4 :set noexpandtab shiftwidth=4 softtabstop=0 tabstop=4<CR>
 nmap <Leader>t8 :set noexpandtab shiftwidth=8 softtabstop=0 tabstop=8<CR>
 nmap <Leader>tm :edit ~/Documents/Text\ Files/Temporary.blowfish<CR>
@@ -203,9 +202,7 @@ vmap <Leader><Space> <Plug>NERDCommenterToggle
 vmap <Leader>ga :Gist -a<CR>
 vmap <Leader>gg :Gist<CR>
 vmap <Leader>ne y:enew<CR>P
-vmap <Leader>sn y:new<CR>P
 vmap <Leader>so :sort<CR>
-vmap <Leader>vn y:vnew<CR>P
 
 vmap s <Plug>VSurround
 
