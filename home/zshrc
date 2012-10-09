@@ -29,7 +29,7 @@ TODO_FILE=~/Documents/Text\ Files/To-do\ List.todo
 
 HISTFILE=~/.zsh_histfile
 HISTSIZE=1000
-SAVEHIST=8000
+SAVEHIST=10000
 
 if [[ $OSTYPE == darwin* ]]; then
   CURL=(/usr/local/Cellar/curl/*/bin/curl(N))
@@ -119,7 +119,8 @@ if [[ $OSTYPE == darwin* ]]; then
   alias cf="say command finished"
   alias curl="$CURL"
   alias eject="osascript -e 'tell application \"Finder\" to eject (every disk whose ejectable is true)' && echo 'All external drives ejected!'"
-  alias mvrm='cd /Volumes/External/Music/FLAC && mv "$(random)" ~/Music/Trial && cd -'
+  alias mvrm='cd /Volumes/External/Music/FLAC && mv "$(random)" ~/Music/Trial/ && cd - >& /dev/null && open ~/Music/Trial'
+  alias keepm="mv ~/Music/Trial/* ~/Music/MP3/"
   alias o="open"
   alias safari="open -a Safari"
   alias study="school && tim -p"
@@ -164,6 +165,7 @@ else
 
   alias cal="cal -m"
   alias ls="ls -Fh --color=auto"
+  alias topme='top -U $USER'
   alias vl='tail -n $LINES -f /var/log/everything.log'
 fi
 
@@ -176,7 +178,7 @@ alias cdh="dirs -v | sort -r"
 alias chkm="find ~/Music/MP3 -type f ! -iname '*.mp3'"
 alias df="df -h"
 alias du="du -sh"
-alias hist="history -i 1"
+alias hist="fc -il 1"
 alias iip="curl icanhazip.com"
 alias ka="killall"
 alias mkdir="mkdir -pv"
@@ -357,9 +359,9 @@ function ffp {
 
 function h {
   if [[ $# -gt 0 ]]; then
-    history -i 1 | grep "$*"
+    fc -il 1 | grep "$*"
   else
-    history -i -30
+    fc -l -30
   fi
 }
 
