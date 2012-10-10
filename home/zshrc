@@ -15,7 +15,7 @@ export LS_COLORS="$LS_COLORS:*.dmg=01;31:*.iso=01;31:*.rar=01;31:*.tar=01;31:*.t
 
 if [[ $OSTYPE == darwin* ]]; then
   export EDITOR="/Applications/MacVim.app/Contents/MacOS/Vim -g --remote-tab-silent"
-  export GIT_EDITOR="/Applications/MacVim.app/Contents/MacOS/Vim"
+  export GIT_EDITOR=/Applications/MacVim.app/Contents/MacOS/Vim
   export VISUAL=$EDITOR
 else
   export EDITOR=vim
@@ -32,16 +32,15 @@ HISTSIZE=1000
 SAVEHIST=10000
 
 if [[ $OSTYPE == darwin* ]]; then
-  CURL=(/usr/local/Cellar/curl/*/bin/curl(N))
   WIRESHARK=(/usr/local/Cellar/wireshark/*/bin/*(N:t))
 
-  path=(/usr/local/bin /usr/local/sbin /bin /sbin /usr/bin /usr/sbin /usr/X11/bin ~/Scripts/OSX)
+  path=(/usr/local/bin /usr/local/sbin /usr/local/Cellar/curl/*/bin(N) /bin /sbin /usr/bin /usr/sbin /usr/X11/bin ~/Scripts/OSX)
 else
   path+=(~/Scripts/Linux)
 
   umask 077
 fi
-path+=(~/Scripts ~/.ruby/bin(N) ~/.ruby/gems/*/bin(N))
+path+=(~/Scripts ~/.ruby/bin(N))
 
 setopt combiningchars
 setopt correct
@@ -117,7 +116,6 @@ if [[ $OSTYPE == darwin* ]]; then
   alias capit="imagesnap -t 2 -w 1"
   alias cde="cd /Volumes/External"
   alias cf="say command finished"
-  alias curl="$CURL"
   alias eject="osascript -e 'tell application \"Finder\" to eject (every disk whose ejectable is true)' && echo 'All external drives ejected!'"
   alias mvrm='cd /Volumes/External/Music/FLAC && mv "$(random)" ~/Music/Trial/ && cd - >& /dev/null && open ~/Music/Trial'
   alias keepm="mv ~/Music/Trial/* ~/Music/MP3/"
@@ -178,7 +176,7 @@ alias cdh="dirs -v | sort -r"
 alias chkm="find ~/Music/MP3 -type f ! -iname '*.mp3'"
 alias df="df -h"
 alias du="du -sh"
-alias hist="fc -il 1"
+alias hist="history -i 1"
 alias iip="curl icanhazip.com"
 alias ka="killall"
 alias mkdir="mkdir -pv"
@@ -336,8 +334,8 @@ else
 fi
 
 function 256colors {
-  for i in {0..255} ; do
-    echo "\x1b[38;5;${i}mColor ${i}"
+  for X in {0..255} ; do
+    echo "\x1b[38;5;${X}mColor ${X}"
   done
 }
 
@@ -359,9 +357,9 @@ function ffp {
 
 function h {
   if [[ $# -gt 0 ]]; then
-    fc -il 1 | grep "$*"
+    history -i 1 | grep "$*"
   else
-    fc -l -30
+    history -30
   fi
 }
 
@@ -437,16 +435,16 @@ function t {
 }
 
 function tcolors {
-  for i in {30..37} ; do
-    echo -n "\033[0;${i}m0;${i}m\033[0m "
+  for X in {30..37} ; do
+    echo -n "\033[0;${X}m0;${X}m\033[0m "
   done
   echo
-  for i in {30..37} ; do
-    echo -n "\033[1;${i}m1;${i}m\033[0m "
+  for X in {30..37} ; do
+    echo -n "\033[1;${X}m1;${X}m\033[0m "
   done
   echo
-  for i in {40..47} ; do
-    echo -n "\033[1;${i}m1;${i}m\033[0m "
+  for X in {40..47} ; do
+    echo -n "\033[1;${X}m1;${X}m\033[0m "
   done
   echo
 }
