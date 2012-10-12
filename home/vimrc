@@ -44,8 +44,7 @@ set incsearch
 set smartcase
 
 set laststatus=2
-set statusline=%(%{StatuslineBufferNr()}\ %)
-set statusline+=%(%F\ %)
+set statusline=%(\ %F\ %)
 set statusline+=%(%m\ %)
 set statusline+=%([%{(&fenc==\"\"?&enc:&fenc)}]\ %)
 set statusline+=%(%y\ %)
@@ -246,13 +245,8 @@ endfunction
 
 function! ColorColumn()
   if empty(&colorcolumn)
-    if empty(&textwidth)
-      echo "colorcolumn=80"
-      setlocal colorcolumn=80
-    else
-      echo "colorcolumn=+1 (" . (&textwidth + 1) . ")"
-      setlocal colorcolumn=+1
-    endif
+    echo "colorcolumn=79"
+    setlocal colorcolumn=79
   else
     echo "colorcolumn="
     setlocal colorcolumn=
@@ -269,20 +263,6 @@ function! LineNumber()
   endif
 endfunction
 
-function! StatuslineBufferNr()
-  if &number == 1
-    let b:bnumber = strlen(bufnr("%"))
-    let b:blines = strlen(line("$"))
-    let b:spaces = max([&numberwidth - b:bnumber, b:blines - b:bnumber + 1])
-
-    let b:statusline = repeat(" ", b:spaces) . bufnr("%")
-  else
-    let b:statusline = "  " . bufnr("%")
-  endif
-
-  return b:statusline
-endfunction
-
 augroup Main
   autocmd!
 
@@ -290,10 +270,10 @@ augroup Main
   autocmd BufNewFile,BufRead *.txt,README,INSTALL,TODO setlocal filetype=text
   autocmd BufNewFile,BufRead config                    setlocal filetype=conf
 
-  autocmd FileType gitcommit          setlocal colorcolumn=+1 nolist spell
+  autocmd FileType gitcommit          setlocal colorcolumn=73 nolist spell
   autocmd FileType help               setlocal colorcolumn=
   autocmd FileType html               setlocal filetype=html.css
-  autocmd FileType markdown,text,todo setlocal colorcolumn=+1 textwidth=79
+  autocmd FileType markdown,text,todo setlocal colorcolumn=79 textwidth=78
   autocmd FileType php                setlocal filetype=php.html.css
   autocmd FileType python             setlocal expandtab shiftwidth=4 softtabstop=4
   autocmd FileType snippet            setlocal noexpandtab shiftwidth=8 softtabstop=0 tabstop=8
