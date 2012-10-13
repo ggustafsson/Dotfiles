@@ -245,8 +245,11 @@ endfunction
 
 function! ColorColumn()
   if empty(&colorcolumn)
-    echo "colorcolumn=79"
-    setlocal colorcolumn=79
+    echo "colorcolumn=79,80"
+    setlocal colorcolumn=79,80
+  elseif &colorcolumn == "79,80"
+    echo "colorcolumn=73,74"
+    setlocal colorcolumn=73,74
   else
     echo "colorcolumn="
     setlocal colorcolumn=
@@ -270,10 +273,10 @@ augroup Main
   autocmd BufNewFile,BufRead *.txt,README,INSTALL,TODO setlocal filetype=text
   autocmd BufNewFile,BufRead config                    setlocal filetype=conf
 
-  autocmd FileType gitcommit          setlocal colorcolumn=73 nolist spell
+  autocmd FileType gitcommit          setlocal colorcolumn=73,74 nolist spell
   autocmd FileType help               setlocal colorcolumn=
   autocmd FileType html               setlocal filetype=html.css
-  autocmd FileType markdown,text,todo setlocal colorcolumn=79 textwidth=78
+  autocmd FileType markdown,text,todo setlocal colorcolumn=79,80 textwidth=78
   autocmd FileType php                setlocal filetype=php.html.css
   autocmd FileType python             setlocal expandtab shiftwidth=4 softtabstop=4
   autocmd FileType snippet            setlocal noexpandtab shiftwidth=8 softtabstop=0 tabstop=8
