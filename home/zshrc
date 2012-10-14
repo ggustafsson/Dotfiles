@@ -29,18 +29,18 @@ TODO_FILE=~/Documents/Text\ Files/To-do\ List.todo
 
 HISTFILE=~/.zsh_histfile
 HISTSIZE=10000
-SAVEHIST=10000
+SAVEHIST=$HISTSIZE
 
 if [[ $OSTYPE == darwin* ]]; then
   WIRESHARK=(/usr/local/Cellar/wireshark/*/bin/*(N:t))
 
-  path=(/usr/local/bin /usr/local/sbin /usr/local/Cellar/curl/*/bin(N) /bin /sbin /usr/bin /usr/sbin /usr/X11/bin ~/Scripts/OSX)
+  path=(/usr/local/bin /usr/local/sbin /usr/local/Cellar/curl/*/bin(N) /bin /sbin /usr/bin /usr/sbin /usr/X11/bin ~/Scripts/OSX(N))
 else
-  path+=(~/Scripts/Linux)
+  path+=(~/Scripts/Linux(N))
 
   umask 077
 fi
-path+=(~/Scripts ~/.ruby/bin(N))
+path+=(~/Scripts(N) ~/.ruby/bin(N))
 
 setopt combiningchars
 setopt correct
@@ -76,7 +76,7 @@ zstyle ':completion:*'          special-dirs true
 zstyle ':completion:*:cd:*'     ignore-parents parent pwd
 zstyle ':completion:*:warnings' format "zsh: no matches found."
 
-[[ $OSTYPE == darwin* ]] && compdef _man manp
+[[ $OSTYPE == darwin* ]] && compdef _man man2pdf
 compdef _path_files cd
 
 precmd() {
@@ -113,15 +113,15 @@ else
 fi
 
 if [[ $OSTYPE == darwin* ]]; then
-  alias capit="imagesnap -t 2 -w 1"
   alias cde="cd /Volumes/External"
   alias cf="say command finished"
   alias eject="osascript -e 'tell application \"Finder\" to eject (every disk whose ejectable is true)' && echo 'All external drives ejected!'"
-  alias mvrm='cd /Volumes/External/Music/FLAC && mv "$(random)" ~/Music/Trial/ && cd - >& /dev/null && open ~/Music/Trial'
   alias keepm="mv ~/Music/Trial/* ~/Music/MP3/"
+  alias movem='cd /Volumes/External/Music/FLAC && mv "$(random)" ~/Music/Trial/ && cd - >& /dev/null && open ~/Music/Trial'
   alias o="open"
   alias safari="open -a Safari"
   alias study="school && tim -p"
+  alias webcam="imagesnap -t 2 -w 1"
 
   alias awk="gawk"
   alias cal="gcal -s 1"
@@ -152,14 +152,18 @@ if [[ $OSTYPE == darwin* ]]; then
     alias $X="wiresharkfix $X"
   done
 else
+  if ! type ifconfig >& /dev/null && type ip >& /dev/null; then
+    alias arp="ip neigh"
+    alias ifconfig="ip addr"
+    alias netstat="ss"
+    alias route="ip route"
+  fi
+
   if type pacman >& /dev/null; then
     alias paci="sudo pacman -S"
     alias pacr="sudo pacman -Rs"
     alias pacu="sudo pacman -Syu"
   fi
-
-  type ifconfig >& /dev/null || alias ifconfig="ip addr"
-  type netstat >& /dev/null  || alias netstat="ss"
 
   alias cal="cal -m"
   alias ls="ls -Fh --color=auto"
@@ -168,7 +172,6 @@ else
 fi
 
 type hub >& /dev/null && alias git="hub"
-type ip >& /dev/null  && alias lip="ip addr" || alias lip="ifconfig"
 
 alias bc="bc -q"
 alias c="clear"
@@ -176,14 +179,13 @@ alias cdh="dirs -v | sort -r"
 alias chkm="find ~/Music/MP3 -type f ! -iname '*.mp3'"
 alias df="df -h"
 alias du="du -sh"
-alias hist="history -i 1"
+alias hist="history -i 1 | less"
 alias iip="curl icanhazip.com"
 alias ka="killall"
 alias mkdir="mkdir -pv"
-alias phpweb="php -S 0.0.0.0:8080"
 alias ping="ping -c 10"
 alias random='FILES=(*) && echo $FILES[$RANDOM%$#FILES+1]'
-alias ref="ls -t | head -n 5"
+alias recent="ls -t | head -n 5"
 alias reload="source ~/.zshrc"
 alias tv='vim "$TODO_FILE"'
 alias wgetp="wget --page-requisites --adjust-extension --convert-links"
@@ -202,12 +204,8 @@ alias cdt="cd ~/Documents/Text\ Files"
 alias cl="wc -l"
 alias cw="wc -w"
 alias g="grep"
-alias he="head"
 alias l="less"
 alias rg="rgrep"
-alias so="sort"
-alias ta="tail"
-alias un="uniq"
 
 alias cp="cp -vi"
 alias mv="mv -vi"
@@ -221,36 +219,29 @@ alias sd='echo "Saving current PATH." && SAVE_DIR=$PWD'
 
 alias d="ls -l"
 alias da="ls -la"
-alias l1="ls -1"
 alias la="ls -a"
 
 alias gad="git add"
-alias gbr="git branch"
 alias gca="git commit -a -v"
-alias gch="git checkout"
 alias gcl="git clone"
 alias gco="git commit -v"
 alias gdi="git diff"
-alias gfe="git fetch"
-alias gin="git init"
 alias glo="git log"
-alias gme="git merge"
 alias gmv="git mv"
 alias gpl="git pull"
 alias gpu='git push && [[ $OSTYPE == darwin* ]] && say fuck yeah'
 alias grm="git rm"
 alias gst="git status -s -b"
-alias gun="git reset --soft HEAD^"
 
 alias int="tim -i"
 alias pomo="tim -p"
 alias rint="tim -ri"
 
+alias phpweb="php -S 0.0.0.0:8080"
+alias pyweb="python3 -m http.server 8080"
+
 alias ps="ps aux"
 alias psme="\ps ux"
-
-alias py="python3"
-alias pyweb="python3 -m http.server 8080"
 
 alias tm="tmux"
 alias tma="tmux attach"
@@ -276,7 +267,7 @@ if [[ $OSTYPE == darwin* ]]; then
     fi
   }
 
-  function manp {
+  function man2pdf {
     if [[ $# -gt 0 ]]; then
       for ARGUMENT in $*; do
         man -t $ARGUMENT | open -f -a Preview
@@ -359,7 +350,7 @@ function h {
   if [[ $# -gt 0 ]]; then
     history -i 1 | grep "$*"
   else
-    history -30
+    history -20
   fi
 }
 

@@ -8,10 +8,10 @@ filetype plugin indent on
 syntax enable
 colorscheme ninja
 
-set cryptmethod=blowfish
 set confirm
+set cryptmethod=blowfish
 set encoding=utf-8
-set formatoptions+=n
+set formatoptions+=nj
 set gdefault
 set hidden
 set nofoldenable
@@ -126,8 +126,8 @@ let g:NERDTreeDirArrows = 0
 let g:NERDTreeMinimalUI = 1
 let g:NERDTreeStatusline = " NERDTree"
 
-cabbrev ht   tab help
-cabbrev htab tab help
+command! -nargs=? Helpt tab help <args>
+cabbrev helpt Helpt
 
 cabbrev Q  q
 cabbrev W  w
