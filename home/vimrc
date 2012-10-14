@@ -35,7 +35,7 @@ set expandtab
 set shiftwidth=2
 set softtabstop=2
 
-set history=2000
+set history=1000
 set undolevels=2000
 
 set hlsearch

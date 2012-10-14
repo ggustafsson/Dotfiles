@@ -28,7 +28,7 @@ DIRSTACKSIZE=20
 TODO_FILE=~/Documents/Text\ Files/To-do\ List.todo
 
 HISTFILE=~/.zsh_histfile
-HISTSIZE=1000
+HISTSIZE=10000
 SAVEHIST=10000
 
 if [[ $OSTYPE == darwin* ]]; then
