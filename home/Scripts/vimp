@@ -79,16 +79,6 @@ fi
 
 echo
 
-if [ -d $DLPATH/snipmate ]; then
-  print -P "%B%F{green}Checking for snipMate updates.%f%b"
-  cd $DLPATH/snipmate
-  git pull
-else
-  git clone git://github.com/msanders/snipmate.vim.git $DLPATH/snipmate
-fi
-
-echo
-
 if [ -d $DLPATH/surround ]; then
   print -P "%B%F{green}Checking for Surround updates.%f%b"
   cd $DLPATH/surround

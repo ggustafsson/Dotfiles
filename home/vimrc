@@ -11,7 +11,7 @@ colorscheme ninja
 set confirm
 set cryptmethod=blowfish
 set encoding=utf-8
-set formatoptions+=nj
+set formatoptions=cjlnoqrt
 set gdefault
 set hidden
 set nofoldenable
@@ -102,7 +102,6 @@ endif
 let g:gist_open_browser_after_post = 1
 let g:mapleader = ","
 let g:nyancat_display_statusline = 1
-let g:snippets_dir = "~/.vim/snippets"
 
 let g:gundo_help = 0
 let g:gundo_preview_statusline = " Gundo Preview"
@@ -154,9 +153,10 @@ nmap <Leader>ft :set filetype=
 nmap <Leader>ga :Gist -a<CR>
 nmap <Leader>gg :Gist<CR>
 nmap <Leader>gu :GundoToggle<CR>
+nmap <Leader>in :-read ~/.vim/snippets/
+nmap <Leader>la :!ls -lFha "%:p:h"<CR>
 nmap <Leader>li :set list!<CR>
 nmap <Leader>ll :!ls -lFh "%"<CR>
-nmap <Leader>la :!ls -lFha "%:p:h"<CR>
 nmap <Leader>ls :!ls -lFh "%:p:h"<CR>
 nmap <Leader>mi :MineSweeper normal<CR>
 nmap <Leader>ne :enew<CR>
@@ -187,11 +187,6 @@ nmap <Leader>zs :edit ~/.zshrc<CR>
 nmap §   :LustyBufferExplorer<CR>
 nmap vil ^vg_
 
-nmap + <C-w>+
-nmap - <C-w>-
-nmap < <C-w>>
-nmap > <C-w><
-
 nmap <Backspace> :nohlsearch<CR>
 nmap <Tab>       :bnext<CR>
 
@@ -211,7 +206,7 @@ vmap - :m'>+<CR>gv=`<my`>mzgv`yo`z
 vmap <Tab>   >gv
 vmap <S-Tab> <gv
 
-imap <C-e> <C-p>
+imap <Tab> <C-P>
 
 if has("gui_running")
   function! FancyView()
@@ -269,17 +264,14 @@ endfunction
 augroup Main
   autocmd!
 
-  autocmd BufNewFile,BufRead *.todo                    setlocal filetype=todo
-  autocmd BufNewFile,BufRead *.txt,README,INSTALL,TODO setlocal filetype=text
-  autocmd BufNewFile,BufRead config                    setlocal filetype=conf
+  autocmd BufNewFile,BufRead *.todo              setlocal filetype=todo
+  autocmd BufNewFile,BufRead INSTALL,README,TODO setlocal filetype=text
+  autocmd BufNewFile,BufRead config              setlocal filetype=conf
 
   autocmd FileType gitcommit          setlocal colorcolumn=73,74 nolist spell
   autocmd FileType help               setlocal colorcolumn=
-  autocmd FileType html               setlocal filetype=html.css
   autocmd FileType markdown,text,todo setlocal colorcolumn=79,80 textwidth=78
-  autocmd FileType php                setlocal filetype=php.html.css
   autocmd FileType python             setlocal expandtab shiftwidth=4 softtabstop=4
-  autocmd FileType snippet            setlocal noexpandtab shiftwidth=8 softtabstop=0 tabstop=8
 
   autocmd BufWritePost ~/.vimrc source %
 augroup END
