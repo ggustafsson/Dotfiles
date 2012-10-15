@@ -1,5 +1,7 @@
 snippet #!
 	#!/usr/bin/env zsh
+snippet [
+	[ ${1} ] && ${2}
 snippet [[
 	[[ ${1} ]] && ${2}
 snippet case
@@ -36,8 +38,10 @@ snippet if
 	if [[ ${1} ]]; then
 		${2}
 	fi${3}
-snippet ifs
-	[[ ${1} ]] && ${2}
+snippet while
+	while ${1}; do
+		${2}
+	done${3}
 snippet zsh
 	#!/usr/bin/env zsh
 snippet zsht
