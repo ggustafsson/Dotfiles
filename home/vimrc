@@ -200,9 +200,6 @@ vmap <Leader>so :sort<CR>
 
 vmap s <Plug>VSurround
 
-vmap + :m'<-2<CR>gv=`>my`<mzgv`yo`z
-vmap - :m'>+<CR>gv=`<my`>mzgv`yo`z
-
 vmap <Tab>   >gv
 vmap <S-Tab> <gv
 
@@ -251,10 +248,13 @@ endfunction
 
 function! LineNumber()
   if &relativenumber == 1
+    echo "set number"
     set number
   elseif &number == 1
+    echo "set nonumber"
     set nonumber
   else
+    echo "set relativenumber"
     set relativenumber
   endif
 endfunction
