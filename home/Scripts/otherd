@@ -32,16 +32,6 @@ fi
 
 echo
 
-if [ -d ~/Documents/Reading/Learn\ Vimscript\ the\ Hard\ Way ]; then
-  print -P "%B%F{green}Checking for Learn Vimscript the Hard Way updates.%f%b"
-  cd ~/Documents/Reading/Learn\ Vimscript\ the\ Hard\ Way
-  git pull
-else
-  git clone git://github.com/sjl/learnvimscriptthehardway.git ~/Documents/Reading/Learn\ Vimscript\ the\ Hard\ Way
-fi
-
-echo
-
 if [ -d ~/Projects/Tim\ Fork ]; then
   print -P "%B%F{green}Checking for Tim (hdonnay fork) updates.%f%b"
   cd ~/Projects/Tim\ Fork
