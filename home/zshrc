@@ -154,14 +154,14 @@ if [[ $OSTYPE == darwin* ]]; then
     alias $X="wiresharkfix $X"
   done
 else
-  if ! type ifconfig >& /dev/null && type ip >& /dev/null; then
+  if ! type -p ifconfig >& /dev/null && type -p ip >& /dev/null; then
     alias arp="ip neigh"
     alias ifconfig="ip addr"
     alias netstat="ss"
     alias route="ip route"
   fi
 
-  if type pacman >& /dev/null; then
+  if type -p pacman >& /dev/null; then
     alias paci="sudo pacman -S"
     alias pacr="sudo pacman -Rs"
     alias pacu="sudo pacman -Syu"
@@ -311,7 +311,7 @@ if [[ $OSTYPE == darwin* ]]; then
     fi
   }
 else
-  if type pacman >& /dev/null; then
+  if type -p pacman >& /dev/null; then
     function pacs {
       CL='\\e['
       RS='\\e[0;0m'
