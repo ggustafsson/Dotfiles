@@ -1,3 +1,5 @@
+# http://blog.aedifice.org/2010-02-01-use-mac-os-xs-keychain-for-password-retrieval-in-offlineimap.html
+
 import re, commands
 
 def get_keychain_pass(account=None, server=None):
