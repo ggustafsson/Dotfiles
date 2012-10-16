@@ -116,8 +116,6 @@ if [[ $OSTYPE == darwin* ]]; then
   alias cde="cd /Volumes/External"
   alias cf="say command finished"
   alias eject="osascript -e 'tell application \"Finder\" to eject (every disk whose ejectable is true)' && echo 'All external drives ejected!'"
-  alias keepm="mv ~/Music/Trial/* ~/Music/MP3/"
-  alias movem='cd /Volumes/External/Music/FLAC && mv "$(random)" ~/Music/Trial/ && cd - >& /dev/null && open ~/Music/Trial'
   alias o="open"
   alias safari="open -a Safari"
   alias study="school && tim -p"
@@ -136,6 +134,10 @@ if [[ $OSTYPE == darwin* ]]; then
   alias brewr="brew uninstall"
   alias brews="brew search"
   alias brewu="brew update && brew upgrade"
+
+  alias keepm="mv ~/Music/Trial/* ~/Music/MP3/"
+  alias movem='cd /Volumes/External/Music/FLAC && mv "$(random)" ~/Music/Trial/ && cd - >& /dev/null && open ~/Music/Trial'
+  alias removem="rm -rf ~/Music/Trial/*"
 
   alias top="top -o cpu"
   alias topme='top -o cpu -U $USER'

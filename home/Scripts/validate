@@ -1,0 +1,35 @@
+#!/usr/bin/env zsh
+
+# Written by Göran Gustafsson <gustafsson.g@gmail.com>.
+
+if [[ $# == 1 ]]; then
+  if [ -f $1 ]; then
+    COMMAND='curl -sF "uploaded_file=@$FILENAME;type=text/html" -F output=json http://validator.w3.org/check'
+    CURRENT_DIRECTORY=$PWD
+    DIRECTORY=$1:A:h
+    FILENAME=$1:t
+
+    cd $DIRECTORY
+    RESULTS=$(eval $COMMAND)
+    if [[ $? -gt 0 ]]; then
+      echo "Failed at getting results!"
+      return 1
+    fi
+    cd $CURRENT_DIRECTORY
+
+    PARSED=$(echo $RESULTS | grep '"lastLine":')
+
+    if [ ! -z $PARSED ]; then
+      echo "Found error(s) on line(s):\n"
+      echo $PARSED | sed 's/^[ \t]*"lastLine":/ /;s/,//g' | sort -g | uniq
+    else
+      echo "No errors! :)"
+    fi
+  else
+    echo "File $1 does not exist."
+    return 1
+  fi
+else
+  echo "Usage: $0:t [FILENAME]..."
+fi
+

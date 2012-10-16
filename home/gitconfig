@@ -12,3 +12,6 @@
   status      = auto
   ui          = auto
 
+[github]
+  user = gustafsson.g@gmail.com
+
