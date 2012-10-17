@@ -115,7 +115,7 @@ fi
 if [[ $OSTYPE == darwin* ]]; then
   alias cde="cd /Volumes/External"
   alias cf="say command finished"
-  alias eject="osascript -e 'tell application \"Finder\" to eject (every disk whose ejectable is true)' && echo 'All external drives ejected!'"
+  alias eject="osascript -e 'tell application \"Finder\" to eject (every disk whose ejectable is true)' && echo 'Ejecting all external drives.'"
   alias o="open"
   alias safari="open -a Safari"
   alias study="school && tim -p"
