@@ -1,13 +1,13 @@
 servers = (
   {
-    address = "127.0.0.1";
     chatnet = "Bitlbee";
+    address = "127.0.0.1";
     port = "7000";
     password = "";
   },
   {
-    address = "leguin.freenode.net";
     chatnet = "Freenode";
+    address = "leguin.freenode.net";
     port = "7000";
     use_ssl = "yes";
     ssl_verify = "yes";
@@ -16,13 +16,13 @@ servers = (
 );
 
 chatnets = {
-  Freenode = {
-    type = "IRC";
-    autosendcmd = "/^MSG -freenode NickServ identify GLEG X; wait 2000";
-  };
   Bitlbee = {
     type = "IRC";
     autosendcmd = "/^MSG -bitlbee root identify X";
+  };
+  Freenode = {
+    type = "IRC";
+    autosendcmd = "/^MSG -freenode NickServ identify GLEG X; wait 2000";
   };
 };
 
@@ -188,42 +188,42 @@ settings = {
   "fe-common/core" = {
     autolog = "yes";
     autolog_path = "~/.irssi/logs/$tag/$0.log";
-    hide_server_tags = "yes";
-    hilight_nick_matches = "yes";
-    show_nickmode_empty = "yes";
-    theme = "default";
-    log_theme = "default";
-    hilight_act_color = "%R";
-    hilight_color = "%Y";
-    show_names_on_join = "yes";
-    term_charset = "utf-8";
-    bell_beeps = "yes";
     beep_msg_level = "MSGS DCC DCCMSGS HILIGHT";
     beep_when_window_active = "no";
+    bell_beeps = "yes";
+    hide_server_tags = "yes";
+    hilight_act_color = "%R";
+    hilight_color = "%Y";
+    hilight_nick_matches = "yes";
+    log_theme = "default";
+    show_names_on_join = "yes";
+    show_nickmode_empty = "yes";
+    term_charset = "utf-8";
+    theme = "default";
   };
   core = {
-    real_name = "Göran Gustafsson";
-    user_name = "root";
     nick = "GLEG";
-    recode = "yes";
-    recode_fallback = "ISO-8859-1";
-    recode_autodetect_utf8 = "yes";
     quit_message = "Bye!";
+    real_name = "Göran Gustafsson";
+    recode = "yes";
+    recode_autodetect_utf8 = "yes";
+    recode_fallback = "ISO-8859-1";
+    user_name = "null";
   };
   "fe-text" = {
     actlist_sort = "refnum";
-    scrollback_lines = "2000";
     lag_min_show = "2sec";
+    scrollback_lines = "2000";
   };
   "perl/core/scripts" = {
-    usercount_show_halfops = "no";
-    usercount_show_zero = "no";
     autoaway_timeout = "1800";
     awl_display_key = "$N:$H$C$S";
     awl_hide_data = "3";
     awl_position = "0";
     awl_sbar_maxlength = "no";
     beep_cmd = "aplay ~/.irssi/beep.wav >& /dev/null";
+    usercount_show_halfops = "no";
+    usercount_show_zero = "no";
   };
   "irc/core" = {
     alternate_nick = "GLEG_";
@@ -233,8 +233,6 @@ settings = {
   };
 };
 
-logs = { };
-ignores = ( );
 hilights = (
   { text = "gleg"; nick = "yes"; word = "yes"; },
   { text = "goran"; nick = "yes"; word = "yes"; },
