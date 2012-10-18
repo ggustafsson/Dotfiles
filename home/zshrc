@@ -3,6 +3,7 @@
 export GEM_HOME=~/.ruby
 export GREP_OPTIONS="--color=auto -i"
 export LC_COLLATE=C
+export TODO_FILE=~/Documents/Text\ Files/To-do\ List.todo
 
 export LESS=FRSX
 export PAGER=less
@@ -25,7 +26,6 @@ fi
 
 [ -f ~/.ssh/config ] && SSH_HOSTS=($(sed -n 's/^Host //p' ~/.ssh/config))
 DIRSTACKSIZE=20
-TODO_FILE=~/Documents/Text\ Files/To-do\ List.todo
 
 HISTFILE=~/.zsh_histfile
 HISTSIZE=10000
@@ -34,20 +34,17 @@ SAVEHIST=$HISTSIZE
 if [[ $OSTYPE == darwin* ]]; then
   WIRESHARK=(/usr/local/Cellar/wireshark/*/bin/*(N:t))
 
-  path=(/usr/local/bin /usr/local/sbin /usr/local/Cellar/curl/*/bin(N) /bin /sbin /usr/bin /usr/sbin /usr/X11/bin ~/Scripts/OSX(N))
+  path=(~/Scripts/OSX(N) ~/Scripts(N) ~/.ruby/bin(N) /usr/local/bin(N) /usr/local/Cellar/curl/*/bin(N) /usr/bin /bin /usr/local/sbin(N) /usr/sbin /sbin)
 else
-  path+=(~/Scripts/Linux(N))
-
   umask 077
+
+  path=(~/Scripts/Linux(N) ~/Scripts(N) ~/.ruby/bin(N) /usr/local/bin /usr/bin /usr/bin/core_perl(N) /bin /usr/local/sbin /usr/sbin /sbin)
 fi
-path+=(~/Scripts(N) ~/.ruby/bin(N))
 
 setopt combiningchars
 setopt correct
 setopt interactivecomments
-setopt longlistjobs
 setopt nobeep
-setopt notify
 setopt promptsubst
 
 setopt appendhistory
@@ -61,6 +58,10 @@ setopt incappendhistory
 
 setopt autopushd
 setopt pushdignoredups
+
+setopt longlistjobs
+setopt nobgnice
+setopt nonotify
 
 [[ ! $TERM == dumb ]] && autoload -U colors && colors
 autoload -U compinit && compinit
@@ -83,7 +84,7 @@ precmd() {
   echo
 }
 
-function git_branch {
+git_branch() {
   REFERENCE=$(git symbolic-ref HEAD 2> /dev/null) || return
   BRANCH=${REFERENCE#refs/heads/}
 
@@ -100,15 +101,17 @@ function git_branch {
   fi
 }
 
-function todo_info {
-  REFERENCE=$(egrep "(^- |^! |^=)" $TODO_FILE 2> /dev/null | wc -l) || return
-  [[ $REFERENCE -gt 0 ]] && echo "%F{green}$REFERENCE%f "
+todo_info() {
+  if [ ! -z $TODO_FILE ]; then
+    REFERENCE=$(egrep "(^- |^! |^=)" $TODO_FILE 2> /dev/null | wc -l) || return
+    [[ $REFERENCE -gt 0 ]] && echo "%F{green}$REFERENCE%f "
+  fi
 }
 
 if [[ $TERM == dumb ]]; then
-  PROMPT='%~ $ '
+  PROMPT='%~ %# '
 else
-  PROMPT='%B${(C)USER} %F{yellow}${(C)HOST%%.*}%f%b %~ %B$(todo_info)%(?..%F{red}%?%f )%F{blue}$%f%b '
+  PROMPT='%B${(U)USER} %F{yellow}${(C)HOST%%.*}%f%b %~ %B$(todo_info)%(?..%F{red}%?%f )%F{blue}%#%f%b '
   RPROMPT='%B$(git_branch)%b'
 fi
 
@@ -117,8 +120,10 @@ if [[ $OSTYPE == darwin* ]]; then
   alias cf="say command finished"
   alias eject="osascript -e 'tell application \"Finder\" to eject (every disk whose ejectable is true)' && echo 'Ejecting all external drives.'"
   alias o="open"
+  alias psme='\ps -xu $USER -o user,pid,%cpu,%mem,start,command'
   alias safari="open -a Safari"
   alias study="school && tim -p"
+  alias top="top -o cpu"
   alias webcam="imagesnap -t 2 -w 1"
 
   alias awk="gawk"
@@ -138,9 +143,6 @@ if [[ $OSTYPE == darwin* ]]; then
   alias keepm="mv ~/Music/Trial/* ~/Music/MP3/"
   alias movem='cd /Volumes/External/Music/FLAC && mv "$(random)" ~/Music/Trial/ && cd - >& /dev/null && open ~/Music/Trial'
   alias removem="ls ~/Music/Trial/ && rm -rf ~/Music/Trial/*"
-
-  alias top="top -o cpu"
-  alias topme='top -o cpu -U $USER'
 
   alias tvim="/Applications/MacVim.app/Contents/MacOS/Vim"
   alias tvimdiff="/Applications/MacVim.app/Contents/MacOS/Vim -d"
@@ -169,7 +171,7 @@ else
 
   alias cal="cal -m"
   alias ls="ls -Fh --color=auto"
-  alias topme='top -U $USER'
+  alias psme='\ps x -u $USER -o user,pid,%cpu,%mem,start,command'
   alias vl='tail -n $LINES -f /var/log/everything.log'
 fi
 
@@ -186,9 +188,11 @@ alias iip="curl icanhazip.com"
 alias ka="killall"
 alias mkdir="mkdir -pv"
 alias ping="ping -c 10"
+alias ps="ps ax -o user,pid,%cpu,%mem,start,command"
 alias random='FILES=(*) && echo $FILES[$RANDOM%$#FILES+1]'
 alias recent="ls -t | head -n 5"
 alias reload="source ~/.zshrc"
+alias topme='top -U $USER'
 alias tv='vim "$TODO_FILE"'
 alias wgetp="wget --page-requisites --adjust-extension --convert-links"
 alias ycal='cal $(date +%Y)'
@@ -242,203 +246,10 @@ alias rint="tim -ri"
 alias phpweb="php -S 0.0.0.0:8080"
 alias pyweb="python3 -m http.server 8080"
 
-alias ps="ps aux"
-alias psme="\ps ux"
-
 alias tm="tmux"
 alias tma="tmux attach"
 
 for X in $SSH_HOSTS; do
   alias $X="ssh $X"
 done
-
-if [[ $OSTYPE == darwin* ]]; then
-  function dict {
-    if [[ $# == 1 ]]; then
-      open "dict://$1"
-    else
-      echo "Usage: $0 [WORD]..."
-    fi
-  }
-
-  function f {
-    if [[ $# -gt 0 ]]; then
-      open -a Finder $*
-    else
-      open .
-    fi
-  }
-
-  function man2pdf {
-    if [[ $# -gt 0 ]]; then
-      for ARGUMENT in $*; do
-        man -t $ARGUMENT | open -f -a Preview
-      done
-    else
-      echo "Usage: $0 [MAN PAGE(S)]..."
-    fi
-  }
-
-  function ql {
-    if [[ $# -gt 0 ]]; then
-      qlmanage -p $* >& /dev/null
-    else
-      qlmanage
-    fi
-  }
-
-  function smb {
-    if [[ $# == 1 ]]; then
-      open "smb://$1"
-    else
-      echo "Usage: $0 [IP/DNS]..."
-    fi
-  }
-
-  function vim {
-    if [[ $# -gt 0 ]]; then
-      /Applications/MacVim.app/Contents/MacOS/Vim -g --remote-tab-silent $*
-    else
-      /Applications/MacVim.app/Contents/MacOS/Vim -g
-    fi
-  }
-
-  function vnc {
-    if [[ $# == 1 ]]; then
-      open "vnc://$1"
-    else
-      echo "Usage: $0 [IP/DNS]..."
-    fi
-  }
-else
-  if type -p pacman >& /dev/null; then
-    function pacs {
-      CL='\\e['
-      RS='\\e[0;0m'
-
-      echo -e "$(pacman -Ss "$*" | sed "
-        /^core/         s,.*,${CL}1;31m&${RS},
-        /^extra/        s,.*,${CL}0;32m&${RS},
-        /^community/    s,.*,${CL}1;35m&${RS},
-        /^[^[:space:]]/ s,.*,${CL}0;36m&${RS},
-      ")" | less
-    }
-  fi
-fi
-
-function 256colors {
-  for X in {0..255} ; do
-    echo "\x1b[38;5;${X}mColor ${X}"
-  done
-}
-
-function ff {
-  if [[ $# == 1 ]]; then
-    find -L . -iname $1 | sed 's/.\///'
-  else
-    echo "Usage: $0 [PATTERN]..."
-  fi
-}
-
-function ffp {
-  if [[ $# == 1 ]]; then
-    find -L "$PWD" -iname $1
-  else
-    echo "Usage: $0 [PATTERN]..."
-  fi
-}
-
-function h {
-  if [[ $# -gt 0 ]]; then
-    history -i 1 | grep "$*"
-  else
-    history -20
-  fi
-}
-
-function mkcd {
-  if [[ $# == 1 ]]; then
-    mkdir -p $1
-    cd $1
-  else
-    echo "Usage: $0 [PATH]..."
-  fi
-}
-
-function p {
-  if [[ $# -gt 0 ]]; then
-    ps | tail -n +2 | grep -v "grep $*" | grep "$*"
-  else
-    ps
-  fi
-}
-
-function perml {
-  if [[ $# -gt 0 ]]; then
-    if [[ $OSTYPE == darwin* ]]; then
-      find $* -type d -exec chmod -N "{}" \; -exec chmod 755 "{}" \;
-      find $* -type f -exec chmod -N "{}" \; -exec chmod 644 "{}" \;
-    else
-      find $* -type d -exec chmod 755 "{}" \;
-      find $* -type f -exec chmod 644 "{}" \;
-    fi
-  else
-    echo "Usage: $0 [PATH]..."
-  fi
-}
-
-function perms {
-  if [[ $# -gt 0 ]]; then
-    if [[ $OSTYPE == darwin* ]]; then
-      find $* -type d -exec chmod -N "{}" \; -exec chmod 700 "{}" \;
-      find $* -type f -exec chmod -N "{}" \; -exec chmod 600 "{}" \;
-    else
-      find $* -type d -exec chmod 700 "{}" \;
-      find $* -type f -exec chmod 600 "{}" \;
-    fi
-  else
-    echo "Usage: $0 [PATH]..."
-  fi
-}
-
-function rgrep {
-  if [[ $# == 1 ]]; then
-    grep -r $1 .
-  elif [[ $# == 2 ]]; then
-    grep -r $*
-  else
-    echo "Usage: $0 [PATTERN] [FILENAME]..."
-  fi
-}
-
-function t {
-  [ ! -f $TODO_FILE ] && echo "TODO file does not exist." && return 1
-
-  if [[ $# -gt 0 ]]; then
-    sed '/^[#tab]*$/d' $TODO_FILE > $TODO_FILE.tmp
-    echo "- $*\n" >> $TODO_FILE.tmp
-    mv -f $TODO_FILE.tmp $TODO_FILE >& /dev/null
-  else
-    if [ ! -s $TODO_FILE ]; then
-      echo "TODO file is currently empty." && return
-    else
-      sed '/^[#tab]*$/d' $TODO_FILE
-    fi
-  fi
-}
-
-function tcolors {
-  for X in {30..37} ; do
-    echo -n "\033[0;${X}m0;${X}m\033[0m "
-  done
-  echo
-  for X in {30..37} ; do
-    echo -n "\033[1;${X}m1;${X}m\033[0m "
-  done
-  echo
-  for X in {40..47} ; do
-    echo -n "\033[1;${X}m1;${X}m\033[0m "
-  done
-  echo
-}
 

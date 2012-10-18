@@ -1,0 +1,11 @@
+#!/usr/bin/env zsh
+
+# Written by Göran Gustafsson <gustafsson.g@gmail.com>.
+
+if [[ $# == 1 ]]; then
+  mkdir -p $1
+  cd $1
+else
+  echo "Usage: $0:t [PATH]..."
+fi
+

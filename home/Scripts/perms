@@ -1,0 +1,16 @@
+#!/usr/bin/env zsh
+
+# Written by Göran Gustafsson <gustafsson.g@gmail.com>.
+
+if [[ $# -gt 0 ]]; then
+  if [[ $OSTYPE == darwin* ]]; then
+    find $* -type d -exec chmod -N "{}" \; -exec chmod 700 "{}" \;
+    find $* -type f -exec chmod -N "{}" \; -exec chmod 600 "{}" \;
+  else
+    find $* -type d -exec chmod 700 "{}" \;
+    find $* -type f -exec chmod 600 "{}" \;
+  fi
+else
+  echo "Usage: $0:t [PATH]..."
+fi
+

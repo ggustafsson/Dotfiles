@@ -1,0 +1,12 @@
+#!/usr/bin/env zsh
+
+# Written by Göran Gustafsson <gustafsson.g@gmail.com>.
+
+if [[ $# == 1 ]]; then
+  grep -r $1 .
+elif [[ $# == 2 ]]; then
+  grep -r $*
+else
+  echo "Usage: $0:t [PATTERN] [FILENAME]..."
+fi
+

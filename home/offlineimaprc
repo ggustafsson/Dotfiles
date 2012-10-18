@@ -12,11 +12,11 @@ remoterepository = LNU-Remote
 
 [Repository Gmail-Local]
 type = Maildir
-localfolders = ~/Storage/Mail
+localfolders = ~/Storage/Mail/Gmail
 
 [Repository LNU-Local]
 type = Maildir
-localfolders = ~/Storage/Mail\ LNU
+localfolders = ~/Storage/Mail/LNU
 
 [Repository Gmail-Remote]
 type = Gmail

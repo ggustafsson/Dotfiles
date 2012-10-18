@@ -2,10 +2,18 @@
 
 # Written by Göran Gustafsson <gustafsson.g@gmail.com>.
 
-# Fix the permissions on the devices that is needed for Wireshark on OS X.
+# This modifies the group owner and file permissions on the /dev/bpf* files so
+# i can run Wireshark under OS X.
+
+# I have this in my zshrc file to make things work smoothly.
+#
+# WIRESHARK=(/usr/local/Cellar/wireshark/*/bin/*(N:t))
+# for X in $WIRESHARK; do
+#   alias $X="wiresharkfix $X"
+# done
 
 if [ ! -w /dev/bpf1 ]; then
-  sudo chgrp Twiggy /dev/bpf*
+  sudo chgrp wireshark /dev/bpf*
   sudo chmod 660 /dev/bpf*
 fi
 

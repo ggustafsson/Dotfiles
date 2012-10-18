@@ -1,0 +1,10 @@
+#!/usr/bin/env zsh
+
+# Written by Göran Gustafsson <gustafsson.g@gmail.com>.
+
+if [[ $# -gt 0 ]]; then
+  history -i 1 | grep "$*"
+else
+  history -20
+fi
+

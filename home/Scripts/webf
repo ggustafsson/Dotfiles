@@ -55,10 +55,12 @@ else
   git clone git://github.com/sdepold/jquery-rss.git $DLPATH/jQuery\ RSS
 fi
 
-if [ ! -d $DLPATH/jQuery ]; then
-  mkdir $DLPATH/jQuery
+[ ! -d $DLPATH/jQuery ] && mkdir $DLPATH/jQuery
+if [[ $OSTYPE == darwin* ]]; then
+  open http://jquery.com/download
+else
+  links http://jquery.com/download
 fi
-open 'http://jquery.com/download/'
 
 date > $DLPATH/latest_update.txt
 

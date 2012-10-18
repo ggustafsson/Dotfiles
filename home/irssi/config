@@ -18,11 +18,11 @@ servers = (
 chatnets = {
   Freenode = {
     type = "IRC";
-    autosendcmd = "/^MSG -freenode NickServ identify twiggy ";
+    autosendcmd = "/^MSG -freenode NickServ identify GLEG X; wait 2000";
   };
   Bitlbee = {
     type = "IRC";
-    autosendcmd = "/^MSG -bitlbee root identify ";
+    autosendcmd = "/^MSG -bitlbee root identify X";
   };
 };
 
@@ -203,8 +203,8 @@ settings = {
   };
   core = {
     real_name = "Göran Gustafsson";
-    user_name = "twiggy";
-    nick = "twiggy";
+    user_name = "root";
+    nick = "GLEG";
     recode = "yes";
     recode_fallback = "ISO-8859-1";
     recode_autodetect_utf8 = "yes";
@@ -226,7 +226,7 @@ settings = {
     beep_cmd = "aplay ~/.irssi/beep.wav >& /dev/null";
   };
   "irc/core" = {
-    alternate_nick = "twiggz";
+    alternate_nick = "GLEG_";
     ctcp_version_reply = "irssi v6.66 - running on din mamma";
     join_auto_chans_on_invite = "no";
     usermode = "+i";
@@ -236,9 +236,7 @@ settings = {
 logs = { };
 ignores = ( );
 hilights = (
-  { text = "twiggy"; nick = "yes"; word = "yes"; },
-  { text = "twigg"; nick = "yes"; word = "yes"; },
-  { text = "twiggz"; nick = "yes"; word = "yes"; },
+  { text = "gleg"; nick = "yes"; word = "yes"; },
   { text = "goran"; nick = "yes"; word = "yes"; },
   { text = "göran"; nick = "yes"; word = "yes"; }
 );

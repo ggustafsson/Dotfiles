@@ -1,0 +1,10 @@
+#!/usr/bin/env zsh
+
+# Written by Göran Gustafsson <gustafsson.g@gmail.com>.
+
+if [[ $# == 1 ]]; then
+  open "vnc://$1"
+else
+  echo "Usage: $0:t [IP/DNS]..."
+fi
+
