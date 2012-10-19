@@ -6,7 +6,10 @@
 #        flaccon *.flac
 #        find . -type f -iname "*.flac" -exec flaccon "{}" \;
 
-[[ $# == 0 ]] && echo "Usage: $0:t [FILENAME(S)]..." && return
+if [[ $# == 0 ]]; then
+  echo "Usage: $0:t [FILENAME(S)]..."
+  return
+fi
 
 echo "Converting FLAC file(s) to MP3!"
 

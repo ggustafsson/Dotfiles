@@ -2,7 +2,10 @@
 
 # Written by Göran Gustafsson <gustafsson.g@gmail.com>.
 
-[ -z $TODO_FILE ] && echo "Variable TODO_FILE is not set!" && return 1
+if [ -z $TODO_FILE ]; then
+  echo "Variable TODO_FILE is not set!"
+  return 1
+fi
 
 if [[ $# -gt 0 ]]; then
   if [ -f $TODO_FILE ]; then

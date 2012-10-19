@@ -2,18 +2,14 @@
 
 # Written by Göran Gustafsson <gustafsson.g@gmail.com>.
 
-[[ $# == 0 ]] && echo "Usage: $0:t [FILENAME(S)]..." && return
+if [[ $# == 0 ]]; then
+  echo "Usage: $0:t [FILENAME(S)]..."
+  return
+fi
 
 for ARGUMENT in $*; do
   if [ -f $ARGUMENT ]; then
     case $ARGUMENT in
-      *.gz)
-        if [[ $ARGUMENT == *.tar.gz ]]; then
-          tar zxvf $ARGUMENT
-        else
-          gunzip $ARGUMENT
-        fi
-      ;;
       *.bz2)
         if [[ $ARGUMENT == *.tar.bz2 ]]; then
           tar xvjf $ARGUMENT
@@ -21,12 +17,19 @@ for ARGUMENT in $*; do
           bunzip2 $ARGUMENT
         fi
       ;;
-      *.tar)  tar xvf    $ARGUMENT ;;
-      *.tgz)  tar zxvf   $ARGUMENT ;;
-      *.tbz2) tar xvjf   $ARGUMENT ;;
-      *.zip)  unzip      $ARGUMENT ;;
+      *.gz)
+        if [[ $ARGUMENT == *.tar.gz ]]; then
+          tar zxvf $ARGUMENT
+        else
+          gunzip $ARGUMENT
+        fi
+      ;;
       *.rar)  unrar x    $ARGUMENT ;;
+      *.tar)  tar xvf    $ARGUMENT ;;
+      *.tbz2) tar xvjf   $ARGUMENT ;;
+      *.tgz)  tar zxvf   $ARGUMENT ;;
       *.Z)    uncompress $ARGUMENT ;;
+      *.zip)  unzip      $ARGUMENT ;;
       *.7z)   7z x       $ARGUMENT ;;
       *)
         echo "File $ARGUMENT cannot be extracted via $0:t."
