@@ -2,41 +2,40 @@
 
 # Written by Göran Gustafsson <gustafsson.g@gmail.com>.
 
-if [[ $# == 0 ]]; then
+if [[ $# -gt 0 ]]; then
+  for ARGUMENT in $*; do
+    if [ -f $ARGUMENT ]; then
+      case $ARGUMENT in
+        *.bz2)
+          if [[ $ARGUMENT == *.tar.bz2 ]]; then
+            tar xvjf $ARGUMENT
+          else
+            bunzip2 $ARGUMENT
+          fi
+        ;;
+        *.gz)
+          if [[ $ARGUMENT == *.tar.gz ]]; then
+            tar zxvf $ARGUMENT
+          else
+            gunzip $ARGUMENT
+          fi
+        ;;
+        *.rar)  unrar x    $ARGUMENT ;;
+        *.tar)  tar xvf    $ARGUMENT ;;
+        *.tbz2) tar xvjf   $ARGUMENT ;;
+        *.tgz)  tar zxvf   $ARGUMENT ;;
+        *.Z)    uncompress $ARGUMENT ;;
+        *.zip)  unzip      $ARGUMENT ;;
+        *.7z)   7z x       $ARGUMENT ;;
+        *)
+          echo "File $ARGUMENT cannot be extracted via $0:t."
+        ;;
+      esac
+    else
+      echo "File $ARGUMENT does not exist."
+    fi
+  done
+else
   echo "Usage: $0:t [FILENAME(S)]..."
-  return
 fi
-
-for ARGUMENT in $*; do
-  if [ -f $ARGUMENT ]; then
-    case $ARGUMENT in
-      *.bz2)
-        if [[ $ARGUMENT == *.tar.bz2 ]]; then
-          tar xvjf $ARGUMENT
-        else
-          bunzip2 $ARGUMENT
-        fi
-      ;;
-      *.gz)
-        if [[ $ARGUMENT == *.tar.gz ]]; then
-          tar zxvf $ARGUMENT
-        else
-          gunzip $ARGUMENT
-        fi
-      ;;
-      *.rar)  unrar x    $ARGUMENT ;;
-      *.tar)  tar xvf    $ARGUMENT ;;
-      *.tbz2) tar xvjf   $ARGUMENT ;;
-      *.tgz)  tar zxvf   $ARGUMENT ;;
-      *.Z)    uncompress $ARGUMENT ;;
-      *.zip)  unzip      $ARGUMENT ;;
-      *.7z)   7z x       $ARGUMENT ;;
-      *)
-        echo "File $ARGUMENT cannot be extracted via $0:t."
-      ;;
-    esac
-  else
-    echo "File $ARGUMENT does not exist."
-  fi
-done
 
