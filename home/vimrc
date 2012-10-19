@@ -179,10 +179,12 @@ nmap <Leader>t8 :set noexpandtab shiftwidth=8 softtabstop=0 tabstop=8<CR>
 nmap <Leader>tm :edit ~/Documents/Text\ Files/Temporary.blowfish<CR>
 nmap <Leader>to :edit ~/Documents/Text\ Files/To-do\ List.todo<CR>
 nmap <Leader>tr :NERDTreeToggle<CR>
+nmap <Leader>tw :set textwidth=78
 nmap <Leader>un :edit!<CR>
 nmap <Leader>vi :edit ~/.vimrc<CR>
 nmap <Leader>w3 :!~/Scripts/validate "%"<CR>
 nmap <Leader>wr :set wrap!<CR>
+nmap <Leader>ws :%s/\s\+$//<CR>:nohlsearch<CR>
 nmap <Leader>zs :edit ~/.zshrc<CR>
 
 nmap §   :LustyBufferExplorer<CR>
