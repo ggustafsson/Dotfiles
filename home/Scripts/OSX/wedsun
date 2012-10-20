@@ -18,6 +18,7 @@ brew update
 brew upgrade
 brew cleanup
 echo
+gem update --system
 gem update
 echo
 otherd
