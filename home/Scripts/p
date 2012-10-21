@@ -4,7 +4,7 @@
 
 if [[ $# -gt 0 ]]; then
   ps ax -o user,pid,%cpu,%mem,start,command | head -n 1
-  ps ax -o user,pid,%cpu,%mem,start,command | tail -n +2 | grep -v "grep $*" | grep "$*"
+  ps ax -o user,pid,%cpu,%mem,start,command | tail -n +2 | egrep -v "(grep $*|$0 $*)" | grep "$*"
 else
   ps ax -o user,pid,%cpu,%mem,start,command
 fi
