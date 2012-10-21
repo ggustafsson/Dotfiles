@@ -45,6 +45,7 @@ setopt combiningchars
 setopt correct
 setopt interactivecomments
 setopt nobeep
+setopt noclobber
 setopt promptsubst
 
 setopt appendhistory

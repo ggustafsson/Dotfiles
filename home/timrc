@@ -6,7 +6,7 @@ if [[ $OSTYPE == darwin* ]]; then
 
   #INTERVAL=
 
-  WORK_CMD="terminal-notifier -message 'Start working now!' -title Tim -activate com.apple.Terminal >& /dev/null && say turn on the timer and start working now"
+  WORK_CMD="terminal-notifier -message 'Start working now!' -title Tim -activate com.apple.Terminal >& /dev/null && say start working now"
   BREAK_CMD="terminal-notifier -message 'Take a little break!' -title Tim -activate com.apple.Terminal >& /dev/null && say take a little break"
 
   POMODORO_CMD="say working session is over. you win && open ~/Storage/Celebrate.flv"
