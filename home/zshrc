@@ -113,7 +113,6 @@ if [[ $OSTYPE == darwin* ]]; then
   alias cde="cd /Volumes/External"
   alias cf="say command finished"
   alias eject="osascript -e 'tell application \"Finder\" to eject (every disk whose ejectable is true)' && echo 'Ejecting all external drives.'"
-  alias mvimdiff='/Applications/MacVim.app/Contents/MacOS/Vim -d -g $* >& /dev/null'
   alias o="open"
   alias psme='\ps -xu $USER -o user,pid,%cpu,%mem,start,command'
   alias safari="open -a Safari"
@@ -138,6 +137,10 @@ if [[ $OSTYPE == darwin* ]]; then
   alias keepm="mv ~/Music/Trial/* ~/Music/MP3/"
   alias movem='cd /Volumes/External/Music/FLAC && mv "$(random)" ~/Music/Trial/ && cd - >& /dev/null && open ~/Music/Trial'
   alias removem="ls ~/Music/Trial/ && rm -rf ~/Music/Trial/*"
+
+  alias gv="gvim"
+  alias gvd="gvimdiff"
+  alias gvimdiff='/Applications/MacVim.app/Contents/MacOS/Vim -d -g $* >& /dev/null'
 
   alias wifioff="networksetup -setairportpower en0 off"
   alias wifion="networksetup -setairportpower en0 on"
@@ -240,6 +243,9 @@ alias pyweb="python3 -m http.server 8080"
 
 alias tm="tmux"
 alias tma="tmux attach"
+
+alias v="vim"
+alias vd="vimdiff"
 
 for X in $SSH_HOSTS; do
   alias $X="ssh $X"
