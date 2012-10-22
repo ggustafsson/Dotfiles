@@ -1,7 +1,3 @@
-[user]
-  name  = Göran Gustafsson
-  email = gustafsson.g@gmail.com
-
 [core]
   excludesfile = ~/.gitignore_global
 
@@ -11,6 +7,13 @@
   interactive = auto
   status      = auto
   ui          = auto
+
+[push]
+  default = simple
+
+[user]
+  name  = Göran Gustafsson
+  email = gustafsson.g@gmail.com
 
 [github]
   user = gustafsson.g@gmail.com
