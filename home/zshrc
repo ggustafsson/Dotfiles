@@ -5,6 +5,9 @@ export GREP_OPTIONS="--color=auto -i"
 export LC_COLLATE=C
 export TODO_FILE=~/Documents/Text\ Files/To-do\ List.todo
 
+export EDITOR=vim
+export VISUAL=$EDITOR
+
 export LESS=FRSX
 export PAGER=less
 
@@ -13,16 +16,6 @@ export LS_COLORS="$LS_COLORS:*.bmp=01;33:*.gif=01;33:*.ico=01;33:*.jpg=01;33:*.j
 export LS_COLORS="$LS_COLORS:*.flac=01;35:*.nsf=01;35:*.nsfe=01;35:*.m4r=01;35:*.mp3=01;35:*.ogg=01;35:*.wav=01;35"
 export LS_COLORS="$LS_COLORS:*.avi=01;36:*.flv=01;36:*.f4v=01;36:*.mkv=01;36:*.mov=01;36:*.mpg=01;36:*.mpeg=01;36:*.mp4=01;36:*.m4v=01;36:*.wmv=01;36"
 export LS_COLORS="$LS_COLORS:*.dmg=01;31:*.iso=01;31:*.rar=01;31:*.tar=01;31:*.tar.bz2=01;31:*.tar.gz=01;31:*.tgz=01;31:*.zip=01;31:*.7z=01;31"
-
-if [[ $OSTYPE == darwin* ]]; then
-  export EDITOR="/Applications/MacVim.app/Contents/MacOS/Vim -g --remote-tab-silent"
-  export GIT_EDITOR=/Applications/MacVim.app/Contents/MacOS/Vim
-  export VISUAL=$EDITOR
-else
-  export EDITOR=vim
-  export GIT_EDITOR=$EDITOR
-  export VISUAL=$EDITOR
-fi
 
 [ -f ~/.ssh/config ] && SSH_HOSTS=($(sed -n 's/^Host //p' ~/.ssh/config))
 DIRSTACKSIZE=20
@@ -120,6 +113,7 @@ if [[ $OSTYPE == darwin* ]]; then
   alias cde="cd /Volumes/External"
   alias cf="say command finished"
   alias eject="osascript -e 'tell application \"Finder\" to eject (every disk whose ejectable is true)' && echo 'Ejecting all external drives.'"
+  alias mvimdiff='/Applications/MacVim.app/Contents/MacOS/Vim -d -g $* >& /dev/null'
   alias o="open"
   alias psme='\ps -xu $USER -o user,pid,%cpu,%mem,start,command'
   alias safari="open -a Safari"
@@ -144,10 +138,6 @@ if [[ $OSTYPE == darwin* ]]; then
   alias keepm="mv ~/Music/Trial/* ~/Music/MP3/"
   alias movem='cd /Volumes/External/Music/FLAC && mv "$(random)" ~/Music/Trial/ && cd - >& /dev/null && open ~/Music/Trial'
   alias removem="ls ~/Music/Trial/ && rm -rf ~/Music/Trial/*"
-
-  alias tvim="/Applications/MacVim.app/Contents/MacOS/Vim"
-  alias tvimdiff="/Applications/MacVim.app/Contents/MacOS/Vim -d"
-  alias vimdiff='/Applications/MacVim.app/Contents/MacOS/Vim -d -g $* >& /dev/null'
 
   alias wifioff="networksetup -setairportpower en0 off"
   alias wifion="networksetup -setairportpower en0 on"

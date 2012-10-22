@@ -2,9 +2,7 @@
 
 # Written by Göran Gustafsson <gustafsson.g@gmail.com>.
 
-if [[ $UID == 0 ]]; then
-  /Applications/MacVim.app/Contents/MacOS/Vim $*
-elif [[ $# -gt 0 ]]; then
+if [[ $# -gt 0 ]]; then
   /Applications/MacVim.app/Contents/MacOS/Vim -g --remote-tab-silent $*
 else
   /Applications/MacVim.app/Contents/MacOS/Vim -g
