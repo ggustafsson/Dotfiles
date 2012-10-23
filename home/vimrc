@@ -52,6 +52,7 @@ set statusline+=%(%{&paste?'[paste]':''}\ %)
 set statusline+=%=
 set statusline+=%(%v,\ %)
 set statusline+=%(%l/%L\ %)
+set tabline=%!TabLine()
 
 set list
 set listchars=tab:>-,trail:-,precedes:<,extends:>
@@ -176,6 +177,7 @@ nmap <Leader>ss :mksession! ~/.vim/session.vim<CR>
 nmap <Leader>t2 :set noexpandtab shiftwidth=2 softtabstop=0 tabstop=2<CR>
 nmap <Leader>t4 :set noexpandtab shiftwidth=4 softtabstop=0 tabstop=4<CR>
 nmap <Leader>t8 :set noexpandtab shiftwidth=8 softtabstop=0 tabstop=8<CR>
+nmap <Leader>ta <C-w>T
 nmap <Leader>tm :edit ~/Documents/Text\ Files/Temporary.blowfish<CR>
 nmap <Leader>to :edit ~/Documents/Text\ Files/To-do\ List.todo<CR>
 nmap <Leader>tr :NERDTreeToggle<CR>
@@ -187,11 +189,16 @@ nmap <Leader>wr :set wrap!<CR>
 nmap <Leader>ws :%s/\s\+$//<CR>:nohlsearch<CR>
 nmap <Leader>zs :edit ~/.zshrc<CR>
 
-nmap §   :LustyBufferExplorer<CR>
 nmap vil ^vg_
 
+nmap + <C-w>+
+nmap - <C-w>-
+nmap Z <C-w>>
+nmap > <C-w><
+
 nmap <Backspace> :nohlsearch<CR>
-nmap <Tab>       :bnext<CR>
+nmap <Tab>       :LustyBufferExplorer<CR>
+nmap <S-Tab>     :bnext<CR>
 
 nmap <Leader><Space> <Plug>NERDCommenterToggle
 vmap <Leader><Space> <Plug>NERDCommenterToggle
@@ -268,6 +275,49 @@ function! LineNumber()
     echo "set relativenumber"
     set relativenumber
   endif
+endfunction
+
+function! TabLine()
+  let label = ''
+  let i = 1
+
+  while i <= tabpagenr('$')
+    let buflist = tabpagebuflist(i)
+    let winnr = tabpagewinnr(i)
+    let tabnr = tabpagewinnr(i,'$')
+    let label .= '%' . i . 'T'
+    let label .= (i == tabpagenr() ? '%#TabLineSel#' : '%#TabLine#')
+    let label .= ' '
+    let label .= (tabnr > 1 ? tabnr : '')
+    let bufnr = buflist[winnr - 1]
+
+    if getbufvar(bufnr, "&modified")
+      let label .= '+ '
+    elseif tabnr > 1
+      let label .= ' '
+    endif
+
+    let file = bufname(bufnr)
+    let buftype = getbufvar(bufnr, 'buftype')
+
+    if buftype == 'nofile'
+      if file =~ '\/.'
+        let file = substitute(file, '.*\/\ze.', '', '')
+      endif
+    else
+      let file = fnamemodify(file, ':p:t')
+    endif
+
+    if file == ''
+      let file = '[No Name]'
+    endif
+
+    let label .= file . ' '
+    let i = i + 1
+  endwhile
+
+  let label .= '%T%#TabLineFill#%='
+  return label
 endfunction
 
 augroup Main
