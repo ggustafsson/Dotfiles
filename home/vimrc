@@ -82,7 +82,7 @@ if has("gui_running")
     set guifont=Inconsolata:h14
     set linespace=1
 
-    set columns=171
+    set columns=186
     set lines=44
   endfunction
 
@@ -253,11 +253,11 @@ endfunction
 
 function! ColorColumn()
   if empty(&colorcolumn)
-    echo "colorcolumn=79,80"
-    setlocal colorcolumn=79,80
-  elseif &colorcolumn == "79,80"
-    echo "colorcolumn=73,74"
-    setlocal colorcolumn=73,74
+    echo "colorcolumn=79"
+    setlocal colorcolumn=79
+  elseif &colorcolumn == "79"
+    echo "colorcolumn=73"
+    setlocal colorcolumn=73
   else
     echo "colorcolumn="
     setlocal colorcolumn=
@@ -327,9 +327,9 @@ augroup Main
   autocmd BufNewFile,BufRead INSTALL,README,TODO setlocal filetype=text
   autocmd BufNewFile,BufRead config              setlocal filetype=conf
 
-  autocmd FileType gitcommit          setlocal colorcolumn=73,74 nolist spell
+  autocmd FileType gitcommit          setlocal colorcolumn=73 nolist spell
   autocmd FileType help               setlocal colorcolumn=
-  autocmd FileType markdown,text,todo setlocal colorcolumn=79,80 textwidth=78
+  autocmd FileType markdown,text,todo setlocal colorcolumn=79 textwidth=78
   autocmd FileType python             setlocal expandtab shiftwidth=4 softtabstop=4
 
   autocmd BufWritePost ~/.vimrc source %
