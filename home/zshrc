@@ -214,8 +214,8 @@ alias rm="rm -v"
 alias cpass="openssl rand -base64 20"
 alias pass="vim ~/Documents/Text\ Files/Passwords.blowfish"
 
-alias cdsd='echo "Change directory to saved PATH." && cd $SAVE_DIR'
-alias sd='echo "Saving current PATH." && SAVE_DIR=$PWD'
+alias cdsd='[ ! -z $SAVED_DIR ] && echo "Changing directory to SAVED_DIR." && cd $SAVED_DIR || echo "SAVED_DIR is empty."'
+alias sd='echo "Saving current path to SAVED_DIR." && export SAVED_DIR=$PWD'
 
 alias d="ls -l"
 alias da="ls -la"

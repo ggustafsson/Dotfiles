@@ -83,7 +83,7 @@ if has("gui_running")
     set guifont=Inconsolata:h14
     set linespace=1
 
-    set columns=186
+    set columns=185
     set lines=44
   endfunction
 
