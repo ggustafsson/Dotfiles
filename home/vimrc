@@ -193,8 +193,8 @@ nmap vil ^vg_
 
 nmap + <C-w>+
 nmap - <C-w>-
-nmap Z <C-w>>
-nmap > <C-w><
+nmap > <C-w>>
+nmap Z <C-w><
 
 nmap <Backspace> :nohlsearch<CR>
 nmap <Tab>       :LustyBufferExplorer<CR>
