@@ -20,18 +20,24 @@ export LS_COLORS="$LS_COLORS:*.dmg=01;31:*.iso=01;31:*.rar=01;31:*.tar=01;31:*.t
 [ -f ~/.ssh/config ] && SSH_HOSTS=($(sed -n 's/^Host //p' ~/.ssh/config))
 DIRSTACKSIZE=20
 
+d=~/Downloads
+p=~/Projects
+s=~/School
+t=~/Documents/Text\ Files
+
 HISTFILE=~/.zsh_histfile
 HISTSIZE=10000
 SAVEHIST=$HISTSIZE
 
 if [[ $OSTYPE == darwin* ]]; then
+  e=/Volumes/External
   WIRESHARK=(/usr/local/Cellar/wireshark/*/bin/*(N:t))
 
   path=(~/Scripts/OSX(N) ~/Scripts(N) ~/.ruby/bin(N) /usr/local/bin(N) /usr/local/Cellar/curl/*/bin(N) /usr/bin /bin /usr/local/sbin(N) /usr/sbin /sbin)
 else
-  umask 077
-
   path=(~/Scripts/Linux(N) ~/Scripts(N) ~/.ruby/bin(N) /usr/local/bin /usr/bin /usr/bin/core_perl(N) /bin /usr/local/sbin /usr/sbin /sbin)
+
+  umask 077
 fi
 
 setopt combiningchars
@@ -105,12 +111,11 @@ todo_info() {
 if [[ $TERM == dumb ]]; then
   PROMPT='%~ %# '
 else
-  PROMPT='%B${(U)USER} %F{yellow}${(C)HOST%%.*}%f%b %~ %B$(todo_info)%(?..%F{red}%?%f )%F{blue}%#%f%b '
+  PROMPT='%B${(U)USER} %F{yellow}${(C)HOST%%.*}%f%b ${PWD/$HOME/~} %B$(todo_info)%(?..%F{red}%?%f )%F{blue}%#%f%b '
   RPROMPT='%B$(git_branch)%b'
 fi
 
 if [[ $OSTYPE == darwin* ]]; then
-  alias cde="cd /Volumes/External"
   alias cf="say command finished"
   alias eject="osascript -e 'tell application \"Finder\" to eject (every disk whose ejectable is true)' && echo 'Ejecting all external drives.'"
   alias o="open"
@@ -196,11 +201,6 @@ alias -- -="cd -"
 alias ...="cd ../.."
 alias ..="cd .."
 
-alias cdd="cd ~/Downloads"
-alias cdp="cd ~/Projects"
-alias cds="cd ~/School"
-alias cdt="cd ~/Documents/Text\ Files"
-
 alias cl="wc -l"
 alias cw="wc -w"
 alias g="grep"
@@ -214,7 +214,7 @@ alias rm="rm -v"
 alias cpass="openssl rand -base64 20"
 alias pass="vim ~/Documents/Text\ Files/Passwords.blowfish"
 
-alias cdsd='[ ! -z $SAVED_DIR ] && echo "Changing directory to SAVED_DIR." && cd $SAVED_DIR || echo "SAVED_DIR is empty."'
+alias cdsd='[ ! -z $SAVED_DIR ] && echo ${SAVED_DIR/$HOME/\~} && cd $SAVED_DIR || echo "SAVED_DIR is empty."'
 alias sd='echo "Saving current path to SAVED_DIR." && export SAVED_DIR=$PWD'
 
 alias d="ls -l"
