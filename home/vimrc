@@ -178,7 +178,6 @@ nnoremap <Leader>ss :mksession! ~/.vim/session.vim<CR>
 nnoremap <Leader>t2 :set noexpandtab shiftwidth=2 softtabstop=0 tabstop=2<CR>
 nnoremap <Leader>t4 :set noexpandtab shiftwidth=4 softtabstop=0 tabstop=4<CR>
 nnoremap <Leader>t8 :set noexpandtab shiftwidth=8 softtabstop=0 tabstop=8<CR>
-nnoremap <Leader>ta <C-w>T
 nnoremap <Leader>tm :edit ~/Documents/Text\ Files/Temporary.blowfish<CR>
 nnoremap <Leader>to :edit ~/Documents/Text\ Files/To-do\ List.todo<CR>
 nnoremap <Leader>tr :NERDTreeToggle<CR>

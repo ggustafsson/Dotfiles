@@ -216,7 +216,6 @@ settings = {
     scrollback_lines = "2000";
   };
   "perl/core/scripts" = {
-    autoaway_timeout = "1800";
     awl_display_key = "$N:$H$C$S";
     awl_hide_data = "3";
     awl_position = "0";
