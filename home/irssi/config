@@ -74,6 +74,7 @@ aliases = {
   WN = "window new hide";
   WQUERY = "query -window";
   WW = "whowas";
+  afk = "away afk";
 };
 
 statusbar = {
@@ -243,4 +244,6 @@ channels = (
   { name = "#MacOSX"; chatnet = "Freenode"; autojoin = "yes"; },
   { name = "#archlinux"; chatnet = "Freenode"; autojoin = "yes"; }
 );
+
+logs = { };
 
