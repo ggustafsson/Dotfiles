@@ -1,0 +1,22 @@
+#!/usr/bin/env zsh
+
+# Written by Göran Gustafsson <gustafsson.g@gmail.com>.
+
+# Description: This script searches the current network (always /24) for open
+# network shares on port 445 (SMB/CIFS).
+
+# Usage: smbf
+
+IP=$(ifconfig en0 | sed -n 's/^[ \t]*//;s/inet //p' | awk '{ print $1 }')
+PORT=445
+
+echo "Scanning for network shares."
+
+RESULTS=$(nmap -sT ${IP}/24 -p $PORT --open | egrep "(Nmap scan report for|$PORT/tcp)")
+
+if [ ! -z $RESULTS ]; then
+  echo "\n$RESULTS"
+else
+  echo "\nNo network shares found!"
+fi
+
