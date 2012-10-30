@@ -2,6 +2,10 @@
 
 # Written by Göran Gustafsson <gustafsson.g@gmail.com>.
 
+# Description: This script opens a file or several files in Quick Look.
+
+# Usage: ql <file(s)>
+
 if [[ $# -gt 0 ]]; then
   qlmanage -p $* >& /dev/null
 else

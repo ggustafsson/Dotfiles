@@ -2,6 +2,13 @@
 
 # Written by Göran Gustafsson <gustafsson.g@gmail.com>.
 
+# Description: This script changes the permissions on all files and
+# directories under the specified path (including the root directory). The
+# permissions used are 755 for directories and 644 for files. It also removes
+# all of the extra permission attributes under OS X.
+
+# Usage: perml <path>
+
 if [[ $# -gt 0 ]]; then
   if [[ $OSTYPE == darwin* ]]; then
     find $* -type d -exec chmod -N "{}" \; -exec chmod 755 "{}" \;

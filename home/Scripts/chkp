@@ -2,6 +2,10 @@
 
 # Written by Göran Gustafsson <gustafsson.g@gmail.com>.
 
+# Description: This script checks the git status of all my projects.
+
+# Usage: chkp
+
 CURRENT_DIRECTORY=$PWD
 
 for DIRECTORY in ~/Projects/*; do

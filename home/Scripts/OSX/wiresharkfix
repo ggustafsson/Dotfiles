@@ -2,15 +2,18 @@
 
 # Written by Göran Gustafsson <gustafsson.g@gmail.com>.
 
-# This modifies the group owner and file permissions on the /dev/bpf* files so
-# i can run Wireshark under OS X.
-
-# I have this in my zshrc file to make things work smoothly.
+# Description: This script modifies the group owner and file permissions on
+# the /dev/bpf* files so i can run Wireshark under OS X.
+#
+# I have this in ~/.zshrc to make every wireshark command an alias that
+# executes this script before running the original command:
 #
 # WIRESHARK=(/usr/local/Cellar/wireshark/*/bin/*(N:t))
 # for X in $WIRESHARK; do
 #   alias $X="wiresharkfix $X"
 # done
+
+# Usage: <wireshark command>
 
 if [ ! -w /dev/bpf1 ]; then
   sudo chgrp wireshark /dev/bpf*

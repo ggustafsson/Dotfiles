@@ -2,6 +2,12 @@
 
 # Written by Göran Gustafsson <gustafsson.g@gmail.com>.
 
+# Description: This script displays the running processes and if a argument
+# is supplied then only the processes that matches the pattern is displayed.
+
+# Usage: p
+#        p <pattern>
+
 if [[ $# -gt 0 ]]; then
   ps ax -o user,pid,%cpu,%mem,start,command | head -n 1
   ps ax -o user,pid,%cpu,%mem,start,command | tail -n +2 | egrep -v "(grep $*|$0 $*)" | grep "$*"

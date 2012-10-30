@@ -2,6 +2,10 @@
 
 # Written by Göran Gustafsson <gustafsson.g@gmail.com>.
 
+# Description: This script deletes various space hogging files/directories.
+
+# Usage: frees
+
 echo "Deleting useless files:"
 
 rm -rfv ~/Library/Caches/com.apple.dt.Xcode/Downloads

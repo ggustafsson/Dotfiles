@@ -2,6 +2,11 @@
 
 # Written by Göran Gustafsson <gustafsson.g@gmail.com>.
 
+# Description: This script creates an animated gif image of several images.
+
+# Usage: gifit <file1> <file2> ...
+#        gifit *.jpg
+
 if [[ $# -gt 1 ]]; then
   for FILE in $*; do
     if [ ! -f $FILE ]; then

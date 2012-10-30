@@ -2,6 +2,10 @@
 
 # Written by Göran Gustafsson <gustafsson.g@gmail.com>.
 
+# Description: This script makes it easy to connect to VNC servers.
+
+# Usage: vnc <ip/dns>
+
 if [[ $# == 1 ]]; then
   open "vnc://$1"
 else

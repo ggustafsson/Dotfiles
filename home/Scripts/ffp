@@ -2,8 +2,13 @@
 
 # Written by Göran Gustafsson <gustafsson.g@gmail.com>.
 
+# Description: This script performs a case insensitive search for files under
+# the current working directory and prints out the full path to them.
+
+# Usage: ffp <pattern>
+
 if [[ $# == 1 ]]; then
-  find -L "$PWD" -iname $1
+  find -L "$PWD" -iname $1 | grep $1
 else
   echo "Usage: $0:t [PATTERN]..."
 fi

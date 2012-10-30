@@ -2,6 +2,11 @@
 
 # Written by Göran Gustafsson <gustafsson.g@gmail.com>.
 
+# Description: This script automatically downloads several Vim related git
+# repositories i want to keep up-to-date.
+
+# Usage: vimp
+
 DLPATH=~/.vim/bundle
 
 rm -rf ~/.vim/backups/bundle ~/.vim/backups/pathogen

@@ -2,6 +2,11 @@
 
 # Written by Göran Gustafsson <gustafsson.g@gmail.com>.
 
+# Description: This script changes a few settings that can only be changed
+# through the terminal and i don't want to run the commands manually.
+
+# Usage: osxdefaults
+
 # Put the Dock at the left/top (i use the Dock on the top left side).
 defaults write com.apple.dock pinning -string start
 killall dock

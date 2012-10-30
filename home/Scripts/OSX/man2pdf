@@ -2,6 +2,11 @@
 
 # Written by Göran Gustafsson <gustafsson.g@gmail.com>.
 
+# Description: This script converts man pages to PDF files with Preview.app.
+
+# Usage: man2pdf <man>
+#        man2pdf <man> <man> ...
+
 if [[ $# -gt 0 ]]; then
   for ARGUMENT in $*; do
     man -t $ARGUMENT | open -f -a Preview

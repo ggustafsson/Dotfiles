@@ -2,6 +2,12 @@
 
 # Written by Göran Gustafsson <gustafsson.g@gmail.com>.
 
+# Description: This script creates a directory (or several directories) and
+# then changes the current working directory to the one just created.
+
+# Usage: mkcd <path>
+#        mkcd <directory1/directory2/...>
+
 if [[ $# == 1 ]]; then
   mkdir -p $1
   cd $1

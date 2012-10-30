@@ -2,39 +2,53 @@
 
 # Written by Göran Gustafsson <gustafsson.g@gmail.com>.
 
-if [[ $# == 1 ]]; then
-  if [ -f $1 ]; then
-    if [[ $1 == *.html ]]; then
-      COMMAND='curl -sF "uploaded_file=@$FILENAME;type=text/html" -F output=json http://validator.w3.org/check'
-      CURRENT_DIRECTORY=$PWD
-      DIRECTORY=$1:A:h
-      FILENAME=$1:t
+# Description: This script makes it easy to validate HTML files through
+# http://validator.w3.org via the terminal.
+#
+# I have this in ~/.vimrc so i can easily validate files inside of Vim:
+#
+# nnoremap <Leader>w3 :!~/Scripts/validate "%"<CR>
 
-      cd $DIRECTORY
-      RESULTS=$(eval $COMMAND)
-      if [[ $? -gt 0 ]]; then
-        echo "Failed at getting results!"
+# Usage: validate <file(s)>
+
+if [[ $# -gt 0 ]]; then
+  echo "Validating HTML file(s)."
+
+  for FILE in $*; do
+    if [ -f $FILE ]; then
+      if [[ $FILE == *.html ]]; then
+        COMMAND='curl -sF "uploaded_file=@$FILENAME;type=text/html" -F output=json http://validator.w3.org/check'
+        CURRENT_DIRECTORY=$PWD
+        DIRECTORY=$1:A:h
+        FILENAME=$1:t
+
+        echo "\nValidating the file $FILE."
+
+        cd $DIRECTORY
+        RESULTS=$(eval $COMMAND)
+        if [[ $? -gt 0 ]]; then
+          echo "Failed at getting results!"
+          return 1
+        fi
+        cd $CURRENT_DIRECTORY
+
+        PARSED=$(echo $RESULTS | grep '"lastLine":')
+
+        if [ ! -z $PARSED ]; then
+          echo "Found error(s) on line(s):\n"
+          echo $PARSED | sed 's/^[ \t]*"lastLine":/ /;s/,//g' | sort -g | uniq
+        else
+          echo "No errors! :)"
+        fi
+      else
+        echo "File $1 does not end with html."
         return 1
       fi
-      cd $CURRENT_DIRECTORY
-
-      PARSED=$(echo $RESULTS | grep '"lastLine":')
-
-      if [ ! -z $PARSED ]; then
-        echo "Found error(s) on line(s):\n"
-        echo $PARSED | sed 's/^[ \t]*"lastLine":/ /;s/,//g' | sort -g | uniq
-      else
-        echo "No errors! :)"
-      fi
     else
-      echo "File $1 does not end with html."
-      return 1
+      echo "File $1 does not exist."
     fi
-  else
-    echo "File $1 does not exist."
-    return 1
-  fi
+  done
 else
-  echo "Usage: $0:t [FILENAME]..."
+  echo "Usage: $0:t [FILENAME(S)]..."
 fi
 

@@ -2,6 +2,10 @@
 
 # Written by Göran Gustafsson <gustafsson.g@gmail.com>.
 
+# Description: This script prints out the different terminal colors.
+
+# Usage: tcolors
+
 for X in {30..37} ; do
   echo -n "\033[0;${X}m0;${X}m\033[0m "
 done && echo

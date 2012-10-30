@@ -3,6 +3,11 @@
 # Original by Zach Holman <https://github.com/holman/dotfiles/blob/master/bin/backup>.
 # Modified by Göran Gustafsson <gustafsson.g@gmail.com>.
 
+# Description: This script mounts a dmg file (preferably encrypted), backs up
+# a few specific directories to it and then unmounts the image file.
+
+# Usage: backup
+
 DEVICE_NAME=Keychain
 ENCRYPTED_IMAGE=/Volumes/$DEVICE_NAME/Backup.sparseimage
 BACKUP_DESTINATION=/Volumes/Backup

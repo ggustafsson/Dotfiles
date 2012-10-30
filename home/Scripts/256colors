@@ -2,7 +2,12 @@
 
 # Written by Göran Gustafsson <gustafsson.g@gmail.com>.
 
-for X in {0..255} ; do
+# Description: This script prints out 256 different colors that can be used in
+# the terminal. Handy when making color schemes for Vim.
+
+# Usage: 256colors
+
+for X in {0..255}; do
   echo "\x1b[38;5;${X}mColor ${X}"
 done
 

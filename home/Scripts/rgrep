@@ -2,11 +2,19 @@
 
 # Written by Göran Gustafsson <gustafsson.g@gmail.com>.
 
+# Description: This script recursively searches the current working directory
+# or a specified directory for files containing a specific pattern.
+
+# Usage: rgrep <pattern>
+#        rgrep <pattern> <path>
+#        rgrep <"pattern">
+#        rgrep <"pattern"> <path>
+
 if [[ $# == 1 ]]; then
   grep -r $1 .
 elif [[ $# == 2 ]]; then
   grep -r $*
 else
-  echo "Usage: $0:t [PATTERN] [FILENAME]..."
+  echo "Usage: $0:t [PATTERN]... [PATH]..."
 fi
 

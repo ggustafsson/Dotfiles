@@ -2,6 +2,11 @@
 
 # Written by Göran Gustafsson <gustafsson.g@gmail.com>.
 
+# Description: This script executes a bunch of commands i run twice every week
+# to back things up and keep things up-to-date.
+
+# Usage: wedsun
+
 ENCRYPTED_IMAGE=/Volumes/Keychain/Backup.sparseimage
 
 if [ -f $ENCRYPTED_IMAGE ]; then

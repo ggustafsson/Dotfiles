@@ -2,9 +2,12 @@
 
 # Written by Göran Gustafsson <gustafsson.g@gmail.com>.
 
-# This script adds more border spacing to the MacVim window so it looks exactly
-# like Terminal.app windows. I use 0.9 line spacing under Terminal.app and
-# "set linespace=1" under MacVim to keep the spacing the same in both.
+# Description: This script adds more border padding to the MacVim windows so
+# it looks exactly like Terminal.app windows. I use 0.9 line spacing under
+# Terminal.app and "set linespace=1" under MacVim to keep the spacing the same
+# in both.
+
+# Usage: macvimspacing
 
 defaults write org.vim.MacVim MMTextInsetTop 2
 defaults write org.vim.MacVim MMTextInsetLeft 5

@@ -2,9 +2,14 @@
 
 # Written by Göran Gustafsson <gustafsson.g@gmail.com>.
 
-if [[ $# == 1 ]]; then
-  open "dict://$1"
+# Description: This script makes it easy to search with the built in
+# dictionary application under OS X.
+
+# Usage: dict <word(s)>
+
+if [[ $# -gt 0 ]]; then
+  open "dict://$*"
 else
-  echo "Usage: $0:t [WORD]..."
+  echo "Usage: $0:t [WORD(S)]..."
 fi
 
