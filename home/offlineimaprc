@@ -1,37 +1,20 @@
 [general]
-accounts = Gmail,LNU
+accounts = Gmail
 pythonfile = ~/.offlineimap.py
 
 [Account Gmail]
 localrepository = Gmail-Local
 remoterepository = Gmail-Remote
 
-[Account LNU]
-localrepository = LNU-Local
-remoterepository = LNU-Remote
-
 [Repository Gmail-Local]
 type = Maildir
 localfolders = ~/Storage/Mail/Gmail
-
-[Repository LNU-Local]
-type = Maildir
-localfolders = ~/Storage/Mail/LNU
 
 [Repository Gmail-Remote]
 type = Gmail
 remotehost = imap.gmail.com
 remoteuser = gustafsson.g@gmail.com
 remotepasseval = get_keychain_pass(account="gustafsson.g", server="imap.gmail.com")
-ssl = yes
-cert_fingerprint=6d1b5b5ee0180ab493b71d3b94534b5ab937d042
-readonly = True
-
-[Repository LNU-Remote]
-type = Gmail
-remotehost = imap.gmail.com
-remoteuser = gg222bn@student.lnu.se
-remotepasseval = get_keychain_pass(account="gg222bn", server="imap.gmail.com")
 ssl = yes
 cert_fingerprint=6d1b5b5ee0180ab493b71d3b94534b5ab937d042
 readonly = True
