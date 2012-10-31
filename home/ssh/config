@@ -1,0 +1,13 @@
+Host binks
+  User gleg
+  HostName fulknark.se
+
+Host leia
+  User twiggy
+  HostName 192.168.1.82
+
+Host yoda
+  User root
+  HostName 192.168.1.2
+  Port 666
+
