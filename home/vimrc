@@ -20,6 +20,7 @@ set nowrap
 set scrolloff=3
 set showbreak=+
 set spelllang=en,sv
+set t_vb=
 set timeoutlen=2000
 set virtualedit=block
 
@@ -64,9 +65,6 @@ set relativenumber
 set splitbelow
 set splitright
 
-set t_vb=
-set visualbell
-
 set wildmode=longest,list
 set wildignore=*.doc,*.pdf,.DS_Store
 set wildignore+=*.bmp,*.gif,*.ico,*.jpg,*.jpeg,*.png,*.svg,*.tiff
@@ -79,18 +77,20 @@ if has("gui_running")
   set guioptions=cgt
   set showcmd
 
-  function! FontSetup()
-    set guifont=Inconsolata:h14
-    set linespace=1
+  if has("mac")
+    function! FontSetup()
+      set guifont=Inconsolata:h14
+      set linespace=1
 
-    set columns=185
-    set lines=44
-  endfunction
+      set columns=185
+      set lines=44
+    endfunction
 
-  if !exists("g:dont_load_again")
-    call FontSetup()
+    if !exists("g:dont_load_again")
+      call FontSetup()
 
-    let g:dont_load_again = 1
+      let g:dont_load_again = 1
+    endif
   endif
 else
   set mouse=v
@@ -136,11 +136,8 @@ cabbrev WQ wq
 cabbrev Wq wq
 cabbrev wQ wq
 
-if has("gui_running")
-  nnoremap <Leader>fa :call FancyView()<CR>
-endif
-
 if has("mac")
+  nnoremap <Leader>fa :call FancyView()<CR>
   nnoremap <Leader>fi :silent !open "%:p:h"<CR>
   nnoremap <Leader>op :silent !open -a Safari "%"<CR>
 endif
@@ -213,7 +210,7 @@ vnoremap s <Plug>VSurround
 vnoremap <Tab>   >gv
 vnoremap <S-Tab> <gv
 
-if has("gui_running")
+if has("gui_running") && has("mac")
   function! FancyView()
     if &guifont != "Inconsolata:h22"
       set antialias
