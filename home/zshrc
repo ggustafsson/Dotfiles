@@ -143,7 +143,7 @@ if [[ $OSTYPE == darwin* ]]; then
 
   alias keepm="mv ~/Music/Trial/* ~/Music/MP3/"
   alias movem='cd /Volumes/External/Music/FLAC && mv "$(random)" ~/Music/Trial/ && cd - >& /dev/null && open ~/Music/Trial'
-  alias removem="ls ~/Music/Trial/ && rm -rf ~/Music/Trial/*"
+  alias removem="ls ~/Music/Trial/ && echo && rm -rf ~/Music/Trial/*"
 
   alias gv="gvim"
   alias gvd="gvimdiff"
