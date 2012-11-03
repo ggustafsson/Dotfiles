@@ -159,6 +159,7 @@ nnoremap <Leader>ll :!ls -lFh "%"<CR>
 nnoremap <Leader>ls :!ls -lFh "%:p:h"<CR>
 nnoremap <Leader>mi :MineSweeper normal<CR>
 nnoremap <Leader>ne :enew<CR>
+nnoremap <Leader>no :6split ~/Documents/Text\ Files/Editor\ Notes.txt<CR>
 nnoremap <Leader>nu :call LineNumber()<CR>
 nnoremap <Leader>ny :Nyancat2<CR>
 nnoremap <Leader>pa :set paste!<CR>
@@ -175,7 +176,7 @@ nnoremap <Leader>ss :mksession! ~/.vim/session.vim<CR>
 nnoremap <Leader>t2 :set noexpandtab shiftwidth=2 softtabstop=0 tabstop=2<CR>
 nnoremap <Leader>t4 :set noexpandtab shiftwidth=4 softtabstop=0 tabstop=4<CR>
 nnoremap <Leader>t8 :set noexpandtab shiftwidth=8 softtabstop=0 tabstop=8<CR>
-nnoremap <Leader>tm :6split ~/Documents/Text\ Files/Temporary.txt<CR>
+nnoremap <Leader>tm :edit ~/Documents/Text\ Files/Temporary.blowfish<CR>
 nnoremap <Leader>to :edit ~/Documents/Text\ Files/To-do\ List.todo<CR>
 nnoremap <Leader>tr :NERDTreeToggle<CR>
 nnoremap <Leader>tw :set textwidth=78
