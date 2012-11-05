@@ -159,7 +159,7 @@ nnoremap <Leader>ll :!ls -lFh "%"<CR>
 nnoremap <Leader>ls :!ls -lFh "%:p:h"<CR>
 nnoremap <Leader>mi :MineSweeper normal<CR>
 nnoremap <Leader>ne :enew<CR>
-nnoremap <Leader>no :6split ~/Documents/Text\ Files/Editor\ Notes.txt<CR>
+nnoremap <Leader>no :6split ~/Documents/Text\ Files/Editor\ Notes.txt<CR>:setlocal winfixheight<CR>
 nnoremap <Leader>nu :call LineNumber()<CR>
 nnoremap <Leader>ny :Nyancat2<CR>
 nnoremap <Leader>pa :set paste!<CR>
