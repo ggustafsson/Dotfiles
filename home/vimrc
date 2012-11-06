@@ -78,6 +78,8 @@ if has("gui_running")
   set showcmd
 
   if has("mac")
+    set visualbell
+
     function! FontSetup()
       set guifont=Inconsolata:h14
       set linespace=1
