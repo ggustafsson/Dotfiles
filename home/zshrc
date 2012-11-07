@@ -30,6 +30,8 @@ HISTSIZE=10000
 SAVEHIST=$HISTSIZE
 
 if [[ $OSTYPE == darwin* ]]; then
+  export AUTOSSH_PATH=/usr/local/bin/ssh
+
   e=/Volumes/External
   WIRESHARK=(/usr/local/Cellar/wireshark/*/bin/*(N:t))
 
@@ -188,6 +190,7 @@ type hub >& /dev/null && alias git="hub"
 alias bc="bc -q"
 alias c="clear"
 alias cdh="dirs -v | sort -r"
+alias chat="autossh -M 0 binks -t 'tmux attach || tmux'"
 alias chkm="find ~/Music/MP3 -type f ! -iname '*.mp3'"
 alias df="df -h"
 alias du="du -sh"
