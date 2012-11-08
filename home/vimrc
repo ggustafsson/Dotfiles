@@ -79,20 +79,27 @@ if has("gui_running")
 
   if has("mac")
     set visualbell
+  endif
 
-    function! FontSetup()
+  function! FontSetup()
+    if has("mac")
       set guifont=Inconsolata:h14
       set linespace=1
 
       set columns=185
       set lines=44
-    endfunction
+    else
+      set guifont=Inconsolata\ 12
 
-    if !exists("g:dont_load_again")
-      call FontSetup()
-
-      let g:dont_load_again = 1
+      set columns=110
+      set lines=30
     endif
+  endfunction
+
+  if !exists("g:dont_load_again")
+    call FontSetup()
+
+    let g:dont_load_again = 1
   endif
 else
   set mouse=v
