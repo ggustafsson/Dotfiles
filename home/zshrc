@@ -113,7 +113,7 @@ todo_info() {
 if [[ $TERM == dumb ]]; then
   PROMPT='%~ %# '
 else
-  PROMPT='%B${(U)USER} %F{yellow}${(C)HOST%%.*}%f%b ${PWD/$HOME/~} %B$(todo_info)%(?..%F{red}%?%f )%F{blue}%#%f%b '
+  PROMPT='%B${(U)USER} %F{yellow}${(C)HOST%%.*}%f%b ${PWD/$HOME/~} %B$(todo_info)%(?..%F{magenta}%?%f )%F{blue}%#%f%b '
   RPROMPT='%B$(git_branch)%b'
 fi
 
