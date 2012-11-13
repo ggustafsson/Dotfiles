@@ -9,9 +9,16 @@
 #        p <pattern>
 
 if [[ $# -gt 0 ]]; then
-  ps ax -o user,pid,%cpu,%mem,start,command | head -n 1
-  ps ax -o user,pid,%cpu,%mem,start,command | tail -n +2 | egrep -v "(grep $*|$0 $*)" | grep "$*"
+  if [ ! -z $PS_OPTIONS ]; then
+    ps ax -o $PS_OPTIONS | tail -n +2 | egrep -v "(grep $*|$0 $*)" | grep "$*"
+  else
+    ps ax | tail -n +2 | egrep -v "(grep $*|$0 $*)" | grep "$*"
+  fi
 else
-  ps ax -o user,pid,%cpu,%mem,start,command
+  if [ ! -z $PS_OPTIONS ]; then
+    ps ax -o $PS_OPTIONS
+  else
+    ps ax
+  fi
 fi
 
