@@ -7,33 +7,34 @@
 
 # Usage: wedsun
 
-ENCRYPTED_IMAGE=/Volumes/Keychain/Backup.sparseimage
+echo -n "Everything plugged in and ready to go? [y/n] "
+read ANSWER
 
-if [ -f $ENCRYPTED_IMAGE ]; then
+if [[ $ANSWER == (y|yes) ]]; then
   backup
   echo
+  backup2s
+  echo
+  offlineimap
+  echo
+  brew update
+  brew upgrade
+  brew cleanup
+  echo
+  gem update --system
+  gem update
+  echo
+  otherd
+  echo
+  vimp
+  echo
+  webf
+  echo
+  frees
+
+  open -a Xcode
+  open -a "App Store"
 else
-  echo "File $ENCRYPTED_IMAGE does not exist!"
-  return 1
+  echo "\nBye bye!"
 fi
-
-offlineimap
-echo
-brew update
-brew upgrade
-brew cleanup
-echo
-gem update --system
-gem update
-echo
-otherd
-echo
-vimp
-echo
-webf
-echo
-frees
-
-open -a Xcode
-open -a "App Store"
 

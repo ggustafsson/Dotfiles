@@ -1,0 +1,40 @@
+#!/usr/bin/env zsh
+
+# Written by Göran Gustafsson <gustafsson.g@gmail.com>.
+
+# Description: This script mounts an encrypted dmg file (sparsebundle!), backs
+# up the home directory to it, unmounts the image file and then uploads the
+# file to a server with rsync through ssh.
+
+# Usage: backup2s
+
+BACKUP_DESTINATION=/Volumes/HomeBackup
+ENCRYPTED_IMAGE=/Volumes/External/Storage/HomeBackup.sparsebundle
+SERVER=binks
+SERVER_DESTINATION=~/Storage
+
+# Don't use a sparseimage because you will waste a huge amount of bandwidth.
+# If you use a sparsebundle it is technically a directory and not a file.
+if [ ! -d $ENCRYPTED_IMAGE ]; then
+  echo "File $ENCRYPTED_IMAGE does not exist!"
+  return 1
+fi
+
+echo "Mounting encrypted image file."
+hdiutil attach -noverify $ENCRYPTED_IMAGE
+
+if [ ! -d $BACKUP_DESTINATION ]; then
+  echo "\nDirectory $BACKUP_DESTINATION does not exist!"
+  return 1
+fi
+
+print -P "\nBacking up home directory."
+rsync -ah --progress --delete --exclude=.Trash ~ $BACKUP_DESTINATION
+
+echo "\nUnmounting encrypted image file."
+hdiutil detach $BACKUP_DESTINATION
+sleep 5
+
+echo "\nUploading file $ENCRYPTED_IMAGE to server."
+rsync -ah --progress --delete -e ssh $ENCRYPTED_IMAGE ${SERVER}:$SERVER_DESTINATION
+
