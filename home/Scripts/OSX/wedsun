@@ -11,6 +11,7 @@ echo -n "Everything plugged in and ready to go? [y/n] "
 read ANSWER
 
 if [[ $ANSWER == (y|yes) ]]; then
+  echo
   backup
   echo
   backup2s
