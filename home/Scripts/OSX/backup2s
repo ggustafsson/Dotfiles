@@ -11,7 +11,7 @@
 BACKUP_DESTINATION=/Volumes/HomeBackup
 ENCRYPTED_IMAGE=/Volumes/External/Storage/HomeBackup.sparsebundle
 SERVER=binks
-SERVER_DESTINATION=~/Storage
+SERVER_DESTINATION=Storage
 
 # Don't use a sparseimage because you will waste a huge amount of bandwidth.
 # If you use a sparsebundle it is technically a directory and not a file.
@@ -28,13 +28,13 @@ if [ ! -d $BACKUP_DESTINATION ]; then
   return 1
 fi
 
-print -P "\nBacking up home directory."
+print -P "\n%B%F{green}Backing up home directory."
 rsync -ah --progress --delete --exclude-from=$HOME/.rsync_backup_exclude ~ $BACKUP_DESTINATION
 
 echo "\nUnmounting encrypted image file."
 hdiutil detach $BACKUP_DESTINATION
 sleep 5
 
-echo "\nUploading file $ENCRYPTED_IMAGE to server."
+print -P "\n%B%F{green}Uploading file $ENCRYPTED_IMAGE to server."
 rsync -ah --progress --delete -e ssh $ENCRYPTED_IMAGE ${SERVER}:$SERVER_DESTINATION
 
