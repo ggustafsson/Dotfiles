@@ -1,7 +1,10 @@
 .Trash
+.dropbox
+.vim/backups
+.vim/undos
+Caches
+Containers
 Downloads
-Library/Caches
-Library/Containers
-Library/Safari/LocalStorage/
-Library/Saved\ Application\ State
+Safari/LocalStorage
+Saved Application State
 
