@@ -29,7 +29,7 @@ if [ ! -d $BACKUP_DESTINATION ]; then
 fi
 
 print -P "\nBacking up home directory."
-rsync -ah --progress --delete --exclude-from=~/.rsync_backup_exclude ~ $BACKUP_DESTINATION
+rsync -ah --progress --delete --exclude-from=$HOME/.rsync_backup_exclude ~ $BACKUP_DESTINATION
 
 echo "\nUnmounting encrypted image file."
 hdiutil detach $BACKUP_DESTINATION
