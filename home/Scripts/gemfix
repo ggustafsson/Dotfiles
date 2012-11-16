@@ -1,0 +1,19 @@
+#!/usr/bin/env zsh
+
+# Written by Göran Gustafsson <gustafsson.g@gmail.com>.
+
+# Description: This script replaces the crappy shebang line that gem adds.
+
+# Usage: gemfix
+
+DIRECTORY=~/.ruby/bin
+TMPENDING=gemfix_tmp
+
+for FILE in $DIRECTORY/*; do
+  echo "Replacing the shebang line on file: $FILE"
+  echo '#!/usr/bin/env ruby' > ${FILE}_$TMPENDING
+  tail -n +2 $FILE >> ${FILE}_$TMPENDING
+  cat ${FILE}_$TMPENDING > $FILE
+  rm $DIRECTORY/*_$TMPENDING
+done
+

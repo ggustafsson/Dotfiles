@@ -24,6 +24,8 @@ if [[ $ANSWER == (y|yes) ]]; then
   gem update --system
   gem update
   echo
+  gemfix
+  echo
   otherd
   echo
   vimp
