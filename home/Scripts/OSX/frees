@@ -8,7 +8,6 @@
 
 echo "Deleting useless files:"
 
-rm -rfv /Library/Caches/Homebrew
 rm -rfv ~/Library/Caches/com.apple.dt.Xcode/Downloads
 rm -rfv ~/Library/iTunes/iPhone\ Software\ Updates
 
