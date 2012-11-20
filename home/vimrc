@@ -225,15 +225,7 @@ if has("gui_running") && has("mac")
     if &guifont != "Inconsolata:h24"
       set antialias
       set guifont=Inconsolata:h24
-
-      if has("mac")
-        set fullscreen
-      endif
     else
-      if has("mac")
-        set nofullscreen
-      endif
-
       call FontSetup()
     endif
   endfunction
