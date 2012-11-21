@@ -142,6 +142,7 @@ if [[ $OSTYPE == darwin* ]]; then
   alias brewu="brew update && brew upgrade"
 
   alias chrome="open -a 'Google Chrome'"
+  alias firefox="open -a Firefox"
   alias safari="open -a Safari"
 
   alias keepm="mv ~/Music/Trial/* ~/Music/MP3/"
