@@ -46,7 +46,7 @@ fi
 
 for DIRECTORY in $DIRECTORIES; do
   print -P "\n%B%F{green}Backing up directory ~/$DIRECTORY.%f%b"
-  rsync -ah --progress --delete --exclude=Library/Caches ~/$DIRECTORY $BACKUP_DESTINATION
+  rsync -ah --progress --delete --exclude=Library/Caches --exclude=Library/Containers ~/$DIRECTORY $BACKUP_DESTINATION
 done
 
 print -P "\n%B%F{green}Backing up ~/.* files/directories.%f%b"
