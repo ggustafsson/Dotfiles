@@ -14,8 +14,6 @@ if [[ $ANSWER == (y|yes) ]]; then
   echo
   backup
   echo
-  backup2s
-  echo
   offlineimap
   echo
   brew update
