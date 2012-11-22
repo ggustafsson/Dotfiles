@@ -46,11 +46,11 @@ fi
 
 for DIRECTORY in $DIRECTORIES; do
   print -P "\n%B%F{green}Backing up directory ~/$DIRECTORY.%f%b"
-  rsync -ah --progress --delete --exclude-from=$HOME/.rsync_backup_exclude ~/$DIRECTORY $BACKUP_DESTINATION
+  rsync -ah --progress --delete --exclude=Library/Caches ~/$DIRECTORY $BACKUP_DESTINATION
 done
 
 print -P "\n%B%F{green}Backing up ~/.* files/directories.%f%b"
-rsync -ah --progress --delete --exclude-from=$HOME/.rsync_backup_exclude ~/.* $BACKUP_DESTINATION
+rsync -ah --progress --delete --exclude=.Trash ~/.* $BACKUP_DESTINATION
 
 echo "\nUnmounting encrypted image file and device."
 hdiutil detach $BACKUP_DESTINATION

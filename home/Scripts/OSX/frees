@@ -6,8 +6,11 @@
 
 # Usage: frees
 
-echo "Deleting useless files:"
+echo "Deleting useless files."
 
-rm -rfv ~/Library/Caches/com.apple.dt.Xcode/Downloads
-rm -rfv ~/Library/iTunes/iPhone\ Software\ Updates
+rm -rf ~/Library/Caches/Firefox
+rm -rf ~/Library/Caches/Google
+rm -rf ~/Library/Caches/com.apple.dt.Xcode/Downloads
+rm -rf ~/Library/Caches/com.spotify.client
+rm -rf ~/Library/iTunes/iPhone\ Software\ Updates
 
