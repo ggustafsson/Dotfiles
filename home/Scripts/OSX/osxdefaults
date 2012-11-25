@@ -22,3 +22,6 @@ defaults write com.apple.Mail DisableSendAnimations -bool YES
 defaults write com.apple.Safari DebugSnapshotsUpdatePolicy -int 2
 rm -rf ~/Library/Caches/com.apple.Safari/Webpage\ Previews
 
+# Make the delete key work again.
+defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2BackspaceKeyNavigationEnabled -bool YES
+
