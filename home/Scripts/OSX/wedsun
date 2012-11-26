@@ -12,8 +12,6 @@ read ANSWER
 
 if [[ $ANSWER == (y|yes) ]]; then
   echo
-  backup
-  echo
   offlineimap
   echo
   brew update
@@ -32,6 +30,8 @@ if [[ $ANSWER == (y|yes) ]]; then
   webf
   echo
   frees
+  echo
+  backup
 
   open -a Xcode
   open -a "App Store"
