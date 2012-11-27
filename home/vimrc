@@ -6,6 +6,8 @@ call pathogen#helptags()
 filetype plugin indent on
 
 if !exists("g:dont_set_colors_again")
+  let g:ninja_fancy_statusline = 1
+
   syntax enable
   colorscheme ninja
 
