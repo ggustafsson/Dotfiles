@@ -61,11 +61,7 @@ else
 fi
 
 [ ! -d $DLPATH/jQuery ] && mkdir $DLPATH/jQuery
-if [[ $OSTYPE == darwin* ]]; then
-  open http://jquery.com/download
-else
-  links http://jquery.com/download
-fi
+links http://jquery.com/download
 
 date > $DLPATH/latest_update.txt
 
