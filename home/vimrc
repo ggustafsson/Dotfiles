@@ -23,7 +23,6 @@ set gdefault
 set hidden
 set nofoldenable
 set nowrap
-set scrolloff=3
 set showbreak=+
 set spelllang=en,sv
 set t_vb=
@@ -203,9 +202,7 @@ nnoremap <Leader>ws :%s/\s\+$//<CR>:nohlsearch<CR>
 nnoremap <Leader>zs :edit ~/.zshrc<CR>
 
 nnoremap vil ^vg_
-
-nnoremap ? :call EasyMotion#WB(0, 1)<CR>
-nnoremap = :call EasyMotion#WB(0, 0)<CR>
+nnoremap ?   H:call EasyMotion#WB(0, 0)<CR>
 
 nnoremap <Backspace> :nohlsearch<CR>
 nnoremap <Tab>       :LustyBufferExplorer<CR>
