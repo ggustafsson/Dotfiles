@@ -5,14 +5,8 @@ call pathogen#helptags()
 
 filetype plugin indent on
 
-if !exists("g:dont_set_colors_again")
-  let g:ninja_fancy_statusline = 1
-
-  syntax enable
-  colorscheme ninja
-
-  let g:dont_set_colors_again = 1
-endif
+syntax enable
+colorscheme ninja
 
 set backspace=indent,eol,start
 set confirm
@@ -208,10 +202,10 @@ nnoremap <Backspace> :nohlsearch<CR>
 nnoremap <Tab>       :LustyBufferExplorer<CR>
 nnoremap <S-Tab>     :bnext<CR>
 
-nnoremap + <C-w>+
-nnoremap - <C-w>-
-nnoremap > <C-w><
-nnoremap < <C-w>>
+nnoremap <C-Up>    <C-w>+
+nnoremap <C-Down>  <C-w>-
+nnoremap <C-Left>  <C-w><
+nnoremap <C-Right> <C-w>>
 
 nnoremap <Leader><Space> <Plug>NERDCommenterToggle
 vnoremap <Leader><Space> <Plug>NERDCommenterToggle
