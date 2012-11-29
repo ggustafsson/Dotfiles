@@ -5,8 +5,12 @@ call pathogen#helptags()
 
 filetype plugin indent on
 
-syntax enable
-colorscheme ninja
+if !exists("g:dont_set_colors_again")
+  syntax enable
+  colorscheme ninja
+
+  let g:dont_set_colors_again = 1
+endif
 
 set backspace=indent,eol,start
 set confirm
@@ -196,9 +200,7 @@ nnoremap <Leader>ws :%s/\s\+$//<CR>:nohlsearch<CR>
 nnoremap <Leader>zs :edit ~/.zshrc<CR>
 
 nnoremap vil ^vg_
-
-nnoremap = :call EasyMotion#WB(0, 0)<CR>
-nnoremap ? :call EasyMotion#WB(0, 1)<CR>
+nnoremap ?   H:call EasyMotion#WB(0, 0)<CR>
 
 nnoremap <Backspace> :nohlsearch<CR>
 nnoremap <Tab>       :LustyBufferExplorer<CR>
