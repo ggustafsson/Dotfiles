@@ -1,7 +1,7 @@
-syntax match Important +^!\s.*+
-syntax match Default   +^-\s.*+
-syntax match School    +^=\s.*+
-syntax match Comment   +^#\s.*+
+syntax match Important +^!.*+
+syntax match Default   +^-.*+
+syntax match School    +^=.*+
+syntax match Comment   +^#.*+
 
 highlight link Important Statement
 highlight link Default   Identifier
