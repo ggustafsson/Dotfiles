@@ -51,7 +51,7 @@ set smartcase
 set laststatus=2
 set statusline=%(\ %F\ %)
 set statusline+=%(%m\ %)
-set statusline+=%([%{(&fenc==\"\"?&enc:&fenc)}]\ %)
+set statusline+=%([%{&fenc==''?&enc:&fenc}]\ %)
 set statusline+=%(%y\ %)
 set statusline+=%(%{&paste?'[paste]':''}\ %)
 set statusline+=%=
@@ -243,7 +243,7 @@ function! BufferDelete()
     echomsg "No write since last change. Not closing buffer."
     echohl NONE
   else
-    let s:total_nr_buffers = len(filter(range(1, bufnr('$')), 'buflisted(v:val)'))
+    let s:total_nr_buffers = len(filter(range(1, bufnr("$")), "buflisted(v:val)"))
 
     if s:total_nr_buffers == 1
       bdelete
@@ -283,45 +283,45 @@ function! LineNumber()
 endfunction
 
 function! TabLine()
-  let label = ''
+  let label = ""
   let i = 1
 
-  while i <= tabpagenr('$')
+  while i <= tabpagenr("$")
     let buflist = tabpagebuflist(i)
     let winnr = tabpagewinnr(i)
-    let tabnr = tabpagewinnr(i,'$')
-    let label .= '%' . i . 'T'
+    let tabnr = tabpagewinnr(i, "$")
+    let label .= "%" . i . "T"
     let label .= (i == tabpagenr() ? '%#TabLineSel#' : '%#TabLine#')
-    let label .= ' '
-    let label .= (tabnr > 1 ? tabnr : '')
+    let label .= " "
+    let label .= (tabnr > 1 ? tabnr : "")
     let bufnr = buflist[winnr - 1]
 
     if getbufvar(bufnr, "&modified")
-      let label .= '+ '
+      let label .= "+ "
     elseif tabnr > 1
-      let label .= ' '
+      let label .= " "
     endif
 
     let file = bufname(bufnr)
-    let buftype = getbufvar(bufnr, 'buftype')
+    let buftype = getbufvar(bufnr, "buftype")
 
-    if buftype == 'nofile'
-      if file =~ '\/.'
-        let file = substitute(file, '.*\/\ze.', '', '')
+    if buftype == "nofile"
+      if file =~ "\/."
+        let file = substitute(file, '.*\/\ze.', "", "")
       endif
     else
-      let file = fnamemodify(file, ':p:t')
+      let file = fnamemodify(file, ":p:t")
     endif
 
-    if file == ''
-      let file = '[No Name]'
+    if file == ""
+      let file = "[No Name]"
     endif
 
-    let label .= file . ' '
+    let label .= file . " "
     let i = i + 1
   endwhile
 
-  let label .= '%T%#TabLineFill#%='
+  let label .= "%T%#TabLineFill#%="
   return label
 endfunction
 
