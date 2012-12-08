@@ -4,19 +4,23 @@
 
 # Description: This script displays the running processes and if a argument
 # is supplied then only the processes that matches the pattern is displayed.
+#
+# I have this in ~/.zshrc to adjust the ps display options used:
+#
+# export PS_DISPLAY="user,pid,command"
 
 # Usage: p
 #        p <pattern>
 
 if [[ $# -gt 0 ]]; then
-  if [ ! -z $PS_OPTIONS ]; then
-    ps ax -o $PS_OPTIONS | tail -n +2 | egrep -v "(grep $*|$0 $*)" | grep "$*"
+  if [ ! -z $PS_DISPLAY ]; then
+    ps ax -o $PS_DISPLAY | tail -n +2 | egrep -v "(grep $*|$0 $*)" | grep "$*" || echo "No processes found!"
   else
-    ps ax | tail -n +2 | egrep -v "(grep $*|$0 $*)" | grep "$*"
+    ps ax | tail -n +2 | egrep -v "(grep $*|$0 $*)" | grep "$*" || echo "No processes found!"
   fi
 else
-  if [ ! -z $PS_OPTIONS ]; then
-    ps ax -o $PS_OPTIONS
+  if [ ! -z $PS_DISPLAY ]; then
+    ps ax -o $PS_DISPLAY
   else
     ps ax
   fi

@@ -3,7 +3,7 @@
 export GEM_HOME=~/.ruby
 export GREP_OPTIONS="--color=auto -i"
 export LC_COLLATE=C
-export PS_OPTIONS="user,pid,%cpu,%mem,start,command"
+export PS_DISPLAY="user,pid,command"
 export TODO_FILE=~/Documents/Text\ Files/To-do\ List.todo
 
 export EDITOR=vim
@@ -122,7 +122,7 @@ if [[ $OSTYPE == darwin* ]]; then
   alias cf="say command finished"
   alias eject="osascript -e 'tell application \"Finder\" to eject (every disk whose ejectable is true)' && echo 'Ejecting all external drives.'"
   alias o="open"
-  alias psme='\ps -xu $USER -o $PS_OPTIONS'
+  alias psme='\ps -xu $USER -o $PS_DISPLAY'
   alias study="school && tim -p"
   alias top="top -o cpu"
   alias webcam="imagesnap -t 2 -w 1"
@@ -183,7 +183,7 @@ else
 
   alias cal="cal -m"
   alias ls="ls -Fh --color=auto"
-  alias psme='\ps x -u $USER -o $PS_OPTIONS'
+  alias psme='\ps x -u $USER -o $PS_DISPLAY'
   alias vl='tail -n $LINES -f /var/log/everything.log'
 fi
 
@@ -200,7 +200,7 @@ alias iip="curl icanhazip.com"
 alias ka="killall"
 alias mkdir="mkdir -pv"
 alias ping="ping -c 10"
-alias ps='ps ax -o $PS_OPTIONS'
+alias ps='ps ax -o $PS_DISPLAY'
 alias random='FILES=(*) && echo $FILES[$RANDOM%$#FILES+1]'
 alias recent="ls -t | head -n 5"
 alias reload="source ~/.zshrc"
