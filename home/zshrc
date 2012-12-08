@@ -202,6 +202,7 @@ alias ka="killall"
 alias mkdir="mkdir -pv"
 alias ping="ping -c 10"
 alias ps='ps ax -o $PS_DISPLAY'
+alias py="python3"
 alias random='FILES=(*) && echo $FILES[$RANDOM%$#FILES+1]'
 alias recent="ls -t | head -n 5"
 alias reload="source ~/.zshrc"
