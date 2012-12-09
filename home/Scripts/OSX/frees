@@ -8,9 +8,11 @@
 
 echo "Deleting useless files."
 
+rm -rf /Library/Caches/Homebrew
 rm -rf ~/Library/Caches/Firefox
 rm -rf ~/Library/Caches/Google
 rm -rf ~/Library/Caches/com.apple.dt.Xcode/Downloads
 rm -rf ~/Library/Caches/com.spotify.client
+rm -rf ~/Library/Logs/Homebrew
 rm -rf ~/Library/iTunes/iPhone\ Software\ Updates
 
