@@ -204,14 +204,14 @@ nnoremap vil ^vg_
 nnoremap = :call EasyMotion#WB(0, 0)<CR>
 nnoremap ? :call EasyMotion#WB(0, 1)<CR>
 
+nnoremap + <C-w>+
+nnoremap - <C-w>-
+nnoremap z <C-w><
+nnoremap Z <C-w>>
+
 nnoremap <Backspace> :nohlsearch<CR>
 nnoremap <Tab>       :LustyBufferExplorer<CR>
 nnoremap <S-Tab>     :bnext<CR>
-
-nnoremap <C-Up>    <C-w>+
-nnoremap <C-Down>  <C-w>-
-nnoremap <C-Left>  <C-w><
-nnoremap <C-Right> <C-w>>
 
 nnoremap <Leader><Space> <Plug>NERDCommenterToggle
 vnoremap <Leader><Space> <Plug>NERDCommenterToggle
