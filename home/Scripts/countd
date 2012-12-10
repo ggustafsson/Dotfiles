@@ -1,0 +1,43 @@
+#!/usr/bin/env python3
+
+# Written by Göran Gustafsson <gustafsson.g@gmail.com>.
+
+# Description: This script 
+
+# Usage: countd
+
+import csv, os
+from datetime import *
+
+today = date.today()
+
+file = open(os.path.expanduser("~/.countdowns"))
+database = csv.reader(file)
+
+rownum = 0
+for row in database:
+    if len(row) != 4:
+        break
+
+    if rownum >= 1:
+        print()
+
+    rownum += 1
+
+    year = int(row[1])
+    month = int(row[2])
+    day = int(row[3])
+
+    future = date(year, month, day)
+    daysLeft = (future - today).days
+
+    if daysLeft > 1 or daysLeft < -1:
+        dayOrDays = "days"
+    else:
+        dayOrDays = "day"
+
+    print(row[0])
+    print("%d %s left until %d-%02d-%02d" % (daysLeft, dayOrDays, year, month, day))
+
+file.close()
+
