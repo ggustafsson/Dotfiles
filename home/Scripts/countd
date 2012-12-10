@@ -2,7 +2,12 @@
 
 # Written by Göran Gustafsson <gustafsson.g@gmail.com>.
 
-# Description: This script 
+# Description: This script reads the file ~/.countdowns and calculates the
+# remaining days until the specific date on each entry in the file.
+#
+# An entry in the file looks like this:
+#
+# "Title here", 2017, 01, 14
 
 # Usage: countd
 
@@ -17,13 +22,14 @@ database = csv.reader(file)
 rownum = 0
 for row in database:
     if len(row) != 4:
-        break
+        continue
 
-    if rownum >= 1:
+    if rownum > 0:
         print()
 
     rownum += 1
 
+    title = row[0]
     year = int(row[1])
     month = int(row[2])
     day = int(row[3])
@@ -31,12 +37,12 @@ for row in database:
     future = date(year, month, day)
     daysLeft = (future - today).days
 
-    if daysLeft > 1 or daysLeft < -1:
-        dayOrDays = "days"
-    else:
+    if daysLeft in (-1, 1):
         dayOrDays = "day"
+    else:
+        dayOrDays = "days"
 
-    print(row[0])
+    print(title)
     print("%d %s left until %d-%02d-%02d" % (daysLeft, dayOrDays, year, month, day))
 
 file.close()
