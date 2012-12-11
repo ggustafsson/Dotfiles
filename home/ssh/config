@@ -1,3 +1,19 @@
 ServerAliveInterval 15
 ServerAliveCountMax 2
 
+# Virtual machine
+Host jabba
+  User gleg
+  HostName hem.gleg.se
+
+# Old machine
+Host leia
+  User twiggy
+  HostName 192.168.1.82
+
+# Linksys WRT54GL
+Host yoda
+  User root
+  HostName 192.168.1.2
+  Port 666
+
