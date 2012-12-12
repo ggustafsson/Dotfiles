@@ -81,7 +81,7 @@ zstyle ":completion:*:cd:*"     ignore-parents parent pwd
 zstyle ":completion:*:warnings" format "zsh: no matches found."
 
 [[ $OSTYPE == darwin* ]] && compdef _man man2pdf
-compdef _path_files cd
+#compdef _path_files cd
 
 precmd() {
   echo
@@ -204,7 +204,7 @@ alias ping="ping -c 10"
 alias ps='ps ax -o $PS_DISPLAY'
 alias py="python3"
 alias random='FILES=(*) && echo $FILES[$RANDOM%$#FILES+1]'
-alias recent="ls -t | head -n 5"
+alias re="ls -t | head -n 5"
 alias reload="source ~/.zshrc"
 alias topme='top -U $USER'
 alias tv='vim "$TODO_FILE"'
