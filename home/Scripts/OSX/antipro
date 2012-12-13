@@ -12,6 +12,6 @@ TIME=$(date "+%H%M")
 if [[ $TIME == <0200-1600> ]]; then
   networksetup -setairportpower en0 off
 else
-  [ ! -f ~/.wifi ] && networksetup -setairportpower en0 on
+  [ ! -f ~/.nowifi ] && networksetup -setairportpower en0 on
 fi
 
