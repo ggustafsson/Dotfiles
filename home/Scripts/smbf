@@ -12,7 +12,7 @@ PORT=445
 
 echo "Scanning for network shares."
 
-RESULTS=$(nmap -sT ${IP}/24 -p $PORT --open | egrep "(Nmap scan report for|$PORT/tcp)")
+RESULTS=$(nmap -sT ${IP}/24 -p $PORT --open 2> /dev/null | egrep "(Nmap scan report for|$PORT/tcp)")
 
 if [ ! -z $RESULTS ]; then
   echo "\n$RESULTS"
