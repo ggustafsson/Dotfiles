@@ -17,4 +17,3 @@ done && echo
 for X in {40..47} ; do
   echo -n "\033[1;${X}m1;${X}m\033[0m "
 done && echo
-

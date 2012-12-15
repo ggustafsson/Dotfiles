@@ -123,4 +123,3 @@ else
 fi
 
 date > $DLPATH/latest_update.txt
-

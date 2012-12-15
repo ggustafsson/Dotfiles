@@ -56,4 +56,3 @@ echo "\nUnmounting encrypted image file and device."
 hdiutil detach $BACKUP_DESTINATION
 sleep 5
 diskutil eject $DEVICE_NAME
-

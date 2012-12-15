@@ -13,4 +13,3 @@ def get_keychain_pass(account=None, server=None):
     command = "%(security)s %(command)s -g -a %(account)s -s %(server)s" % params
     outtext = commands.getoutput(command)
     return re.match(r'password: "(.*)"', outtext).group(1)
-

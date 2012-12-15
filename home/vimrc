@@ -340,4 +340,3 @@ augroup Main
 
   autocmd BufWritePost ~/.vimrc source %
 augroup END
-

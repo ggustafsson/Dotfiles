@@ -43,4 +43,3 @@ if [ ${#NOT_REPO} -gt 0 ]; then
     echo " * $X"
   done
 fi
-

@@ -17,4 +17,3 @@ elif [[ $# == 2 ]]; then
 else
   echo "Usage: $0:t [PATTERN]... [PATH]..."
 fi
-

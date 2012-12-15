@@ -18,4 +18,3 @@ remotepasseval = get_keychain_pass(account="gustafsson.g", server="imap.gmail.co
 ssl = yes
 cert_fingerprint=6d1b5b5ee0180ab493b71d3b94534b5ab937d042
 readonly = True
-

@@ -16,4 +16,3 @@ for FILE in $DIRECTORY/*; do
   cat ${FILE}_$TMPENDING > $FILE
   rm $DIRECTORY/*_$TMPENDING
 done
-

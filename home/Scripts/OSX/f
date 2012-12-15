@@ -13,4 +13,3 @@ if [[ $# -gt 0 ]]; then
 else
   open .
 fi
-

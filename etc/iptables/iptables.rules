@@ -6,4 +6,3 @@
 -A INPUT -p tcp -m multiport --dports 20:22,80,443,989:990,8080,50000:60000 -j ACCEPT
 -A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
 COMMIT
-

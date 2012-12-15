@@ -16,19 +16,20 @@ fi
 
 if [[ $# -gt 0 ]]; then
   if [ -f $TODO_FILE ]; then
-    sed '/^[ \t]*$/d' $TODO_FILE > $TODO_FILE.tmp
-    echo "- $*\n" >> $TODO_FILE.tmp
-    cat $TODO_FILE.tmp > $TODO_FILE && rm $TODO_FILE.tmp
+    echo "- $*" >> $TODO_FILE
   else
-    echo "- $*\n" > $TODO_FILE
+    echo "- $*" > $TODO_FILE
   fi
   echo "Added new entry to file."
 else
   if [ -f $TODO_FILE ]; then
-    echo "${TODO_FILE:t}:\n"
-    sed '/^[ \t]*$/d' $TODO_FILE
+    if [ -s $TODO_FILE ]; then
+      echo "${TODO_FILE:t}:\n"
+      cat $TODO_FILE
+    else
+      echo "File is empty!"
+    fi
   else
     echo "File does not exist!"
   fi
 fi
-

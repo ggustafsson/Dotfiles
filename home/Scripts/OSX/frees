@@ -15,4 +15,3 @@ rm -rf ~/Library/Caches/com.apple.dt.Xcode/Downloads
 rm -rf ~/Library/Caches/com.spotify.client
 rm -rf ~/Library/Logs/Homebrew
 rm -rf ~/Library/iTunes/iPhone\ Software\ Updates
-

@@ -46,4 +46,3 @@ for row in database:
     print("%d %s left until %d-%02d-%02d" % (daysLeft, dayOrDays, year, month, day))
 
 file.close()
-

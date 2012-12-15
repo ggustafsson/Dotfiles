@@ -38,4 +38,3 @@ if [[ $ANSWER == (y|yes) ]]; then
 else
   echo "\nBye bye!"
 fi
-

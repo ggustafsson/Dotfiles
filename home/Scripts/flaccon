@@ -48,4 +48,3 @@ if [[ $# -gt 0 ]]; then
 else
   echo "Usage: $0:t [FILENAME(S)]..."
 fi
-

@@ -169,4 +169,3 @@ Irssi::signal_add_last('nick mode changed', 'refresh_check');
 Irssi::signal_add_last('setup changed', 'refresh_recalc');
 Irssi::signal_add_last('window changed', 'refresh_recalc');
 Irssi::signal_add_last('window item changed', 'refresh_recalc');
-

@@ -22,4 +22,3 @@ if [[ $# -gt 1 ]]; then
 else
   echo "Usage: $0:t [FILENAMES]..."
 fi
-

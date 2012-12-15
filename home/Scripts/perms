@@ -20,4 +20,3 @@ if [[ $# -gt 0 ]]; then
 else
   echo "Usage: $0:t [PATH]..."
 fi
-
