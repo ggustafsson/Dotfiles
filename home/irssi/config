@@ -242,7 +242,7 @@ channels = (
   { name = "#zsh"; chatnet = "Freenode"; autojoin = "yes"; },
   { name = "#vim"; chatnet = "Freenode"; autojoin = "yes"; },
   { name = "#MacOSX"; chatnet = "Freenode"; autojoin = "yes"; },
-  { name = "#archlinux"; chatnet = "Freenode"; autojoin = "yes"; }
+  { name = "#archlinux"; chatnet = "Freenode"; autojoin = "yes"; },
   { name = "#ubuntu"; chatnet = "Freenode"; autojoin = "yes"; }
 );
 
