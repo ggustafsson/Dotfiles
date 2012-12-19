@@ -214,8 +214,8 @@ nnoremap <Backspace> :nohlsearch<CR>
 nnoremap <Tab>       :LustyBufferExplorer<CR>
 nnoremap <S-Tab>     :bnext<CR>
 
-nnoremap <Leader><Space> <Plug>NERDCommenterToggle
-vnoremap <Leader><Space> <Plug>NERDCommenterToggle
+nnoremap <Leader><Space> :call NERDComment("n", "Toggle")<CR>
+vnoremap <Leader><Space> :call NERDComment("n", "Toggle")<CR>
 
 vnoremap <Leader>ga :Gist -a<CR>
 vnoremap <Leader>gg :Gist<CR>
