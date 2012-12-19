@@ -1,15 +1,15 @@
 " Göran Gustafsson <gustafsson.g@gmail.com>
 
-call pathogen#infect()
-call pathogen#helptags()
+if !exists("g:dont_run_again")
+  call pathogen#infect()
+  call pathogen#helptags()
 
-filetype plugin indent on
+  filetype plugin indent on
 
-if !exists("g:dont_set_colors_again")
   syntax enable
   colorscheme ninja
 
-  let g:dont_set_colors_again = 1
+  let g:dont_run_again = 1
 endif
 
 set backspace=indent,eol,start
