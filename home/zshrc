@@ -33,12 +33,8 @@ SAVEHIST=$HISTSIZE
 if [[ $OSTYPE == darwin* ]]; then
   e=/Volumes/External
   WIRESHARK=(/usr/local/Cellar/wireshark/*/bin/*(N:t))
-
-  path=(~/Scripts/OSX(N) ~/Scripts(N) ~/.ruby/bin(N) /usr/local/bin(N) /usr/local/Cellar/curl/*/bin(N) /usr/bin /bin /usr/local/sbin(N) /usr/sbin /sbin)
 else
   [[ -n $DISPLAY && $TERM == xterm ]] && export TERM=xterm-256color
-
-  path=(~/Scripts/Linux(N) ~/Scripts(N) ~/.ruby/bin(N) /usr/local/bin /usr/bin /usr/bin/core_perl(N) /bin /usr/local/sbin /usr/sbin /sbin)
 
   umask 077
 fi
