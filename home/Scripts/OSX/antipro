@@ -2,7 +2,7 @@
 
 # Written by Göran Gustafsson <gustafsson.g@gmail.com>.
 
-# Description: This script turns off Wi-Fi if the time is between 02:00-16:00.
+# Description: This script turns off Wi-Fi if the time is between 02:00-14:00.
 # F to you procrastination. I run this script automatically every 5 minutes.
 
 # Usage: antipro
@@ -10,7 +10,7 @@
 DAY=$(date "+%a")
 TIME=$(date "+%H%M")
 
-if [[ $DAY != (Sat|Sun) && $TIME == <0200-1600> ]]; then
+if [[ $DAY != (Sat|Sun) && $TIME == <0200-1400> ]]; then
   networksetup -setairportpower en0 off
 else
   [ ! -f ~/.nowifi ] && networksetup -setairportpower en0 on
