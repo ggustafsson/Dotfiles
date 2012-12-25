@@ -1,0 +1,29 @@
+#!/usr/bin/env ruby
+
+# Written by Göran Gustafsson <gustafsson.g@gmail.com>.
+
+# Description: This script takes text as input and prints out text that is
+# capitalized as a headline. Should be correct most of the time.
+
+# Usage: title <text>
+
+lower = ["a", "an", "and", "as", "at", "but", "by", "for", "from", "if", "in",
+  "of", "on", "or", "the", "to", "via", "vs"]
+
+# Use both .join and .split so using quotes will work.
+title = $*.join(" ").split(" ")
+pos = 0
+
+title.each do |word|
+  # Capitalize the first word no matter what it is and check if the current
+  # word (in lowercased form) is included in the lower array.
+  if pos > 0 and lower.include? word.downcase
+    title[pos] = word.downcase
+  else
+    title[pos] = word.capitalize
+  end
+
+  pos += 1
+end
+
+puts title.join(" ")
