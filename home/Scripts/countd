@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env ruby
 
 # Written by Göran Gustafsson <gustafsson.g@gmail.com>.
 
@@ -11,38 +11,34 @@
 
 # Usage: countd
 
-import csv, os
-from datetime import *
+require "csv"
 
-today = date.today()
+today = Date.today
+pos = 0
 
-file = open(os.path.expanduser("~/.countdowns"))
-database = csv.reader(file)
+CSV.foreach("#{Dir.home}/.countdowns") do |row|
+  next if row.size != 4 # Skip unless 4 columns exist on a row.
+  puts if pos > 0 # Print empty line before all countdowns except the first.
 
-rownum = 0
-for row in database:
-    if len(row) != 4:
-        continue
+  title = row[0]
 
-    if rownum > 0:
-        print()
+  year  = row[1].to_i
+  month = row[2].to_i
+  day   = row[3].to_i
 
-    rownum += 1
+  future = Date.new(year, month, day)
+  days_left = (future - today).to_i
 
-    title = row[0]
-    year = int(row[1])
-    month = int(row[2])
-    day = int(row[3])
+  case days_left
+  when -1, 1
+    day_or_days = "day"
+  else
+    day_or_days = "days"
+  end
 
-    future = date(year, month, day)
-    daysLeft = (future - today).days
+  puts title
+  # Example: 24 days left until 2013-01-18
+  puts "#{days_left} #{day_or_days} left until #{year}-#{"%02d" % month}-#{"%02d" % day}"
 
-    if daysLeft in (-1, 1):
-        dayOrDays = "day"
-    else:
-        dayOrDays = "days"
-
-    print(title)
-    print("%d %s left until %d-%02d-%02d" % (daysLeft, dayOrDays, year, month, day))
-
-file.close()
+  pos += 1
+end
