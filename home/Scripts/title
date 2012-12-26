@@ -7,8 +7,7 @@
 
 # Usage: title <text>
 
-lower = ["a", "an", "and", "as", "at", "but", "by", "for", "from", "if", "in",
-  "of", "on", "or", "the", "to", "via", "vs"]
+small_words = %w(a an and as at but by en for if in of on or the to via vs)
 
 # Use both .join and .split so using quotes will work.
 title = $*.join(" ").split(" ")
@@ -16,8 +15,8 @@ pos = 0
 
 title.each do |word|
   # Capitalize the first word no matter what it is and check if the current
-  # word (in lowercased form) is included in the lower array.
-  if pos > 0 and lower.include? word.downcase
+  # word (in lowercased form) is included in the small_words array.
+  if pos > 0 and small_words.include? word.downcase
     title[pos] = word.downcase
   else
     title[pos] = word.capitalize
