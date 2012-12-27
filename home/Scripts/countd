@@ -13,12 +13,22 @@
 
 require "csv"
 
+file = "#{Dir.home}/.countdowns"
 today = Date.today
 pos = 0
 
-CSV.foreach("#{Dir.home}/.countdowns") do |row|
-  next if row.size != 4 # Skip unless 4 columns exist on a row.
+if not File.exists?(file)
+  abort "File not found!"
+elsif CSV.read(file).length == 0
+  abort "No entries found!"
+end
+
+CSV.foreach(file) do |row|
   puts if pos > 0 # Print empty line before all countdowns except the first.
+  if row.size != 4 # Skip unless 4 columns exist on a row.
+    puts "The row on line #{pos + 1} is not 4 columns. Skipping!"
+    next
+  end
 
   title = row[0]
 
