@@ -39,8 +39,7 @@ CSV.foreach(file) do |row|
   future = Date.new(year, month, day)
   days_left = (future - today).to_i
 
-  case days_left
-  when -1, 1
+  if days_left == -1 or days_left == 1
     day_or_days = "day"
   else
     day_or_days = "days"
