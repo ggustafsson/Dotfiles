@@ -24,14 +24,14 @@ elsif CSV.read(file).length == 0
 end
 
 CSV.foreach(file) do |row|
-  puts if pos > 0 # Print empty line before all countdowns except the first.
   if row.size != 4 # Skip unless 4 columns exist on a row.
-    puts "The row on line #{pos + 1} is not 4 columns. Skipping!"
+    puts "\nThe row on line #{pos + 1} is not 4 columns. Skipping!" if row.size > 0
     next
   end
 
-  title = row[0]
+  puts if pos > 0 # Print empty line before all countdowns except the first.
 
+  title = row[0]
   year  = row[1].to_i
   month = row[2].to_i
   day   = row[3].to_i
