@@ -22,34 +22,6 @@ fi
 
 echo
 
-if [ -d $DLPATH/Chosen ]; then
-  print -P "%B%F{green}Checking for Chosen updates.%f%b"
-  cd $DLPATH/Chosen
-  git pull
-else
-  git clone git://github.com/harvesthq/chosen.git $DLPATH/Chosen
-fi
-
-echo
-
-if [ -d $DLPATH/Deck.js ]; then
-  print -P "%B%F{green}Checking for Deck.js updates.%f%b"
-  cd $DLPATH/Deck.js
-  git pull
-else
-  git clone git://github.com/imakewebthings/deck.js.git $DLPATH/Deck.js
-fi
-
-echo
-
-if [ -d $DLPATH/Impress.js ]; then
-  print -P "%B%F{green}Checking for Impress.js updates.%f%b"
-  cd $DLPATH/Impress.js
-  git pull
-else
-  git clone git://github.com/bartaz/impress.js.git $DLPATH/Impress.js
-fi
-
 echo
 
 if [ -d $DLPATH/jQuery\ RSS ]; then
@@ -58,6 +30,13 @@ if [ -d $DLPATH/jQuery\ RSS ]; then
   git pull
 else
   git clone git://github.com/sdepold/jquery-rss.git $DLPATH/jQuery\ RSS
+fi
+
+[ ! -d $DLPATH/Bootstrap ] && mkdir $DLPATH/Bootstrap
+if [[ $OSTYPE == darwin* ]]; then
+  open http://twitter.github.com/bootstrap
+else
+  links http://twitter.github.com/bootstrap
 fi
 
 [ ! -d $DLPATH/jQuery ] && mkdir $DLPATH/jQuery

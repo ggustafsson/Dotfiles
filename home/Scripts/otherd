@@ -27,16 +27,6 @@ fi
 
 echo
 
-if [ -d ~/Documents/Reading/Dive\ Into\ Python\ 3 ]; then
-  print -P "%B%F{green}Checking for Dive Into Python 3 updates.%f%b"
-  cd ~/Documents/Reading/Dive\ Into\ Python\ 3
-  git pull
-else
-  git clone git://github.com/diveintomark/diveintopython3.git ~/Documents/Reading/Dive\ Into\ Python\ 3
-fi
-
-echo
-
 if [ -d ~/Projects/Tim\ Fork ]; then
   print -P "%B%F{green}Checking for Tim (hdonnay fork) updates.%f%b"
   cd ~/Projects/Tim\ Fork
