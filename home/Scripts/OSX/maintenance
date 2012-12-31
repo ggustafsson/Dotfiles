@@ -28,6 +28,8 @@ if [[ $ANSWER == (y|yes) ]]; then
   vimp
   echo
   webf
+  echo "Press Enter when done with webf."
+  read
   echo
   frees
   echo

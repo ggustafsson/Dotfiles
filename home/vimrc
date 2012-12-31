@@ -335,7 +335,7 @@ augroup Main
   autocmd FileType gitcommit          setlocal colorcolumn=73 nolist spell
   autocmd FileType help               setlocal colorcolumn=
   autocmd FileType markdown,text,todo setlocal colorcolumn=79 textwidth=78
-  autocmd FileType python             setlocal expandtab shiftwidth=4 softtabstop=4
+  autocmd FileType markdown,python    setlocal expandtab shiftwidth=4 softtabstop=4
 
   autocmd BufWritePost ~/.vimrc source %
 augroup END
