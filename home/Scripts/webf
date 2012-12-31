@@ -12,18 +12,6 @@ DLPATH=~/Sites/Frameworks
 rm -rf ~/Sites/Frameworks\ Backups
 cp -R $DLPATH ~/Sites/Frameworks\ Backups
 
-if [ -d $DLPATH/Bootstrap ]; then
-  print -P "%B%F{green}Checking for Bootstrap updates.%f%b"
-  cd $DLPATH/Bootstrap
-  git pull
-else
-  git clone git://github.com/twitter/bootstrap.git $DLPATH/Bootstrap
-fi
-
-echo
-
-echo
-
 if [ -d $DLPATH/jQuery\ RSS ]; then
   print -P "%B%F{green}Checking for jQuery RSS updates.%f%b"
   cd $DLPATH/jQuery\ RSS
