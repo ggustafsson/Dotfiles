@@ -30,7 +30,6 @@ if [[ $ANSWER == (y|yes) ]]; then
   webf
   echo "\nPress Enter when done with webf."
   read
-  echo
   frees
   echo
   backup
