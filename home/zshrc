@@ -1,5 +1,7 @@
 # Göran Gustafsson <gustafsson.g@gmail.com>
 
+[ -f ~/.remind ] && cat ~/.remind
+
 export GEM_HOME=~/.ruby
 export GREP_OPTIONS="--color=auto -i"
 export LC_COLLATE=C
@@ -77,7 +79,6 @@ zstyle ":completion:*:cd:*"     ignore-parents parent pwd
 zstyle ":completion:*:warnings" format "zsh: no matches found."
 
 [[ $OSTYPE == darwin* ]] && compdef _man man2pdf
-#compdef _path_files cd
 
 precmd() {
   echo
