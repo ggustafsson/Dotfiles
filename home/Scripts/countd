@@ -17,19 +17,20 @@ file = "#{Dir.home}/.countdowns"
 today = Date.today
 pos = 0
 
-if not File.exists?(file)
+if ! File.exists? file
   abort "File not found!"
 elsif CSV.read(file).length == 0
   abort "No entries found!"
 end
 
-CSV.foreach(file) do |row|
-  if row.size != 4 # Skip unless 4 columns exist on a row.
-    puts "\nThe row on line #{pos + 1} is not 4 columns. Skipping!" if row.size > 0
+CSV.foreach file do |row|
+  if row.size != 4
+    puts "\n" if pos > 0
+    puts "The row on line #{pos + 1} is not 4 columns. Skipping!"
+    pos += 1
+
     next
   end
-
-  puts if pos > 0 # Print empty line before all countdowns except the first.
 
   title = row[0]
   year  = row[1].to_i
@@ -45,8 +46,8 @@ CSV.foreach(file) do |row|
     day_or_days = "days"
   end
 
+  puts if pos > 0
   puts title
-  # Example: 24 days left until 2013-01-18
   puts "#{days_left} #{day_or_days} left until #{year}-#{"%02d" % month}-#{"%02d" % day}"
 
   pos += 1
