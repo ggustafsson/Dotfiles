@@ -25,7 +25,7 @@ end
 
 CSV.foreach file do |row|
   if row.size != 4
-    puts "\n" if pos > 0
+    puts if pos > 0
     puts "The row on line #{pos + 1} is not 4 columns. Skipping!"
     pos += 1
 
