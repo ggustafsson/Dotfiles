@@ -17,13 +17,13 @@ file = "#{Dir.home}/.countdowns"
 today = Date.today
 pos = 0
 
-if ! File.exists? file
+if !File.exists?(file)
   abort "File not found!"
 elsif CSV.read(file).length == 0
   abort "No entries found!"
 end
 
-CSV.foreach file do |row|
+CSV.foreach(file) do |row|
   if row.size != 4
     puts if pos > 0
     puts "The row on line #{pos + 1} is not 4 columns. Skipping!"
