@@ -7,11 +7,13 @@
 
 # Usage: antipro
 
+[ -f ~/.freedom ] && exit
+
 DAY=$(date "+%a")
 TIME=$(date "+%H%M")
 
 if [[ $DAY != (Sat|Sun) && $TIME == <0200-1400> ]]; then
   networksetup -setairportpower en0 off
 else
-  [ ! -f ~/.nowifi ] && networksetup -setairportpower en0 on
+  networksetup -setairportpower en0 on
 fi
