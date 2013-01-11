@@ -228,9 +228,13 @@ vnoremap <S-Tab> <gv
 if has("gui_running") && has("mac")
   function! FancyView()
     if &guifont != "Inconsolata:h24"
+      set fullscreen
+
       set antialias
       set guifont=Inconsolata:h24
     else
+      set nofullscreen
+
       call FontSetup()
     endif
   endfunction
