@@ -1,7 +1,5 @@
 # Göran Gustafsson <gustafsson.g@gmail.com>
 
-[ -f ~/.remind ] && cat ~/.remind
-
 export GEM_HOME=~/.ruby
 export GREP_OPTIONS="--color=auto -i"
 export LC_COLLATE=C
@@ -103,7 +101,7 @@ git_branch() {
 
 todo_info() {
   if [ ! -z $TODO_FILE ]; then
-    REFERENCE=$(egrep "(^- |^! |^=)" $TODO_FILE 2> /dev/null | wc -l) || return
+    REFERENCE=$(egrep "(^- |^! |^= |^@ )" $TODO_FILE 2> /dev/null | wc -l) || return
     [[ $REFERENCE -gt 0 ]] && echo "%F{green}$REFERENCE%f "
   fi
 }
