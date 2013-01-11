@@ -21,7 +21,6 @@ set gdefault
 set hidden
 set nofoldenable
 set nowrap
-set showbreak=+
 set spelllang=en,sv
 set t_vb=
 set timeoutlen=2000
@@ -58,6 +57,9 @@ set statusline+=%=
 set statusline+=%(%v,\ %)
 set statusline+=%(%l/%L\ %)
 set tabline=%!TabLine()
+
+set linebreak
+set showbreak=+
 
 set list
 set listchars=tab:>-,trail:-,precedes:<,extends:>
@@ -204,6 +206,9 @@ nnoremap <Leader>zs :edit ~/.zshrc<CR>
 
 nnoremap vil ^vg_
 nnoremap ?   H:call EasyMotion#WB(0, 0)<CR>
+
+nnoremap j gj
+nnoremap k gk
 
 nnoremap + <C-w>+
 nnoremap - <C-w>-
