@@ -1,5 +1,7 @@
 " Göran Gustafsson <gustafsson.g@gmail.com>
 
+let g:ninja_fancy_statusline = 1
+
 if !exists("g:dont_run_again")
   call pathogen#infect()
   call pathogen#helptags()
