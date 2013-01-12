@@ -15,6 +15,7 @@ endif
 set backspace=indent,eol,start
 set confirm
 set cryptmethod=blowfish
+set cursorline
 set encoding=utf-8
 set formatoptions=cjlnoqrt
 set gdefault
