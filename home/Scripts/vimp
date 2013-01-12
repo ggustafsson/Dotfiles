@@ -24,16 +24,6 @@ echo
 
 cp -R $DLPATH ~/.vim/backups/bundle
 
-if [ -d $DLPATH/easymotion ]; then
-  print -P "%B%F{green}Checking for EasyMotion updates.%f%b"
-  cd $DLPATH/easymotion
-  git pull
-else
-  git clone git://github.com/Lokaltog/vim-easymotion.git $DLPATH/easymotion
-fi
-
-echo
-
 if [ -d $DLPATH/gist ]; then
   print -P "%B%F{green}Checking for Gist updates.%f%b"
   cd $DLPATH/gist

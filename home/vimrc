@@ -122,9 +122,6 @@ let g:gist_open_browser_after_post = 1
 let g:mapleader = ","
 let g:nyancat_display_statusline = 1
 
-let g:EasyMotion_do_mapping = 0
-let g:EasyMotion_keys = "abcdefghijklmnopqrstuvxyzåäöABCDEFGHIJKLMNOPQRSTUVXYZÅÄÖ"
-
 let g:gundo_help = 0
 let g:gundo_preview_statusline = " Gundo Preview"
 let g:gundo_tree_statusline = " Gundo Tree"
@@ -208,7 +205,6 @@ nnoremap <Leader>ws :%s/\s\+$//<CR>:nohlsearch<CR>
 nnoremap <Leader>zs :edit ~/.zshrc<CR>
 
 nnoremap vil ^vg_
-nnoremap ?   H:call EasyMotion#WB(0, 0)<CR>
 
 nnoremap j gj
 nnoremap k gk
