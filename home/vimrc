@@ -1,7 +1,5 @@
 " Göran Gustafsson <gustafsson.g@gmail.com>
 
-let g:ninja_fancy_statusline = 1
-
 if !exists("g:dont_run_again")
   call pathogen#infect()
   call pathogen#helptags()
@@ -17,7 +15,6 @@ endif
 set backspace=indent,eol,start
 set confirm
 set cryptmethod=blowfish
-set cursorline
 set encoding=utf-8
 set formatoptions=cjlnoqrt
 set gdefault
