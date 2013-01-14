@@ -15,7 +15,7 @@ if [[ $# -gt 1 ]]; then
     fi
   done
 
-  FILENAME=animated_$(date '+%Y-%m-%d_%H:%M').gif
+  FILENAME=animated_$(date '+%Y-%m-%d_%H%M').gif
   convert -delay 30 -loop 0 $* $FILENAME
 
   [[ $OSTYPE == darwin* ]] && open -a Safari $FILENAME
