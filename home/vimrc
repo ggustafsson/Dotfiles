@@ -226,6 +226,8 @@ vnoremap <Leader>so :sort<CR>
 vnoremap <Tab>   >gv
 vnoremap <S-Tab> <gv
 
+inoremap <Tab> <C-n>
+
 if has("gui_running") && has("mac")
   function! FancyView()
     if &guifont != "Inconsolata:h24"
