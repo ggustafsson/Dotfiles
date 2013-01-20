@@ -226,7 +226,7 @@ vnoremap <Leader>so :sort<CR>
 vnoremap <Tab>   >gv
 vnoremap <S-Tab> <gv
 
-inoremap <Tab> <C-n>
+inoremap <expr> <Tab> CompleteTab()
 
 if has("gui_running") && has("mac")
   function! FancyView()
@@ -272,6 +272,16 @@ function! ColorColumn()
   else
     echo "colorcolumn="
     setlocal colorcolumn=
+  endif
+endfunction
+
+function! CompleteTab()
+  let char = getline('.')[col('.')-2]
+
+  if empty(char) || char == " "
+    return "\<Tab>"
+  else
+    return "\<C-n>"
   endif
 endfunction
 
