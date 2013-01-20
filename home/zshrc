@@ -65,7 +65,11 @@ setopt nonotify
 autoload -U compinit && compinit
 autoload -U url-quote-magic && zle -N self-insert url-quote-magic
 
-bindkey -e
+bindkey -v
+bindkey "^?" backward-delete-char
+bindkey "^A" beginning-of-line
+bindkey "^E" end-of-line
+bindkey -M vicmd "R" custom-vi-replace
 
 zstyle ":completion:*"          insert-tab pending
 zstyle ":completion:*"          list-colors ${(s.:.)LS_COLORS}
@@ -105,10 +109,30 @@ todo_info() {
   fi
 }
 
+custom-vi-replace() {
+  REPLACE=1 && zle vi-replace && REPLACE=0
+}
+zle -N custom-vi-replace
+
+zle-line-init zle-keymap-select() {
+  zle reset-prompt
+}
+zle -N zle-line-init && zle -N zle-keymap-select
+
+zsh_mode() {
+  if [[ $KEYMAP == vicmd ]]; then
+    echo "%F{red}E%f"
+  elif [[ $REPLACE == 1 ]]; then
+    echo "%F{magenta}R%f"
+  else
+    echo "%F{blue}$%f"
+  fi
+}
+
 if [[ $TERM == dumb ]]; then
   PROMPT='%~ %# '
 else
-  PROMPT='%B${(U)USER} %F{yellow}${(C)HOST%%.*}%f%b ${PWD/$HOME/~} %B$(todo_info)%F{blue}%#%f%b '
+  PROMPT='%B${(U)USER} %F{yellow}${(C)HOST%%.*}%f%b ${PWD/$HOME/~} %B$(todo_info)$(zsh_mode)%b '
   RPROMPT='%B$(git_branch)%b%(?.. :()'
 fi
 
