@@ -132,7 +132,7 @@ zsh_mode() {
 }
 
 if [[ $TERM == dumb ]]; then
-  PROMPT='%~ %# '
+  PROMPT='%~ $ '
 else
   PROMPT='%B${(U)USER} %F{yellow}${(C)HOST%%.*}%f%b ${PWD/$HOME/~} %B$(todo_info)$(zsh_mode)%b '
   RPROMPT='%B$(git_branch)%b%(?.. :()'
