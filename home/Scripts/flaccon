@@ -16,10 +16,10 @@ if [[ $# -gt 0 ]]; then
       if [[ $FILE == *.flac ]]; then
         TAGS=(TITLE ARTIST ALBUM TRACKNUMBER TOTALTRACKS GENRE DATE)
 
-        # Set all tag information as shell variables.
+        # Put all tag information inside of various shell variables.
         for X in $TAGS; do
           TMP=$(metaflac --show-tag=$X $FILE)
-          typeset -g $X=${TMP#*=}
+          typeset $X=${TMP#*=} # Voodoo magic. Must use typeset because of $.
         done
 
         echo
