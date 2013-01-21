@@ -69,6 +69,7 @@ bindkey -v
 bindkey "^?" backward-delete-char
 bindkey "^A" beginning-of-line
 bindkey "^E" end-of-line
+bindkey "^R" history-incremental-search-backward
 bindkey "^U" kill-whole-line
 bindkey -M vicmd "R" custom-vi-replace
 
