@@ -12,7 +12,7 @@ DLPATH=~/.vim/bundle
 rm -rf ~/.vim/backups/bundle ~/.vim/backups/pathogen
 cp -R ~/.vim/pathogen ~/.vim/backups/pathogen
 
-if [ -d ~/.vim/pathogen ]; then
+if [[ -d ~/.vim/pathogen ]]; then
   print -P "%B%F{green}Checking for Pathogen updates.%f%b"
   cd ~/.vim/pathogen
   git pull
@@ -24,7 +24,7 @@ echo
 
 cp -R $DLPATH ~/.vim/backups/bundle
 
-if [ -d $DLPATH/gist ]; then
+if [[ -d $DLPATH/gist ]]; then
   print -P "%B%F{green}Checking for Gist updates.%f%b"
   cd $DLPATH/gist
   git pull
@@ -34,7 +34,7 @@ fi
 
 echo
 
-if [ -d $DLPATH/gundo ]; then
+if [[ -d $DLPATH/gundo ]]; then
   print -P "%B%F{green}Checking for Gundo updates.%f%b"
   cd $DLPATH/gundo
   git pull
@@ -44,7 +44,7 @@ fi
 
 echo
 
-if [ -d $DLPATH/lusty ]; then
+if [[ -d $DLPATH/lusty ]]; then
   print -P "%B%F{green}Checking for Lusty updates.%f%b"
   cd $DLPATH/lusty
   git pull
@@ -54,7 +54,7 @@ fi
 
 echo
 
-if [ -d $DLPATH/nerdcommenter ]; then
+if [[ -d $DLPATH/nerdcommenter ]]; then
   print -P "%B%F{green}Checking for NERDCommenter updates.%f%b"
   cd $DLPATH/nerdcommenter
   git pull
@@ -64,7 +64,7 @@ fi
 
 echo
 
-if [ -d $DLPATH/nerdtree ]; then
+if [[ -d $DLPATH/nerdtree ]]; then
   print -P "%B%F{green}Checking for NERDTree updates.%f%b"
   cd $DLPATH/nerdtree
   git pull
@@ -74,7 +74,7 @@ fi
 
 echo
 
-if [ -d $DLPATH/nyancat ]; then
+if [[ -d $DLPATH/nyancat ]]; then
   print -P "%B%F{green}Checking for NyanCat updates.%f%b"
   cd $DLPATH/nyancat
   git pull
@@ -84,7 +84,7 @@ fi
 
 echo
 
-if [ -d $DLPATH/surround ]; then
+if [[ -d $DLPATH/surround ]]; then
   print -P "%B%F{green}Checking for Surround updates.%f%b"
   cd $DLPATH/surround
   git pull
@@ -94,7 +94,7 @@ fi
 
 echo
 
-if [ -d $DLPATH/viminesweeper ]; then
+if [[ -d $DLPATH/viminesweeper ]]; then
   print -P "%B%F{green}Checking for Viminesweeper updates.%f%b"
   cd $DLPATH/viminesweeper
   git pull
@@ -104,7 +104,7 @@ fi
 
 echo
 
-if [ -d $DLPATH/webapi ]; then
+if [[ -d $DLPATH/webapi ]]; then
   print -P "%B%F{green}Checking for WebAPI updates.%f%b"
   cd $DLPATH/webapi
   git pull

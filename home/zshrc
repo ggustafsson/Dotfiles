@@ -26,7 +26,7 @@ if [[ $OSTYPE == darwin* ]]; then
   WIRESHARK=(/usr/local/Cellar/wireshark/*/bin/*(N:t))
 fi
 
-[ -f ~/.ssh/config ] && SSH_HOSTS=($(sed -n 's/^Host //p' ~/.ssh/config))
+[[ -f ~/.ssh/config ]] && SSH_HOSTS=($(sed -n 's/^Host //p' ~/.ssh/config))
 DIRSTACKSIZE=20
 
 d=~/Downloads
@@ -105,7 +105,7 @@ git_branch() {
 }
 
 todo_info() {
-  if [ ! -z $TODO_FILE ]; then
+  if [[ ! -z $TODO_FILE ]]; then
     REFERENCE=$(egrep "(^- |^! |^= |^@ )" $TODO_FILE 2> /dev/null | wc -l) || return
     [[ $REFERENCE -gt 0 ]] && echo "%F{green}$REFERENCE%f "
   fi
@@ -249,7 +249,7 @@ alias rm="rm -v"
 alias cpass="openssl rand -base64 20"
 alias pass="vim ~/Documents/Text\ Files/Passwords.blowfish"
 
-alias cdsd='[ ! -z $SAVED_DIR ] && echo ${SAVED_DIR/$HOME/\~} && cd $SAVED_DIR || echo "SAVED_DIR is empty."'
+alias cdsd='[[ ! -z $SAVED_DIR ]] && echo ${SAVED_DIR/$HOME/\~} && cd $SAVED_DIR || echo "SAVED_DIR is empty."'
 alias sd='echo "Saving current path to SAVED_DIR." && export SAVED_DIR=$PWD'
 
 alias d="ls -l"

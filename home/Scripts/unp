@@ -9,7 +9,7 @@
 
 if [[ $# -gt 0 ]]; then
   for ARGUMENT in $*; do
-    if [ -f $ARGUMENT ]; then
+    if [[ -f $ARGUMENT ]]; then
       case $ARGUMENT in
         *.bz2)
           if [[ $ARGUMENT == *.tar.bz2 ]]; then

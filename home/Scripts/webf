@@ -12,7 +12,7 @@ DLPATH=~/Sites/Frameworks
 rm -rf ~/Sites/Frameworks\ Backups
 cp -R $DLPATH ~/Sites/Frameworks\ Backups
 
-if [ -d $DLPATH/jQuery\ RSS ]; then
+if [[ -d $DLPATH/jQuery\ RSS ]]; then
   print -P "%B%F{green}Checking for jQuery RSS updates.%f%b"
   cd $DLPATH/jQuery\ RSS
   git pull
@@ -20,14 +20,14 @@ else
   git clone git://github.com/sdepold/jquery-rss.git $DLPATH/jQuery\ RSS
 fi
 
-[ ! -d $DLPATH/Bootstrap ] && mkdir $DLPATH/Bootstrap
+[[ ! -d $DLPATH/Bootstrap ]] && mkdir $DLPATH/Bootstrap
 if [[ $OSTYPE == darwin* ]]; then
   open http://twitter.github.com/bootstrap
 else
   links http://twitter.github.com/bootstrap
 fi
 
-[ ! -d $DLPATH/jQuery ] && mkdir $DLPATH/jQuery
+[[ ! -d $DLPATH/jQuery ]] && mkdir $DLPATH/jQuery
 if [[ $OSTYPE == darwin* ]]; then
   open http://jquery.com/download
 else

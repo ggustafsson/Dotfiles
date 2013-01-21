@@ -7,7 +7,7 @@
 
 # Usage: otherd
 
-if [ -d ~/Development/Hello\ World ]; then
+if [[ -d ~/Development/Hello\ World ]]; then
   print -P "%B%F{green}Checking for Hello World updates.%f%b"
   cd ~/Development/Hello\ World
   git pull
@@ -17,7 +17,7 @@ fi
 
 echo
 
-if [ -d ~/Documents/Reading/Dive\ Into\ HTML5 ]; then
+if [[ -d ~/Documents/Reading/Dive\ Into\ HTML5 ]]; then
   print -P "%B%F{green}Checking for Dive Into HTML5 updates.%f%b"
   cd ~/Documents/Reading/Dive\ Into\ HTML5
   git pull
@@ -27,7 +27,7 @@ fi
 
 echo
 
-if [ -d ~/Projects/Tim\ Fork ]; then
+if [[ -d ~/Projects/Tim\ Fork ]]; then
   print -P "%B%F{green}Checking for Tim (hdonnay fork) updates.%f%b"
   cd ~/Projects/Tim\ Fork
   git pull
@@ -37,7 +37,7 @@ fi
 
 echo
 
-if [ -d ~/Storage/Fonts/Blackout ]; then
+if [[ -d ~/Storage/Fonts/Blackout ]]; then
   print -P "%B%F{green}Checking for Blackout updates.%f%b"
   cd ~/Storage/Fonts/Blackout
   git pull
@@ -47,7 +47,7 @@ fi
 
 echo
 
-if [ -d ~/Storage/Fonts/Knewave ]; then
+if [[ -d ~/Storage/Fonts/Knewave ]]; then
   print -P "%B%F{green}Checking for Knewave updates.%f%b"
   cd ~/Storage/Fonts/Knewave
   git pull
@@ -57,7 +57,7 @@ fi
 
 echo
 
-if [ -d ~/Storage/Fonts/League\ Gothic ]; then
+if [[ -d ~/Storage/Fonts/League\ Gothic ]]; then
   print -P "%B%F{green}Checking for League Gothic updates.%f%b"
   cd ~/Storage/Fonts/League\ Gothic
   git pull
@@ -67,7 +67,7 @@ fi
 
 echo
 
-if [ -d ~/Storage/Fonts/Orbitron ]; then
+if [[ -d ~/Storage/Fonts/Orbitron ]]; then
   print -P "%B%F{green}Checking for Orbitron updates.%f%b"
   cd ~/Storage/Fonts/Orbitron
   git pull
@@ -77,7 +77,7 @@ fi
 
 echo
 
-if [ -d ~/Storage/Fonts/Ostrich\ Sans ]; then
+if [[ -d ~/Storage/Fonts/Ostrich\ Sans ]]; then
   print -P "%B%F{green}Checking for Ostrich Sans updates.%f%b"
   cd ~/Storage/Fonts/Ostrich\ Sans
   git pull
@@ -87,7 +87,7 @@ fi
 
 echo
 
-if [ -d ~/Storage/Fonts/Prociono ]; then
+if [[ -d ~/Storage/Fonts/Prociono ]]; then
   print -P "%B%F{green}Checking for Prociono updates.%f%b"
   cd ~/Storage/Fonts/Prociono
   git pull
@@ -97,7 +97,7 @@ fi
 
 echo
 
-if [ -d ~/Storage/Fonts/Sniglet ]; then
+if [[ -d ~/Storage/Fonts/Sniglet ]]; then
   print -P "%B%F{green}Checking for Sniglet updates.%f%b"
   cd ~/Storage/Fonts/Sniglet
   git pull

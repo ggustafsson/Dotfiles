@@ -14,7 +14,7 @@ echo "Scanning for network shares."
 
 RESULTS=$(nmap -sT ${IP}/24 -p $PORT --open 2> /dev/null | egrep "(Nmap scan report for|$PORT/tcp)")
 
-if [ ! -z $RESULTS ]; then
+if [[ ! -z $RESULTS ]]; then
   echo "\n$RESULTS"
 else
   echo "\nNo network shares found!"

@@ -12,7 +12,7 @@ if [[ $# -gt 0 ]]; then
   echo "Converting FLAC file(s) to MP3."
 
   for FILE in $*; do
-    if [ -f $FILE ]; then
+    if [[ -f $FILE ]]; then
       if [[ $FILE == *.flac ]]; then
         TAGS=(TITLE ARTIST ALBUM TRACKNUMBER TOTALTRACKS GENRE DATE)
 

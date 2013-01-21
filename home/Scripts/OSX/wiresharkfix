@@ -15,7 +15,7 @@
 
 # Usage: <wireshark command>
 
-if [ ! -w /dev/bpf1 ]; then
+if [[ ! -w /dev/bpf1 ]]; then
   sudo chgrp wireshark /dev/bpf*
   sudo chmod 660 /dev/bpf*
 fi

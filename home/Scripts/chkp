@@ -19,7 +19,7 @@ for DIRECTORY in ~/Projects/*; do
     print -P "%B%F{red}$DIRECTORY:t:%f%b"
     git status -s -b
     echo
-  elif [ -d .git ]; then
+  elif [[ -d .git ]]; then
     CLEAN_REPO+=($DIRECTORY:t)
   else
     NOT_REPO+=($DIRECTORY:t)
@@ -28,7 +28,7 @@ done
 
 cd $CURRENT_DIRECTORY
 
-if [ ${#CLEAN_REPO} -gt 0 ]; then
+if [[ ${#CLEAN_REPO} -gt 0 ]]; then
   print -P "%B%F{green}Clean repo:%f%b"
   for X in $CLEAN_REPO; do
     echo " * $X"
@@ -37,7 +37,7 @@ fi
 
 [[ ${#CLEAN_REPO} -gt 0 && ${#NOT_REPO} -gt 0 ]] && echo
 
-if [ ${#NOT_REPO} -gt 0 ]; then
+if [[ ${#NOT_REPO} -gt 0 ]]; then
   print -P "%B%F{blue}Not Git repo:%f%b"
   for X in $NOT_REPO; do
     echo " * $X"

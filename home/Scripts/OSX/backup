@@ -31,7 +31,7 @@ DIRECTORIES=(
   YouTube
 )
 
-if [ ! -f $ENCRYPTED_IMAGE ]; then
+if [[ ! -f $ENCRYPTED_IMAGE ]]; then
   echo "File $ENCRYPTED_IMAGE does not exist!"
   return 1
 fi
@@ -39,7 +39,7 @@ fi
 echo "Mounting encrypted image file."
 hdiutil attach -noverify $ENCRYPTED_IMAGE
 
-if [ ! -d $BACKUP_DESTINATION ]; then
+if [[ ! -d $BACKUP_DESTINATION ]]; then
   echo "\nDirectory $BACKUP_DESTINATION does not exist!"
   return 1
 fi

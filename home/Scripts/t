@@ -9,21 +9,21 @@
 # Usage: t
 #        t <text>
 
-if [ -z $TODO_FILE ]; then
+if [[ -z $TODO_FILE ]]; then
   echo "Variable TODO_FILE is not set!"
   return 1
 fi
 
 if [[ $# -gt 0 ]]; then
-  if [ -f $TODO_FILE ]; then
+  if [[ -f $TODO_FILE ]]; then
     echo "- $*" >> $TODO_FILE
   else
     echo "- $*" > $TODO_FILE
   fi
   echo "Added new entry to file."
 else
-  if [ -f $TODO_FILE ]; then
-    if [ -s $TODO_FILE ]; then
+  if [[ -f $TODO_FILE ]]; then
+    if [[ -s $TODO_FILE ]]; then
       echo "${TODO_FILE:t}:\n"
       cat $TODO_FILE
     else
