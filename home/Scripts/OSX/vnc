@@ -6,7 +6,7 @@
 
 # Usage: vnc <ip/dns>
 
-if [[ $# == 1 ]]; then
+if [[ $# -eq 1 ]]; then
   open "vnc://$1"
 else
   echo "Usage: $0:t [IP/DNS]..."

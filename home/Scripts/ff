@@ -7,7 +7,7 @@
 
 # Usage: ff <pattern>
 
-if [[ $# == 1 ]]; then
+if [[ $# -eq 1 ]]; then
   find -L . -iname $1
 else
   echo "Usage: $0:t [PATTERN]..."

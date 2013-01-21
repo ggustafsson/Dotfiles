@@ -7,7 +7,7 @@
 
 # Usage: ffp <pattern>
 
-if [[ $# == 1 ]]; then
+if [[ $# -eq 1 ]]; then
   find -L "$PWD" -iname $1
 else
   echo "Usage: $0:t [PATTERN]..."

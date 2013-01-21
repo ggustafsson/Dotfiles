@@ -7,7 +7,7 @@
 
 # Usage: smb <ip/dns>
 
-if [[ $# == 1 ]]; then
+if [[ $# -eq 1 ]]; then
   open "smb://$1"
 else
   echo "Usage: $0:t [IP/DNS]..."

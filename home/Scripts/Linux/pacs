@@ -5,7 +5,7 @@
 
 # Usage: pacs <name>
 
-if [[ $# == 1 ]]; then
+if [[ $# -eq 1 ]]; then
   if type -p pacman >& /dev/null; then
     CL='\\e['
     RS='\\e[0;0m'
