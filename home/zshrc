@@ -268,6 +268,7 @@ alias gpl="git pull"
 alias gpu='git push && [[ $OSTYPE == darwin* ]] && say fuck yeah'
 alias grm="git rm"
 alias gst="git status -s -b"
+alias gun="git reset --soft HEAD^"
 
 alias int="tim -i"
 alias pomo="tim -p"
