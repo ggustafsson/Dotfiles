@@ -56,7 +56,6 @@ set statusline+=%(%{&paste?'[paste]':''}\ %)
 set statusline+=%=
 set statusline+=%(%v,\ %)
 set statusline+=%(%l/%L\ %)
-set tabline=%!TabLine()
 
 set linebreak
 set showbreak=+
@@ -297,49 +296,6 @@ function! LineNumber()
     echo "set relativenumber"
     set relativenumber
   endif
-endfunction
-
-function! TabLine()
-  let label = ""
-  let i = 1
-
-  while i <= tabpagenr("$")
-    let buflist = tabpagebuflist(i)
-    let winnr = tabpagewinnr(i)
-    let tabnr = tabpagewinnr(i, "$")
-    let label .= "%" . i . "T"
-    let label .= (i == tabpagenr() ? '%#TabLineSel#' : '%#TabLine#')
-    let label .= " "
-    let label .= (tabnr > 1 ? tabnr : "")
-    let bufnr = buflist[winnr - 1]
-
-    if getbufvar(bufnr, "&modified")
-      let label .= "+ "
-    elseif tabnr > 1
-      let label .= " "
-    endif
-
-    let file = bufname(bufnr)
-    let buftype = getbufvar(bufnr, "buftype")
-
-    if buftype == "nofile"
-      if file =~ "\/."
-        let file = substitute(file, '.*\/\ze.', "", "")
-      endif
-    else
-      let file = fnamemodify(file, ":p:t")
-    endif
-
-    if file == ""
-      let file = "[No Name]"
-    endif
-
-    let label .= file . " "
-    let i = i + 1
-  endwhile
-
-  let label .= "%T%#TabLineFill#%="
-  return label
 endfunction
 
 augroup Main
