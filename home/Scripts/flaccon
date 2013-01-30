@@ -2,7 +2,7 @@
 
 # Written by Göran Gustafsson <gustafsson.g@gmail.com>.
 
-# Description: This script converts flac files to high quality mp3 files.
+# Description: This script converts FLAC files to high quality MP3 files.
 
 # Usage: flaccon <file>
 #        flaccon *.flac
