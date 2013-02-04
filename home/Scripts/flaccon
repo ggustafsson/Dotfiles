@@ -29,7 +29,7 @@ if [[ $# -gt 0 ]]; then
           echo $X=${(P)X}
         done
 
-        # Decode flac file with "flac" and encode it to mp3 with "lame".
+        # Decode FLAC file with "flac" and encode it to MP3 with "lame".
         flac -dc $FILE | lame -b 320 -h --ignore-tag-errors --tt "$TITLE" \
           --ta "$ARTIST" \
           --tl "$ALBUM" \
