@@ -30,14 +30,14 @@ if [[ $# -gt 0 ]]; then
         done
 
         # Decode FLAC file with "flac" and encode it to MP3 with "lame".
-        flac -dc $FILE | lame -b 320 -h --ignore-tag-errors --tt "$TITLE" \
+        flac -dc $FILE | lame -b 320 -h --ignore-tag-errors \
+          --tt "$TITLE" \
           --ta "$ARTIST" \
           --tl "$ALBUM" \
           --tn "$TRACKNUMBER/$TOTALTRACKS" \
           --tg "$GENRE" \
           --ty "$DATE" \
-          --add-id3v2 \
-          - "$FILE:r.mp3"
+          --add-id3v2 - "$FILE:r.mp3"
       else
         echo "\nFile $FILE does not end with flac."
       fi
