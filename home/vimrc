@@ -215,6 +215,9 @@ nnoremap <Backspace> :nohlsearch<CR>
 nnoremap <Tab>       :LustyBufferExplorer<CR>
 nnoremap <S-Tab>     :bnext<CR>
 
+nnoremap <C-j> 5gj
+nnoremap <C-k> 5gk
+
 nnoremap <Leader><Space> :call NERDComment("n", "Toggle")<CR>
 vnoremap <Leader><Space> :call NERDComment("n", "Toggle")<CR>
 
