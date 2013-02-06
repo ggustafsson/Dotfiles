@@ -21,7 +21,6 @@ set gdefault
 set hidden
 set nofoldenable
 set nowrap
-set number
 set spelllang=en,sv
 set t_vb=
 set timeoutlen=2000
@@ -63,6 +62,9 @@ set showbreak=+
 
 set list
 set listchars=tab:>-,trail:-,precedes:<,extends:>
+
+set numberwidth=3
+set relativenumber
 
 set splitbelow
 set splitright
@@ -284,12 +286,15 @@ function! CompleteTab()
 endfunction
 
 function! LineNumber()
-  if &number == 1
+  if &relativenumber == 1
+    echo "set number"
+    set number
+  elseif &number == 1
     echo "set nonumber"
     set nonumber
   else
-    echo "set number"
-    set number
+    echo "set relativenumber"
+    set relativenumber
   endif
 endfunction
 
