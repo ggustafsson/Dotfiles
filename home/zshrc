@@ -211,8 +211,8 @@ fi
 type hub >& /dev/null && alias git="hub"
 
 alias bc="bc -q"
+alias bigf="du -sk * | sort -nr | head"
 alias c="clear"
-alias cdh="dirs -v | sort -r"
 alias chkm="find ~/Music/MP3 -type f ! -iname '*.mp3'"
 alias df="df -h"
 alias du="du -sh"
@@ -224,7 +224,7 @@ alias ping="ping -c 10"
 alias ps='ps ax -o $PS_DISPLAY'
 alias py="python3"
 alias random='FILES=(*) && echo $FILES[$RANDOM%$#FILES+1]'
-alias re="ls -t | head -n 5"
+alias recf="ls -t | head -n 5"
 alias reload="source ~/.zshrc"
 alias topme='top -U $USER'
 alias tv='vim "$TODO_FILE"'
@@ -235,6 +235,9 @@ alias yt="youtube-dl -l"
 alias -- -="cd -"
 alias ...="cd ../.."
 alias ..="cd .."
+alias cdh="dirs -v | sort -r"
+alias cdj='echo "Saving current path to SAVED_DIR." && export SAVED_DIR=$PWD'
+alias cds='[[ ! -z $SAVED_DIR ]] && echo ${SAVED_DIR/$HOME/\~} && cd $SAVED_DIR || echo "SAVED_DIR is empty."'
 
 alias cl="wc -l"
 alias cw="wc -w"
@@ -248,9 +251,6 @@ alias rm="rm -v"
 
 alias cpass="openssl rand -base64 20"
 alias pass="vim ~/Documents/Text\ Files/Passwords.blowfish"
-
-alias cdsd='[[ ! -z $SAVED_DIR ]] && echo ${SAVED_DIR/$HOME/\~} && cd $SAVED_DIR || echo "SAVED_DIR is empty."'
-alias sd='echo "Saving current path to SAVED_DIR." && export SAVED_DIR=$PWD'
 
 alias d="ls -l"
 alias da="ls -la"
