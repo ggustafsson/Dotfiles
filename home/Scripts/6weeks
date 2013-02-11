@@ -1,0 +1,25 @@
+#!/usr/bin/env ruby
+
+# Written by Göran Gustafsson <gustafsson.g@gmail.com>.
+
+# Description: This script adds 6 weeks to a specific date. I use this because
+# i update my blog at http://gleg.se every 6 weeks.
+
+# Usage: countd <date>
+
+require "date"
+
+if ARGV.length == 1
+  begin
+    date = Date.parse(ARGV[0]) + 42
+    puts date
+
+    if RUBY_PLATFORM.include?("darwin")
+      `printf #{date} | pbcopy`
+    end
+  rescue
+    puts "Invalid date argument!"
+  end
+else
+  puts "Usage: #{File.basename($0)} [DATE]"
+end

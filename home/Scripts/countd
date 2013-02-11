@@ -24,20 +24,23 @@ elsif CSV.read(file).length == 0
 end
 
 CSV.foreach(file) do |row|
-  if row.size != 4
+  if row.size != 2
     puts if pos > 0
-    puts "The row on line #{pos + 1} is not 4 columns. Skipping!"
+    puts "The row on line #{pos + 1} is not 2 columns. Skipping!"
     pos += 1
 
     next
   end
 
   title = row[0]
-  year  = row[1].to_i
-  month = row[2].to_i
-  day   = row[3].to_i
+  date = row[1].strip!
 
-  future = Date.new(year, month, day)
+  begin
+    future = Date.parse(date)
+  rescue
+    next
+  end
+
   days_left = (future - today).to_i
 
   if days_left == -1 or days_left == 1
@@ -48,7 +51,7 @@ CSV.foreach(file) do |row|
 
   puts if pos > 0
   puts title
-  puts "#{days_left} #{day_or_days} left until #{year}-#{"%02d" % month}-#{"%02d" % day}"
+  puts "#{days_left} #{day_or_days} left until #{date}"
 
   pos += 1
 end
