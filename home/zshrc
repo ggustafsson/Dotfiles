@@ -145,7 +145,7 @@ if [[ $OSTYPE == darwin* ]]; then
   alias o="open"
   alias psme='\ps -xu $USER -o $PS_DISPLAY'
   alias study="school && tim -p"
-  alias top="top -o cpu"
+  alias top="top -o cpu -s 2"
   alias tree="tree -N"
   alias webcam="imagesnap -t 2 -w 1"
 
