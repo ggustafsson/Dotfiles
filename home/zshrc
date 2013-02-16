@@ -93,21 +93,14 @@ git_branch() {
 
   if [[ -n $(git rev-list origin..HEAD 2> /dev/null) ]]; then
     if [[ -n $(git status -s 2> /dev/null) ]]; then
-      echo "%F{cyan}ahead %F{red}$BRANCH%f"
+      echo " %F{cyan}ahead %F{red}$BRANCH%f"
     else
-      echo "%F{cyan}ahead %F{green}$BRANCH%f"
+      echo " %F{cyan}ahead %F{green}$BRANCH%f"
     fi
   elif [[ -n $(git status -s 2> /dev/null) ]]; then
-    echo "%F{red}$BRANCH%f"
+    echo " %F{red}$BRANCH%f"
   else
-    echo "%F{green}$BRANCH%f"
-  fi
-}
-
-todo_info() {
-  if [[ ! -z $TODO_FILE ]]; then
-    REFERENCE=$(egrep "(^- |^! |^= |^@ )" $TODO_FILE 2> /dev/null | wc -l) || return
-    [[ $REFERENCE -gt 0 ]] && echo "%F{green}$REFERENCE%f "
+    echo " %F{green}$BRANCH%f"
   fi
 }
 
@@ -134,8 +127,8 @@ zsh_mode() {
 if [[ $TERM == dumb ]]; then
   PROMPT='%~ $ '
 else
-  PROMPT='%B${(U)USER} %F{yellow}${(C)HOST%%.*}%f%b ${PWD/$HOME/~} %B$(todo_info)$(zsh_mode)%b '
-  RPROMPT='%B$(git_branch)%b%(?.. :()'
+  PROMPT='%B${(U)USER} %F{yellow}${(C)HOST%%.*}%f%b ${PWD/$HOME/~} %B$(zsh_mode)%b '
+  RPROMPT='%B%F{blue}$%f%b %?%B$(git_branch)%b'
 fi
 
 if [[ $OSTYPE == darwin* ]]; then
