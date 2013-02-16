@@ -226,8 +226,8 @@ alias -- -="cd -"
 alias ...="cd ../.."
 alias ..="cd .."
 alias cdh="dirs -v | sort -r"
-alias cdj='echo "Saving current path to SAVED_DIR." && export SAVED_DIR=$PWD'
-alias cds='[[ ! -z $SAVED_DIR ]] && echo ${SAVED_DIR/$HOME/\~} && cd $SAVED_DIR || echo "SAVED_DIR is empty."'
+alias cdj='cat ~/.pwd && cd "$(< ~/.pwd)"'
+alias cds='echo "Saving current path." && pwd >| ~/.pwd'
 
 alias cl="wc -l"
 alias cw="wc -w"

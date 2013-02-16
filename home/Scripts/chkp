@@ -6,8 +6,6 @@
 
 # Usage: chkp
 
-CURRENT_DIRECTORY=$PWD
-
 for DIRECTORY in ~/Projects/*; do
   cd $DIRECTORY
 
@@ -25,8 +23,6 @@ for DIRECTORY in ~/Projects/*; do
     NOT_REPO+=($DIRECTORY:t)
   fi
 done
-
-cd $CURRENT_DIRECTORY
 
 if [[ ${#CLEAN_REPO} -gt 0 ]]; then
   print -P "%B%F{green}Clean repo:%f%b"
