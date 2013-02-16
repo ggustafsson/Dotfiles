@@ -14,9 +14,9 @@
 
 if [[ $# -gt 0 ]]; then
   if [[ ! -z $PS_DISPLAY ]]; then
-    ps ax -o $PS_DISPLAY | tail -n +2 | egrep -v "(grep $*|$0 $*)" | grep "$*" || echo "No processes found!"
+    ps ax -o $PS_DISPLAY | tail -n +2 | egrep --invert-match "(grep $*|$0 $*)" | grep "$*" || echo "No processes found!"
   else
-    ps ax | tail -n +2 | egrep -v "(grep $*|$0 $*)" | grep "$*" || echo "No processes found!"
+    ps ax | tail -n +2 | egrep --invert-match "(grep $*|$0 $*)" | grep "$*" || echo "No processes found!"
   fi
 else
   if [[ ! -z $PS_DISPLAY ]]; then

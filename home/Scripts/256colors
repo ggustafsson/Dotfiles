@@ -8,5 +8,5 @@
 # Usage: 256colors
 
 for X in {0..255}; do
-  echo "\x1b[38;5;${X}mColor ${X}"
+  echo "\x1b[38;5;${X}mColor $X"
 done

@@ -45,7 +45,7 @@ fi
 
 for DIRECTORY in $DIRECTORIES; do
   print -P "\n%B%F{green}Backing up directory ~/$DIRECTORY.%f%b"
-  rsync -ahv --delete --exclude=Dropbox/.dropbox.cache ~/$DIRECTORY $BACKUP_DESTINATION
+  rsync --archive --delete --exclude=Dropbox/.dropbox.cache --human-readable --verbose ~/$DIRECTORY $BACKUP_DESTINATION
 done
 
 echo "\nUnmounting encrypted image file and device."

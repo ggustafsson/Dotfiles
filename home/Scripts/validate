@@ -17,7 +17,7 @@ if [[ $# -gt 0 ]]; then
   for FILE in $*; do
     if [[ -f $FILE ]]; then
       if [[ $FILE == *.html ]]; then
-        COMMAND='curl -sF "uploaded_file=@$FILENAME;type=text/html" -F output=json http://validator.w3.org/check'
+        COMMAND='curl --form "uploaded_file=@$FILENAME;type=text/html" --form output=json --silent http://validator.w3.org/check'
         CURRENT_DIRECTORY=$PWD
         DIRECTORY=$1:A:h
         FILENAME=$1:t
@@ -36,7 +36,7 @@ if [[ $# -gt 0 ]]; then
 
         if [[ ! -z $PARSED ]]; then
           echo "Found error(s) on line(s):\n"
-          echo $PARSED | sed 's/^[ \t]*"lastLine":/ /;s/,//g' | sort -g | uniq
+          echo $PARSED | sed 's/^[ \t]*"lastLine":/ /;s/,//g' | sort --general-numeric-sort | uniq
         else
           echo "No errors! :)"
         fi

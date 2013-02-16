@@ -11,9 +11,9 @@
 #        rgrep <"pattern"> <path>
 
 if [[ $# -eq 1 ]]; then
-  grep -r $1 .
+  grep --recursive $1 .
 elif [[ $# -eq 2 ]]; then
-  grep -r $*
+  grep --recursive $*
 else
   echo "Usage: $0:t [PATTERN]... [PATH]..."
 fi

@@ -4,8 +4,9 @@ umask 077
 
 [[ $TERM == xterm ]] && export TERM=xterm-256color
 export GEM_HOME=~/.ruby
-export GREP_OPTIONS="--color=auto -i"
+export GREP_OPTIONS="--color=auto --ignore-case"
 export LC_COLLATE=C
+export LS_OPTIONS="--classify --color=auto --human-readable"
 export PS_DISPLAY="user,pid,command"
 export TODO_FILE=~/Documents/Text\ Files/To-do\ List.todo
 
@@ -83,38 +84,38 @@ zstyle ":completion:*:warnings" format "zsh: no matches found."
 
 [[ $OSTYPE == darwin* ]] && compdef _man man2pdf
 
-precmd() {
+function precmd() {
   echo
 }
 
-git_branch() {
+function git_branch() {
   REFERENCE=$(git symbolic-ref HEAD 2> /dev/null) || return
   BRANCH=${REFERENCE#refs/heads/}
 
   if [[ -n $(git rev-list origin..HEAD 2> /dev/null) ]]; then
-    if [[ -n $(git status -s 2> /dev/null) ]]; then
+    if [[ -n $(git status --short 2> /dev/null) ]]; then
       echo " %F{cyan}ahead %F{red}$BRANCH%f"
     else
       echo " %F{cyan}ahead %F{green}$BRANCH%f"
     fi
-  elif [[ -n $(git status -s 2> /dev/null) ]]; then
+  elif [[ -n $(git status --short 2> /dev/null) ]]; then
     echo " %F{red}$BRANCH%f"
   else
     echo " %F{green}$BRANCH%f"
   fi
 }
 
-custom-vi-replace() {
+function custom-vi-replace() {
   REPLACE=1 && zle vi-replace && REPLACE=0
 }
 zle -N custom-vi-replace
 
-zle-line-init zle-keymap-select() {
+function zle-line-init zle-keymap-select() {
   zle reset-prompt
 }
 zle -N zle-line-init && zle -N zle-keymap-select
 
-zsh_mode() {
+function zsh_mode() {
   if [[ $KEYMAP == vicmd ]]; then
     echo "%F{red}E%f"
   elif [[ $REPLACE -eq 1 ]]; then
@@ -127,7 +128,9 @@ zsh_mode() {
 if [[ $TERM == dumb ]]; then
   PROMPT='%~ $ '
 else
+  # GLEG Skywalker ~ $
   PROMPT='%B${(U)USER} %F{yellow}${(C)HOST%%.*}%f%b ${PWD/$HOME/~} %B$(zsh_mode)%b '
+  # $ 0 master
   RPROMPT='%B%F{blue}$%f%b %?%B$(git_branch)%b'
 fi
 
@@ -137,7 +140,7 @@ if [[ $OSTYPE == darwin* ]]; then
   alias mvimdiff='/Applications/MacVim.app/Contents/MacOS/Vim -d -g $* >& /dev/null'
   alias o="open"
   alias psme='\ps -xu $USER -o $PS_DISPLAY'
-  alias study="school && tim -p"
+  alias study="school && tim --pomodoro"
   alias top="top -o cpu -s 2"
   alias tree="tree -N"
   alias webcam="imagesnap -t 2 -w 1"
@@ -146,7 +149,7 @@ if [[ $OSTYPE == darwin* ]]; then
   alias cal="gcal -s 1"
   alias dircolors="gdircolors"
   alias head="ghead"
-  alias ls="gls -Fh --color=auto"
+  alias ls="gls $LS_OPTIONS"
   alias sed="gsed"
   alias tail="gtail"
   alias wc="gwc"
@@ -166,7 +169,7 @@ if [[ $OSTYPE == darwin* ]]; then
 
   alias wifioff="networksetup -setairportpower en0 off"
   alias wifion="networksetup -setairportpower en0 on"
-  alias wifiscan="/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport -s"
+  alias wifiscan="/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport --scan"
 
   for X in $WIRESHARK; do
     alias $X="wiresharkfix $X"
@@ -193,15 +196,15 @@ else
   fi
 
   alias cal="cal -m"
-  alias ls="ls -Fh --color=auto"
+  alias ls="ls $LS_OPTIONS"
   alias psme='\ps x -u $USER -o $PS_DISPLAY'
   alias vl='tail -n $LINES -f /var/log/everything.log'
 fi
 
 type hub >& /dev/null && alias git="hub"
 
-alias bc="bc -q"
-alias bigf="du -sk * | sort -nr | head"
+alias bc="bc --quiet"
+alias bigf="du -sk * | sort --numeric-sort --reverse | head"
 alias c="clear"
 alias chkm="find ~/Music/MP3 -type f ! -iname '*.mp3'"
 alias df="df -h"
@@ -218,14 +221,14 @@ alias recf="ls -t | head -n 5"
 alias reload="source ~/.zshrc"
 alias topme='top -U $USER'
 alias tv='vim "$TODO_FILE"'
-alias wgetp="wget --page-requisites --adjust-extension --convert-links"
+alias wgetp="wget --adjust-extension --convert-links --page-requisites"
 alias ycal='cal $(date +%Y)'
-alias yt="youtube-dl -l"
+alias yt="youtube-dl --title"
 
 alias -- -="cd -"
 alias ...="cd ../.."
 alias ..="cd .."
-alias cdh="dirs -v | sort -r"
+alias cdh="dirs -v | sort --reverse"
 alias cdj='cat ~/.pwd && cd "$(< ~/.pwd)"'
 alias cds='echo "Saving current path." && pwd >| ~/.pwd'
 
@@ -243,13 +246,13 @@ alias cpass="openssl rand -base64 20"
 alias pass="vim ~/Documents/Text\ Files/Passwords.blowfish"
 
 alias d="ls -l"
-alias da="ls -la"
-alias la="ls -a"
+alias da="ls --all -l"
+alias la="ls --all"
 
 alias gad="git add"
-alias gca="git commit -a -v"
+alias gca="git commit --all --verbose"
 alias gcl="git clone"
-alias gco="git commit -v"
+alias gco="git commit --verbose"
 alias gdi="git diff"
 alias gin="git init"
 alias glo="git log"
@@ -257,12 +260,12 @@ alias gmv="git mv"
 alias gpl="git pull"
 alias gpu='git push && [[ $OSTYPE == darwin* ]] && say fuck yeah'
 alias grm="git rm"
-alias gst="git status -s -b"
+alias gst="git status --branch --short"
 alias gun="git reset --soft HEAD^"
 
-alias int="tim -i"
-alias pomo="tim -p"
-alias rint="tim -ri"
+alias int="tim --interval"
+alias pomo="tim --pomodoro"
+alias rint="tim --rinterval"
 
 alias phpweb="php -S 0.0.0.0:8080"
 alias pyweb="python3 -m http.server 8080"
@@ -274,7 +277,7 @@ for X in $SSH_HOSTS; do
   alias $X="ssh $X"
 done
 
-h() {
+function h() {
   if [[ $# -gt 0 ]]; then
     history -i 1 | grep "$*"
   else

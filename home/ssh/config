@@ -1,7 +1,6 @@
 ServerAliveInterval 15
 ServerAliveCountMax 2
 
-# Virtual machine
 Host hem
   User gleg
   HostName hem.gleg.se

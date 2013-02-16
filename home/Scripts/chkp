@@ -11,11 +11,11 @@ for DIRECTORY in ~/Projects/*; do
 
   if [[ -n $(git rev-list origin..HEAD 2> /dev/null) ]]; then
     print -P "%B%F{cyan}$DIRECTORY:t:%f%b"
-    git status -s -b
+    git status --branch --short
     echo
-  elif [[ -n $(git status -s 2> /dev/null) ]]; then
+  elif [[ -n $(git status --short 2> /dev/null) ]]; then
     print -P "%B%F{red}$DIRECTORY:t:%f%b"
-    git status -s -b
+    git status --branch --short
     echo
   elif [[ -d .git ]]; then
     CLEAN_REPO+=($DIRECTORY:t)
