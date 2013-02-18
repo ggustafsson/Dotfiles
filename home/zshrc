@@ -6,7 +6,6 @@ umask 077
 export GEM_HOME=~/.ruby
 export GREP_OPTIONS="--color=auto --ignore-case"
 export LC_COLLATE=C
-export LS_OPTIONS="--classify --color=auto --human-readable"
 export PS_DISPLAY="user,pid,command"
 export TODO_FILE=~/Documents/Text\ Files/To-do\ List.todo
 
@@ -29,6 +28,7 @@ fi
 
 [[ -f ~/.ssh/config ]] && SSH_HOSTS=($(sed -n 's/^Host //p' ~/.ssh/config))
 DIRSTACKSIZE=20
+LS_OPTIONS=(--classify --color=auto --human-readable)
 
 d=~/Downloads
 p=~/Projects
@@ -139,6 +139,7 @@ if [[ $OSTYPE == darwin* ]]; then
   alias eject="osascript -e 'tell application \"Finder\" to eject (every disk whose ejectable is true)' && echo 'Ejecting all external drives.'"
   alias mvimdiff='/Applications/MacVim.app/Contents/MacOS/Vim -d -g $* >& /dev/null'
   alias o="open"
+  alias pb="pbcopy"
   alias psme='\ps -xu $USER -o $PS_DISPLAY'
   alias study="school && tim --pomodoro"
   alias top="top -o cpu -s 2"
@@ -149,7 +150,7 @@ if [[ $OSTYPE == darwin* ]]; then
   alias cal="gcal -s 1"
   alias dircolors="gdircolors"
   alias head="ghead"
-  alias ls="gls $LS_OPTIONS"
+  alias ls='gls $LS_OPTIONS'
   alias sed="gsed"
   alias tail="gtail"
   alias wc="gwc"
@@ -196,7 +197,7 @@ else
   fi
 
   alias cal="cal -m"
-  alias ls="ls $LS_OPTIONS"
+  alias ls='ls $LS_OPTIONS'
   alias psme='\ps x -u $USER -o $PS_DISPLAY'
   alias vl='tail -n $LINES -f /var/log/everything.log'
 fi
