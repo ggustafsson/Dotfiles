@@ -7,7 +7,7 @@
 
 # Usage: antipro
 
-[[ -f ~/.freedom ]] && exit
+[[ -f ~/.wifi ]] && exit
 
 DAY=$(date "+%a")
 TIME=$(date "+%H%M")
