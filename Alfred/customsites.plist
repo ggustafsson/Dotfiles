@@ -98,5 +98,17 @@
 		<key>utf8</key>
 		<true/>
 	</dict>
+	<dict>
+		<key>keyword</key>
+		<string>lnu</string>
+		<key>spaces</key>
+		<true/>
+		<key>text</key>
+		<string>Search LNU.se for</string>
+		<key>url</key>
+		<string>http://lnu.se/sok?q={query}</string>
+		<key>utf8</key>
+		<true/>
+	</dict>
 </array>
 </plist>
