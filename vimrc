@@ -155,6 +155,9 @@ nnoremap <Leader>wr :set wrap!<CR>
 nnoremap <Leader>ws :%s/\s\+$//<CR>:nohlsearch<CR>
 nnoremap <Leader>zs :edit ~/.zshrc<CR>
 
+nnoremap <Leader><Space> :call NERDComment("n", "Toggle")<CR>
+vnoremap <Leader><Space> :call NERDComment("n", "Toggle")<CR>
+
 nnoremap vil ^vg_
 
 nnoremap j gj
@@ -171,9 +174,8 @@ nnoremap <S-Tab>     :bnext<CR>
 
 nnoremap <C-j> }
 nnoremap <C-k> {
-
-nnoremap <Leader><Space> :call NERDComment("n", "Toggle")<CR>
-vnoremap <Leader><Space> :call NERDComment("n", "Toggle")<CR>
+vnoremap <C-j> }
+vnoremap <C-k> {
 
 vnoremap <Leader>ga :Gist -a<CR>
 vnoremap <Leader>gg :Gist<CR>
