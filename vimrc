@@ -4,13 +4,13 @@ if !exists("g:dont_run_again")
   call pathogen#infect()
   call pathogen#helptags()
 
+  filetype plugin indent on
+
+  syntax enable
+  colorscheme ninja
+
   let g:dont_run_again = 1
 endif
-
-filetype plugin indent on
-
-syntax enable
-colorscheme ninja
 
 set backspace=indent,eol,start
 set confirm
@@ -22,8 +22,8 @@ set hidden
 set nofoldenable
 set nowrap
 set spelllang=en,sv
+set t_vb=
 set timeoutlen=2000
-set title
 set virtualedit=block
 
 set autoindent
@@ -76,6 +76,40 @@ set wildignore+=*.flac,*.nsf,*.nsfe,*.m4r,*.mp3,*.ogg,*.wav
 set wildignore+=*.avi,*.flv,*.f4v,*.mkv,*.mov,*.mpg,*.mpeg,*.mp4,*.m4v,*.wmv
 set wildignore+=*.dmg,*.iso,*.rar,*.tar,*.tar.bz2,*.tar.gz,*.zip,*.7z
 
+if has("gui_running")
+  set guicursor+=a:blinkon0
+  set guioptions=cgt
+  set showcmd
+
+  if has("mac")
+    set visualbell
+  endif
+
+  function! FontSetup()
+    if has("mac")
+      set guifont=Inconsolata:h14
+      set linespace=1
+
+      set columns=185
+      set lines=44
+    else
+      set guifont=Inconsolata\ 12
+
+      set columns=110
+      set lines=30
+    endif
+  endfunction
+
+  if !exists("g:dont_set_font_again")
+    call FontSetup()
+
+    let g:dont_set_font_again = 1
+  endif
+else
+  set mouse=v
+  set title
+endif
+
 if has("mac")
   let g:gist_clip_command = "pbcopy"
 endif
@@ -101,6 +135,9 @@ let g:NERDTreeDirArrows = 0
 let g:NERDTreeMinimalUI = 1
 let g:NERDTreeStatusline = " NERDTree"
 
+command! -nargs=? Helpt tab help <args>
+cabbrev helpt Helpt
+
 cabbrev Q  q
 cabbrev W  w
 cabbrev WQ wq
@@ -108,6 +145,7 @@ cabbrev Wq wq
 cabbrev wQ wq
 
 if has("mac")
+  nnoremap <Leader>fa :call FancyView()<CR>
   nnoremap <Leader>fi :silent !open "%:p:h"<CR>
   nnoremap <Leader>op :silent !open -a Safari "%"<CR>
 endif
@@ -144,6 +182,7 @@ nnoremap <Leader>ss :mksession! ~/.vim/session.vim<CR>
 nnoremap <Leader>t2 :set noexpandtab shiftwidth=2 softtabstop=0 tabstop=2<CR>
 nnoremap <Leader>t4 :set noexpandtab shiftwidth=4 softtabstop=0 tabstop=4<CR>
 nnoremap <Leader>t8 :set noexpandtab shiftwidth=8 softtabstop=0 tabstop=8<CR>
+nnoremap <Leader>ta :tab sball<CR>
 nnoremap <Leader>tm :edit ~/Documents/Text\ Files/Temporary.blowfish<CR>
 nnoremap <Leader>to :edit ~/Documents/Text\ Files/To-do\ List.todo<CR>
 nnoremap <Leader>tr :NERDTreeToggle<CR>
@@ -186,6 +225,21 @@ vnoremap <Tab>   >gv
 vnoremap <S-Tab> <gv
 
 inoremap <expr> <Tab> CompleteTab()
+
+if has("gui_running") && has("mac")
+  function! FancyView()
+    if &guifont != "Inconsolata:h24"
+      set fullscreen
+
+      set antialias
+      set guifont=Inconsolata:h24
+    else
+      set nofullscreen
+
+      call FontSetup()
+    endif
+  endfunction
+endif
 
 function! BufferDelete()
   if &modified

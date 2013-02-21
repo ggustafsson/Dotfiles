@@ -74,32 +74,12 @@ fi
 
 echo
 
-if [[ -d $DLPATH/nyancat ]]; then
-  print -P "%B%F{green}Checking for NyanCat updates.%f%b"
-  cd $DLPATH/nyancat
-  git pull
-else
-  git clone git://github.com/koron/nyancat-vim.git $DLPATH/nyancat
-fi
-
-echo
-
 if [[ -d $DLPATH/surround ]]; then
   print -P "%B%F{green}Checking for Surround updates.%f%b"
   cd $DLPATH/surround
   git pull
 else
   git clone git://github.com/tpope/vim-surround.git $DLPATH/surround
-fi
-
-echo
-
-if [[ -d $DLPATH/viminesweeper ]]; then
-  print -P "%B%F{green}Checking for Viminesweeper updates.%f%b"
-  cd $DLPATH/viminesweeper
-  git pull
-else
-  git clone git://github.com/mfumi/viminesweeper.git $DLPATH/viminesweeper
 fi
 
 echo

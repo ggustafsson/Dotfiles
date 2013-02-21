@@ -137,6 +137,7 @@ fi
 if [[ $OSTYPE == darwin* ]]; then
   alias cf="say command finished"
   alias eject="osascript -e 'tell application \"Finder\" to eject (every disk whose ejectable is true)' && echo 'Ejecting all external drives.'"
+  alias mvimdiff='/Applications/MacVim.app/Contents/MacOS/Vim -d -g $* >& /dev/null'
   alias o="open"
   alias pb="pbcopy"
   alias psme='\ps -xu $USER -o $PS_DISPLAY'
@@ -272,9 +273,6 @@ alias pyweb="python3 -m http.server 8080"
 
 alias tm="tmux"
 alias tma="tmux attach"
-
-alias v="vim"
-alias vd="vimdiff"
 
 for X in $SSH_HOSTS; do
   alias $X="ssh $X"
