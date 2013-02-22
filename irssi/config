@@ -203,7 +203,7 @@ settings = {
     theme = "default";
   };
   core = {
-    nick = "GLEG";
+    nick = "gleg";
     quit_message = "Bye!";
     real_name = "Göran Gustafsson";
     recode = "yes";
@@ -226,7 +226,7 @@ settings = {
     usercount_show_zero = "no";
   };
   "irc/core" = {
-    alternate_nick = "GLEG_";
+    alternate_nick = "gleg_";
     ctcp_version_reply = "irssi v6.66 - running on din mamma";
     join_auto_chans_on_invite = "no";
     usermode = "+i";
