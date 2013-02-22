@@ -147,7 +147,6 @@ if [[ $OSTYPE == darwin* ]]; then
   alias webcam="imagesnap -t 2 -w 1"
 
   alias awk="gawk"
-  alias cal="gcal -s 1"
   alias dircolors="gdircolors"
   alias head="ghead"
   alias ls='gls $LS_OPTIONS'
