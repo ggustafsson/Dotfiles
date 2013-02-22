@@ -21,15 +21,11 @@ export LS_COLORS="$LS_COLORS:*.flac=01;35:*.nsf=01;35:*.nsfe=01;35:*.m4r=01;35:*
 export LS_COLORS="$LS_COLORS:*.avi=01;36:*.flv=01;36:*.f4v=01;36:*.mkv=01;36:*.mov=01;36:*.mpg=01;36:*.mpeg=01;36:*.mp4=01;36:*.m4v=01;36:*.wmv=01;36"
 export LS_COLORS="$LS_COLORS:*.dmg=01;31:*.iso=01;31:*.rar=01;31:*.tar=01;31:*.tar.bz2=01;31:*.tar.gz=01;31:*.tgz=01;31:*.zip=01;31:*.7z=01;31"
 
-if [[ $OSTYPE == darwin* ]]; then
-  e=/Volumes/External
-  WIRESHARK=(/usr/local/Cellar/wireshark/*/bin/*(N:t))
-fi
-
 [[ -f ~/.ssh/config ]] && SSH_HOSTS=($(sed -n 's/^Host //p' ~/.ssh/config))
 DIRSTACKSIZE=20
 LS_OPTIONS=(--classify --color=auto --human-readable)
 
+[[ $OSTYPE == darwin* ]] && e=/Volumes/External
 d=~/Downloads
 p=~/Projects
 s=~/School
@@ -128,8 +124,8 @@ function zsh_mode() {
 if [[ $TERM == dumb ]]; then
   PROMPT='%~ $ '
 else
-  # GLEG Skywalker ~ $
-  PROMPT='%B${(U)USER} %F{yellow}${(C)HOST%%.*}%f%b ${PWD/$HOME/~} %B$(zsh_mode)%b '
+  # gleg skywalker ~ $
+  PROMPT='%B%n %F{yellow}%m%f%b ${PWD/$HOME/~} %B$(zsh_mode)%b '
   # $ 0 master
   RPROMPT='%B%F{blue}$%f%b %?%B$(git_branch)%b'
 fi
@@ -170,10 +166,6 @@ if [[ $OSTYPE == darwin* ]]; then
   alias wifioff="networksetup -setairportpower en0 off"
   alias wifion="networksetup -setairportpower en0 on"
   alias wifiscan="/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport --scan"
-
-  for X in $WIRESHARK; do
-    alias $X="wiresharkfix $X"
-  done
 else
   if ! type -p ifconfig >& /dev/null && type -p ip >& /dev/null; then
     alias arp="ip neigh"
