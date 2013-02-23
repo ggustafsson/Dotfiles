@@ -15,7 +15,6 @@ BACKUP_DESTINATION=/Volumes/Backup
 DIRECTORIES=(
   Development
   Documents
-  "DOS Games"
   Dropbox
   Movies/Personal
   Music/GBS
