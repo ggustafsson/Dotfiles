@@ -7,11 +7,6 @@
 
 # Usage: vimp
 
-DLPATH=~/.vim/bundle
-
-rm -rf ~/.vim/backups/bundle ~/.vim/backups/pathogen
-cp -R ~/.vim/pathogen ~/.vim/backups/pathogen
-
 if [[ -d ~/.vim/pathogen ]]; then
   print -P "%B%F{green}Checking for Pathogen updates.%f%b"
   cd ~/.vim/pathogen
@@ -22,74 +17,70 @@ fi
 
 echo
 
-cp -R $DLPATH ~/.vim/backups/bundle
-
-if [[ -d $DLPATH/gist ]]; then
+if [[ -d ~/.vim/bundle/gist ]]; then
   print -P "%B%F{green}Checking for Gist updates.%f%b"
-  cd $DLPATH/gist
+  cd ~/.vim/bundle/gist
   git pull
 else
-  git clone git://github.com/mattn/gist-vim.git $DLPATH/gist
+  git clone git://github.com/mattn/gist-vim.git ~/.vim/bundle/gist
 fi
 
 echo
 
-if [[ -d $DLPATH/gundo ]]; then
+if [[ -d ~/.vim/bundle/gundo ]]; then
   print -P "%B%F{green}Checking for Gundo updates.%f%b"
-  cd $DLPATH/gundo
+  cd ~/.vim/bundle/gundo
   git pull
 else
-  git clone git://github.com/sjl/gundo.vim.git $DLPATH/gundo
+  git clone git://github.com/sjl/gundo.vim.git ~/.vim/bundle/gundo
 fi
 
 echo
 
-if [[ -d $DLPATH/lusty ]]; then
+if [[ -d ~/.vim/bundle/lusty ]]; then
   print -P "%B%F{green}Checking for Lusty updates.%f%b"
-  cd $DLPATH/lusty
+  cd ~/.vim/bundle/lusty
   git pull
 else
-  git clone git://github.com/sjbach/lusty.git $DLPATH/lusty
+  git clone git://github.com/sjbach/lusty.git ~/.vim/bundle/lusty
 fi
 
 echo
 
-if [[ -d $DLPATH/nerdcommenter ]]; then
+if [[ -d ~/.vim/bundle/nerdcommenter ]]; then
   print -P "%B%F{green}Checking for NERDCommenter updates.%f%b"
-  cd $DLPATH/nerdcommenter
+  cd ~/.vim/bundle/nerdcommenter
   git pull
 else
-  git clone git://github.com/scrooloose/nerdcommenter.git $DLPATH/nerdcommenter
+  git clone git://github.com/scrooloose/nerdcommenter.git ~/.vim/bundle/nerdcommenter
 fi
 
 echo
 
-if [[ -d $DLPATH/nerdtree ]]; then
+if [[ -d ~/.vim/bundle/nerdtree ]]; then
   print -P "%B%F{green}Checking for NERDTree updates.%f%b"
-  cd $DLPATH/nerdtree
+  cd ~/.vim/bundle/nerdtree
   git pull
 else
-  git clone git://github.com/scrooloose/nerdtree.git $DLPATH/nerdtree
+  git clone git://github.com/scrooloose/nerdtree.git ~/.vim/bundle/nerdtree
 fi
 
 echo
 
-if [[ -d $DLPATH/surround ]]; then
+if [[ -d ~/.vim/bundle/surround ]]; then
   print -P "%B%F{green}Checking for Surround updates.%f%b"
-  cd $DLPATH/surround
+  cd ~/.vim/bundle/surround
   git pull
 else
-  git clone git://github.com/tpope/vim-surround.git $DLPATH/surround
+  git clone git://github.com/tpope/vim-surround.git ~/.vim/bundle/surround
 fi
 
 echo
 
-if [[ -d $DLPATH/webapi ]]; then
+if [[ -d ~/.vim/bundle/webapi ]]; then
   print -P "%B%F{green}Checking for WebAPI updates.%f%b"
-  cd $DLPATH/webapi
+  cd ~/.vim/bundle/webapi
   git pull
 else
-  git clone git://github.com/mattn/webapi-vim.git $DLPATH/webapi
+  git clone git://github.com/mattn/webapi-vim.git ~/.vim/bundle/webapi
 fi
-
-date > $DLPATH/latest_update.txt

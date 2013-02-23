@@ -1,7 +1,8 @@
 #!/bin/bash
 
-# Description: This script was originally found at
-# https://gist.github.com/sontek/1505483. I just change "*" to unicode poop :)
+# Description: This script was originally found at:
+# <https://gist.github.com/sontek/1505483>. I just changed the asterix to
+# unicode poop instead :)
 
 # Usage: poorain
 

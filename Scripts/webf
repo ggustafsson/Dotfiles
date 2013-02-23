@@ -9,9 +9,6 @@
 
 DLPATH=~/Sites/Frameworks
 
-rm -rf ~/Sites/Frameworks\ Backups
-cp -R $DLPATH ~/Sites/Frameworks\ Backups
-
 if [[ -d $DLPATH/jQuery\ RSS ]]; then
   print -P "%B%F{green}Checking for jQuery RSS updates.%f%b"
   cd $DLPATH/jQuery\ RSS
@@ -33,5 +30,3 @@ if [[ $OSTYPE == darwin* ]]; then
 else
   links http://jquery.com/download
 fi
-
-date > $DLPATH/latest_update.txt
