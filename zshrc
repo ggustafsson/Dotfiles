@@ -190,7 +190,7 @@ else
   alias cal="cal -m"
   alias ls='ls $LS_OPTIONS'
   alias psme='\ps x -u $USER -o $PS_DISPLAY'
-  alias vl='tail -n $LINES -f /var/log/everything.log'
+  alias vl='tail -n $LINES -f /var/log/syslog'
 fi
 
 type hub >& /dev/null && alias git="hub"
