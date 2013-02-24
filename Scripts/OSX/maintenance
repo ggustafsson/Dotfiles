@@ -27,9 +27,6 @@ if [[ $ANSWER == (y|yes) ]]; then
   echo
   vimp
   echo
-  webf
-  echo "\nPress Enter when done with webf."
-  read
   frees
   echo
   backup
