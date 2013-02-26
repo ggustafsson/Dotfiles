@@ -202,7 +202,7 @@ alias ps='ps ax -o $PS_DISPLAY'
 alias py="python3"
 alias random='FILES=(*) && echo $FILES[$RANDOM%$#FILES+1]'
 alias recf="ls -t | head -n 5"
-alias reload="source ~/.zshenv && source ~/.zshrc"
+alias reload="source ~/.zshenv && source ~/.zshrc && echo 'Zsh reloaded.'"
 alias topme='top -U $USER'
 alias tv='vim "$TODO_FILE"'
 alias wgetp="wget --adjust-extension --convert-links --page-requisites"
