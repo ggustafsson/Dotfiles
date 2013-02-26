@@ -2,13 +2,14 @@
 
 # Written by Göran Gustafsson <gustafsson.g@gmail.com>.
 
-# Description: This script 
+# Description: This script configures symlinks for a few GNU utilities.
 
 # Usage: symlinkfix
 
 ln -s /usr/local/bin/gdircolors /usr/local/bin/dircolors
 ln -s /usr/local/bin/ghead /usr/local/bin/head
 ln -s /usr/local/bin/gls /usr/local/bin/ls
+ln -s /usr/local/bin/gmkdir /usr/local/bin/mkdir
 ln -s /usr/local/bin/gsed /usr/local/bin/sed
 ln -s /usr/local/bin/gtail /usr/local/bin/tail
 ln -s /usr/local/bin/gwc /usr/local/bin/wc
