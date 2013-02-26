@@ -7,8 +7,8 @@
 
 # Usage: rgrep <pattern>
 #        rgrep <pattern> <path>
-#        rgrep <"pattern">
-#        rgrep <"pattern"> <path>
+#        rgrep "<pattern>"
+#        rgrep "<pattern>" <path>
 
 if [[ $# -eq 1 ]]; then
   grep --recursive $1 .

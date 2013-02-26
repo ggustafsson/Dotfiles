@@ -1,0 +1,16 @@
+#!/usr/bin/env zsh
+
+# Written by Göran Gustafsson <gustafsson.g@gmail.com>.
+
+# Description: This script 
+
+# Usage: cntf
+#        cntf <path>
+
+if [[ $# -eq 0 ]]; then
+  ls -1 | wc -l
+elif [[ $# -eq 1 ]]; then
+  ls -1 $* | wc -l
+else
+  echo "Usage: $0:t [PATH]..."
+fi

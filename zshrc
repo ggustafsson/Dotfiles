@@ -142,14 +142,6 @@ if [[ $OSTYPE == darwin* ]]; then
   alias tree="tree -N"
   alias webcam="imagesnap -t 2 -w 1"
 
-  alias awk="gawk"
-  alias dircolors="gdircolors"
-  alias head="ghead"
-  alias ls='gls $LS_OPTIONS'
-  alias sed="gsed"
-  alias tail="gtail"
-  alias wc="gwc"
-
   alias brewi="brew install"
   alias brewr="brew uninstall"
   alias brews="brew search"
@@ -188,7 +180,6 @@ else
   fi
 
   alias cal="cal -m"
-  alias ls='ls $LS_OPTIONS'
   alias psme='\ps x -u $USER -o $PS_DISPLAY'
   alias vl='tail -n $LINES -f /var/log/syslog'
 fi
@@ -204,13 +195,14 @@ alias du="du -sh"
 alias hist="history -i 1 | less"
 alias iip="curl icanhazip.com"
 alias ka="killall"
+alias ls='ls $LS_OPTIONS'
 alias mkdir="mkdir -pv"
 alias ping="ping -c 10"
 alias ps='ps ax -o $PS_DISPLAY'
 alias py="python3"
 alias random='FILES=(*) && echo $FILES[$RANDOM%$#FILES+1]'
 alias recf="ls -t | head -n 5"
-alias reload="source ~/.zshrc"
+alias reload="source ~/.zshenv && source ~/.zshrc"
 alias topme='top -U $USER'
 alias tv='vim "$TODO_FILE"'
 alias wgetp="wget --adjust-extension --convert-links --page-requisites"
