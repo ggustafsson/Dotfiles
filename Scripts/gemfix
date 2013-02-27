@@ -6,7 +6,7 @@
 
 # Usage: gemfix
 
-DIRECTORY=~/.ruby/bin
+DIRECTORY=~/.gem/ruby/bin
 TMPENDING=gemfix_tmp
 
 for FILE in $DIRECTORY/*; do

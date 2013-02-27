@@ -3,7 +3,7 @@
 umask 077
 
 [[ $TERM == xterm ]] && export TERM=xterm-256color
-export GEM_HOME=~/.ruby
+export GEM_HOME=~/.gem/ruby
 export GREP_OPTIONS="--color=auto --ignore-case"
 export LC_COLLATE=C
 export PS_DISPLAY="user,pid,command"
