@@ -261,7 +261,7 @@ for X in $SSH_HOSTS; do
   alias $X="ssh $X"
 done
 
-function h() {
+function h {
   if [[ $# -gt 0 ]]; then
     history -i 1 | grep "$*"
   else
