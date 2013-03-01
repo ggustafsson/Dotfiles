@@ -203,6 +203,7 @@ alias py="python3"
 alias random='FILES=(*) && echo $FILES[$RANDOM%$#FILES+1]'
 alias recf="ls -t | head -n 5"
 alias reload="source ~/.zshenv && source ~/.zshrc && echo 'Zsh reloaded.'"
+alias tmuxa="tmux attach"
 alias topme='top -U $USER'
 alias tv='vim "$TODO_FILE"'
 alias wgetp="wget --adjust-extension --convert-links --page-requisites"
@@ -253,9 +254,6 @@ alias rint="tim --rinterval"
 
 alias phpweb="php -S 0.0.0.0:8080"
 alias pyweb="python3 -m http.server 8080"
-
-alias tm="tmux"
-alias tma="tmux attach"
 
 for X in $SSH_HOSTS; do
   alias $X="ssh $X"
