@@ -80,11 +80,11 @@ zstyle ":completion:*:warnings" format "zsh: no matches found."
 
 [[ $OSTYPE == darwin* ]] && compdef _man man2pdf
 
-function precmd() {
+function precmd {
   echo
 }
 
-function git_branch() {
+function git_branch {
   REFERENCE=$(git symbolic-ref HEAD 2> /dev/null) || return
   BRANCH=${REFERENCE#refs/heads/}
 
@@ -101,17 +101,17 @@ function git_branch() {
   fi
 }
 
-function custom-vi-replace() {
+function custom-vi-replace {
   REPLACE=1 && zle vi-replace && REPLACE=0
 }
 zle -N custom-vi-replace
 
-function zle-line-init zle-keymap-select() {
+function zle-line-init zle-keymap-select {
   zle reset-prompt
 }
 zle -N zle-line-init && zle -N zle-keymap-select
 
-function zsh_mode() {
+function zsh_mode {
   if [[ $KEYMAP == vicmd ]]; then
     echo "%F{red}E%f"
   elif [[ $REPLACE -eq 1 ]]; then
