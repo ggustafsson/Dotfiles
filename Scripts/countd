@@ -18,7 +18,7 @@ today = Date.today
 pos = 0
 
 if !File.exists?(file)
-  abort "File not found!"
+  abort "File '~/.countdowns' not found!"
 elsif CSV.read(file).length == 0
   abort "No entries found!"
 end

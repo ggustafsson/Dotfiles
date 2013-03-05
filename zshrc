@@ -174,12 +174,6 @@ else
     alias aptu="sudo apt-get update && sudo apt-get upgrade"
   fi
 
-  if type -p pacman >& /dev/null; then
-    alias paci="sudo pacman -S"
-    alias pacr="sudo pacman -Rs"
-    alias pacu="sudo pacman -Syu"
-  fi
-
   alias cal="cal -m"
   alias cpass="openssl rand -base64 20"
   alias psme='\ps x -u $USER -o $PS_DISPLAY'
@@ -211,7 +205,6 @@ alias topme='top -U $USER'
 alias tv='vim "$TODO_FILE"'
 alias wgetp="wget --adjust-extension --convert-links --page-requisites"
 alias ycal='cal $(date +%Y)'
-alias yt="youtube-dl --title"
 
 alias -- -="cd -"
 alias ...="cd ../.."
@@ -254,6 +247,9 @@ alias rint="tim --rinterval"
 
 alias phpweb="php -S 0.0.0.0:8080"
 alias pyweb="python3 -m http.server 8080"
+
+alias svtplay-dl="svtplay-dl --resume"
+alias youtube-dl="youtube-dl --continue --title"
 
 for X in $SSH_HOSTS; do
   alias $X="ssh $X"
