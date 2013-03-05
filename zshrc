@@ -132,6 +132,7 @@ fi
 
 if [[ $OSTYPE == darwin* ]]; then
   alias cf="say command finished"
+  alias cpass="openssl rand -base64 20 | pbcopy && echo 'Password copied to clipboard.'"
   alias eject="osascript -e 'tell application \"Finder\" to eject (every disk whose ejectable is true)' && echo 'Ejecting all external drives.'"
   alias mvimdiff='/Applications/MacVim.app/Contents/MacOS/Vim -d -g $* >& /dev/null'
   alias o="open"
@@ -180,6 +181,7 @@ else
   fi
 
   alias cal="cal -m"
+  alias cpass="openssl rand -base64 20"
   alias psme='\ps x -u $USER -o $PS_DISPLAY'
   alias vl='tail -n $LINES -f /var/log/syslog'
 fi
@@ -197,6 +199,7 @@ alias iip="curl icanhazip.com"
 alias ka="killall"
 alias ls='ls $LS_OPTIONS'
 alias mkdir="mkdir -pv"
+alias pass="vim ~/Documents/Text\ Files/Passwords.blowfish"
 alias ping="ping -c 10"
 alias ps='ps ax -o $PS_DISPLAY'
 alias py="python3"
@@ -226,9 +229,6 @@ alias rg="rgrep"
 alias cp="cp -vi"
 alias mv="mv -vi"
 alias rm="rm -v"
-
-alias cpass="openssl rand -base64 20"
-alias pass="vim ~/Documents/Text\ Files/Passwords.blowfish"
 
 alias d="ls -l"
 alias da="ls --all -l"
