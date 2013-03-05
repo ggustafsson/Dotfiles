@@ -16,7 +16,7 @@ DIRECTORIES=(
   Development
   Documents
   Dropbox
-  Library/Safari
+  Library/Safari/Bookmarks.plist
   Movies/Personal
   Music/GBS
   Music/NSFe
