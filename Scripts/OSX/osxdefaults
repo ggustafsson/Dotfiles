@@ -24,3 +24,6 @@ rm -rf ~/Library/Caches/com.apple.Safari/Webpage\ Previews
 
 # Make the delete key work again.
 defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2BackspaceKeyNavigationEnabled -bool YES
+
+# Stop Mac OS X from overriding hostname.
+sudo scutil --set HostName skywalker.lan
