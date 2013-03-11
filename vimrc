@@ -200,6 +200,10 @@ vnoremap <Leader><Space> :call NERDComment("n", "Toggle")<CR>
 nnoremap vil ^vg_
 nnoremap Y   y$
 
+nnoremap § <Esc>
+vnoremap § <Esc>
+inoremap § <Esc>
+
 nnoremap j gj
 nnoremap k gk
 
