@@ -142,6 +142,7 @@ if [[ $OSTYPE == darwin* ]]; then
   alias study="school && tim --pomodoro"
   alias top="top -o cpu -s 2"
   alias tree="tree -N"
+  alias vl="syslog"
   alias webcam="imagesnap -t 2 -w 1"
 
   alias brewi="brew install"
