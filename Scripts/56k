@@ -1,0 +1,35 @@
+#!/usr/bin/env zsh
+
+# Written by Göran Gustafsson <gustafsson.g@gmail.com>.
+
+# Description: This script plays 56k modem audio. The progressbar is synced
+# with the audio file i found on the internetz.
+
+# Usage: 56k
+
+AUDIO=~/Storage/modem.mp3
+
+if [[ $OSTYPE == darwin* ]]; then
+  COMMAND="afplay $AUDIO" # Comes with Mac OS X.
+else
+  COMMAND="aplay -q $AUDIO" # Comes with alsa-utils.
+fi
+
+if [[ -f $AUDIO ]]; then
+  echo "Dialing up 56k modem.\n"
+  eval $COMMAND & # Execute COMMAND.
+
+  echo -n "[            ]"
+  printf "\b\b\b\b\b\b\b\b\b\b\b\b\b"
+
+  sleep 2.5
+
+  for X in {1..12}; do
+    echo -n "#"
+    sleep 1
+  done
+
+  echo "] Connected!"
+else
+  echo "Buu! Modem not plugged in! :("
+fi
