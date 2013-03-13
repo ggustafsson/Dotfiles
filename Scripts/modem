@@ -1,0 +1,42 @@
+#!/usr/bin/env zsh
+
+# Written by Göran Gustafsson <gustafsson.g@gmail.com>.
+
+# Description: This script plays 56k modem sound and displays a progressbar
+# while "connecting". The progressbar is synced with a specific audio file i
+# found on the internetz.
+
+# Usage: modem
+
+FILE=~/Storage/modem.mp3
+
+if [[ $OSTYPE == darwin* ]]; then
+  COMMAND="afplay $FILE" # Comes with Mac OS X.
+else
+  COMMAND="aplay -q $FILE" # Comes with alsa-utils.
+fi
+
+if [[ -f $FILE ]]; then
+  echo "Dialing up 56k modem.\n"
+  eval $COMMAND & # Execute COMMAND.
+
+  echo -n "[            ]"
+  printf "\b\b\b\b\b\b\b\b\b\b\b\b\b"
+
+  sleep 3
+
+  for X in {1..12}; do
+    #echo -n "#"
+    print -nP "%B%F{black}#%f%b"
+    sleep 1
+  done
+
+  echo -n "] "
+  print -P "%B%F{green}Connected!%f%b"
+
+  sleep 1
+  echo "\nEnjoy the internetz!"
+  sleep 1
+else
+  echo "Buu! Modem not plugged in! :("
+fi
