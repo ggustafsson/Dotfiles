@@ -135,7 +135,7 @@ if [[ $OSTYPE == darwin* ]]; then
   alias cf="say command finished"
   alias cpass="openssl rand -base64 20 | pbcopy && echo 'Password copied to clipboard.'"
   alias eject="osascript -e 'tell application \"Finder\" to eject (every disk whose ejectable is true)' && echo 'Ejecting all external drives.'"
-  alias mvimdiff='/Applications/MacVim.app/Contents/MacOS/Vim -d -g $* >& /dev/null'
+  alias gvimdiff='/Applications/MacVim.app/Contents/MacOS/Vim -d -g $* >& /dev/null'
   alias o="open"
   alias pb="pbcopy"
   alias psme='\ps -xu $USER -o $PS_DISPLAY'
