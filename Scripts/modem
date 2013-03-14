@@ -26,7 +26,6 @@ if [[ -f $FILE ]]; then
   sleep 3
 
   for X in {1..12}; do
-    #echo -n "#"
     print -nP "%B%F{black}#%f%b"
     sleep 1
   done
