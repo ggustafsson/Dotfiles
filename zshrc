@@ -158,8 +158,8 @@ if [[ $OSTYPE == darwin* ]]; then
   alias movem='cd /Volumes/External/Music/FLAC && mv "$(random)" ~/Music/Trial/ && cd - >& /dev/null && open ~/Music/Trial'
   alias removem="ls -1 ~/Music/Trial/ && echo && rm -rf ~/Music/Trial/*"
 
-  alias wifioff="networksetup -setairportpower en0 off"
-  alias wifion="networksetup -setairportpower en0 on"
+  alias wifioff="networksetup -setairportpower en0 off && echo 'Turning Wi-Fi off.'"
+  alias wifion="networksetup -setairportpower en0 on && echo 'Turning Wi-Fi on.'"
   alias wifiscan="/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport --scan"
 
   for X in $WIRESHARK; do
