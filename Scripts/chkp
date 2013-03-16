@@ -25,7 +25,7 @@ for DIRECTORY in ~/Projects/*; do
 done
 
 if [[ ${#CLEAN_REPO} -gt 0 ]]; then
-  print -P "%B%F{green}Clean repo:%f%b"
+  print -P "%B%F{green}Clean repo(s):%f%b"
   for X in $CLEAN_REPO; do
     echo " * $X"
   done
@@ -34,7 +34,7 @@ fi
 [[ ${#CLEAN_REPO} -gt 0 && ${#NOT_REPO} -gt 0 ]] && echo
 
 if [[ ${#NOT_REPO} -gt 0 ]]; then
-  print -P "%B%F{blue}Not Git repo:%f%b"
+  print -P "%B%F{blue}Not Git repo(s):%f%b"
   for X in $NOT_REPO; do
     echo " * $X"
   done

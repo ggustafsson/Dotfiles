@@ -29,6 +29,9 @@ rm -rf ~/Library/Caches/com.apple.Safari/Webpage\ Previews
 # Make the delete key work again.
 defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2BackspaceKeyNavigationEnabled -bool YES
 
+# Unhide the ~/Library folder.
+chflags nohidden ~/Library
+
 # Remove left over file. https://discussions.apple.com/thread/4213550
 sudo rm /System/Library/LaunchAgents/com.apple.afpstat.plist
 

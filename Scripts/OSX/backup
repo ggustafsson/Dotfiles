@@ -16,6 +16,7 @@ DIRECTORIES=(
   Development
   Documents
   Dropbox
+  Library/Application\ Support/Alfred\ 2
   Library/Safari/Bookmarks.plist
   Movies
   Music/GBS
@@ -26,7 +27,7 @@ DIRECTORIES=(
   School
   Sites
   Storage
-  "Web Archives"
+  Web\ Archives
   YouTube
 )
 
