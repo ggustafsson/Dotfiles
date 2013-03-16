@@ -29,6 +29,9 @@ rm -rf ~/Library/Caches/com.apple.Safari/Webpage\ Previews
 # Make the delete key work again.
 defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2BackspaceKeyNavigationEnabled -bool YES
 
+# Remove left over file. https://discussions.apple.com/thread/4213550
+sudo rm /System/Library/LaunchAgents/com.apple.afpstat.plist
+
 # Display 24-hour clock at login/lock screen.
 sudo defaults write /Library/Preferences/.GlobalPreferences AppleLocale en_GB
 
