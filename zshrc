@@ -64,6 +64,8 @@ autoload -U compinit && compinit
 autoload -U url-quote-magic && zle -N self-insert url-quote-magic
 
 bindkey -v
+bindkey "§"  vi-cmd-mode
+bindkey "jj" vi-cmd-mode
 bindkey "^?" backward-delete-char
 bindkey "^A" beginning-of-line
 bindkey "^E" end-of-line

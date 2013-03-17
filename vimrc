@@ -215,6 +215,15 @@ nnoremap <Backspace> :nohlsearch<CR>
 nnoremap <Tab>       :LustyBufferExplorer<CR>
 nnoremap <S-Tab>     :bnext<CR>
 
+nnoremap <Up>    :echo "Use the damn 'K' key instead!"<CR>
+nnoremap <Down>  :echo "Use the damn 'J' key instead!"<CR>
+nnoremap <Left>  :echo "Use the damn 'H' key instead!"<CR>
+nnoremap <Right> :echo "Use the damn 'L' key instead!"<CR>
+vnoremap <Up>    <NOP>
+vnoremap <Down>  <NOP>
+vnoremap <Left>  <NOP>
+vnoremap <Right> <NOP>
+
 nnoremap <C-j> }
 nnoremap <C-k> {
 vnoremap <C-j> }
@@ -228,7 +237,8 @@ vnoremap <Leader>so :sort<CR>
 vnoremap <Tab>   >gv
 vnoremap <S-Tab> <gv
 
-inoremap <expr> <Tab> CompleteTab()
+inoremap <Expr><Tab> CompleteTab()
+inoremap jj          <Esc>
 
 if has("gui_running") && has("mac")
   function! FancyView()
