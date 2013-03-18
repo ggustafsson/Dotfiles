@@ -31,7 +31,7 @@ readonly = True
 type = Gmail
 remotehost = imap.gmail.com
 remoteuser = gg222bn@student.lnu.se
-remotepasseval = get_keychain_pass(account="gg222bn", server="imap.gmail.com")
+remotepasseval = get_keychain_pass(account="gg222bn@student.lnu.se", server="imap.gmail.com")
 ssl = yes
 cert_fingerprint=6d1b5b5ee0180ab493b71d3b94534b5ab937d042
 readonly = True
