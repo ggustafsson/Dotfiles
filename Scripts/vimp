@@ -67,6 +67,16 @@ fi
 
 echo
 
+if [[ -d ~/.vim/bundle/seek ]]; then
+  print -P "%B%F{green}Checking for Seek updates.%f%b"
+  cd ~/.vim/bundle/seek
+  git pull
+else
+  git clone git://github.com/goldfeld/vim-seek.git ~/.vim/bundle/seek
+fi
+
+echo
+
 if [[ -d ~/.vim/bundle/surround ]]; then
   print -P "%B%F{green}Checking for Surround updates.%f%b"
   cd ~/.vim/bundle/surround
