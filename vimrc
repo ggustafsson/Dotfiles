@@ -237,7 +237,7 @@ vnoremap <Leader>so :sort<CR>
 vnoremap <Tab>   >gv
 vnoremap <S-Tab> <gv
 
-inoremap <Expr><Tab> CompleteTab()
+inoremap <expr><Tab> CompleteTab()
 inoremap jj          <Esc>
 
 if has("gui_running") && has("mac")
