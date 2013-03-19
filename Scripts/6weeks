@@ -5,21 +5,23 @@
 # Description: This script adds 6 weeks to a specific date. I use this because
 # i update my blog at http://gleg.se every 6 weeks.
 
-# Usage: countd <date>
+# Usage: 6weeks <date>
 
 require "date"
 
 if ARGV.length == 1
   begin
-    date = Date.parse(ARGV[0]) + 42
-    puts date
-
-    if RUBY_PLATFORM.include?("darwin")
-      `printf #{date} | pbcopy`
-    end
+    date = Date.parse(ARGV[0]) + 42 # 42 days is 6 weeks.
   rescue
     puts "Invalid date argument!"
+    exit
+  end
+
+  puts date
+
+  if RUBY_PLATFORM.include?("darwin")
+    `printf #{date} | pbcopy`
   end
 else
-  puts "Usage: #{File.basename($0)} [DATE]"
+  puts "Usage: #{File.basename($0)} [DATE]..."
 end

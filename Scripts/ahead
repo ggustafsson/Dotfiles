@@ -1,0 +1,23 @@
+#!/usr/bin/env ruby
+
+# Written by Göran Gustafsson <gustafsson.g@gmail.com>.
+
+# Description: 
+
+# Usage: ahead <days>
+
+require "date"
+
+if ARGV.length == 1
+  begin
+    days = Integer(ARGV[0])
+  rescue
+    puts "Invalid argument!"
+    exit
+  end
+
+  future = Date.today + days
+  puts future
+else
+  puts "Usage: #{File.basename($0)} [DAYS]..."
+end
