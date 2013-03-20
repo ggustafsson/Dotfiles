@@ -114,7 +114,7 @@ if has("mac")
   let g:gist_clip_command = "pbcopy"
 endif
 
-let g:SeekBackKey = ""
+let g:SeekBackKey = "DISABLE"
 let g:gist_open_browser_after_post = 1
 let g:mapleader = ","
 
