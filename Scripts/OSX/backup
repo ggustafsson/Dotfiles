@@ -50,6 +50,4 @@ for DIRECTORY in $DIRECTORIES; do
 done
 
 echo "\nUnmounting encrypted image file and device."
-hdiutil detach $BACKUP_DESTINATION
-sleep 5
-diskutil eject $DEVICE_NAME
+hdiutil detach $BACKUP_DESTINATION && diskutil eject $DEVICE_NAME
