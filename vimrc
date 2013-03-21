@@ -114,7 +114,6 @@ if has("mac")
   let g:gist_clip_command = "pbcopy"
 endif
 
-let g:SeekBackKey = "DISABLE"
 let g:gist_open_browser_after_post = 1
 let g:mapleader = ","
 
@@ -135,6 +134,9 @@ let g:NERDTreeAutoCenter = 0
 let g:NERDTreeDirArrows = 0
 let g:NERDTreeMinimalUI = 1
 let g:NERDTreeStatusline = " NERDTree"
+
+let g:SeekKey = "f"
+let g:SeekBackKey = "F"
 
 command! -nargs=? Helpt tab help <args>
 cabbrev helpt Helpt
