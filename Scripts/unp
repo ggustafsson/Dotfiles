@@ -33,11 +33,11 @@ if [[ $# -gt 0 ]]; then
         *.zip)  unzip      $ARGUMENT ;;
         *.7z)   7z x       $ARGUMENT ;;
         *)
-          echo "File $ARGUMENT cannot be extracted via $0:t."
+          echo "File '$ARGUMENT' cannot be extracted via $0:t."
         ;;
       esac
     else
-      echo "File $ARGUMENT does not exist."
+      echo "File '$ARGUMENT' does not exist."
     fi
   done
 else

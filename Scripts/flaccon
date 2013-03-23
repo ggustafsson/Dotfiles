@@ -39,10 +39,10 @@ if [[ $# -gt 0 ]]; then
           --ty "$DATE" \
           --add-id3v2 - "$FILE:r.mp3"
       else
-        echo "\nFile $FILE does not end with flac."
+        echo "\nFile '$FILE' does not end with flac."
       fi
     else
-      echo "\nFile $FILE does not exist."
+      echo "\nFile '$FILE' does not exist."
     fi
   done
 else

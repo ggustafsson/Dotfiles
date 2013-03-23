@@ -10,7 +10,7 @@
 #        t <text>
 
 if [[ -z $TODO_FILE ]]; then
-  echo "Variable TODO_FILE is not set!"
+  echo "Variable TODO_FILE is not set! Exiting..."
   return 1
 fi
 
@@ -20,16 +20,16 @@ if [[ $# -gt 0 ]]; then
   else
     echo "- $*" > $TODO_FILE
   fi
-  echo "Added new entry to file."
+  echo "Added new entry to to-do file."
 else
   if [[ -f $TODO_FILE ]]; then
     if [[ -s $TODO_FILE ]]; then
       echo "${TODO_FILE:t}:\n"
       cat $TODO_FILE
     else
-      echo "File is empty!"
+      echo "The to-do file is empty!"
     fi
   else
-    echo "File does not exist!"
+    echo "The to-do file does not exist!"
   fi
 fi

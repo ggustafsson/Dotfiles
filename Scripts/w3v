@@ -7,9 +7,9 @@
 #
 # I have this in ~/.vimrc so i can easily validate files inside of Vim:
 #
-# nnoremap <Leader>w3 :!~/Scripts/validate "%"<CR>
+# nnoremap <Leader>w3 :!~/Scripts/w3v "%"<CR>
 
-# Usage: validate <file(s)>
+# Usage: w3v <file(s)>
 
 if [[ $# -gt 0 ]]; then
   echo "Validating HTML file(s)."
@@ -22,7 +22,7 @@ if [[ $# -gt 0 ]]; then
         DIRECTORY=$1:A:h
         FILENAME=$1:t
 
-        echo "\nValidating the file $FILE."
+        echo "\nValidating the file '$FILE'."
 
         cd $DIRECTORY
         RESULTS=$(eval $COMMAND)
@@ -35,17 +35,17 @@ if [[ $# -gt 0 ]]; then
         PARSED=$(echo $RESULTS | grep '"lastLine":')
 
         if [[ ! -z $PARSED ]]; then
-          echo "Found error(s) on line(s):\n"
+          echo "\nFound error(s) on line(s):\n"
           echo $PARSED | sed 's/^[ \t]*"lastLine":/ /;s/,//g' | sort --general-numeric-sort | uniq
         else
           echo "No errors! :)"
         fi
       else
-        echo "File $1 does not end with html."
+        echo "File '$1' does not end with html."
         return 1
       fi
     else
-      echo "File $1 does not exist."
+      echo "File '$1' does not exist."
     fi
   done
 else
