@@ -80,24 +80,14 @@ if has("gui_running")
   set guicursor+=a:blinkon0
   set guioptions=cgt
   set showcmd
-
-  if has("mac")
-    set visualbell
-  endif
+  set visualbell
 
   function! FontSetup()
-    if has("mac")
-      set guifont=Inconsolata:h14
-      set linespace=1
+    set guifont=Inconsolata:h14
+    set linespace=1
 
-      set columns=185
-      set lines=44
-    else
-      set guifont=Inconsolata\ 12
-
-      set columns=110
-      set lines=30
-    endif
+    set columns=185
+    set lines=44
   endfunction
 
   if !exists("g:dont_set_font_again")
@@ -120,9 +110,6 @@ let g:mapleader = ","
 let g:gundo_help = 0
 let g:gundo_preview_statusline = " Gundo Preview"
 let g:gundo_tree_statusline = " Gundo Tree"
-
-let g:html_ignore_folding = 1
-let g:html_number_lines = 0
 
 let g:LustyExplorerDefaultMappings = 0
 let g:LustyJugglerDefaultMappings = 0
@@ -218,10 +205,10 @@ nnoremap <Backspace> :nohlsearch<CR>
 nnoremap <Tab>       :LustyBufferExplorer<CR>
 nnoremap <S-Tab>     :bnext<CR>
 
-nnoremap <Up>    :echo "Use the damn 'K' key instead!"<CR>
-nnoremap <Down>  :echo "Use the damn 'J' key instead!"<CR>
-nnoremap <Left>  :echo "Use the damn 'H' key instead!"<CR>
-nnoremap <Right> :echo "Use the damn 'L' key instead!"<CR>
+nnoremap <Up>    :echoerr "Use the damn 'K' key instead!"<CR>
+nnoremap <Down>  :echoerr "Use the damn 'J' key instead!"<CR>
+nnoremap <Left>  :echoerr "Use the damn 'H' key instead!"<CR>
+nnoremap <Right> :echoerr "Use the damn 'L' key instead!"<CR>
 vnoremap <Up>    <NOP>
 vnoremap <Down>  <NOP>
 vnoremap <Left>  <NOP>
@@ -260,9 +247,7 @@ endif
 
 function! BufferDelete()
   if &modified
-    echohl ErrorMsg
-    echomsg "No write since last change. Not closing buffer."
-    echohl NONE
+    echoerr "No write since last change. Not closing buffer."
   else
     let s:total_nr_buffers = len(filter(range(1, bufnr("$")), "buflisted(v:val)"))
 
