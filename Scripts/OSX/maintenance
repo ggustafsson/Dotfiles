@@ -32,7 +32,6 @@ if [[ $ANSWER == (y|yes) ]]; then
   backup
 
   open -a Xcode
-  open -a "App Store"
 else
   echo "\nBye bye!"
 fi
