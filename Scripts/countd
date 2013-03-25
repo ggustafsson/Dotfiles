@@ -15,7 +15,7 @@ require "csv"
 
 file = "#{Dir.home}/.countdowns"
 today = Date.today
-pos = 0
+position = 0
 
 if !File.exists?(file)
   abort "File '~/.countdowns' not found!"
@@ -25,9 +25,9 @@ end
 
 CSV.foreach(file) do |row|
   if row.size != 2
-    puts if pos > 0
-    puts "The row on line #{pos + 1} is not 2 columns. Skipping!"
-    pos += 1
+    puts if position > 0
+    puts "The row on line #{position + 1} is not 2 columns. Skipping!"
+    position += 1
 
     next
   end
@@ -43,8 +43,8 @@ CSV.foreach(file) do |row|
 
   days_left = (future - today).to_i
 
-  puts if pos > 0
+  puts if position > 0
   puts "#{title}\n#{days_left} day(s) left until #{date}"
 
-  pos += 1
+  position += 1
 end

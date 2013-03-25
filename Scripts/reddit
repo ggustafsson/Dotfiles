@@ -1,0 +1,50 @@
+#!/usr/bin/env ruby
+
+# Written by Göran Gustafsson <gustafsson.g@gmail.com>.
+
+# Description: This script opens up all unseen hot reddit entries in new
+# browser tabs. It keeps track of all the URLs opened at last run.
+
+# WORK IN PROGRESS! It doesn't work yet. Half way there.
+
+# Usage: reddit
+
+require "fileutils"
+require "json"
+require "open-uri"
+
+if RUBY_PLATFORM.include?("darwin")
+  browser = "open"
+else
+  browser = "firefox"
+end
+
+new_post = nil
+
+new_file = "#{Dir.home}/.reddit_new"
+old_file = "#{Dir.home}/.reddit_old"
+
+reddit = open("http://reddit.com/hot.json").read
+result = JSON.parse(reddit)
+
+file = File.open(new_file, "w")
+
+result["data"]["children"].each do |post|
+  url = post["data"]["url"]
+
+  file.puts url
+
+  unless File.readlines(old_file).grep(/#{url}/).any?
+    puts "Opening URL: #{url}"
+    `#{browser} "#{url}"`
+
+    new_post = 1
+  end
+end
+
+if new_post.nil?
+  puts "No new Reddit posts found! :("
+end
+
+file.close
+FileUtils.cp(new_file, old_file)
