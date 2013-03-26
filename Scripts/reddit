@@ -2,10 +2,17 @@
 
 # Written by Göran Gustafsson <gustafsson.g@gmail.com>.
 
-# Description: This script opens up all unseen hot reddit entries in new
-# browser tabs. It keeps track of all the URLs opened at last run.
+# Description: This script automatically opens up all new posts found in
+# specificed subreddits under new browser tabs. It keeps track of all the URLs
+# opened at the last run.
 
-# WORK IN PROGRESS! It doesn't work yet. Half way there.
+# The subreddits that are supposed to be checked should be specified in the
+# file ~/.reddit/config like this:
+#
+# aww
+# funny
+# pics
+# wtf
 
 # Usage: reddit
 
@@ -14,37 +21,63 @@ require "json"
 require "open-uri"
 
 if RUBY_PLATFORM.include?("darwin")
-  browser = "open"
+  $browser = "open"
 else
-  browser = "firefox"
+  $browser = "firefox"
 end
 
-new_post = nil
+$first_run = 1
+$directory = "#{Dir.home}/.reddit"
+config = "#{$directory}/config"
 
-new_file = "#{Dir.home}/.reddit_new"
-old_file = "#{Dir.home}/.reddit_old"
 
-reddit = open("http://reddit.com/hot.json").read
-result = JSON.parse(reddit)
+def check_subreddit(subreddit)
+  new_file = "#{$directory}/#{subreddit}"
+  old_file = "#{$directory}/#{subreddit}_before"
 
-file = File.open(new_file, "w")
+  puts if $first_run != 1
+  puts "Checking r/#{subreddit} for new posts..."
 
-result["data"]["children"].each do |post|
-  url = post["data"]["url"]
+  fetched_json = open("http://reddit.com/r/#{subreddit}.json").read
+  parsed_json = JSON.parse(fetched_json)
 
-  file.puts url
+  file = File.open(new_file, "w")
 
-  unless File.readlines(old_file).grep(/#{url}/).any?
-    puts "Opening URL: #{url}"
-    `#{browser} "#{url}"`
+  parsed_json["data"]["children"].each do |post|
+    url = post["data"]["url"]
 
-    new_post = 1
+    file.puts url
+
+    if File.exist?(old_file)
+      unless File.readlines(old_file).grep(/#{Regexp.escape(url)}/).any?
+        open_url(url)
+      end
+    else
+      open_url(url)
+    end
   end
+
+  file.close
+  FileUtils.cp(new_file, old_file)
+
+  $first_run = 0
 end
 
-if new_post.nil?
-  puts "No new Reddit posts found! :("
+def open_url(url)
+  puts "Opening URL: #{url}"
+  `#{$browser} "#{url}"`
 end
 
-file.close
-FileUtils.cp(new_file, old_file)
+
+unless File.directory?($directory)
+  puts "Directory '#{$directory}' doesn't exist! Creating it..."
+  Dir.mkdir($directory)
+end
+
+unless File.exist?(config)
+  abort "File '#{config}' doesn't exist! Exiting..."
+end
+
+File.readlines(config).each do |line|
+  check_subreddit(line.strip)
+end

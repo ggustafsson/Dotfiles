@@ -17,7 +17,7 @@ file = "#{Dir.home}/.countdowns"
 today = Date.today
 position = 0
 
-if !File.exists?(file)
+if !File.exist?(file)
   abort "File '~/.countdowns' not found!"
 elsif CSV.read(file).length == 0
   abort "No entries found!"
