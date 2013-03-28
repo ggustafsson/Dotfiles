@@ -10,7 +10,7 @@ DIRECTORY=~/.gem/ruby/bin
 TMPENDING=gemfix_tmp
 
 for FILE in $DIRECTORY/*; do
-  echo "Replacing the shebang line on file: $FILE"
+  echo "Replacing the shebang line in file: $FILE"
   echo '#!/usr/bin/env ruby' > ${FILE}_$TMPENDING
   tail -n +2 $FILE >> ${FILE}_$TMPENDING
   cat ${FILE}_$TMPENDING > $FILE
