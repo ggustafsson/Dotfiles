@@ -34,12 +34,19 @@ config = "#{$directory}/config"
 def check_subreddit(subreddit)
   new_file = "#{$directory}/#{subreddit}"
   old_file = "#{$directory}/#{subreddit}_before"
+  old_urls = []
 
   puts if $first_run != 1
   puts "Checking r/#{subreddit} for new posts..."
 
   fetched_json = open("http://reddit.com/r/#{subreddit}.json").read
   parsed_json = JSON.parse(fetched_json)
+
+  if File.exist?(old_file)
+    File.open(old_file, "r").each_line do |line|
+      old_urls << Regexp.escape(line.strip)
+    end
+  end
 
   file = File.open(new_file, "w")
 
@@ -48,8 +55,8 @@ def check_subreddit(subreddit)
 
     file.puts url
 
-    if File.exist?(old_file)
-      unless File.readlines(old_file).grep(/#{Regexp.escape(url)}/).any?
+    if !old_urls.empty?
+      unless old_urls.include?(Regexp.escape(url))
         open_url(url)
       end
     else
