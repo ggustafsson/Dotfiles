@@ -178,7 +178,7 @@ nnoremap <Leader>tr :NERDTreeToggle<CR>
 nnoremap <Leader>tw :set textwidth=78
 nnoremap <Leader>un :edit!<CR>
 nnoremap <Leader>vi :edit ~/.vimrc<CR>
-nnoremap <Leader>w3 :!~/Scripts/w3v "%"<CR>
+nnoremap <Leader>w3 :!~/Scripts/validate "%"<CR>
 nnoremap <Leader>wr :set wrap!<CR>
 nnoremap <Leader>ws :%s/\s\+$//<CR>:nohlsearch<CR>
 nnoremap <Leader>zs :edit ~/.zshrc<CR>

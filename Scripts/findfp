@@ -5,7 +5,7 @@
 # Description: This script performs a case insensitive search for files under
 # the current working directory and prints out the full path to them.
 
-# Usage: ffp <pattern>
+# Usage: findfp <pattern>
 
 if [[ $# -eq 1 ]]; then
   find -L "$PWD" -iname $1

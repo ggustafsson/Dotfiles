@@ -5,7 +5,7 @@
 # Description: This script performs a case insensitive search for files under
 # the current working directory and prints out the relative path to them.
 
-# Usage: ff <pattern>
+# Usage: findf <pattern>
 
 if [[ $# -eq 1 ]]; then
   find -L . -iname $1

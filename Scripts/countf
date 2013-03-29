@@ -4,8 +4,8 @@
 
 # Description: This script counts the number of files inside a directory.
 
-# Usage: cntf
-#        cntf <path>
+# Usage: countf
+#        countf <path>
 
 if [[ $# -eq 0 ]]; then
   ls -1 | wc -l

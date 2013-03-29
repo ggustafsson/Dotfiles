@@ -7,9 +7,9 @@
 #
 # I have this in ~/.vimrc so i can easily validate files inside of Vim:
 #
-# nnoremap <Leader>w3 :!~/Scripts/w3v "%"<CR>
+# nnoremap <Leader>w3 :!~/Scripts/validate "%"<CR>
 
-# Usage: w3v <file(s)>
+# Usage: validate <file(s)>
 
 if [[ $# -gt 0 ]]; then
   echo "Validating HTML file(s)."
