@@ -2,9 +2,9 @@
 
 # Written by Göran Gustafsson <gustafsson.g@gmail.com>.
 
-# Description: Print out the number of days left until specified date.
+# Description: Print out the date that is X days from now.
 
-# Usage: daysleft <days>
+# Usage: ahead <days>
 
 require "date"
 
