@@ -9,8 +9,8 @@
 # executes this script before running the original command:
 #
 # WIRESHARK=(/usr/local/Cellar/wireshark/*/bin/*(N:t))
-# for X in $WIRESHARK; do
-#   alias $X="wiresharkfix $X"
+# for COMMAND in $WIRESHARK; do
+#   alias $COMMAND="wiresharkfix $COMMAND"
 # done
 
 # Usage: <wireshark command>

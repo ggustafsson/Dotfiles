@@ -18,8 +18,8 @@ if [[ $# -gt 0 ]]; then
 
         # Put all tag information inside of various shell variables.
         for TAG in $TAGS; do
-          TMP=$(metaflac --show-tag=$TAG $FILE)
-          typeset $TAG=${TMP#*=} # Set values for $TITLE, $ARTIST and so on.
+          INFO=$(metaflac --show-tag=$TAG $FILE)
+          typeset $TAG=${INFO#*=} # Set values for $TITLE, $ARTIST and so on.
         done
 
         echo

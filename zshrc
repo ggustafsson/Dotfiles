@@ -168,8 +168,8 @@ if [[ $OSTYPE == darwin* ]]; then
   alias wifion="networksetup -setairportpower en0 on && echo 'Turning Wi-Fi on.'"
   alias wifiscan="/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport --scan"
 
-  for X in $WIRESHARK; do
-    alias $X="wiresharkfix $X"
+  for COMMAND in $WIRESHARK; do
+    alias $COMMAND="wiresharkfix $COMMAND"
   done
 else
   if ! type -p ifconfig >& /dev/null && type -p ip >& /dev/null; then
@@ -263,8 +263,8 @@ alias pyweb="python3 -m http.server 8080"
 alias svtplay-dl="svtplay-dl --resume"
 alias youtube-dl="youtube-dl --continue --title"
 
-for X in $SSH_HOSTS; do
-  alias $X="ssh $X"
+for HOST in $SSH_HOSTS; do
+  alias $HOST="ssh $HOST"
 done
 
 function h {
