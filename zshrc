@@ -21,20 +21,24 @@ export LS_COLORS="$LS_COLORS:*.flac=01;35:*.nsf=01;35:*.nsfe=01;35:*.m4r=01;35:*
 export LS_COLORS="$LS_COLORS:*.avi=01;36:*.flv=01;36:*.f4v=01;36:*.mkv=01;36:*.mov=01;36:*.mpg=01;36:*.mpeg=01;36:*.mp4=01;36:*.m4v=01;36:*.wmv=01;36"
 export LS_COLORS="$LS_COLORS:*.dmg=01;31:*.iso=01;31:*.rar=01;31:*.tar=01;31:*.tar.bz2=01;31:*.tar.gz=01;31:*.tgz=01;31:*.zip=01;31:*.7z=01;31"
 
-[[ $OSTYPE == darwin* ]] && WIRESHARK=(/usr/local/Cellar/wireshark/*/bin/*(N:t))
+if [[ $OSTYPE == darwin* ]]; then
+  WIRESHARK=(/usr/local/Cellar/wireshark/*/bin/*(N:t))
+
+  e=/Volumes/External
+  ed=/Volumes/External/Downloads
+fi
+
 [[ -f ~/.ssh/config ]] && SSH_HOSTS=($(sed -n 's/^Host //p' ~/.ssh/config))
 DIRSTACKSIZE=20
 LS_OPTIONS=(--classify --color=auto --human-readable)
 
-[[ $OSTYPE == darwin* ]] && e=/Volumes/External
-d=~/Downloads
-p=~/Projects
-s=~/School
-t=~/Documents/Text\ Files
-
 HISTFILE=~/.zsh_histfile
 HISTSIZE=10000
 SAVEHIST=$HISTSIZE
+
+d=~/Downloads
+p=~/Projects
+t=~/Documents/Text\ Files
 
 setopt combiningchars
 setopt correct

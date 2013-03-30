@@ -43,7 +43,7 @@ def check_subreddit(subreddit)
   parsed_json = JSON.parse(fetched_json)
 
   if File.exist?(old_file)
-    File.open(old_file, "r").each_line do |line|
+    File.readlines(old_file).each do |line|
       old_urls << Regexp.escape(line.strip)
     end
   end
