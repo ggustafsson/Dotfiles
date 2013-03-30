@@ -263,8 +263,8 @@ alias pyweb="python3 -m http.server 8080"
 alias svtplay-dl="svtplay-dl --resume"
 alias youtube-dl="youtube-dl --continue --title"
 
-for HOST in $SSH_HOSTS; do
-  alias $HOST="ssh $HOST"
+for NAME in $SSH_HOSTS; do
+  alias $NAME="ssh $NAME"
 done
 
 function h {
