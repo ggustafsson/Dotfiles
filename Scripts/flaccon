@@ -17,16 +17,16 @@ if [[ $# -gt 0 ]]; then
         TAGS=(TITLE ARTIST ALBUM TRACKNUMBER TOTALTRACKS GENRE DATE)
 
         # Put all tag information inside of various shell variables.
-        for X in $TAGS; do
-          TMP=$(metaflac --show-tag=$X $FILE)
-          typeset $X=${TMP#*=} # Voodoo magic. Must use typeset because of $.
+        for TAG in $TAGS; do
+          TMP=$(metaflac --show-tag=$TAG $FILE)
+          typeset $TAG=${TMP#*=} # Set values for $TITLE, $ARTIST and so on.
         done
 
         echo
 
         # Print out all tag information.
-        for X in $TAGS; do
-          echo $X=${(P)X}
+        for TAG in $TAGS; do
+          echo $TAG=${(P)TAG}
         done
 
         # Decode FLAC file with "flac" and encode it to MP3 with "lame".
