@@ -21,7 +21,7 @@ if [[ -f $FILE ]]; then
   eval $COMMAND & # Execute COMMAND.
 
   echo -n "[            ]"
-  printf "\b\b\b\b\b\b\b\b\b\b\b\b\b"
+  for X in {1..13}; do printf "\b"; done
 
   sleep 3
 
