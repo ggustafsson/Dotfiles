@@ -183,9 +183,6 @@ nnoremap <Leader>wr :set wrap!<CR>
 nnoremap <Leader>ws :%s/\s\+$//<CR>:nohlsearch<CR>
 nnoremap <Leader>zs :edit ~/.zshrc<CR>
 
-nnoremap <Leader>so vip:sort<CR>
-vnoremap <Leader>so :sort<CR>
-
 nnoremap <Leader><Space> :call NERDComment("n", "Toggle")<CR>
 vnoremap <Leader><Space> :call NERDComment("n", "Toggle")<CR>
 
@@ -225,6 +222,7 @@ vnoremap <C-k> {
 vnoremap <Leader>ga :Gist -a<CR>
 vnoremap <Leader>gg :Gist<CR>
 vnoremap <Leader>ne y:enew<CR>P
+vnoremap <Leader>so :sort<CR>
 
 vnoremap <Tab>   >gv
 vnoremap <S-Tab> <gv
