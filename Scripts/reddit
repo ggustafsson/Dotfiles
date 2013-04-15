@@ -26,8 +26,9 @@ else
   $browser = "firefox"
 end
 
-$first_run = 1
 $directory = "#{Dir.home}/.reddit"
+$filter_gifs = 1 # GIFs makes Safari go bananas :(
+$first_run = 1
 
 if ARGV.length == 1
   config = ARGV[0]
@@ -60,10 +61,12 @@ def check_subreddit(subreddit)
 
     file.puts url
 
+    if $filter_gifs == 1
+      next if url.include?(".gif")
+    end
+
     if !old_urls.empty?
-      unless old_urls.include?(Regexp.escape(url))
-        open_url(url)
-      end
+      open_url(url) unless old_urls.include?(Regexp.escape(url))
     else
       open_url(url)
     end
