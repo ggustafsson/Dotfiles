@@ -205,6 +205,7 @@ alias iip="curl icanhazip.com"
 alias ka="killall"
 alias ls='ls $LS_OPTIONS'
 alias mkdir="mkdir -pv"
+alias nsfw="reddit .reddit/nsfw.config"
 alias pass="vim ~/Documents/Text\ Files/Passwords.blowfish"
 alias ping="ping -c 10"
 alias ps='ps ax -o $PS_DISPLAY'
