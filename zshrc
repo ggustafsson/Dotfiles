@@ -59,7 +59,6 @@ setopt incappendhistory
 setopt autopushd
 setopt pushdignoredups
 
-setopt longlistjobs
 setopt nobgnice
 setopt nonotify
 
@@ -70,8 +69,6 @@ autoload -U url-quote-magic && zle -N self-insert url-quote-magic
 bindkey -v
 bindkey "jj" vi-cmd-mode
 bindkey "^?" backward-delete-char
-bindkey "^A" beginning-of-line
-bindkey "^E" end-of-line
 bindkey "^R" history-incremental-search-backward
 bindkey "^U" kill-whole-line
 bindkey -M vicmd "R" custom-vi-replace
@@ -141,8 +138,6 @@ if [[ $OSTYPE == darwin* ]]; then
   alias eject="osascript -e 'tell application \"Finder\" to eject (every disk whose ejectable is true)' && echo 'Ejecting all external drives.'"
   alias gvimdiff='/Applications/MacVim.app/Contents/MacOS/Vim -d -g $* >& /dev/null'
   alias o="open"
-  alias pb="pbcopy"
-  alias psme='\ps -xu $USER -o $PS_DISPLAY'
   alias top="top -o cpu -s 2"
   alias tree="tree -N"
   alias vl="syslog"
@@ -200,12 +195,10 @@ alias ls='ls $LS_OPTIONS'
 alias mkdir="mkdir -pv"
 alias nsfw="reddit .reddit/nsfw.config"
 alias pass="vim ~/Documents/Text\ Files/Passwords.blowfish"
-alias ping="ping -c 10"
 alias random='FILES=(*) && echo $FILES[$RANDOM%$#FILES+1]'
 alias recf="ls -t | head -n 5"
 alias reload="source ~/.zshenv && source ~/.zshrc && echo 'Zsh reloaded.'"
 alias tmuxa="tmux attach"
-alias topme='top -U $USER'
 alias tv='vim "$TODO_FILE"'
 alias wgetp="wget --adjust-extension --convert-links --page-requisites"
 alias ycal='cal $(date +%Y)'
