@@ -27,7 +27,6 @@ else
 end
 
 $directory = "#{Dir.home}/.reddit"
-$filter_gifs = 1 # GIFs makes Safari go bananas :(
 $first_run = 1
 
 if ARGV.length == 1
@@ -60,8 +59,6 @@ def check_subreddit(subreddit)
     url = post["data"]["url"]
 
     file.puts url
-
-    next if $filter_gifs == 1 && url.include?(".gif")
 
     if !old_urls.empty?
       open_url(url) unless old_urls.include?(Regexp.escape(url))
