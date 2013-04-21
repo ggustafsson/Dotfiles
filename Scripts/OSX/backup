@@ -17,7 +17,7 @@ DIRECTORIES=(
   Documents
   Dropbox
   Library/Application\ Support/Alfred\ 2
-  Library/Safari/Bookmarks.plist
+  Library/Application\ Support/Google/Chrome/Default/Bookmarks
   Movies
   Music/GBS
   Music/NSFe

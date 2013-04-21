@@ -68,7 +68,6 @@ autoload -U compinit && compinit
 autoload -U url-quote-magic && zle -N self-insert url-quote-magic
 
 bindkey -v
-bindkey "§"  vi-cmd-mode
 bindkey "jj" vi-cmd-mode
 bindkey "^?" backward-delete-char
 bindkey "^A" beginning-of-line
@@ -138,14 +137,12 @@ else
 fi
 
 if [[ $OSTYPE == darwin* ]]; then
-  alias cf="say command finished"
   alias cpass="openssl rand -base64 20 | pbcopy && echo 'Password copied to clipboard.'"
   alias eject="osascript -e 'tell application \"Finder\" to eject (every disk whose ejectable is true)' && echo 'Ejecting all external drives.'"
   alias gvimdiff='/Applications/MacVim.app/Contents/MacOS/Vim -d -g $* >& /dev/null'
   alias o="open"
   alias pb="pbcopy"
   alias psme='\ps -xu $USER -o $PS_DISPLAY'
-  alias study="school && tim --pomodoro"
   alias top="top -o cpu -s 2"
   alias tree="tree -N"
   alias vl="syslog"
@@ -155,10 +152,6 @@ if [[ $OSTYPE == darwin* ]]; then
   alias brewr="brew uninstall"
   alias brews="brew search"
   alias brewu="brew update && brew upgrade"
-
-  alias chrome="open -a 'Google Chrome'"
-  alias firefox="open -a Firefox"
-  alias safari="open -a Safari"
 
   alias keepm="mv ~/Music/Trial/* ~/Music/MP3/"
   alias movem='cd /Volumes/External/Music/FLAC && mv "$(random)" ~/Music/Trial/ && cd - >& /dev/null && open ~/Music/Trial'
@@ -208,8 +201,6 @@ alias mkdir="mkdir -pv"
 alias nsfw="reddit .reddit/nsfw.config"
 alias pass="vim ~/Documents/Text\ Files/Passwords.blowfish"
 alias ping="ping -c 10"
-alias ps='ps ax -o $PS_DISPLAY'
-alias py="python3"
 alias random='FILES=(*) && echo $FILES[$RANDOM%$#FILES+1]'
 alias recf="ls -t | head -n 5"
 alias reload="source ~/.zshenv && source ~/.zshrc && echo 'Zsh reloaded.'"
