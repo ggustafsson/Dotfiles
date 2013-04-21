@@ -193,7 +193,7 @@ alias iip="curl icanhazip.com"
 alias ka="killall"
 alias ls='ls $LS_OPTIONS'
 alias mkdir="mkdir -pv"
-alias nsfw="reddit .reddit/nsfw.config"
+alias nsfw="reddit ~/.reddit/nsfw.config"
 alias pass="vim ~/Documents/Text\ Files/Passwords.blowfish"
 alias random='FILES=(*) && echo $FILES[$RANDOM%$#FILES+1]'
 alias recf="ls -t | head -n 5"
