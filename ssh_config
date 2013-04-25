@@ -2,5 +2,7 @@ ServerAliveInterval 15
 ServerAliveCountMax 2
 
 Host hem
-  User gleg
   HostName hem.gleg.se
+
+Host hoth
+  HostName 192.168.1.2
