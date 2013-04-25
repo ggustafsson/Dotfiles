@@ -137,7 +137,7 @@ cabbrev wQ wq
 if has("mac")
   nnoremap <Leader>fa :call FancyView()<CR>
   nnoremap <Leader>fi :silent !open "%:p:h"<CR>
-  nnoremap <Leader>op :silent !open -a "Google Chrome" "%"<CR>
+  nnoremap <Leader>op :silent !open -a Safari "%"<CR>
 endif
 
 nnoremap <Leader>bd :call BufferDelete()<CR>
