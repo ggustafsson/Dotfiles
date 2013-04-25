@@ -11,10 +11,6 @@
 defaults write com.apple.dock pinning -string start
 killall Dock
 
-# Disable the Spotlight icon in the menubar.
-sudo chmod 600 /System/Library/CoreServices/Search.bundle/Contents/MacOS/Search
-killall SystemUIServer
-
 # Disable window animations.
 defaults write NSGlobalDomain NSAutomaticWindowAnimationsEnabled -bool NO
 
