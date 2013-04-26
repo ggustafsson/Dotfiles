@@ -14,8 +14,8 @@ sudo apt-get install \
 sudo chsh -s /bin/zsh $USER
 
 mkdir ~/Projects
-git clone git@github.com:ggustafsson/Dot-Files.git ~/Projects/Dot\ Files
-git clone git@github.com:ggustafsson/Ninja-Color-Scheme.git ~/Projects/Ninja\ Color\ Scheme
+git clone git://github.com/ggustafsson/Dot-Files.git ~/Projects/Dot\ Files
+git clone git://github.com/ggustafsson/Ninja-Color-Scheme.git ~/Projects/Ninja\ Color\ Scheme
 
 ln -s ~/Projects/Dot\ Files/Scripts
 ln -s ~/Projects/Dot\ Files/gitconfig ~/.gitconfig
