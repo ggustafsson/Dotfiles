@@ -19,7 +19,7 @@ DIRECTORIES=(
   ~/YouTube
 )
 
-echo "Backing up folders to server '$SERVER'."
+echo "Backing up directories to server '$SERVER'."
 
 for DIRECTORY in $DIRECTORIES; do
   print -P "\n%B%F{green}Backing up directory $DIRECTORY.%f%b"
