@@ -15,7 +15,7 @@ DIRECTORIES=(
   /Volumes/External/Documentaries
   /Volumes/External/Movies
   /Volumes/External/Series
-  ~/Music
+  ~/Music/MP3
   ~/YouTube
 )
 
