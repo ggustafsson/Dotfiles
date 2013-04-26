@@ -1,0 +1,27 @@
+#!/usr/bin/env zsh
+
+# Written by Göran Gustafsson <gustafsson.g@gmail.com>.
+
+# Description: This script backs up several directories to a server with rsync
+# through ssh.
+
+# Usage: backup2s
+
+SERVER=hoth
+SERVER_DESTINATION=/media/external
+
+DIRECTORIES=(
+  /Volumes/External/Disc\ Images
+  /Volumes/External/Documentaries
+  /Volumes/External/Movies
+  /Volumes/External/Series
+  ~/Music
+  ~/YouTube
+)
+
+echo "Backing up folders to server '$SERVER'."
+
+for DIRECTORY in $DIRECTORIES; do
+  print -P "\n%B%F{green}Backing up directory $DIRECTORY.%f%b"
+  rsync --archive --delete --human-readable --progress $DIRECTORY -e ssh ${SERVER}:$SERVER_DESTINATION
+done

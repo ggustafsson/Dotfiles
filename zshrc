@@ -170,7 +170,7 @@ else
   if type -p apt-get >& /dev/null; then
     alias apti="sudo apt-get install"
     alias aptr="sudo apt-get purge"
-    alias apts="sudo apt-cache search"
+    alias apts="apt-cache search"
     alias aptu="sudo apt-get update && sudo apt-get upgrade"
   fi
 
