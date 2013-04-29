@@ -1,6 +1,6 @@
 # Göran Gustafsson <gustafsson.g@gmail.com>
 
-umask 077
+[[ $OSTYPE == darwin* ]] && umask 077
 
 [[ $TERM == xterm ]] && export TERM=xterm-256color
 export GEM_HOME=~/.gem/ruby
