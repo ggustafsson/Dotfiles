@@ -24,7 +24,7 @@ remotehost = imap.gmail.com
 remoteuser = gustafsson.g@gmail.com
 remotepasseval = get_keychain_pass(account="gustafsson.g", server="imap.gmail.com")
 ssl = yes
-cert_fingerprint=6d1b5b5ee0180ab493b71d3b94534b5ab937d042
+cert_fingerprint=b0ba392bba326e6feb1add4d04fa0fb86cd173fa
 readonly = True
 
 [Repository LNU-Remote]
@@ -33,5 +33,5 @@ remotehost = imap.gmail.com
 remoteuser = gg222bn@student.lnu.se
 remotepasseval = get_keychain_pass(account="gg222bn@student.lnu.se", server="imap.gmail.com")
 ssl = yes
-cert_fingerprint=6d1b5b5ee0180ab493b71d3b94534b5ab937d042
+cert_fingerprint=b0ba392bba326e6feb1add4d04fa0fb86cd173fa
 readonly = True
