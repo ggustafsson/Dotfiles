@@ -5,6 +5,7 @@ rm ~/examples.desktop
 sudo apt-get install \
   git \
   ncftp \
+  netperf \
   nmap \
   ruby \
   tree \
