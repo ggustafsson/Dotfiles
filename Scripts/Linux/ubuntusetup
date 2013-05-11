@@ -8,6 +8,7 @@ sudo apt-get install \
   netperf \
   nmap \
   ruby \
+  tmux \
   tree \
   vim-nox \
   zsh
