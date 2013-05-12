@@ -16,7 +16,7 @@ position = 0
 title.each do |word|
   # Capitalize the first word no matter what it is and check if the current
   # word (in lowercased form) is included in the small_words array.
-  if position > 0 and small_words.include?("word.downcase")
+  if position > 0 and small_words.include?(word.downcase)
     title[position] = word.downcase
   else
     title[position] = word.capitalize
