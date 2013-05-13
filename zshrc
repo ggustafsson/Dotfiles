@@ -176,7 +176,7 @@ else
 
   alias cal="cal -m"
   alias cpass="openssl rand -base64 20"
-  alias minecraft="tmux new 'java -Xmx1024M -Xms1024M -jar minecraft_server.jar nogui'"
+  alias minecraft="tmux new 'java -Xmx4096M -Xms1024M -jar minecraft_server.jar nogui'"
   alias psme='\ps x -u $USER -o $PS_DISPLAY'
   alias vl='tail -n $LINES -f /var/log/syslog'
 fi
