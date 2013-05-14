@@ -11,6 +11,14 @@ echo -n "Everything plugged in and ready to go? [y/n] "
 read ANSWER
 
 if [[ $ANSWER == (y|yes) ]]; then
+  echo -n "Backup Minecraft server? [y/n] "
+  read ANSWER
+
+  if [[ $ANSWER == (y|yes) ]]; then
+    echo
+    rsync --archive --delete --human-readable --progress -e ssh hoth:~/Minecraft ~/Dropbox/Minecraft/Server
+  fi
+
   echo
   offlineimap
   echo
