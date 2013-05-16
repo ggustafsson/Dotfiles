@@ -18,6 +18,7 @@ DIRECTORIES=(
   Dropbox
   Library/Safari/Bookmarks.plist
   Movies
+  Music/FLAC
   Music/GBS
   Music/NSFe
   Music/Ringtones
