@@ -1,6 +1,7 @@
 #!/bin/bash
 
 sudo apt-get install \
+  nagios3 \
   openssh-server \
   transmission \
   xbmc \

@@ -5,6 +5,8 @@ ServerAliveCountMax 2
 
 Host fulknark
   HostName fulknark.se
+  Port 666
 
 Host hoth
   HostName 192.168.1.2
+  Port 666
