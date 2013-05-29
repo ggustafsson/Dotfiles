@@ -133,6 +133,16 @@ else
   RPROMPT='%B%F{blue}$%f%b %?%B$(git_branch)%b'
 fi
 
+case $HOST in
+  hoth)
+    alias minecraft="cd ~/Minecraft && tmux new 'java -Xmx4096M -Xms1024M -jar minecraft_server.jar nogui'"
+  ;;
+  tatooine.lan)
+    alias mcbackup="rsync --archive --delete --human-readable --progress -e ssh hoth:~/Minecraft/ ~/Dropbox/Minecraft/Server/"
+    alias mclogs='ssh hoth "tail -n $LINES -f ~/Minecraft/server.log"'
+  ;;
+esac
+
 if [[ $OSTYPE == darwin* ]]; then
   alias cpass="openssl rand -base64 20 | pbcopy && echo 'Password copied to clipboard.'"
   alias eject="osascript -e 'tell application \"Finder\" to eject (every disk whose ejectable is true)' && echo 'Ejecting all external drives.'"
@@ -148,6 +158,7 @@ if [[ $OSTYPE == darwin* ]]; then
   alias brews="brew search"
   alias brewu="brew update && brew upgrade"
 
+  alias chkm="find ~/Music/MP3 -type f ! -iname '*.mp3'"
   alias keepm="mv ~/Music/Trial/* ~/Music/MP3/"
   alias movem='cd /Volumes/External/Music/FLAC && mv "$(random)" ~/Music/Trial/ && cd - >& /dev/null && open ~/Music/Trial'
   alias removem="ls -1 ~/Music/Trial/ && echo && rm -rf ~/Music/Trial/*"
@@ -176,7 +187,6 @@ else
 
   alias cal="cal -m"
   alias cpass="openssl rand -base64 20"
-  alias minecraft="cd ~/Minecraft && tmux new 'java -Xmx4096M -Xms1024M -jar minecraft_server.jar nogui'"
   alias psme='\ps x -u $USER -o $PS_DISPLAY'
   alias vl='tail -n $LINES -f /var/log/syslog'
 fi
@@ -186,14 +196,12 @@ type hub >& /dev/null && alias git="hub"
 alias bc="bc --quiet"
 alias bigf="du -sk * | sort --numeric-sort --reverse | head"
 alias c="clear"
-alias chkm="find ~/Music/MP3 -type f ! -iname '*.mp3'"
 alias df="df -h"
 alias du="du -sh"
 alias hist="history -i 1 | less"
 alias iip="curl icanhazip.com"
 alias ka="killall"
 alias ls='ls $LS_OPTIONS'
-alias mcbackup="rsync --archive --delete --human-readable --progress -e ssh hoth:~/Minecraft/ ~/Dropbox/Minecraft/Server/"
 alias mkdir="mkdir -pv"
 alias nsfw="reddit ~/.reddit/nsfw.config"
 alias pass="vim ~/Documents/Text\ Files/Passwords.blowfish"
