@@ -104,13 +104,3 @@ if [[ -d ~/Storage/Fonts/Sniglet ]]; then
 else
   git clone git://github.com/theleagueof/sniglet.git ~/Storage/Fonts/Sniglet
 fi
-
-echo
-
-if [[ -d ~/Sites/Frameworks/jQuery\ RSS ]]; then
-  print -P "%B%F{cyan}Checking for jQuery RSS updates.%f%b"
-  cd ~/Sites/Frameworks/jQuery\ RSS
-  git pull
-else
-  git clone git://github.com/sdepold/jquery-rss.git ~/Sites/Frameworks/jQuery\ RSS
-fi
