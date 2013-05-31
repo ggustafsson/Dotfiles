@@ -158,11 +158,6 @@ if [[ $OSTYPE == darwin* ]]; then
   alias brews="brew search"
   alias brewu="brew update && brew upgrade"
 
-  alias chkm="find ~/Music/MP3 -type f ! -iname '*.mp3'"
-  alias keepm="mv ~/Music/Trial/* ~/Music/MP3/"
-  alias movem='cd /Volumes/External/Music/FLAC && mv "$(random)" ~/Music/Trial/ && cd - >& /dev/null && open ~/Music/Trial'
-  alias removem="ls -1 ~/Music/Trial/ && echo && rm -rf ~/Music/Trial/*"
-
   alias wifioff="networksetup -setairportpower en0 off && echo 'Turning Wi-Fi off.'"
   alias wifion="networksetup -setairportpower en0 on && echo 'Turning Wi-Fi on.'"
   alias wifiscan="/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport --scan"
