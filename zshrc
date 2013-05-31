@@ -186,8 +186,6 @@ else
   alias vl='tail -n $LINES -f /var/log/syslog'
 fi
 
-type hub >& /dev/null && alias git="hub"
-
 alias bc="bc --quiet"
 alias bigf="du -sk * | sort --numeric-sort --reverse | head"
 alias c="clear"

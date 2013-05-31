@@ -1,5 +1,12 @@
 #!/bin/bash
 
+# Written by Göran Gustafsson <gustafsson.g@gmail.com>.
+
+# Description: This script configures specific things for my media
+# center/server. I use this after i got a basic configuration up and running.
+
+# Usage: ubuntusetup-tv
+
 sudo apt-get install \
   nagios3 \
   openssh-server \

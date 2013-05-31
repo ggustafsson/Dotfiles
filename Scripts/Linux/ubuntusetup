@@ -1,5 +1,13 @@
 #!/bin/bash
 
+# Written by Göran Gustafsson <gustafsson.g@gmail.com>.
+
+# Description: This script configures a basic Ubuntu system the way i like. I
+# use one more script after this, one for setting up my media center/server
+# and one for setting up Virtual Machines.
+
+# Usage: ubunutusetup
+
 rm ~/examples.desktop
 
 sudo apt-get install \

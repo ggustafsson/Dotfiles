@@ -1,5 +1,12 @@
 #!/bin/bash
 
+# Written by Göran Gustafsson <gustafsson.g@gmail.com>.
+
+# Description: This script configures specific things for Virtual Machines. I
+# use this after i got a basic configuration up and running.
+
+# Usage: ubuntusetup-vm
+
 sudo apt-get install \
   dsniff \
   ettercap-graphical \
