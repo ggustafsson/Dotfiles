@@ -1,0 +1,40 @@
+#!/usr/bin/env zsh
+
+# Written by Göran Gustafsson <gustafsson.g@gmail.com>.
+
+# Description: This script installs a bunch of packages with Homebrew.
+
+# Usage: brewsetup
+
+sudo brew install \
+  bash \
+  coreutils \
+  curl \
+  ffmpeg \
+  flac \
+  gawk \
+  git \
+  gnu-sed \
+  html2text \
+  imagemagick --without-x \
+  imagesnap \
+  irssi \
+  lame \
+  macvim \
+  ncftp \
+  nmap \
+  offline-imap \
+  openssh \
+  python \
+  python3 \
+  rsync \
+  ruby \
+  svtplay-dl \
+  tmux \
+  tree \
+  vim \
+  vorbis-tools \
+  wget \
+  wireshark \
+  youtube-dl \
+  zsh
