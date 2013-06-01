@@ -152,7 +152,7 @@ if [[ $OSTYPE == darwin* ]]; then
   alias o="open"
   alias top="top -o cpu -s 2"
   alias tree="tree -N"
-  alias vl="syslog"
+  alias vl='tail -n $LINES -f /var/log/system.log'
   alias webcam="imagesnap -t 2 -w 1"
 
   alias brewi="brew install"
