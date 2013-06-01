@@ -133,18 +133,14 @@ else
   RPROMPT='%B%F{blue}$%f%b %?%B$(git_branch)%b'
 fi
 
-case $HOST in
-  hoth)
-    alias minecraft="cd ~/Minecraft && tmux new 'java -Xmx4096M -Xms1024M -jar minecraft_server.jar nogui'"
-  ;;
-  coruscant.lan | tatooine.lan)
-    alias mcbackup="rsync --archive --delete --human-readable --progress -e ssh hoth:~/Minecraft/ ~/Dropbox/Minecraft/Server/"
-    alias mclogs='ssh hoth "tail -n $LINES -f ~/Minecraft/server.log"'
-  ;;
-esac
+if [[ $HOST == hoth ]]; then
+  alias minecraft="cd ~/Minecraft && tmux new 'java -Xmx4096M -Xms1024M -jar minecraft_server.jar nogui'"
+else
+  alias mcbackup="rsync --archive --delete --human-readable --progress -e ssh hoth:~/Minecraft/ ~/Dropbox/Minecraft/Server/"
+  alias mclogs='ssh hoth "tail -n $LINES -f ~/Minecraft/server.log"'
+fi
 
 if [[ $OSTYPE == darwin* ]]; then
-  alias cpass="openssl rand -base64 20 | pbcopy && echo 'Password copied to clipboard.'"
   alias eject="osascript -e 'tell application \"Finder\" to eject (every disk whose ejectable is true)' && echo 'Ejecting all external drives.'"
   alias gvimdiff='/Applications/MacVim.app/Contents/MacOS/Vim -d -g $* >& /dev/null'
   alias o="open"
@@ -181,7 +177,6 @@ else
   fi
 
   alias cal="cal -m"
-  alias cpass="openssl rand -base64 20"
   alias psme='\ps x -u $USER -o $PS_DISPLAY'
   alias vl='tail -n $LINES -f /var/log/syslog'
 fi
@@ -197,7 +192,6 @@ alias ka="killall"
 alias ls='ls $LS_OPTIONS'
 alias mkdir="mkdir -pv"
 alias nsfw="reddit ~/.reddit/nsfw.config"
-alias pass="vim ~/Documents/Text\ Files/Passwords.blowfish"
 alias random='FILES=(*) && echo $FILES[$RANDOM%$#FILES+1]'
 alias recf="ls -t | head -n 5"
 alias reload="source ~/.zshenv && source ~/.zshrc && echo 'Zsh reloaded.'"

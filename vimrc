@@ -159,7 +159,6 @@ nnoremap <Leader>ne :enew<CR>
 nnoremap <Leader>no :edit ~/Documents/Text\ Files/Notes.txt<CR>
 nnoremap <Leader>nu :call LineNumber()<CR>
 nnoremap <Leader>pa :set paste!<CR>
-nnoremap <Leader>pw :edit ~/Documents/Text\ Files/Passwords.blowfish<CR>
 nnoremap <Leader>re :%s//c<Left><Left>
 nnoremap <Leader>rs :source ~/.vim/session.vim<CR>
 nnoremap <Leader>s2 :set expandtab softtabstop=2 shiftwidth=2<CR>
