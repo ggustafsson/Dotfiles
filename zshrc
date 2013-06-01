@@ -127,7 +127,7 @@ function zsh_mode {
 if [[ $TERM == dumb ]]; then
   PROMPT='%~ $ '
 else
-  # GLEG Skywalker ~ $
+  # GLEG Tatooine ~ $
   PROMPT='%B${(U)USER} %F{yellow}${(C)HOST%%.*}%f%b ${PWD/$HOME/~} %B$(zsh_mode)%b '
   # $ 0 master
   RPROMPT='%B%F{blue}$%f%b %?%B$(git_branch)%b'

@@ -8,10 +8,7 @@
 # Usage: ubuntusetup-tv
 
 sudo apt-get install \
-  nagios3 \
   openssh-server \
-  openswan \
   transmission \
   xbmc \
-  xl2tpd \
   youtube-dl

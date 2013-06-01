@@ -13,12 +13,13 @@ rm ~/examples.desktop
 sudo apt-get install \
   git \
   ncftp \
-  netperf \
   nmap \
   ruby \
   tmux \
   tree \
+  tshark \
   vim-nox \
+  wireshark \
   zsh
 
 sudo chsh -s /bin/zsh $USER

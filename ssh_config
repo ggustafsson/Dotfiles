@@ -5,3 +5,6 @@ ServerAliveCountMax 2
 
 Host hoth
   HostName 192.168.1.2
+
+Host tatooine
+  HostName 192.168.1.3

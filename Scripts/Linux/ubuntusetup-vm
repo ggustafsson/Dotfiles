@@ -12,8 +12,6 @@ sudo apt-get install \
   ettercap-graphical \
   hping3 \
   kismet \
-  tshark \
-  wireshark
 
 sudo dpkg-reconfigure wireshark-common
 sudo usermod -a -G wireshark $USER
