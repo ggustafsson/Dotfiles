@@ -28,7 +28,7 @@ if [[ $OSTYPE == darwin* ]]; then
   ed=/Volumes/External/Downloads
 fi
 
-[[ -f ~/.ssh/config ]] && SSH_HOSTS=($(sed -n 's/^Host //p' ~/.ssh/config))
+[[ -f ~/.ssh/config ]] && SSH_HOSTS=($(sed -n 's/^Host //p' ~/.ssh/config | grep -v ${HOST%%.*}))
 DIRSTACKSIZE=20
 LS_OPTIONS=(--classify --color=auto --human-readable)
 
@@ -137,7 +137,7 @@ case $HOST in
   hoth)
     alias minecraft="cd ~/Minecraft && tmux new 'java -Xmx4096M -Xms1024M -jar minecraft_server.jar nogui'"
   ;;
-  tatooine.lan)
+  coruscant.lan | tatooine.lan)
     alias mcbackup="rsync --archive --delete --human-readable --progress -e ssh hoth:~/Minecraft/ ~/Dropbox/Minecraft/Server/"
     alias mclogs='ssh hoth "tail -n $LINES -f ~/Minecraft/server.log"'
   ;;
