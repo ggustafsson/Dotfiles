@@ -134,7 +134,7 @@ else
 fi
 
 if [[ $HOST == hoth ]]; then
-  alias minecraft="cd ~/Minecraft && tmux new 'java -Xmx4096M -Xms1024M -jar minecraft_server.jar nogui'"
+  alias minecraft="cd ~/Minecraft && tmux new 'java -Xmx4096M -Xms1024M -jar minecraft_server.jar nogui' && cd -"
 else
   alias mcbackup="rsync --archive --delete --human-readable --progress -e ssh hoth:~/Minecraft/ ~/Dropbox/Minecraft/Server/"
   alias mclogs='ssh hoth "tail -n $LINES -f ~/Minecraft/server.log"'
