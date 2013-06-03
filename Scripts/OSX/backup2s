@@ -7,10 +7,10 @@
 
 # Usage: backup2s
 
-SERVER=hoth
-SERVER_DESTINATION=/media/external
+server=hoth
+destination=/media/external
 
-DIRECTORIES=(
+directories=(
   /Volumes/External/Disc\ Images
   /Volumes/External/Documentaries
   /Volumes/External/Movies
@@ -19,9 +19,9 @@ DIRECTORIES=(
   ~/YouTube
 )
 
-echo "Backing up directories to server '$SERVER'."
+echo "Backing up directories to server '$server'."
 
-for DIRECTORY in $DIRECTORIES; do
-  print -P "\n%B%F{green}Backing up directory $DIRECTORY.%f%b"
-  rsync --archive --delete --human-readable --progress $DIRECTORY -e ssh ${SERVER}:$SERVER_DESTINATION
+for directory in $directories; do
+  print -P "\n%B%F{green}Backing up directory $directory.%f%b"
+  rsync --archive --delete --human-readable --progress $directory -e ssh ${server}:$destination
 done

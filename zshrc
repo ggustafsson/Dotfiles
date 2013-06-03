@@ -6,8 +6,6 @@
 export GEM_HOME=~/.gem/ruby
 export GREP_OPTIONS="--color=auto --ignore-case"
 export LC_COLLATE=C
-export PS_DISPLAY="user,pid,command"
-export TODO_FILE=~/Documents/Text\ Files/To-do\ List.todo
 
 export EDITOR=vim
 export VISUAL=$EDITOR
@@ -21,20 +19,24 @@ export LS_COLORS="$LS_COLORS:*.flac=01;35:*.nsf=01;35:*.nsfe=01;35:*.m4r=01;35:*
 export LS_COLORS="$LS_COLORS:*.avi=01;36:*.flv=01;36:*.f4v=01;36:*.mkv=01;36:*.mov=01;36:*.mpg=01;36:*.mpeg=01;36:*.mp4=01;36:*.m4v=01;36:*.wmv=01;36"
 export LS_COLORS="$LS_COLORS:*.dmg=01;31:*.iso=01;31:*.rar=01;31:*.tar=01;31:*.tar.bz2=01;31:*.tar.gz=01;31:*.tgz=01;31:*.zip=01;31:*.7z=01;31"
 
+export ps_display="user,pid,command"
+export todo_file=~/Documents/Text\ Files/To-do\ List.todo
+
+DIRSTACKSIZE=20
+
+HISTFILE=~/.zsh_histfile
+HISTSIZE=10000
+SAVEHIST=$HISTSIZE
+
 if [[ $OSTYPE == darwin* ]]; then
-  WIRESHARK=(/usr/local/Cellar/wireshark/*/bin/*(N:t))
+  wireshark=(/usr/local/Cellar/wireshark/*/bin/*(N:t))
 
   e=/Volumes/External
   ed=/Volumes/External/Downloads
 fi
 
-[[ -f ~/.ssh/config ]] && SSH_HOSTS=($(sed -n 's/^Host //p' ~/.ssh/config | grep -v ${HOST%%.*}))
-DIRSTACKSIZE=20
-LS_OPTIONS=(--classify --color=auto --human-readable)
-
-HISTFILE=~/.zsh_histfile
-HISTSIZE=10000
-SAVEHIST=$HISTSIZE
+[[ -f ~/.ssh/config ]] && ssh_hosts=($(sed -n 's/^Host //p' ~/.ssh/config | grep -v ${HOST%%.*}))
+ls_options=(--classify --color=auto --human-readable)
 
 d=~/Downloads
 p=~/Projects
@@ -58,9 +60,6 @@ setopt incappendhistory
 
 setopt autopushd
 setopt pushdignoredups
-
-setopt nobgnice
-setopt nonotify
 
 [[ ! $TERM == dumb ]] && autoload -U colors && colors
 autoload -U compinit && compinit
@@ -88,19 +87,19 @@ function precmd {
 }
 
 function git_branch {
-  REFERENCE=$(git symbolic-ref HEAD 2> /dev/null) || return
-  BRANCH=${REFERENCE#refs/heads/}
+  reference=$(git symbolic-ref HEAD 2> /dev/null) || return
+  branch=${reference#refs/heads/}
 
   if [[ -n $(git rev-list origin..HEAD 2> /dev/null) ]]; then
     if [[ -n $(git status --short 2> /dev/null) ]]; then
-      echo " %F{cyan}ahead %F{red}$BRANCH%f"
+      echo " %F{cyan}ahead %F{red}$branch%f"
     else
-      echo " %F{cyan}ahead %F{green}$BRANCH%f"
+      echo " %F{cyan}ahead %F{green}$branch%f"
     fi
   elif [[ -n $(git status --short 2> /dev/null) ]]; then
-    echo " %F{red}$BRANCH%f"
+    echo " %F{red}$branch%f"
   else
-    echo " %F{green}$BRANCH%f"
+    echo " %F{green}$branch%f"
   fi
 }
 
@@ -158,8 +157,8 @@ if [[ $OSTYPE == darwin* ]]; then
   alias wifion="networksetup -setairportpower en0 on && echo 'Turning Wi-Fi on.'"
   alias wifiscan="/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport --scan"
 
-  for COMMAND in $WIRESHARK; do
-    alias $COMMAND="wiresharkfix $COMMAND"
+  for command in $wireshark; do
+    alias $command="wiresharkfix $command"
   done
 else
   if ! type -p ifconfig >& /dev/null && type -p ip >& /dev/null; then
@@ -177,7 +176,7 @@ else
   fi
 
   alias cal="cal -m"
-  alias psme='\ps x -u $USER -o $PS_DISPLAY'
+  alias psme='\ps x -u $USER -o $ps_display'
   alias vl='tail -n $LINES -f /var/log/syslog'
 fi
 
@@ -189,14 +188,14 @@ alias du="du -sh"
 alias hist="history -i 1 | less"
 alias iip="curl icanhazip.com"
 alias ka="killall"
-alias ls='ls $LS_OPTIONS'
+alias ls='ls $ls_options'
 alias mkdir="mkdir -pv"
 alias nsfw="reddit ~/.reddit/nsfw.config"
 alias random='FILES=(*) && echo $FILES[$RANDOM%$#FILES+1]'
 alias recf="ls -t | head -n 5"
 alias reload="source ~/.zshenv && source ~/.zshrc && echo 'Zsh reloaded.'"
 alias tmuxa="tmux attach"
-alias tv='vim "$TODO_FILE"'
+alias tv='vim "$todo_file"'
 alias wgetp="wget --adjust-extension --convert-links --page-requisites"
 alias ycal='cal $(date +%Y)'
 
@@ -245,8 +244,8 @@ alias pyweb="python3 -m http.server 8080"
 alias svtplay-dl="svtplay-dl --resume"
 alias youtube-dl="youtube-dl --continue --title"
 
-for NAME in $SSH_HOSTS; do
-  alias $NAME="ssh $NAME"
+for name in $ssh_hosts; do
+  alias $name="ssh $name"
 done
 
 function h {

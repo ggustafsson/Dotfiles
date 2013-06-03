@@ -8,17 +8,17 @@
 #        gifit *.jpg
 
 if [[ $# -gt 1 ]]; then
-  for FILE in $*; do
-    if [[ ! -f $FILE ]]; then
-      echo "File '$FILE' does not exist."
+  for file in $*; do
+    if [[ ! -f $file ]]; then
+      echo "File '$file' does not exist."
       return 1
     fi
   done
 
-  FILENAME=animated_$(date '+%Y-%m-%d_%H%M').gif
-  convert -delay 30 -loop 0 $* $FILENAME
+  filename=animated_$(date '+%Y-%m-%d_%H%M').gif
+  convert -delay 30 -loop 0 $* $filename
 
-  [[ $OSTYPE == darwin* ]] && open -a Safari $FILENAME
+  [[ $OSTYPE == darwin* ]] && open -a Safari $filename
 else
   echo "Usage: $0:t [FILENAMES]..."
 fi

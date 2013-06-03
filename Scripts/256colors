@@ -7,6 +7,6 @@
 
 # Usage: 256colors
 
-for NUMBER in {0..255}; do
-  echo "\x1b[38;5;${NUMBER}mColor $NUMBER"
+for number in {0..255}; do
+  echo "\x1b[38;5;${number}mColor $number"
 done

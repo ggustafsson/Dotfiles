@@ -8,11 +8,11 @@
 
 # Usage: backup
 
-DEVICE_NAME=Keychain
-ENCRYPTED_IMAGE=/Volumes/$DEVICE_NAME/Backup.sparseimage
-BACKUP_DESTINATION=/Volumes/Backup
+device_name=Keychain
+encrypted_image=/Volumes/$device_name/Backup.sparseimage
+backup_destination=/Volumes/Backup
 
-DIRECTORIES=(
+directories=(
   Development
   Documents
   Dropbox
@@ -31,23 +31,23 @@ DIRECTORIES=(
   YouTube
 )
 
-if [[ ! -f $ENCRYPTED_IMAGE ]]; then
-  echo "File '$ENCRYPTED_IMAGE' does not exist!"
+if [[ ! -f $encrypted_image ]]; then
+  echo "File '$encrypted_image' does not exist!"
   return 1
 fi
 
 echo "Mounting encrypted image file."
-hdiutil attach -noverify $ENCRYPTED_IMAGE
+hdiutil attach -noverify $encrypted_image
 
-if [[ ! -d $BACKUP_DESTINATION ]]; then
-  echo "\nDirectory '$BACKUP_DESTINATION' does not exist!"
+if [[ ! -d $backup_destination ]]; then
+  echo "\nDirectory '$backup_destination' does not exist!"
   return 1
 fi
 
-for DIRECTORY in $DIRECTORIES; do
-  print -P "\n%B%F{green}Backing up directory ~/$DIRECTORY.%f%b"
-  rsync --archive --delete --exclude=Dropbox/.dropbox.cache --human-readable --verbose ~/$DIRECTORY $BACKUP_DESTINATION
+for directory in $directories; do
+  print -P "\n%B%F{green}Backing up directory ~/$directory.%f%b"
+  rsync --archive --delete --exclude=Dropbox/.dropbox.cache --human-readable --verbose ~/$directory $backup_destination
 done
 
 echo "\nUnmounting encrypted image file and device."
-hdiutil detach $BACKUP_DESTINATION && diskutil eject $DEVICE_NAME
+hdiutil detach $backup_destination && diskutil eject $device_name

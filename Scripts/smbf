@@ -7,15 +7,15 @@
 
 # Usage: smbf
 
-IP=$(ifconfig en0 | sed -n 's/^[ \t]*//;s/inet //p' | awk '{ print $1 }')
-PORT=445
+ip=$(ifconfig en0 | sed -n 's/^[ \t]*//;s/inet //p' | awk '{ print $1 }')
+port=445
 
 echo "Scanning for network shares."
 
-RESULTS=$(nmap -sT ${IP}/24 -p $PORT --open 2> /dev/null | egrep "(Nmap scan report for|$PORT/tcp)")
+results=$(nmap -sT ${ip}/24 -p $port --open 2> /dev/null | egrep "(Nmap scan report for|$port/tcp)")
 
-if [[ ! -z $RESULTS ]]; then
-  echo "\n$RESULTS"
+if [[ ! -z $results ]]; then
+  echo "\n$results"
 else
   echo "\nNo network shares found!"
 fi

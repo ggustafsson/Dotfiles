@@ -8,24 +8,24 @@
 
 # Usage: modem
 
-FILE=~/Storage/modem.mp3
+file=~/Storage/modem.mp3
 
 if [[ $OSTYPE == darwin* ]]; then
-  COMMAND="afplay $FILE" # Comes with Mac OS X.
+  play_music="afplay $file" # Comes with Mac OS X.
 else
-  COMMAND="aplay -q $FILE" # Comes with alsa-utils.
+  play_music="aplay -q $file" # Comes with alsa-utils.
 fi
 
-if [[ -f $FILE ]]; then
+if [[ -f $file ]]; then
   echo "Dialing up 56k modem.\n"
-  eval $COMMAND & # Execute COMMAND.
+  eval $play_music & # Execute play_music.
 
   echo -n "[            ]"
-  for X in {1..13}; do printf "\b"; done
+  for number in {1..13}; do printf "\b"; done
 
   sleep 3
 
-  for X in {1..12}; do
+  for number in {1..12}; do
     print -nP "%B%F{black}#%f%b"
     sleep 1
   done

@@ -2,30 +2,30 @@
 
 # Written by Göran Gustafsson <gustafsson.g@gmail.com>.
 
-# Description: This script prints out the content of my $TODO_FILE file or
-# adds a new entry to the bottom of the file. TODO_FILE is set from ~/.zshrc
-# with "export TODO_FILE=path".
+# Description: This script prints out the content of my $todo_file file or
+# adds a new entry to the bottom of the file. todo_file is set from ~/.zshrc
+# with "export todo_file=path".
 
 # Usage: t
 #        t <text>
 
-if [[ -z $TODO_FILE ]]; then
-  echo "Variable TODO_FILE is not set! Exiting..."
+if [[ -z $todo_file ]]; then
+  echo "Variable 'todo_file' is not set! Exiting..."
   return 1
 fi
 
 if [[ $# -gt 0 ]]; then
-  if [[ -f $TODO_FILE ]]; then
-    echo "- $*" >> $TODO_FILE
+  if [[ -f $todo_file ]]; then
+    echo "- $*" >> $todo_file
   else
-    echo "- $*" > $TODO_FILE
+    echo "- $*" > $todo_file
   fi
   echo "Added new entry to to-do file."
 else
-  if [[ -f $TODO_FILE ]]; then
-    if [[ -s $TODO_FILE ]]; then
-      echo "${TODO_FILE:t}:\n"
-      cat $TODO_FILE
+  if [[ -f $todo_file ]]; then
+    if [[ -s $todo_file ]]; then
+      echo "${todo_file:t}:\n"
+      cat $todo_file
     else
       echo "The to-do file is empty!"
     fi

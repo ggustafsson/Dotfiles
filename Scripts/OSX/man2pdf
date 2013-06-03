@@ -8,8 +8,8 @@
 #        man2pdf <man> <man> ...
 
 if [[ $# -gt 0 ]]; then
-  for ARGUMENT in $*; do
-    man -t $ARGUMENT | open -f -a Preview
+  for argument in $*; do
+    man -t $argument | open -f -a Preview
   done
 else
   echo "Usage: $0:t [MAN PAGE(S)]..."

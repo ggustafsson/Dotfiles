@@ -8,36 +8,36 @@
 # Usage: unp <file(s)>
 
 if [[ $# -gt 0 ]]; then
-  for ARGUMENT in $*; do
-    if [[ -f $ARGUMENT ]]; then
-      case $ARGUMENT in
+  for argument in $*; do
+    if [[ -f $argument ]]; then
+      case $argument in
         *.bz2)
-          if [[ $ARGUMENT == *.tar.bz2 ]]; then
-            tar xvjf $ARGUMENT
+          if [[ $argument == *.tar.bz2 ]]; then
+            tar xvjf $argument
           else
-            bunzip2 $ARGUMENT
+            bunzip2 $argument
           fi
         ;;
         *.gz)
-          if [[ $ARGUMENT == *.tar.gz ]]; then
-            tar zxvf $ARGUMENT
+          if [[ $argument == *.tar.gz ]]; then
+            tar zxvf $argument
           else
-            gunzip $ARGUMENT
+            gunzip $argument
           fi
         ;;
-        *.rar)  unrar x    $ARGUMENT ;;
-        *.tar)  tar xvf    $ARGUMENT ;;
-        *.tbz2) tar xvjf   $ARGUMENT ;;
-        *.tgz)  tar zxvf   $ARGUMENT ;;
-        *.Z)    uncompress $ARGUMENT ;;
-        *.zip)  unzip      $ARGUMENT ;;
-        *.7z)   7z x       $ARGUMENT ;;
+        *.rar)  unrar x    $argument ;;
+        *.tar)  tar xvf    $argument ;;
+        *.tbz2) tar xvjf   $argument ;;
+        *.tgz)  tar zxvf   $argument ;;
+        *.Z)    uncompress $argument ;;
+        *.zip)  unzip      $argument ;;
+        *.7z)   7z x       $argument ;;
         *)
-          echo "File '$ARGUMENT' cannot be extracted via $0:t."
+          echo "File '$argument' cannot be extracted via $0:t."
         ;;
       esac
     else
-      echo "File '$ARGUMENT' does not exist."
+      echo "File '$argument' does not exist."
     fi
   done
 else

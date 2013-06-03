@@ -9,40 +9,40 @@
 #        find . -type f -iname "*.flac" -exec flaccon "{}" \;
 
 if [[ $# -gt 0 ]]; then
-  echo "Converting FLAC file(s) to MP3."
+  echo "Converting FLAC file(s) to MP3 file(s)."
 
-  for FILE in $*; do
-    if [[ -f $FILE ]]; then
-      if [[ $FILE == *.flac ]]; then
-        TAGS=(TITLE ARTIST ALBUM TRACKNUMBER TOTALTRACKS GENRE DATE)
+  for file in $*; do
+    if [[ -f $file ]]; then
+      if [[ $file == *.flac ]]; then
+        tags=(title artist album tracknumber totaltracks genre date)
 
         # Put all tag information inside of various shell variables.
-        for TAG in $TAGS; do
-          INFO=$(metaflac --show-tag=$TAG $FILE)
-          typeset $TAG=${INFO#*=} # Set values for $TITLE, $ARTIST and so on.
+        for tag in $tags; do
+          info=$(metaflac --show-tag=$tag $file)
+          typeset $tag=${info#*=} # Set values for $title, $artist and so on.
         done
 
         echo
 
         # Print out all tag information.
-        for TAG in $TAGS; do
-          echo $TAG=${(P)TAG}
+        for tag in $tags; do
+          echo "${(U)tag}=${(P)tag}"
         done
 
         # Decode FLAC file with "flac" and encode it to MP3 with "lame".
-        flac -dc $FILE | lame -b 320 -h --ignore-tag-errors \
-          --tt "$TITLE" \
-          --ta "$ARTIST" \
-          --tl "$ALBUM" \
-          --tn "$TRACKNUMBER/$TOTALTRACKS" \
-          --tg "$GENRE" \
-          --ty "$DATE" \
-          --add-id3v2 - "$FILE:r.mp3"
+        flac -dc $file | lame -b 320 -h --ignore-tag-errors \
+          --tt "$title" \
+          --ta "$artist" \
+          --tl "$album" \
+          --tn "$tracknumber/$totaltracks" \
+          --tg "$genre" \
+          --ty "$date" \
+          --add-id3v2 - "$file:r.mp3"
       else
-        echo "\nFile '$FILE' does not end with flac."
+        echo "\nFile '$file' does not end with flac."
       fi
     else
-      echo "\nFile '$FILE' does not exist."
+      echo "\nFile '$file' does not exist."
     fi
   done
 else

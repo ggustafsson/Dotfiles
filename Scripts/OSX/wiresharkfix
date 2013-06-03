@@ -8,9 +8,10 @@
 # I have this in ~/.zshrc to make every wireshark command an alias that
 # executes this script before running the original command:
 #
-# WIRESHARK=(/usr/local/Cellar/wireshark/*/bin/*(N:t))
-# for COMMAND in $WIRESHARK; do
-#   alias $COMMAND="wiresharkfix $COMMAND"
+# wireshark=(/usr/local/Cellar/wireshark/*/bin/*(N:t))
+#
+# for command in $wireshark; do
+#   alias $command="wiresharkfix $command"
 # done
 
 # Usage: <wireshark command>

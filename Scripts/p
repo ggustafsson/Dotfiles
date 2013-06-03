@@ -7,20 +7,20 @@
 #
 # I have this in ~/.zshrc to adjust the ps display options used:
 #
-# export PS_DISPLAY="user,pid,command"
+# export ps_display="user,pid,command"
 
 # Usage: p
 #        p <pattern>
 
 if [[ $# -gt 0 ]]; then
-  if [[ ! -z $PS_DISPLAY ]]; then
-    ps ax -o $PS_DISPLAY | tail -n +2 | egrep --invert-match "(grep $*|$0 $*)" | grep "$*" || echo "No processes found!"
+  if [[ ! -z $ps_display ]]; then
+    ps ax -o $ps_display | tail -n +2 | egrep --invert-match "(grep $*|$0 $*)" | grep "$*" || echo "No processes found!"
   else
     ps ax | tail -n +2 | egrep --invert-match "(grep $*|$0 $*)" | grep "$*" || echo "No processes found!"
   fi
 else
-  if [[ ! -z $PS_DISPLAY ]]; then
-    ps ax -o $PS_DISPLAY
+  if [[ ! -z $ps_display ]]; then
+    ps ax -o $ps_display
   else
     ps ax
   fi

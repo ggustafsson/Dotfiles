@@ -6,20 +6,20 @@
 
 # Usage: tcolors
 
-for NUMBER in {30..37} ; do
-  echo -n "\033[0;${NUMBER}m0;${NUMBER}m\033[0m "
+for number in {30..37}; do
+  echo -n "\033[0;${number}m0;${number}m\033[0m "
 done
 
 echo
 
-for NUMBER in {30..37} ; do
-  echo -n "\033[1;${NUMBER}m1;${NUMBER}m\033[0m "
+for number in {30..37}; do
+  echo -n "\033[1;${number}m1;${number}m\033[0m "
 done
 
 echo
 
-for NUMBER in {40..47} ; do
-  echo -n "\033[1;${NUMBER}m1;${NUMBER}m\033[0m "
+for number in {40..47}; do
+  echo -n "\033[1;${number}m1;${number}m\033[0m "
 done
 
 echo

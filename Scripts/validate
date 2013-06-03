@@ -14,29 +14,28 @@
 if [[ $# -gt 0 ]]; then
   echo "Validating HTML file(s)."
 
-  for FILE in $*; do
-    if [[ -f $FILE ]]; then
-      if [[ $FILE == *.html ]]; then
-        COMMAND='curl --form "uploaded_file=@$FILENAME;type=text/html" --form output=json --silent http://validator.w3.org/check'
-        CURRENT_DIRECTORY=$PWD
-        DIRECTORY=$1:A:h
-        FILENAME=$1:t
+  for file in $*; do
+    if [[ -f $file ]]; then
+      if [[ $file == *.html ]]; then
+        # Change the directory to where the file is. Otherwise the upload won't work :(
+        cd $file:A:h
 
-        echo "\nValidating the file '$FILE'."
+        echo "\nValidating the file '$file'."
 
-        cd $DIRECTORY
-        RESULTS=$(eval $COMMAND)
+        results=$(curl --form "uploaded_file=@${file:t};type=text/html" --form output=json --silent http://validator.w3.org/check)
+
         if [[ $? -gt 0 ]]; then
           echo "Failed at getting results!"
           return 1
         fi
-        cd $CURRENT_DIRECTORY
 
-        PARSED=$(echo $RESULTS | grep '"lastLine":')
+        # Only work with lines that contain information about errors.
+        parsed=$(echo $results | grep '"lastLine":')
 
-        if [[ ! -z $PARSED ]]; then
+        if [[ ! -z $parsed ]]; then
           echo "\nFound error(s) on line(s):\n"
-          echo $PARSED | sed 's/^[ \t]*"lastLine":/ /;s/,//g' | sort --general-numeric-sort | uniq
+          # Remove all the crap and only display uniq errors. Must use "sort" to make "uniq" work.
+          echo $parsed | sed 's/^[ \t]*"lastLine":/ /;s/,//g' | sort --general-numeric-sort | uniq
         else
           echo "No errors! :)"
         fi

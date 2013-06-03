@@ -17,10 +17,9 @@ set confirm
 set cryptmethod=blowfish
 set encoding=utf-8
 set formatoptions=cjlnoqrt
-set gdefault
 set hidden
-set nofoldenable
 set nowrap
+set showbreak=+
 set spelllang=en,sv
 set t_vb=
 set timeoutlen=2000
@@ -39,9 +38,6 @@ set expandtab
 set shiftwidth=2
 set softtabstop=2
 
-set history=1000
-set undolevels=2000
-
 set hlsearch
 set ignorecase
 set incsearch
@@ -56,9 +52,6 @@ set statusline+=%(%{&paste?'[paste]':''}\ %)
 set statusline+=%=
 set statusline+=%(%v,\ %)
 set statusline+=%(%l/%L\ %)
-
-set linebreak
-set showbreak=+
 
 set list
 set listchars=tab:>-,trail:-,precedes:<,extends:>
@@ -76,7 +69,7 @@ set wildignore+=*.flac,*.nsf,*.nsfe,*.m4r,*.mp3,*.ogg,*.wav
 set wildignore+=*.avi,*.flv,*.f4v,*.mkv,*.mov,*.mpg,*.mpeg,*.mp4,*.m4v,*.wmv
 set wildignore+=*.dmg,*.iso,*.rar,*.tar,*.tar.bz2,*.tar.gz,*.zip,*.7z
 
-if has("gui_running")
+if has("gui_running") && has("mac")
   set guicursor+=a:blinkon0
   set guioptions=cgt
   set showcmd
@@ -95,9 +88,6 @@ if has("gui_running")
 
     let g:dont_set_font_again = 1
   endif
-else
-  set mouse=v
-  set title
 endif
 
 if has("mac")
@@ -122,20 +112,11 @@ let g:NERDTreeDirArrows = 0
 let g:NERDTreeMinimalUI = 1
 let g:NERDTreeStatusline = " NERDTree"
 
-let g:SeekKey = "f"
-let g:SeekBackKey = "F"
-
 command! -nargs=? Helpt tab help <args>
 cabbrev helpt Helpt
 
-cabbrev Q  q
-cabbrev W  w
-cabbrev WQ wq
-cabbrev Wq wq
-cabbrev wQ wq
-
 if has("mac")
-  nnoremap <Leader>fa :call FancyView()<CR>
+  nnoremap <Leader>fu :call FullScreen()<CR>
   nnoremap <Leader>fi :silent !open "%:p:h"<CR>
   nnoremap <Leader>op :silent !open -a Safari "%"<CR>
 endif
@@ -158,9 +139,9 @@ nnoremap <Leader>ls :!ls -lFh "%:p:h"<CR>
 nnoremap <Leader>ne :enew<CR>
 nnoremap <Leader>no :edit ~/Documents/Text\ Files/Notes.txt<CR>
 nnoremap <Leader>nu :call LineNumber()<CR>
+nnoremap <Leader>os :source ~/.vim/session.vim<CR>
 nnoremap <Leader>pa :set paste!<CR>
-nnoremap <Leader>re :%s//c<Left><Left>
-nnoremap <Leader>rs :source ~/.vim/session.vim<CR>
+nnoremap <Leader>re :%s//gc<Left><Left><Left>
 nnoremap <Leader>s2 :set expandtab softtabstop=2 shiftwidth=2<CR>
 nnoremap <Leader>s4 :set expandtab softtabstop=4 shiftwidth=4<CR>
 nnoremap <Leader>s8 :set expandtab softtabstop=8 shiftwidth=8<CR>
@@ -201,15 +182,6 @@ nnoremap <Backspace> :nohlsearch<CR>
 nnoremap <Tab>       :LustyBufferExplorer<CR>
 nnoremap <S-Tab>     :bnext<CR>
 
-nnoremap <Up>    :echoerr "Use the damn 'K' key instead!"<CR>
-nnoremap <Down>  :echoerr "Use the damn 'J' key instead!"<CR>
-nnoremap <Left>  :echoerr "Use the damn 'H' key instead!"<CR>
-nnoremap <Right> :echoerr "Use the damn 'L' key instead!"<CR>
-vnoremap <Up>    <NOP>
-vnoremap <Down>  <NOP>
-vnoremap <Left>  <NOP>
-vnoremap <Right> <NOP>
-
 nnoremap <C-j> }
 nnoremap <C-k> {
 vnoremap <C-j> }
@@ -227,7 +199,7 @@ inoremap <expr><Tab> CompleteTab()
 inoremap jj          <Esc>
 
 if has("gui_running") && has("mac")
-  function! FancyView()
+  function! FullScreen()
     if &guifont != "Inconsolata:h24"
       set fullscreen
 

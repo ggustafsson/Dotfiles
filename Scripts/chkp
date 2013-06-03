@@ -6,36 +6,36 @@
 
 # Usage: chkp
 
-for DIRECTORY in ~/Projects/*; do
-  cd $DIRECTORY
+for directory in ~/Projects/*; do
+  cd $directory
 
   if [[ -n $(git rev-list origin..HEAD 2> /dev/null) ]]; then
-    print -P "%B%F{cyan}$DIRECTORY:t:%f%b"
+    print -P "%B%F{cyan}$directory:t:%f%b"
     git status --branch --short
     echo
   elif [[ -n $(git status --short 2> /dev/null) ]]; then
-    print -P "%B%F{red}$DIRECTORY:t:%f%b"
+    print -P "%B%F{red}$directory:t:%f%b"
     git status --branch --short
     echo
   elif [[ -d .git ]]; then
-    CLEAN_REPOS+=($DIRECTORY:t)
+    clean_repos+=($directory:t)
   else
-    NOT_REPOS+=($DIRECTORY:t)
+    not_repos+=($directory:t)
   fi
 done
 
-if [[ ${#CLEAN_REPOS} -gt 0 ]]; then
+if [[ ${#clean_repos} -gt 0 ]]; then
   print -P "%B%F{green}Clean repo(s):%f%b"
-  for REPO in $CLEAN_REPOS; do
+  for REPO in $clean_repos; do
     echo " * $REPO"
   done
 fi
 
-[[ ${#CLEAN_REPOS} -gt 0 && ${#NOT_REPOS} -gt 0 ]] && echo
+[[ ${#clean_repos} -gt 0 && ${#not_repos} -gt 0 ]] && echo
 
-if [[ ${#NOT_REPOS} -gt 0 ]]; then
+if [[ ${#not_repos} -gt 0 ]]; then
   print -P "%B%F{blue}Not Git repo(s):%f%b"
-  for NAME in $NOT_REPOS; do
-    echo " * $NAME"
+  for name in $not_repos; do
+    echo " * $name"
   done
 fi
