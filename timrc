@@ -1,33 +1,33 @@
 # vim: ft=zsh
 
 if [[ $OSTYPE == darwin* ]]; then
-  #TIMER_CMD=
-  #TIMER_REPEAT_CMD=
+  #timer_cmd=
+  #timer_repeat_cmd=
 
-  #INTERVAL=
+  #interval=
 
-  WORK_CMD="terminal-notifier -message 'Start working now!' -title Tim -activate com.apple.Terminal >& /dev/null && say start working now"
-  BREAK_CMD="terminal-notifier -message 'Take a little break!' -title Tim -activate com.apple.Terminal >& /dev/null && say take a little break"
+  work_cmd="terminal-notifier -message 'Start working now!' -title Tim -activate com.apple.Terminal >& /dev/null && say start working now"
+  break_cmd="terminal-notifier -message 'Take a little break!' -title Tim -activate com.apple.Terminal >& /dev/null && say take a little break"
 
-  POMODORO_CMD="say working session is over. you win && open ~/Storage/Celebrate.flv"
-  #POMODORO_REPEAT_CMD=
+  pomodoro_cmd="say working session is over. you win && open ~/Storage/Celebrate.flv"
+  #pomodoro_repeat_cmd=
 
-  #POMODORO_WORK=
-  #POMODORO_BREAK=
-  #POMODORO_STOP=
+  #pomodoro_work=
+  #pomodoro_break=
+  #pomodoro_stop=
 else
-  #TIMER_CMD=
-  #TIMER_REPEAT_CMD=
+  #timer_cmd=
+  #timer_repeat_cmd=
 
-  #INTERVAL=
+  #interval=
 
-  #WORK_CMD=
-  #BREAK_CMD=
+  #work_cmd=
+  #break_cmd=
 
-  #POMODORO_CMD=
-  #POMODORO_REPEAT_CMD=
+  #pomodoro_cmd=
+  #pomodoro_repeat_cmd=
 
-  #POMODORO_WORK=
-  #POMODORO_BREAK=
-  #POMODORO_STOP=
+  #pomodoro_work=
+  #pomodoro_break=
+  #pomodoro_stop=
 fi
