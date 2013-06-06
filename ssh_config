@@ -3,8 +3,10 @@ IdentityFile ~/.ssh/id_rsa
 ServerAliveInterval 15
 ServerAliveCountMax 2
 
+Host fulknark
+  HostName fulknark.se
+  Port 2222
+
 Host hoth
   HostName 192.168.1.2
-
-Host tatooine
-  HostName 192.168.1.3
+  2222
