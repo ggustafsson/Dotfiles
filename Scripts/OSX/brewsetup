@@ -9,8 +9,10 @@
 sudo brew install \
   bash \
   coreutils \
+  cowsay \
   curl \
   ffmpeg \
+  figlet \
   flac \
   gawk \
   git \
@@ -20,8 +22,10 @@ sudo brew install \
   imagesnap \
   irssi \
   lame \
+  links \
   macvim \
   ncftp \
+  netperf \
   nmap \
   offline-imap \
   openssh \
