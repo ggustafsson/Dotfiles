@@ -9,6 +9,7 @@
 
 sudo apt-get install \
   openssh-server \
+  sshguard \
   transmission \
   xbmc \
   youtube-dl
