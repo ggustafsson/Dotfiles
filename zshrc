@@ -134,9 +134,9 @@ fi
 if [[ $HOST == hoth ]]; then
   alias minecraft="cd ~/Minecraft && tmux new 'java -Xmx4096M -Xms1024M -jar minecraft_server.jar nogui' && cd -"
 else
-  alias fmcbackup="rsync --archive --delete --human-readable --progress -e ssh fulknark:~/Minecraft/ ~/Dropbox/Minecraft/Server/"
+  alias fmcbackup="rsync --archive --delete --human-readable --progress -e ssh fulknark:~/Minecraft/ ~/Storage/Game\ Files/Minecraft/Server/"
   alias fmclogs='ssh fulknark "tail -n $LINES -f ~/Minecraft/server.log"'
-  alias mcbackup="rsync --archive --delete --human-readable --progress -e ssh hoth:~/Minecraft/ ~/Dropbox/Minecraft/Server/"
+  alias mcbackup="rsync --archive --delete --human-readable --progress -e ssh hoth:~/Minecraft/ ~/Storage/Game\ Files/Minecraft/Server/"
   alias mclogs='ssh hoth "tail -n $LINES -f ~/Minecraft/server.log"'
 fi
 
