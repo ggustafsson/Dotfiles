@@ -20,7 +20,6 @@ export LS_COLORS="$LS_COLORS:*.avi=01;36:*.flv=01;36:*.f4v=01;36:*.mkv=01;36:*.m
 export LS_COLORS="$LS_COLORS:*.dmg=01;31:*.iso=01;31:*.rar=01;31:*.tar=01;31:*.tar.bz2=01;31:*.tar.gz=01;31:*.tgz=01;31:*.zip=01;31:*.7z=01;31"
 
 export ps_display="user,pid,command"
-export todo_file=~/Documents/Text\ Files/To-do\ List.todo
 
 DIRSTACKSIZE=20
 
@@ -143,7 +142,6 @@ fi
 
 if [[ $OSTYPE == darwin* ]]; then
   alias eject="osascript -e 'tell application \"Finder\" to eject (every disk whose ejectable is true)' && echo 'Ejecting all external drives.'"
-  alias gvimdiff='/Applications/MacVim.app/Contents/MacOS/Vim -d -g $* >& /dev/null'
   alias o="open"
   alias top="top -o cpu -s 2"
   alias tree="tree -N"
@@ -196,8 +194,6 @@ alias nsfw="reddit ~/.reddit/nsfw.config"
 alias random='FILES=(*) && echo $FILES[$RANDOM%$#FILES+1]'
 alias recf="ls -t | head -n 5"
 alias reload="source ~/.zshenv && source ~/.zshrc && echo 'Zsh reloaded.'"
-alias tmuxa="tmux attach"
-alias tv='vim "$todo_file"'
 alias wgetp="wget --adjust-extension --convert-links --page-requisites"
 alias ycal='cal $(date +%Y)'
 
@@ -245,6 +241,9 @@ alias pyweb="python3 -m http.server 8080"
 
 alias svtplay-dl="svtplay-dl --resume"
 alias youtube-dl="youtube-dl --continue --title"
+
+alias tm="tmux"
+alias tma="tmux attach"
 
 for name in $ssh_hosts; do
   alias $name="ssh $name"

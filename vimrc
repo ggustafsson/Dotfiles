@@ -69,27 +69,6 @@ set wildignore+=*.flac,*.nsf,*.nsfe,*.m4r,*.mp3,*.ogg,*.wav
 set wildignore+=*.avi,*.flv,*.f4v,*.mkv,*.mov,*.mpg,*.mpeg,*.mp4,*.m4v,*.wmv
 set wildignore+=*.dmg,*.iso,*.rar,*.tar,*.tar.bz2,*.tar.gz,*.zip,*.7z
 
-if has("gui_running") && has("mac")
-  set guicursor+=a:blinkon0
-  set guioptions=cgt
-  set showcmd
-  set visualbell
-
-  function! FontSetup()
-    set guifont=Inconsolata:h14
-    set linespace=1
-
-    set columns=185
-    set lines=44
-  endfunction
-
-  if !exists("g:dont_set_font_again")
-    call FontSetup()
-
-    let g:dont_set_font_again = 1
-  endif
-endif
-
 if has("mac")
   let g:gist_clip_command = "pbcopy"
 endif
@@ -116,7 +95,6 @@ command! -nargs=? Helpt tab help <args>
 cabbrev helpt Helpt
 
 if has("mac")
-  nnoremap <Leader>fu :call FullScreen()<CR>
   nnoremap <Leader>fi :silent !open "%:p:h"<CR>
   nnoremap <Leader>op :silent !open -a Safari "%"<CR>
 endif
@@ -154,7 +132,6 @@ nnoremap <Leader>t4 :set noexpandtab shiftwidth=4 softtabstop=0 tabstop=4<CR>
 nnoremap <Leader>t8 :set noexpandtab shiftwidth=8 softtabstop=0 tabstop=8<CR>
 nnoremap <Leader>ta :tab sball<CR>
 nnoremap <Leader>tm :edit ~/Documents/Text\ Files/Temporary.blowfish<CR>
-nnoremap <Leader>to :edit ~/Documents/Text\ Files/To-do\ List.todo<CR>
 nnoremap <Leader>tr :NERDTreeToggle<CR>
 nnoremap <Leader>tw :set textwidth=78
 nnoremap <Leader>un :edit!<CR>
@@ -197,21 +174,6 @@ vnoremap <S-Tab> <gv
 
 inoremap <expr><Tab> CompleteTab()
 inoremap jj          <Esc>
-
-if has("gui_running") && has("mac")
-  function! FullScreen()
-    if &guifont != "Inconsolata:h24"
-      set fullscreen
-
-      set antialias
-      set guifont=Inconsolata:h24
-    else
-      set nofullscreen
-
-      call FontSetup()
-    endif
-  endfunction
-endif
 
 function! BufferDelete()
   if &modified
@@ -269,15 +231,14 @@ endfunction
 augroup Main
   autocmd!
 
-  autocmd BufNewFile,BufRead *.blowfish,README,TODO setlocal filetype=text
-  autocmd BufNewFile,BufRead *.md                   setlocal filetype=markdown
-  autocmd BufNewFile,BufRead *.todo                 setlocal filetype=todo
-  autocmd BufNewFile,BufRead config                 setlocal filetype=conf
+  autocmd BufNewFile,BufRead *.blowfish,README setlocal filetype=text
+  autocmd BufNewFile,BufRead *.md              setlocal filetype=markdown
+  autocmd BufNewFile,BufRead config            setlocal filetype=conf
 
-  autocmd FileType gitcommit          setlocal colorcolumn=73 nolist spell
-  autocmd FileType help               setlocal colorcolumn=
-  autocmd FileType markdown,text,todo setlocal colorcolumn=79 textwidth=78
-  autocmd FileType markdown,python    setlocal expandtab shiftwidth=4 softtabstop=4
+  autocmd FileType gitcommit       setlocal colorcolumn=73 nolist spell
+  autocmd FileType help            setlocal colorcolumn=
+  autocmd FileType markdown,text   setlocal colorcolumn=79 textwidth=78
+  autocmd FileType markdown,python setlocal expandtab shiftwidth=4 softtabstop=4
 
   autocmd BufWritePost ~/.vimrc source %
 augroup END
