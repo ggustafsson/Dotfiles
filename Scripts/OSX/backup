@@ -15,6 +15,7 @@ backup_destination=/Volumes/Backup
 directories=(
   Development
   Documents
+  Dropbox
   Library/Safari/Bookmarks.plist
   Movies
   Music/FLAC
@@ -45,7 +46,7 @@ fi
 
 for directory in $directories; do
   print -P "\n%B%F{green}Backing up directory ~/$directory.%f%b"
-  rsync --archive --delete --human-readable --verbose ~/$directory $backup_destination
+  rsync --archive --delete --exclude=Dropbox/.dropbox.cache --human-readable --verbose ~/$directory $backup_destination
 done
 
 echo "\nUnmounting encrypted image file and device."
