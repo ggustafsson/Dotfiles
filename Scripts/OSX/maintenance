@@ -16,7 +16,7 @@ if [[ $answer == (y|yes) ]]; then
 
   if [[ $answer == (y|yes) ]]; then
     echo
-    rsync --archive --delete --human-readable --progress -e ssh hoth:~/Minecraft/ ~/Storage/Game\ Files/Minecraft/Server/
+    rsync --archive --delete --human-readable --progress -e ssh hoth:~/Minecraft/ ~/Dropbox/Minecraft/Server/
   fi
 
   echo
