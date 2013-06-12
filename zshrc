@@ -156,6 +156,7 @@ if [[ $OSTYPE == darwin* ]]; then
 
   alias gvimdiff='/Applications/MacVim.app/Contents/MacOS/Vim -d -g $* >& /dev/null'
   alias mvimdiff='/Applications/MacVim.app/Contents/MacOS/Vim -d -g $* >& /dev/null'
+  alias v="gvim"
 
   alias wifioff="networksetup -setairportpower en0 off && echo 'Turning Wi-Fi off.'"
   alias wifion="networksetup -setairportpower en0 on && echo 'Turning Wi-Fi on.'"
@@ -181,6 +182,7 @@ else
 
   alias cal="cal -m"
   alias psme='\ps x -u $USER -o $ps_display'
+  alias v="vim"
   alias vl='tail -n $LINES -f /var/log/syslog'
 fi
 

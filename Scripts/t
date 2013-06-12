@@ -16,9 +16,9 @@ fi
 
 if [[ $# -gt 0 ]]; then
   if [[ -f $todo_file ]]; then
-    echo "- $*" >> $todo_file
+    echo $* >> $todo_file
   else
-    echo "- $*" > $todo_file
+    echo $* > $todo_file
   fi
   echo "Added new entry to to-do file."
 else
