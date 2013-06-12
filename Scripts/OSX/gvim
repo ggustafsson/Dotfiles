@@ -1,0 +1,15 @@
+#!/usr/bin/env zsh
+
+# Written by Göran Gustafsson <gustafsson.g@gmail.com>.
+
+# Description: This script makes it easy to open a file or several files under
+# MacVim. Every file gets its own tab.
+
+# Usage: gvim
+#        gvim <file(s)>
+
+if [[ $# -gt 0 ]]; then
+  /Applications/MacVim.app/Contents/MacOS/Vim -g --remote-tab-silent $*
+else
+  open -a MacVim
+fi

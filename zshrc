@@ -20,6 +20,7 @@ export LS_COLORS="$LS_COLORS:*.avi=01;36:*.flv=01;36:*.f4v=01;36:*.mkv=01;36:*.m
 export LS_COLORS="$LS_COLORS:*.dmg=01;31:*.iso=01;31:*.rar=01;31:*.tar=01;31:*.tar.bz2=01;31:*.tar.gz=01;31:*.tgz=01;31:*.zip=01;31:*.7z=01;31"
 
 export ps_display="user,pid,command"
+export todo_file=~/Documents/Text\ Files/To-do\ List.todo
 
 DIRSTACKSIZE=20
 
@@ -152,6 +153,9 @@ if [[ $OSTYPE == darwin* ]]; then
   alias brewr="brew uninstall"
   alias brews="brew search"
   alias brewu="brew update && brew upgrade"
+
+  alias gvimdiff='/Applications/MacVim.app/Contents/MacOS/Vim -d -g $* >& /dev/null'
+  alias mvimdiff='/Applications/MacVim.app/Contents/MacOS/Vim -d -g $* >& /dev/null'
 
   alias wifioff="networksetup -setairportpower en0 off && echo 'Turning Wi-Fi off.'"
   alias wifion="networksetup -setairportpower en0 on && echo 'Turning Wi-Fi on.'"
