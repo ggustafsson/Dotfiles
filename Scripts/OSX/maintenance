@@ -7,16 +7,19 @@
 
 # Usage: maintenance
 
+server=hoth
+
 echo -n "Everything plugged in and ready to go? [y/n] "
 read answer
 
 if [[ $answer == (y|yes) ]]; then
-  echo -n "Back up Minecraft server? [y/n] "
+  echo -n "Back up Minecraft servers? [y/n] "
   read answer
 
   if [[ $answer == (y|yes) ]]; then
     echo
-    rsync --archive --delete --human-readable --progress -e ssh hoth:~/Minecraft/ ~/Dropbox/Minecraft/Server/
+    rsync --archive --delete --human-readable --progress -e ssh $server:~/Minecraft\ -\ Creative/ ~/Dropbox/Minecraft/Server\ -\ Creative
+    rsync --archive --delete --human-readable --progress -e ssh $server:~/Minecraft\ -\ Survival/ ~/Dropbox/Minecraft/Server\ -\ Survival
   fi
 
   echo
