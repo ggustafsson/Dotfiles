@@ -137,11 +137,11 @@ if [[ $HOST == hoth ]]; then
   alias mcsurvival="cd ~/Minecraft\ -\ Survival && tmux new 'java -Xmx3072M -Xms1024M -jar minecraft_server.jar nogui' && cd -"
 else
   alias fmcbackup="rsync --archive --delete --human-readable --progress -e ssh 'fulknark:~/Minecraft\ -\ Creative/' ~/Dropbox/Minecraft/Server\ -\ Creative/ && rsync --archive --delete --human-readable --progress -e ssh 'fulknark:~/Minecraft\ -\ Survival/' ~/Dropbox/Minecraft/Server\ -\ Survival/"
-  alias fmcclogs='ssh fulknark "cat ~/Minecraft\ -\ Creative/server.log"'
-  alias fmcslogs='ssh fulknark "cat ~/Minecraft\ -\ Survival/server.log"'
+  alias fmcclogs='ssh hoth "tail -n 200 -f ~/Minecraft\ -\ Creative/server.log"'
+  alias fmcslogs='ssh hoth "tail -n 200 -f ~/Minecraft\ -\ Survival/server.log"'
   alias mcbackup="rsync --archive --delete --human-readable --progress -e ssh 'hoth:~/Minecraft\ -\ Creative/' ~/Dropbox/Minecraft/Server\ -\ Creative/ && rsync --archive --delete --human-readable --progress -e ssh 'hoth:~/Minecraft\ -\ Survival/' ~/Dropbox/Minecraft/Server\ -\ Survival/"
-  alias mcclogs='ssh hoth "cat ~/Minecraft\ -\ Creative/server.log"'
-  alias mcslogs='ssh hoth "cat ~/Minecraft\ -\ Survival/server.log"'
+  alias mcclogs='ssh hoth "tail -n 200 -f ~/Minecraft\ -\ Creative/server.log"'
+  alias mcslogs='ssh hoth "tail -n 200 -f ~/Minecraft\ -\ Survival/server.log"'
 fi
 
 if [[ $OSTYPE == darwin* ]]; then
