@@ -145,6 +145,7 @@ else
 fi
 
 if [[ $OSTYPE == darwin* ]]; then
+  alias cpass="openssl rand -base64 20 | pbcopy && echo 'Password copied to clipboard.'"
   alias eject="osascript -e 'tell application \"Finder\" to eject (every disk whose ejectable is true)' && echo 'Ejecting all external drives.'"
   alias o="open"
   alias top="top -o cpu -s 2"
