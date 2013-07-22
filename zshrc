@@ -200,7 +200,6 @@ alias iip="curl icanhazip.com"
 alias ka="killall"
 alias ls='ls $ls_options'
 alias mkdir="mkdir -pv"
-alias nsfw="reddit ~/.reddit/nsfw.config"
 alias random='FILES=(*) && echo $FILES[$RANDOM%$#FILES+1]'
 alias recf="ls -t | head -n 5"
 alias reload="source ~/.zshenv && source ~/.zshrc && echo 'Zsh reloaded.'"
