@@ -28,7 +28,7 @@ sudo apt-get install \
   netperf \
   nmap \
   openssh-server \
-  php \
+  php5 \
   ruby \
   sshguard \
   tmux \
