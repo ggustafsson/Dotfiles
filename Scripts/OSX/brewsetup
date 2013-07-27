@@ -6,29 +6,38 @@
 
 # Usage: brewsetup
 
+sudo brew tap homebrew/dupes
+sudo brew tap josegonzalez/homebrew-php
+
 sudo brew install \
   bash \
   coreutils \
   cowsay \
   curl \
+  dsniff \
+  ettercap \
   ffmpeg \
   figlet \
   flac \
   gawk \
   git \
   gnu-sed \
+  hping \
   html2text \
   imagemagick --without-x \
   imagesnap \
   irssi \
+  kismet \
   lame \
   links \
   macvim \
   ncftp \
   netperf \
+  nginx \
   nmap \
   offline-imap \
   openssh \
+  php55 \
   python \
   python3 \
   rsync \
