@@ -22,6 +22,7 @@ set nowrap
 set showbreak=+
 set spelllang=en,sv
 set t_vb=
+set textwidth=78
 set timeoutlen=2000
 set virtualedit=block
 
@@ -275,9 +276,9 @@ augroup Main
   autocmd BufNewFile,BufRead *.todo                 setlocal filetype=todo
   autocmd BufNewFile,BufRead config                 setlocal filetype=conf
 
-  autocmd FileType gitcommit          setlocal colorcolumn=73 nolist spell
+  autocmd FileType gitcommit          setlocal colorcolumn=73 nolist spell textwidth=72
   autocmd FileType help               setlocal colorcolumn=
-  autocmd FileType markdown,text,todo setlocal colorcolumn=79 textwidth=78
+  autocmd FileType markdown,text,todo setlocal colorcolumn=79
   autocmd FileType markdown,python    setlocal expandtab shiftwidth=4 softtabstop=4
 
   autocmd BufWritePost ~/.vimrc source %

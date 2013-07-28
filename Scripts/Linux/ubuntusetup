@@ -51,6 +51,5 @@ sudo chsh -s /bin/zsh $USER
 
 mkdir ~/Projects
 git clone git@github.com:ggustafsson/Dot-Files.git ~/Projects/Dot\ Files
-ln -s ~/Projects/Dot\ Files/Scripts ~/Scripts
 
-~/Scripts/dotfiles
+~/Projects/Dot\ Files/Scripts/dotfiles
