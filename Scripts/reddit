@@ -45,8 +45,13 @@ def check_subreddit(subreddit)
   puts if $first_run != 1
   puts "Checking r/#{subreddit} for new posts..."
 
-  fetched_json = open("http://reddit.com/r/#{subreddit}.json").read
-  parsed_json = JSON.parse(fetched_json)
+  begin
+    fetched_json = open("http://reddit.com/r/#{subreddit}.json").read
+    parsed_json = JSON.parse(fetched_json)
+  rescue
+    puts "Failed when trying to fetch and parse json data! Exiting..."
+    exit
+  end
 
   if File.exist?(old_file)
     File.readlines(old_file).each do |line|
