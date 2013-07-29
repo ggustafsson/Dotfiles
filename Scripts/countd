@@ -14,7 +14,6 @@
 require "csv"
 
 file = "#{Dir.home}/.countdowns"
-today = Date.today
 position = 0
 
 if !File.exist?(file)
@@ -38,10 +37,11 @@ CSV.foreach(file) do |row|
   begin
     future = Date.parse(date)
   rescue
+    puts "Invalid date on line #{position + 1}. Skipping!"
     next
   end
 
-  days_left = (future - today).to_i
+  days_left = (future - Date.today).to_i
 
   puts if position > 0
   puts "#{title}\n#{days_left} day(s) left until #{date}"

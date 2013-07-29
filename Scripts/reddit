@@ -15,6 +15,7 @@
 # wtf
 
 # Usage: reddit
+#        reddit <config>
 
 require "fileutils"
 require "json"
@@ -30,53 +31,56 @@ $directory = "#{Dir.home}/.reddit"
 $filter_gifs = 1 # GIFs makes Safari go bananas :(
 $first_run = 1
 
-if ARGV.length == 1
-  config = ARGV[0]
+# Check if the default config file should be used or not.
+if ARGV.length == 0
+  config_file = "#{$directory}/config"
 else
-  config = "#{$directory}/config"
+  config_file = ARGV[0]
 end
 
 
 def check_subreddit(subreddit)
-  new_file = "#{$directory}/r_#{subreddit}_tmp"
-  old_file = "#{$directory}/r_#{subreddit}"
-  old_urls = []
+  new_log_file = "#{$directory}/r_#{subreddit}_tmp"
+  old_log_file = "#{$directory}/r_#{subreddit}"
+  visited_urls = []
 
-  puts if $first_run != 1
+  puts unless $first_run == 1
   puts "Checking r/#{subreddit} for new posts..."
 
   begin
-    fetched_json = open("http://reddit.com/r/#{subreddit}.json").read
-    parsed_json = JSON.parse(fetched_json)
+    raw_json = open("http://reddit.com/r/#{subreddit}.json").read
+    parsed_json = JSON.parse(raw_json)
   rescue
-    puts "Failed when trying to fetch and parse json data! Exiting..."
-    exit
+    abort "Failed when trying to fetch and parse json data! Exiting..."
   end
 
-  if File.exist?(old_file)
-    File.readlines(old_file).each do |line|
-      old_urls << Regexp.escape(line.strip)
+  if File.exist?(old_log_file)
+    # Read old log file and put all visited URLs inside of array visited_urls.
+    File.readlines(old_log_file).each do |line|
+      visited_urls << Regexp.escape(line.strip)
     end
   end
 
-  file = File.open(new_file, "w")
+  log_file = File.open(new_log_file, "w")
 
   parsed_json["data"]["children"].each do |post|
     url = post["data"]["url"]
 
-    file.puts url
+    # Write down every URL to the log file so it can be checked next run.
+    log_file.puts url
 
-    next if $filter_gifs == 1 && url.include?(".gif")
+    next if $filter_gifs == 1 and url.include?(".gif")
 
-    if !old_urls.empty?
-      open_url(url) unless old_urls.include?(Regexp.escape(url))
+    # Check if URL has been visited before or not.
+    if !visited_urls.empty?
+      open_url(url) unless visited_urls.include?(Regexp.escape(url))
     else
       open_url(url)
     end
   end
 
-  file.close
-  FileUtils.mv(new_file, old_file)
+  log_file.close
+  FileUtils.mv(new_log_file, old_log_file) # Overwrite old log file.
 
   $first_run = 0
 end
@@ -92,10 +96,11 @@ unless File.directory?($directory)
   Dir.mkdir($directory)
 end
 
-unless File.exist?(config)
-  abort "File '#{config}' doesn't exist! Exiting..."
+unless File.exist?(config_file)
+  abort "File '#{config_file}' doesn't exist! Exiting..."
 end
 
-File.readlines(config).each do |line|
+# Read the config file and run check_subreddit on the string on each line.
+File.readlines(config_file).each do |line|
   check_subreddit(line.strip)
 end

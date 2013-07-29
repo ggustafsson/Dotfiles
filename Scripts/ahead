@@ -12,12 +12,10 @@ if ARGV.length == 1
   begin
     days = Integer(ARGV[0])
   rescue
-    puts "Invalid argument!"
-    exit
+    abort "Invalid argument!"
   end
 
-  future = Date.today + days
-  puts future
+  puts Date.today + days
 else
   puts "Usage: #{File.basename($0)} [DAYS]..."
 end
