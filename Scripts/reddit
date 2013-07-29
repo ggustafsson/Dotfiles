@@ -63,19 +63,18 @@ def check_subreddit(subreddit)
 
   log_file = File.open(new_log_file, "w")
 
+  # Loop through all posts on the front page of each subreddit.
   parsed_json["data"]["children"].each do |post|
+    # Put the current posts URL into a variable.
     url = post["data"]["url"]
 
     # Write down every URL to the log file so it can be checked next run.
     log_file.puts url
 
-    next if $filter_gifs == 1 and url.include?(".gif")
-
-    # Check if URL has been visited before or not.
-    if !visited_urls.empty?
+    # Ignore URLs containing ".gif" if filtering is turned on.
+    unless $filter_gifs == 1 and url.include?(".gif")
+      # Open up the URL if it has not been visited before.
       open_url(url) unless visited_urls.include?(Regexp.escape(url))
-    else
-      open_url(url)
     end
   end
 
