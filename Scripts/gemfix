@@ -7,7 +7,7 @@
 # Usage: gemfix
 
 directory=~/.gem/ruby/bin
-suffix=gemfix_tmp
+suffix=tmp
 
 for file in $directory/*; do
   echo "Replacing the shebang line in file: $file"
