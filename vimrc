@@ -57,6 +57,7 @@ set statusline+=%(%l/%L\ %)
 set list
 set listchars=tab:>-,trail:-,precedes:<,extends:>
 
+set number
 set numberwidth=3
 set relativenumber
 
@@ -257,13 +258,16 @@ endfunction
 
 function! LineNumber()
   if &relativenumber == 1
-    echo "set number"
+    echo "set number | set norelativenumber"
     set number
+    set norelativenumber
   elseif &number == 1
-    echo "set nonumber"
+    echo "set nonumber | set norelativenumber"
     set nonumber
+    set norelativenumber
   else
-    echo "set relativenumber"
+    echo "set relativenumber | number"
+    set number
     set relativenumber
   endif
 endfunction
