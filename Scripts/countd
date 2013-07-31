@@ -18,7 +18,7 @@ position = 0
 
 if !File.exist?(csv_file)
   abort "File '#{csv_file}' does not exist!"
-elsif CSV.read(csv_file).length < 2 # 1 is too little. 3 is too much.
+elsif CSV.read(csv_file).length < 1
   abort "No entries found!"
 end
 
@@ -37,7 +37,7 @@ CSV.foreach(csv_file) do |row|
   begin
     future = Date.parse(date)
   rescue
-    puts "Invalid date on line #{position + 1}. Skipping!"
+    puts "Invalid date on line #{position}. Skipping!"
     next
   end
 
