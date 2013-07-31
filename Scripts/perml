@@ -9,14 +9,22 @@
 
 # Usage: perml <path>
 
-if [[ $# -gt 0 ]]; then
-  if [[ $OSTYPE == darwin* ]]; then
-    find $* -type d -exec chmod -N "{}" \; -exec chmod 755 "{}" \;
-    find $* -type f -exec chmod -N "{}" \; -exec chmod 644 "{}" \;
-  else
-    find $* -type d -exec chmod 755 "{}" \;
-    find $* -type f -exec chmod 644 "{}" \;
-  fi
-else
+if [[ ! $# -eq 1 ]]; then
   echo "Usage: $0:t [PATH]..."
+  exit
+fi
+
+if [[ ! -d $* ]]; then
+  echo "Directory '$*' does not exist!"
+  return 1
+fi
+
+echo "Changing permissions recursively on directory '$*'."
+
+if [[ $OSTYPE == darwin* ]]; then
+  find $* -type d -exec chmod -N "{}" \; -exec chmod 755 "{}" \;
+  find $* -type f -exec chmod -N "{}" \; -exec chmod 644 "{}" \;
+else
+  find $* -type d -exec chmod 755 "{}" \;
+  find $* -type f -exec chmod 644 "{}" \;
 fi
