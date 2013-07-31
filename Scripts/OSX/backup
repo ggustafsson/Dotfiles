@@ -1,6 +1,7 @@
 #!/usr/bin/env zsh
 
-# Original by Zach Holman <https://github.com/holman/dotfiles/blob/master/bin/backup>.
+# Original script created by Zach Holman:
+#   <https://github.com/holman/dotfiles/blob/master/bin/backup>.
 # Modified by Göran Gustafsson <gustafsson.g@gmail.com>.
 
 # Description: This script mounts an encrypted dmg file (sparseimage), backs
