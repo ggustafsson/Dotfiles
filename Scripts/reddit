@@ -86,7 +86,7 @@ end
 
 def open_url(url)
   puts "Opening URL: #{url}"
-  `#{$browser} "#{url}"`
+  `#{$browser} "#{url}"` # Execute browser command with URL as argument.
 end
 
 
