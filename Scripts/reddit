@@ -72,10 +72,10 @@ def check_subreddit(subreddit)
     log_file.puts url
 
     # Ignore URLs containing ".gif" if filtering is turned on.
-    unless $filter_gifs == 1 and url.include?(".gif")
-      # Open up the URL if it has not been visited before.
-      open_url(url) unless visited_urls.include?(Regexp.escape(url))
-    end
+    next if $filter_gifs == 1 and url.include?(".gif")
+
+    # Open up the URL if it has not been visited before.
+    open_url(url) unless visited_urls.include?(Regexp.escape(url))
   end
 
   log_file.close
@@ -91,12 +91,12 @@ end
 
 
 unless File.directory?($directory)
-  puts "Directory '#{$directory}' doesn't exist! Creating it..."
+  puts "Directory '#{$directory}' does not exist! Creating it..."
   Dir.mkdir($directory)
 end
 
 unless File.exist?(config_file)
-  abort "File '#{config_file}' doesn't exist! Exiting..."
+  abort "File '#{config_file}' does not exist! Exiting..."
 end
 
 # Read the config file and run check_subreddit on the string on each line.

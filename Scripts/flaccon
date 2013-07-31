@@ -42,7 +42,7 @@ if [[ $# -gt 0 ]]; then
         echo "\nFile '$file' does not end with flac."
       fi
     else
-      echo "\nFile '$file' does not exist."
+      echo "\nFile '$file' does not exist!"
     fi
   done
 else

@@ -15,12 +15,14 @@ if [[ $# -gt 0 ]]; then
   echo "Validating HTML file(s)."
 
   for file in $*; do
+    echo
+
     if [[ -f $file ]]; then
       if [[ $file == *.html ]]; then
         # Change the directory to where the file is. Otherwise the upload won't work :(
         cd $file:A:h
 
-        echo "\nValidating the file '$file'."
+        echo "Validating the file '$file'."
 
         results=$(curl --form "uploaded_file=@${file:t};type=text/html" --form output=json --silent http://validator.w3.org/check)
 
@@ -40,11 +42,10 @@ if [[ $# -gt 0 ]]; then
           echo "No errors! :)"
         fi
       else
-        echo "File '$1' does not end with html."
-        return 1
+        echo "File '$file' does not end with html!"
       fi
     else
-      echo "File '$1' does not exist."
+      echo "File '$file' does not exist!"
     fi
   done
 else

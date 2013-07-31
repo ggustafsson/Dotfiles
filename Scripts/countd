@@ -13,21 +13,21 @@
 
 require "csv"
 
-file = "#{Dir.home}/.countdowns"
+csv_file = "#{Dir.home}/.countdowns"
 position = 0
 
-if !File.exist?(file)
-  abort "File '~/.countdowns' not found!"
-elsif CSV.read(file).length == 0
+if !File.exist?(csv_file)
+  abort "File '#{csv_file}' does not exist!"
+elsif CSV.read(csv_file).length < 2 # 1 is too little. 3 is too much.
   abort "No entries found!"
 end
 
-CSV.foreach(file) do |row|
-  if row.size != 2
-    puts if position > 0
-    puts "The row on line #{position + 1} is not 2 columns. Skipping!"
-    position += 1
+CSV.foreach(csv_file) do |row|
+  puts if position > 0
+  position += 1
 
+  unless row.size == 2
+    puts "The row on line #{position} is not 2 columns. Skipping!"
     next
   end
 
@@ -42,9 +42,5 @@ CSV.foreach(file) do |row|
   end
 
   days_left = (future - Date.today).to_i
-
-  puts if position > 0
   puts "#{title}\n#{days_left} day(s) left until #{date}"
-
-  position += 1
 end

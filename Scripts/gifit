@@ -10,7 +10,7 @@
 if [[ $# -gt 1 ]]; then
   for file in $*; do
     if [[ ! -f $file ]]; then
-      echo "File '$file' does not exist."
+      echo "File '$file' does not exist!"
       return 1
     fi
   done

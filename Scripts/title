@@ -14,9 +14,9 @@ text = $*.join(" ").split(" ")
 position = 0
 
 text.each do |word|
-  # Capitalize the first word no matter what it is and check if the current
-  # word (in lowercased form) is included in the word_list array.
-  if position > 0 and word_list.include?(word.downcase)
+  # Check if the current word (lower cased) is included in the word_list
+  # array. Capitalize the first word no matter what.
+  if word_list.include?(word.downcase) and position > 0
     text[position] = word.downcase
   else
     text[position] = word.capitalize
