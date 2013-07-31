@@ -7,8 +7,9 @@
 
 # Usage: findfp <pattern>
 
-if [[ $# -eq 1 ]]; then
-  find -L "$PWD" -iname $1
-else
+if [[ ! $# -eq 1 ]]; then
   echo "Usage: $0:t [PATTERN]..."
+  exit
 fi
+
+find -L "$PWD" -iname $1

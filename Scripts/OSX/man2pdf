@@ -7,10 +7,11 @@
 # Usage: man2pdf <man>
 #        man2pdf <man> <man> ...
 
-if [[ $# -gt 0 ]]; then
-  for argument in $*; do
-    man -t $argument | open -f -a Preview
-  done
-else
+if [[ ! $# -gt 0 ]]; then
   echo "Usage: $0:t [MAN PAGE(S)]..."
+  exit
 fi
+
+for argument in $*; do
+  man -t $argument | open -f -a Preview
+done

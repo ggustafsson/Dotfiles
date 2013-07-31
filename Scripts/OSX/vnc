@@ -6,8 +6,9 @@
 
 # Usage: vnc <ip/dns>
 
-if [[ $# -eq 1 ]]; then
-  open "vnc://$1"
-else
+if [[ ! $# -eq 1 ]]; then
   echo "Usage: $0:t [IP/DNS]..."
+  exit
 fi
+
+open "vnc://$1"
