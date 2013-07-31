@@ -11,43 +11,45 @@
 
 # Usage: validate <file(s)>
 
-if [[ $# -gt 0 ]]; then
-  echo "Validating HTML file(s)."
-
-  for file in $*; do
-    echo
-
-    if [[ -f $file ]]; then
-      if [[ $file == *.html ]]; then
-        # Change the directory to where the file is. Otherwise the upload won't work :(
-        cd $file:A:h
-
-        echo "Validating the file '$file'."
-
-        results=$(curl --form "uploaded_file=@${file:t};type=text/html" --form output=json --silent http://validator.w3.org/check)
-
-        if [[ $? -gt 0 ]]; then
-          echo "Failed at getting results!"
-          return 1
-        fi
-
-        # Only work with lines that contain information about errors.
-        parsed=$(echo $results | grep '"lastLine":')
-
-        if [[ ! -z $parsed ]]; then
-          echo "\nFound error(s) on line(s):\n"
-          # Remove all the crap and only display uniq errors. Must use "sort" to make "uniq" work.
-          echo $parsed | sed 's/^[ \t]*"lastLine":/ /;s/,//g' | sort --general-numeric-sort | uniq
-        else
-          echo "No errors! :)"
-        fi
-      else
-        echo "File '$file' does not end with html!"
-      fi
-    else
-      echo "File '$file' does not exist!"
-    fi
-  done
-else
+if [[ ! $# -gt 0 ]]; then
   echo "Usage: $0:t [FILENAME(S)]..."
+  exit
 fi
+
+echo "Validating HTML file(s)."
+
+for file in $*; do
+  echo
+
+  if [[ ! -f $file ]]; then
+    echo "File '$file' does not exist!"
+    continue
+  fi
+
+  echo "Validating file '$file'."
+
+  # Changes the directory to where the file is. Otherwise upload won't work :(
+  cd $file:A:h
+  results=$(curl --form "uploaded_file=@${file:t};type=text/html" --form output=json --silent http://validator.w3.org/check)
+
+  if [[ $? -gt 0 ]]; then
+    echo "Failed at getting results!"
+    return 1
+  fi
+
+  # Change back to the old directory. Otherwise the check for if the next file
+  # exists will fail every time.
+  cd -
+
+  # Only work with lines that contain information about errors.
+  parsed=$(echo $results | grep '"lastLine":')
+
+  if [[ ! -z $parsed ]]; then
+    echo "Found error(s) on line(s):\n"
+    # Remove all the crap and only display unique errors. Must use "sort" to
+    # make "uniq" work.
+    echo $parsed | sed 's/^[ \t]*"lastLine":/ /;s/,//g' | sort --general-numeric-sort | uniq
+  else
+    echo "No errors! :)"
+  fi
+done
