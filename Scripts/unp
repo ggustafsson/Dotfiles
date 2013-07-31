@@ -7,39 +7,35 @@
 
 # Usage: unp <file(s)>
 
-if [[ $# -gt 0 ]]; then
-  for argument in $*; do
-    if [[ -f $argument ]]; then
-      case $argument in
-        *.bz2)
-          if [[ $argument == *.tar.bz2 ]]; then
-            tar xvjf $argument
-          else
-            bunzip2 $argument
-          fi
-        ;;
-        *.gz)
-          if [[ $argument == *.tar.gz ]]; then
-            tar zxvf $argument
-          else
-            gunzip $argument
-          fi
-        ;;
-        *.rar)  unrar x    $argument ;;
-        *.tar)  tar xvf    $argument ;;
-        *.tbz2) tar xvjf   $argument ;;
-        *.tgz)  tar zxvf   $argument ;;
-        *.Z)    uncompress $argument ;;
-        *.zip)  unzip      $argument ;;
-        *.7z)   7z x       $argument ;;
-        *)
-          echo "File '$argument' cannot be extracted via $0:t!"
-        ;;
-      esac
-    else
-      echo "File '$argument' does not exist!"
-    fi
-  done
-else
+if [[ ! $# -gt 0 ]]; then
   echo "Usage: $0:t [FILENAME(S)]..."
+  exit
 fi
+
+echo "Extracting archives."
+
+for file in $*; do
+  echo
+
+  if [[ ! -f $file ]]; then
+    echo "File '$file' does not exist!"
+    continue
+  fi
+
+  case $file in
+    *.tar.bz2) tar xvjf   $file ;; # Must come before bz2.
+    *.bz2)     bunzip2    $file ;;
+    *.tar.gz)  tar zxvf   $file ;; # Must come before gz.
+    *.gz)      gunzip     $file ;;
+    *.rar)     unrar x    $file ;;
+    *.tar)     tar xvf    $file ;;
+    *.tbz2)    tar xvjf   $file ;;
+    *.tgz)     tar zxvf   $file ;;
+    *.Z)       uncompress $file ;;
+    *.zip)     unzip      $file ;;
+    *.7z)      7z x       $file ;;
+    *)
+      echo "File '$file' cannot be extracted via $0:t!"
+    ;;
+  esac
+done
