@@ -5,10 +5,10 @@
 # Description: This script makes it easy to search with the built in
 # dictionary application under OS X.
 
-# Usage: dict <word(s)>
+# Usage: dict <word>
 
-if [[ $# -gt 0 ]]; then
+if [[ $# -eq 1 ]]; then
   open "dict://$*"
 else
-  echo "Usage: $0:t [WORD(S)]..."
+  echo "Usage: $0:t [WORD]..."
 fi
