@@ -7,8 +7,9 @@
 
 # Usage: dict <word>
 
-if [[ $# -eq 1 ]]; then
-  open "dict://$*"
-else
+if [[ ! $# -eq 1 ]]; then
   echo "Usage: $0:t [WORD]..."
+  exit
 fi
+
+open "dict://$*"

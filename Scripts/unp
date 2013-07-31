@@ -12,7 +12,7 @@ if [[ ! $# -gt 0 ]]; then
   exit
 fi
 
-echo "Extracting archives."
+echo "Extracting archive(s)."
 
 for file in $*; do
   echo
@@ -35,7 +35,7 @@ for file in $*; do
     *.zip)     unzip      $file ;;
     *.7z)      7z x       $file ;;
     *)
-      echo "File '$file' cannot be extracted via $0:t!"
+      echo "File '$file' cannot be extracted with $0:t!"
     ;;
   esac
 done
