@@ -29,7 +29,6 @@ end
 
 $directory = "#{Dir.home}/.reddit"
 $filter_gifs = 1 # GIFs makes Safari go bananas :(
-$first_run = 1
 
 # Check if the default config file should be used or not.
 if ARGV.length == 0
@@ -43,8 +42,8 @@ def check_subreddit(subreddit)
   new_log_file = "#{$directory}/r_#{subreddit}_tmp"
   old_log_file = "#{$directory}/r_#{subreddit}"
   visited_urls = []
+  new_entry = 0
 
-  puts unless $first_run == 1
   puts "Checking r/#{subreddit} for new posts..."
 
   begin
@@ -75,13 +74,16 @@ def check_subreddit(subreddit)
     next if $filter_gifs == 1 and url.include?(".gif")
 
     # Open up the URL if it has not been visited before.
-    open_url(url) unless visited_urls.include?(Regexp.escape(url))
+    unless visited_urls.include?(Regexp.escape(url))
+      new_entry = 1
+      open_url(url)
+    end
   end
+
+  puts "No new entries found!" if new_entry == 0
 
   log_file.close
   FileUtils.mv(new_log_file, old_log_file) # Overwrite old log file.
-
-  $first_run = 0
 end
 
 def open_url(url)
@@ -99,7 +101,22 @@ unless File.exist?(config_file)
   abort "File '#{config_file}' does not exist! Exiting..."
 end
 
+if File.read(config_file).empty?
+  abort "Config file is empty. Exiting..."
+end
+
+puts "Checking Reddit for new posts."
+
 # Read the config file and run check_subreddit on the string on each line.
-File.readlines(config_file).each do |line|
-  check_subreddit(line.strip)
+File.readlines(config_file).each_with_index do |line, position|
+  subreddit = line.strip
+
+  puts
+
+  if subreddit.empty?
+    puts "Line #{position + 1} is empty. Skipping!"
+    next
+  else
+    check_subreddit(subreddit)
+  end
 end

@@ -17,7 +17,7 @@ csv_file = "#{Dir.home}/.countdowns"
 
 if !File.exist?(csv_file)
   abort "File '#{csv_file}' does not exist!"
-elsif CSV.read(csv_file).length < 1
+elsif CSV.read(csv_file).empty?
   abort "No entries found!"
 end
 

@@ -8,14 +8,15 @@
 
 require "date"
 
-if ARGV.length == 1
-  begin
-    days = Integer(ARGV[0])
-  rescue
-    abort "Invalid argument!"
-  end
-
-  puts Date.today + days
-else
+unless ARGV.length == 1
   puts "Usage: #{File.basename($0)} [DAYS]..."
+  exit
 end
+
+begin
+  days = Integer(ARGV[0])
+rescue
+  abort "Invalid argument!"
+end
+
+puts Date.today + days
