@@ -26,8 +26,8 @@ done
 
 if [[ ${#clean_repos} -gt 0 ]]; then
   print -P "%B%F{green}Clean repo(s):%f%b"
-  for REPO in $clean_repos; do
-    echo " * $REPO"
+  for repo_name in $clean_repos; do
+    echo " * $repo_name"
   done
 fi
 
@@ -35,7 +35,7 @@ fi
 
 if [[ ${#not_repos} -gt 0 ]]; then
   print -P "%B%F{blue}Not Git repo(s):%f%b"
-  for name in $not_repos; do
-    echo " * $name"
+  for dir_name in $not_repos; do
+    echo " * $dir_name"
   done
 fi
