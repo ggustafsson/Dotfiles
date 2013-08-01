@@ -11,9 +11,8 @@ word_list = %w(a an and as at but by en for if in of on or the to via vs)
 
 # Using .join and .split to turn the argument(s) into one single string.
 text = $*.join(" ").split(" ")
-position = 0
 
-text.each do |word|
+text.each_with_index do |word, position|
   # Check if the current word (lower cased) is included in the word_list
   # array. Capitalize the first word no matter what.
   if word_list.include?(word.downcase) and position > 0
@@ -21,8 +20,6 @@ text.each do |word|
   else
     text[position] = word.capitalize
   end
-
-  position += 1
 end
 
 puts text.join(" ")

@@ -14,7 +14,6 @@
 require "csv"
 
 csv_file = "#{Dir.home}/.countdowns"
-position = 0
 
 if !File.exist?(csv_file)
   abort "File '#{csv_file}' does not exist!"
@@ -23,11 +22,10 @@ elsif CSV.read(csv_file).length < 1
 end
 
 CSV.foreach(csv_file) do |row|
-  puts if position > 0
-  position += 1
+  puts if $. > 1
 
   unless row.size == 2
-    puts "The row on line #{position} is not 2 columns. Skipping!"
+    puts "The row on line #{$.} is not 2 columns. Skipping!"
     next
   end
 
@@ -37,7 +35,7 @@ CSV.foreach(csv_file) do |row|
   begin
     future = Date.parse(date)
   rescue
-    puts "Invalid date on line #{position}. Skipping!"
+    puts "Invalid date on line #{$.}. Skipping!"
     next
   end
 

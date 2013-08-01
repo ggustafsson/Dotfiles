@@ -218,7 +218,7 @@ endif
 
 function! BufferDelete()
   if &modified
-    echoerr "No write since last change. Not closing buffer."
+    echoerr "No write since last change. Not closing buffer!"
   else
     let s:total_nr_buffers = len(filter(range(1, bufnr("$")), "buflisted(v:val)"))
 

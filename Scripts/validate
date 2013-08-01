@@ -3,7 +3,7 @@
 # Written by Göran Gustafsson <gustafsson.g@gmail.com>.
 
 # Description: This script makes it easy to validate HTML files through
-# http://validator.w3.org via the terminal.
+# http://validator.w3.org from the command line.
 #
 # I have this in ~/.vimrc so i can easily validate files inside of Vim:
 #
@@ -42,13 +42,13 @@ for file in $*; do
   cd -
 
   # Only work with lines that contain information about errors.
-  parsed=$(echo $results | grep '"lastLine":')
+  parsed_results=$(echo $results | grep '"lastLine":')
 
-  if [[ ! -z $parsed ]]; then
+  if [[ ! -z $parsed_results ]]; then
     echo "Found error(s) on line(s):\n"
     # Remove all the crap and only display unique errors. Must use "sort" to
     # make "uniq" work.
-    echo $parsed | sed 's/^[ \t]*"lastLine":/ /;s/,//g' | sort --general-numeric-sort | uniq
+    echo $parsed_results | sed 's/^[ \t]*"lastLine":/ /;s/,//g' | sort --general-numeric-sort | uniq
   else
     echo "No errors! :)"
   fi

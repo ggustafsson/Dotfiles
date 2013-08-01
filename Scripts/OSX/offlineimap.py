@@ -1,4 +1,18 @@
-# http://blog.aedifice.org/2010-02-01-use-mac-os-xs-keychain-for-password-retrieval-in-offlineimap.html
+# Script created by William Snow Orvis:
+#   <http://blog.aedifice.org/2010-02-01-use-mac-os-xs-keychain-for-password-retrieval-in-offlineimap.html>.
+
+# Description: This script fetches a password from Keychain so it can be used
+# with offlineimap.
+#
+# To use this script put something like this inside of offlineimaprc:
+#
+# [general]
+# pythonfile = ~/offlineimap.py
+#
+# [Repository gmailRemote]
+# type = Gmail
+# remoteuser = someuser@gmail.com
+# remotepasseval = get_keychain_pass(account="someuser@gmail.com", server="imap.gmail.com")
 
 import re, commands
 

@@ -27,8 +27,10 @@ for file in $*; do
   case $file in
     *.tar.bz2) tar xvjf   $file ;; # Must come before bz2.
     *.bz2)     bunzip2    $file ;;
+
     *.tar.gz)  tar zxvf   $file ;; # Must come before gz.
     *.gz)      gunzip     $file ;;
+
     *.rar)     unrar x    $file ;;
     *.tar)     tar xvf    $file ;;
     *.tbz2)    tar xvjf   $file ;;
@@ -36,6 +38,7 @@ for file in $*; do
     *.Z)       uncompress $file ;;
     *.zip)     unzip      $file ;;
     *.7z)      7z x       $file ;;
+
     *)
       echo "File '$file' cannot be extracted with $0:t!"
     ;;
