@@ -224,11 +224,9 @@ function! BufferDelete()
 
     if s:total_nr_buffers == 1
       bdelete
-      echo "Buffer deleted. Created new buffer."
     else
       bprevious
       bdelete #
-      echo "Buffer deleted."
     endif
   endif
 endfunction

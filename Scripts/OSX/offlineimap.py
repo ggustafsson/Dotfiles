@@ -7,9 +7,9 @@
 # To use this script put something like this inside of offlineimaprc:
 #
 # [general]
-# pythonfile = ~/offlineimap.py
+# pythonfile = ~/.offlineimap.py
 #
-# [Repository gmailRemote]
+# [Repository Gmail-Remote]
 # type = Gmail
 # remoteuser = someuser@gmail.com
 # remotepasseval = get_keychain_pass(account="someuser@gmail.com", server="imap.gmail.com")

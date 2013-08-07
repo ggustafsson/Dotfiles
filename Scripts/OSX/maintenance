@@ -46,9 +46,9 @@ if [[ $answer == (y|yes) ]]; then
   echo
   gemfix
   echo
-  otherd
+  dl_misc
   echo
-  vimp
+  dl_vim
   echo
   frees
   echo

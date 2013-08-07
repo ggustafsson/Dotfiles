@@ -14,17 +14,17 @@ if [[ ! $# -eq 1 ]]; then
   exit
 fi
 
-if [[ ! -d $* ]]; then
-  echo "Directory '$*' does not exist!"
+if [[ ! -d $1 ]]; then
+  echo "Directory '$1' does not exist!"
   return 1
 fi
 
-echo "Changing permissions recursively on directory '$*'."
+echo "Changing permissions recursively on directory '$1'."
 
 if [[ $OSTYPE == darwin* ]]; then
-  find $* -type d -exec chmod -N "{}" \; -exec chmod 755 "{}" \;
-  find $* -type f -exec chmod -N "{}" \; -exec chmod 644 "{}" \;
+  find $1 -type d -exec chmod -N "{}" \; -exec chmod 755 "{}" \;
+  find $1 -type f -exec chmod -N "{}" \; -exec chmod 644 "{}" \;
 else
-  find $* -type d -exec chmod 755 "{}" \;
-  find $* -type f -exec chmod 644 "{}" \;
+  find $1 -type d -exec chmod 755 "{}" \;
+  find $1 -type f -exec chmod 644 "{}" \;
 fi

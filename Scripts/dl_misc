@@ -5,7 +5,7 @@
 # Description: This script automatically downloads several miscellaneous git
 # repositories i want to keep up-to-date.
 
-# Usage: otherd
+# Usage: dl_misc
 
 if [[ -d ~/Development/Hello\ World ]]; then
   print -P "%B%F{cyan}Checking for Hello World updates.%f%b"

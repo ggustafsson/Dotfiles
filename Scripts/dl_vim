@@ -5,7 +5,7 @@
 # Description: This script automatically downloads several Vim related git
 # repositories i want to keep up-to-date.
 
-# Usage: vimp
+# Usage: dl_vim
 
 if [[ -d ~/.vim/pathogen ]]; then
   print -P "%B%F{cyan}Checking for Pathogen updates.%f%b"

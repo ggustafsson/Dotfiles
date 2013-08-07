@@ -5,7 +5,7 @@
 # Description: This script fetches git repos, creates symlinks, directories
 # etc so i can easily get my environment the way i want.
 
-# Usage: dotfiles
+# Usage: setup_dotfiles
 
 if [[ ! $OSTYPE == darwin* ]]; then
   git clone git@github.com:ggustafsson/IP-Kalkylatorn.git ~/Projects/IP\ Kalkylatorn
@@ -41,7 +41,7 @@ mkdir ~/.vim/undos
 ln -s ~/Projects/Dot\ Files/vim/snippets ~/.vim/
 ln -s ~/Projects/Dot\ Files/vim/syntax ~/.vim/
 
-~/Scripts/vimp
+~/Scripts/dl_vim
 
 ln -s ~/.vim/pathogen/autoload/pathogen.vim ~/.vim/autoload/
 ln -s ~/Projects/Ninja\ Color\ Scheme/colors/ninja.vim ~/.vim/colors/

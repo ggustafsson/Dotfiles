@@ -4,7 +4,7 @@
 
 # Description: This script configures a Ubuntu system the way i like.
 
-# Usage: ubunutusetup
+# Usage: setup_ubuntu
 
 rm ~/examples.desktop
 
@@ -52,4 +52,4 @@ sudo chsh -s /bin/zsh $USER
 mkdir ~/Projects
 git clone git@github.com:ggustafsson/Dot-Files.git ~/Projects/Dot\ Files
 
-~/Projects/Dot\ Files/Scripts/dotfiles
+~/Projects/Dot\ Files/Scripts/setup_dotfiles

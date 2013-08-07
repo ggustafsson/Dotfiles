@@ -4,7 +4,17 @@
 
 # Description: This script configures a OS X system the way i like.
 
-# Usage: osxsetup
+# Usage: setup_osx
+
+if sudo -n test >& /dev/null; then
+  echo "User is not allowed to use sudo! Exiting..."
+  return 1
+fi
+
+if ! type -p git >& /dev/null; then
+  echo "Install Xcode and 'Command Line Tools' first! Exiting..."
+  return 1
+fi
 
 chflags nohidden ~/Library
 
@@ -65,4 +75,9 @@ ln -s /usr/local/bin/gsed /usr/local/bin/sed
 ln -s /usr/local/bin/gtail /usr/local/bin/tail
 ln -s /usr/local/bin/gwc /usr/local/bin/wc
 
-~/Scripts/dotfiles
+export GEM_HOME=~/.gem/ruby
+/usr/local/bin/gem install rails
+/usr/local/bin/gem install terminal-notifier
+
+~/Scripts/setup_dotfiles
+~/Scripts/dl_misc
