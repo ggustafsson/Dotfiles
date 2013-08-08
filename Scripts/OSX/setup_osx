@@ -72,7 +72,9 @@ ln -s /usr/local/bin/ghead /usr/local/bin/head
 ln -s /usr/local/bin/gls /usr/local/bin/ls
 ln -s /usr/local/bin/gmkdir /usr/local/bin/mkdir
 ln -s /usr/local/bin/gsed /usr/local/bin/sed
+ln -s /usr/local/bin/gsort /usr/local/bin/sort
 ln -s /usr/local/bin/gtail /usr/local/bin/tail
+ln -s /usr/local/bin/guniq /usr/local/bin/uniq
 ln -s /usr/local/bin/gwc /usr/local/bin/wc
 
 export GEM_HOME=~/.gem/ruby

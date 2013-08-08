@@ -171,7 +171,7 @@ nnoremap <Leader><Space> :call NERDComment("n", "Toggle")<CR>
 vnoremap <Leader><Space> :call NERDComment("n", "Toggle")<CR>
 
 nnoremap vil ^vg_
-nnoremap Y   y$
+nnoremap Y   Vy
 
 nnoremap j gj
 nnoremap k gk

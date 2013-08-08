@@ -7,8 +7,12 @@
 
 # Usage: dl_misc
 
+function headline {
+  print -P "%B%F{cyan}Checking for $* updates.%f%b"
+}
+
 if [[ -d ~/Development/Hello\ World ]]; then
-  print -P "%B%F{cyan}Checking for Hello World updates.%f%b"
+  headline "Hello World"
   cd ~/Development/Hello\ World
   git pull
 else
@@ -18,7 +22,7 @@ fi
 echo
 
 if [[ -d ~/Documents/Reading/Dive\ Into\ HTML5 ]]; then
-  print -P "%B%F{cyan}Checking for Dive Into HTML5 updates.%f%b"
+  headline "Dive Into HTML5"
   cd ~/Documents/Reading/Dive\ Into\ HTML5
   git pull
 else
@@ -28,7 +32,7 @@ fi
 echo
 
 if [[ -d ~/Projects/Tim\ Fork ]]; then
-  print -P "%B%F{cyan}Checking for Tim (hdonnay fork) updates.%f%b"
+  headline "Tim (hdonnay fork)"
   cd ~/Projects/Tim\ Fork
   git pull
 else
@@ -38,7 +42,7 @@ fi
 echo
 
 if [[ -d ~/Storage/Fonts/Blackout ]]; then
-  print -P "%B%F{cyan}Checking for Blackout updates.%f%b"
+  headline "Blackout"
   cd ~/Storage/Fonts/Blackout
   git pull
 else
@@ -48,7 +52,7 @@ fi
 echo
 
 if [[ -d ~/Storage/Fonts/Knewave ]]; then
-  print -P "%B%F{cyan}Checking for Knewave updates.%f%b"
+  headline "Knewave"
   cd ~/Storage/Fonts/Knewave
   git pull
 else
@@ -58,7 +62,7 @@ fi
 echo
 
 if [[ -d ~/Storage/Fonts/League\ Gothic ]]; then
-  print -P "%B%F{cyan}Checking for League Gothic updates.%f%b"
+  headline "League Gothic"
   cd ~/Storage/Fonts/League\ Gothic
   git pull
 else
@@ -68,7 +72,7 @@ fi
 echo
 
 if [[ -d ~/Storage/Fonts/Orbitron ]]; then
-  print -P "%B%F{cyan}Checking for Orbitron updates.%f%b"
+  headline "Orbitron"
   cd ~/Storage/Fonts/Orbitron
   git pull
 else
@@ -78,7 +82,7 @@ fi
 echo
 
 if [[ -d ~/Storage/Fonts/Ostrich\ Sans ]]; then
-  print -P "%B%F{cyan}Checking for Ostrich Sans updates.%f%b"
+  headline "Ostrich Sans"
   cd ~/Storage/Fonts/Ostrich\ Sans
   git pull
 else
@@ -88,7 +92,7 @@ fi
 echo
 
 if [[ -d ~/Storage/Fonts/Prociono ]]; then
-  print -P "%B%F{cyan}Checking for Prociono updates.%f%b"
+  headline "Prociono"
   cd ~/Storage/Fonts/Prociono
   git pull
 else
@@ -98,7 +102,7 @@ fi
 echo
 
 if [[ -d ~/Storage/Fonts/Sniglet ]]; then
-  print -P "%B%F{cyan}Checking for Sniglet updates.%f%b"
+  headline "Sniglet"
   cd ~/Storage/Fonts/Sniglet
   git pull
 else

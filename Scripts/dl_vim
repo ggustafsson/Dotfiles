@@ -7,8 +7,12 @@
 
 # Usage: dl_vim
 
+function headline {
+  print -P "%B%F{cyan}Checking for $* updates.%f%b"
+}
+
 if [[ -d ~/.vim/pathogen ]]; then
-  print -P "%B%F{cyan}Checking for Pathogen updates.%f%b"
+  headline "Pathogen"
   cd ~/.vim/pathogen
   git pull
 else
@@ -18,7 +22,7 @@ fi
 echo
 
 if [[ -d ~/.vim/bundle/gist ]]; then
-  print -P "%B%F{cyan}Checking for Gist updates.%f%b"
+  headline "Gist"
   cd ~/.vim/bundle/gist
   git pull
 else
@@ -28,7 +32,7 @@ fi
 echo
 
 if [[ -d ~/.vim/bundle/gundo ]]; then
-  print -P "%B%F{cyan}Checking for Gundo updates.%f%b"
+  headline "Gundo"
   cd ~/.vim/bundle/gundo
   git pull
 else
@@ -38,7 +42,7 @@ fi
 echo
 
 if [[ -d ~/.vim/bundle/lusty ]]; then
-  print -P "%B%F{cyan}Checking for Lusty updates.%f%b"
+  headline "Lusty"
   cd ~/.vim/bundle/lusty
   git pull
 else
@@ -48,7 +52,7 @@ fi
 echo
 
 if [[ -d ~/.vim/bundle/nerdcommenter ]]; then
-  print -P "%B%F{cyan}Checking for NERDCommenter updates.%f%b"
+  headline "NERDCommenter"
   cd ~/.vim/bundle/nerdcommenter
   git pull
 else
@@ -58,7 +62,7 @@ fi
 echo
 
 if [[ -d ~/.vim/bundle/nerdtree ]]; then
-  print -P "%B%F{cyan}Checking for NERDTree updates.%f%b"
+  headline "NERDTree"
   cd ~/.vim/bundle/nerdtree
   git pull
 else
@@ -68,7 +72,7 @@ fi
 echo
 
 if [[ -d ~/.vim/bundle/seek ]]; then
-  print -P "%B%F{cyan}Checking for Seek updates.%f%b"
+  headline "Seek"
   cd ~/.vim/bundle/seek
   git pull
 else
@@ -78,7 +82,7 @@ fi
 echo
 
 if [[ -d ~/.vim/bundle/surround ]]; then
-  print -P "%B%F{cyan}Checking for Surround updates.%f%b"
+  headline "Surround"
   cd ~/.vim/bundle/surround
   git pull
 else
@@ -88,7 +92,7 @@ fi
 echo
 
 if [[ -d ~/.vim/bundle/webapi ]]; then
-  print -P "%B%F{cyan}Checking for WebAPI updates.%f%b"
+  headline "WebAPI"
   cd ~/.vim/bundle/webapi
   git pull
 else
