@@ -14,10 +14,13 @@
 
 if [[ $# -gt 0 ]]; then
   if [[ ! -z $ps_display ]]; then
-    ps ax -o $ps_display | tail -n +2 | egrep --invert-match "(grep $*|$0 $*)" | grep "$*" || echo "No processes found!"
+    command="ps ax -o $ps_display"
   else
-    ps ax | tail -n +2 | egrep --invert-match "(grep $*|$0 $*)" | grep "$*" || echo "No processes found!"
+    command="ps ax"
   fi
+
+  # Run ps, remove header and ignore false results (script and grep).
+  eval $command | tail -n +2 | egrep --invert-match "(grep $*|$0 $*)" | grep "$*" || echo "No processes found!"
 else
   if [[ ! -z $ps_display ]]; then
     ps ax -o $ps_display
