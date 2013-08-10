@@ -7,6 +7,11 @@
 
 # Usage: title <text>
 
+if ARGV.empty?
+  puts "Usage: #{File.basename($0)} [TEXT]..."
+  exit
+end
+
 word_list = %w(a an and as at but by en for if in of on or the to via vs)
 
 # Using .join and .split to turn the argument(s) into one single string.
