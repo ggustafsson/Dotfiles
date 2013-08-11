@@ -5,15 +5,15 @@
 # Description: This script recursively searches the current working directory
 # or a specified directory for files containing a specific pattern.
 
-# Usage: rgrep <pattern>
-#        rgrep "<pattern>"
-#        rgrep <pattern> <path>
-#        rgrep "<pattern>" <path>
+# Usage: hl <pattern> <file>
+#        hl "<pattern>" <file>
+#        command | hl <pattern>
+#        command | hl "<pattern>"
 
 if [[ $# -eq 1 ]]; then
-  grep --exclude-dir .git --recursive $1 .
+  egrep --color "$*|$"
 elif [[ $# -eq 2 ]]; then
-  grep --exclude-dir .git --recursive $*
+  egrep --color "$1|$" $2
 else
-  echo "Usage: $0:t [PATTERN]... [PATH]..."
+  echo "Usage: $0:t [PATTERN]... [FILENAME]..."
 fi
