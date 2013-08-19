@@ -35,7 +35,6 @@ if [[ $OSTYPE == darwin* ]]; then
   ed=/Volumes/External/Downloads
 fi
 
-[[ -f ~/.ssh/config ]] && ssh_hosts=($(sed -n 's/^Host //p' ~/.ssh/config | grep -v ${HOST%%.*}))
 ls_options=(--classify --color=auto --human-readable)
 
 d=~/Downloads
@@ -160,7 +159,6 @@ if [[ $OSTYPE == darwin* ]]; then
 
   alias gvimdiff='/Applications/MacVim.app/Contents/MacOS/Vim -d -g $* >& /dev/null'
   alias mvimdiff='/Applications/MacVim.app/Contents/MacOS/Vim -d -g $* >& /dev/null'
-  alias v="gvim"
 
   alias wifioff="networksetup -setairportpower en0 off && echo 'Turning Wi-Fi off.'"
   alias wifion="networksetup -setairportpower en0 on && echo 'Turning Wi-Fi on.'"
@@ -186,7 +184,6 @@ else
 
   alias cal="cal -m"
   alias psme='\ps x -u $USER -o $ps_display'
-  alias v="vim"
   alias vl='tail -n $LINES -f /var/log/syslog'
 fi
 
@@ -204,6 +201,7 @@ alias nsfw="reddit ~/.reddit/nsfw.config"
 alias random='FILES=(*) && echo $FILES[$RANDOM%$#FILES+1]'
 alias recf="ls -t | head -n 5"
 alias reload="source ~/.zshenv && source ~/.zshrc && echo 'Zsh reloaded.'"
+alias tma="tmux attach"
 alias wgetp="wget --adjust-extension --convert-links --page-requisites"
 alias ycal='cal $(date +%Y)'
 
@@ -251,13 +249,6 @@ alias pyweb="python3 -m http.server 8080"
 
 alias svtplay-dl="svtplay-dl --resume"
 alias youtube-dl="youtube-dl --continue --title"
-
-alias tm="tmux"
-alias tma="tmux attach"
-
-for name in $ssh_hosts; do
-  alias $name="ssh $name"
-done
 
 function h {
   if [[ $# -gt 0 ]]; then
