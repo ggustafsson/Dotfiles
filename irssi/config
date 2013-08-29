@@ -224,6 +224,7 @@ settings = {
     beep_cmd = "aplay ~/.irssi/beep.wav >& /dev/null";
     usercount_show_halfops = "no";
     usercount_show_zero = "no";
+    autoaway_timeout = "900";
   };
   "irc/core" = {
     alternate_nick = "GLEG_";
@@ -243,7 +244,8 @@ channels = (
   { name = "#vim"; chatnet = "Freenode"; autojoin = "yes"; },
   { name = "#MacOSX"; chatnet = "Freenode"; autojoin = "yes"; },
   { name = "#archlinux"; chatnet = "Freenode"; autojoin = "yes"; },
-  { name = "#ubuntu"; chatnet = "Freenode"; autojoin = "yes"; }
+  { name = "#ubuntu"; chatnet = "Freenode"; autojoin = "yes"; },
+  { name = "#irssi"; chatnet = "Freenode"; autojoin = "yes"; }
 );
 
 logs = { };
