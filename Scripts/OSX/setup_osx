@@ -50,7 +50,6 @@ sudo /usr/local/bin/brew install \
   netperf \
   nginx \
   nmap \
-  offline-imap \
   openssh \
   php55 \
   python \

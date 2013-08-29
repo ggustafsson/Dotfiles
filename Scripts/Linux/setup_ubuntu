@@ -29,7 +29,6 @@ sudo apt-get install \
   netperf \
   nginx \
   nmap \
-  offline-imap \
   openssh-server \
   php5 \
   ruby \

@@ -18,8 +18,6 @@ if [[ $answer == (y|yes) ]]; then
   echo
   rsync --archive --delete --human-readable --progress -e ssh hoth:'~/Minecraft\ -\ Survival/' ~/Dropbox/Minecraft/Server\ -\ Survival/
   echo
-  offlineimap
-  echo
   brew update
   brew upgrade
   brew cleanup
