@@ -15,10 +15,10 @@ if [[ $answer == (y|yes) ]]; then
   read answer
 
   if [[ $answer == (y|yes) ]]; then
-      echo
-      rsync --archive --delete --human-readable --progress -e ssh hoth:'~/Minecraft\ -\ Creative/' ~/Dropbox/Minecraft/Server\ -\ Creative/
-      echo
-      rsync --archive --delete --human-readable --progress -e ssh hoth:'~/Minecraft\ -\ Survival/' ~/Dropbox/Minecraft/Server\ -\ Survival/
+    echo
+    rsync --archive --delete --human-readable --progress -e ssh hoth:'~/Minecraft\ -\ Creative/' ~/Dropbox/Minecraft/Server\ -\ Creative/
+    echo
+    rsync --archive --delete --human-readable --progress -e ssh hoth:'~/Minecraft\ -\ Survival/' ~/Dropbox/Minecraft/Server\ -\ Survival/
   fi
 
   echo
