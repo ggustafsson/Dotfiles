@@ -13,10 +13,16 @@ read answer
 if [[ $answer == (y|yes) ]]; then
   echo -n "Back up Minecraft servers? [y/n] "
   read answer
+
+  if [[ $answer == (y|yes) ]]; then
+      echo
+      rsync --archive --delete --human-readable --progress -e ssh hoth:'~/Minecraft\ -\ Creative/' ~/Dropbox/Minecraft/Server\ -\ Creative/
+      echo
+      rsync --archive --delete --human-readable --progress -e ssh hoth:'~/Minecraft\ -\ Survival/' ~/Dropbox/Minecraft/Server\ -\ Survival/
+  fi
+
   echo
-  rsync --archive --delete --human-readable --progress -e ssh hoth:'~/Minecraft\ -\ Creative/' ~/Dropbox/Minecraft/Server\ -\ Creative/
-  echo
-  rsync --archive --delete --human-readable --progress -e ssh hoth:'~/Minecraft\ -\ Survival/' ~/Dropbox/Minecraft/Server\ -\ Survival/
+  offlineimap
   echo
   brew update
   brew upgrade
