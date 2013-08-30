@@ -22,8 +22,6 @@ if [[ $answer == (y|yes) ]]; then
   fi
 
   echo
-  offlineimap
-  echo
   brew update
   brew upgrade
   brew cleanup
