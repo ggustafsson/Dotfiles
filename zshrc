@@ -205,8 +205,7 @@ alias wgetp="wget --adjust-extension --convert-links --page-requisites"
 alias ycal='cal $(date +%Y)'
 
 alias -- -="cd -"
-alias ...="cd ../.."
-alias ..="cd .."
+alias ..=". dotdot"
 alias cdh="dirs -v | sort --reverse"
 alias cdj='cat ~/.pwd && cd "$(< ~/.pwd)"'
 alias cds='echo "Saving current path." && pwd >| ~/.pwd'
