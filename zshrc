@@ -195,7 +195,6 @@ alias hist="history -i 1 | less"
 alias iip="curl icanhazip.com"
 alias ka="killall"
 alias ls='ls $ls_options'
-alias mkdir="mkdir -pv"
 alias nsfw="reddit ~/.reddit/nsfw.config"
 alias random='FILES=(*) && echo $FILES[$RANDOM%$#FILES+1]'
 alias recf="ls -t | head -n 5"
@@ -241,6 +240,9 @@ alias gun="git reset --soft HEAD^"
 alias int="tim --interval"
 alias pomo="tim --pomodoro"
 alias rint="tim --rinterval"
+
+alias mkcd=". mkcd"
+alias mkdir="mkdir -pv"
 
 alias phpweb="php -S 0.0.0.0:8080"
 alias pyweb="python3 -m http.server 8080"

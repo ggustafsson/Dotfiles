@@ -5,6 +5,13 @@
 # Description: This script creates a directory (or several directories) and
 # then changes the current working directory to the one just created.
 
+# This script is best used from an alias. I have this in ~/.zshrc:
+#
+# alias mkcd=". mkcd"
+#
+# The dot before the script name must be there otherwise the current directory
+# will not change in the current shell.
+
 # Usage: mkcd <path>
 #        mkcd <directory1/directory2/...>
 
