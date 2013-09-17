@@ -135,8 +135,6 @@ if [[ $HOST == hoth ]]; then
   alias mccreative="cd ~/Minecraft\ -\ Creative && tmux new 'java -Xmx3072M -Xms1024M -jar minecraft_server.jar nogui' && cd -"
   alias mcsurvival="cd ~/Minecraft\ -\ Survival && tmux new 'java -Xmx3072M -Xms1024M -jar minecraft_server.jar nogui' && cd -"
 else
-  alias chat="while true; do ssh hoth; echo '\nb0rked connection!'; sleep 10; done"
-
   alias mcbackup="rsync --archive --delete --human-readable --progress -e ssh 'hoth:~/Minecraft\ -\ Creative/' ~/Dropbox/Minecraft/Server\ -\ Creative/ && rsync --archive --delete --human-readable --progress -e ssh 'hoth:~/Minecraft\ -\ Survival/' ~/Dropbox/Minecraft/Server\ -\ Survival/"
   alias mcclogs='ssh hoth "tail -n 200 -f ~/Minecraft\ -\ Creative/server.log"'
   alias mcslogs='ssh hoth "tail -n 200 -f ~/Minecraft\ -\ Survival/server.log"'
