@@ -66,8 +66,8 @@ set splitright
 
 set wildmode=longest,list
 set wildignore=*.doc,*.pdf,.DS_Store
-set wildignore+=*.bmp,*.gif,*.ico,*.jpg,*.jpeg,*.png,*.svg,*.tiff
-set wildignore+=*.flac,*.nsf,*.nsfe,*.m4r,*.mp3,*.ogg,*.wav
+set wildignore+=*.bmp,*.gif,*.ico,*.jpg,*.jpeg,*.png,*.svg,*.tif,*.tiff
+set wildignore+=*.flac,*.nsf,*.nsfe,*.m4a,*.m4r,*.mp3,*.ogg,*.wav
 set wildignore+=*.avi,*.flv,*.f4v,*.mkv,*.mov,*.mpg,*.mpeg,*.mp4,*.m4v,*.wmv
 set wildignore+=*.dmg,*.iso,*.rar,*.tar,*.tar.bz2,*.tar.gz,*.zip,*.7z
 
@@ -143,12 +143,10 @@ nnoremap <Leader>no :edit ~/Documents/Text\ Files/Notes.txt<CR>
 nnoremap <Leader>nu :call LineNumber()<CR>
 nnoremap <Leader>os :source ~/.vim/session.vim<CR>
 nnoremap <Leader>pa :set paste!<CR>
-nnoremap <Leader>pw :edit ~/Documents/Text\ Files/Passwords.blowfish<CR>
 nnoremap <Leader>re :%s//gc<Left><Left><Left>
 nnoremap <Leader>s2 :set expandtab softtabstop=2 shiftwidth=2<CR>
 nnoremap <Leader>s4 :set expandtab softtabstop=4 shiftwidth=4<CR>
 nnoremap <Leader>s8 :set expandtab softtabstop=8 shiftwidth=8<CR>
-nnoremap <Leader>sc :edit ~/Documents/Text\ Files/Scratch\ Notes.txt<CR>
 nnoremap <Leader>sh :shell<CR>
 nnoremap <Leader>sp :setlocal spell!<CR>
 nnoremap <Leader>ss :mksession! ~/.vim/session.vim<CR>
@@ -156,16 +154,12 @@ nnoremap <Leader>t2 :set noexpandtab shiftwidth=2 softtabstop=0 tabstop=2<CR>
 nnoremap <Leader>t4 :set noexpandtab shiftwidth=4 softtabstop=0 tabstop=4<CR>
 nnoremap <Leader>t8 :set noexpandtab shiftwidth=8 softtabstop=0 tabstop=8<CR>
 nnoremap <Leader>ta :tab sball<CR>
-nnoremap <Leader>tm :edit ~/Documents/Text\ Files/Temporary.blowfish<CR>
-nnoremap <Leader>to :edit ~/Documents/Text\ Files/To-do\ List.todo<CR>
 nnoremap <Leader>tr :NERDTreeToggle<CR>
 nnoremap <Leader>tw :set textwidth=78
 nnoremap <Leader>un :edit!<CR>
-nnoremap <Leader>vi :edit ~/.vimrc<CR>
 nnoremap <Leader>w3 :!~/Scripts/validate "%"<CR>
 nnoremap <Leader>wr :set wrap!<CR>
 nnoremap <Leader>ws :%s/\s\+$//<CR>:nohlsearch<CR>
-nnoremap <Leader>zs :edit ~/.zshrc<CR>
 
 nnoremap <Leader><Space> :call NERDComment("n", "Toggle")<CR>
 vnoremap <Leader><Space> :call NERDComment("n", "Toggle")<CR>
@@ -276,7 +270,6 @@ augroup Main
 
   autocmd BufNewFile,BufRead *.blowfish,README,TODO setlocal filetype=text
   autocmd BufNewFile,BufRead *.md                   setlocal filetype=markdown
-  autocmd BufNewFile,BufRead *.todo                 setlocal filetype=todo
   autocmd BufNewFile,BufRead config                 setlocal filetype=conf
 
   autocmd FileType gitcommit          setlocal colorcolumn=73 nolist spell textwidth=72

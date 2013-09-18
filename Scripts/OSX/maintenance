@@ -16,9 +16,9 @@ if [[ $answer == (y|yes) ]]; then
 
   if [[ $answer == (y|yes) ]]; then
     echo
-    rsync --archive --delete --human-readable --progress -e ssh hoth:'~/Minecraft\ -\ Creative/' ~/Dropbox/Minecraft/Server\ -\ Creative/
+    rsync --archive --delete --human-readable --progress -e ssh hoth:'~/Minecraft\ -\ Creative/' ~/Storage/Game\ Files/Minecraft/Server\ -\ Creative/
     echo
-    rsync --archive --delete --human-readable --progress -e ssh hoth:'~/Minecraft\ -\ Survival/' ~/Dropbox/Minecraft/Server\ -\ Survival/
+    rsync --archive --delete --human-readable --progress -e ssh hoth:'~/Minecraft\ -\ Survival/' ~/Storage/Game\ Files/Minecraft/Server\ -\ Survival/
   fi
 
   echo
@@ -28,6 +28,7 @@ if [[ $answer == (y|yes) ]]; then
   echo
   gem update --system
   gem update
+  gem cleanup
   echo
   gemfix
   echo
@@ -39,7 +40,6 @@ if [[ $answer == (y|yes) ]]; then
   echo
   backup
 
-  open -a "App Store"
   open -a Xcode
 else
   echo "\nBye bye!"
