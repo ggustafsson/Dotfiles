@@ -39,8 +39,6 @@ if [[ $answer == (y|yes) ]]; then
   frees
   echo
   backup
-
-  open -a Xcode
 else
   echo "\nBye bye!"
 fi
