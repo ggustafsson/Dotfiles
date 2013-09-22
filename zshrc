@@ -3,7 +3,6 @@
 [[ $OSTYPE == darwin* ]] && umask 077
 
 [[ $TERM == xterm ]] && export TERM=xterm-256color
-export GEM_HOME=~/.gem/ruby
 export GREP_OPTIONS="--color=auto --ignore-case"
 export LC_COLLATE=C
 
@@ -28,8 +27,6 @@ HISTSIZE=10000
 SAVEHIST=$HISTSIZE
 
 if [[ $OSTYPE == darwin* ]]; then
-  wireshark=(/usr/local/Cellar/wireshark/*/bin/*(N:t))
-
   e=/Volumes/External
   ed=/Volumes/External/Downloads
 else
@@ -156,11 +153,8 @@ if [[ $OSTYPE == darwin* ]]; then
   alias brewu="brew update && brew upgrade"
 
   alias gvimdiff='/Applications/MacVim.app/Contents/MacOS/Vim -d -g $* >& /dev/null'
-  alias mvimdiff='/Applications/MacVim.app/Contents/MacOS/Vim -d -g $* >& /dev/null'
-
-  for command in $wireshark; do
-    alias $command="wiresharkfix $command"
-  done
+  alias mvim="gvim"
+  alias mvimdiff="gvimdiff"
 else
   if type -p apt-get >& /dev/null; then
     alias apti="sudo apt-get install"
@@ -181,6 +175,7 @@ alias hist="history -i 1 | less"
 alias iip="curl icanhazip.com"
 alias ka="killall"
 alias ls='ls $ls_options'
+alias pyweb="python3 -m http.server 8080"
 alias recf="ls -t | head -n 5"
 alias reload="source ~/.zshenv && source ~/.zshrc && echo 'Zsh reloaded.'"
 alias tma="tmux attach"
@@ -226,9 +221,6 @@ alias rint="tim --rinterval"
 
 alias mkcd=". mkcd"
 alias mkdir="mkdir -pv"
-
-alias phpweb="php -S 0.0.0.0:8080"
-alias pyweb="python3 -m http.server 8080"
 
 alias svtplay-dl="svtplay-dl --resume"
 alias youtube-dl="youtube-dl --continue --title"

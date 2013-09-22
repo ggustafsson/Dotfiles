@@ -16,42 +16,31 @@ if ! type -p git >& /dev/null; then
   return 1
 fi
 
-chflags nohidden ~/Library
-
 git clone git@github.com:mxcl/homebrew.git ~/Downloads/homebrew
 sudo mv ~/Downloads/homebrew /usr/local
 
 sudo /usr/local/bin/brew tap homebrew/dupes
-sudo /usr/local/bin/brew tap josegonzalez/homebrew-php
 
 sudo /usr/local/bin/brew install \
   bash \
   coreutils \
   cowsay \
   curl \
-  dsniff \
-  ettercap \
   ffmpeg \
-  figlet \
   flac \
   gawk \
   git \
   gnu-sed \
-  hping \
   html2text \
   imagemagick --without-x \
   imagesnap \
   irssi \
-  kismet \
   lame \
   links \
   macvim \
   ncftp \
-  netperf \
-  nginx \
   nmap \
   openssh \
-  php55 \
   python \
   python3 \
   rsync \
@@ -62,7 +51,6 @@ sudo /usr/local/bin/brew install \
   vim \
   vorbis-tools \
   wget \
-  wireshark \
   youtube-dl \
   zsh
 
@@ -75,10 +63,6 @@ ln -s /usr/local/bin/gsort /usr/local/bin/sort
 ln -s /usr/local/bin/gtail /usr/local/bin/tail
 ln -s /usr/local/bin/guniq /usr/local/bin/uniq
 ln -s /usr/local/bin/gwc /usr/local/bin/wc
-
-export GEM_HOME=~/.gem/ruby
-/usr/local/bin/gem install rails
-/usr/local/bin/gem install terminal-notifier
 
 ~/Scripts/setup_dotfiles
 ~/Scripts/dl_misc

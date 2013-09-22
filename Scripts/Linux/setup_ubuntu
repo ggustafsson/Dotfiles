@@ -9,43 +9,12 @@
 rm ~/examples.desktop
 
 sudo apt-get install \
-  cowsay \
-  dsniff \
-  ettercap-graphical \
-  ffmpeg \
-  figlet \
-  flac \
-  gawk \
   git \
-  gparted \
-  hping3 \
-  html2text \
-  imagemagick \
-  irssi \
-  kismet \
-  lame \
-  links \
-  ncftp \
-  netperf \
-  nginx \
-  nmap \
-  openssh-server \
-  php5 \
-  ruby \
-  sshguard \
   tmux \
-  transmission \
   tree \
-  tshark \
   vim-nox \
-  vorbis-tools \
-  wireshark \
-  xbmc \
-  youtube-dl \
   zsh
 
-sudo dpkg-reconfigure wireshark-common
-sudo usermod -a -G wireshark $USER
 sudo chsh -s /bin/zsh $USER
 
 mkdir ~/Projects
