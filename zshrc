@@ -182,10 +182,9 @@ alias tma="tmux attach"
 alias wgetp="wget --adjust-extension --convert-links --page-requisites"
 alias ycal='cal $(date +%Y)'
 
-alias ..=". dotdot"
 alias cdh="dirs -v | sort --reverse"
-alias cdj='cat ~/.pwd && cd "$(< ~/.pwd)"'
-alias cds='echo "Saving current path." && pwd >| ~/.pwd'
+alias cdj='cat ~/.saved_pwd && cd "$(< ~/.saved_pwd)"'
+alias cds='echo "Saving current path." && echo $PWD >| ~/.saved_pwd'
 
 alias cl="wc -l"
 alias cw="wc -w"
