@@ -16,6 +16,8 @@ if ! type -p git >& /dev/null; then
   return 1
 fi
 
+chflags nohidden ~/Library
+
 git clone git@github.com:mxcl/homebrew.git ~/Downloads/homebrew
 sudo mv ~/Downloads/homebrew /usr/local
 

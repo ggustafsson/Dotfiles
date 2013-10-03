@@ -268,9 +268,9 @@ endfunction
 augroup Main
   autocmd!
 
-  autocmd BufNewFile,BufRead *.blowfish,README,TODO setlocal filetype=text
-  autocmd BufNewFile,BufRead *.md                   setlocal filetype=markdown
-  autocmd BufNewFile,BufRead config                 setlocal filetype=conf
+  autocmd BufNewFile,BufRead README,TODO setlocal filetype=text
+  autocmd BufNewFile,BufRead *.md        setlocal filetype=markdown
+  autocmd BufNewFile,BufRead config      setlocal filetype=conf
 
   autocmd FileType gitcommit          setlocal colorcolumn=73 nolist spell textwidth=72
   autocmd FileType help               setlocal colorcolumn=
