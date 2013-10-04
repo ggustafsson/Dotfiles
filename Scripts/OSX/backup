@@ -17,6 +17,7 @@ directories=(
   Development
   Documents
   Dropbox
+  Library/Safari/Bookmarks.plist
   Movies
   Music/FLAC
   Music/GBS
