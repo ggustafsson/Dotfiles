@@ -2,11 +2,17 @@
 
 # Written by Göran Gustafsson <gustafsson.g@gmail.com>.
 
-# Description: This script converts FLAC files to high quality MP3 files.
+# Description: This script converts FLAC files to high quality MP3 files in a
+# very easy and convenient way. By default this script depends on my
+# independent script called "title" which is used to automatically fix the
+# capitalization of every tag.
 
 # Usage: flaccon <file>
 #        flaccon *.flac
 #        find . -type f -iname "*.flac" -exec flaccon "{}" \;
+
+# Turn off if you don't want to fix the capitalization of tags.
+fix_capitalization=1
 
 if [[ ! $# -gt 0 ]]; then
   echo "Usage: $0:t [FILENAME(S)]..."
@@ -33,15 +39,29 @@ for file in $*; do
 
   # Put all tag information inside of various shell variables.
   for tag in $tags; do
-    info=$(metaflac --show-tag=$tag $file)
-    typeset $tag=${info#*=} # Set values for $title, $artist and so on.
+    # The info variable will contain something like "TITLE=Text here".
+    output=$(metaflac --show-tag=$tag $file)
+
+    # The information variable will contain just "Text here".
+    information=${output#*=}
+
+    if [[ $fix_capitalization -eq 1 ]]; then
+      # If the variable information is not empty run my external script
+      # "title" on it to fix the capitalization of the text.
+      if [[ ! -z $information ]]; then
+        information=$(title $information)
+      fi
+    fi
+
+    # Put the value of $information inside of the current tag variable.
+    typeset $tag=$information
   done
 
   print -P "%B%F{cyan}Converting file '$file' to MP3.%f%b\n"
 
   # Print out all tag information.
   for tag in $tags; do
-    echo "${(U)tag}=${(P)tag}"
+    echo "${(C)tag}: ${(P)tag}"
   done
 
   # Decode FLAC file with "flac" and encode it to MP3 with "lame".
