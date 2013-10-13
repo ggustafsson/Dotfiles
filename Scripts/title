@@ -12,15 +12,27 @@ if ARGV.empty?
   exit
 end
 
+# I use this variable to check when the first word has been capitalized.
+first_word_capitalized = 0
+
+# All the words that should be downcased.
 word_list = %w(a an and as at but by en for if in of on or the to via vs)
 
 # Using .join and .split to turn the argument(s) into one single string.
 text = $*.join(" ").split(" ")
 
 text.each_with_index do |word, position|
-  # Check if the current word (lower cased) is included in the word_list
-  # array. Capitalize the first word no matter what.
-  if word_list.include?(word.downcase) and position > 0
+  # Capitalize the first word that starts with a normal letter. After this has
+  # been done once the normal word list checking will run instead.
+  if first_word_capitalized == 0 and word[0] =~ /[[:alpha:]]/
+    first_word_capitalized = 1
+    text[position] = word.capitalize
+    next
+  end
+
+  # Check if the current word (in lower cased form) is included in the
+  # word_list array.
+  if word_list.include?(word.downcase)
     text[position] = word.downcase
   else
     text[position] = word.capitalize

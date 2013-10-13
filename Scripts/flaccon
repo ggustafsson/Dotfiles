@@ -5,21 +5,33 @@
 # Description: This script converts FLAC files to high quality MP3 files in a
 # very easy and convenient way. By default this script depends on my
 # independent script called "title" which is used to automatically fix the
-# capitalization of every tag.
+# capitalization of every tag and filename (use the -ic flag to stop it).
 
 # Usage: flaccon <file>
+#        flaccon -ic <file>
 #        flaccon *.flac
 #        find . -type f -iname "*.flac" -exec flaccon "{}" \;
 
-# Turn off if you don't want to fix the capitalization of tags.
-fix_capitalization=1
-
 if [[ ! $# -gt 0 ]]; then
-  echo "Usage: $0:t [FILENAME(S)]..."
+  echo "Usage: $0:t [OPTION]... [FILENAME(S)]...
+
+  -ic, --ignore-case  Don't fix capitalization in tags and filenames."
   exit
 fi
 
 echo "Converting FLAC file(s) to MP3 file(s)."
+
+if [[ $1 == -ic ]]; then
+  fix_capitalization=0
+  shift # Removes $1 from argument list.
+else
+  if type -p title >& /dev/null; then
+    fix_capitalization=1
+  else
+    echo "Command 'title' not found! Skipping capitalization fix...\n"
+    fix_capitalization=0
+  fi
+fi
 
 for file in $*; do
   echo
@@ -30,7 +42,7 @@ for file in $*; do
   fi
 
   if [[ ! $file == *.flac ]]; then
-    echo "File '$file' does not end with flac."
+    echo "File '$file' does not end with 'flac'."
     continue
   fi
 
@@ -64,6 +76,13 @@ for file in $*; do
     echo "${(C)tag}: ${(P)tag}"
   done
 
+  # Fix the filename if fix_capitalization is set to 1.
+  if [[ $fix_capitalization -eq 1 ]]; then
+    file_output=$(title $file:r).mp3
+  else
+    file_output=${file:r}.mp3
+  fi
+
   # Decode FLAC file with "flac" and encode it to MP3 with "lame".
   flac -dc $file | lame -b 320 -h --ignore-tag-errors \
     --tt "$title" \
@@ -72,5 +91,5 @@ for file in $*; do
     --tn "$tracknumber/$totaltracks" \
     --tg "$genre" \
     --ty "$date" \
-    --add-id3v2 - "$file:r.mp3"
+    --add-id3v2 - $file_output
 done
