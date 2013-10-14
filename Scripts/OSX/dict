@@ -1,0 +1,15 @@
+#!/usr/bin/env zsh
+
+# Written by Göran Gustafsson <gustafsson.g@gmail.com>.
+
+# Description: This script makes it easy to search with the built in
+# dictionary application under OS X.
+
+# Usage: dict <query>
+
+if [[ $# -eq 0 ]]; then
+  echo "Usage: $0:t [QUERY]..."
+  exit
+fi
+
+open "dict://$*"

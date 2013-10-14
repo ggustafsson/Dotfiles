@@ -26,6 +26,12 @@ if [[ $answer == (y|yes) ]]; then
   brew upgrade
   brew cleanup
   echo
+  gem update --system
+  gem update
+  gem cleanup
+  echo
+  gemfix
+  echo
   dl_misc
   echo
   dl_vim

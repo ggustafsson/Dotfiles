@@ -66,5 +66,8 @@ ln -s /usr/local/bin/gtail /usr/local/bin/tail
 ln -s /usr/local/bin/guniq /usr/local/bin/uniq
 ln -s /usr/local/bin/gwc /usr/local/bin/wc
 
+export GEM_HOME=~/.gem/ruby
+/usr/local/bin/gem install terminal-notifier
+
 ~/Scripts/setup_dotfiles
 ~/Scripts/dl_misc

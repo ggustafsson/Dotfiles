@@ -1,0 +1,15 @@
+#!/usr/bin/env zsh
+
+# Written by Göran Gustafsson <gustafsson.g@gmail.com>.
+
+# Description: This script makes it easy to connect to SMB/CIFS network file
+# shares.
+
+# Usage: smb <ip/dns>
+
+if [[ ! $# -eq 1 ]]; then
+  echo "Usage: $0:t [IP/DNS]..."
+  exit
+fi
+
+open "smb://$1"

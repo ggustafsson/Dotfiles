@@ -3,6 +3,7 @@
 [[ $OSTYPE == darwin* ]] && umask 077
 
 [[ $TERM == xterm ]] && export TERM=xterm-256color
+export GEM_HOME=~/.gem/ruby
 export GREP_OPTIONS="--color=auto --ignore-case"
 export LC_COLLATE=C
 
@@ -19,6 +20,7 @@ export LS_COLORS="$LS_COLORS:*.avi=01;36:*.flv=01;36:*.f4v=01;36:*.mkv=01;36:*.m
 export LS_COLORS="$LS_COLORS:*.dmg=01;31:*.iso=01;31:*.rar=01;31:*.tar=01;31:*.tar.bz2=01;31:*.tar.gz=01;31:*.tgz=01;31:*.zip=01;31:*.7z=01;31"
 
 export ps_display="user,pid,command"
+export todo_file=~/Documents/Text\ Files/To-do\ List.todo
 
 DIRSTACKSIZE=20
 
@@ -38,6 +40,7 @@ ls_options=(--classify --color=auto --human-readable)
 
 d=~/Downloads
 p=~/Projects
+t=~/Documents/Text\ Files
 
 setopt combiningchars
 setopt correct
@@ -145,7 +148,6 @@ if [[ $OSTYPE == darwin* ]]; then
   alias tree="tree -N"
   alias vl='sudo tail -n $LINES -f /var/log/system.log'
   alias webcam="imagesnap -t 2 -w 1"
-  alias wifiscan="/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport --scan"
 
   alias brewi="brew install"
   alias brewr="brew uninstall"
@@ -155,6 +157,10 @@ if [[ $OSTYPE == darwin* ]]; then
   alias gvimdiff='/Applications/MacVim.app/Contents/MacOS/Vim -d -g $* >& /dev/null'
   alias mvim="gvim"
   alias mvimdiff="gvimdiff"
+
+  alias wifioff="networksetup -setairportpower en0 off && echo 'Turning Wi-Fi off.'"
+  alias wifion="networksetup -setairportpower en0 on && echo 'Turning Wi-Fi on.'"
+  alias wifiscan="/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport --scan"
 else
   if type -p apt-get >& /dev/null; then
     alias apti="sudo apt-get install"
@@ -175,14 +181,17 @@ alias hist="history -i 1 | less"
 alias iip="curl icanhazip.com"
 alias ka="killall"
 alias ls='ls $ls_options'
+alias nsfw="reddit ~/.reddit/nsfw.config"
 alias pyweb="python3 -m http.server 8080"
+alias random='FILES=(*) && echo $FILES[$RANDOM%$#FILES+1]'
 alias recf="ls -t | head -n 5"
 alias reload="source ~/.zshenv && source ~/.zshrc && echo 'Zsh reloaded.'"
 alias tma="tmux attach"
+alias tv='vim "$todo_file"'
 alias wgetp="wget --adjust-extension --convert-links --page-requisites"
 alias ycal='cal $(date +%Y)'
 
-alias ..="cd .."
+alias ..=". dotdot"
 alias cdh="dirs -v | sort --reverse"
 alias cdj='cat ~/.saved_pwd && cd "$(< ~/.saved_pwd)"'
 alias cds='echo "Saving current path." && echo $PWD >| ~/.saved_pwd'

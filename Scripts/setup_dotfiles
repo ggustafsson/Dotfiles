@@ -40,5 +40,6 @@ mkdir ~/.vim/undos
 ~/Scripts/dl_vim
 
 ln -s ~/.vim/pathogen/autoload/pathogen.vim ~/.vim/autoload/
-ln -s ~/Projects/Dot\ Files/snippets ~/.vim/
+ln -s ~/Projects/Dot\ Files/vim/snippets ~/.vim/
+ln -s ~/Projects/Dot\ Files/vim/syntax ~/.vim/
 ln -s ~/Projects/Ninja\ Color\ Scheme/colors/ninja.vim ~/.vim/colors/
