@@ -139,7 +139,7 @@ nnoremap <Leader>li :set list!<CR>
 nnoremap <Leader>ll :!ls -lFh "%"<CR>
 nnoremap <Leader>ls :!ls -lFh "%:p:h"<CR>
 nnoremap <Leader>ne :enew<CR>
-nnoremap <Leader>no :edit ~/Documents/Text\ Files/Notes.txt<CR>
+nnoremap <Leader>no :edit ~/Documents/Text\ Files/Vim\ Notes.txt<CR>
 nnoremap <Leader>nu :call LineNumber()<CR>
 nnoremap <Leader>os :source ~/.vim/session.vim<CR>
 nnoremap <Leader>pa :set paste!<CR>
@@ -155,7 +155,7 @@ nnoremap <Leader>t2 :set noexpandtab shiftwidth=2 softtabstop=0 tabstop=2<CR>
 nnoremap <Leader>t4 :set noexpandtab shiftwidth=4 softtabstop=0 tabstop=4<CR>
 nnoremap <Leader>t8 :set noexpandtab shiftwidth=8 softtabstop=0 tabstop=8<CR>
 nnoremap <Leader>ta :tab sball<CR>
-nnoremap <Leader>tm :edit ~/Documents/Text\ Files/Temporary.blowfish<CR>
+nnoremap <Leader>tm :edit ~/Documents/Secure\ Notes/Temporary.blowfish<CR>
 nnoremap <Leader>to :edit ~/Documents/Text\ Files/To-do\ List.todo<CR>
 nnoremap <Leader>tr :NERDTreeToggle<CR>
 nnoremap <Leader>tw :set textwidth=78
