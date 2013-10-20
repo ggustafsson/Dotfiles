@@ -68,7 +68,7 @@ set wildmode=longest,list
 set wildignore=*.doc,*.pdf,.DS_Store
 set wildignore+=*.bmp,*.gif,*.ico,*.jpg,*.jpeg,*.png,*.svg,*.tif,*.tiff
 set wildignore+=*.flac,*.nsf,*.nsfe,*.m4a,*.m4r,*.mp3,*.ogg,*.wav
-set wildignore+=*.avi,*.flv,*.f4v,*.mkv,*.mov,*.mpg,*.mpeg,*.mp4,*.m4v,*.wmv
+set wildignore+=*.avi,*.flv,*.f4v,*.mkv,*.mov,*.mpg,*.mpeg,*.mp4,*.m4v,*.webm,*.wmv
 set wildignore+=*.dmg,*.iso,*.rar,*.tar,*.tar.bz2,*.tar.gz,*.zip,*.7z
 
 if has("gui_running") && has("mac")
