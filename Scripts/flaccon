@@ -28,7 +28,7 @@ else
   if type -p title >& /dev/null; then
     fix_capitalization=1
   else
-    echo "Command 'title' not found! Skipping capitalization fix...\n"
+    echo "\nCommand 'title' not found! Skipping capitalization fix..."
     fix_capitalization=0
   fi
 fi
