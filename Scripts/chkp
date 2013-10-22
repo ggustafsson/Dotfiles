@@ -4,11 +4,15 @@
 
 # Description: This script checks the git status of all my projects.
 
+# Dependencies: git
+
 # Usage: chkp
+
+project_dir=~/Projects
 
 echo "Checking status of projects."
 
-for directory in ~/Projects/*; do
+for directory in $project_dir/*; do
   cd $directory
 
   if [[ -n $(git rev-list origin..HEAD 2> /dev/null) ]]; then

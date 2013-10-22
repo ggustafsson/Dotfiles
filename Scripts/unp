@@ -5,6 +5,8 @@
 # Description: This script makes it easy to extract files from all of the most
 # common compressed file types.
 
+# Dependencies: p7zip and unrar
+
 # Usage: unp <file(s)>
 
 if [[ ! $# -gt 0 ]]; then
@@ -40,7 +42,7 @@ for file in $*; do
     *.7z)      7z x       $file ;;
 
     *)
-      echo "File '$file' cannot be extracted with $0:t!"
+      echo "File '$file' cannot be extracted with ${0:t}!"
     ;;
   esac
 done

@@ -5,6 +5,8 @@
 # Description: This script searches the current network (always /24) for open
 # network shares on port 445 (SMB/CIFS).
 
+# Dependencies: nmap
+
 # Usage: smbf
 
 ip=$(ifconfig en0 | sed -n 's/^[ \t]*//;s/inet //p' | awk '{ print $1 }')

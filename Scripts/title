@@ -30,6 +30,16 @@ text.each_with_index do |word, position|
     next
   end
 
+  # If the current word starts with "(" or "[" then ignore the first character
+  # and capitalize the remaining text. Useful for capitalizing FLAC/MP3 tags.
+  # Everything behind "(" or "[" will be seen as a new sentence.
+  if word[0] == "(" or word[0] == "["
+    first_char = word[0]
+    remaining = word[1..-1]
+    text[position] = first_char + remaining.capitalize
+    next
+  end
+
   # Check if the current word (in lower cased form) is included in the
   # word_list array.
   if word_list.include?(word.downcase)

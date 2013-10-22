@@ -7,6 +7,8 @@
 # independent script called "title" which is used to automatically fix the
 # capitalization of every tag and filename (use the -ic flag to stop it).
 
+# Dependencies: flac, lame and title
+
 # Usage: flaccon <file>
 #        flaccon -ic <file>
 #        flaccon *.flac

@@ -1,0 +1,78 @@
+#!/usr/bin/env zsh
+
+# Written by Göran Gustafsson <gustafsson.g@gmail.com>.
+
+# Description: This script is used to fix the capitalization of tags and
+# filenames of MP3 files. I use this to fix old MP3 files (my FLAC to MP3
+# convert script "flaccon" fixes the capitalization of tags and filenamns by
+# default). This script depends on my independent script called "title" which
+# is used to automatically fix the capitalization of every tag and filename.
+
+# Dependencies: mutagen and title
+
+# Usage: mp3fix <file>
+#        mp3fix *.mp3
+#        find . -type f -iname "*.mp3" -exec mp3fix "{}" \;
+
+if [[ ! $# -gt 0 ]]; then
+  echo "Usage: $0:t [FILENAME(S)]..."
+  exit
+fi
+
+if ! type -p title >& /dev/null; then
+  echo "\nCommand 'title' not found! Exiting..."
+  return 1
+fi
+
+echo "Fixing tags in MP3 file(s)."
+
+for file in $*; do
+  echo
+
+  if [[ ! -f $file ]]; then
+    echo "File '$file' does not exist!"
+    continue
+  fi
+
+  if [[ ! $file == *.mp3 ]]; then
+    echo "File '$file' does not end with 'mp3'."
+    continue
+  fi
+
+  print -P "%B%F{cyan}Fixing tags in file '$file'.%f%b\n"
+
+  # All the tags that will be saved. ARTIST, ALBUM and SONG.
+  tags=(TPE1 TALB TIT2)
+
+  # Put all tag information inside of various shell variables.
+  for tag in $tags; do
+    # The info variable will contain something like "TITLE=Text here".
+    output=$(mutagen-inspect $file | grep ^$tag=)
+
+    # The information variable will contain just "Text here".
+    information=${output#*=}
+
+    if [[ ! -z $information ]]; then
+      information=$(title $information)
+    fi
+
+    # Put the value of $information inside of the current tag variable.
+    typeset $tag=$information
+  done
+
+  # Print out all tag information.
+  for tag in $tags; do
+    echo ${(P)tag}
+  done
+
+  # Change all the tags. ARTIST, ALBUM and SONG.
+  mid3v2 -a $TPE1 -A $TALB -t $TIT2 $file
+
+  # Fix the capitalization of the filename.
+  new_filename=$(title $file)
+
+  if [[ $file != $new_filename ]]; then
+    echo "\nRenaming file to '$new_filename'."
+    mv $file $new_filename
+  fi
+done

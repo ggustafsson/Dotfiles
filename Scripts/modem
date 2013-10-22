@@ -6,6 +6,8 @@
 # while "connecting". The progressbar is synced with a specific audio file i
 # found on the internetz.
 
+# Dependencies: alsa-utils (on Linux)
+
 # Usage: modem
 
 sound_file=~/Storage/modem.mp3
