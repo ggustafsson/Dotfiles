@@ -147,7 +147,6 @@ nnoremap <Leader>re :%s//gc<Left><Left><Left>
 nnoremap <Leader>s2 :set expandtab softtabstop=2 shiftwidth=2<CR>
 nnoremap <Leader>s4 :set expandtab softtabstop=4 shiftwidth=4<CR>
 nnoremap <Leader>s8 :set expandtab softtabstop=8 shiftwidth=8<CR>
-nnoremap <Leader>sc :edit ~/Documents/Text\ Files/Scratch\ Notes.txt<CR>
 nnoremap <Leader>sh :shell<CR>
 nnoremap <Leader>sp :setlocal spell!<CR>
 nnoremap <Leader>ss :mksession! ~/.vim/session.vim<CR>
@@ -155,8 +154,6 @@ nnoremap <Leader>t2 :set noexpandtab shiftwidth=2 softtabstop=0 tabstop=2<CR>
 nnoremap <Leader>t4 :set noexpandtab shiftwidth=4 softtabstop=0 tabstop=4<CR>
 nnoremap <Leader>t8 :set noexpandtab shiftwidth=8 softtabstop=0 tabstop=8<CR>
 nnoremap <Leader>ta :tab sball<CR>
-nnoremap <Leader>tm :edit ~/Documents/Secure\ Notes/Temporary.blowfish<CR>
-nnoremap <Leader>to :edit ~/Documents/Text\ Files/To-do\ List.todo<CR>
 nnoremap <Leader>tr :NERDTreeToggle<CR>
 nnoremap <Leader>tw :set textwidth=78
 nnoremap <Leader>un :edit!<CR>
