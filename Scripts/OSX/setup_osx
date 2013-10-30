@@ -14,6 +14,7 @@ if [[ $? -eq 1 ]]; then
 fi
 
 chflags hidden ~/Public
+defaults write .GlobalPreferences com.apple.mouse.scaling -1
 
 echo
 xcode-select --install
