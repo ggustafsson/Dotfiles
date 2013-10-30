@@ -5,7 +5,7 @@
 # Description: This script converts FLAC files to high quality MP3 files in a
 # very easy and convenient way. By default this script depends on my
 # independent script called "title" which is used to automatically fix the
-# capitalization of every tag and filename (use the -ic flag to stop it).
+# capitalization of every tag (use the -ic flag to stop it).
 
 # Dependencies: flac, lame and title
 
@@ -78,13 +78,6 @@ for file in $*; do
     echo "${(C)tag}: ${(P)tag}"
   done
 
-  # Fix the filename if fix_capitalization is set to 1.
-  if [[ $fix_capitalization -eq 1 ]]; then
-    file_output=$(title $file:r).mp3
-  else
-    file_output=${file:r}.mp3
-  fi
-
   # Decode FLAC file with "flac" and encode it to MP3 with "lame".
   flac -dc $file | lame -b 320 -h --ignore-tag-errors \
     --tt "$title" \
@@ -93,5 +86,5 @@ for file in $*; do
     --tn "$tracknumber/$totaltracks" \
     --tg "$genre" \
     --ty "$date" \
-    --add-id3v2 - $file_output
+    --add-id3v2 - ${file:r}.mp3
 done
