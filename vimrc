@@ -78,11 +78,11 @@ if has("gui_running") && has("mac")
   set visualbell
 
   function! FontSetup()
-    set guifont=Inconsolata:h13
+    set guifont=Menlo:h11
     set linespace=1
 
-    set columns=185
-    set lines=47
+    set columns=112
+    set lines=32
   endfunction
 
   if !exists("g:dont_set_font_again")
@@ -199,11 +199,9 @@ inoremap jj          <Esc>
 
 if has("gui_running") && has("mac")
   function! FullScreen()
-    if &guifont != "Inconsolata:h24"
+    if &guifont != "Menlo:h24"
       set fullscreen
-
-      set antialias
-      set guifont=Inconsolata:h24
+      set guifont=Menlo:h24
     else
       set nofullscreen
 

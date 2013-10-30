@@ -6,24 +6,25 @@
 
 # Usage: setup_osx
 
-if sudo -n test >& /dev/null; then
+sudo echo "Testing if this user is allowed to use sudo."
+
+if [[ $? -eq 1 ]]; then
   echo "User is not allowed to use sudo! Exiting..."
   return 1
 fi
 
-if ! type -p git >& /dev/null; then
-  echo "Install Xcode and 'Command Line Tools' first! Exiting..."
-  return 1
-fi
+chflags hidden ~/Public
 
-chflags nohidden ~/Library
+echo
+xcode-select --install
 
+echo
 git clone git@github.com:mxcl/homebrew.git ~/Downloads/homebrew
 sudo mv ~/Downloads/homebrew /usr/local
 
-sudo /usr/local/bin/brew tap homebrew/dupes
+/usr/local/bin/brew tap homebrew/dupes
 
-sudo /usr/local/bin/brew install \
+/usr/local/bin/brew install \
   bash \
   coreutils \
   cowsay \
@@ -46,7 +47,7 @@ sudo /usr/local/bin/brew install \
   python \
   python3 \
   rsync \
-  ruby \
+  ruby \
   svtplay-dl \
   tmux \
   tree \
@@ -55,6 +56,9 @@ sudo /usr/local/bin/brew install \
   wget \
   youtube-dl \
   zsh
+
+echo "Adding new Zsh to login shells:"
+echo "/usr/local/bin/zsh" | sudo tee -a /etc/shells
 
 ln -s /usr/local/bin/gdircolors /usr/local/bin/dircolors
 ln -s /usr/local/bin/ghead /usr/local/bin/head
@@ -68,8 +72,10 @@ ln -s /usr/local/bin/gwc /usr/local/bin/wc
 
 export GEM_HOME=~/.gem/ruby
 
+echo
 /usr/local/bin/gem install terminal-notifier
 /usr/local/bin/pip install mutagen
 
+echo
 ~/Scripts/setup_dotfiles
 ~/Scripts/dl_misc
