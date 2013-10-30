@@ -153,7 +153,7 @@ if [[ $OSTYPE == darwin* ]]; then
   alias brews="brew search"
   alias brewu="brew update && brew upgrade"
 
-  alias gvimdiff='/Applications/MacVim.app/Contents/MacOS/Vim -d -g $* >& /dev/null'
+  alias gvimdiff='~/Applications/MacVim.app/Contents/MacOS/Vim -d -g $* >& /dev/null'
   alias mvim="gvim"
   alias mvimdiff="gvimdiff"
 

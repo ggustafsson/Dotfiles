@@ -81,8 +81,8 @@ if has("gui_running") && has("mac")
     set guifont=Menlo:h11
     set linespace=1
 
-    set columns=112
-    set lines=32
+    set columns=187
+    set lines=55
   endfunction
 
   if !exists("g:dont_set_font_again")
@@ -118,7 +118,7 @@ command! -nargs=? Helpt tab help <args>
 cabbrev helpt Helpt
 
 if has("mac")
-  nnoremap <Leader>fu :call FullScreen()<CR>
+  nnoremap <Leader>fo :call FontChange()<CR>
   nnoremap <Leader>fi :silent !open "%:p:h"<CR>
   nnoremap <Leader>op :silent !open -a Safari "%"<CR>
 endif
@@ -198,13 +198,10 @@ inoremap <expr><Tab> CompleteTab()
 inoremap jj          <Esc>
 
 if has("gui_running") && has("mac")
-  function! FullScreen()
+  function! FontChange()
     if &guifont != "Menlo:h24"
-      set fullscreen
       set guifont=Menlo:h24
     else
-      set nofullscreen
-
       call FontSetup()
     endif
   endfunction
