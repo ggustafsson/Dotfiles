@@ -28,7 +28,6 @@ else
 end
 
 $directory = "#{Dir.home}/.reddit"
-$filter_gifs = 1 # GIFs makes Safari go bananas :(
 
 # Check if the default config file should be used or not.
 if ARGV.length == 0
@@ -69,9 +68,6 @@ def check_subreddit(subreddit)
 
     # Write down every URL to the log file so it can be checked next run.
     log_file.puts url
-
-    # Ignore URLs containing ".gif" if filtering is turned on.
-    next if $filter_gifs == 1 and url.include?(".gif")
 
     # Open up the URL if it has not been visited before.
     unless visited_urls.include?(Regexp.escape(url))
