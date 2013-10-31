@@ -13,6 +13,11 @@ if [[ $? -eq 1 ]]; then
   return 1
 fi
 
+if [[ ! -f ~/.ssh/id_rsa ]]; then
+  echo "Install the SSH key first! Exiting..."
+  return 1
+fi
+
 echo -n "\nWhat hostname do you want? "
 read new_hostname
 
