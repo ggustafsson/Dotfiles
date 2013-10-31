@@ -13,9 +13,24 @@ if [[ $? -eq 1 ]]; then
   return 1
 fi
 
-chflags hidden ~/Public
+echo -n "\nWhat hostname do you want? "
+read new_hostname
+
+if [[ -z $new_hostname ]]; then
+  echo "No hostname supplied! Exiting..."
+  return 1
+fi
+
+# Override hostname from DHCP server.
+sudo scutil --set HostName $new_hostname
+
+# Change the mouse accelaration option.
 defaults write -g com.apple.mouse.scaling -1
 
+# Hide the Public folder.
+chflags hidden ~/Public
+
+# Install Xcode Command Line Tools.
 echo
 xcode-select --install
 
