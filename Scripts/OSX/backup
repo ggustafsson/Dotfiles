@@ -16,7 +16,6 @@ backup_destination=/Volumes/Backup
 directories=(
   Development
   Documents
-  Dropbox
   Library/Safari/Bookmarks.plist
   Movies
   Music/FLAC
@@ -26,7 +25,6 @@ directories=(
   Pictures
   Projects
   School
-  Sites
   Storage
   Web\ Archives
   YouTube
