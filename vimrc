@@ -81,7 +81,7 @@ if has("gui_running") && has("mac")
     set guifont=Menlo:h11
     set linespace=1
 
-    set columns=187
+    set columns=204
     set lines=55
   endfunction
 
