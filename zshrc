@@ -142,6 +142,7 @@ fi
 
 if [[ $OSTYPE == darwin* ]]; then
   alias eject="osascript -e 'tell application \"Finder\" to eject (every disk whose ejectable is true)' && echo 'Ejecting all external drives.'"
+  alias mext="open smb://192.168.1.3/External"
   alias o="open"
   alias top="top -o cpu -s 2"
   alias tree="tree -N"
