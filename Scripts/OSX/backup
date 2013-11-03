@@ -16,6 +16,7 @@ backup_destination=/Volumes/Backup
 directories=(
   Development
   Documents
+  Dropbox
   Library/Safari/Bookmarks.plist
   Movies
   Music/FLAC
