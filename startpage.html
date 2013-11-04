@@ -39,14 +39,17 @@
       background-color: #efefef;
     }
 
+    #searchbox {
+      border-bottom: 1px solid #dddddd;
+    }
+
     input {
       width: 100%;
       height: 90px;
-      border: 1px solid #dddddd;
-      border-left: 0px;
-      border-right: 0px;
+      border: 0px;
+      border-top: 1px solid #dddddd;
       font-family: Helvetica, Arial, "Bitstream Vera Sans", sans-serif;
-      font-size: 14px;
+      font-size: 16px;
       text-align: center;
       padding: 0px;
     }
@@ -87,28 +90,30 @@
   </div>
 
   <div class="normal">
-    <a href="https://www.youtube.com">YouTube</a>
-  </div>
-
-  <div class="alternate">
     <a href="http://devour.com">Devour</a>
   </div>
 
-  <div class="normal">
+  <div class="alternate">
     <a href="https://coursepress.lnu.se/program/it-tekniker/start/vara-kurser/">IT-tekniker</a>
   </div>
 
-  <div class="alternate">
+  <div class="normal">
     <a href="https://wfm.lnu.se/default.aspx">WebFileManager</a>
   </div>
 
-  <div class="normal">
+  <div class="alternate">
     <a href="http://en.wikipedia.org/wiki/Main_Page">Wikipedia</a>
   </div>
 
-  <form action="http://www.wolframalpha.com/input">
-    <input name="i" placeholder="Search Wolfram Alpha ..."></input>
-  </form>
+  <div id="searchbox">
+    <form action="https://www.youtube.com/results">
+      <input name="search_query" placeholder="Search YouTube ..."></input>
+    </form>
+
+    <form action="http://www.wolframalpha.com/input">
+      <input name="i" placeholder="Search Wolfram Alpha ..."></input>
+    </form>
+  </div>
 
 </body>
 </html>
