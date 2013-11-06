@@ -71,16 +71,6 @@ fi
 
 echo
 
-if [[ -d ~/.vim/bundle/seek ]]; then
-  headline "Seek"
-  cd ~/.vim/bundle/seek
-  git pull
-else
-  git clone git://github.com/goldfeld/vim-seek.git ~/.vim/bundle/seek
-fi
-
-echo
-
 if [[ -d ~/.vim/bundle/surround ]]; then
   headline "Surround"
   cd ~/.vim/bundle/surround
