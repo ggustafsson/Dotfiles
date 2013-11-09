@@ -29,9 +29,6 @@ fi
 # Override hostname from DHCP server.
 sudo scutil --set HostName $new_hostname
 
-# Change the mouse accelaration option.
-defaults write -g com.apple.mouse.scaling -1
-
 # Hide the Public folder.
 chflags hidden ~/Public
 
