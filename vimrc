@@ -78,11 +78,11 @@ if has("gui_running") && has("mac")
   set visualbell
 
   function! FontSetup()
-    set guifont=Menlo:h11
+    set guifont=Menlo:h12
     set linespace=1
 
     set columns=204
-    set lines=55
+    set lines=52
   endfunction
 
   if !exists("g:dont_set_font_again")
