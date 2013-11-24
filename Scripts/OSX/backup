@@ -21,6 +21,7 @@ directories=(
   Movies
   Music/FLAC
   Music/GBS
+  Music/MP3
   Music/NSFe
   Music/Ringtones
   Pictures

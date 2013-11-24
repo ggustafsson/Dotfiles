@@ -15,6 +15,7 @@ directories=(
   /Volumes/External/Documentaries
   /Volumes/External/Movies
   /Volumes/External/Series
+  ~/Music/FLAC
   ~/Music/MP3
   ~/YouTube
 )
