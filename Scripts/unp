@@ -16,33 +16,33 @@ fi
 
 echo "Extracting archive(s)."
 
-for file in $*; do
+for arg; do
   echo
 
-  if [[ ! -f $file ]]; then
-    echo "File '$file' does not exist!"
+  if [[ ! -f $arg ]]; then
+    echo "File '$arg' does not exist\!"
     continue
   fi
 
-  echo "Unpacking file '$file'."
+  echo "Unpacking file '$arg'."
 
-  case $file in
-    *.tar.bz2) tar xvjf   $file ;; # Must come before bz2.
-    *.bz2)     bunzip2    $file ;;
+  case $arg in
+    *.tar.bz2) tar xvjf   $arg ;; # Must come before bz2.
+    *.bz2)     bunzip2    $arg ;;
 
-    *.tar.gz)  tar zxvf   $file ;; # Must come before gz.
-    *.gz)      gunzip     $file ;;
+    *.tar.gz)  tar zxvf   $arg ;; # Must come before gz.
+    *.gz)      gunzip     $arg ;;
 
-    *.rar)     unrar x    $file ;;
-    *.tar)     tar xvf    $file ;;
-    *.tbz2)    tar xvjf   $file ;;
-    *.tgz)     tar zxvf   $file ;;
-    *.Z)       uncompress $file ;;
-    *.zip)     unzip      $file ;;
-    *.7z)      7z x       $file ;;
+    *.rar)     unrar x    $arg ;;
+    *.tar)     tar xvf    $arg ;;
+    *.tbz2)    tar xvjf   $arg ;;
+    *.tgz)     tar zxvf   $arg ;;
+    *.Z)       uncompress $arg ;;
+    *.zip)     unzip      $arg ;;
+    *.7z)      7z x       $arg ;;
 
     *)
-      echo "File '$file' cannot be extracted with ${0:t}!"
+      echo "File '$arg' cannot be extracted with ${0:t}\!"
     ;;
   esac
 done

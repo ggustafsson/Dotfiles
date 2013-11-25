@@ -18,22 +18,22 @@ fi
 
 echo "Validating HTML file(s)."
 
-for file in $*; do
+for arg; do
   echo
 
-  if [[ ! -f $file ]]; then
-    echo "File '$file' does not exist!"
+  if [[ ! -f $arg ]]; then
+    echo "File '$arg' does not exist\!"
     continue
   fi
 
-  echo "Validating file '$file'."
+  echo "Validating file '$arg'."
 
   # Changes the directory to where the file is. Otherwise upload won't work :(
-  cd $file:A:h
-  results=$(curl --form "uploaded_file=@${file:t};type=text/html" --form output=json --silent http://validator.w3.org/check)
+  cd $arg:A:h
+  results=$(curl --form "uploaded_file=@${arg:t};type=text/html" --form output=json --silent http://validator.w3.org/check)
 
   if [[ $? -gt 0 ]]; then
-    echo "Failed at getting results!"
+    echo 'Failed at getting results!'
     return 1
   fi
 
@@ -50,6 +50,6 @@ for file in $*; do
     # make "uniq" work.
     echo $parsed_results | sed 's/^[ \t]*"lastLine":/ /;s/,//g' | sort --general-numeric-sort | uniq
   else
-    echo "No errors! :)"
+    echo 'No errors! :)'
   fi
 done

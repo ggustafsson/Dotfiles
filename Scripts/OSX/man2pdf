@@ -12,6 +12,6 @@ if [[ ! $# -gt 0 ]]; then
   exit
 fi
 
-for topic in $*; do
-  man -t $topic | open -f -a Preview
+for arg; do
+  man -t $arg | open -f -a Preview
 done

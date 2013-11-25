@@ -30,21 +30,21 @@ else
   if type -p title >& /dev/null; then
     fix_capitalization=1
   else
-    echo "\nCommand 'title' not found! Skipping capitalization fix..."
+    echo "\nCommand 'title' not found\! Skipping capitalization fix..."
     fix_capitalization=0
   fi
 fi
 
-for file in $*; do
+for arg; do
   echo
 
-  if [[ ! -f $file ]]; then
-    echo "File '$file' does not exist!"
+  if [[ ! -f $arg ]]; then
+    echo "File '$arg' does not exist\!"
     continue
   fi
 
-  if [[ ! $file == *.flac ]]; then
-    echo "File '$file' does not end with 'flac'."
+  if [[ ! $arg == *.flac ]]; then
+    echo "File '$arg' does not end with 'flac'."
     continue
   fi
 
@@ -54,7 +54,7 @@ for file in $*; do
   # Put all tag information inside of various shell variables.
   for tag in $tags; do
     # The info variable will contain something like "TITLE=Text here".
-    output=$(metaflac --show-tag=$tag $file)
+    output=$(metaflac --show-tag=$tag $arg)
 
     # The information variable will contain just "Text here".
     information=${output#*=}
@@ -71,7 +71,7 @@ for file in $*; do
     typeset $tag=$information
   done
 
-  print -P "%B%F{cyan}Converting file '$file' to MP3.%f%b\n"
+  print -P "%B%F{cyan}Converting file '$arg' to MP3.%f%b\n"
 
   # Print out all tag information.
   for tag in $tags; do
@@ -79,12 +79,12 @@ for file in $*; do
   done
 
   # Decode FLAC file with "flac" and encode it to MP3 with "lame".
-  flac -dc $file | lame -b 320 -h --ignore-tag-errors \
+  flac -dc $arg | lame -b 320 -h --ignore-tag-errors \
     --tt "$title" \
     --ta "$artist" \
     --tl "$album" \
     --tn "$tracknumber/$totaltracks" \
     --tg "$genre" \
     --ty "$date" \
-    --add-id3v2 - ${file:r}.mp3
+    --add-id3v2 - ${arg:r}.mp3 # Remove file ending and add ".mp3".
 done

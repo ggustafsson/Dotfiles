@@ -14,14 +14,14 @@ if [[ ! $# -gt 1 ]]; then
   exit
 fi
 
-for file_input in $*; do
-  if [[ ! -f $file_input ]]; then
-    echo "File '$file_input' does not exist!"
+for arg; do
+  if [[ ! -f $arg ]]; then
+    echo "File '$arg' does not exist\!"
     return 1
   fi
 done
 
-file_output=animated_$(date '+%Y-%m-%d_%H%M').gif
-convert -delay 30 -loop 0 $* $file_output
+filename=animated_$(date '+%Y-%m-%d_%H%M').gif
+convert -delay 30 -loop 0 $* $filename
 
-[[ $OSTYPE == darwin* ]] && open -a Safari $file_output
+[[ $OSTYPE == darwin* ]] && open -a Safari $filename

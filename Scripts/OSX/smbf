@@ -19,5 +19,5 @@ results=$(nmap -sT ${ip}/24 -p $port --open 2> /dev/null | egrep "(Nmap scan rep
 if [[ ! -z $results ]]; then
   echo "\n$results"
 else
-  echo "\nNo network shares found!"
+  echo "\nNo network shares found\!"
 fi
