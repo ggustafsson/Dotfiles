@@ -1,0 +1,29 @@
+#!/bin/bash
+
+# Written by Göran Gustafsson <gustafsson.g@gmail.com>.
+
+# Description: This script configures specific things for my virtual machines.
+
+# Usage: setup_ubuntu_tv
+
+sudo apt-get install \
+  apache2 \
+  bind9 \
+  dia \
+  gparted \
+  hping3 \
+  mdadm \
+  ncftp \
+  netperf \
+  nfs-kernel-server \
+  nginx \
+  php5 \
+  samba4 \
+  tcl \
+  tftp \
+  tftpd \
+  tshark \
+  wireshark
+
+sudo dpkg-reconfigure wireshark-common
+sudo usermod -a -G wireshark $USER
