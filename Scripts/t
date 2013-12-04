@@ -10,7 +10,7 @@
 #        t <text>
 
 if [[ -z $todo_file ]]; then
-  echo "Variable 'todo_file' is not set\! Exiting..."
+  echo "Variable 'todo_file' is not set! Exiting..."
   return 1
 fi
 
@@ -23,12 +23,12 @@ if [[ $# -gt 0 ]]; then
   echo "Added new entry to to-do list."
 else
   if [[ ! -f $todo_file ]]; then
-    echo "File '$todo_file' does not exist\!"
+    echo "File '$todo_file' does not exist!"
     return 1
   fi
 
   if [[ ! -s $todo_file ]]; then
-    echo 'No entries found!'
+    echo "No entries found!"
     exit
   fi
 

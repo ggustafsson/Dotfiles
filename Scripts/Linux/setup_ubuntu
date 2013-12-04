@@ -7,7 +7,7 @@
 # Usage: setup_ubuntu
 
 if [[ ! -f ~/.ssh/id_rsa ]]; then
-  echo 'Install the SSH key first! Exiting...'
+  echo "Install the SSH key first! Exiting..."
   return 1
 fi
 

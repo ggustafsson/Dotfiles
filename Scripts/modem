@@ -19,7 +19,7 @@ else
 fi
 
 if [[ ! -f $sound_file ]]; then
-  echo 'Buu! Modem not plugged in! :('
+  echo "Buu! Modem not plugged in!"
   return 1
 fi
 
@@ -37,8 +37,8 @@ for number in {1..12}; do
 done
 
 echo -n "] "
-print -P "%B%F{green}Connected\!%f%b"
+print -P "%B%F{green}Connected!%f%b"
 
 sleep 1
-echo "\nEnjoy the internetz\!"
+echo "\nEnjoy the internetz!"
 sleep 1

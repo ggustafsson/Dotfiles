@@ -20,7 +20,7 @@ if [[ ! $# -gt 0 ]]; then
 fi
 
 if ! type -p title >& /dev/null; then
-  echo "\nCommand 'title' not found\! Exiting..."
+  echo "\nCommand 'title' not found! Exiting..."
   return 1
 fi
 
@@ -30,7 +30,7 @@ for arg; do
   echo
 
   if [[ ! -f $arg ]]; then
-    echo "File '$arg' does not exist\!"
+    echo "File '$arg' does not exist!"
     continue
   fi
 

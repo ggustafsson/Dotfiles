@@ -15,7 +15,7 @@ if [[ ! $# -eq 1 ]]; then
 fi
 
 if [[ ! -d $1 ]]; then
-  echo "Directory '$1' does not exist\!"
+  echo "Directory '$1' does not exist!"
   return 1
 fi
 

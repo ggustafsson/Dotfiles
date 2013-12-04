@@ -33,7 +33,7 @@ if [[ $# -eq 1 ]]; then
   if [[ $PWD != $new_pwd ]]; then
     cd "$new_pwd"
   else
-    echo 'No result found!'
+    echo "No result found!"
   fi
 else
   cd ..

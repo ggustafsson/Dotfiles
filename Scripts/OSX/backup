@@ -34,7 +34,7 @@ directories=(
 )
 
 if [[ ! -f $encrypted_image ]]; then
-  echo "File '$encrypted_image' does not exist\!"
+  echo "File '$encrypted_image' does not exist!"
   return 1
 fi
 
@@ -42,7 +42,7 @@ echo "Mounting encrypted image file."
 hdiutil attach -noverify $encrypted_image
 
 if [[ ! -d $backup_destination ]]; then
-  echo "\nDirectory '$backup_destination' does not exist\!"
+  echo "\nDirectory '$backup_destination' does not exist!"
   return 1
 fi
 

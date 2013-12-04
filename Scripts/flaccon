@@ -30,7 +30,7 @@ else
   if type -p title >& /dev/null; then
     fix_capitalization=1
   else
-    echo "\nCommand 'title' not found\! Skipping capitalization fix..."
+    echo "\nCommand 'title' not found! Skipping capitalization fix..."
     fix_capitalization=0
   fi
 fi
@@ -39,7 +39,7 @@ for arg; do
   echo
 
   if [[ ! -f $arg ]]; then
-    echo "File '$arg' does not exist\!"
+    echo "File '$arg' does not exist!"
     continue
   fi
 

@@ -24,7 +24,7 @@ if [[ $# -gt 0 ]]; then
     tail -n +2 | \
     egrep --invert-match "(grep $*|$0 $*)" | \
     grep "$*" \
-    || echo 'No processes found!'
+    || echo "No processes found!"
 else
   eval $command
 fi

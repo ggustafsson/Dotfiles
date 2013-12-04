@@ -9,12 +9,12 @@
 sudo echo "Testing if this user is allowed to use sudo."
 
 if [[ $? -eq 1 ]]; then
-  echo 'User is not allowed to use sudo! Exiting...'
+  echo "User is not allowed to use sudo! Exiting..."
   return 1
 fi
 
 if [[ ! -f ~/.ssh/id_rsa ]]; then
-  echo 'Install the SSH key first! Exiting...'
+  echo "Install the SSH key first! Exiting..."
   return 1
 fi
 
@@ -22,7 +22,7 @@ echo -n "\nWhat hostname do you want? "
 read new_hostname
 
 if [[ -z $new_hostname ]]; then
-  echo 'No hostname supplied! Exiting...'
+  echo "No hostname supplied! Exiting..."
   return 1
 fi
 

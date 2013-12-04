@@ -20,7 +20,7 @@ for arg; do
   echo
 
   if [[ ! -f $arg ]]; then
-    echo "File '$arg' does not exist\!"
+    echo "File '$arg' does not exist!"
     continue
   fi
 
@@ -42,7 +42,7 @@ for arg; do
     *.7z)      7z x       $arg ;;
 
     *)
-      echo "File '$arg' cannot be extracted with ${0:t}\!"
+      echo "File '$arg' cannot be extracted with ${0:t}!"
     ;;
   esac
 done

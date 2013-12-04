@@ -43,5 +43,5 @@ if [[ $answer == (y|yes) ]]; then
 
   open -a "App Store"
 else
-  echo "\nBye bye\!"
+  echo "\nBye bye!"
 fi

@@ -22,7 +22,7 @@ for arg; do
   echo
 
   if [[ ! -f $arg ]]; then
-    echo "File '$arg' does not exist\!"
+    echo "File '$arg' does not exist!"
     continue
   fi
 
@@ -33,7 +33,7 @@ for arg; do
   results=$(curl --form "uploaded_file=@${arg:t};type=text/html" --form output=json --silent http://validator.w3.org/check)
 
   if [[ $? -gt 0 ]]; then
-    echo 'Failed at getting results!'
+    echo "Failed at getting results!"
     return 1
   fi
 
@@ -50,6 +50,6 @@ for arg; do
     # make "uniq" work.
     echo $parsed_results | sed 's/^[ \t]*"lastLine":/ /;s/,//g' | sort --general-numeric-sort | uniq
   else
-    echo 'No errors! :)'
+    echo "No errors found!"
   fi
 done
