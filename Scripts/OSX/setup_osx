@@ -29,6 +29,9 @@ fi
 # Override hostname from DHCP server.
 sudo scutil --set HostName $new_hostname
 
+# Enable backspace in Safari again.
+defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2BackspaceKeyNavigationEnabled -bool YES
+
 # Hide the Public folder.
 chflags hidden ~/Public
 
