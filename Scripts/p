@@ -21,10 +21,11 @@ fi
 if [[ $# -gt 0 ]]; then
   ps_output=$(eval $command)
 
-  # Skip the first row and ignore the text "zsh /Users/GLEG/Scripts/p x".
+  # Skip the first row and ignore the text "zsh /Users/GLEG/Scripts/p x" and
+  # "ps ax -o user,pid,command".
   ps_body=$(echo $ps_output | \
     tail -n +2 | \
-    egrep --invert-match "zsh $0 $*" | \
+    egrep --invert-match "(zsh $0 $*|$command)" | \
     grep "$*")
 
   if [[ ! -z $ps_body ]]; then
