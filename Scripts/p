@@ -19,9 +19,8 @@ else
 fi
 
 if [[ $# -gt 0 ]]; then
-  # Run ps, remove header and ignore false results (script and grep).
+  # Run ps and ignore false results (script and grep).
   eval $command | \
-    tail -n +2 | \
     egrep --invert-match "(grep $*|$0 $*)" | \
     grep "$*" \
     || echo "No processes found!"
