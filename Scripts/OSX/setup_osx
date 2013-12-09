@@ -63,6 +63,7 @@ sudo mv ~/Downloads/homebrew /usr/local
   links \
   macvim \
   ncftp \
+  netperf \
   nmap \
   openssh \
   python \
