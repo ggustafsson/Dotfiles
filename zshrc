@@ -184,6 +184,7 @@ alias hist="history -i 1 | less"
 alias iip="curl icanhazip.com"
 alias ka="killall"
 alias ls='ls $ls_options'
+alias ports="lsof -i -P | g LISTEN"
 alias pyweb="python3 -m http.server 8080"
 alias random='FILES=(*) && echo $FILES[$RANDOM%$#FILES+1]'
 alias recf="ls -t | head -n 5"
