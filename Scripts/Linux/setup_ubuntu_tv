@@ -8,6 +8,7 @@
 
 sudo apt-get install \
   default-jre \
+  nagios3 \
   openssh-server \
   sshguard \
   xbmc
