@@ -9,6 +9,7 @@
 sudo apt-get install \
   apache2 \
   bind9 \
+  cdpr \
   dia \
   gparted \
   hping3 \
