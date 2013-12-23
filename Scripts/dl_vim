@@ -11,16 +11,6 @@ function headline {
   print -P "%B%F{cyan}Checking for $* updates.%f%b"
 }
 
-if [[ -d ~/.vim/pathogen ]]; then
-  headline "Pathogen"
-  cd ~/.vim/pathogen
-  git pull
-else
-  git clone git://github.com/tpope/vim-pathogen.git ~/.vim/pathogen
-fi
-
-echo
-
 if [[ -d ~/.vim/bundle/gist ]]; then
   headline "Gist"
   cd ~/.vim/bundle/gist
@@ -67,6 +57,36 @@ if [[ -d ~/.vim/bundle/nerdtree ]]; then
   git pull
 else
   git clone git://github.com/scrooloose/nerdtree.git ~/.vim/bundle/nerdtree
+fi
+
+echo
+
+if [[ -d ~/.vim/pathogen ]]; then
+  headline "Pathogen"
+  cd ~/.vim/pathogen
+  git pull
+else
+  git clone git://github.com/tpope/vim-pathogen.git ~/.vim/pathogen
+fi
+
+echo
+
+if [[ -d ~/.vim/bundle/repeat ]]; then
+  headline "Repeat"
+  cd ~/.vim/bundle/repeat
+  git pull
+else
+  git clone git@github.com:tpope/vim-repeat.git ~/.vim/bundle/repeat
+fi
+
+echo
+
+if [[ -d ~/.vim/bundle/speeddating ]]; then
+  headline "Speeddating"
+  cd ~/.vim/bundle/speeddating
+  git pull
+else
+  git clone git@github.com:tpope/vim-speeddating.git ~/.vim/bundle/speeddating
 fi
 
 echo
