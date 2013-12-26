@@ -158,8 +158,8 @@ if [[ $OSTYPE == darwin* ]]; then
   alias mvim="gvim"
   alias mvimdiff="gvimdiff"
 
-  alias mext="open smb://192.168.1.3/External"
-  alias umext='umount //$USER@192.168.1.3/External'
+  alias mext="open smb://10.11.12.3/External"
+  alias umext='umount //$USER@10.11.12.3/External'
 
   alias wifioff="networksetup -setairportpower en0 off && echo 'Turning Wi-Fi off.'"
   alias wifion="networksetup -setairportpower en0 on && echo 'Turning Wi-Fi on.'"
