@@ -11,7 +11,7 @@ server=hoth
 destination=/media/external
 
 directories=(
-  /Volumes/External/Disc\ Images
+  /Volumes/External/Disk\ Images
   /Volumes/External/Documentaries
   /Volumes/External/Movies
   /Volumes/External/Series
