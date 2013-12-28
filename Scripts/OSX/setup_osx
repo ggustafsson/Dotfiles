@@ -73,6 +73,7 @@ sudo mv ~/Downloads/homebrew /usr/local
   svtplay-dl \
   tmux \
   tree \
+  unrar \
   vim \
   vorbis-tools \
   wget \
