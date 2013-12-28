@@ -27,19 +27,22 @@ for arg; do
   echo "Unpacking file '$arg'."
 
   case $arg in
-    *.tar.bz2) tar xvjf   $arg ;; # Must come before bz2.
-    *.bz2)     bunzip2    $arg ;;
+    *.tar.bz2) tar xvf $arg ;; # Must come before "*.bz2".
+    *.bz2)     bunzip2 $arg ;;
 
-    *.tar.gz)  tar zxvf   $arg ;; # Must come before gz.
-    *.gz)      gunzip     $arg ;;
+    *.tar.gz)  tar xvf $arg ;; # Must come before "*.gz".
+    *.gz)      gunzip $arg  ;;
 
-    *.rar)     unrar x    $arg ;;
-    *.tar)     tar xvf    $arg ;;
-    *.tbz2)    tar xvjf   $arg ;;
-    *.tgz)     tar zxvf   $arg ;;
+    *.tar.xz)  tar xvf $arg ;; # Must come before "*.xz".
+    *.xz)      unxz $arg    ;;
+
+    *.rar)     unrar x $arg    ;;
+    *.tar)     tar xvf $arg    ;;
+    *.tbz2)    tar xvf $arg    ;;
+    *.tgz)     tar xvf $arg    ;;
+    *.zip)     unzip $arg      ;;
     *.Z)       uncompress $arg ;;
-    *.zip)     unzip      $arg ;;
-    *.7z)      7z x       $arg ;;
+    *.7z)      7z x $arg       ;;
 
     *)
       echo "File '$arg' cannot be extracted with ${0:t}!"
