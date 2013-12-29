@@ -11,12 +11,18 @@ if [[ ! $OSTYPE == darwin* ]]; then
   git clone git://github.com/ggustafsson/IP-Kalkylatorn.git ~/Projects/IP\ Kalkylatorn
   git clone git://github.com/ggustafsson/Ninja-Color-Scheme.git ~/Projects/Ninja\ Color\ Scheme
   git clone git://github.com/ggustafsson/Tim.git ~/Projects/Tim
+
+  ln -s ~/Storage/Configs/gist-vim ~/.gist-vim
+  ln -s ~/Storage/Configs/ssh ~/.ssh
+else
+  mkdir ~/.ssh
+
+  ln -s ~/Projects/Dot\ Files/ssh_config ~/.ssh/config
 fi
 
 ln -s ~/Projects/Dot\ Files/Scripts ~/Scripts
 ln -s ~/Projects/Dot\ Files/gitconfig ~/.gitconfig
 ln -s ~/Projects/Dot\ Files/gitignore_global ~/.gitignore_global
-ln -s ~/Projects/Dot\ Files/ssh_config ~/.ssh/config
 ln -s ~/Projects/Dot\ Files/timrc ~/.timrc
 ln -s ~/Projects/Dot\ Files/tmux.conf ~/.tmux.conf
 ln -s ~/Projects/Dot\ Files/vimrc ~/.vimrc
