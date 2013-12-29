@@ -11,14 +11,17 @@ servers = (
     chatnet = "Quakenet";
     address = "se.quakenet.org";
     port = "6667";
-    nick = "twiggy";
-  },
+  }
 );
 
 chatnets = {
   Freenode = {
     type = "IRC";
     autosendcmd = "/^MSG -freenode NickServ identify GLEG X; wait 2000";
+  };
+  Quakenet = {
+    type = "IRC";
+    nick = "twiggy";
   };
 };
 
@@ -234,8 +237,8 @@ hilights = (
   { text = "gleg"; nick = "yes"; word = "yes"; },
   { text = "goran"; nick = "yes"; word = "yes"; },
   { text = "göran"; nick = "yes"; word = "yes"; },
-  { text = "twiggy"; nick = "yes"; word = "yes"; }
-  { text = "twiggz"; nick = "yes"; word = "yes"; },
+  { text = "twiggy"; nick = "yes"; word = "yes"; },
+  { text = "twiggz"; nick = "yes"; word = "yes"; }
 );
 channels = (
   { name = "#zsh"; chatnet = "Freenode"; autojoin = "yes"; },
