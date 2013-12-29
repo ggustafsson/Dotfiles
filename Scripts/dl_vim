@@ -76,7 +76,7 @@ if [[ -d ~/.vim/bundle/repeat ]]; then
   cd ~/.vim/bundle/repeat
   git pull
 else
-  git clone git@github.com:tpope/vim-repeat.git ~/.vim/bundle/repeat
+  git clone git://github.com/tpope/vim-repeat.git ~/.vim/bundle/repeat
 fi
 
 echo
@@ -86,7 +86,7 @@ if [[ -d ~/.vim/bundle/speeddating ]]; then
   cd ~/.vim/bundle/speeddating
   git pull
 else
-  git clone git@github.com:tpope/vim-speeddating.git ~/.vim/bundle/speeddating
+  git clone git://github.com/tpope/vim-speeddating.git ~/.vim/bundle/speeddating
 fi
 
 echo

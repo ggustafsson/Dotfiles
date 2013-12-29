@@ -6,11 +6,6 @@
 
 # Usage: setup_ubuntu
 
-if [[ ! -f ~/.ssh/id_rsa ]]; then
-  echo "Install the SSH key first! Exiting..."
-  return 1
-fi
-
 rm ~/examples.desktop
 
 sudo apt-get install \
@@ -24,6 +19,6 @@ sudo apt-get install \
 sudo chsh -s /bin/zsh $USER
 
 mkdir ~/Projects
-git clone git@github.com:ggustafsson/Dot-Files.git ~/Projects/Dot\ Files
+git clone git://github.com/ggustafsson/Dot-Files.git ~/Projects/Dot\ Files
 
 ~/Projects/Dot\ Files/Scripts/setup_dotfiles
