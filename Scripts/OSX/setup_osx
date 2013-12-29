@@ -58,7 +58,6 @@ sudo mv ~/Downloads/homebrew /usr/local
   html2text \
   imagemagick --without-x \
   imagesnap \
-  irssi \
   lame \
   links \
   macvim \
@@ -76,6 +75,7 @@ sudo mv ~/Downloads/homebrew /usr/local
   unrar \
   vim \
   vorbis-tools \
+  weechat \
   wget \
   youtube-dl \
   zsh
