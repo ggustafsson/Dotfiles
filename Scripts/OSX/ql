@@ -11,4 +11,4 @@ if [[ ! $# -gt 0 ]]; then
   exit
 fi
 
-qlmanage -p $* >& /dev/null
+qlmanage -p $* &> /dev/null

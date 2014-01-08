@@ -27,7 +27,7 @@ if [[ $1 == -ic ]]; then
   fix_capitalization=0
   shift # Removes $1 from argument list.
 else
-  if type -p title >& /dev/null; then
+  if type -p title &> /dev/null; then
     fix_capitalization=1
   else
     echo "\nCommand 'title' not found! Skipping capitalization fix..."

@@ -154,7 +154,7 @@ if [[ $OSTYPE == darwin* ]]; then
   alias brews="brew search"
   alias brewu="brew update && brew upgrade"
 
-  alias gvimdiff='/Applications/MacVim.app/Contents/MacOS/Vim -d -g $* >& /dev/null'
+  alias gvimdiff='/Applications/MacVim.app/Contents/MacOS/Vim -d -g $* &> /dev/null'
   alias mvim="gvim"
   alias mvimdiff="gvimdiff"
 
@@ -165,7 +165,7 @@ if [[ $OSTYPE == darwin* ]]; then
   alias wifion="networksetup -setairportpower en0 on && echo 'Turning Wi-Fi on.'"
   alias wifiscan="/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport --scan"
 else
-  if type -p apt-get >& /dev/null; then
+  if type -p apt-get &> /dev/null; then
     alias apti="sudo apt-get install"
     alias aptr="sudo apt-get purge"
     alias apts="apt-cache search"
