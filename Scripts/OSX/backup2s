@@ -2,13 +2,16 @@
 
 # Written by Göran Gustafsson <gustafsson.g@gmail.com>.
 
-# Description: This script backs up several directories to a server with rsync
-# through ssh.
+# Description: This script backs up several directories to two servers with
+# rsync (one through ssh and one locally mounted).
 
 # Usage: backup2s
 
 server=hoth
+server2=tatooine
+
 destination=/media/external
+destination2=/Volumes/External
 
 directories=(
   /Volumes/External/Disk\ Images
@@ -20,9 +23,21 @@ directories=(
   ~/YouTube
 )
 
+directories2=(
+  ~/Music/FLAC
+  ~/Music/MP3
+)
+
 echo "Backing up directories to server '$server'."
 
 for directory in $directories; do
   print -P "\n%B%F{green}Backing up directory $directory.%f%b"
   rsync --archive --delete --human-readable --progress $directory -e ssh ${server}:$destination
+done
+
+echo "Backing up directories to server '$server2'."
+
+for directory in $directories2; do
+  print -P "\n%B%F{green}Backing up directory $directory.%f%b"
+  rsync --archive --delete --human-readable --progress $directory $destination2
 done
