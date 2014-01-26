@@ -118,8 +118,8 @@ command! -nargs=? Helpt tab help <args>
 cabbrev helpt Helpt
 
 if has("mac")
-  nnoremap <Leader>fo :call FontChange()<CR>
   nnoremap <Leader>fi :silent !open "%:p:h"<CR>
+  nnoremap <Leader>fu :call FullScreen()<CR>
   nnoremap <Leader>op :silent !open -a Safari "%"<CR>
 endif
 
@@ -201,11 +201,13 @@ inoremap <expr><Tab> CompleteTab()
 inoremap jj          <Esc>
 
 if has("gui_running") && has("mac")
-  function! FontChange()
+  function! FullScreen()
     if &guifont != "Menlo:h24"
       set guifont=Menlo:h24
+      set fullscreen
     else
       call FontSetup()
+      set nofullscreen
     endif
   endfunction
 endif
