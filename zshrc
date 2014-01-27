@@ -1,6 +1,6 @@
 # Göran Gustafsson <gustafsson.g@gmail.com>
 
-[[ $OSTYPE == darwin* ]] && umask 077
+umask 077
 
 [[ $TERM == xterm ]] && export TERM=xterm-256color
 export GEM_HOME=~/.gem/ruby
@@ -15,8 +15,8 @@ export PAGER=less
 
 export LS_COLORS="rs=0:di=01;34:ln=01;35:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=01;31;01:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32"
 export LS_COLORS="$LS_COLORS:*.bmp=01;33:*.gif=01;33:*.ico=01;33:*.jpg=01;33:*.jpeg=01;33:*.png=01;33:*.pxi=01;33:*.svg=01;33:*.tif=01;33:*.tiff=01;33"
-export LS_COLORS="$LS_COLORS:*.flac=01;35:*.nsf=01;35:*.nsfe=01;35:*.m4a=01;35:*.m4r=01;35:*.mp3=01;35:*.ogg=01;35:*.wav=01;35"
 export LS_COLORS="$LS_COLORS:*.avi=01;36:*.flv=01;36:*.f4v=01;36:*.mkv=01;36:*.mov=01;36:*.mpg=01;36:*.mpeg=01;36:*.mp4=01;36:*.m4v=01;36:*.webm=01;36:*.wmv=01;36"
+export LS_COLORS="$LS_COLORS:*.flac=01;35:*.nsf=01;35:*.nsfe=01;35:*.m4a=01;35:*.m4r=01;35:*.mp3=01;35:*.ogg=01;35:*.wav=01;35"
 export LS_COLORS="$LS_COLORS:*.dmg=01;31:*.iso=01;31:*.rar=01;31:*.tar=01;31:*.tar.bz2=01;31:*.tar.gz=01;31:*.tgz=01;31:*.zip=01;31:*.7z=01;31"
 
 export ps_display="user,pid,command"
@@ -30,17 +30,14 @@ SAVEHIST=$HISTSIZE
 
 if [[ $OSTYPE == darwin* ]]; then
   e=/Volumes/External
-  ed=/Volumes/External/Downloads
 else
   e=/media/external
-  ed=/media/external/Downloads
 fi
 
 ls_options=(--classify --color=auto --human-readable)
 
 d=~/Downloads
 p=~/Projects
-t=~/Documents/Text\ Files
 
 setopt combiningchars
 setopt correct
@@ -176,7 +173,6 @@ else
   alias vl='tail -n $LINES -f /var/log/syslog'
 fi
 
-alias bc="bc --quiet"
 alias bigf="du -sk * | sort --numeric-sort --reverse | head"
 alias df="df -h"
 alias du="du -sh"
@@ -184,14 +180,10 @@ alias hist="history -i 1 | less"
 alias iip="curl icanhazip.com"
 alias ka="killall"
 alias ls='ls $ls_options'
-alias nsfw="reddit ~/.reddit/nsfw.config"
-alias ports="lsof -i -P | grep LISTEN"
 alias pyweb="python3 -m http.server 8080"
-alias random='FILES=(*) && echo $FILES[$RANDOM%$#FILES+1]'
 alias recf="ls -t | head -n 5"
 alias reload="source ~/.zshenv && source ~/.zshrc && echo 'Zsh reloaded.'"
 alias tma="tmux attach"
-alias tv='vim "$todo_file"'
 alias wgetp="wget --adjust-extension --convert-links --page-requisites"
 alias ycal='cal $(date +%Y)'
 

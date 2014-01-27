@@ -25,6 +25,7 @@ set t_vb=
 set textwidth=78
 set timeoutlen=2000
 set virtualedit=block
+set wildmode=longest,list
 
 set autoindent
 set smartindent
@@ -63,13 +64,6 @@ set relativenumber
 
 set splitbelow
 set splitright
-
-set wildmode=longest,list
-set wildignore=*.doc,*.pdf,.DS_Store
-set wildignore+=*.bmp,*.gif,*.ico,*.jpg,*.jpeg,*.png,*.svg,*.tif,*.tiff
-set wildignore+=*.flac,*.nsf,*.nsfe,*.m4a,*.m4r,*.mp3,*.ogg,*.wav
-set wildignore+=*.avi,*.flv,*.f4v,*.mkv,*.mov,*.mpg,*.mpeg,*.mp4,*.m4v,*.webm,*.wmv
-set wildignore+=*.dmg,*.iso,*.rar,*.tar,*.tar.bz2,*.tar.gz,*.zip,*.7z
 
 if has("gui_running") && has("mac")
   set guicursor+=a:blinkon0
@@ -129,6 +123,7 @@ nnoremap <Leader>cd :cd %:p:h<CR>:pwd<CR>
 nnoremap <Leader>do :LustyFilesystemExplorer ~/Documents/Text\ Files<CR>
 nnoremap <Leader>ed :LustyFilesystemExplorerFromHere<CR>
 nnoremap <Leader>eh :LustyFilesystemExplorer ~<CR>
+nnoremap <Leader>fe :set fileencoding=utf-8
 nnoremap <Leader>ft :set filetype=
 nnoremap <Leader>ga :Gist -a<CR>
 nnoremap <Leader>gg :Gist<CR>
@@ -141,9 +136,9 @@ nnoremap <Leader>ls :!ls -lFh "%:p:h"<CR>
 nnoremap <Leader>ne :enew<CR>
 nnoremap <Leader>no :edit ~/Documents/Text\ Files/Vim\ Notes.txt<CR>
 nnoremap <Leader>nu :call LineNumber()<CR>
-nnoremap <Leader>os :source ~/.vim/session.vim<CR>
 nnoremap <Leader>pa :set paste!<CR>
 nnoremap <Leader>re :%s//gc<Left><Left><Left>
+nnoremap <Leader>rs :source ~/.vim/session.vim<CR>
 nnoremap <Leader>s2 :set expandtab softtabstop=2 shiftwidth=2<CR>
 nnoremap <Leader>s4 :set expandtab softtabstop=4 shiftwidth=4<CR>
 nnoremap <Leader>s8 :set expandtab softtabstop=8 shiftwidth=8<CR>
