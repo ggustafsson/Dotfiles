@@ -142,7 +142,7 @@ if [[ $OSTYPE == darwin* ]]; then
   alias eject="osascript -e 'tell application \"Finder\" to eject (every disk whose ejectable is true)' && echo 'Ejecting all external drives.'"
   alias o="open"
   alias top="top -o cpu -s 2"
-  alias tree="tree -N"
+  alias tree="tree --charset ascii -N"
   alias vl='sudo tail -n $LINES -f /var/log/system.log'
   alias webcam="imagesnap -t 2 -w 1"
 
