@@ -25,6 +25,7 @@ if [[ $answer == (y|yes) ]]; then
   brew update
   brew upgrade
   brew cleanup
+  brew linkapps --local
   echo
   gem update --system
   gem update

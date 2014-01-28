@@ -9,7 +9,7 @@
 #        gvim <file(s)>
 
 if [[ $# -gt 0 ]]; then
-  /Applications/MacVim.app/Contents/MacOS/Vim -g --remote-tab-silent $*
+  ~/Applications/MacVim.app/Contents/MacOS/Vim -g --remote-tab-silent $*
 else
-  open -a MacVim
+  open ~/Applications/MacVim.app
 fi
