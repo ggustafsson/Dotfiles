@@ -140,6 +140,7 @@ fi
 
 if [[ $OSTYPE == darwin* ]]; then
   alias eject="osascript -e 'tell application \"Finder\" to eject (every disk whose ejectable is true)' && echo 'Ejecting all external drives.'"
+  alias gvimdiff='~/Applications/MacVim.app/Contents/MacOS/Vim -d -g $* &> /dev/null'
   alias o="open"
   alias top="top -o cpu -s 2"
   alias tree="tree --charset ascii -N"
@@ -150,10 +151,6 @@ if [[ $OSTYPE == darwin* ]]; then
   alias brewr="brew uninstall"
   alias brews="brew search"
   alias brewu="brew update && brew upgrade"
-
-  alias gvimdiff='~/Applications/MacVim.app/Contents/MacOS/Vim -d -g $* &> /dev/null'
-  alias mvim="gvim"
-  alias mvimdiff="gvimdiff"
 
   alias mext="open smb://10.11.12.3/External"
   alias umext='umount //$USER@10.11.12.3/External'

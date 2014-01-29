@@ -98,7 +98,7 @@ unless File.exist?(config_file)
 end
 
 if File.read(config_file).empty?
-  abort "Config file is empty. Exiting..."
+  abort "Config file is empty! Exiting..."
 end
 
 puts "Checking Reddit for new posts."

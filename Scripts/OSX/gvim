@@ -2,15 +2,39 @@
 
 # Written by Göran Gustafsson <gustafsson.g@gmail.com>.
 
-# Description: This script makes it easy to open a file or several files under
-# MacVim. Every file gets its own tab.
+# Description: This script makes it easy to open one or more files in MacVim.
+# I never want to have more than one window open so i have configured MacVim
+# to open all new files in new tabs. To make sure that i never ever end up
+# with more than one open window i am forced to use the command "open" to run
+# MacVim, the only alternative way opens up more windows under certain
+# scenarios. Using "open" is not perfect because each file must already exist.
 
 # Usage: gvim
 #        gvim <file(s)>
 
-if [[ ! $# -gt 0 ]]; then
-  echo "Usage: $0:t [FILENAME(S)]..."
-  exit
-fi
+if [[ $# -gt 0 ]]; then
 
-~/Applications/MacVim.app/Contents/MacOS/Vim -g --remote-tab-silent $*
+  for arg; do
+    # Check if file or directory does not already exist.
+    if [[ ! -a $arg ]]; then
+      # If the file does not exist then create it. If it fails then exit.
+      if touch $arg; then
+        echo "Creating file: $arg"
+
+        new_files=($new_files $arg) # Save a list of all new files created.
+      else
+        # If the creation of one file fails then remove all new files.
+        if [[ ! -z $new_files ]]; then
+          rm $new_files
+        fi
+
+        echo "Could not create file! Cleaning up and exiting..."
+        exit 1
+      fi
+    fi
+  done
+
+  open -a ~/Applications/MacVim.app $*
+else
+  open -a ~/Applications/MacVim.app
+fi
