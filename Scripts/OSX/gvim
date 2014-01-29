@@ -8,8 +8,9 @@
 # Usage: gvim
 #        gvim <file(s)>
 
-if [[ $# -gt 0 ]]; then
-  ~/Applications/MacVim.app/Contents/MacOS/Vim -g --remote-tab-silent $*
-else
-  open ~/Applications/MacVim.app
+if [[ ! $# -gt 0 ]]; then
+  echo "Usage: $0:t [FILENAME(S)]..."
+  exit
 fi
+
+~/Applications/MacVim.app/Contents/MacOS/Vim -g --remote-tab-silent $*
