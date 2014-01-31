@@ -40,7 +40,7 @@ for directory in $directories; do
   fi
 done
 
-echo "Backing up directories to server '$server2'."
+echo "\nBacking up directories to server '$server2'."
 
 for directory in $directories2; do
   if [[ -a $directory ]]; then
