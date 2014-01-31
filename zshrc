@@ -141,6 +141,7 @@ fi
 if [[ $OSTYPE == darwin* ]]; then
   alias eject="osascript -e 'tell application \"Finder\" to eject (every disk whose ejectable is true)' && echo 'Ejecting all external drives.'"
   alias gvimdiff='~/Applications/MacVim.app/Contents/MacOS/Vim -d -g $* &> /dev/null'
+  alias nsfw="reddit ~/.reddit/config.nsfw"
   alias o="open"
   alias top="top -o cpu -s 2"
   alias tree="tree --charset ascii -N"
