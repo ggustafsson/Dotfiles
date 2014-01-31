@@ -31,13 +31,23 @@ directories2=(
 echo "Backing up directories to server '$server'."
 
 for directory in $directories; do
-  print -P "\n%B%F{green}Backing up directory $directory.%f%b"
-  rsync --archive --delete --human-readable --progress $directory -e ssh ${server}:$destination
+  if [[ -a $directory ]]; then
+    print -P "\n%B%F{green}Backing up directory $directory.%f%b"
+    rsync --archive --delete --human-readable --progress $directory -e ssh ${server}:$destination
+  else
+    echo "\nDirectory '$directory' not found! Exiting..."
+    exit 1
+  fi
 done
 
 echo "Backing up directories to server '$server2'."
 
 for directory in $directories2; do
-  print -P "\n%B%F{green}Backing up directory $directory.%f%b"
-  rsync --archive --delete --human-readable --progress $directory $destination2
+  if [[ -a $directory ]]; then
+    print -P "\n%B%F{green}Backing up directory $directory.%f%b"
+    rsync --archive --delete --human-readable --progress $directory $destination2
+  else
+    echo "\nDirectory '$directory' not found! Exiting..."
+    exit 1
+  fi
 done

@@ -48,8 +48,13 @@ if [[ ! -d $backup_destination ]]; then
 fi
 
 for directory in $directories; do
-  print -P "\n%B%F{green}Backing up directory ~/$directory.%f%b"
-  rsync --archive --delete --exclude=Dropbox/.dropbox.cache --human-readable --verbose ~/$directory $backup_destination
+  if [[ -a $directory ]]; then
+    print -P "\n%B%F{green}Backing up directory ~/$directory.%f%b"
+    rsync --archive --delete --exclude=Dropbox/.dropbox.cache --human-readable --verbose ~/$directory $backup_destination
+  else
+    echo "\nDirectory '$directory' not found! Exiting..."
+    exit 1
+  fi
 done
 
 echo "\nUnmounting encrypted image file and device."

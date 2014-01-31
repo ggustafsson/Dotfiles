@@ -76,10 +76,10 @@ def check_subreddit(subreddit)
     end
   end
 
-  puts "No new entries found!" if new_entry == 0
-
   log_file.close
   FileUtils.mv(new_log_file, old_log_file) # Overwrite old log file.
+
+  puts "No new entries found!" if new_entry == 0
 end
 
 def open_url(url)
