@@ -200,6 +200,9 @@ alias cp="cp -vi"
 alias mv="mv -vi"
 alias rm="rm -v"
 
+alias csv='column -t -s ,'
+alias csvv='column -t -s ";"'
+
 alias d="ls -l"
 alias da="ls --all -l"
 alias la="ls --all"
