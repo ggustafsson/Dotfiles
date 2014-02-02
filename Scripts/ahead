@@ -6,12 +6,12 @@
 
 # Usage: ahead <days>
 
-require "date"
-
 unless ARGV.length == 1
   puts "Usage: #{File.basename($0)} [DAYS]..."
   exit
 end
+
+require "date"
 
 begin
   days = Integer(ARGV[0])
