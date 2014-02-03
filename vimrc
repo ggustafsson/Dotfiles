@@ -125,7 +125,7 @@ nnoremap <Leader>cd :cd %:p:h<CR>:pwd<CR>
 nnoremap <Leader>do :LustyFilesystemExplorer ~/Documents/Text\ Files<CR>
 nnoremap <Leader>ed :LustyFilesystemExplorerFromHere<CR>
 nnoremap <Leader>eh :LustyFilesystemExplorer ~<CR>
-nnoremap <Leader>fe :set fileencoding=utf-8
+nnoremap <Leader>fe :set fileformat=unix | set fileencoding=utf-8
 nnoremap <Leader>ft :set filetype=
 nnoremap <Leader>ga :Gist -a<CR>
 nnoremap <Leader>gg :Gist<CR>
