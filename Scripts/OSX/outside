@@ -22,7 +22,7 @@ osascript -e '
   quit application "System Preferences"
 '
 
-osascript -e "set volume output volume 38"
+osascript -e "set volume output volume 0"
 
 transmission=$(osascript -e '
   tell application "System Events"
