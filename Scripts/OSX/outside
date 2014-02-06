@@ -7,8 +7,6 @@
 
 # Usage: outside
 
-osascript -e "set volume output volume 0"
-
 osascript -e '
   tell application "System Preferences"
     reveal pane "com.apple.preferences.Bluetooth"
