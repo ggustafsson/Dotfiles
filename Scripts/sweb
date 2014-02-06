@@ -188,12 +188,12 @@ else
   results = []
 
   data.each do |row|
+    # Ruby is f-ing retarded and can't handle conversion of UTF-8 characters
+    # so i need to add some crappy hack here to support ÅÄÖ during search.
+
     if (row[2].to_s).downcase.include? search.downcase
       results << row
     end
-
-    puts row[2].to_s.downcase
-    puts search.downcase
   end
 
   puts "Söksträng: #{search}"
