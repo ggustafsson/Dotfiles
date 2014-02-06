@@ -1,0 +1,45 @@
+#!/usr/bin/env zsh
+
+# Written by Göran Gustafsson <gustafsson.g@gmail.com>.
+
+# Description: This script converts exported bank transcation logs from text
+# files to CSV files (specific to Swedbank).
+
+# Usage: swebp <file(s)>
+
+if [[ ! $# -ge 1 ]]; then
+  echo "Usage: $0:t [FILENAME(S)]..."
+  exit
+fi
+
+for arg; do
+  input=$arg
+  output=${input:r}.csv
+
+  if [[ ! -f $input ]]; then
+    echo "File '$input' does not exist!"
+    continue
+  fi
+
+  if [[ $(file -I $input) != *charset=utf-8 ]]; then
+    echo "Converting file '$input' to UTF-8."
+    iconv --from-code=latin1 --to-code=utf-8 $input > ${input}.tmp
+    mv ${input}.tmp $input
+  fi
+
+  column1='substr($0, 49, 15)'  # Bokföringsdatum
+  column2='substr($0, 66, 17)'  # Transaktionsdatum
+  column3='substr($0, 85, 16)'  # Referens
+  column4='substr($0, 121, 26)' # Kontohändelse
+  column5='substr($0, 147)'     # Belopp
+
+  echo "Converting file... '$input' -> '$output'"
+
+  awk "NR > 5 { print $column1 \";\" $column2 \";\" $column3 \";\" \
+                      $column4 \";\" $column5 }" $input | \
+    sed 's/;[[:space:]]*/;/g;
+         s/[[:space:]]*;/;/g;
+         s/;;/;-;/g;
+         s/\([0-9]*\),\([0-9][0-9]\)/\1.\2/g
+         s/\([0-9]*\) \([0-9]*\).\([0-9][0-9]\)/\1\2.\3/g' > $output
+done
