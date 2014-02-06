@@ -7,6 +7,8 @@
 
 # Usage: outside
 
+osascript -e "set volume output volume 0"
+
 osascript -e '
   tell application "System Preferences"
     reveal pane "com.apple.preferences.Bluetooth"
@@ -21,8 +23,6 @@ osascript -e '
   delay 3
   quit application "System Preferences"
 '
-
-osascript -e "set volume output volume 0"
 
 transmission=$(osascript -e '
   tell application "System Events"
