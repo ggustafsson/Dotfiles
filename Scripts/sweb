@@ -11,9 +11,20 @@
 
 # Usage: sweb <file>
 #        sweb <file> <pattern>
+#        sweb -s <file>
+
+filename = File.basename($0)
 
 unless ARGV.length >= 1
-  puts "Usage: #{File.basename($0)} [FILENAME]... [PATTERN]..."
+  puts "Usage: #{filename} [OPTION]... [FILENAME]... [PATTERN]...
+
+  -s, --stats  View statistics about all transactions.
+
+Examples:
+
+  #{filename} -s Sparkonto.csv   # View statistics about all transactions.
+  #{filename} Sparkonto.csv      # View all transactions.
+  #{filename} Sparkonto.csv lön  # Search through all transactions."
   exit
 end
 
@@ -27,7 +38,7 @@ def print_frequently(input)
   puts "#{column1} | #{column2} | #{column3} | #{column4}"
   puts "-" * 79
 
-  # Something
+  # Do something here.
 
   puts "-" * 79
 end
@@ -106,7 +117,6 @@ def print_table(input)
     puts "#{column1} | #{column2} | #{column3} | #{column4}"
   end
 
-  # Fixa längden
   hits = "%-39s" % ("Antal träffar: #{input.length}")
   total = "% 39s" % ("Total summa: %.02f" % total.round(2))
 
@@ -117,9 +127,13 @@ end
 
 require "csv"
 
-file = ARGV[0]
-search = ARGV[1,ARGV.length].join(" ")
+if ARGV[0] == "-s"
+  file = ARGV[1]
+else
+  file = ARGV[0]
+end
 
+search = ARGV[1,ARGV.length].join(" ").downcase
 config = "#{Dir.home}/.swebignore"
 
 if !File.exist?(file)
@@ -138,13 +152,14 @@ data = CSV.read(file, { :headers => :first_row,
 
 @header = data[0].headers
 
-if search.length == 0
+if ARGV[0] == "-s"
   income, outcome = [], []
 
   data.each do |row|
-    if ignore.include? row[2].to_s
-      next
-    end
+    reference = row[2].to_s
+    description = row[3].to_s
+
+    next if ignore.include? reference or ignore.include? description
 
     if row[4] > 0
       income << row
@@ -184,18 +199,38 @@ if search.length == 0
   print_sum(outcome, 0)
 
   puts "-" * 79
-else
+elsif search.length > 0
   results = []
 
   data.each do |row|
-    # Ruby is f-ing retarded and can't handle conversion of UTF-8 characters
-    # so i need to add some crappy hack here to support ÅÄÖ during search.
+    reference = (row[2].to_s).downcase
+    description = (row[3].to_s).downcase
 
-    if (row[2].to_s).downcase.include? search.downcase
+    # Ruby can't handle downcase of UTF-8 characters by default so i have to
+    # use this ugly hack :'(
+
+    ["Å","Ä","Ö"].each do |letter|
+      case letter
+      when "Å"
+        replacement = "å"
+      when "Ä"
+        replacement = "ä"
+      when "Ö"
+        replacement = "ö"
+      end
+
+      reference = reference.gsub(letter, replacement)
+      description = description.gsub(letter, replacement)
+      search = search.gsub(letter, replacement)
+    end
+
+    if reference.include? search or description.include? search
       results << row
     end
   end
 
   puts "Söksträng: #{search}"
   print_table results
+else
+  print_table data
 end
