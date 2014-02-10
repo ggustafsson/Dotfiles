@@ -175,6 +175,13 @@ else
     alias aptu="sudo apt-get update && sudo apt-get upgrade"
   fi
 
+  if type -p yum &> /dev/null; then
+    alias yumi="sudo yum install"
+    alias yumr="sudo yum remove"
+    alias yums="yum search"
+    alias yumu="sudo yum update"
+  fi
+
   alias cal="cal -m"
   alias vl='tail -n $LINES -f /var/log/syslog'
 fi
