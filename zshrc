@@ -123,8 +123,16 @@ function zsh_mode {
 if [[ $TERM == dumb ]]; then
   PROMPT='%~ $ '
 else
+  if [[ $HOST == Coruscant* ]]; then
+    zsh_host="%F{yellow}%m%f"
+  elif [[ $HOST == *-VM ]]; then
+    zsh_host="%F{green}%m%f"
+  else
+    zsh_host="%F{red}%m%f"
+  fi
+
   # GLEG Tatooine ~ $
-  PROMPT='%B${(U)USER} %F{yellow}${(C)HOST%%.*}%f%b ${PWD/$HOME/~} %B$(zsh_mode)%b '
+  PROMPT='%B${(U)USER} $zsh_host%b ${PWD/$HOME/~} %B$(zsh_mode)%b '
   # $ 0 master
   RPROMPT='%B%F{blue}$%f%b %?%B$(git_branch)%b'
 fi

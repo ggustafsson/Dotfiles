@@ -11,6 +11,7 @@ su -c "usermod -a -G wheel $USER && visudo"
 sudo yum install \
   git \
   nmap \
+  ruby \
   vim \
   zsh
 
