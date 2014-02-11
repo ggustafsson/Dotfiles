@@ -5,10 +5,12 @@ umask 077
 [[ $TERM == xterm ]] && export TERM=xterm-256color
 export GEM_HOME=~/.gem/ruby
 export GREP_OPTIONS="--color=auto --ignore-case"
-export LC_COLLATE=C
 
 export EDITOR=vim
 export VISUAL=$EDITOR
+
+export LANG="en_US.UTF-8"
+export LC_ALL="en_US.UTF-8"
 
 export LESS=FRSX
 export PAGER=less
