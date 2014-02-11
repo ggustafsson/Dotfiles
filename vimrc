@@ -130,7 +130,6 @@ nnoremap <Leader>ft :set filetype=
 nnoremap <Leader>ga :Gist -a<CR>
 nnoremap <Leader>gg :Gist<CR>
 nnoremap <Leader>gu :GundoToggle<CR>
-nnoremap <Leader>in :-read ~/.vim/snippets/
 nnoremap <Leader>la :!ls -lFha "%:p:h"<CR>
 nnoremap <Leader>li :set list!<CR>
 nnoremap <Leader>ll :!ls -lFh "%"<CR>
