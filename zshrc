@@ -41,7 +41,8 @@ ls_options=(--classify --color=auto --human-readable)
 d=~/Downloads
 p=~/Projects
 
-setopt combiningchars
+[[ $OSTYPE == darwin* ]] && setopt combiningchars
+
 setopt correct
 setopt interactivecomments
 setopt nobeep
