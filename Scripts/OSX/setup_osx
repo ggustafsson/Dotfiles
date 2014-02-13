@@ -65,6 +65,7 @@ sudo mv ~/Downloads/homebrew /usr/local
   netperf \
   nmap \
   openssh \
+  p7zip \
   python \
   python3 \
   rsync \
