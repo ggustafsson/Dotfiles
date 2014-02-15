@@ -42,7 +42,6 @@ d=~/Downloads
 p=~/Projects
 
 [[ $OSTYPE == darwin* ]] && setopt combiningchars
-
 setopt correct
 setopt interactivecomments
 setopt nobeep
@@ -152,12 +151,12 @@ fi
 if [[ $OSTYPE == darwin* ]]; then
   alias eject="osascript -e 'tell application \"Finder\" to eject (every disk whose ejectable is true)' && echo 'Ejecting all external drives.'"
   alias gvimdiff='~/Applications/MacVim.app/Contents/MacOS/Vim -d -g $* &> /dev/null'
-  alias nsfw="reddit ~/.reddit/config.nsfw"
   alias o="open"
   alias top="top -o cpu -s 2"
   alias tree="tree --charset ascii -N"
   alias vl='sudo tail -n $LINES -f /var/log/system.log'
   alias webcam="imagesnap -t 2 -w 1"
+  alias wifiscan="/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport --scan"
 
   alias brewi="brew install"
   alias brewr="brew uninstall"
@@ -166,23 +165,12 @@ if [[ $OSTYPE == darwin* ]]; then
 
   alias mext="open smb://10.11.12.3/External"
   alias umext='umount //$USER@10.11.12.3/External'
-
-  alias wifioff="networksetup -setairportpower en0 off && echo 'Turning Wi-Fi off.'"
-  alias wifion="networksetup -setairportpower en0 on && echo 'Turning Wi-Fi on.'"
-  alias wifiscan="/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport --scan"
 else
   if type -p apt-get &> /dev/null; then
     alias apti="sudo apt-get install"
     alias aptr="sudo apt-get purge"
     alias apts="apt-cache search"
     alias aptu="sudo apt-get update && sudo apt-get upgrade"
-  fi
-
-  if type -p yum &> /dev/null; then
-    alias yumi="sudo yum install"
-    alias yumr="sudo yum remove"
-    alias yums="yum search"
-    alias yumu="sudo yum update"
   fi
 
   alias cal="cal -m"
