@@ -60,7 +60,6 @@ setopt incappendhistory
 setopt autopushd
 setopt pushdignoredups
 
-[[ ! $TERM == dumb ]] && autoload -U colors && colors
 autoload -U compinit && compinit
 autoload -U url-quote-magic && zle -N self-insert url-quote-magic
 
@@ -122,22 +121,18 @@ function zsh_mode {
   fi
 }
 
-if [[ $TERM == dumb ]]; then
-  PROMPT='%~ $ '
+if [[ $HOST == Coruscant* ]]; then
+  zsh_host="%F{yellow}%m%f"
+elif [[ $HOST == *-VM ]]; then
+  zsh_host="%F{green}%m%f"
 else
-  if [[ $HOST == Coruscant* ]]; then
-    zsh_host="%F{yellow}%m%f"
-  elif [[ $HOST == *-VM ]]; then
-    zsh_host="%F{green}%m%f"
-  else
-    zsh_host="%F{red}%m%f"
-  fi
-
-  # GLEG Tatooine ~ $
-  PROMPT='%B${(U)USER} $zsh_host%b ${PWD/$HOME/~} %B$(zsh_mode)%b '
-  # $ 0 master
-  RPROMPT='%B%F{blue}$%f%b %?%B$(git_branch)%b'
+  zsh_host="%F{cyan}%m%f"
 fi
+
+# GLEG Tatooine ~ $
+PROMPT='%B${(U)USER} $zsh_host%b ${PWD/$HOME/~} %B$(zsh_mode)%b '
+# $ 0 master
+RPROMPT='%B%F{blue}$%f%b %?%B$(git_branch)%b'
 
 if [[ $HOST == hoth ]]; then
   alias mccreative="cd ~/Minecraft\ -\ Creative && tmux new 'java -Xmx3072M -Xms1024M -jar minecraft_creative.jar nogui' && cd -"
