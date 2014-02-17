@@ -17,13 +17,11 @@ endif
 set backspace=indent,eol,start
 set confirm
 set cryptmethod=blowfish
-set encoding=utf-8
 set formatoptions=cjlnoqrt
 set hidden
 set nowrap
 set showbreak=+
 set spelllang=en,sv
-set t_vb=
 set textwidth=78
 set timeoutlen=2000
 set virtualedit=block
@@ -156,7 +154,7 @@ nnoremap > <C-w>>
 
 nnoremap <Backspace> :nohlsearch<CR>
 nnoremap <Tab>       :LustyBufferExplorer<CR>
-nnoremap <S-Tab>     :bnext<CR>
+nnoremap <C-Tab>     :bnext<CR>
 
 nnoremap <C-j> }
 nnoremap <C-k> {
@@ -213,14 +211,14 @@ endfunction
 
 function! ColorColumn()
   if empty(&colorcolumn)
-    echo "colorcolumn=79"
-    setlocal colorcolumn=79
+    echo "set colorcolumn=79"
+    set colorcolumn=79
   elseif &colorcolumn == "79"
-    echo "colorcolumn=73"
-    setlocal colorcolumn=73
+    echo "set colorcolumn=73"
+    set colorcolumn=73
   else
-    echo "colorcolumn="
-    setlocal colorcolumn=
+    echo "set colorcolumn="
+    set colorcolumn=
   endif
 endfunction
 
@@ -236,15 +234,11 @@ endfunction
 
 function LineNumber()
   if &relativenumber == 1
-    echo "set number | set norelativenumber"
-    set number
-    set norelativenumber
-  elseif &number == 1
     echo "set nonumber | set norelativenumber"
     set nonumber
     set norelativenumber
   else
-    echo "set relativenumber | number"
+    echo "set number | set relativenumber"
     set number
     set relativenumber
   endif
