@@ -1,15 +1,17 @@
 " Göran Gustafsson <gustafsson.g@gmail.com>
 
-if !exists("g:dont_run_again")
-  call pathogen#infect()
-  call pathogen#helptags()
+call pathogen#infect()
+call pathogen#helptags()
 
-  filetype plugin indent on
+filetype plugin indent on
+syntax enable
+colorscheme ninja
 
-  syntax enable
-  colorscheme ninja
-
-  let g:dont_run_again = 1
+if has("gui_running")
+  set guicursor+=a:blinkon0
+  set guioptions=cgt
+  set showcmd
+  set visualbell
 endif
 
 set backspace=indent,eol,start
@@ -65,31 +67,11 @@ set relativenumber
 set splitbelow
 set splitright
 
-if has("gui_running") && has("mac")
-  set guicursor+=a:blinkon0
-  set guioptions=cgt
-  set showcmd
-  set visualbell
-
-  function! FontSetup()
-    set guifont=Menlo:h12
-    set linespace=1
-
-    set columns=204
-    set lines=53
-  endfunction
-
-  if !exists("g:dont_set_font_again")
-    call FontSetup()
-
-    let g:dont_set_font_again = 1
-  endif
-endif
-
 if has("mac")
   let g:gist_clip_command = "pbcopy"
 endif
 
+let g:NERDCreateDefaultMappings = 0
 let g:gist_open_browser_after_post = 1
 let g:mapleader = ","
 
@@ -100,18 +82,14 @@ let g:gundo_tree_statusline = " Gundo Tree"
 let g:LustyExplorerDefaultMappings = 0
 let g:LustyJugglerDefaultMappings = 0
 
-let g:NERDCreateDefaultMappings = 0
-let g:NERDMenuMode = 0
-
-let g:NERDTreeAutoCenter = 0
 let g:NERDTreeDirArrows = 0
 let g:NERDTreeMinimalUI = 1
 let g:NERDTreeStatusline = " NERDTree"
 
-command! -nargs=? Helpt tab help <args>
+command -nargs=? Helpt tab help <args>
 cabbrev helpt Helpt
 
-command! -nargs=? S sudo w !sudo tee %
+command -nargs=? S sudo w !sudo tee %
 
 if has("mac")
   nnoremap <Leader>fi :silent !open "%:p:h"<CR>
@@ -197,7 +175,16 @@ inoremap <expr><Tab> CompleteTab()
 inoremap jj          <Esc>
 
 if has("gui_running") && has("mac")
-  function! FullScreen()
+  function FontSetup()
+    set guifont=Menlo:h12
+    set linespace=1
+
+    set columns=204
+    set lines=53
+  endfunction
+  call FontSetup()
+
+  function FullScreen()
     if &guifont != "Menlo:h24"
       set guifont=Menlo:h24
       set fullscreen
@@ -208,7 +195,7 @@ if has("gui_running") && has("mac")
   endfunction
 endif
 
-function! BufferDelete()
+function BufferDelete()
   if &modified
     echoerr "No write since last change. Not closing buffer!"
   else
@@ -237,7 +224,7 @@ function! ColorColumn()
   endif
 endfunction
 
-function! CompleteTab()
+function CompleteTab()
   let char = getline('.')[col('.')-2]
 
   if empty(char) || char == " "
@@ -247,7 +234,7 @@ function! CompleteTab()
   endif
 endfunction
 
-function! LineNumber()
+function LineNumber()
   if &relativenumber == 1
     echo "set number | set norelativenumber"
     set number
@@ -264,8 +251,6 @@ function! LineNumber()
 endfunction
 
 augroup Main
-  autocmd!
-
   autocmd BufNewFile,BufRead *.blowfish,README,TODO setlocal filetype=text
   autocmd BufNewFile,BufRead *.md                   setlocal filetype=markdown
   autocmd BufNewFile,BufRead *.todo                 setlocal filetype=todo
@@ -275,6 +260,4 @@ augroup Main
   autocmd FileType help               setlocal colorcolumn=
   autocmd FileType markdown,text,todo setlocal colorcolumn=79
   autocmd FileType markdown,python    setlocal expandtab shiftwidth=4 softtabstop=4
-
-  autocmd BufWritePost ~/.vimrc source %
 augroup END
