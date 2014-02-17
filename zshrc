@@ -181,7 +181,6 @@ alias ls='ls $ls_options'
 alias pyweb="python3 -m http.server 8080"
 alias recf="ls -t | head -n 5"
 alias reload="source ~/.zshenv && source ~/.zshrc && echo 'Zsh reloaded.'"
-alias tma="tmux attach"
 alias wgetp="wget --adjust-extension --convert-links --page-requisites"
 alias ycal='cal $(date +%Y)'
 
@@ -230,6 +229,9 @@ alias mkdir="mkdir -pv"
 
 alias svtplay-dl="svtplay-dl --resume"
 alias youtube-dl="youtube-dl --continue --title"
+
+alias tm="tmux"
+alias tma="tmux attach"
 
 function h {
   if [[ $# -gt 0 ]]; then
