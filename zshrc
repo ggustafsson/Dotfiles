@@ -180,7 +180,6 @@ alias ka="killall"
 alias ls='ls $ls_options'
 alias pyweb="python3 -m http.server 8080"
 alias recf="ls -t | head -n 5"
-alias reload="source ~/.zshenv && source ~/.zshrc && echo 'Zsh reloaded.'"
 alias wgetp="wget --adjust-extension --convert-links --page-requisites"
 alias ycal='cal $(date +%Y)'
 
