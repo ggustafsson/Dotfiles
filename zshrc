@@ -1,5 +1,6 @@
 # Göran Gustafsson <gustafsson.g@gmail.com>
 
+cd ~/Downloads
 umask 077
 
 export GEM_HOME=~/.gem/ruby
