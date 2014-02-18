@@ -16,7 +16,7 @@ if [[ $# -gt 0 ]]; then
 
   for arg; do
     # Check if file or directory does not already exist.
-    if [[ ! -a $arg ]]; then
+    if [[ ! -d $arg ]]; then
       # If the file does not exist then create it. If it fails then exit.
       if touch $arg; then
         echo "Creating file: $arg"

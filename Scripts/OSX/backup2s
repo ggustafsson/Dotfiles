@@ -31,7 +31,7 @@ directories2=(
 echo "Backing up directories to server '$server'."
 
 for directory in $directories; do
-  if [[ -a $directory ]]; then
+  if [[ -d $directory ]]; then
     print -P "\n%B%F{green}Backing up directory $directory.%f%b"
     rsync --archive --delete --human-readable --progress $directory -e ssh ${server}:$destination
   else
@@ -43,7 +43,7 @@ done
 echo "\nBacking up directories to server '$server2'."
 
 for directory in $directories2; do
-  if [[ -a $directory ]]; then
+  if [[ -d $directory ]]; then
     print -P "\n%B%F{green}Backing up directory $directory.%f%b"
     rsync --archive --delete --human-readable --progress $directory $destination2
   else

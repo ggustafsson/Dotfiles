@@ -2,119 +2,43 @@
 
 # Written by Göran Gustafsson <gustafsson.g@gmail.com>.
 
-# Description: This script automatically downloads several Vim related git
-# repositories i want to keep up-to-date.
+# Description: This script downloads and updates Vim plugins.
 
 # Usage: dl_vim
+#        dl_vim install
 
-function headline {
-  print -P "%B%F{cyan}Checking for $* updates.%f%b"
-}
+if [[ $1 == install ]]; then
+  directory=~/.vim/bundle
 
-if [[ -d ~/.vim/bundle/gist ]]; then
-  headline "Gist"
-  cd ~/.vim/bundle/gist
-  git pull
-else
-  git clone git://github.com/mattn/gist-vim.git ~/.vim/bundle/gist
-fi
+  echo "Downloading Vim plugins!"
 
-echo
-
-if [[ -d ~/.vim/bundle/gundo ]]; then
-  headline "Gundo"
-  cd ~/.vim/bundle/gundo
-  git pull
-else
-  git clone git://github.com/sjl/gundo.vim.git ~/.vim/bundle/gundo
-fi
-
-echo
-
-if [[ -d ~/.vim/bundle/lusty ]]; then
-  headline "Lusty"
-  cd ~/.vim/bundle/lusty
-  git pull
-else
-  git clone git://github.com/sjbach/lusty.git ~/.vim/bundle/lusty
-fi
-
-echo
-
-if [[ -d ~/.vim/bundle/nerdcommenter ]]; then
-  headline "NERDCommenter"
-  cd ~/.vim/bundle/nerdcommenter
-  git pull
-else
-  git clone git://github.com/scrooloose/nerdcommenter.git ~/.vim/bundle/nerdcommenter
-fi
-
-echo
-
-if [[ -d ~/.vim/bundle/nerdtree ]]; then
-  headline "NERDTree"
-  cd ~/.vim/bundle/nerdtree
-  git pull
-else
-  git clone git://github.com/scrooloose/nerdtree.git ~/.vim/bundle/nerdtree
-fi
-
-echo
-
-if [[ -d ~/.vim/pathogen ]]; then
-  headline "Pathogen"
-  cd ~/.vim/pathogen
-  git pull
-else
   git clone git://github.com/tpope/vim-pathogen.git ~/.vim/pathogen
-fi
-
-echo
-
-if [[ -d ~/.vim/bundle/repeat ]]; then
-  headline "Repeat"
-  cd ~/.vim/bundle/repeat
-  git pull
+  git clone git://github.com/goldfeld/vim-seek.git $directory/vim-seek
+  git clone git://github.com/mattn/gist-vim.git $directory/gist-vim
+  git clone git://github.com/mattn/webapi-vim.git $directory/webapi-vim
+  git clone git://github.com/scrooloose/nerdcommenter.git $directory/nerdcommenter
+  git clone git://github.com/scrooloose/nerdtree.git $directory/nerdtree
+  git clone git://github.com/sjbach/lusty.git $directory/lusty
+  git clone git://github.com/sjl/gundo.vim.git $directory/gundo.vim
+  git clone git://github.com/tpope/vim-endwise.git $directory/vim-endwise
+  git clone git://github.com/tpope/vim-repeat.git $directory/vim-repeat
+  git clone git://github.com/tpope/vim-speeddating.git $directory/vim-speeddating
+  git clone git://github.com/tpope/vim-surround.git $directory/vim-surround
 else
-  git clone git://github.com/tpope/vim-repeat.git ~/.vim/bundle/repeat
-fi
+  plugins=(~/.vim/pathogen(N) ~/.vim/bundle/*(N))
 
-echo
+  if [[ -z $plugins ]]; then
+    echo "No Vim plugins found! Exiting..."
+    exit 1
+  fi
 
-if [[ -d ~/.vim/bundle/seek ]]; then
-  headline "Seek"
-  cd ~/.vim/bundle/seek
-  git pull
-else
-  git clone git://github.com/goldfeld/vim-seek.git ~/.vim/bundle/seek
-fi
+  echo "Updating all Vim plugins!"
 
-echo
-
-if [[ -d ~/.vim/bundle/speeddating ]]; then
-  headline "Speeddating"
-  cd ~/.vim/bundle/speeddating
-  git pull
-else
-  git clone git://github.com/tpope/vim-speeddating.git ~/.vim/bundle/speeddating
-fi
-
-echo
-
-if [[ -d ~/.vim/bundle/surround ]]; then
-  headline "Surround"
-  cd ~/.vim/bundle/surround
-  git pull
-else
-  git clone git://github.com/tpope/vim-surround.git ~/.vim/bundle/surround
-fi
-
-echo
-
-if [[ -d ~/.vim/bundle/webapi ]]; then
-  headline "WebAPI"
-  cd ~/.vim/bundle/webapi
-  git pull
-else
-  git clone git://github.com/mattn/webapi-vim.git ~/.vim/bundle/webapi
+  for plugin in $plugins; do
+    if [[ -d $plugin ]]; then
+      print -P "\n%B%F{cyan}Running git pull on: ${plugin:t}%f%b"
+      cd $plugin
+      git pull
+    fi
+  done
 fi
