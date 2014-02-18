@@ -154,7 +154,6 @@ nnoremap > <C-w>>
 
 nnoremap <Backspace> :nohlsearch<CR>
 nnoremap <Tab>       :LustyBufferExplorer<CR>
-nnoremap <C-Tab>     :bnext<CR>
 
 nnoremap <C-j> }
 nnoremap <C-k> {
@@ -244,14 +243,12 @@ function LineNumber()
   endif
 endfunction
 
-augroup Main
-  autocmd BufNewFile,BufRead *.blowfish,README,TODO setlocal filetype=text
-  autocmd BufNewFile,BufRead *.md                   setlocal filetype=markdown
-  autocmd BufNewFile,BufRead *.todo                 setlocal filetype=todo
-  autocmd BufNewFile,BufRead config                 setlocal filetype=conf
+autocmd BufNewFile,BufRead *.blowfish,README,TODO setlocal filetype=text
+autocmd BufNewFile,BufRead *.md                   setlocal filetype=markdown
+autocmd BufNewFile,BufRead *.todo                 setlocal filetype=todo
+autocmd BufNewFile,BufRead config                 setlocal filetype=conf
 
-  autocmd FileType gitcommit          setlocal colorcolumn=73 nolist spell textwidth=72
-  autocmd FileType help               setlocal colorcolumn=
-  autocmd FileType markdown,text,todo setlocal colorcolumn=79
-  autocmd FileType markdown,python    setlocal expandtab shiftwidth=4 softtabstop=4
-augroup END
+autocmd FileType gitcommit          setlocal colorcolumn=73 nolist spell textwidth=72
+autocmd FileType help               setlocal colorcolumn=
+autocmd FileType markdown,text,todo setlocal colorcolumn=79
+autocmd FileType markdown,python    setlocal expandtab shiftwidth=4 softtabstop=4
