@@ -21,7 +21,7 @@ fi
 
 if ! type -p title &> /dev/null; then
   echo "\nCommand 'title' not found! Exiting..."
-  return 1
+  exit 1
 fi
 
 echo "Fixing tags in MP3 file(s)."
@@ -47,7 +47,7 @@ for arg; do
   # Put all tag information inside of various shell variables.
   for tag in $tags; do
     # The info variable will contain something like "TITLE=Text here".
-    output=$(mutagen-inspect $arg | grep ^$tag=)
+    output=$(mutagen-inspect $arg | grep ^${tag}=)
 
     # The information variable will contain just "Text here".
     information=${output#*=}

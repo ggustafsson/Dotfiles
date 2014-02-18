@@ -33,8 +33,8 @@ for arg; do
   results=$(curl --form "uploaded_file=@${arg:t};type=text/html" --form output=json --silent http://validator.w3.org/check)
 
   if [[ $? -gt 0 ]]; then
-    echo "Failed at getting results!"
-    return 1
+    echo "Failed at getting results! Exiting..."
+    exit 1
   fi
 
   # Change back to the old directory. Otherwise the check for if the next file

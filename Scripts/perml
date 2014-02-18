@@ -15,8 +15,8 @@ if [[ ! $# -eq 1 ]]; then
 fi
 
 if [[ ! -d $1 ]]; then
-  echo "Directory '$1' does not exist!"
-  return 1
+  echo "Directory '$1' does not exist! Exiting..."
+  exit 1
 fi
 
 echo "Changing permissions recursively on directory '$1'."

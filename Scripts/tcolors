@@ -8,18 +8,12 @@
 
 for number in {30..37}; do
   echo -n "\033[0;${number}m0;${number}m\033[0m "
-done
-
-echo
+done && echo
 
 for number in {30..37}; do
   echo -n "\033[1;${number}m1;${number}m\033[0m "
-done
-
-echo
+done && echo
 
 for number in {40..47}; do
   echo -n "\033[1;${number}m1;${number}m\033[0m "
-done
-
-echo
+done && echo

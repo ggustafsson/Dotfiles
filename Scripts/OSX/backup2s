@@ -28,14 +28,19 @@ directories2=(
   ~/Music/MP3
 )
 
+if [[ ! -d $destination2 ]]; then
+  echo "\nDirectory '$destination' does not exist! Exiting..."
+  exit 1
+fi
+
 echo "Backing up directories to server '$server'."
 
 for directory in $directories; do
-  if [[ -d $directory ]]; then
-    print -P "\n%B%F{green}Backing up directory $directory.%f%b"
+  if [[ -d $directory || -f $directory ]]; then
+    print -P "\n%B%F{green}Backing up directory ${directory/$HOME/~}.%f%b"
     rsync --archive --delete --human-readable --progress $directory -e ssh ${server}:$destination
   else
-    echo "\nDirectory '$directory' not found! Exiting..."
+    echo "\nDirectory '${directory/$HOME/~}' not found! Exiting..."
     exit 1
   fi
 done
@@ -43,11 +48,11 @@ done
 echo "\nBacking up directories to server '$server2'."
 
 for directory in $directories2; do
-  if [[ -d $directory ]]; then
-    print -P "\n%B%F{green}Backing up directory $directory.%f%b"
+  if [[ -d $directory || -f $directory ]]; then
+    print -P "\n%B%F{green}Backing up directory ${directory/$HOME/~}.%f%b"
     rsync --archive --delete --human-readable --progress $directory $destination2
   else
-    echo "\nDirectory '$directory' not found! Exiting..."
+    echo "\nDirectory '${directory/$HOME/~}' not found! Exiting..."
     exit 1
   fi
 done

@@ -16,8 +16,8 @@ fi
 
 for arg; do
   if [[ ! -f $arg ]]; then
-    echo "File '$arg' does not exist!"
-    return 1
+    echo "File '$arg' does not exist! Exiting..."
+    exit 1
   fi
 done
 

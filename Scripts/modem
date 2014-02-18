@@ -20,7 +20,7 @@ fi
 
 if [[ ! -f $sound_file ]]; then
   echo "Buu! Modem not plugged in!"
-  return 1
+  exit 1
 fi
 
 echo "Dialing up 56k modem.\n"

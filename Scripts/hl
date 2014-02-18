@@ -11,9 +11,10 @@
 #        command | hl "<pattern>"
 
 if [[ $# -eq 1 ]]; then
-  egrep --color "$*|$"
+  # The "|$" part is very important! It makes grep display all text.
+  egrep --color "${*}|$"
 elif [[ $# -eq 2 ]]; then
-  egrep --color "$1|$" $2
+  egrep --color "${1}|$" $2
 else
   echo "Usage: $0:t [PATTERN]... [FILENAME]..."
 fi
