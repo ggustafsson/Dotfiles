@@ -141,8 +141,8 @@ if [[ $HOST == hoth ]]; then
   alias mcsurvivallog='tail -n $LINES -f ~/Minecraft\ -\ Survival/server.log'
 else
   alias mcbackup="rsync --archive --delete --human-readable --progress -e ssh 'hoth:~/Minecraft\ -\ Creative/' ~/Storage/Game\ Files/Minecraft/Server\ -\ Creative && rsync --archive --delete --human-readable --progress -e ssh 'hoth:~/Minecraft\ -\ Survival/' ~/Storage/Game\ Files/Minecraft/Server\ -\ Survival"
-  alias mccreativelog='ssh hoth "tail -n $LINES -f ~/Minecraft\ -\ Creative/server.log"'
-  alias mcsurvivallog='ssh hoth "tail -n $LINES -f ~/Minecraft\ -\ Survival/server.log"'
+  alias mccreativelog='ssh -t hoth "tail -n $LINES -f ~/Minecraft\ -\ Creative/server.log"'
+  alias mcsurvivallog='ssh -t hoth "tail -n $LINES -f ~/Minecraft\ -\ Survival/server.log"'
 fi
 
 if [[ $OSTYPE == darwin* ]]; then
