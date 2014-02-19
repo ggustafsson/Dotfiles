@@ -10,16 +10,16 @@
 if [[ $1 == install ]]; then
   echo "Downloading git repositories!"
 
-  git clone git://github.com/diveintomark/diveintohtml5.git ~/Documents/Reading/Dive\ Into\ HTML5
-  git clone git://github.com/hdonnay/Tim.git ~/Projects/Tim\ Fork
-  git clone git://github.com/leachim6/hello-world.git ~/Development/Hello\ World
-  git clone git://github.com/theleagueof/blackout.git ~/Storage/Fonts/Blackout
-  git clone git://github.com/theleagueof/knewave.git ~/Storage/Fonts/Knewave
-  git clone git://github.com/theleagueof/league-gothic.git ~/Storage/Fonts/League\ Gothic
-  git clone git://github.com/theleagueof/orbitron.git ~/Storage/Fonts/Orbitron
-  git clone git://github.com/theleagueof/ostrich-sans.git ~/Storage/Fonts/Ostrich\ Sans
-  git clone git://github.com/theleagueof/prociono.git ~/Storage/Fonts/Prociono
-  git clone git://github.com/theleagueof/sniglet.git ~/Storage/Fonts/Sniglet
+  git clone https://github.com/diveintomark/diveintohtml5.git ~/Documents/Reading/Dive\ Into\ HTML5
+  git clone https://github.com/hdonnay/Tim.git ~/Projects/Tim\ Fork
+  git clone https://github.com/leachim6/hello-world.git ~/Development/Hello\ World
+  git clone https://github.com/theleagueof/blackout.git ~/Storage/Fonts/Blackout
+  git clone https://github.com/theleagueof/knewave.git ~/Storage/Fonts/Knewave
+  git clone https://github.com/theleagueof/league-gothic.git ~/Storage/Fonts/League\ Gothic
+  git clone https://github.com/theleagueof/orbitron.git ~/Storage/Fonts/Orbitron
+  git clone https://github.com/theleagueof/ostrich-sans.git ~/Storage/Fonts/Ostrich\ Sans
+  git clone https://github.com/theleagueof/prociono.git ~/Storage/Fonts/Prociono
+  git clone https://github.com/theleagueof/sniglet.git ~/Storage/Fonts/Sniglet
 else
   repositories=(
     ~/Development/Hello\ World(N)

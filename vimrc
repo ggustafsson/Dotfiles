@@ -243,6 +243,8 @@ function LineNumber()
   endif
 endfunction
 
+autocmd BufRead * execute "normal g'\""
+
 autocmd BufNewFile,BufRead *.blowfish,README,TODO setlocal filetype=text
 autocmd BufNewFile,BufRead *.conf,config          setlocal filetype=conf
 autocmd BufNewFile,BufRead *.md                   setlocal filetype=markdown

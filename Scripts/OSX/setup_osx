@@ -40,7 +40,7 @@ echo
 xcode-select --install
 
 echo
-git clone git://github.com/mxcl/homebrew.git ~/Downloads/homebrew
+git clone https://github.com/mxcl/homebrew.git ~/Downloads/homebrew
 sudo mv ~/Downloads/homebrew /usr/local
 
 /usr/local/bin/brew tap homebrew/dupes
