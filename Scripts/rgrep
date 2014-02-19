@@ -11,9 +11,9 @@
 #        rgrep "<pattern>" <path>
 
 if [[ $# -eq 1 ]]; then
-  grep --exclude-dir .git --recursive $1 .
+  grep --exclude-dir .git --line-number --recursive $1 .
 elif [[ $# -eq 2 ]]; then
-  grep --exclude-dir .git --recursive $*
+  grep --exclude-dir .git --line-number --recursive $*
 else
   echo "Usage: $0:t [PATTERN]... [PATH]..."
 fi
