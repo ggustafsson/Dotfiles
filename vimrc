@@ -101,7 +101,7 @@ nnoremap <Leader>cd :cd %:p:h<CR>:pwd<CR>
 nnoremap <Leader>do :LustyFilesystemExplorer ~/Documents/Text\ Files<CR>
 nnoremap <Leader>ed :LustyFilesystemExplorerFromHere<CR>
 nnoremap <Leader>eh :LustyFilesystemExplorer ~<CR>
-nnoremap <Leader>fe :set fileformat=unix | set fileencoding=utf-8
+nnoremap <Leader>fe :set fileformat=unix \| set fileencoding=utf-8
 nnoremap <Leader>ft :set filetype=
 nnoremap <Leader>ga :Gist -a<CR>
 nnoremap <Leader>gg :Gist<CR>
@@ -244,9 +244,9 @@ function LineNumber()
 endfunction
 
 autocmd BufNewFile,BufRead *.blowfish,README,TODO setlocal filetype=text
+autocmd BufNewFile,BufRead *.conf,config          setlocal filetype=conf
 autocmd BufNewFile,BufRead *.md                   setlocal filetype=markdown
 autocmd BufNewFile,BufRead *.todo                 setlocal filetype=todo
-autocmd BufNewFile,BufRead config                 setlocal filetype=conf
 
 autocmd FileType gitcommit          setlocal colorcolumn=73 nolist spell textwidth=72
 autocmd FileType help               setlocal colorcolumn=
