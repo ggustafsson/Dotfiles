@@ -10,9 +10,8 @@
 if [[ $1 == install ]]; then
   directory=~/.vim/bundle
 
-  echo "Downloading Vim plugins!"
+  echo "Downloading Vim plugins!\n"
 
-  git clone https://github.com/goldfeld/vim-seek.git $directory/vim-seek
   git clone https://github.com/mattn/gist-vim.git $directory/gist-vim
   git clone https://github.com/mattn/webapi-vim.git $directory/webapi-vim
   git clone https://github.com/scrooloose/nerdcommenter.git $directory/nerdcommenter

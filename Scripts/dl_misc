@@ -8,7 +8,7 @@
 #        dl_misc install
 
 if [[ $1 == install ]]; then
-  echo "Downloading git repositories!"
+  echo "Downloading git repositories!\n"
 
   git clone https://github.com/diveintomark/diveintohtml5.git ~/Documents/Reading/Dive\ Into\ HTML5
   git clone https://github.com/hdonnay/Tim.git ~/Projects/Tim\ Fork
