@@ -9,9 +9,8 @@ colorscheme ninja
 
 if has("gui_running")
   set guicursor+=a:blinkon0
-  set guioptions=cgt
+  set guioptions=c
   set showcmd
-  set visualbell
 endif
 
 set backspace=indent,eol,start
@@ -64,6 +63,9 @@ set relativenumber
 
 set splitbelow
 set splitright
+
+set t_vb=
+set visualbell
 
 if has("mac")
   let g:gist_clip_command = "pbcopy"
