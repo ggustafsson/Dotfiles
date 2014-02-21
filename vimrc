@@ -212,14 +212,14 @@ endfunction
 
 function! ColorColumn()
   if empty(&colorcolumn)
-    echo "set colorcolumn=79"
-    set colorcolumn=79
+    echo "setlocal colorcolumn=79"
+    setlocal colorcolumn=79
   elseif &colorcolumn == "79"
-    echo "set colorcolumn=73"
-    set colorcolumn=73
+    echo "setlocal colorcolumn=73"
+    setlocal colorcolumn=73
   else
-    echo "set colorcolumn="
-    set colorcolumn=
+    echo "setlocal colorcolumn="
+    setlocal colorcolumn=
   endif
 endfunction
 
