@@ -92,8 +92,11 @@ cabbrev helpt Helpt
 command -nargs=? S sudo w !sudo tee %
 
 if has("mac")
+  if has("gui")
+    nnoremap <Leader>fu :call FullScreen()<CR>
+  endif
+
   nnoremap <Leader>fi :silent !open "%:p:h"<CR>
-  nnoremap <Leader>fu :call FullScreen()<CR>
   nnoremap <Leader>op :silent !open -a Safari "%"<CR>
 endif
 
