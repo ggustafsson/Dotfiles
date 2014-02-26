@@ -2,7 +2,7 @@
 
 umask 077
 
-[[ $TERM == xterm ]] && export TERM=xterm-256color
+[[ $TERM == xterm ]] && export TERM=xterm-256color # GNOME Terminal needs this.
 export GEM_HOME=~/.gem/ruby
 export GREP_OPTIONS="--color=auto --ignore-case"
 
@@ -42,7 +42,7 @@ d=~/Downloads
 p=~/Projects
 t=~/Documents/Text\ Files
 
-[[ $OSTYPE == darwin* ]] && setopt combiningchars
+[[ $OSTYPE == darwin* ]] && setopt combiningchars # HFS+ is fucked up.
 setopt correct
 setopt interactivecomments
 setopt nobeep
@@ -66,14 +66,14 @@ autoload -U url-quote-magic && zle -N self-insert url-quote-magic
 
 bindkey -v
 bindkey "jj" vi-cmd-mode
-bindkey "^?" backward-delete-char
+bindkey "^?" backward-delete-char # Fix backspace under Vi mode.
 bindkey "^R" history-incremental-search-backward
 bindkey "^U" kill-whole-line
 bindkey -M vicmd "R" custom-vi-replace
 
 zstyle ":completion:*"          insert-tab pending
 zstyle ":completion:*"          list-colors ${(s.:.)LS_COLORS}
-zstyle ":completion:*"          matcher-list "m:{[:lower:]}={[:upper:]}"
+zstyle ":completion:*"          matcher-list "m:{[:lower:]}={[:upper:]}" # Works like smartcase in Vim.
 zstyle ":completion:*"          menu select
 zstyle ":completion:*"          special-dirs true
 zstyle ":completion:*:cd:*"     ignore-parents parent pwd
@@ -103,7 +103,7 @@ function git_branch {
 }
 
 function custom-vi-replace {
-  REPLACE=1 && zle vi-replace && REPLACE=0
+  replace=1 && zle vi-replace && replace=0
 }
 zle -N custom-vi-replace
 
@@ -115,7 +115,7 @@ zle -N zle-line-init && zle -N zle-keymap-select
 function zsh_mode {
   if [[ $KEYMAP == vicmd ]]; then
     echo "%F{red}E%f"
-  elif [[ $REPLACE -eq 1 ]]; then
+  elif [[ $replace -eq 1 ]]; then
     echo "%F{magenta}R%f"
   else
     echo "%F{blue}$%f"

@@ -22,7 +22,6 @@ set nowrap
 set showbreak=+
 set spelllang=en,sv
 set textwidth=78
-set timeoutlen=2000
 set virtualedit=block
 set wildmode=longest,list
 
@@ -160,11 +159,6 @@ nnoremap > <C-w>>
 nnoremap <Backspace> :nohlsearch<CR>
 nnoremap <Tab>       :LustyBufferExplorer<CR>
 
-nnoremap <C-j> }
-nnoremap <C-k> {
-vnoremap <C-j> }
-vnoremap <C-k> {
-
 vnoremap <Leader>ga :Gist -a<CR>
 vnoremap <Leader>gg :Gist<CR>
 vnoremap <Leader>ne y:enew<CR>P
@@ -227,6 +221,7 @@ function! ColorColumn()
 endfunction
 
 function CompleteTab()
+  " Get the character left of the cursor.
   let char = getline('.')[col('.')-2]
 
   if empty(char) || char == " "
@@ -248,7 +243,8 @@ function LineNumber()
   endif
 endfunction
 
-autocmd BufRead * execute "normal g'\""
+" Check if last cursor position still exist and if so then go to it.
+autocmd BufRead * if line("'\"") <= line("$") | exe "normal! g`\"" | endif
 
 autocmd BufNewFile,BufRead *.blowfish,README,TODO setlocal filetype=text
 autocmd BufNewFile,BufRead *.conf,config          setlocal filetype=conf
