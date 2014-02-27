@@ -1,11 +1,15 @@
 " Göran Gustafsson <gustafsson.g@gmail.com>
 
-call pathogen#infect()
-call pathogen#helptags()
+if !exists("g:dont_run_again")
+  let g:dont_run_again = 1
 
-filetype plugin indent on
-syntax enable
-colorscheme ninja
+  call pathogen#infect()
+  call pathogen#helptags()
+
+  filetype plugin indent on
+  syntax enable
+  colorscheme ninja
+endif
 
 if has("gui_running")
   set guicursor+=a:blinkon0
@@ -181,7 +185,11 @@ if has("gui_running") && has("mac")
     set columns=204
     set lines=53
   endfunction
-  call FontSetup()
+  if !exists("g:dont_set_font_again")
+    let g:dont_set_font_again = 1
+
+    call FontSetup()
+  endif
 
   function! FullScreen()
     if &guifont != "Menlo:h24"
@@ -248,15 +256,20 @@ function! LineNumber()
   endif
 endfunction
 
-" Check if last cursor position still exist and if so then go to it.
-autocmd BufRead * if line("'\"") <= line("$") | exe "normal! g`\"" | endif
+augroup Main
+  autocmd!
+  autocmd BufWritePost ~/.vimrc source %
 
-autocmd BufNewFile,BufRead *.blowfish,README,TODO setlocal filetype=text
-autocmd BufNewFile,BufRead *.conf,config          setlocal filetype=conf
-autocmd BufNewFile,BufRead *.md                   setlocal filetype=markdown
-autocmd BufNewFile,BufRead *.todo                 setlocal filetype=todo
+  " Check if last cursor position still exist and if so then go to it.
+  autocmd BufRead * if line("'\"") <= line("$") | exe "normal! g`\"" | endif
 
-autocmd FileType gitcommit          setlocal colorcolumn=73 nolist spell textwidth=72
-autocmd FileType help               setlocal colorcolumn=
-autocmd FileType markdown,text,todo setlocal colorcolumn=79
-autocmd FileType markdown,python    setlocal expandtab shiftwidth=4 softtabstop=4
+  autocmd BufNewFile,BufRead *.blowfish,README,TODO setlocal filetype=text
+  autocmd BufNewFile,BufRead *.conf,config          setlocal filetype=conf
+  autocmd BufNewFile,BufRead *.md                   setlocal filetype=markdown
+  autocmd BufNewFile,BufRead *.todo                 setlocal filetype=todo
+
+  autocmd FileType gitcommit          setlocal colorcolumn=73 nolist spell textwidth=72
+  autocmd FileType help               setlocal colorcolumn=
+  autocmd FileType markdown,text,todo setlocal colorcolumn=79
+  autocmd FileType markdown,python    setlocal expandtab shiftwidth=4 softtabstop=4
+augroup END

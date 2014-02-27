@@ -155,6 +155,7 @@ if [[ $OSTYPE == darwin* ]]; then
   alias vl='sudo tail -n $LINES -f /var/log/system.log'
   alias webcam="imagesnap -t 2 -w 1"
   alias wifiscan="/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport --scan"
+  alias zreload="source ~/.zshenv && source ~/.zshrc && echo 'Zsh reloaded.'"
 
   alias brewi="brew install"
   alias brewr="brew uninstall"
