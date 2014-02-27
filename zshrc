@@ -131,7 +131,7 @@ else
 fi
 
 # GLEG Tatooine ~ $
-PROMPT='%B${(U)USER} $zsh_host%b ${PWD/$HOME/~} %B$(zsh_mode)%b '
+PROMPT='%B$zsh_host%b ${PWD/$HOME/~} %B$(zsh_mode)%b '
 # $ 0 master
 RPROMPT='%B%F{blue}$%f%b %?%B$(git_branch)%b'
 
