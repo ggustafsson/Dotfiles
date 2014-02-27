@@ -127,10 +127,10 @@ if [[ $HOST == Coruscant* ]]; then
 elif [[ $HOST == *-VM ]]; then
   zsh_host="%F{green}%m%f"
 else
-  zsh_host="%F{cyan}%m%f"
+  zsh_host="%F{red}%m%f"
 fi
 
-# GLEG Tatooine ~ $
+# Coruscant ~ $
 PROMPT='%B$zsh_host%b ${PWD/$HOME/~} %B$(zsh_mode)%b '
 # $ 0 master
 RPROMPT='%B%F{blue}$%f%b %?%B$(git_branch)%b'

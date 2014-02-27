@@ -43,10 +43,13 @@ set ignorecase
 set incsearch
 set smartcase
 
+" ~/.vimrc [+] [utf-8] [unix] [vim]    1, 46/260
 set laststatus=2
 set statusline=%(\ %F\ %)
+set statusline+=%(%r\ %)
 set statusline+=%(%m\ %)
-set statusline+=%([%{&fenc==''?&enc:&fenc}]\ %)
+set statusline+=%([%{&fileencoding==''?&encoding:&fileencoding}]\ %)
+set statusline+=%([%{&fileformat}]\ %)
 set statusline+=%(%y\ %)
 set statusline+=%(%{&paste?'[paste]':''}\ %)
 set statusline+=%=
@@ -85,10 +88,10 @@ let g:NERDTreeDirArrows = 0
 let g:NERDTreeMinimalUI = 1
 let g:NERDTreeStatusline = " NERDTree"
 
-command -nargs=? Helpt tab help <args>
+command! -nargs=? Helpt tab help <args>
 cabbrev helpt Helpt
 
-command -nargs=? S sudo w !sudo tee %
+command! -nargs=? S sudo w !sudo tee %
 
 if has("mac")
   if has("gui")
@@ -171,7 +174,7 @@ inoremap <expr><Tab> CompleteTab()
 inoremap jj          <Esc>
 
 if has("gui_running") && has("mac")
-  function FontSetup()
+  function! FontSetup()
     set guifont=Menlo:h12
     set linespace=1
 
@@ -180,7 +183,7 @@ if has("gui_running") && has("mac")
   endfunction
   call FontSetup()
 
-  function FullScreen()
+  function! FullScreen()
     if &guifont != "Menlo:h24"
       set guifont=Menlo:h24
       set fullscreen
@@ -191,9 +194,11 @@ if has("gui_running") && has("mac")
   endfunction
 endif
 
-function BufferDelete()
+function! BufferDelete()
   if &modified
-    echoerr "No write since last change. Not closing buffer!"
+    echohl ErrorMsg
+    echo "No write since last change. Not closing buffer!"
+    echohl None
   else
     let s:total_nr_buffers = len(filter(range(1, bufnr("$")), "buflisted(v:val)"))
 
@@ -220,7 +225,7 @@ function! ColorColumn()
   endif
 endfunction
 
-function CompleteTab()
+function! CompleteTab()
   " Get the character left of the cursor.
   let char = getline('.')[col('.')-2]
 
@@ -231,7 +236,7 @@ function CompleteTab()
   endif
 endfunction
 
-function LineNumber()
+function! LineNumber()
   if &relativenumber == 1
     echo "set nonumber | set norelativenumber"
     set nonumber
