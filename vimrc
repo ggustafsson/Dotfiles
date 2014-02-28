@@ -171,9 +171,6 @@ vnoremap <Leader>gg :Gist<CR>
 vnoremap <Leader>ne y:enew<CR>P
 vnoremap <Leader>so :sort<CR>
 
-vnoremap <Tab>   >gv
-vnoremap <S-Tab> <gv
-
 inoremap <expr><Tab> CompleteTab()
 inoremap jj          <Esc>
 
