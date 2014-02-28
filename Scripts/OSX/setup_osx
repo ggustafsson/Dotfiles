@@ -71,6 +71,7 @@ sudo mv ~/Downloads/homebrew /usr/local
   rsync \
   ruby \
   svtplay-dl \
+  tcpdump \
   tidy \
   tmux \
   tree \
