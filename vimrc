@@ -117,12 +117,8 @@ nnoremap <Leader>ft :set filetype=
 nnoremap <Leader>ga :Gist -a<CR>
 nnoremap <Leader>gg :Gist<CR>
 nnoremap <Leader>gu :GundoToggle<CR>
-nnoremap <Leader>la :!ls -lFha "%:p:h"<CR>
 nnoremap <Leader>li :set list!<CR>
-nnoremap <Leader>ll :!ls -lFh "%"<CR>
-nnoremap <Leader>ls :!ls -lFh "%:p:h"<CR>
 nnoremap <Leader>ne :enew<CR>
-nnoremap <Leader>no :edit ~/Documents/Text\ Files/Vim\ Notes.txt<CR>
 nnoremap <Leader>nu :call LineNumber()<CR>
 nnoremap <Leader>pa :set paste!<CR>
 nnoremap <Leader>re :%s//gc<Left><Left><Left>
@@ -130,7 +126,6 @@ nnoremap <Leader>rs :source ~/.vim/session.vim<CR>
 nnoremap <Leader>s2 :setlocal expandtab softtabstop=2 shiftwidth=2<CR>
 nnoremap <Leader>s4 :setlocal expandtab softtabstop=4 shiftwidth=4<CR>
 nnoremap <Leader>s8 :setlocal expandtab softtabstop=8 shiftwidth=8<CR>
-nnoremap <Leader>sc :edit ~/Documents/Text\ Files/Scratch\ Notes.txt<CR>
 nnoremap <Leader>sh :shell<CR>
 nnoremap <Leader>sp :setlocal spell!<CR>
 nnoremap <Leader>ss :mksession! ~/.vim/session.vim<CR>
@@ -138,7 +133,6 @@ nnoremap <Leader>t2 :setlocal noexpandtab shiftwidth=2 softtabstop=0 tabstop=2<C
 nnoremap <Leader>t4 :setlocal noexpandtab shiftwidth=4 softtabstop=0 tabstop=4<CR>
 nnoremap <Leader>t8 :setlocal noexpandtab shiftwidth=8 softtabstop=0 tabstop=8<CR>
 nnoremap <Leader>ta :tab sball<CR>
-nnoremap <Leader>tm :edit ~/Documents/Secure\ Notes/Temporary.blowfish<CR>
 nnoremap <Leader>to :edit ~/Documents/Text\ Files/To-do\ List.todo<CR>
 nnoremap <Leader>tr :NERDTreeToggle<CR>
 nnoremap <Leader>tw :set textwidth=78

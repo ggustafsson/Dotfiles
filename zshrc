@@ -36,6 +36,7 @@ else
   e=/media/external
 fi
 
+# This must be inside of an array otherwise "ls" will take it as one argument.
 ls_options=(--classify --color=auto --human-readable)
 
 d=~/Downloads
@@ -66,24 +67,41 @@ autoload -U url-quote-magic && zle -N self-insert url-quote-magic
 
 bindkey -v
 bindkey "jj" vi-cmd-mode
-bindkey "^?" backward-delete-char # Fix backspace under Vi mode.
+bindkey "^?" backward-delete-char # Delete with backspace under Vi mode.
 bindkey "^R" history-incremental-search-backward
 bindkey "^U" kill-whole-line
 bindkey -M vicmd "R" custom-vi-replace
 
-zstyle ":completion:*"          insert-tab pending
+zstyle ":completion:*"          insert-tab pending # Disable tabs at prompt.
 zstyle ":completion:*"          list-colors ${(s.:.)LS_COLORS}
 zstyle ":completion:*"          matcher-list "m:{[:lower:]}={[:upper:]}" # Works like smartcase in Vim.
 zstyle ":completion:*"          menu select
-zstyle ":completion:*"          special-dirs true
+zstyle ":completion:*"          special-dirs true # Make "cd ..<tab>" turn into "cd ../" etc.
 zstyle ":completion:*:cd:*"     ignore-parents parent pwd
-zstyle ":completion:*:warnings" format "zsh: no matches found."
+zstyle ":completion:*:warnings" format "zsh: no matches found." # Display warning when x<tab> don't have matches.
 
 [[ $OSTYPE == darwin* ]] && compdef _man man2pdf
 
-function precmd {
-  echo
-}
+# This code comes from /etc/bashrc under OS X Mavericks. It does two things;
+# 1. Change the current directory to the last open directory.
+# 2. Change the default title "Terminal" to the directory name + icon.
+if [[ $TERM_PROGRAM == Apple_Terminal ]]; then
+  function update_terminal_cwd {
+      local search=' '
+      local replace='%20'
+      local pwd_url="file://$HOSTNAME${PWD//$search/$replace}"
+      printf '\e]7;%s\a' "$pwd_url"
+  }
+
+  function precmd {
+    update_terminal_cwd
+    echo
+  }
+else
+  function precmd {
+    echo
+  }
+fi
 
 function git_branch {
   reference=$(git symbolic-ref HEAD 2> /dev/null) || return
