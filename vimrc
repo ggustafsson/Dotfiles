@@ -120,6 +120,7 @@ nnoremap <Leader>gu :GundoToggle<CR>
 nnoremap <Leader>li :set list!<CR>
 nnoremap <Leader>ne :enew<CR>
 nnoremap <Leader>nu :call LineNumber()<CR>
+nnoremap <Leader>ol :oldfiles<CR>
 nnoremap <Leader>pa :set paste!<CR>
 nnoremap <Leader>re :%s//gc<Left><Left><Left>
 nnoremap <Leader>rs :source ~/.vim/session.vim<CR>
@@ -228,7 +229,7 @@ function! CompleteTab()
   " Get the character left of the cursor.
   let char = getline('.')[col('.')-2]
 
-  if empty(char) || char == " "
+  if empty(char) || char == " " || char =~ '\t'
     return "\<Tab>"
   else
     return "\<C-n>"
@@ -252,7 +253,7 @@ augroup Main
   autocmd BufWritePost ~/.vimrc source %
 
   " Check if last cursor position still exist and if so then go to it.
-  autocmd BufRead * if line("'\"") <= line("$") | exe "normal! g`\"" | endif
+  autocmd BufRead * if line("'\"") <= line("$") | execute "normal! g`\"" | endif
 
   autocmd BufNewFile,BufRead *.blowfish,README,TODO setlocal filetype=text
   autocmd BufNewFile,BufRead *.conf,config          setlocal filetype=conf
@@ -260,7 +261,7 @@ augroup Main
   autocmd BufNewFile,BufRead *.todo                 setlocal filetype=todo
 
   autocmd FileType gitcommit          setlocal colorcolumn=73 nolist spell textwidth=72
-  autocmd FileType help               setlocal colorcolumn=
+  autocmd FileType help               setlocal colorcolumn= nolist
   autocmd FileType markdown,text,todo setlocal colorcolumn=79
   autocmd FileType markdown,python    setlocal expandtab shiftwidth=4 softtabstop=4
 augroup END
