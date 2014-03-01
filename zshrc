@@ -82,26 +82,9 @@ zstyle ":completion:*:warnings" format "zsh: no matches found." # Display warnin
 
 [[ $OSTYPE == darwin* ]] && compdef _man man2pdf
 
-# This code comes from /etc/bashrc under OS X Mavericks. It does two things;
-# 1. Change the current directory to the last open directory.
-# 2. Change the default title "Terminal" to the directory name + icon.
-if [[ $TERM_PROGRAM == Apple_Terminal ]]; then
-  function update_terminal_cwd {
-      local search=' '
-      local replace='%20'
-      local pwd_url="file://$HOSTNAME${PWD//$search/$replace}"
-      printf '\e]7;%s\a' "$pwd_url"
-  }
-
-  function precmd {
-    update_terminal_cwd
-    echo
-  }
-else
-  function precmd {
-    echo
-  }
-fi
+function precmd {
+  echo
+}
 
 function git_branch {
   reference=$(git symbolic-ref HEAD 2> /dev/null) || return
