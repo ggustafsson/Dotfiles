@@ -157,8 +157,8 @@ nnoremap - <C-w>-
 nnoremap < <C-w><
 nnoremap > <C-w>>
 
-nnoremap <Backspace> :nohlsearch<CR>
-nnoremap <Tab>       :LustyBufferExplorer<CR>
+nnoremap <C-l> :nohlsearch<CR>
+nnoremap <Tab> :LustyBufferExplorer<CR>
 
 vnoremap <Leader>ga :Gist -a<CR>
 vnoremap <Leader>gg :Gist<CR>
