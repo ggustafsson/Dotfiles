@@ -12,12 +12,12 @@
 # the argument "GL" is used then the working directory would be changed to
 # "/Users/GLEG" instead. No more "cd ../../.." :)
 #
-# This script is best used from an alias. I have this in ~/.zshrc:
+# This script must be used from an alias. I have this in ~/.zshrc:
 #
-# alias ..=". dotdot"
+# alias ..="source dotdot"
 #
-# The dot before the script name must be there otherwise the current directory
-# will not change in the current shell.
+# The source command before the script name must be there to make the script
+# run in the current shell.
 
 # Usage: ..
 #        .. <pattern>

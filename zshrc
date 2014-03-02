@@ -151,6 +151,7 @@ if [[ $OSTYPE == darwin* ]]; then
   alias eject="osascript -e 'tell application \"Finder\" to eject (every disk whose ejectable is true)' && echo 'Ejecting all external drives.'"
   alias gvimdiff='~/Applications/MacVim.app/Contents/MacOS/Vim -d -g $* &> /dev/null'
   alias o="open"
+  alias tim="caffeinate tim"
   alias top="top -o cpu -s 2"
   alias tree="tree --charset ascii -N"
   alias vl='sudo tail -n $LINES -f /var/log/system.log'
@@ -163,8 +164,8 @@ if [[ $OSTYPE == darwin* ]]; then
   alias brews="brew search"
   alias brewu="brew update && brew upgrade"
 
-  alias mext="open smb://10.11.12.3/External"
-  alias umext='umount //$USER@10.11.12.3/External'
+  alias mext="open smb://$USER@10.11.12.3/External"
+  alias umext="umount //$USER@10.11.12.3/External"
 else
   if type -p apt-get &> /dev/null; then
     alias apti="sudo apt-get install"
@@ -180,6 +181,7 @@ fi
 alias bigf="du -sk * | sort --numeric-sort --reverse | head"
 alias df="df -h"
 alias du="du -sh"
+alias h="source h"
 alias hist="history -i 1 | less"
 alias iip="curl icanhazip.com"
 alias ka="killall"
@@ -189,7 +191,7 @@ alias recf="ls -t | head -n 5"
 alias wgetp="wget --adjust-extension --convert-links --page-requisites"
 alias ycal='cal $(date +%Y)'
 
-alias ..=". dotdot"
+alias ..="source dotdot"
 alias cdh="dirs -v | sort --reverse"
 alias cdj='cat ~/.saved_pwd && cd "$(< ~/.saved_pwd)"'
 alias cds='echo "Saving current path." && echo $PWD >| ~/.saved_pwd'
@@ -220,7 +222,7 @@ alias gin="git init"
 alias glo="git log"
 alias gmv="git mv"
 alias gpl="git pull"
-alias gpu='git push && [[ $OSTYPE == darwin* ]] && say fuck yeah'
+alias gpu="git push"
 alias grm="git rm"
 alias gst="git status --branch --short"
 alias gun="git reset --soft HEAD^"
@@ -229,7 +231,7 @@ alias int="tim --interval"
 alias pomo="tim --pomodoro"
 alias rint="tim --rinterval"
 
-alias mkcd=". mkcd"
+alias mkcd="source mkcd"
 alias mkdir="mkdir -pv"
 
 alias svtplay-dl="svtplay-dl --resume"
@@ -237,11 +239,3 @@ alias youtube-dl="youtube-dl --continue --title"
 
 alias tm="tmux"
 alias tma="tmux attach"
-
-function h {
-  if [[ $# -gt 0 ]]; then
-    history -i 1 | grep "$*"
-  else
-    history -20
-  fi
-}

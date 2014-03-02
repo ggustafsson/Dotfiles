@@ -1,0 +1,22 @@
+#!/usr/bin/env zsh
+
+# Written by Göran Gustafsson <gustafsson.g@gmail.com>.
+
+# Description: This script either displays 20 history entries or displays
+# entries all and use grep + the second argument to show the ones of interest.
+#
+# This script must be used from an alias. I have this in ~/.zshrc:
+#
+# alias h="source h"
+#
+# The source command before the script name must be there to make the script
+# run in the current shell.
+
+# Usage: h
+#        h <pattern>
+
+if [[ $# -gt 0 ]]; then
+  history -i 1 | grep "$*"
+else
+  history -20
+fi
