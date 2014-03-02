@@ -68,6 +68,7 @@ sudo mv ~/Downloads/homebrew /usr/local
   p7zip \
   python \
   python3 \
+  renameutils \
   rsync \
   ruby \
   svtplay-dl \
