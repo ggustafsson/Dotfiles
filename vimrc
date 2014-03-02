@@ -7,6 +7,8 @@ if !exists("g:dont_run_again")
   call pathogen#helptags()
 
   filetype plugin indent on
+  runtime macros/matchit.vim
+
   syntax enable
   colorscheme ninja
 endif
@@ -95,7 +97,8 @@ let g:NERDTreeStatusline = " NERDTree"
 command! -nargs=? Helpt tab help <args>
 cabbrev helpt Helpt
 
-command! -nargs=? S sudo w !sudo tee %
+command! -nargs=? Sudo w !sudo tee %
+cabbrev sudo Sudo
 
 if has("mac")
   if has("gui")
@@ -109,6 +112,7 @@ endif
 nnoremap <Leader>bd :call BufferDelete()<CR>
 nnoremap <Leader>cc :call ColorColumn()<CR>
 nnoremap <Leader>cd :cd %:p:h<CR>:pwd<CR>
+nnoremap <Leader>co :call NERDComment("n", "toggle")<CR>
 nnoremap <Leader>do :LustyFilesystemExplorer ~/Documents/Text\ Files<CR>
 nnoremap <Leader>ed :LustyFilesystemExplorerFromHere<CR>
 nnoremap <Leader>eh :LustyFilesystemExplorer ~<CR>
@@ -120,7 +124,6 @@ nnoremap <Leader>gu :GundoToggle<CR>
 nnoremap <Leader>li :set list!<CR>
 nnoremap <Leader>ne :enew<CR>
 nnoremap <Leader>nu :call LineNumber()<CR>
-nnoremap <Leader>ol :oldfiles<CR>
 nnoremap <Leader>pa :set paste!<CR>
 nnoremap <Leader>re :%s//gc<Left><Left><Left>
 nnoremap <Leader>rs :source ~/.vim/session.vim<CR>
@@ -144,9 +147,6 @@ nnoremap <Leader>wr :set wrap!<CR>
 nnoremap <Leader>ws :%s/\s\+$//<CR>:nohlsearch<CR>
 nnoremap <Leader>zs :edit ~/.zshrc<CR>
 
-nnoremap <Leader><Space> :call NERDComment("n", "Toggle")<CR>
-vnoremap <Leader><Space> :call NERDComment("n", "Toggle")<CR>
-
 nnoremap vil ^vg_
 nnoremap Y   Vy
 
@@ -161,6 +161,7 @@ nnoremap > <C-w>>
 nnoremap <C-l> :nohlsearch<CR>
 nnoremap <Tab> :LustyBufferExplorer<CR>
 
+vnoremap <Leader>co :call NERDComment("x", "toggle")<CR>
 vnoremap <Leader>ga :Gist -a<CR>
 vnoremap <Leader>gg :Gist<CR>
 vnoremap <Leader>ne y:enew<CR>P
