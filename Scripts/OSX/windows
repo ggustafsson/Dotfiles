@@ -1,0 +1,31 @@
+#!/usr/bin/env zsh
+
+# Written by Göran Gustafsson <gustafsson.g@gmail.com>.
+
+# Description: This script automatically open up new Safari and Terminal
+# windows and moves them to my external display.
+
+# Usage: windows
+
+echo "Opening new windows for Safari and Terminal."
+
+osascript -e '
+  tell application "System Events"
+    tell application process "Safari"
+      set frontmost to true
+      click menu item "New Window" of menu 1 of menu bar item "File" of menu bar 1
+    end tell
+
+    tell application "Safari"
+      set bounds of window 1 to {1600, 22, 3040, 1080}
+    end tell
+
+    tell application process "Terminal"
+      set frontmost to true
+      click menu item "New Window with Settings - Default" of menu 1 of menu item "New Window" of menu 1 of menu bar item "Shell" of menu bar 1
+    end tell
+
+    tell application "Terminal"
+      set position of window 1 to {1440, 22}
+    end tell
+  end tell' > /dev/null

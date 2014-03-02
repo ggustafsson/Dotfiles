@@ -2,23 +2,32 @@
 
 # Written by Göran Gustafsson <gustafsson.g@gmail.com>.
 
-# Description: This script 
+# Description: This script automatically merges all Safari and Terminal
+# windows. I use it because i often have extra windows of both on my external
+# display and i want to merge them quickly when i unplug the display.
 
 # Usage: merge
 
 echo "Merging all windows for Safari and Terminal."
 
-# "set frontmost to true" is needed if not executed from Terminal.
+# The Safari part is ugly because i can't focus window 1 and merge all windows
+# directly. I have to focus window 2, merge all windows and then move it.
 osascript -e '
   tell application "System Events"
     tell application process "Terminal"
       click menu item "Merge All Windows" of menu 1 of menu bar item "Window" of menu bar 1
     end tell
-  end tell' > /dev/null
 
-osascript -e '
-  tell application "System Events"
     tell application process "Safari"
+      set frontmost to true
       click menu item "Merge All Windows" of menu 1 of menu bar item "Window" of menu bar 1
+    end tell
+
+    tell application "Safari"
+      set bounds of window 1 to {0, 22, 1320, 853}
+    end tell
+
+    tell application process "Terminal"
+      set frontmost to true
     end tell
   end tell' > /dev/null
