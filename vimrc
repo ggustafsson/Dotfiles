@@ -254,12 +254,12 @@ augroup Main
   autocmd BufWritePost ~/.vimrc source %
 
   " Check if last cursor position still exist and if so then go to it.
-  autocmd BufRead * if line("'\"") <= line("$") | execute "normal! g`\"" | endif
+  autocmd BufReadPost * if line("'\"") <= line("$") | execute "normal! g`\"" | endif
 
-  autocmd BufNewFile,BufRead *.blowfish,README,TODO setlocal filetype=text
-  autocmd BufNewFile,BufRead *.conf,config          setlocal filetype=conf
-  autocmd BufNewFile,BufRead *.md                   setlocal filetype=markdown
-  autocmd BufNewFile,BufRead *.todo                 setlocal filetype=todo
+  autocmd BufNewFile,BufReadPost *.blowfish,README,TODO setlocal filetype=text
+  autocmd BufNewFile,BufReadPost *.conf,config          setlocal filetype=conf
+  autocmd BufNewFile,BufReadPost *.md                   setlocal filetype=markdown
+  autocmd BufNewFile,BufReadPost *.todo                 setlocal filetype=todo
 
   autocmd FileType gitcommit          setlocal colorcolumn=73 nolist spell textwidth=72
   autocmd FileType help               setlocal colorcolumn= nolist

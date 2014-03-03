@@ -37,7 +37,7 @@ else
 fi
 
 # This must be inside of an array otherwise "ls" will take it as one argument.
-ls_options=(--classify --color=auto --human-readable)
+ls_options=(--classify --color=auto --human-readable -v)
 
 d=~/Downloads
 p=~/Projects
@@ -181,11 +181,9 @@ fi
 alias bigf="du -sk * | sort --numeric-sort --reverse | head"
 alias df="df -h"
 alias du="du -sh"
-alias h="source h"
-alias hist="history -i 1 | less"
 alias iip="curl icanhazip.com"
 alias ka="killall"
-alias ls='ls $ls_options'
+alias l="less"
 alias pyweb="python3 -m http.server 8080"
 alias recf="ls -t | head -n 5"
 alias wgetp="wget --adjust-extension --convert-links --page-requisites"
@@ -198,9 +196,6 @@ alias cds='echo "Saving current path." && echo $PWD >| ~/.saved_pwd'
 
 alias cl="wc -l"
 alias cw="wc -w"
-alias g="grep"
-alias l="less"
-alias rg="rgrep"
 
 alias cp="cp -vi"
 alias mv="mv -vi"
@@ -212,6 +207,10 @@ alias csvv='column -t -s ";"'
 alias d="ls -l"
 alias da="ls --all -l"
 alias la="ls --all"
+alias ls='ls $ls_options'
+
+alias g="grep"
+alias rg="rgrep"
 
 alias gad="git add"
 alias gca="git commit --all --verbose"
@@ -226,6 +225,9 @@ alias gpu="git push"
 alias grm="git rm"
 alias gst="git status --branch --short"
 alias gun="git reset --soft HEAD^"
+
+alias h="source h"
+alias hist="history -i 1 | less"
 
 alias int="tim --interval"
 alias pomo="tim --pomodoro"
