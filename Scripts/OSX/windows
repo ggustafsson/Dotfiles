@@ -7,7 +7,7 @@
 
 # Usage: windows
 
-echo "Opening new windows for Safari and Terminal."
+echo "Opening new windows on external display."
 
 osascript -e '
   tell application "System Events"
