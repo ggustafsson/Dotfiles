@@ -28,6 +28,7 @@ set nowrap
 set showbreak=+
 set spelllang=en,sv
 set textwidth=78
+set timeoutlen=2000
 set virtualedit=block
 set wildmode=longest,list
 
@@ -155,11 +156,11 @@ nnoremap k gk
 
 nnoremap + <C-w>+
 nnoremap - <C-w>-
-nnoremap < <C-w><
-nnoremap > <C-w>>
+nnoremap ? <C-w>>
+nnoremap _ <C-w><
 
-nnoremap <C-l> :nohlsearch<CR>
-nnoremap <Tab> :LustyBufferExplorer<CR>
+nnoremap <Backspace> :nohlsearch<CR>
+nnoremap <Tab>       :LustyBufferExplorer<CR>
 
 vnoremap <Leader>co :call NERDComment("x", "toggle")<CR>
 vnoremap <Leader>ga :Gist -a<CR>
