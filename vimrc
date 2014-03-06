@@ -95,10 +95,11 @@ let g:NERDTreeDirArrows = 0
 let g:NERDTreeMinimalUI = 1
 let g:NERDTreeStatusline = " NERDTree"
 
+" -nargs=? means 0 or 1 arguments are allowed.
 command! -nargs=? Helpt tab help <args>
 cabbrev helpt Helpt
 
-command! -nargs=? Sudo w !sudo tee %
+command! Sudo w !sudo tee %
 cabbrev sudo Sudo
 
 if has("mac")
