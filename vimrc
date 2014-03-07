@@ -95,6 +95,11 @@ let g:NERDTreeDirArrows = 0
 let g:NERDTreeMinimalUI = 1
 let g:NERDTreeStatusline = " NERDTree"
 
+cabbrev Q  q
+cabbrev W  w
+cabbrev Wq wq
+cabbrev X  w
+
 " -nargs=? means 0 or 1 arguments are allowed.
 command! -nargs=? Helpt tab help <args>
 cabbrev helpt Helpt
