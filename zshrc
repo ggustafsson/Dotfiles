@@ -179,6 +179,7 @@ else
 fi
 
 alias bigf="du -sk * | sort --numeric-sort --reverse | head"
+alias depeche="curl --silent http://www.depechemode.com/tour/ | html2text -width 1024 | grep 'Depeche mode in' | sed 's/http:.*Depeche Mode in /-/'"
 alias df="df -h"
 alias du="du -sh"
 alias iip="curl icanhazip.com"

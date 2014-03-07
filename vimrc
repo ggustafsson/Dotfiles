@@ -125,7 +125,7 @@ nnoremap <Leader>gg :Gist<CR>
 nnoremap <Leader>gu :GundoToggle<CR>
 nnoremap <Leader>li :set list!<CR>
 nnoremap <Leader>ne :enew<CR>
-nnoremap <Leader>nu :call LineNumber()<CR>
+nnoremap <Leader>nu :set number! \| set relativenumber!<CR>
 nnoremap <Leader>pa :set paste!<CR>
 nnoremap <Leader>re :%s//gc<Left><Left><Left>
 nnoremap <Leader>rs :source ~/.vim/session.vim<CR>
@@ -236,18 +236,6 @@ function! CompleteTab()
     return "\<Tab>"
   else
     return "\<C-n>"
-  endif
-endfunction
-
-function! LineNumber()
-  if &relativenumber == 1
-    echo "set nonumber | set norelativenumber"
-    set nonumber
-    set norelativenumber
-  else
-    echo "set number | set relativenumber"
-    set number
-    set relativenumber
   endif
 endfunction
 
