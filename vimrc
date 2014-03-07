@@ -24,6 +24,7 @@ set confirm
 set cryptmethod=blowfish
 set formatoptions=cjlnoqrt
 set hidden
+set history=100
 set nowrap
 set showbreak=+
 set spelllang=en,sv
@@ -98,7 +99,7 @@ let g:NERDTreeStatusline = " NERDTree"
 cabbrev Q  q
 cabbrev W  w
 cabbrev Wq wq
-cabbrev X  w
+cabbrev X  x
 
 " -nargs=? means 0 or 1 arguments are allowed.
 command! -nargs=? Helpt tab help <args>
