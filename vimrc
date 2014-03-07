@@ -104,6 +104,9 @@ cabbrev X  w
 command! -nargs=? Helpt tab help <args>
 cabbrev helpt Helpt
 
+command! -nargs=? Helpv vertical help <args>
+cabbrev helpv Helpv
+
 command! Sudo w !sudo tee %
 cabbrev sudo Sudo
 
@@ -132,7 +135,7 @@ nnoremap <Leader>li :set list!<CR>
 nnoremap <Leader>ne :enew<CR>
 nnoremap <Leader>nu :set number! \| set relativenumber!<CR>
 nnoremap <Leader>pa :set paste!<CR>
-nnoremap <Leader>re :%s//gc<Left><Left><Left>
+nnoremap <Leader>re :%s//gc \| nohlsearch<C-b><Right><Right><Right>
 nnoremap <Leader>rs :source ~/.vim/session.vim<CR>
 nnoremap <Leader>s2 :setlocal expandtab softtabstop=2 shiftwidth=2<CR>
 nnoremap <Leader>s4 :setlocal expandtab softtabstop=4 shiftwidth=4<CR>
@@ -212,7 +215,9 @@ function! BufferDelete()
 
     if s:total_nr_buffers == 1
       bdelete
+      echohl WarningMsg
       echo "Buffer deleted. Created new buffer."
+      echohl None
     else
       bprevious
       bdelete #
