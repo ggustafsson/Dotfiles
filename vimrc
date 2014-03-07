@@ -121,7 +121,7 @@ endif
 
 nnoremap <Leader>bd :call BufferDelete()<CR>
 nnoremap <Leader>cc :call ColorColumn()<CR>
-nnoremap <Leader>cd :cd %:p:h<CR>:pwd<CR>
+nnoremap <Leader>cd :cd %:p:h \| pwd<CR>
 nnoremap <Leader>co :call NERDComment("n", "toggle")<CR>
 nnoremap <Leader>do :LustyFilesystemExplorer ~/Documents/Text\ Files<CR>
 nnoremap <Leader>ed :LustyFilesystemExplorerFromHere<CR>
@@ -154,7 +154,7 @@ nnoremap <Leader>un :edit!<CR>
 nnoremap <Leader>vi :edit ~/.vimrc<CR>
 nnoremap <Leader>w3 :!~/Scripts/validate "%"<CR>
 nnoremap <Leader>wr :set wrap!<CR>
-nnoremap <Leader>ws :%s/\s\+$//<CR>:nohlsearch<CR>
+nnoremap <Leader>ws :%s/\s\+$// \| nohlsearch<CR>
 nnoremap <Leader>zs :edit ~/.zshrc<CR>
 
 nnoremap vil ^vg_
