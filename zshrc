@@ -137,6 +137,8 @@ PROMPT='%B$zsh_host%b ${PWD/$HOME/~} %B$(zsh_mode)%b '
 RPROMPT='%B%F{blue}$%f%b %?%B$(git_branch)%b'
 
 if [[ $HOST == Hoth ]]; then
+  alias killxbmc="xbmc xbmc.bin xbmc-standalone"
+
   alias mccreative="cd ~/Minecraft\ -\ Creative && java -Xmx3072M -Xms1024M -jar minecraft_creative.jar nogui && cd -"
   alias mccreativelog='tail -n $LINES -f ~/Minecraft\ -\ Creative/server.log'
   alias mcsurvival="cd ~/Minecraft\ -\ Survival && java -Xmx3072M -Xms1024M -jar minecraft_survival.jar nogui && cd -"

@@ -22,6 +22,7 @@ endif
 set backspace=indent,eol,start
 set confirm
 set cryptmethod=blowfish
+set encoding=utf-8
 set formatoptions=cjlnoqrt
 set hidden
 set history=100
@@ -159,7 +160,7 @@ nnoremap <Leader>ws :%s/\s\+$// \| nohlsearch<CR>
 nnoremap <Leader>zs :edit ~/.zshrc<CR>
 
 nnoremap vil ^vg_
-nnoremap Y   Vy
+nnoremap Y   y$
 
 nnoremap j gj
 nnoremap k gk

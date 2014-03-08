@@ -7,7 +7,7 @@
 
 # Dependencies: nmap
 
-# Usage: sfind
+# Usage: servf
 
 # Yes, /24 is hard-coded. Who cares?!
 network=$(ifconfig en0 | \
