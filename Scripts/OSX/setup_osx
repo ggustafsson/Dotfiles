@@ -66,6 +66,7 @@ sudo mv ~/Downloads/homebrew /usr/local
   nmap \
   openssh \
   p7zip \
+  pebble-sdk \
   python \
   python3 \
   renameutils \
