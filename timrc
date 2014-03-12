@@ -1,6 +1,8 @@
 # vim: ft=zsh
 
 if [[ $OSTYPE == darwin* ]]; then
+  #press_return=
+
   #timer_cmd=
   #timer_repeat_cmd=
 
@@ -11,12 +13,13 @@ if [[ $OSTYPE == darwin* ]]; then
 
   pomodoro_cmd="say working session is over. you win && open ~/Storage/Celebrate.flv"
   #pomodoro_repeat_cmd=
-  pomodoro_press_return=0
 
   #pomodoro_work=
   #pomodoro_break=
   #pomodoro_stop=
 else
+  #press_return=
+
   #timer_cmd=
   #timer_repeat_cmd=
 
@@ -27,7 +30,6 @@ else
 
   #pomodoro_cmd=
   #pomodoro_repeat_cmd=
-  #pomodoro_press_return=
 
   #pomodoro_work=
   #pomodoro_break=
