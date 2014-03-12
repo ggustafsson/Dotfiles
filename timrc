@@ -9,13 +9,15 @@ if [[ $OSTYPE == darwin* ]]; then
   #interval=
 
   work_cmd="terminal-notifier -message 'Start working now!' -title Tim -activate com.apple.Terminal >& /dev/null && say start working now"
-  break_cmd="terminal-notifier -message 'Take a little break!' -title Tim -activate com.apple.Terminal >& /dev/null && say take a little break"
+  break_cmd="terminal-notifier -message 'Take a break now!' -title Tim -activate com.apple.Terminal >& /dev/null && say take a break now"
+  long_break_cmd="terminal-notifier -message 'Take a long break now!' -title Tim -activate com.apple.Terminal >& /dev/null && say take a long break now"
 
-  pomodoro_cmd="say working session is over. you win && open ~/Storage/Celebrate.flv"
+  pomodoro_cmd="say work is now over. you win && open ~/Storage/Celebrate.flv"
   #pomodoro_repeat_cmd=
 
   #pomodoro_work=
   #pomodoro_break=
+  #pomodoro_long_break=
   #pomodoro_stop=
 else
   #press_return=
@@ -27,11 +29,13 @@ else
 
   #work_cmd=
   #break_cmd=
+  #long_break_cmd=
 
   #pomodoro_cmd=
   #pomodoro_repeat_cmd=
 
   #pomodoro_work=
   #pomodoro_break=
+  #pomodoro_long_break=
   #pomodoro_stop=
 fi
