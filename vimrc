@@ -114,7 +114,7 @@ cabbrev sudo Sudo
 
 if has("mac")
   if has("gui")
-    nnoremap <Leader>fu :call FullScreen()<CR>
+    nnoremap <Leader>fo :call FontSize()<CR>
   endif
 
   nnoremap <Leader>fi :silent !open "%:p:h"<CR>
@@ -196,13 +196,11 @@ if has("gui_running") && has("mac")
     call FontSetup()
   endif
 
-  function! FullScreen()
-    if &guifont != "Menlo:h24"
-      set guifont=Menlo:h24
-      set fullscreen
+  function! FontSize()
+    if &guifont != "Menlo:h22"
+      set guifont=Menlo:h22
     else
       call FontSetup()
-      set nofullscreen
     endif
   endfunction
 endif
