@@ -9,6 +9,7 @@
 rm ~/examples.desktop
 
 sudo apt-get install \
+  curl \
   git \
   nmap \
   tmux \
