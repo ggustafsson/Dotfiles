@@ -191,6 +191,7 @@ alias l="less"
 alias nsfw="reddit ~/.reddit/config_nsfw"
 alias pyweb="python3 -m http.server 8080"
 alias recf="ls -t | head -n 5"
+alias tv='vim $todo_file'
 alias wgetp="wget --adjust-extension --convert-links --page-requisites"
 alias ycal='cal $(date +%Y)'
 

@@ -3,8 +3,8 @@
 # Written by Göran Gustafsson <gustafsson.g@gmail.com>.
 
 # Description: This script prints out the content of my $todo_file file or
-# adds a new entry to the bottom of the file. todo_file is set from ~/.zshrc
-# with "export todo_file=path".
+# adds a new entry to the bottom of the file. The variable todo_file is set
+# from ~/.zshrc with "export todo_file=path".
 
 # Usage: t
 #        t <text>
@@ -15,23 +15,13 @@ if [[ -z $todo_file ]]; then
 fi
 
 if [[ $# -gt 0 ]]; then
-  if [[ -f $todo_file ]]; then
-    echo $* >> $todo_file
-  else
-    echo $* > $todo_file
-  fi
-  echo "Added new entry to to-do list."
+  echo "Adding new entry to to-do list."
+  echo $* >>| $todo_file
 else
   if [[ ! -f $todo_file ]]; then
     echo "File '$todo_file' does not exist! Exiting..."
     exit 1
   fi
 
-  if [[ ! -s $todo_file ]]; then
-    echo "No entries found!"
-    exit
-  fi
-
-  echo "${todo_file:t}:\n"
   cat $todo_file
 fi
