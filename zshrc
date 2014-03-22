@@ -234,10 +234,6 @@ alias gun="git reset --soft HEAD^"
 alias h="source h"
 alias hist="history -i 1 | less"
 
-alias int="tim --interval"
-alias pomo="tim --pomodoro"
-alias rint="tim --rinterval"
-
 alias mkcd="source mkcd"
 alias mkdir="mkdir -pv"
 
