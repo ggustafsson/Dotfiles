@@ -29,6 +29,7 @@ for directory in $project_dir/*; do
     clean_repos+=($directory:t)
     continue
   else
+    not_repos+=($directory:t)
     continue
   fi
 
@@ -36,11 +37,22 @@ for directory in $project_dir/*; do
   echo
 done
 
+print -P "%B%F{green}Clean repo(s):%f%b"
 if [[ ${#clean_repos} -gt 0 ]]; then
-  print -P "%B%F{green}Clean repo(s):%f%b"
   for repo_name in $clean_repos; do
     echo " * $repo_name"
   done
 else
-  echo "No clean repos found!"
+  echo " - None found"
+fi
+
+echo
+
+print -P "%B%F{blue}Not Git repo(s):%f%b"
+if [[ ${#not_repos} -gt 0 ]]; then
+  for repo_name in $not_repos; do
+    echo " * $repo_name"
+  done
+else
+  echo " - None found"
 fi
