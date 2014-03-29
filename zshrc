@@ -150,6 +150,7 @@ else
 fi
 
 if [[ $OSTYPE == darwin* ]]; then
+  alias caffeinate="caffeinate -di"
   alias eject="osascript -e 'tell application \"Finder\" to eject (every disk whose ejectable is true)' && echo 'Ejecting all external drives.'"
   alias gvimdiff='~/Applications/MacVim.app/Contents/MacOS/Vim -d -g $* &> /dev/null'
   alias o="open"
@@ -180,7 +181,6 @@ else
 fi
 
 alias bigf="du -sk * | sort --numeric-sort --reverse | head"
-alias caffeinate="caffeinate -di"
 alias df="df -h"
 alias du="du -sh"
 alias iip="curl icanhazip.com"
