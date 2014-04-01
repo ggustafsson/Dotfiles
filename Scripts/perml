@@ -1,0 +1,38 @@
+#!/usr/bin/env zsh
+
+# Written by Göran Gustafsson <gustafsson.g@gmail.com>.
+
+# Description: This script changes the permissions on all files and
+# directories under the specified path (including the root directory). The
+# permissions used are 755 for directories and 644 (or 755) for files. It also
+# removes all of the extra permission attributes under OS X.
+
+# Usage: perml <path>
+
+if [[ ! $# -eq 1 ]]; then
+  echo "Usage: $0:t [PATH]..."
+  exit
+fi
+
+directory=$1
+
+if [[ ! -d $directory ]]; then
+  echo "Directory '$directory' does not exist! Exiting..."
+  exit 1
+fi
+
+perm_dir=755
+perm_file=644
+perm_exec=$perm_dir
+
+echo "Changing permissions recursively on directory: '$directory'"
+
+if [[ $OSTYPE == darwin* ]]; then
+  find $directory -type d -exec chmod -N "{}" \; -exec chmod $perm_dir "{}" \;
+  find $directory -type f -perm +111 -exec chmod -N "{}" \; -exec chmod $perm_exec "{}" \;
+  find $directory -type f ! -perm +111 -exec chmod -N "{}" \; -exec chmod $perm_file "{}" \;
+else
+  find $directory -type d -exec chmod $perm_dir "{}" \;
+  find $directory -type f -perm +111 -exec chmod $perm_exec "{}" \;
+  find $directory -type f ! -perm +111 -exec chmod $perm_file "{}" \;
+fi

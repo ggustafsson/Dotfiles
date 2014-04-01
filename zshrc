@@ -159,15 +159,18 @@ if [[ $OSTYPE == darwin* ]]; then
   alias tree="tree --charset ascii -N"
   alias vl='sudo tail -n $LINES -f /var/log/system.log'
   alias webcam="imagesnap -t 2 -w 1"
-  alias wifiscan="/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport --scan"
 
   alias brewi="brew install"
   alias brewr="brew uninstall"
   alias brews="brew search"
   alias brewu="brew update && brew upgrade"
 
-  alias mext="open smb://$USER@10.11.12.3/External"
-  alias umext="umount //$USER@10.11.12.3/External"
+  alias mext='open smb://gleg@10.11.12.3/External'
+  alias umext='umount //gleg@10.11.12.3/External'
+
+  alias wifioff='networksetup -setairportpower en0 off && echo "Wi-Fi is turned off."'
+  alias wifion='networksetup -setairportpower en0 on && echo "Wi-Fi is turned on."'
+  alias wifiscan="/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport --scan"
 else
   if type -p apt-get &> /dev/null; then
     alias apti="sudo apt-get install"
@@ -186,7 +189,6 @@ alias du="du -sh"
 alias iip="curl icanhazip.com"
 alias ka="killall"
 alias l="less"
-alias nsfw="reddit ~/.reddit/config_nsfw"
 alias pyweb="python3 -m http.server 8080"
 alias recf="ls -t | head -n 5"
 alias tv='vim $todo_file'
