@@ -97,20 +97,11 @@ let g:NERDTreeDirArrows = 0
 let g:NERDTreeMinimalUI = 1
 let g:NERDTreeStatusline = " NERDTree"
 
-cabbrev Q  q
-cabbrev W  w
-cabbrev Wq wq
-cabbrev X  x
+command! Sudo w !sudo tee %
 
 " -nargs=? means 0 or 1 arguments are allowed.
-command! -nargs=? Helpt tab help <args>
-cabbrev helpt Helpt
-
-command! -nargs=? Helpv vertical help <args>
-cabbrev helpv Helpv
-
-command! Sudo w !sudo tee %
-cabbrev sudo Sudo
+command! -nargs=? Helpt tab help <Args>
+command! -nargs=? Helpv vertical help <Args>
 
 if has("mac")
   if has("gui")
@@ -179,7 +170,7 @@ vnoremap <Leader>gg :Gist<CR>
 vnoremap <Leader>ne y:enew<CR>P
 vnoremap <Leader>so :sort<CR>
 
-inoremap <expr><Tab> CompleteTab()
+inoremap <Expr><Tab> CompleteTab()
 inoremap jj          <Esc>
 
 if has("gui_running") && has("mac")
