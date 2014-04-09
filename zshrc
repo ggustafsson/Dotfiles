@@ -165,11 +165,11 @@ if [[ $OSTYPE == darwin* ]]; then
   alias brews="brew search"
   alias brewu="brew update && brew upgrade"
 
-  alias mext='open smb://gleg@10.11.12.3/External'
-  alias umext='umount //gleg@10.11.12.3/External'
+  alias mext="open smb://gleg@10.11.12.3/External"
+  alias umext="umount //gleg@10.11.12.3/External"
 
-  alias wifioff='networksetup -setairportpower en0 off && echo "Wi-Fi is turned off."'
-  alias wifion='networksetup -setairportpower en0 on && echo "Wi-Fi is turned on."'
+  alias wifioff="networksetup -setairportpower en0 off && echo 'Wi-Fi is turned off.'"
+  alias wifion="networksetup -setairportpower en0 on && echo 'Wi-Fi is turned on.'"
   alias wifiscan="/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport --scan"
 else
   if type -p apt-get &> /dev/null; then
@@ -208,8 +208,8 @@ alias cp="cp -vi"
 alias mv="mv -vi"
 alias rm="rm -v"
 
-alias csv='column -t -s ,'
-alias csvv='column -t -s ";"'
+alias csv="column -t -s ,"
+alias csvv="column -t -s ';'"
 
 alias d="ls -l"
 alias da="ls --all -l"
