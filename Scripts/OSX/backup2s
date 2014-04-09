@@ -14,6 +14,7 @@ destination=/media/external
 destination2=/Volumes/External
 
 directories=(
+  /Volumes/External/.data
   /Volumes/External/Disk\ Images
   /Volumes/External/Documentaries
   /Volumes/External/Movies
