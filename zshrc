@@ -183,7 +183,7 @@ else
   alias vl='tail -n $LINES -f /var/log/syslog'
 fi
 
-alias bigf="du -sk * | sort --numeric-sort --reverse | head"
+alias bigf="du -sk * | sort --reverse | head"
 alias df="df -h"
 alias du="du -sh"
 alias iip="curl icanhazip.com"
@@ -238,6 +238,9 @@ alias hist="history -i 1 | less"
 
 alias mkcd="source mkcd"
 alias mkdir="mkdir -pv"
+
+alias sort="sort --numeric-sort"
+alias suniq="sort | uniq"
 
 alias svtplay-dl="svtplay-dl --resume"
 alias youtube-dl="youtube-dl --continue --title"
