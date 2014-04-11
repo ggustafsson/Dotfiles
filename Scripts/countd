@@ -16,9 +16,9 @@ require "csv"
 csv_file = "#{Dir.home}/.countdowns"
 
 if !File.exist?(csv_file)
-  abort "File '#{csv_file}' does not exist!"
+  abort "File '#{csv_file}' does not exist! Exiting..."
 elsif CSV.read(csv_file).empty?
-  abort "No entries found!"
+  abort "No entries found! Exiting..."
 end
 
 CSV.foreach(csv_file) do |row|

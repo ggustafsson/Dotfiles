@@ -30,12 +30,12 @@ for arg; do
   echo
 
   if [[ ! -f $arg ]]; then
-    echo "File '$arg' does not exist!"
+    echo "File '$arg' does not exist! Skipping..."
     continue
   fi
 
   if [[ ! $arg == *.mp3 ]]; then
-    echo "File '$arg' does not end with 'mp3'."
+    echo "File '$arg' does not end with '.mp3'! Skipping..."
     continue
   fi
 

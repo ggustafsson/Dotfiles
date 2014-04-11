@@ -137,9 +137,9 @@ search = ARGV[1,ARGV.length].join(" ").downcase
 config = "#{Dir.home}/.swebignore"
 
 if !File.exist?(file)
-  abort "File '#{file}' does not exist!"
+  abort "File '#{file}' does not exist! Exiting..."
 elsif CSV.read(file).empty?
-  abort "No entries found!"
+  abort "No entries found! Exiting..."
 end
 
 if File.exist?(config)
