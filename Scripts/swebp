@@ -19,6 +19,9 @@ for arg; do
   if [[ ! -f $input ]]; then
     echo "File '$input' does not exist!"
     continue
+  elif [[ ! $input == *.txt ]]; then
+    echo "File '$input' does not end with txt!"
+    continue
   fi
 
   if [[ $(file -I $input) != *charset=utf-8 ]]; then
