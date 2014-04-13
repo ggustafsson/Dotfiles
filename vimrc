@@ -100,8 +100,8 @@ let g:NERDTreeStatusline = " NERDTree"
 command! Sudo w !sudo tee %
 
 " -nargs=? means 0 or 1 arguments are allowed.
-command! -nargs=? Helpt tab help <Args>
-command! -nargs=? Helpv vertical help <Args>
+command! -nargs=? Helpt tab help <args>
+command! -nargs=? Helpv vertical help <args>
 
 if has("mac")
   if has("gui")
@@ -170,7 +170,7 @@ vnoremap <Leader>gg :Gist<CR>
 vnoremap <Leader>ne y:enew<CR>P
 vnoremap <Leader>so :sort<CR>
 
-inoremap <Expr><Tab> CompleteTab()
+inoremap <expr><Tab> CompleteTab()
 inoremap jj          <Esc>
 
 if has("gui_running") && has("mac")

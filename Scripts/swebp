@@ -43,10 +43,13 @@ for arg; do
     sed 's/;[[:space:]]*/;/g;
          s/[[:space:]]*;/;/g;
          s/;;/;-;/g;
-         s/\([0-9]*\),\([0-9][0-9]\)/\1.\2/g
+         s/\([0-9]*\),\([0-9][0-9]\)/\1.\2/g;
          s/\([0-9]*\) \([0-9]*\).\([0-9][0-9]\)/\1\2.\3/g' > $output
 
-  # sed explanation: remove spaces before all values, remove spaces after all
-  # values, add "-" to all empty fields, replace "," with "." inside of amount
-  # and remove space separators inside of amount.
+  # Sed explanation:
+  # 1. Remove spaces before all values.
+  # 2. Remove spaces after all values.
+  # 3. Add - to all empty fields.
+  # 4. Replace , with . inside of amount.
+  # 5. Remove space separators inside of amount.
 done
