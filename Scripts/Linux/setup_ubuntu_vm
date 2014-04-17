@@ -9,12 +9,10 @@
 sudo apt-get install \
   apache2 \
   bind9 \
-  cdpr \
   dia \
   gparted \
   hping3 \
   mdadm \
-  nagios3 \
   ncftp \
   netperf \
   nfs-kernel-server \
@@ -33,8 +31,6 @@ sudo usermod -a -G wireshark $USER
 sudo rm \
   /etc/rc*.d/*apache2 \
   /etc/rc*.d/*bind9 \
-  /etc/rc*.d/*nagios3 \
   /etc/rc*.d/*netperf \
   /etc/rc*.d/*nfs-kernel-server \
   /etc/rc*.d/*nginx \
-  /etc/rc*.d/*postfix
