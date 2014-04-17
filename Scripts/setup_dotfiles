@@ -42,7 +42,7 @@ mkdir ~/.vim/bundle
 mkdir ~/.vim/colors
 mkdir ~/.vim/undos
 
-~/Scripts/dl_vim
+~/Scripts/dl_vim install
 
 ln -s ~/.vim/pathogen/autoload/pathogen.vim ~/.vim/autoload/
 ln -s ~/Projects/Dot\ Files/vim_syntax ~/.vim/syntax
