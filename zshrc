@@ -139,14 +139,14 @@ RPROMPT='%B%F{blue}$%f%b %?%B$(git_branch)%b'
 if [[ $HOST == Hoth ]]; then
   alias killxbmc="killall xbmc xbmc.bin xbmc-standalone"
 
-  alias mccreative="(cd ~/Minecraft\ -\ Creative && java -Xmx3072M -Xms1024M -jar minecraft_creative.jar nogui)"
-  alias mccreativelog='tail -n $LINES -f ~/Minecraft\ -\ Creative/server.log'
-  alias mcsurvival="(cd ~/Minecraft\ -\ Survival && java -Xmx3072M -Xms1024M -jar minecraft_survival.jar nogui)"
-  alias mcsurvivallog='tail -n $LINES -f ~/Minecraft\ -\ Survival/server.log'
+  alias mccreative="(cd ~/MCCreative && java -Xmx3072M -Xms1024M -jar minecraft_creative.jar nogui)"
+  alias mccreativelog='tail -n $LINES -f ~/MCCreative/server.log'
+  alias mcsurvival="(cd ~/MCSurvival && java -Xmx3072M -Xms1024M -jar minecraft_survival.jar nogui)"
+  alias mcsurvivallog='tail -n $LINES -f ~/MCSurvival/server.log'
 else
-  alias mcbackup="rsync --archive --delete --human-readable --progress -e ssh 'hoth:~/Minecraft\ -\ Creative/' ~/Storage/Game\ Files/Minecraft/Server\ -\ Creative && rsync --archive --delete --human-readable --progress -e ssh 'hoth:~/Minecraft\ -\ Survival/' ~/Storage/Game\ Files/Minecraft/Server\ -\ Survival"
-  alias mccreativelog='ssh -t hoth "tail -n $LINES -f ~/Minecraft\ -\ Creative/server.log"'
-  alias mcsurvivallog='ssh -t hoth "tail -n $LINES -f ~/Minecraft\ -\ Survival/server.log"'
+  alias mcbackup="rsync --archive --delete --human-readable --progress -e ssh hoth:~/MCCreative ~/Storage/Game\ Files/Minecraft/ && rsync --archive --delete --human-readable --progress -e ssh hoth:~/MCSurvival ~/Storage/Game\ Files/Minecraft/"
+  alias mccreativelog='ssh -t hoth "tail -n $LINES -f ~/MCCreative/server.log"'
+  alias mcsurvivallog='ssh -t hoth "tail -n $LINES -f ~/MCSurvival/server.log"'
 fi
 
 if [[ $OSTYPE == darwin* ]]; then
