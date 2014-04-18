@@ -1,7 +1,3 @@
-# Don't remember why i have this line but i assume i get annoying messages on
-# some platform without it (most likely Ubuntu?).
-IdentityFile ~/.ssh/id_rsa
-
 # I use this so the connection will die by itself when my laptop goes to
 # sleep. Otherwise i will have to kill ssh by hand when i return.
 ServerAliveInterval 15
