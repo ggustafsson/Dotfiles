@@ -19,7 +19,6 @@ sudo apt install \
   nginx \
   php5 \
   samba \
-  tcl \
   tftp \
   tftpd \
   tshark \
