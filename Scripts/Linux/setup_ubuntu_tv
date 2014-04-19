@@ -6,7 +6,7 @@
 
 # Usage: setup_ubuntu_tv
 
-sudo apt-get install \
+sudo apt install \
   default-jre \
   openssh-server \
   sshguard \
