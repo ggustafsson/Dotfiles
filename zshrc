@@ -172,11 +172,11 @@ if [[ $OSTYPE == darwin* ]]; then
   alias wifion="networksetup -setairportpower en0 on && echo 'Wi-Fi is turned on.'"
   alias wifiscan="/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport --scan"
 else
-  if type -p apt-get &> /dev/null; then
-    alias apti="sudo apt-get install"
-    alias aptr="sudo apt-get purge"
-    alias apts="apt-cache search"
-    alias aptu="sudo apt-get update && sudo apt-get upgrade"
+  if type -p apt &> /dev/null; then
+    alias apti="sudo apt install"
+    alias aptr="sudo apt remove"
+    alias apts="apt search"
+    alias aptu="sudo apt update && sudo apt full-upgrade"
   fi
 
   alias cal="cal -m"
