@@ -187,6 +187,7 @@ alias ka="killall"
 alias l="less"
 alias pyweb="python3 -m http.server 8080"
 alias recf="ls -t | head -n 5"
+alias tm="tmux attach || tmux"
 alias tv='vim $todo_file'
 alias wgetp="wget --adjust-extension --convert-links --page-requisites"
 alias ycal='cal $(date +%Y)'
@@ -240,6 +241,3 @@ alias suniq="sort | uniq"
 
 alias svtplay-dl="svtplay-dl --resume"
 alias youtube-dl="youtube-dl --continue --title"
-
-alias tm="tmux"
-alias tma="tmux attach"
