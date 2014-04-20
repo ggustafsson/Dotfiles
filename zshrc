@@ -82,10 +82,6 @@ zstyle ":completion:*:warnings" format "zsh: no matches found." # Display warnin
 
 [[ $OSTYPE == darwin* ]] && compdef _man man2pdf
 
-function precmd {
-  echo
-}
-
 function git_branch {
   reference=$(git symbolic-ref HEAD 2> /dev/null) || return
   branch=${reference#refs/heads/}
