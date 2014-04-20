@@ -12,5 +12,5 @@ if [[ $# -eq 0 ]]; then
 elif [[ $# -eq 1 ]]; then
   ls -1 $1 | wc -l
 else
-  echo "Usage: $0:t [PATH]..."
+  echo "Usage: ${0:t} [PATH]..."
 fi

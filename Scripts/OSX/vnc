@@ -7,7 +7,7 @@
 # Usage: vnc <ip/dns>
 
 if [[ ! $# -eq 1 ]]; then
-  echo "Usage: $0:t [IP/DNS]..."
+  echo "Usage: ${0:t} [IP/DNS]..."
   exit
 fi
 

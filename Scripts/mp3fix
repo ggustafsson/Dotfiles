@@ -15,7 +15,7 @@
 #        find . -type f -iname "*.mp3" -exec mp3fix "{}" \;
 
 if [[ ! $# -gt 0 ]]; then
-  echo "Usage: $0:t [FILENAME(S)]..."
+  echo "Usage: ${0:t} [FILENAME(S)]..."
   exit
 fi
 
@@ -30,16 +30,16 @@ for arg; do
   echo
 
   if [[ ! -f $arg ]]; then
-    echo "File '$arg' does not exist! Skipping..."
+    echo "File '${arg}' does not exist! Skipping..."
     continue
   fi
 
   if [[ ! $arg == *.mp3 ]]; then
-    echo "File '$arg' does not end with '.mp3'! Skipping..."
+    echo "File '${arg}' does not end with '.mp3'! Skipping..."
     continue
   fi
 
-  print -P "%B%F{cyan}Fixing tags in file '$arg'.%f%b\n"
+  print -P "%B%F{cyan}Fixing tags in file '${arg}'.%f%b\n"
 
   # All the tags that will be saved. ARTIST, ALBUM and SONG.
   tags=(TPE1 TALB TIT2)

@@ -16,7 +16,7 @@
 #        mkcd <directory1/directory2/...>
 
 if [[ ! $# -eq 1 ]]; then
-  echo "Usage: $0:t [PATH]..."
+  echo "Usage: ${0:t} [PATH]..."
   exit
 fi
 

@@ -10,7 +10,7 @@
 # Usage: backup
 
 device=Keychain
-sparseimage=/Volumes/$device/Backup.sparseimage
+sparseimage=/Volumes/${device}/Backup.sparseimage
 destination=/Volumes/Backup
 
 directories=(
@@ -36,7 +36,7 @@ directories=(
 )
 
 if [[ ! -f $sparseimage ]]; then
-  echo "File '$sparseimage' does not exist! Exiting..."
+  echo "File '${sparseimage}' does not exist! Exiting..."
   exit 1
 fi
 
@@ -44,7 +44,7 @@ echo "Mounting encrypted image file."
 hdiutil attach -noverify $sparseimage
 
 if [[ ! -d $destination ]]; then
-  echo "\nDirectory '$destination' does not exist! Exiting..."
+  echo "\nDirectory '${destination}' does not exist! Exiting..."
   exit 1
 fi
 

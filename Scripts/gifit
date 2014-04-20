@@ -10,13 +10,13 @@
 #        gifit *.jpg
 
 if [[ ! $# -gt 1 ]]; then
-  echo "Usage: $0:t [FILENAMES]..."
+  echo "Usage: ${0:t} [FILENAMES]..."
   exit
 fi
 
 for arg; do
   if [[ ! -f $arg ]]; then
-    echo "File '$arg' does not exist! Exiting..."
+    echo "File '${arg}' does not exist! Exiting..."
     exit 1
   fi
 done

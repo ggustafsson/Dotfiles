@@ -11,14 +11,14 @@
 project_dir=~/Projects
 
 if [[ ! -d $project_dir ]]; then
-  echo "Directory '$project_dir' not found! Exiting..."
+  echo "Directory '${project_dir}' not found! Exiting..."
   exit 1
-elif [[ -z $(echo $project_dir/*(N)) ]]; then
-  echo "Directory '$project_dir' is empty! Exiting..."
+elif [[ -z $(echo ${project_dir}/*(N)) ]]; then
+  echo "Directory '${project_dir}' is empty! Exiting..."
   exit 1
 fi
 
-for directory in $project_dir/*; do
+for directory in ${project_dir}/*; do
   cd $directory
 
   if [[ -n $(git rev-list origin..HEAD 2> /dev/null) ]]; then
@@ -26,10 +26,10 @@ for directory in $project_dir/*; do
   elif [[ -n $(git status --short 2> /dev/null) ]]; then
     print -P "%B%F{red}${directory:t}:%f%b"
   elif [[ -d .git ]]; then
-    clean_repos+=($directory:t)
+    clean_repos+=(${directory:t})
     continue
   else
-    not_repos+=($directory:t)
+    not_repos+=(${directory:t})
     continue
   fi
 

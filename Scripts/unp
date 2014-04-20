@@ -10,7 +10,7 @@
 # Usage: unp <file(s)>
 
 if [[ ! $# -gt 0 ]]; then
-  echo "Usage: $0:t [FILENAME(S)]..."
+  echo "Usage: ${0:t} [FILENAME(S)]..."
   exit
 fi
 
@@ -20,11 +20,11 @@ for arg; do
   echo
 
   if [[ ! -f $arg ]]; then
-    echo "File '$arg' does not exist! Skipping..."
+    echo "File '${arg}' does not exist! Skipping..."
     continue
   fi
 
-  echo "Unpacking file '$arg'."
+  echo "Unpacking file '${arg}'."
 
   case $arg in
     *.tar.bz2) tar xvf $arg ;; # Must come before "*.bz2".
@@ -45,7 +45,7 @@ for arg; do
     *.7z)      7z x $arg       ;;
 
     *)
-      echo "File '$arg' cannot be extracted with ${0:t}!"
+      echo "File '${arg}' cannot be extracted with ${0:t}!"
     ;;
   esac
 done

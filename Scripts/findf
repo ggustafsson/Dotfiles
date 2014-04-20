@@ -8,7 +8,7 @@
 # Usage: findf <pattern>
 
 if [[ ! $# -eq 1 ]]; then
-  echo "Usage: $0:t [PATTERN]..."
+  echo "Usage: ${0:t} [PATTERN]..."
   exit
 fi
 

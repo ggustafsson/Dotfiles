@@ -30,11 +30,11 @@ directories2=(
 )
 
 if [[ ! -d $destination2 ]]; then
-  echo "\nDirectory '$destination' does not exist! Exiting..."
+  echo "\nDirectory '${destination}' does not exist! Exiting..."
   exit 1
 fi
 
-echo "Backing up directories to server '$server'."
+echo "Backing up directories to server '${server}'."
 
 for directory in $directories; do
   if [[ -d $directory || -f $directory ]]; then
@@ -46,7 +46,7 @@ for directory in $directories; do
   fi
 done
 
-echo "\nBacking up directories to server '$server2'."
+echo "\nBacking up directories to server '${server2}'."
 
 for directory in $directories2; do
   if [[ -d $directory || -f $directory ]]; then

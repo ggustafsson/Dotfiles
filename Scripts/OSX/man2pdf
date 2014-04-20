@@ -8,7 +8,7 @@
 #        man2pdf <man> <man> ...
 
 if [[ ! $# -gt 0 ]]; then
-  echo "Usage: $0:t [MAN PAGE(S)]..."
+  echo "Usage: ${0:t} [MAN PAGE(S)]..."
   exit
 fi
 

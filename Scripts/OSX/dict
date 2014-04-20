@@ -8,7 +8,7 @@
 # Usage: dict <query>
 
 if [[ $# -eq 0 ]]; then
-  echo "Usage: $0:t [QUERY]..."
+  echo "Usage: ${0:t} [QUERY]..."
   exit
 fi
 

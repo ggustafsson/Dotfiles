@@ -19,7 +19,7 @@ if [[ $# -gt 0 ]]; then
   echo $* >>| $todo_file
 else
   if [[ ! -f $todo_file ]]; then
-    echo "File '$todo_file' does not exist! Exiting..."
+    echo "File '${todo_file}' does not exist! Exiting..."
     exit 1
   fi
 

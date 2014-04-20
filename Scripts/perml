@@ -10,14 +10,14 @@
 # Usage: perml <path>
 
 if [[ ! $# -eq 1 ]]; then
-  echo "Usage: $0:t [PATH]..."
+  echo "Usage: ${0:t} [PATH]..."
   exit
 fi
 
 directory=$1
 
 if [[ ! -d $directory ]]; then
-  echo "Directory '$directory' does not exist! Exiting..."
+  echo "Directory '${directory}' does not exist! Exiting..."
   exit 1
 fi
 
@@ -25,7 +25,7 @@ perm_dir=755
 perm_file=644
 perm_exec=$perm_dir
 
-echo "Changing permissions recursively on directory: '$directory'"
+echo "Changing permissions recursively on directory: '${directory}'"
 
 if [[ $OSTYPE == darwin* ]]; then
   find $directory -type d -exec chmod -N "{}" \; -exec chmod $perm_dir "{}" \;

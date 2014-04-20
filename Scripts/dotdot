@@ -23,12 +23,12 @@
 #        .. <pattern>
 
 if [[ $# -gt 1 ]]; then
-  echo "Usage: $0:t [PATTERN]..."
+  echo "Usage: ${0:t} [PATTERN]..."
   exit
 fi
 
 if [[ $# -eq 1 ]]; then
-  new_pwd=$(echo $PWD | sed 's|\(.*/'$1'[^/]*/\).*|\1|')
+  new_pwd=$(echo $PWD | sed 's|\(.*/'${1}'[^/]*/\).*|\1|')
 
   if [[ $PWD != $new_pwd ]]; then
     cd "$new_pwd"

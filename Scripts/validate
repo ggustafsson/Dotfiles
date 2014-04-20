@@ -12,7 +12,7 @@
 # Usage: validate <file(s)>
 
 if [[ ! $# -gt 0 ]]; then
-  echo "Usage: $0:t [FILENAME(S)]..."
+  echo "Usage: ${0:t} [FILENAME(S)]..."
   exit
 fi
 
@@ -22,14 +22,14 @@ for arg; do
   echo
 
   if [[ ! -f $arg ]]; then
-    echo "File '$arg' does not exist! Skipping..."
+    echo "File '${arg}' does not exist! Skipping..."
     continue
   fi
 
-  echo "Validating file '$arg'."
+  echo "Validating file '${arg}'."
 
   # Changes the directory to where the file is. Otherwise upload won't work :(
-  cd $arg:A:h
+  cd ${arg:A:h}
   results=$(curl --form "uploaded_file=@${arg:t};type=text/html" --form output=json --silent http://validator.w3.org/check)
 
   if [[ $? -gt 0 ]]; then

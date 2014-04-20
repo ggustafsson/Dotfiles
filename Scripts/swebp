@@ -8,7 +8,7 @@
 # Usage: swebp <file(s)>
 
 if [[ ! $# -ge 1 ]]; then
-  echo "Usage: $0:t [FILENAME(S)]..."
+  echo "Usage: ${0:t} [FILENAME(S)]..."
   exit
 fi
 
@@ -16,15 +16,15 @@ for arg; do
   output=${arg:r}.csv
 
   if [[ ! -f $arg ]]; then
-    echo "File '$arg' does not exist! Skipping..."
+    echo "File '${arg}' does not exist! Skipping..."
     continue
   elif [[ ! $arg == *.txt ]]; then
-    echo "File '$arg' does not end with '.txt'! Skipping..."
+    echo "File '${arg}' does not end with '.txt'! Skipping..."
     continue
   fi
 
   if [[ $(file -I $arg) != *charset=utf-8 ]]; then
-    echo "Converting file '$arg' to UTF-8."
+    echo "Converting file '${arg}' to UTF-8."
     iconv --from-code=latin1 --to-code=utf-8 $arg > ${arg}.tmp
     mv ${arg}.tmp $arg
   fi
@@ -36,7 +36,7 @@ for arg; do
   column4='substr($0, 121, 26)' # Kontohändelse
   column5='substr($0, 147)'     # Belopp
 
-  echo "Converting file... '$arg' -> '$output'"
+  echo "Converting file... '${arg}' -> '${output}'"
 
   awk "NR > 5 { print $column1 \";\" $column2 \";\" $column3 \";\" \
                       $column4 \";\" $column5 }" $arg | \

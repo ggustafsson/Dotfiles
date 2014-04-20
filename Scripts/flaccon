@@ -15,7 +15,7 @@
 #        find . -type f -iname "*.flac" -exec flaccon "{}" \;
 
 if [[ ! $# -gt 0 ]]; then
-  echo "Usage: $0:t [OPTION]... [FILENAME(S)]...
+  echo "Usage: ${0:t} [OPTION]... [FILENAME(S)]...
 
   -ic, --ignore-case  Don't fix capitalization in tags and filenames."
   exit
@@ -39,12 +39,12 @@ for arg; do
   echo
 
   if [[ ! -f $arg ]]; then
-    echo "File '$arg' does not exist! Skipping..."
+    echo "File '${arg}' does not exist! Skipping..."
     continue
   fi
 
   if [[ ! $arg == *.flac ]]; then
-    echo "File '$arg' does not end with '.flac'! Skipping..."
+    echo "File '${arg}' does not end with '.flac'! Skipping..."
     continue
   fi
 
@@ -71,7 +71,7 @@ for arg; do
     typeset $tag=$information
   done
 
-  print -P "%B%F{cyan}Converting file '$arg' to MP3.%f%b\n"
+  print -P "%B%F{cyan}Converting file '${arg}' to MP3.%f%b\n"
 
   # Print out all tag information.
   for tag in $tags; do
@@ -83,7 +83,7 @@ for arg; do
     --tt "$title" \
     --ta "$artist" \
     --tl "$album" \
-    --tn "$tracknumber/$totaltracks" \
+    --tn "${tracknumber}/$totaltracks" \
     --tg "$genre" \
     --ty "$date" \
     --add-id3v2 - ${arg:r}.mp3 # Remove file ending and add ".mp3".

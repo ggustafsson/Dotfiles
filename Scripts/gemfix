@@ -9,10 +9,10 @@
 directory=~/.gem/ruby/bin
 suffix=tmp
 
-for file in $directory/*; do
+for file in ${directory}/*; do
   echo "Replacing the shebang line in file: $file"
   echo '#!/usr/bin/env ruby' > ${file}_$suffix
   tail -n +2 $file >> ${file}_$suffix
   cat ${file}_$suffix > $file
-  rm $directory/*_$suffix
+  rm ${directory}/*_$suffix
 done
