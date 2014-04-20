@@ -45,7 +45,6 @@ sudo mv ~/Downloads/homebrew /usr/local
 /usr/local/bin/brew install \
   bash \
   coreutils \
-  cowsay \
   curl \
   ffmpeg \
   flac \
@@ -63,7 +62,6 @@ sudo mv ~/Downloads/homebrew /usr/local
   nmap \
   openssh \
   p7zip \
-  pebble-sdk \
   python \
   python3 \
   renameutils \
