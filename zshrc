@@ -185,6 +185,7 @@ alias du="du -sh"
 alias iip="curl icanhazip.com"
 alias ka="killall"
 alias l="less"
+alias mkdir="mkdir -pv"
 alias pyweb="python3 -m http.server 8080"
 alias recf="ls -t | head -n 5"
 alias tma="tmux attach || tmux"
@@ -232,9 +233,6 @@ alias gun="git reset --soft HEAD^"
 
 alias h="source h"
 alias hist="history -i 1 | less"
-
-alias mkcd="source mkcd"
-alias mkdir="mkdir -pv"
 
 alias sort="sort --numeric-sort"
 alias suniq="sort | uniq"
