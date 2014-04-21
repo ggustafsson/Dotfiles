@@ -4,7 +4,7 @@ umask 077
 
 [[ $TERM == xterm ]] && export TERM=xterm-256color # GNOME Terminal needs this.
 export GEM_HOME=~/.gem/ruby
-export GREP_OPTIONS="--color=auto --ignore-case"
+export GREP_OPTIONS="--color=auto"
 
 export EDITOR=vim
 export VISUAL=$EDITOR
@@ -214,7 +214,7 @@ alias la="ls --all"
 alias ls='ls $ls_options'
 
 alias g="grep"
-alias rg="rgrep"
+alias rg="grep --exclude-dir .git --line-number --recursive"
 
 alias gad="git add"
 alias gca="git commit --all --verbose"

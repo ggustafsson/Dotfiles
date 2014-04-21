@@ -16,7 +16,7 @@
 #        h <pattern>
 
 if [[ $# -gt 0 ]]; then
-  history -i 1 | grep "$*"
+  history -i 1 | grep --ignore-case "$*"
 else
   history -20
 fi
