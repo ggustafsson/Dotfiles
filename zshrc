@@ -182,6 +182,7 @@ fi
 alias bigf="du -sk * | sort --reverse | head"
 alias df="df -h"
 alias du="du -sh"
+alias free="free -h"
 alias iip="curl icanhazip.com"
 alias ka="killall"
 alias l="less"
