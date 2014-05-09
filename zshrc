@@ -216,6 +216,7 @@ alias la="ls --all"
 alias ls='ls $ls_options'
 
 alias g="grep"
+alias rg3="rg --after-context=3 --before-context=3"
 alias rg="grep --exclude-dir .git --line-number --recursive"
 
 alias gad="git add"
