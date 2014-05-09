@@ -16,7 +16,28 @@ end
 first_word_capitalized = 0
 
 # All the words that should be downcased.
-word_list = %w(a an and as at but by en for if in of on or the to via vs)
+word_list = %w(
+  a
+  an
+  and
+  as
+  at
+  but
+  by
+  en
+  etc
+  for
+  from
+  if
+  in
+  of
+  on
+  or
+  the
+  to
+  via
+  vs
+)
 
 # Using .join and .split to turn the argument(s) into one single string.
 text = $*.join(" ").split(" ")
