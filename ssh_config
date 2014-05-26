@@ -3,7 +3,7 @@
 ServerAliveInterval 15
 ServerAliveCountMax 2
 
-Host fulknark
+Host fulknark.se
   HostName fulknark.se
   Port 443
 
