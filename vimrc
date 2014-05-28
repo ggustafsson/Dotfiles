@@ -150,6 +150,8 @@ nnoremap <Leader>wr :set wrap!<CR>
 nnoremap <Leader>ws :%s/\s\+$// \| nohlsearch<CR>
 nnoremap <Leader>zs :edit ~/.zshrc<CR>
 
+nnoremap ,. :
+
 nnoremap vil ^vg_
 nnoremap Y   y$
 
