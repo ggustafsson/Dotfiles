@@ -6,8 +6,12 @@
 
 # Usage: setup_ubuntu_tv
 
+sudo add-apt-repository ppa:team-xbmc/ppa
+sudo apt-get update
+
 sudo apt install \
   default-jre \
+  flac \
   openssh-server \
   sshguard \
   weechat \
