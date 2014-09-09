@@ -197,7 +197,7 @@ alias zreload="source ~/.zshenv && source ~/.zshrc && echo 'Zsh reloaded.'"
 
 alias ..="source dotdot"
 alias cdh="dirs -v | sort --reverse"
-alias cdj='cat ~/.saved_pwd && cd "$(< ~/.saved_pwd)"'
+alias cdj='cd "$(< ~/.saved_pwd)"'
 alias cds='echo "Saving current path." && echo $PWD >| ~/.saved_pwd'
 
 alias cl="wc -l"
