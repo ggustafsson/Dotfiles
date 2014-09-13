@@ -17,8 +17,6 @@ directories=(
   ~/Development
   ~/Documents
   ~/Dropbox
-  ~/Library/Application\ Support/Alfred\ 2/Alfred.alfredpreferences
-  ~/Library/Application\ Support/OpenEmu
   ~/Library/Safari/Bookmarks.plist
   ~/Movies
   ~/Music/FLAC
