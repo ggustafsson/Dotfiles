@@ -123,6 +123,7 @@ nnoremap <Leader>fe :set fileformat=unix \| set fileencoding=utf-8
 nnoremap <Leader>ft :set filetype=
 nnoremap <Leader>ga :Gist -a<CR>
 nnoremap <Leader>gg :Gist<CR>
+nnoremap <Leader>in :0read ~/.vim/templates/
 nnoremap <Leader>gu :GundoToggle<CR>
 nnoremap <Leader>li :set list!<CR>
 nnoremap <Leader>ne :enew<CR>

@@ -45,5 +45,6 @@ mkdir ~/.vim/undos
 ~/Scripts/dl_vim install
 
 ln -s ~/.vim/pathogen/autoload/pathogen.vim ~/.vim/autoload/
-ln -s ~/Projects/Dot\ Files/vim_syntax ~/.vim/syntax
+ln -s ~/Projects/Dot\ Files/vim/syntax ~/.vim/syntax
+ln -s ~/Projects/Dot\ Files/vim/templates ~/.vim/templates
 ln -s ~/Projects/Ninja\ Color\ Scheme/colors/ninja.vim ~/.vim/colors/
