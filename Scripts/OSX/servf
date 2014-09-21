@@ -2,8 +2,8 @@
 
 # Written by Göran Gustafsson <gustafsson.g@gmail.com>.
 
-# Description: Scan the LAN for open network services (FTP, SSH, HTTP, SMB,
-# AFP and VNC).
+# Description: Scan the LAN for open network services (FTP, SSH, HTTP, HTTPS,
+# SMB, AFP and VNC).
 
 # Dependencies: nmap
 
@@ -17,10 +17,13 @@ network=$(ifconfig en0 | \
 # 21   = FTP
 # 22   = SSH
 # 80   = HTTP
+# 443  = HTTPS
+# 445  = SMB
 # 445  = SMB
 # 548  = AFP
 # 5900 = VNC
-ports="21,22,80,445,548,5900"
+# 8080 = Alternative HTTP
+ports="21,22,80,443,445,548,5900,8080"
 
 echo "Scanning network $network"
 

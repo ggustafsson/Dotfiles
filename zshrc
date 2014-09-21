@@ -155,6 +155,7 @@ if [[ $OSTYPE == darwin* ]]; then
   alias tree="tree --charset ascii -N"
   alias vl='sudo tail -n $LINES -f /var/log/system.log'
   alias webcam="imagesnap -t 2 -w 1"
+  alias wifiscan="/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport --scan"
 
   alias brewi="brew install"
   alias brewr="brew uninstall"
@@ -163,10 +164,6 @@ if [[ $OSTYPE == darwin* ]]; then
 
   alias mext="open smb://gleg@10.11.12.3/External"
   alias umext="umount //gleg@10.11.12.3/External"
-
-  alias wifioff="networksetup -setairportpower en0 off && echo 'Wi-Fi is turned off.'"
-  alias wifion="networksetup -setairportpower en0 on && echo 'Wi-Fi is turned on.'"
-  alias wifiscan="/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport --scan"
 else
   if type -p apt &> /dev/null; then
     alias apti="sudo apt install"
@@ -237,7 +234,7 @@ alias h="source h"
 alias hist="history -i 1 | less"
 
 alias sort="sort --numeric-sort"
-alias suniq="sort | uniq"
+alias uniqs="sort | uniq"
 
 alias svtplay-dl="svtplay-dl --resume"
 alias youtube-dl="youtube-dl --continue --title"

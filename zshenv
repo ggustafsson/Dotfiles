@@ -1,4 +1,4 @@
-setopt no_global_rcs
+setopt no_global_rcs # Don't use config files from /etc.
 
 if [[ $OSTYPE == darwin* ]]; then
   path=(~/Scripts/OSX(N) ~/Scripts(N) ~/.gem/ruby/bin(N) /usr/local/bin(N) /usr/local/Cellar/curl/*/bin(N) /usr/bin /bin /usr/local/sbin(N) /usr/sbin /sbin)
