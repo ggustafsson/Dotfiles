@@ -132,19 +132,6 @@ PROMPT='%B${zsh_host}%b ${PWD/$HOME/~} %B$(zsh_mode)%b '
 # $ 0 master
 RPROMPT='%B%F{blue}$%f%b %?%B$(git_branch)%b'
 
-if [[ $HOST == Hoth ]]; then
-  alias killxbmc="killall xbmc xbmc.bin xbmc-standalone"
-
-  alias mccreative="(cd ~/MCCreative && java -Xmx3072M -Xms1024M -jar minecraft_creative.jar nogui)"
-  alias mccreativelog='tail -n $LINES -f ~/MCCreative/server.log'
-  alias mcsurvival="(cd ~/MCSurvival && java -Xmx3072M -Xms1024M -jar minecraft_survival.jar nogui)"
-  alias mcsurvivallog='tail -n $LINES -f ~/MCSurvival/server.log'
-else
-  alias mcbackup="rsync --archive --delete --human-readable --progress -e ssh hoth:~/MCCreative ~/Storage/Game\ Files/Minecraft/ && rsync --archive --delete --human-readable --progress -e ssh hoth:~/MCSurvival ~/Storage/Game\ Files/Minecraft/"
-  alias mccreativelog='ssh -t hoth "tail -n $LINES -f ~/MCCreative/server.log"'
-  alias mcsurvivallog='ssh -t hoth "tail -n $LINES -f ~/MCSurvival/server.log"'
-fi
-
 if [[ $OSTYPE == darwin* ]]; then
   alias caffeinate="caffeinate -di"
   alias eject="osascript -e 'tell application \"Finder\" to eject (every disk whose ejectable is true)' && echo 'Ejecting all external drives.'"
@@ -165,6 +152,10 @@ if [[ $OSTYPE == darwin* ]]; then
   alias mext="open smb://gleg@10.11.12.3/External"
   alias umext="umount //gleg@10.11.12.3/External"
 else
+  if [[ $HOST == Hoth ]]; then
+    alias killxbmc="killall xbmc xbmc.bin xbmc-standalone"
+  fi
+
   if type -p apt &> /dev/null; then
     alias apti="sudo apt install"
     alias aptr="sudo apt remove"

@@ -11,17 +11,6 @@ echo -n "Everything plugged in and ready to go? [y/n] "
 read answer
 
 if [[ $answer == (y|yes) ]]; then
-  echo -n "Back up Minecraft servers? [y/n] "
-  read answer
-
-  if [[ $answer == (y|yes) ]]; then
-    echo
-    rsync --archive --delete --human-readable --progress -e ssh hoth:~/MCCreative ~/Storage/Game\ Files/Minecraft/
-    echo
-    rsync --archive --delete --human-readable --progress -e ssh hoth:~/MCSurvival ~/Storage/Game\ Files/Minecraft/
-  fi
-
-  echo
   brew update
   brew upgrade
   brew cleanup
