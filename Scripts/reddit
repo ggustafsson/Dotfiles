@@ -83,7 +83,7 @@ def check_subreddit(subreddit)
 end
 
 def open_url(url)
-  puts "Opening URL: #{url}"
+  puts "URL: #{url}"
   `#{$browser} "#{url}"` # Execute browser command with URL as argument.
 end
 
