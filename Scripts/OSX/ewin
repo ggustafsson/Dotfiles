@@ -2,12 +2,12 @@
 
 # Written by Göran Gustafsson <gustafsson.g@gmail.com>.
 
-# Description: This script automatically open up new Safari and Terminal
-# windows and moves them to my external display.
+# Description: This script automatically open up a new Safari window and moves
+# it to my external display.
 
 # Usage: ewin
 
-echo "Opening new windows on external display."
+echo "Opening new window on external display."
 
 osascript -e '
   tell application "System Events"
@@ -17,15 +17,6 @@ osascript -e '
     end tell
 
     tell application "Safari"
-      set bounds of window 1 to {1600, 22, 3040, 1080}
-    end tell
-
-    tell application process "Terminal"
-      set frontmost to true
-      click menu item "New Window with Settings - Default" of menu 1 of menu item "New Window" of menu 1 of menu bar item "Shell" of menu bar 1
-    end tell
-
-    tell application "Terminal"
-      set position of window 1 to {1440, 22}
+      set bounds of window 1 to {1440, 22, 3040, 1080}
     end tell
   end tell' > /dev/null
