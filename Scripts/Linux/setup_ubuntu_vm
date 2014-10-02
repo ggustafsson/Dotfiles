@@ -4,7 +4,7 @@
 
 # Description: This script configures specific things for my virtual machines.
 
-# Usage: setup_ubuntu_tv
+# Usage: setup_ubuntu_vm
 
 sudo apt install \
   apache2 \
