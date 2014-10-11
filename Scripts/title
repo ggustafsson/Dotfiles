@@ -12,9 +12,6 @@ if ARGV.empty?
   exit
 end
 
-# I use this variable to check when the first word has been capitalized.
-first_word_capitalized = 0
-
 # All the words that should be downcased.
 word_list = %w(
   a
@@ -43,10 +40,8 @@ word_list = %w(
 text = $*.join(" ").split(" ")
 
 text.each_with_index do |word, position|
-  # Capitalize the first word that starts with a normal letter. After this has
-  # been done once the normal word list checking will run instead.
-  if first_word_capitalized == 0 and word[0] =~ /[[:alpha:]]/
-    first_word_capitalized = 1
+  # Capitalize the first and last word if it starts with a normal letter.
+  if (position == 0 or position == (text.length - 1)) and word[0] =~ /[[:alpha:]]/
     text[position] = word.capitalize
     next
   end
