@@ -2,18 +2,17 @@
 
 # Written by Göran Gustafsson <gustafsson.g@gmail.com>.
 
-# Description: This script displays the 20 biggest files/directories inside a
-# directory.
+# Description: This script displays the 10 most recently modified
+# files/directories inside a directory.
 
-# Usage: bigf
-#        bigf <path>
+# Usage: recf
+#        recf <path>
 
 if [[ $# -eq 0 ]]; then
-  du -sk * | sort --numeric-sort --reverse | head -n 20
+  ls -t | head
 elif [[ $# -eq 1 ]]; then
   if [[ -d $1 ]]; then
-    cd $1
-    du -sk * | sort --numeric-sort --reverse | head -n 20
+    ls -t $1 | head
   else
     echo "Path '${1}' is not a directory! Exiting..."
     exit 1
