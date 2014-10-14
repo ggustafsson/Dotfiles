@@ -167,7 +167,6 @@ else
   alias vl='tail -n $LINES -f /var/log/syslog'
 fi
 
-alias bigf="du -sk * | sort --reverse | head"
 alias df="df -h"
 alias du="du -sh"
 alias free="free -h"

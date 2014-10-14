@@ -46,21 +46,19 @@ for arg; do
 
   if [[ ! -z $parsed_results ]]; then
     echo "Found error(s) on line(s):\n"
-    # Remove all the crap and only display unique errors. Must use "sort" to
-    # make "uniq" work.
+
+    # Modify output with "sed" the following ways:
+    # 1. Remove spaces and tabs at beginning of lines.
+    # 2. Replace "lastLine" with Line.
+    # 3. Replace "message" with Message.
+    # 4. Remove \" inside of messages.
+    # 5. Remove , at end of lines.
     echo $parsed_results | \
       sed 's/^[ \t]*//;
            s/^"lastLine"/Line/;
            s/^"message"/Message/;
            s/\\"//g;
            s/,$//'
-
-    # Sed explanation:
-    # 1. Remove spaces and tabs at beginning of lines.
-    # 2. Replace "lastLine" with Line.
-    # 3. Replace "message" with Message.
-    # 4. Remove \" inside of messages.
-    # 5. Remove , at end of lines.
   else
     echo "No errors found!"
   fi

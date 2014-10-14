@@ -1,0 +1,19 @@
+#!/usr/bin/env zsh
+
+# Written by Göran Gustafsson <gustafsson.g@gmail.com>.
+
+# Description: This script displays the 20 biggest files/directories inside a
+# directory.
+
+# Usage: bigf
+#        bigf <path>
+
+if [[ $# == <0-1> ]]; then
+  if [[ $# -eq 1 ]]; then
+    cd "$1"
+  fi
+
+  du -sk * | sort --numeric-sort --reverse | head -n 20
+else
+  echo "Usage: ${0:t} [PATH]..."
+fi
