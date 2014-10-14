@@ -30,7 +30,8 @@ for arg; do
 
   # Changes the directory to where the file is. Otherwise upload won't work :(
   cd ${arg:A:h}
-  results=$(curl --form "uploaded_file=@${arg:t};type=text/html" --form output=json --silent http://validator.w3.org/check)
+  results=$(curl --form "uploaded_file=@${arg:t};type=text/html" \
+                 --form output=json --silent http://validator.w3.org/check)
 
   if [[ $? -gt 0 ]]; then
     echo "Failed at getting results! Exiting..."

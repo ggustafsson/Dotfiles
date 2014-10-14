@@ -28,6 +28,8 @@ Examples:
   exit
 end
 
+require "csv"
+
 def print_frequently(input)
   column1 = "%-12s" % "Antal gånger"
   column2 = "%-16s" % @header[2] # Referens
@@ -125,8 +127,6 @@ def print_table(input)
   puts "-" * 79
 end
 
-require "csv"
-
 if ARGV[0] == "-s"
   file = ARGV[1]
 else
@@ -208,7 +208,6 @@ elsif search.length > 0
 
     # Ruby can't handle downcase of UTF-8 characters by default so i have to
     # use this ugly hack :'(
-
     ["Å","Ä","Ö"].each do |letter|
       case letter
       when "Å"

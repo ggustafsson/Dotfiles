@@ -36,7 +36,6 @@ else
   config_file = ARGV[0]
 end
 
-
 def check_subreddit(subreddit)
   new_log_file = "#{$directory}/r_#{subreddit}_tmp"
   old_log_file = "#{$directory}/r_#{subreddit}"
@@ -86,7 +85,6 @@ def open_url(url)
   puts "URL: #{url}"
   `#{$browser} "#{url}"` # Execute browser command with URL as argument.
 end
-
 
 unless File.directory?($directory)
   puts "Directory '#{$directory}' does not exist! Creating it..."

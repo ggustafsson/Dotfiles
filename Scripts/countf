@@ -10,7 +10,12 @@
 if [[ $# -eq 0 ]]; then
   ls -1 | wc -l
 elif [[ $# -eq 1 ]]; then
-  ls -1 $1 | wc -l
+  if [[ -d $1 ]]; then
+    ls -1 $1 | wc -l
+  else
+    echo "Path '${1}' is not a directory! Exiting..."
+    exit 1
+  fi
 else
   echo "Usage: ${0:t} [PATH]..."
 fi

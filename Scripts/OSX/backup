@@ -49,7 +49,8 @@ fi
 for directory in $directories; do
   if [[ -d $directory || -f $directory ]]; then
     print -P "\n%B%F{green}Backing up directory ${directory/$HOME/~}.%f%b"
-    rsync --archive --delete --exclude=Dropbox/.dropbox.cache --human-readable --verbose $directory $destination
+    rsync --archive --delete --exclude=Dropbox/.dropbox.cache \
+          --human-readable --verbose $directory $destination
   else
     echo "\nDirectory '${directory/$HOME/~}' not found! Exiting..."
     exit 1

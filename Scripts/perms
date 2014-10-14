@@ -28,9 +28,17 @@ perm_exec=$perm_dir
 echo "Changing permissions recursively on directory: '${directory}'"
 
 if [[ $OSTYPE == darwin* ]]; then
-  find $directory -type d -exec chmod -N "{}" \; -exec chmod $perm_dir "{}" \;
-  find $directory -type f -perm +111 -exec chmod -N "{}" \; -exec chmod $perm_exec "{}" \;
-  find $directory -type f ! -perm +111 -exec chmod -N "{}" \; -exec chmod $perm_file "{}" \;
+  find $directory -type d \
+    -exec chmod -N "{}" \; \
+    -exec chmod $perm_dir "{}" \;
+
+  find $directory -type f -perm +111 \
+    -exec chmod -N "{}" \; \
+    -exec chmod $perm_exec "{}" \;
+
+  find $directory -type f ! -perm +111 \
+    -exec chmod -N "{}" \; \
+    -exec chmod $perm_file "{}" \;
 else
   find $directory -type d -exec chmod $perm_dir "{}" \;
   find $directory -type f -perm +111 -exec chmod $perm_exec "{}" \;

@@ -29,7 +29,8 @@ for arg; do
     mv ${arg}.tmp $arg
   fi
 
-  # Put all the text between X and Y inside of different variables.
+  # These variables contains the awk commands that is used to retrieve the
+  # right characters for each column (character X to Y on current line).
   column1='substr($0, 49, 15)'  # Bokföringsdatum
   column2='substr($0, 66, 17)'  # Transaktionsdatum
   column3='substr($0, 85, 16)'  # Referens
@@ -38,6 +39,13 @@ for arg; do
 
   echo "Converting file... '${arg}' -> '${output}'"
 
+  # Parse all lines after number 5 and modify the output with "sed" the
+  # following ways:
+  # 1. Remove spaces before all values.
+  # 2. Remove spaces after all values.
+  # 3. Add - to all empty fields.
+  # 4. Replace , with . inside of amount.
+  # 5. Remove space separators inside of amount.
   awk "NR > 5 { print $column1 \";\" $column2 \";\" $column3 \";\" \
                       $column4 \";\" $column5 }" $arg | \
     sed 's/;[[:space:]]*/;/g;
@@ -45,11 +53,4 @@ for arg; do
          s/;;/;-;/g;
          s/\([0-9]*\),\([0-9][0-9]\)/\1.\2/g;
          s/\([0-9]*\) \([0-9]*\).\([0-9][0-9]\)/\1\2.\3/g' > $output
-
-  # Sed explanation:
-  # 1. Remove spaces before all values.
-  # 2. Remove spaces after all values.
-  # 3. Add - to all empty fields.
-  # 4. Replace , with . inside of amount.
-  # 5. Remove space separators inside of amount.
 done

@@ -38,10 +38,11 @@ word_list = %w(
 
 # Using .join and .split to turn the argument(s) into one single string.
 text = $*.join(" ").split(" ")
+last_position = text.length - 1
 
 text.each_with_index do |word, position|
   # Capitalize the first and last word if it starts with a normal letter.
-  if (position == 0 or position == (text.length - 1)) and word[0] =~ /[[:alpha:]]/
+  if (position == 0 or position == last_position) and word[0] =~ /[[:alpha:]]/
     text[position] = word.capitalize
     next
   end

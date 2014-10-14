@@ -8,12 +8,15 @@
 # Usage: bigf
 #        bigf <path>
 
-if [[ $# == <0-1> ]]; then
-  if [[ $# -eq 1 ]]; then
-    cd "$1"
-  fi
-
+if [[ $# -eq 0 ]]; then
   du -sk * | sort --numeric-sort --reverse | head -n 20
+elif [[ $# -eq 1 ]]; then
+  if [[ -d $1 ]]; then
+    du -sk ${1}/* | sort --numeric-sort --reverse | head -n 20
+  else
+    echo "Path '${1}' is not a directory! Exiting..."
+    exit 1
+  fi
 else
   echo "Usage: ${0:t} [PATH]..."
 fi
