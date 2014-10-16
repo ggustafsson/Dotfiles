@@ -13,6 +13,11 @@ if [[ $? -eq 1 ]]; then
   exit 1
 fi
 
+if [[ ! -d /Applications/Xcode.app ]]; then
+  echo "Install Xcode first! Exiting..."
+  exit 1
+fi
+
 if [[ ! -f ~/.ssh/id_rsa ]]; then
   echo "Install the SSH key first! Exiting..."
   exit 1
@@ -28,6 +33,9 @@ fi
 
 # Override hostname from DHCP server.
 sudo scutil --set HostName $new_hostname
+
+# Enable backspace in Safari again.
+defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2BackspaceKeyNavigationEnabled -bool YES
 
 # Install Xcode Command Line Tools.
 echo
@@ -52,24 +60,19 @@ sudo mv ~/Downloads/homebrew /usr/local
   imagemagick --without-x \
   imagesnap \
   lame \
-  links \
   macvim \
   ncftp \
-  netperf \
   nmap \
   openssh \
-  p7zip \
   python \
   python3 \
   renameutils \
   rsync \
   ruby \
   svtplay-dl \
-  tcpdump \
   tidy \
   tmux \
   tree \
-  unrar \
   vim \
   vorbis-tools \
   weechat \
@@ -80,10 +83,8 @@ sudo mv ~/Downloads/homebrew /usr/local
 echo "Adding new Zsh to login shells:"
 echo "/usr/local/bin/zsh" | sudo tee -a /etc/shells
 
-ln -s /usr/local/bin/gdircolors /usr/local/bin/dircolors
 ln -s /usr/local/bin/ghead /usr/local/bin/head
 ln -s /usr/local/bin/gls /usr/local/bin/ls
-ln -s /usr/local/bin/gmkdir /usr/local/bin/mkdir
 ln -s /usr/local/bin/gsed /usr/local/bin/sed
 ln -s /usr/local/bin/gsort /usr/local/bin/sort
 ln -s /usr/local/bin/gtail /usr/local/bin/tail

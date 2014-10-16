@@ -14,9 +14,9 @@ else
   git clone https://github.com/ggustafsson/IP-Kalkylatorn.git ~/Projects/IP\ Kalkylatorn
   git clone https://github.com/ggustafsson/Ninja-Color-Scheme.git ~/Projects/Ninja\ Color\ Scheme
   git clone https://github.com/ggustafsson/Tim.git ~/Projects/Tim
-fi
 
-mkdir ~/.ssh
+  mkdir ~/.ssh
+fi
 
 ln -s ~/Projects/Dot\ Files/Scripts ~/Scripts
 ln -s ~/Projects/Dot\ Files/gitconfig ~/.gitconfig
