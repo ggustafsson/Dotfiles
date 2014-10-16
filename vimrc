@@ -181,8 +181,8 @@ if has("gui_running") && has("mac")
     set guifont=Menlo:h12
     set linespace=1
 
-    set columns=181
-    set lines=46
+    set columns=204
+    set lines=53
   endfunction
   if !exists("g:dont_set_font_again")
     let g:dont_set_font_again = 1
