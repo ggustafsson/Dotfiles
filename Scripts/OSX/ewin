@@ -17,6 +17,6 @@ osascript -e '
     end tell
 
     tell application "Safari"
-      set bounds of window 1 to {1440, 22, 3040, 1080}
+      set bounds of window 1 to {1280, 22, 2880, 1080}
     end tell
   end tell' > /dev/null
