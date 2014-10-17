@@ -9,7 +9,6 @@
 
 if [[ $OSTYPE == darwin* ]]; then
   ln -s ~/Storage/Configs/gist-vim ~/.gist-vim
-  ln -s ~/Storage/Configs/ssh ~/.ssh
 else
   git clone https://github.com/ggustafsson/IP-Kalkylatorn.git ~/Projects/IP\ Kalkylatorn
   git clone https://github.com/ggustafsson/Ninja-Color-Scheme.git ~/Projects/Ninja\ Color\ Scheme

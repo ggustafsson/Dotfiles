@@ -34,14 +34,13 @@ fi
 # Override hostname from DHCP server.
 sudo scutil --set HostName $new_hostname
 
-# Enable backspace in Safari again.
-defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2BackspaceKeyNavigationEnabled -bool YES
-
 # Install Xcode Command Line Tools.
 echo
 xcode-select --install
 
-echo
+echo "Press enter when Command Line Tools are installed and tested."
+read answer
+
 git clone https://github.com/mxcl/homebrew.git ~/Downloads/homebrew
 sudo mv ~/Downloads/homebrew /usr/local
 
@@ -80,6 +79,12 @@ sudo mv ~/Downloads/homebrew /usr/local
   youtube-dl \
   zsh
 
+if [[ ! -d ~/Applications ]]; then
+  mkdir ~/Applications
+fi
+
+brew linkapps --local
+
 echo "Adding new Zsh to login shells:"
 echo "/usr/local/bin/zsh" | sudo tee -a /etc/shells
 
@@ -99,4 +104,3 @@ echo
 
 echo
 ~/Scripts/setup_dotfiles
-~/Scripts/dl_misc

@@ -3,7 +3,7 @@
 # Written by Göran Gustafsson <gustafsson.g@gmail.com>.
 
 # Description: This script adds more border padding to the MacVim windows so
-# it looks exactly like Terminal.app windows. I use 0.9 line spacing under
+# it looks exactly like Terminal.app windows. I use 1 as line spacing under
 # Terminal.app and "set linespace=1" under MacVim to keep the spacing the same
 # in both.
 

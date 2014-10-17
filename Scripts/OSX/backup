@@ -16,7 +16,7 @@ destination=/Volumes/Backup
 directories=(
   ~/Development
   ~/Documents
-  ~/Dropbox
+  ~/Library/Mobile\ Documents
   ~/Library/Safari/Bookmarks.plist
   ~/Movies
   ~/Music/FLAC
