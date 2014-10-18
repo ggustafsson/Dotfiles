@@ -78,12 +78,7 @@ set splitright
 set t_vb=
 set visualbell
 
-if has("mac")
-  let g:gist_clip_command = "pbcopy"
-endif
-
 let g:NERDCreateDefaultMappings = 0
-let g:gist_open_browser_after_post = 1
 let g:mapleader = ","
 
 let g:gundo_help = 0
@@ -121,8 +116,6 @@ nnoremap <Leader>ed :LustyFilesystemExplorerFromHere<CR>
 nnoremap <Leader>eh :LustyFilesystemExplorer ~<CR>
 nnoremap <Leader>fe :set fileformat=unix \| set fileencoding=utf-8
 nnoremap <Leader>ft :set filetype=
-nnoremap <Leader>ga :Gist -a<CR>
-nnoremap <Leader>gg :Gist<CR>
 nnoremap <Leader>in :0read ~/.vim/templates/
 nnoremap <Leader>gu :GundoToggle<CR>
 nnoremap <Leader>li :set list!<CR>
@@ -168,8 +161,6 @@ nnoremap <Backspace> :nohlsearch<CR>
 nnoremap <Tab>       :LustyBufferExplorer<CR>
 
 vnoremap <Leader>co :call NERDComment("x", "toggle")<CR>
-vnoremap <Leader>ga :Gist -a<CR>
-vnoremap <Leader>gg :Gist<CR>
 vnoremap <Leader>ne y:enew<CR>P
 vnoremap <Leader>so :sort<CR>
 
@@ -236,6 +227,8 @@ function! CompleteTab()
   " Get the character left of the cursor.
   let char = getline('.')[col('.')-2]
 
+  " Insert a normal tab if the character left of the cursor is non existent, a
+  " space or a tab. Otherwise use autocomplete.
   if empty(char) || char == " " || char =~ '\t'
     return "\<Tab>"
   else

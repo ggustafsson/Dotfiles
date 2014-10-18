@@ -12,8 +12,6 @@ if [[ $1 == install ]]; then
 
   echo "Downloading Vim plugins!\n"
 
-  git clone https://github.com/mattn/gist-vim.git ${directory}/gist-vim
-  git clone https://github.com/mattn/webapi-vim.git ${directory}/webapi-vim
   git clone https://github.com/scrooloose/nerdcommenter.git ${directory}/nerdcommenter
   git clone https://github.com/scrooloose/nerdtree.git ${directory}/nerdtree
   git clone https://github.com/scrooloose/syntastic.git ${directory}/syntastic
@@ -21,7 +19,6 @@ if [[ $1 == install ]]; then
   git clone https://github.com/sjl/gundo.vim.git ${directory}/gundo.vim
   git clone https://github.com/tpope/vim-endwise.git ${directory}/vim-endwise
   git clone https://github.com/tpope/vim-pathogen.git ~/.vim/pathogen
-  git clone https://github.com/tpope/vim-repeat.git ${directory}/vim-repeat
   git clone https://github.com/tpope/vim-speeddating.git ${directory}/vim-speeddating
   git clone https://github.com/tpope/vim-surround.git ${directory}/vim-surround
 else

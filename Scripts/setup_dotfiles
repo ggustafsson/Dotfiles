@@ -7,9 +7,7 @@
 
 # Usage: setup_dotfiles
 
-if [[ $OSTYPE == darwin* ]]; then
-  ln -s ~/Storage/Configs/gist-vim ~/.gist-vim
-else
+if [[ ! $OSTYPE == darwin* ]]; then
   git clone https://github.com/ggustafsson/IP-Kalkylatorn.git ~/Projects/IP\ Kalkylatorn
   git clone https://github.com/ggustafsson/Ninja-Color-Scheme.git ~/Projects/Ninja\ Color\ Scheme
   git clone https://github.com/ggustafsson/Tim.git ~/Projects/Tim
