@@ -28,6 +28,7 @@ else
 end
 
 $directory = "#{Dir.home}/.reddit"
+$sleep_between_urls = "0.5"
 
 # Check if the default config file should be used or not.
 if ARGV.length == 0
@@ -72,7 +73,7 @@ def check_subreddit(subreddit)
     unless visited_urls.include?(Regexp.escape(url))
       new_entry = 1
       open_url(url)
-      sleep(0.5) # Yosemite freaks out if we don't take it easy.
+      sleep($sleep_between_urls)
     end
   end
 
