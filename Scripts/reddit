@@ -72,7 +72,7 @@ def check_subreddit(subreddit)
     unless visited_urls.include?(Regexp.escape(url))
       new_entry = 1
       open_url(url)
-      sleep(0.6) # Yosemite freaks out if we don't take it easy.
+      sleep(0.5) # Yosemite freaks out if we don't take it easy.
     end
   end
 
