@@ -28,7 +28,7 @@ else
 end
 
 $directory = "#{Dir.home}/.reddit"
-$sleep_between_urls = "0.5"
+$sleep_between_urls = 0.5
 
 # Check if the default config file should be used or not.
 if ARGV.length == 0
