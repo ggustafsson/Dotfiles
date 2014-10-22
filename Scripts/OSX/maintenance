@@ -9,6 +9,7 @@
 
 echo -n "Everything plugged in and ready to go? [y/n] "
 read answer
+echo
 
 if [[ $answer == (y|yes) ]]; then
   brew update
@@ -30,5 +31,5 @@ if [[ $answer == (y|yes) ]]; then
   echo
   backup
 else
-  echo "\nBye bye!"
+  echo "Bye bye!"
 fi
