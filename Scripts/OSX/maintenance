@@ -17,12 +17,6 @@ if [[ $answer == (y|yes) ]]; then
   brew cleanup
   brew linkapps --local
   echo
-  gem update --system
-  gem update
-  gem cleanup
-  echo
-  gemfix
-  echo
   dl_misc
   echo
   dl_vim

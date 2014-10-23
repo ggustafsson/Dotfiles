@@ -1,41 +1,20 @@
 # vim: ft=zsh
 
-if [[ $OSTYPE == darwin* ]]; then
-  #press_return=
+#press_return=1
 
-  #timer_cmd=
-  #timer_repeat_cmd=
+#timer_cmd="afplay ~/.tim/alarm.wav"
+#timer_repeat_cmd=0
 
-  #interval=
+#interval=15
 
-  work_cmd="terminal-notifier -message 'Start working now!' -title Tim -activate com.apple.Terminal >& /dev/null && say start working now"
-  break_cmd="terminal-notifier -message 'Take a break now!' -title Tim -activate com.apple.Terminal >& /dev/null && say take a break now"
-  long_break_cmd="terminal-notifier -message 'Take a long break now!' -title Tim -activate com.apple.Terminal >& /dev/null && say take a long break now"
+work_cmd="say start working now"
+break_cmd="say take a break now"
+long_break_cmd="say take a long break now"
 
-  pomodoro_cmd="say work is now over. you win && open ~/Storage/Celebrate.flv"
-  #pomodoro_repeat_cmd=
+pomodoro_cmd="say work is now over. you win && open ~/Storage/Celebrate.flv"
+#pomodoro_repeat_cmd=0
 
-  #pomodoro_work=
-  #pomodoro_break=
-  #pomodoro_long_break=
-  #pomodoro_stop=
-else
-  #press_return=
-
-  #timer_cmd=
-  #timer_repeat_cmd=
-
-  #interval=
-
-  #work_cmd=
-  #break_cmd=
-  #long_break_cmd=
-
-  #pomodoro_cmd=
-  #pomodoro_repeat_cmd=
-
-  #pomodoro_work=
-  #pomodoro_break=
-  #pomodoro_long_break=
-  #pomodoro_stop=
-fi
+#pomodoro_work=25
+#pomodoro_break=5
+#pomodoro_long_break=15
+#pomodoro_stop=4

@@ -3,7 +3,6 @@
 umask 077
 
 [[ $TERM == xterm ]] && export TERM=xterm-256color # GNOME Terminal needs this.
-export GEM_HOME=~/.gem/ruby
 export GREP_OPTIONS="--color=auto"
 
 export EDITOR=vim

@@ -5,7 +5,7 @@
 # Description: This script automatically open up new Safari and Terminal
 # windows and moves them to my external display.
 
-# Usage: ewin
+# Usage: windows
 
 echo "Opening new windows on external display."
 
