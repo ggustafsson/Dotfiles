@@ -10,8 +10,10 @@ rm ~/examples.desktop
 
 sudo apt install \
   curl \
+  flac \
   git \
   nmap \
+  openssh-server \
   tmux \
   tree \
   vim-nox \
