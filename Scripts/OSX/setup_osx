@@ -34,6 +34,9 @@ fi
 # Override hostname from DHCP server.
 sudo scutil --set HostName $new_hostname
 
+# Check for updates daily instead of once a week.
+sudo defaults write /Library/Preferences/com.apple.SoftwareUpdate ScheduleFrequency 1
+
 # Install Xcode Command Line Tools.
 echo
 xcode-select --install
