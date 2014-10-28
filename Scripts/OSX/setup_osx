@@ -37,6 +37,10 @@ sudo scutil --set HostName $new_hostname
 # Check for updates daily instead of once a week.
 sudo defaults write /Library/Preferences/com.apple.SoftwareUpdate ScheduleFrequency -int 1
 
+# Remove the hide/show delay of the Dock and make animations faster.
+defaults write com.apple.dock autohide-delay -float 0
+defaults write com.apple.dock autohide-time-modifier -float 0.5
+
 # Install Xcode Command Line Tools.
 echo
 xcode-select --install
