@@ -35,7 +35,7 @@ fi
 sudo scutil --set HostName $new_hostname
 
 # Check for updates daily instead of once a week.
-sudo defaults write /Library/Preferences/com.apple.SoftwareUpdate ScheduleFrequency 1
+sudo defaults write /Library/Preferences/com.apple.SoftwareUpdate ScheduleFrequency -int 1
 
 # Install Xcode Command Line Tools.
 echo
