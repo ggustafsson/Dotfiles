@@ -39,7 +39,9 @@ sudo defaults write /Library/Preferences/com.apple.SoftwareUpdate ScheduleFreque
 
 # Remove the hide/show delay of the Dock and make animations faster.
 defaults write com.apple.dock autohide-delay -float 0
-defaults write com.apple.dock autohide-time-modifier -float 0.5
+defaults write com.apple.dock autohide-time-modifier -float 0.6
+
+killall Dock
 
 # Install Xcode Command Line Tools.
 echo
