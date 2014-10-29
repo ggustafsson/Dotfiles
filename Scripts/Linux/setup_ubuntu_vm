@@ -20,6 +20,7 @@ sudo apt install \
   php5 \
   samba \
   shntool \
+  sslstrip \
   tftp \
   tftpd \
   tshark \
