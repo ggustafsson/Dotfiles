@@ -173,7 +173,7 @@ if has("gui_running") && has("mac")
     set linespace=1
 
     set columns=204
-    set lines=56
+    set lines=53
   endfunction
   if !exists("g:dont_set_font_again")
     let g:dont_set_font_again = 1
