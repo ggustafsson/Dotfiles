@@ -78,7 +78,6 @@ set splitright
 set t_vb=
 set visualbell
 
-let g:NERDCreateDefaultMappings = 0
 let g:mapleader = ","
 
 let g:gundo_help = 0
@@ -87,6 +86,9 @@ let g:gundo_tree_statusline = " Gundo Tree"
 
 let g:LustyExplorerDefaultMappings = 0
 let g:LustyJugglerDefaultMappings = 0
+
+let g:NERDCreateDefaultMappings = 0
+let g:NERDCustomDelimiters = { 'c': { 'left': '//' } }
 
 let g:NERDTreeDirArrows = 0
 let g:NERDTreeMinimalUI = 1
@@ -111,13 +113,14 @@ nnoremap <Leader>bd :call BufferDelete()<CR>
 nnoremap <Leader>cc :call ColorColumn()<CR>
 nnoremap <Leader>cd :cd %:p:h \| pwd<CR>
 nnoremap <Leader>co :call NERDComment("n", "toggle")<CR>
-nnoremap <Leader>do :LustyFilesystemExplorer ~/Documents/Text\ Files<CR>
 nnoremap <Leader>ed :LustyFilesystemExplorerFromHere<CR>
 nnoremap <Leader>eh :LustyFilesystemExplorer ~<CR>
+nnoremap <Leader>er :browse oldfiles<CR>
+nnoremap <Leader>et :LustyFilesystemExplorer ~/Documents/Text\ Files<CR>
 nnoremap <Leader>fe :set fileformat=unix \| set fileencoding=utf-8
 nnoremap <Leader>ft :set filetype=
-nnoremap <Leader>in :0read ~/.vim/templates/
 nnoremap <Leader>gu :GundoToggle<CR>
+nnoremap <Leader>in <Up>:read ~/.vim/templates/
 nnoremap <Leader>li :set list!<CR>
 nnoremap <Leader>ne :enew<CR>
 nnoremap <Leader>nu :set number! \| set relativenumber!<CR>
