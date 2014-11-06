@@ -1,0 +1,22 @@
+#!/usr/bin/env zsh
+
+# Written by Göran Gustafsson <gustafsson.g@gmail.com>.
+
+# Description: This script opens up a new Safari window and moves it to my
+# external display.
+
+# Usage: safari
+
+echo "Opening new Safari window on external display."
+
+osascript -e '
+  tell application "System Events"
+    tell application process "Safari"
+      set frontmost to true
+      click menu item "New Window" of menu 1 of menu bar item "File" of menu bar 1
+    end tell
+
+    tell application "Safari"
+      set bounds of window 1 to {1440, 22, 2880, 1080}
+    end tell
+  end tell' > /dev/null
