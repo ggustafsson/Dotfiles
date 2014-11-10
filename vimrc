@@ -113,10 +113,10 @@ nnoremap <Leader>bd :call BufferDelete()<CR>
 nnoremap <Leader>cc :call ColorColumn()<CR>
 nnoremap <Leader>cd :cd %:p:h \| pwd<CR>
 nnoremap <Leader>co :call NERDComment("n", "toggle")<CR>
+nnoremap <Leader>do :LustyFilesystemExplorer ~/Documents/Text\ Files<CR>
 nnoremap <Leader>ed :LustyFilesystemExplorerFromHere<CR>
 nnoremap <Leader>eh :LustyFilesystemExplorer ~<CR>
 nnoremap <Leader>er :browse oldfiles<CR>
-nnoremap <Leader>et :LustyFilesystemExplorer ~/Documents/Text\ Files<CR>
 nnoremap <Leader>fe :set fileformat=unix \| set fileencoding=utf-8
 nnoremap <Leader>ft :set filetype=
 nnoremap <Leader>gu :GundoToggle<CR>
