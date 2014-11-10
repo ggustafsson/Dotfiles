@@ -16,7 +16,10 @@ fi
 
 if [[ $# -gt 0 ]]; then
   echo "Adding new entry to to-do list."
-  echo $* >>| $todo_file
+  cp $todo_file $todo_file.tmp
+  echo $* > $todo_file
+  cat $todo_file.tmp >> $todo_file
+  rm $todo_file.tmp
 else
   if [[ ! -f $todo_file ]]; then
     echo "File '${todo_file}' does not exist! Exiting..."
