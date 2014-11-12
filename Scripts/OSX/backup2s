@@ -29,7 +29,7 @@ directories2=(
 )
 
 if [[ ! -d $destination2 ]]; then
-  echo "\nDirectory '${destination}' does not exist! Exiting..."
+  echo "Directory '${destination}' does not exist! Exiting..."
   exit 1
 fi
 
