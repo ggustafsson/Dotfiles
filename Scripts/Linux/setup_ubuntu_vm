@@ -8,6 +8,7 @@
 
 sudo apt install \
   apache2 \
+  arduino \
   bind9 \
   dia \
   gparted \
@@ -27,7 +28,7 @@ sudo apt install \
   wireshark
 
 sudo dpkg-reconfigure wireshark-common
-sudo usermod -a -G wireshark $USER
+sudo usermod -a -G dialout,wireshark $USER
 
 sudo rm \
   /etc/rc*.d/*apache2 \
