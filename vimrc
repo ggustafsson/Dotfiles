@@ -120,7 +120,7 @@ nnoremap <Leader>er :browse oldfiles<CR>
 nnoremap <Leader>fe :set fileformat=unix \| set fileencoding=utf-8
 nnoremap <Leader>ft :set filetype=
 nnoremap <Leader>gu :GundoToggle<CR>
-nnoremap <Leader>in <Up>:read ~/.vim/templates/
+nnoremap <Leader>in :call GoUpIfNotOnTop()<CR>:read ~/.vim/templates/
 nnoremap <Leader>li :set list!<CR>
 nnoremap <Leader>ne :enew<CR>
 nnoremap <Leader>nu :set number! \| set relativenumber!<CR>
@@ -193,6 +193,7 @@ if has("gui_running") && has("mac")
   endfunction
 endif
 
+" Delete buffers in a more user friendly way (try to not close split windows).
 function! BufferDelete()
   if &modified
     echohl ErrorMsg
@@ -213,6 +214,7 @@ function! BufferDelete()
   endif
 endfunction
 
+" Easily switch between two different colorcolumn settings and off state.
 function! ColorColumn()
   if empty(&colorcolumn)
     echo "setlocal colorcolumn=79"
@@ -226,6 +228,10 @@ function! ColorColumn()
   endif
 endfunction
 
+" Turn the tab key into <C-n> (auto completion) if there are characters to the
+" left of the cursor, normal tab key is used otherwise.
+"
+" inoremap <expr><Tab> CompleteTab()
 function! CompleteTab()
   " Get the character left of the cursor.
   let char = getline('.')[col('.')-2]
@@ -236,6 +242,16 @@ function! CompleteTab()
     return "\<Tab>"
   else
     return "\<C-n>"
+  endif
+endfunction
+
+" Hack to make <Up> or 'k' work at the beginning key binding actions even when
+" the cursor is placed on the first line. We simply don't move if line is 1.
+"
+" nnoremap <Leader>in <Up>:read ~/.vim/templates/
+function! GoUpIfNotOnTop()
+  if line(".") > 1
+    execute "normal! k"
   endif
 endfunction
 
