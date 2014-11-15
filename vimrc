@@ -120,7 +120,7 @@ nnoremap <Leader>er :browse oldfiles<CR>
 nnoremap <Leader>fe :set fileformat=unix \| set fileencoding=utf-8
 nnoremap <Leader>ft :set filetype=
 nnoremap <Leader>gu :GundoToggle<CR>
-nnoremap <Leader>in :call GoUpIfNotOnTop()<CR>:read ~/.vim/templates/
+nnoremap <Leader>in :.-1read ~/.vim/templates/
 nnoremap <Leader>li :set list!<CR>
 nnoremap <Leader>ne :enew<CR>
 nnoremap <Leader>nu :set number! \| set relativenumber!<CR>
@@ -242,16 +242,6 @@ function! CompleteTab()
     return "\<Tab>"
   else
     return "\<C-n>"
-  endif
-endfunction
-
-" Hack to make <Up> or 'k' work at the beginning key binding actions even when
-" the cursor is placed on the first line. We simply don't move if line is 1.
-"
-" nnoremap <Leader>in <Up>:read ~/.vim/templates/
-function! GoUpIfNotOnTop()
-  if line(".") > 1
-    execute "normal! k"
   endif
 endfunction
 
