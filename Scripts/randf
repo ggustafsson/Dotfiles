@@ -10,11 +10,11 @@
 
 if [[ $# -eq 0 ]]; then
   files=(*)
-  echo $files[$RANDOM%${#files}+1]
+  echo ${files[$RANDOM%${#files}+1]}
 elif [[ $# -eq 1 ]]; then
   if [[ -d $1 ]]; then
     files=(${1}/*)
-    echo $files[$RANDOM%${#files}+1]
+    echo ${files[$RANDOM%${#files}+1]}
   else
     echo "Path '${1}' is not a directory! Exiting..."
     exit 1
