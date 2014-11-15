@@ -5,7 +5,7 @@
 # Modified by Göran Gustafsson <gustafsson.g@gmail.com>.
 
 # Description: This script mounts an encrypted dmg file (sparseimage), backs
-# up a few specific directories to it and then unmounts the image file.
+# up a few specific directories/files to it and then unmounts the image file.
 
 # Usage: backup
 
@@ -13,7 +13,7 @@ device=Keychain
 sparseimage=/Volumes/${device}/Backup.sparseimage
 destination=/Volumes/Backup
 
-directories=(
+backup_objects=(
   ~/Development
   ~/Documents
   ~/Dropbox
@@ -46,13 +46,13 @@ if [[ ! -d $destination ]]; then
   exit 1
 fi
 
-for directory in $directories; do
-  if [[ -d $directory || -f $directory ]]; then
-    print -P "\n%B%F{green}Backing up directory ${directory/$HOME/~}.%f%b"
+for object in $backup_objects; do
+  if [[ -a $object ]]; then
+    print -P "\n%B%F{green}Backing up directory ${object/$HOME/~}.%f%b"
     rsync --archive --delete --exclude=Dropbox/.dropbox.cache \
-      --human-readable --verbose $directory $destination
+      --human-readable --verbose $object $destination
   else
-    echo "\nDirectory '${directory/$HOME/~}' not found! Exiting..."
+    echo "\nDirectory '${object/$HOME/~}' not found! Exiting..."
     exit 1
   fi
 done
