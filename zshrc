@@ -62,14 +62,22 @@ setopt autopushd
 setopt pushdignoredups
 
 autoload -U compinit && compinit
+autoload -U edit-command-line && zle -N edit-command-line
 autoload -U url-quote-magic && zle -N self-insert url-quote-magic
 
+autoload -U down-line-or-beginning-search && zle -N down-line-or-beginning-search
+autoload -U up-line-or-beginning-search && zle -N up-line-or-beginning-search
+
 bindkey -v
+bindkey -M vicmd "R" custom-vi-replace # Use custom Vi replace function.
+
 bindkey "jj" vi-cmd-mode
 bindkey "^?" backward-delete-char # Delete with backspace under Vi mode.
+bindkey "^E" edit-command-line
 bindkey "^R" history-incremental-search-backward
 bindkey "^U" kill-whole-line
-bindkey -M vicmd "R" custom-vi-replace
+bindkey "^[[A" up-line-or-beginning-search # Up key.
+bindkey "^[[B" down-line-or-beginning-search # Down key.
 
 zstyle ":completion:*"          insert-tab pending # Disable tabs at prompt.
 zstyle ":completion:*"          list-colors ${(s.:.)LS_COLORS}
@@ -98,16 +106,23 @@ function git_branch {
   fi
 }
 
+# Custom Vi replace function that changes a variable before entering replace
+# mode and afterwards resets the variable. The variable is used under the
+# zsh_mode function later on.
 function custom-vi-replace {
   replace=1 && zle vi-replace && replace=0
 }
 zle -N custom-vi-replace
 
+# Part of the custom Vi replace functionality. This is needed to make the
+# prompt update when mode is switched.
 function zle-line-init zle-keymap-select {
   zle reset-prompt
 }
 zle -N zle-line-init && zle -N zle-keymap-select
 
+# Part of the custom Vi replace functionality. This is the output part that
+# will be used in the prompt to indicate the current Vi mode.
 function zsh_mode {
   if [[ $KEYMAP == vicmd ]]; then
     echo "%F{red}E%f"
@@ -180,6 +195,7 @@ alias wgetp="wget --adjust-extension --convert-links --page-requisites"
 alias ycal='cal $(date +%Y)'
 alias zreload="source ~/.zshenv && source ~/.zshrc && echo 'Zsh reloaded.'"
 
+alias -- -='cd -'
 alias ..="source dotdot"
 alias cdh="dirs -v | sort --reverse"
 alias cdj='cd "$(< ~/.saved_pwd)"'
