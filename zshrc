@@ -142,7 +142,7 @@ else
 fi
 
 # Coruscant ~ $
-PROMPT='%B${zsh_host}%b ${PWD/$HOME/~} %B$(zsh_mode)%b '
+PROMPT='%B${zsh_host}%b ${PWD/${HOME}/~} %B$(zsh_mode)%b '
 # $ 0 master
 RPROMPT='%B%F{blue}$%f%b %?%B$(git_branch)%b'
 
@@ -189,7 +189,6 @@ alias ka="killall"
 alias l="less"
 alias mkdir="mkdir -pv"
 alias pyweb="python3 -m http.server 8080"
-alias randf='files=(*) && echo $files[$RANDOM%$#files+1]'
 alias tma="tmux attach"
 alias tv='vim $todo_file'
 alias wgetp="wget --adjust-extension --convert-links --page-requisites"

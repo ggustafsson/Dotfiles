@@ -2,17 +2,19 @@
 
 # Written by Göran Gustafsson <gustafsson.g@gmail.com>.
 
-# Description: This script counts the number of files/directories there are
-# inside a directory.
+# Description: This script prints out the name of a random file/directory from
+# the current directory or a specified one.
 
-# Usage: countf
-#        countf <path>
+# Usage: randf
+#        randf <path>
 
 if [[ $# -eq 0 ]]; then
-  ls -1 | wc -l
+  files=(*)
+  echo $files[$RANDOM%${#files}+1]
 elif [[ $# -eq 1 ]]; then
   if [[ -d $1 ]]; then
-    ls -1 $1 | wc -l
+    files=(${1}/*)
+    echo $files[$RANDOM%${#files}+1]
   else
     echo "Path '${1}' is not a directory! Exiting..."
     exit 1
