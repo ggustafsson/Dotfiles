@@ -7,8 +7,6 @@
 
 # Usage: safari
 
-echo "Opening new Safari window on external display."
-
 osascript -e '
   tell application "System Events"
     tell application process "Safari"
