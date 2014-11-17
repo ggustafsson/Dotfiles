@@ -17,6 +17,7 @@ backup_objects=(
   ~/Development
   ~/Documents
   ~/Dropbox
+  ~/Library/Containers/com.apple.iWork.Pages/Data/Library/Application\ Support/User\ Templates
   ~/Library/Safari/Bookmarks.plist
   ~/Movies
   ~/Music/FLAC
