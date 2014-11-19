@@ -31,7 +31,6 @@ backup_objects=(
   ~/Sites
   ~/Storage
   ~/Web\ Archives
-  ~/YouTube
 )
 
 if [[ ! -f $sparseimage ]]; then

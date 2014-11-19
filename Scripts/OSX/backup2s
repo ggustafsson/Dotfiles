@@ -18,9 +18,9 @@ backup_objects=(
   /Volumes/External/Documentaries
   /Volumes/External/Movies
   /Volumes/External/Series
+  ~/Movies/YouTube
   ~/Music/FLAC
   ~/Music/MP3
-  ~/YouTube
 )
 
 backup_objects2=(
