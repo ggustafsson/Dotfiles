@@ -34,6 +34,7 @@ word_list = %w(
   to
   via
   vs
+  with
 )
 
 # Using .join and .split to turn the argument(s) into one single string.
