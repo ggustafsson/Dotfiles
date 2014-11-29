@@ -73,11 +73,11 @@ bindkey -M vicmd "R" custom-vi-replace # Use custom Vi replace function.
 
 bindkey "jj" vi-cmd-mode
 bindkey "^?" backward-delete-char # Delete with backspace under Vi mode.
-bindkey "^U" kill-whole-line
-bindkey "^V" edit-command-line
+bindkey "^u" kill-whole-line
+bindkey "^v" edit-command-line
 
-bindkey "^F" history-incremental-search-forward
-bindkey "^R" history-incremental-search-backward
+bindkey "^f" history-incremental-search-forward
+bindkey "^r" history-incremental-search-backward
 
 bindkey "^[[A" up-line-or-beginning-search # Up key.
 bindkey "^[[B" down-line-or-beginning-search # Down key.
@@ -128,7 +128,7 @@ zle -N zle-line-init && zle -N zle-keymap-select
 # will be used in the prompt to indicate the current Vi mode.
 function zsh_mode {
   if [[ $KEYMAP == vicmd ]]; then
-    echo "%F{red}E%f"
+    echo "%F{red}V%f"
   elif [[ $replace -eq 1 ]]; then
     echo "%F{magenta}R%f"
   else
