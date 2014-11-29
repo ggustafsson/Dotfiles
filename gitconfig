@@ -1,12 +1,15 @@
-[core]
-  excludesfile = ~/.gitignore_global
-
 [color]
   branch      = auto
   diff        = auto
   interactive = auto
   status      = auto
   ui          = auto
+
+[core]
+  excludesfile = ~/.gitignore_global
+
+[push]
+  default = simple
 
 [user]
   name  = Göran Gustafsson
