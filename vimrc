@@ -27,6 +27,7 @@ set formatoptions=cjlnoqrt
 set hidden
 set history=100
 set nowrap
+set sessionoptions-=options
 set showbreak=+
 set spelllang=en,sv
 set textwidth=78
