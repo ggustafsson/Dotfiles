@@ -73,11 +73,11 @@ bindkey -M vicmd "R" custom-vi-replace # Use custom Vi replace function.
 
 bindkey "jj" vi-cmd-mode
 bindkey "^?" backward-delete-char # Delete with backspace under Vi mode.
-bindkey "^u" kill-whole-line
-bindkey "^v" edit-command-line
+bindkey "^U" kill-whole-line
+bindkey "^V" edit-command-line
 
-bindkey "^f" history-incremental-search-forward
-bindkey "^r" history-incremental-search-backward
+bindkey "^F" history-incremental-search-forward
+bindkey "^R" history-incremental-search-backward
 
 bindkey "^[[A" up-line-or-beginning-search # Up key.
 bindkey "^[[B" down-line-or-beginning-search # Down key.
@@ -92,6 +92,7 @@ zstyle ":completion:*:warnings" format "zsh: no matches found." # Display warnin
 
 [[ $OSTYPE == darwin* ]] && compdef _man man2pdf
 
+# Displays the current git status. I use it for RPROMPT.
 function git_branch {
   reference=$(git symbolic-ref HEAD 2> /dev/null) || return
   branch=${reference#refs/heads/}

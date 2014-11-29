@@ -88,7 +88,7 @@ let g:LustyExplorerDefaultMappings = 0
 let g:LustyJugglerDefaultMappings = 0
 
 let g:NERDCreateDefaultMappings = 0
-let g:NERDCustomDelimiters = { 'c': { 'left': '//' } }
+let g:NERDCustomDelimiters = { "arduino": { "left": '//' }, "c": { "left": '//' } }
 
 let g:NERDTreeDirArrows = 0
 let g:NERDTreeMinimalUI = 1
@@ -179,6 +179,7 @@ if has("gui_running") && has("mac")
     set columns=204
     set lines=53
   endfunction
+
   if !exists("g:dont_set_font_again")
     let g:dont_set_font_again = 1
 
@@ -201,9 +202,9 @@ function! BufferDelete()
     echo "No write since last change. Not closing buffer!"
     echohl None
   else
-    let s:total_nr_buffers = len(filter(range(1, bufnr("$")), "buflisted(v:val)"))
+    let s:buffer_count = len(filter(range(1, bufnr("$")), "buflisted(v:val)"))
 
-    if s:total_nr_buffers == 1
+    if s:buffer_count == 1
       bdelete
       echohl WarningMsg
       echo "Buffer deleted. Created new buffer."
@@ -234,8 +235,7 @@ endfunction
 "
 " inoremap <expr><Tab> CompleteTab()
 function! CompleteTab()
-  " Get the character left of the cursor.
-  let char = getline('.')[col('.')-2]
+  let char = getline('.')[col('.')-2] " Get the character left of the cursor.
 
   " Insert a normal tab if the character left of the cursor is non existent, a
   " space or a tab. Otherwise use autocomplete.
