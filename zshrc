@@ -155,6 +155,7 @@ if [[ $OSTYPE == darwin* ]]; then
   alias eject="osascript -e 'tell application \"Finder\" to eject (every disk whose ejectable is true)' && echo 'Ejecting all external drives.'"
   alias gvimdiff='~/Applications/MacVim.app/Contents/MacOS/Vim -d -g $* &> /dev/null'
   alias o="open"
+  alias permef='find /Volumes/External -type d -exec chmod 755 "{}" \; && find /Volumes/External -type f -exec chmod 644 "{}" \;'
   alias tim="caffeinate tim"
   alias top="top -o cpu -s 2"
   alias tree="tree --charset ascii -N"
