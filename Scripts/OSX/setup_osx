@@ -77,7 +77,7 @@ sudo mv ~/Downloads/homebrew /usr/local
   tree \
   vim \
   vorbis-tools \
-  weechat \
+  weechat --with-python \
   wget \
   youtube-dl \
   zsh
