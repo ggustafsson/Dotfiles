@@ -29,14 +29,14 @@ HISTFILE=~/.zsh_histfile
 HISTSIZE=10000
 SAVEHIST=$HISTSIZE
 
+# This must be inside of an array otherwise "ls" will take it as one argument.
+ls_options=(--classify --color=auto --human-readable -v)
+
 if [[ $OSTYPE == darwin* ]]; then
   e=/Volumes/External
 else
   e=/media/external
 fi
-
-# This must be inside of an array otherwise "ls" will take it as one argument.
-ls_options=(--classify --color=auto --human-readable -v)
 
 d=~/Downloads
 p=~/Projects
