@@ -1,7 +1,5 @@
 # Göran Gustafsson <gustafsson.g@gmail.com>
 
-umask 077
-
 [[ $TERM == xterm ]] && export TERM=xterm-256color # GNOME Terminal needs this.
 export GREP_OPTIONS="--color=auto"
 
@@ -155,7 +153,6 @@ if [[ $OSTYPE == darwin* ]]; then
   alias eject="osascript -e 'tell application \"Finder\" to eject (every disk whose ejectable is true)' && echo 'Ejecting all external drives.'"
   alias gvimdiff='~/Applications/MacVim.app/Contents/MacOS/Vim -d -g $* &> /dev/null'
   alias o="open"
-  alias permef='find /Volumes/External/* -type d -exec chmod 755 "{}" \; && find /Volumes/External/* -type f -exec chmod 644 "{}" \;'
   alias tim="caffeinate tim"
   alias top="top -o cpu -s 2"
   alias tree="tree --charset ascii -N"
