@@ -120,6 +120,7 @@ nnoremap <Leader>ed :LustyFilesystemExplorerFromHere<CR>
 nnoremap <Leader>eh :LustyFilesystemExplorer ~<CR>
 nnoremap <Leader>er :browse oldfiles<CR>
 nnoremap <Leader>fe :set fileformat=unix \| set fileencoding=utf-8
+nnoremap <Leader>ff :call FixFile()<CR>
 nnoremap <Leader>ft :set filetype=
 nnoremap <Leader>gu :GundoToggle<CR>
 nnoremap <Leader>in :.-1read ~/.vim/templates/
@@ -129,9 +130,9 @@ nnoremap <Leader>nu :set number! \| set relativenumber!<CR>
 nnoremap <Leader>pa :set paste!<CR>
 nnoremap <Leader>re :%s//gc \| nohlsearch<C-b><Right><Right><Right>
 nnoremap <Leader>rs :source ~/.vim/session.vim<CR>
-nnoremap <Leader>s2 :setlocal expandtab softtabstop=2 shiftwidth=2<CR>
-nnoremap <Leader>s4 :setlocal expandtab softtabstop=4 shiftwidth=4<CR>
-nnoremap <Leader>s8 :setlocal expandtab softtabstop=8 shiftwidth=8<CR>
+nnoremap <Leader>s2 :setlocal expandtab shiftwidth=2 softtabstop=2<CR>
+nnoremap <Leader>s4 :setlocal expandtab shiftwidth=4 softtabstop=4<CR>
+nnoremap <Leader>s8 :setlocal expandtab shiftwidth=8 softtabstop=8<CR>
 nnoremap <Leader>sh :shell<CR>
 nnoremap <Leader>sp :setlocal spell!<CR>
 nnoremap <Leader>ss :mksession! ~/.vim/session.vim<CR>
@@ -146,7 +147,7 @@ nnoremap <Leader>un :edit!<CR>
 nnoremap <Leader>vi :edit ~/.vimrc<CR>
 nnoremap <Leader>w3 :!~/Scripts/validate "%"<CR>
 nnoremap <Leader>wr :set wrap!<CR>
-nnoremap <Leader>ws :%s/\s\+$// \| nohlsearch<CR>
+nnoremap <Leader>ws :%s/\s\+$//e \| nohlsearch<CR>
 nnoremap <Leader>zs :edit ~/.zshrc<CR>
 
 nnoremap ,. :
@@ -247,6 +248,21 @@ function! CompleteTab()
   else
     return "\<C-n>"
   endif
+endfunction
+
+" Fix file encoding, file format, tabs and remove whitespaces.
+function! FixFile()
+  set fileencoding=utf-8
+  set fileformat=unix
+
+  setlocal expandtab
+  setlocal shiftwidth=2
+  setlocal softtabstop=2
+  setlocal tabstop=2
+  retab
+
+  %s/\s\+$//e " Remove all whitespaces.
+  nohlsearch
 endfunction
 
 augroup Main
