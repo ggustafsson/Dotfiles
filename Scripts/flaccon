@@ -60,8 +60,8 @@ for arg; do
     information=${output#*=}
 
     if [[ $fix_capitalization -eq 1 ]]; then
-      # If the variable information is not empty run my external script
-      # "title" on it to fix the capitalization of the text.
+      # If the variable information is not empty run my external script "title"
+      # on it to fix the capitalization of the text.
       if [[ ! -z $information ]]; then
         information=$(title $information)
       fi

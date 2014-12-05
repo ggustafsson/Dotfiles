@@ -2,8 +2,8 @@
 
 # Written by Göran Gustafsson <gustafsson.g@gmail.com>.
 
-# Description: This script fetches git repos, creates symlinks, directories
-# etc so i can easily get my environment the way i want.
+# Description: This script fetches git repos, creates symlinks, directories etc
+# so i can easily get my environment the way i want.
 
 # Usage: setup_dotfiles
 

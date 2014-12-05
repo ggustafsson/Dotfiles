@@ -4,8 +4,8 @@
 #   <https://github.com/holman/dotfiles/blob/master/bin/backup>.
 # Modified by Göran Gustafsson <gustafsson.g@gmail.com>.
 
-# Description: This script mounts an encrypted dmg file (sparseimage), backs
-# up a few specific directories/files to it and then unmounts the image file.
+# Description: This script mounts an encrypted dmg file (sparseimage), backs up
+# a few specific directories/files to it and then unmounts the image file.
 
 # Usage: backup
 

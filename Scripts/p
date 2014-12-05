@@ -2,8 +2,8 @@
 
 # Written by Göran Gustafsson <gustafsson.g@gmail.com>.
 
-# Description: This script displays the running processes and if a argument
-# is supplied then only the processes that matches the pattern is displayed.
+# Description: This script displays the running processes and if a argument is
+# supplied then only the processes that matches the pattern is displayed.
 #
 # I have this in ~/.zshrc to adjust the ps display options used:
 #

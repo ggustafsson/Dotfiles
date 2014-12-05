@@ -20,6 +20,7 @@ if has("gui_running")
 endif
 
 set backspace=indent,eol,start
+set colorcolumn=80
 set confirm
 set cryptmethod=blowfish
 set encoding=utf-8
@@ -30,7 +31,7 @@ set nowrap
 set sessionoptions-=options
 set showbreak=+
 set spelllang=en,sv
-set textwidth=78
+set textwidth=79
 set timeoutlen=2000
 set virtualedit=block
 set wildmode=longest,list
@@ -218,11 +219,12 @@ function! BufferDelete()
 endfunction
 
 " Easily switch between two different colorcolumn settings and off state.
+" Never go above 72 or 79 characters (leave one character for diff etc).
 function! ColorColumn()
   if empty(&colorcolumn)
-    echo "setlocal colorcolumn=79"
-    setlocal colorcolumn=79
-  elseif &colorcolumn == "79"
+    echo "setlocal colorcolumn=80"
+    setlocal colorcolumn=80
+  elseif &colorcolumn == "80"
     echo "setlocal colorcolumn=73"
     setlocal colorcolumn=73
   else
@@ -261,6 +263,5 @@ augroup Main
 
   autocmd FileType gitcommit          setlocal colorcolumn=73 nolist spell textwidth=72
   autocmd FileType help               setlocal colorcolumn= nolist
-  autocmd FileType markdown,text,todo setlocal colorcolumn=79
   autocmd FileType markdown,python    setlocal expandtab shiftwidth=4 softtabstop=4
 augroup END

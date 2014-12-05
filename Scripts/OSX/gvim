@@ -3,9 +3,9 @@
 # Written by Göran Gustafsson <gustafsson.g@gmail.com>.
 
 # Description: This script makes it easy to open one or more files in MacVim.
-# I never want to have more than one window open so i have configured MacVim
-# to open all new files in new tabs. To make sure that i never ever end up
-# with more than one open window i am forced to use the command "open" to run
+# I never want to have more than one window open so i have configured MacVim to
+# open all new files in new tabs. To make sure that i never ever end up with
+# more than one open window i am forced to use the command "open" to run
 # MacVim, the only alternative way opens up more windows under certain
 # scenarios. Using "open" is not perfect because each file must already exist.
 

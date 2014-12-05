@@ -1,5 +1,5 @@
-# I use this so the connection will die by itself when my laptop goes to
-# sleep. Otherwise i will have to kill ssh by hand when i return.
+# I use this so the connection will die by itself when my laptop goes to sleep.
+# Otherwise i will have to kill ssh by hand when i return.
 ServerAliveInterval 15
 ServerAliveCountMax 2
 

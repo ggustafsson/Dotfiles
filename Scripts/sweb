@@ -3,8 +3,8 @@
 # Written by Göran Gustafsson <gustafsson.g@gmail.com>.
 
 # Description: This script is used for analysing and searching through my bank
-# transaction logs (specific to Swedbank). The logs are manually downloaded
-# and automatically converted from text files to CSV files with another script
+# transaction logs (specific to Swedbank). The logs are manually downloaded and
+# automatically converted from text files to CSV files with another script
 # called "swebp".
 #
 # THIS IS WORK IN PROGRESS! Half of it works.

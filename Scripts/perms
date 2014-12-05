@@ -2,10 +2,10 @@
 
 # Written by Göran Gustafsson <gustafsson.g@gmail.com>.
 
-# Description: This script changes the permissions on all files and
-# directories under the specified path (including the root directory). The
-# permissions used are 700 for directories and 600 (or 700) for files. It also
-# removes all of the extra permission attributes under OS X.
+# Description: This script changes the permissions on all files and directories
+# under the specified path (including the root directory). The permissions used
+# are 700 for directories and 600 (or 700) for files. It also removes all of
+# the extra permission attributes under OS X.
 
 # Usage: perms <path>
 
