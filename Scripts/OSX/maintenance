@@ -17,8 +17,6 @@ if [[ $answer == (y|yes) ]]; then
   brew cleanup
   brew linkapps --local
   echo
-  dl_misc
-  echo
   dl_vim
   echo
   frees
