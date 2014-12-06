@@ -142,7 +142,7 @@ nnoremap <Leader>t8 :setlocal noexpandtab shiftwidth=8 softtabstop=0 tabstop=8<C
 nnoremap <Leader>ta :tab sball<CR>
 nnoremap <Leader>to :edit ~/Documents/Text\ Files/To-do\ List.todo<CR>
 nnoremap <Leader>tr :NERDTreeToggle<CR>
-nnoremap <Leader>tw :set textwidth=78
+nnoremap <Leader>tw :set textwidth=79
 nnoremap <Leader>un :edit!<CR>
 nnoremap <Leader>vi :edit ~/.vimrc<CR>
 nnoremap <Leader>w3 :!~/Scripts/validate "%"<CR>
