@@ -81,6 +81,7 @@ set t_vb=
 set visualbell
 
 let g:mapleader = ","
+let g:syntastic_python_python_exec = system("which python3")
 
 let g:gundo_help = 0
 let g:gundo_preview_statusline = " Gundo Preview"
