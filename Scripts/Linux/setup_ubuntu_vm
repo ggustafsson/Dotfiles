@@ -19,6 +19,7 @@ sudo apt install \
   nfs-kernel-server \
   nginx \
   php5 \
+  r-base \
   samba \
   shntool \
   sslstrip \
