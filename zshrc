@@ -204,9 +204,6 @@ alias cdh="dirs -v | sort --reverse"
 alias cdj='cd "$(< ~/.saved_pwd)"'
 alias cds='echo "Saving current path." && echo $PWD >| ~/.saved_pwd'
 
-alias cdj2='cd "$(< ~/.saved_pwd2)"'
-alias cds2='echo "Saving current path." && echo $PWD >| ~/.saved_pwd2'
-
 alias cl="wc -l"
 alias cw="wc -w"
 
