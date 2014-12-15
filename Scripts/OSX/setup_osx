@@ -58,6 +58,7 @@ sudo mv ~/Downloads/homebrew /usr/local
   gawk \
   git \
   gnu-sed \
+  gnuplot \
   html2text \
   imagemagick --without-x \
   imagesnap \
