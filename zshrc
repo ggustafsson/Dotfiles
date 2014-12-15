@@ -143,8 +143,9 @@ else
   zsh_host="%F{red}%m%f"
 fi
 
+ZLE_RPROMPT_INDENT=0 # Remove space in RPROMPT. Requires extra space in PROMPT.
 # Coruscant ~ $
-PROMPT='%B${zsh_host}%b ${PWD/${HOME}/~} %B$(zsh_mode)%b '
+PROMPT='%B${zsh_host}%b ${PWD/${HOME}/~} %B$(zsh_mode)%b  '
 # $ 0 master
 RPROMPT='%B%F{blue}$%f%b %?%B$(git_branch)%b'
 
