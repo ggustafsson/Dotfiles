@@ -2,7 +2,7 @@
 
 # Written by Göran Gustafsson <gustafsson.g@gmail.com>.
 
-# Description: Print out the date that is X days from now.
+# Description: Print out the date that is X days from now. Minus works too.
 
 # Usage: ahead <days>
 
@@ -19,4 +19,7 @@ rescue
   abort "Invalid argument!"
 end
 
-puts Date.today + days
+date = Date.today + days
+day = date.strftime("%A")
+
+puts "#{date} - #{day}"
