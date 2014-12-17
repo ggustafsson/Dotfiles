@@ -11,6 +11,7 @@ sudo apt install \
   arduino \
   bind9 \
   dia \
+  gnuplot \
   gparted \
   hping3 \
   mdadm \
