@@ -29,7 +29,7 @@ end
 
 $directory = "#{Dir.home}/.reddit"
 $filter_comments = 1 # Ignore URLs containing "/comments/".
-$sleep_between_urls = 0.5
+$sleep_between_urls = 0.6
 
 # Check if the default config file should be used or not.
 if ARGV.length == 0
