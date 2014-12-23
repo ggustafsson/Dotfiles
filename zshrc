@@ -143,6 +143,8 @@ else
   zsh_host="%F{red}%m%f"
 fi
 
+# Easily switch between short and long prompt. Convenient to have when using
+# vertical split windows in tmux and things get cramped.
 function prompts {
   if [[ $zsh_prompt_set -eq 0 ]]; then
     # Coruscant ~ $
@@ -231,8 +233,8 @@ alias la="ls --all"
 alias ls='ls $ls_options'
 
 alias g="grep"
-alias rg3="rg --after-context=3 --before-context=3"
 alias rg="grep --exclude-dir .git --line-number --recursive"
+alias rg3="rg --after-context=3 --before-context=3"
 
 alias gad="git add"
 alias gca="git commit --all --verbose"

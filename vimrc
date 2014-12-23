@@ -26,13 +26,11 @@ set cryptmethod=blowfish
 set encoding=utf-8
 set formatoptions=cjlnoqrt
 set hidden
-set history=100
 set nowrap
 set sessionoptions-=options
 set showbreak=+
 set spelllang=en,sv
 set textwidth=79
-set timeoutlen=2000
 set virtualedit=block
 set wildmode=longest,list
 
@@ -176,6 +174,8 @@ inoremap <expr><Tab> CompleteTab()
 inoremap jj          <Esc>
 
 if has("gui_running") && has("mac")
+  " Sets the font settings. Using a function to be able to easily change back
+  " to default settings later on with the FontSize function.
   function! FontSetup()
     set guifont=Menlo:h12
     set linespace=1
@@ -190,6 +190,8 @@ if has("gui_running") && has("mac")
     call FontSetup()
   endif
 
+  " Switches between two different font sizes. Either a big font or the default
+  " font settings set in the FontSetup function.
   function! FontSize()
     if &guifont != "Menlo:h22"
       set guifont=Menlo:h22
