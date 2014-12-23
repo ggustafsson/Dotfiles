@@ -143,10 +143,21 @@ else
   zsh_host="%F{red}%m%f"
 fi
 
-# Coruscant ~ $
-PROMPT='%B${zsh_host}%b ${PWD/${HOME}/~} %B$(zsh_mode)%b '
-# $ 0 master
-RPROMPT='%B%F{blue}$%f%b %?%B$(git_branch)%b'
+function prompts {
+  if [[ $zsh_prompt_set -eq 0 ]]; then
+    # Coruscant ~ $
+    PROMPT='%B${zsh_host}%b ${PWD/${HOME}/~} %B$(zsh_mode)%b '
+    # $ 0 master
+    RPROMPT='%B%F{blue}$%f%b %?%B$(git_branch)%b'
+    zsh_prompt_set=1
+  else
+    # Coruscant $
+    PROMPT='%B${zsh_host}%b %B$(zsh_mode)%b '
+    RPROMPT=''
+    zsh_prompt_set=0
+  fi
+}
+prompts
 
 if [[ $OSTYPE == darwin* ]]; then
   alias caffeinate="caffeinate -di"
