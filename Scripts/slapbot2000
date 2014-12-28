@@ -1,0 +1,22 @@
+#!/usr/bin/env zsh
+
+pid=$!
+irc_stream=/tmp/irc_stream
+
+echo "NICK slapbot2000" > $irc_stream
+echo "USER slapbot2000 0 * :Hehe" >> $irc_stream
+
+tail -f $irc_stream | nc -i 1 se.quakenet.org 6667 | while read message; do
+  echo $message
+
+  if [[ $message == PING* ]]; then
+    echo "PONG${message#PING}" >> $irc_stream
+    sleep 10
+    echo "JOIN #degiz" >> $irc_stream
+    echo -e "PRIVMSG #degiz :\x01ACTION slaps sajfer around a bit with a large framfall\x01" >> $irc_stream
+    echo "QUIT :Hehe" >> $irc_stream
+    sleep 5
+    rm $irc_stream
+    kill $pid
+  fi
+done
