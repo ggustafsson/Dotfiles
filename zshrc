@@ -181,10 +181,6 @@ if [[ $OSTYPE == darwin* ]]; then
   alias mext="open smb://gleg@10.11.12.3/External"
   alias umext="umount //gleg@10.11.12.3/External"
 else
-  if [[ $HOST == Hoth ]]; then
-    alias killxbmc="killall xbmc xbmc.bin xbmc-standalone"
-  fi
-
   if type -p apt &> /dev/null; then
     alias apti="sudo apt install"
     alias aptr="sudo apt remove"
