@@ -15,7 +15,7 @@ if [[ ! $# -eq 2 ]]; then
 fi
 
 echo "NICK slapbot2000" > $irc_stream
-echo "USER slapbot2000 0 * :Hehe" >> $irc_stream
+echo "USER slapbot 0 * :Slapping bot 2000" >> $irc_stream
 
 tail -f $irc_stream | nc -i 1 se.quakenet.org 6667 | while read message; do
   echo $message
