@@ -10,7 +10,7 @@ pid=$!
 irc_stream=/tmp/irc_stream
 
 if [[ ! $# -eq 2 ]]; then
-  echo "Usage: ${0:t} [NICK]... [WITH]..."
+  echo "Usage: ${0:t} [NICK]... [ITEM]..."
   exit
 fi
 
