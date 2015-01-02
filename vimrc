@@ -208,9 +208,9 @@ function! BufferDelete()
     echo "No write since last change. Not closing buffer!"
     echohl None
   else
-    let s:buffer_count = len(filter(range(1, bufnr("$")), "buflisted(v:val)"))
+    let buffer_count = len(filter(range(1, bufnr("$")), "buflisted(v:val)"))
 
-    if s:buffer_count == 1
+    if buffer_count == 1
       bdelete
       echohl WarningMsg
       echo "Buffer deleted. Created new buffer."
