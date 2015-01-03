@@ -8,7 +8,6 @@
 
 sudo apt install \
   apache2 \
-  arduino \
   bind9 \
   dia \
   gnuplot \
