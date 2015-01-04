@@ -89,7 +89,7 @@ let g:LustyExplorerDefaultMappings = 0
 let g:LustyJugglerDefaultMappings = 0
 
 let g:NERDCreateDefaultMappings = 0
-let g:NERDCustomDelimiters = { "arduino": { "left": '//' }, "c": { "left": '//' } }
+let g:NERDCustomDelimiters = { "c": { "left": '//' } }
 
 let g:NERDTreeDirArrows = 0
 let g:NERDTreeMinimalUI = 1
