@@ -134,7 +134,8 @@ else
 end
 
 search = ARGV[1,ARGV.length].join(" ").downcase
-config = "#{Dir.home}/.swebignore"
+ignore = ""
+ignore_file = "#{Dir.home}/.swebignore"
 
 if !File.exist?(file)
   abort "File '#{file}' does not exist! Exiting..."
@@ -142,8 +143,8 @@ elsif CSV.read(file).empty?
   abort "No entries found! Exiting..."
 end
 
-if File.exist?(config)
-  ignore = File.readlines(config).each { |line| line.chomp! }
+if File.exist?(ignore_file)
+  ignore = File.readlines(ignore_file).each { |line| line.chomp! }
 end
 
 data = CSV.read(file, { :headers => :first_row,
@@ -159,7 +160,7 @@ if ARGV[0] == "-s"
     reference = row[2].to_s
     description = row[3].to_s
 
-    next if ignore.include? reference or ignore.include? description
+    next if ignore.include?(reference) or ignore.include?(description)
 
     if row[4] > 0
       income << row
@@ -223,7 +224,7 @@ elsif search.length > 0
       search = search.gsub(letter, replacement)
     end
 
-    if reference.include? search or description.include? search
+    if reference.include?(search) or description.include?(search)
       results << row
     end
   end
