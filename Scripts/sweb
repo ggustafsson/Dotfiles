@@ -60,7 +60,7 @@ def print_sum(input, type)
     monthdays[monthday] += 1
   end
 
-  freq_weekday = weekdays.max_by { |key, value| value }[0]
+  freq_weekday = weekdays.max_by{ |key, value| value }[0]
 
   case freq_weekday
   when 0
@@ -79,7 +79,7 @@ def print_sum(input, type)
     freq_weekday = "Lördag"
   end
 
-  freq_monthday = monthdays.max_by { |key, value| value }[0]
+  freq_monthday = monthdays.max_by{ |key, value| value }[0]
 
   if type == 1
     type = "Insättningar"
@@ -144,7 +144,7 @@ elsif CSV.read(file).empty?
 end
 
 if File.exist?(ignore_file)
-  ignore = File.readlines(ignore_file).each { |line| line.chomp! }
+  ignore = File.readlines(ignore_file).each{ |line| line.chomp! }
 end
 
 data = CSV.read(file, { :headers => :first_row,
@@ -169,8 +169,8 @@ if ARGV[0] == "-s"
     end
   end
 
-  income = income.sort_by { |row| row.values_at(4) }.reverse
-  outcome = outcome.sort_by { |row| row.values_at(4) }
+  income = income.sort_by{ |row| row.values_at(4) }.reverse
+  outcome = outcome.sort_by{ |row| row.values_at(4) }
 
   puts "1.  Största insättningarna"
   print_table income[0,20]
