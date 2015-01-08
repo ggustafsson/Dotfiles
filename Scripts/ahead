@@ -20,6 +20,6 @@ rescue
 end
 
 date = Date.today + days
-day = date.strftime("%A")
+weekday = date.strftime("%A")
 
-puts "#{date} - #{day}"
+puts "#{date} - #{weekday}"
