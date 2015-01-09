@@ -127,7 +127,7 @@ zle -N zle-line-init && zle -N zle-keymap-select
 # will be used in the prompt to indicate the current Vi mode.
 function zsh_mode {
   if [[ $KEYMAP == vicmd ]]; then
-    echo "%F{red}V%f"
+    echo "%F{red}E%f"
   elif [[ $replace -eq 1 ]]; then
     echo "%F{magenta}R%f"
   else
