@@ -13,3 +13,6 @@ Host hoth
 
 Host tatooine
   HostName 10.11.12.3
+
+Host dagobah
+  HostName 10.11.12.4
