@@ -9,9 +9,9 @@
 
 echo -n "Everything plugged in and ready to go? [y/n] "
 read answer
-echo
 
 if [[ $answer == (y|yes) ]]; then
+  echo
   brew update
   brew upgrade
   brew cleanup
