@@ -4,7 +4,11 @@
 
 # Description: This script joins a specific IRC channel and slaps someone.
 
-# Usage: slapbot2000 nick trout
+# Usage: slapbot2000 <nick> <item>
+
+server=se.quakenet.org
+port=6667
+channel=#degiz
 
 pid=$!
 irc_stream=/tmp/irc_stream
@@ -14,18 +18,18 @@ if [[ ! $# -eq 2 ]]; then
   exit
 fi
 
-echo "NICK slapbot2000" > $irc_stream
-echo "USER slapbot 0 * :Slapping bot 2000" >> $irc_stream
+echo "NICK slapbot2000" | tee $irc_stream
+echo "USER slapbot 0 * :Slapping bot 2000" | tee -a $irc_stream
 
-tail -f $irc_stream | nc -i 1 se.quakenet.org 6667 | while read message; do
+tail -f $irc_stream | nc -i 1 $server $port | while read message; do
   echo $message
 
   if [[ $message == PING* ]]; then
-    echo "PONG${message#PING}" >> $irc_stream
+    echo "PONG${message#PING}" | tee -a $irc_stream
     sleep 10
-    echo "JOIN #degiz" >> $irc_stream
-    echo -e "PRIVMSG #degiz :\x01ACTION slaps $1 around a bit with a large $2\x01" >> $irc_stream
-    echo "QUIT :Hehe" >> $irc_stream
+    echo "JOIN $channel" | tee -a $irc_stream
+    echo -e "PRIVMSG $channel :\x01ACTION slaps $1 around a bit with a large $2\x01" | tee -a $irc_stream
+    echo "QUIT :Hehehe" | tee -a $irc_stream
     sleep 5
     rm $irc_stream
     kill $pid
