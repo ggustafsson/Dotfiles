@@ -206,7 +206,6 @@ alias wgetp="wget --adjust-extension --convert-links --page-requisites"
 alias ycal='cal $(date +%Y)'
 alias zreload="source ~/.zshenv && source ~/.zshrc && echo 'Zsh reloaded.'"
 
-alias -- -='cd -'
 alias ..="source dotdot"
 alias cdh="dirs -v | sort --reverse"
 
