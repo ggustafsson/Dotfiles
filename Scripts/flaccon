@@ -23,7 +23,7 @@ fi
 
 echo "Converting FLAC file(s) to MP3 file(s)."
 
-if [[ $1 == -ic ]]; then
+if [[ $1 == (-ic|--ignore-case) ]]; then
   fix_capitalization=0
   shift # Removes $1 from argument list.
 else
@@ -56,7 +56,7 @@ for arg; do
     # The info variable will contain something like "TITLE=Text here".
     output=$(metaflac --show-tag=$tag $arg)
 
-    # The information variable will contain just "Text here".
+    # The information variable will contain just the text from output.
     information=${output#*=}
 
     if [[ $fix_capitalization -eq 1 ]]; then
