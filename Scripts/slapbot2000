@@ -9,8 +9,6 @@
 server=se.quakenet.org
 port=6667
 channel=#degiz
-
-pid=$!
 irc_stream=/tmp/irc_stream
 
 if [[ ! $# -eq 2 ]]; then
@@ -32,6 +30,6 @@ tail -f $irc_stream | nc -i 1 $server $port | while read message; do
     echo "QUIT :Hehehe" | tee -a $irc_stream
     sleep 5
     rm $irc_stream
-    kill $pid
+    exit
   fi
 done
