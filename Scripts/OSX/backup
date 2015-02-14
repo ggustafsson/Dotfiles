@@ -50,7 +50,7 @@ for object in $backup_objects; do
   if [[ -a $object ]]; then
     print -P "\n%B%F{green}Backing up directory ${object/$HOME/~}.%f%b"
     rsync --archive --delete --exclude=Dropbox/.dropbox.cache \
-      --exclude=Dropbox/Public/Tmp --exclude=Dropbox/Shared/Hemlis \
+      --exclude=Dropbox/Public/Tmp --exclude=Dropbox/Shared/ \
       --human-readable --verbose \
       $object $destination
   else
