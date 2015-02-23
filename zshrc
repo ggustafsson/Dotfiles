@@ -198,7 +198,6 @@ alias free="free -h"
 alias iip="curl icanhazip.com"
 alias ka="killall"
 alias l="less"
-alias mkdir="mkdir -pv"
 alias pyweb="python3 -m http.server 8080"
 alias tma="tmux attach"
 alias tv='vim $todo_file'
@@ -216,6 +215,7 @@ alias cl="wc -l"
 alias cw="wc -w"
 
 alias cp="cp -vi"
+alias mkdir="mkdir -pv"
 alias mv="mv -vi"
 alias rm="rm -v"
 
