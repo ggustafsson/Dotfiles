@@ -7,7 +7,7 @@
 # Terminal.app and "set linespace=1" under MacVim to keep the spacing the same
 # in both.
 
-# Usage: macvimspacing
+# Usage: setup_macvim
 
 defaults write org.vim.MacVim MMTextInsetTop 2
 defaults write org.vim.MacVim MMTextInsetLeft 5
