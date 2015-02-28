@@ -168,7 +168,6 @@ if [[ $OSTYPE == darwin* ]]; then
   alias o="open"
   alias tim="caffeinate tim"
   alias top="top -o cpu -s 2"
-  alias tree="tree --charset ascii -N"
   alias vl='sudo tail -n $LINES -f /var/log/system.log'
   alias webcam="imagesnap -t 2 -w 1"
   alias wifiscan="/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport --scan"
@@ -200,6 +199,7 @@ alias ka="killall"
 alias l="less"
 alias pyweb="python3 -m http.server 8080"
 alias tma="tmux attach"
+alias tree="tree --charset ascii -N"
 alias tv='vim $todo_file'
 alias wgetp="wget --adjust-extension --convert-links --page-requisites"
 alias ycal='cal $(date +%Y)'
