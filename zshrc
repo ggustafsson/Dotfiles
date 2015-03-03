@@ -191,8 +191,6 @@ else
   alias vl='tail -n $LINES -f /var/log/syslog'
 fi
 
-alias df="df -h"
-alias du="du -sh"
 alias free="free -h"
 alias iip="curl icanhazip.com"
 alias ka="killall"
@@ -207,7 +205,6 @@ alias zreload="source ~/.zshenv && source ~/.zshrc && echo 'Zsh reloaded.'"
 
 alias ..="source dotdot"
 alias cdh="dirs -v | sort --reverse"
-
 alias cdj='cd "$(< ~/.saved_pwd)"'
 alias cds='echo "Saving current path." && echo $PWD >| ~/.saved_pwd'
 
@@ -226,6 +223,9 @@ alias d="ls -l"
 alias da="ls --all -l"
 alias la="ls --all"
 alias ls='ls $ls_options'
+
+alias df="df -h"
+alias du="du -sh"
 
 alias g="grep"
 alias rg="grep --exclude-dir .git --line-number --recursive"
