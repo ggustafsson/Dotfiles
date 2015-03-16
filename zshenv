@@ -1,4 +1,5 @@
 setopt no_global_rcs # Don't use config files from /etc.
+umask 022
 
 if [[ $OSTYPE == darwin* ]]; then
   path=(~/Scripts/OSX(N) ~/Scripts(N) /usr/local/bin(N) /usr/local/Cellar/curl/*/bin(N) /usr/bin /bin /usr/local/sbin(N) /usr/sbin /sbin)
