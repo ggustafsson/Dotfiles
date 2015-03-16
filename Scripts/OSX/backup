@@ -51,7 +51,7 @@ for object in $backup_objects; do
     print -P "\n%B%F{green}Backing up directory ${object/$HOME/~}.%f%b"
     rsync --archive --delete --exclude=Dropbox/.dropbox.cache \
       --exclude=Dropbox/Public/Tmp --exclude=Dropbox/Shared \
-      --human-readable --verbose \
+      --human-readable --perms --verbose \
       $object $destination
   else
     echo "\nDirectory '${object/$HOME/~}' not found! Exiting..."
