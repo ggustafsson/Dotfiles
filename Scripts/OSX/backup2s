@@ -38,7 +38,7 @@ echo "Backing up directories to server '${server}'."
 for object in $backup_objects; do
   if [[ -a $object ]]; then
     print -P "\n%B%F{green}Backing up directory ${object/$HOME/~}.%f%b"
-    rsync --archive --delete --human-readable --progress \
+    rsync --archive --chmod=D755,F644 --delete --human-readable --progress \
       $object -e ssh ${server}:$destination
   else
     echo "\nDirectory '${object/$HOME/~}' not found! Exiting..."
@@ -51,7 +51,7 @@ echo "\nBacking up directories to server '${server2}'."
 for object in $backup_objects2; do
   if [[ -a $object ]]; then
     print -P "\n%B%F{green}Backing up directory ${object/$HOME/~}.%f%b"
-    rsync --archive --delete --human-readable --progress \
+    rsync --archive --chmod=D755,F644 --delete --human-readable --progress \
       $object $destination2
   else
     echo "\nDirectory '${object/$HOME/~}' not found! Exiting..."
