@@ -14,7 +14,7 @@
 #        mp3fix *.mp3
 #        find . -type f -iname "*.mp3" -exec mp3fix "{}" \;
 
-if [[ ! $# -gt 0 ]]; then
+if [[ $# -eq 0 ]]; then
   echo "Usage: ${0:t} [FILENAME(S)]..."
   exit
 fi

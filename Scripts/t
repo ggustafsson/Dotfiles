@@ -14,7 +14,7 @@ if [[ -z $todo_file ]]; then
   exit 1
 fi
 
-if [[ $# -gt 0 ]]; then
+if [[ $# -ge 1 ]]; then
   echo "Adding new entry to to-do list."
   cp $todo_file $todo_file.tmp
   echo $* > $todo_file

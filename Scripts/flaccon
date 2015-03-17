@@ -14,7 +14,7 @@
 #        flaccon *.flac
 #        find . -type f -iname "*.flac" -exec flaccon "{}" \;
 
-if [[ ! $# -gt 0 ]]; then
+if [[ $# -eq 0 ]]; then
   echo "Usage: ${0:t} [OPTION]... [FILENAME(S)]...
 
   -ic, --ignore-case  Don't fix capitalization in tags and filenames."

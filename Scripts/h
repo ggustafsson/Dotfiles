@@ -15,7 +15,7 @@
 # Usage: h
 #        h <pattern>
 
-if [[ $# -gt 0 ]]; then
+if [[ $# -ge 1 ]]; then
   history -i 1 | grep --ignore-case "$*"
 else
   history -20

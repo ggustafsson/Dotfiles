@@ -5,11 +5,11 @@
 # Description: This script performs a case insensitive search for files under
 # the current working directory and prints out the relative path to them.
 
-# Usage: findf <pattern>
+# Usage: findf <pattern> <path>
 
-if [[ ! $# -eq 1 ]]; then
-  echo "Usage: ${0:t} [PATTERN]..."
+if [[ ! $# -eq 2 ]]; then
+  echo "Usage: ${0:t} [PATTERN]... [PATH]..."
   exit
 fi
 
-find -L . -iname "*${1}*"
+find -L "$2" -iname "*${1}*"

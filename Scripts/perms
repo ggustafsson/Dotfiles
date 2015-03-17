@@ -3,44 +3,41 @@
 # Written by Göran Gustafsson <gustafsson.g@gmail.com>.
 
 # Description: This script changes the permissions on all files and directories
-# under the specified path (including the root directory). The permissions used
-# are 700 for directories and 600 (or 700) for files. It also removes all of
-# the extra permission attributes under OS X.
+# under the specified path(s). The permissions used are 700 for directories and
+# 600 (or 700) for files. It also removes ACLs under OS X.
 
-# Usage: perms <path>
+# Usage: perms <path1> <path2> ...
 
-if [[ ! $# -eq 1 ]]; then
-  echo "Usage: ${0:t} [PATH]..."
+if [[ $# -eq 0 ]]; then
+  echo "Usage: ${0:t} [PATH(S)]..."
   exit
-fi
-
-directory=$1
-
-if [[ ! -d $directory ]]; then
-  echo "Directory '${directory}' does not exist! Exiting..."
-  exit 1
 fi
 
 perm_dir=700
 perm_file=600
 perm_exec=$perm_dir
 
-echo "Changing permissions recursively on directory: '${directory}'"
+for arg; do
+  if [[ ! -a $arg ]]; then
+    echo "Item '${arg}' does not exist! Skipping..."
+    continue
+  fi
 
-if [[ $OSTYPE == darwin* ]]; then
-  find $directory -type d \
-    -exec chmod -N "{}" \; \
-    -exec chmod $perm_dir "{}" \;
+  echo "Changing permissions on: ${arg}"
 
-  find $directory -type f -perm +111 \
-    -exec chmod -N "{}" \; \
-    -exec chmod $perm_exec "{}" \;
+  if [[ $OSTYPE == darwin* ]]; then
+    find $arg -type d -exec chmod -N "{}" \; -exec chmod $perm_dir "{}" \;
 
-  find $directory -type f ! -perm +111 \
-    -exec chmod -N "{}" \; \
-    -exec chmod $perm_file "{}" \;
-else
-  find $directory -type d -exec chmod $perm_dir "{}" \;
-  find $directory -type f -perm +111 -exec chmod $perm_exec "{}" \;
-  find $directory -type f ! -perm +111 -exec chmod $perm_file "{}" \;
-fi
+    find $arg -type f -perm +111 \
+      -exec chmod -N "{}" \; \
+      -exec chmod $perm_exec "{}" \;
+
+    find $arg -type f ! -perm +111 \
+      -exec chmod -N "{}" \; \
+      -exec chmod $perm_file "{}" \;
+  else
+    find $arg -type d -exec chmod $perm_dir "{}" \;
+    find $arg -type f -perm +111 -exec chmod $perm_exec "{}" \;
+    find $arg -type f ! -perm +111 -exec chmod $perm_file "{}" \;
+  fi
+done

@@ -9,7 +9,7 @@
 # Usage: gifit <file1> <file2> ...
 #        gifit *.jpg
 
-if [[ ! $# -gt 1 ]]; then
+if [[ ! $# -ge 2 ]]; then
   echo "Usage: ${0:t} [FILENAMES]..."
   exit
 fi

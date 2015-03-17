@@ -6,7 +6,7 @@
 
 # Usage: ql <file(s)>
 
-if [[ ! $# -gt 0 ]]; then
+if [[ $# -eq 0 ]]; then
   echo "Usage: ${0:t} [FILENAME(S)]..."
   exit
 fi

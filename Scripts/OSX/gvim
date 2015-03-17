@@ -12,8 +12,7 @@
 # Usage: gvim
 #        gvim <file(s)>
 
-if [[ $# -gt 0 ]]; then
-
+if [[ $# -ge 1 ]]; then
   for arg; do
     # Check if file or directory does not already exist.
     if [[ ! -a $arg ]]; then

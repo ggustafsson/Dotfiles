@@ -18,7 +18,7 @@ else
   command="ps ax"
 fi
 
-if [[ $# -gt 0 ]]; then
+if [[ $# -ge 1 ]]; then
   ps_output=$(eval $command)
 
   # Skip the first row and ignore the text "zsh /Users/GLEG/Scripts/p x" and

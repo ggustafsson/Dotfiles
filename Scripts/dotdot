@@ -22,11 +22,6 @@
 # Usage: ..
 #        .. <pattern>
 
-if [[ $# -gt 1 ]]; then
-  echo "Usage: ${0:t} [PATTERN]..."
-  exit
-fi
-
 if [[ $# -eq 1 ]]; then
   new_pwd=$(echo $PWD | sed 's|\(.*/'${1}'[^/]*/\).*|\1|')
 
@@ -35,6 +30,8 @@ if [[ $# -eq 1 ]]; then
   else
     echo "No result found!"
   fi
+elif [[ $# -ge 2 ]]; then
+  echo "Usage: ${0:t} [PATTERN]..."
 else
   cd ..
 fi
