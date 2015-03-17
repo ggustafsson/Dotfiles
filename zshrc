@@ -31,6 +31,7 @@ SAVEHIST=$HISTSIZE
 ls_options=(--classify --color=auto --human-readable -v)
 
 if [[ $OSTYPE == darwin* ]]; then
+  d2=/Volumes/MicroSD/Downloads\ 2
   e=/Volumes/External
 else
   e=/media/external
