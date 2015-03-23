@@ -2,20 +2,17 @@
 " depending on what character each line starts with. This is my way of
 " categorising all of my entries.
 "
-" Lines starting with ! stands for important.
-" Lines starting with - stands for normal.
-" Lines starting with = stands for school.
-" Lines starting with @ stands for download.
-" Lines starting with # stands for comments.
+" Lines starting with - means normal.
+" Lines starting with ! means important.
+" Lines starting with @ means download.
+" Lines starting with # means comments.
 
-syntax match Comments  +^#.*+
-syntax match Download  +^@.*+
-syntax match Important +^!.*+
-syntax match Normal    +^-.*+
-syntax match School    +^=.*+
+syntax match TodoComments  +^#.*+
+syntax match TodoDownload  +^@.*+
+syntax match TodoImportant +^!.*+
+syntax match TodoNormal    +^-.*+
 
-highlight link Comments  Comment
-highlight link Download  Title
-highlight link Important Statement
-highlight link Normal    Identifier
-highlight link School    Type
+highlight link TodoComments  Comment
+highlight link TodoDownload  Title
+highlight link TodoImportant Statement
+highlight link TodoNormal    Identifier
