@@ -6,10 +6,13 @@
 
 # Usage: setup_vmware
 
-if [[ -d /media/gleg/VMware\ Tools ]]; then
-  tar -xf /media/gleg/VMware\ Tools/VMwareTools-*.tar.gz -C ~/ && \
-    sudo ~/vmware-tools-distrib/vmware-install.pl -d && \
-    rm -rf ~/vmware-tools-distrib
+vmware_path=/media/gleg/VMware\ Tools
+output_path=~/vmware-tools-distrib
+
+if [[ -d $vmware_path ]]; then
+  tar -xf $vmware_path/VMwareTools-*.tar.gz -C ~/ && \
+    sudo $output_path/vmware-install.pl -d && \
+    rm -rf $output_path
 else
   echo "VMware Tools directory not found! Exiting..."
   exit 1
