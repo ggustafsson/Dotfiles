@@ -6,13 +6,11 @@
 
 # Usage: setup_vmware
 
-echo -n "Everything plugged in and ready to go? [y/n] "
-read answer
-
-if [[ $answer == (y|yes) ]]; then
+if [[ -d /media/gleg/VMware\ Tools ]]; then
   tar -xf /media/gleg/VMware\ Tools/VMwareTools-*.tar.gz -C ~/ && \
     sudo ~/vmware-tools-distrib/vmware-install.pl -d && \
     rm -rf ~/vmware-tools-distrib
 else
-  echo "Bye bye!"
+  echo "VMware Tools directory not found! Exiting..."
+  exit 1
 fi
