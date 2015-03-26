@@ -1,0 +1,18 @@
+#!/usr/bin/env zsh
+
+# Written by Göran Gustafsson <gustafsson.g@gmail.com>.
+
+# Description: This script automates the installation of VMware Tools.
+
+# Usage: setup_vmware
+
+echo -n "Everything plugged in and ready to go? [y/n] "
+read answer
+
+if [[ $answer == (y|yes) ]]; then
+  tar -xf /media/gleg/VMware\ Tools/VMwareTools-*.tar.gz -C ~/ && \
+    sudo ~/vmware-tools-distrib/vmware-install.pl -d && \
+    rm -rf ~/vmware-tools-distrib
+else
+  echo "Bye bye!"
+fi
