@@ -21,7 +21,6 @@ backup_objects=(
   ~/Movies/YouTube
   ~/Music/FLAC
   ~/Music/MP3
-  ~/Storage/Game\ Roms
 )
 
 backup_objects2=(
