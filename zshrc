@@ -170,7 +170,7 @@ if [[ $OSTYPE == darwin* ]]; then
   alias o="open"
   alias tim="caffeinate tim"
   alias top="top -o cpu -s 2"
-  alias vl='sudo tail -n $LINES -f /var/log/system.log'
+  alias vl='sudo less +F /var/log/system.log'
   alias webcam="imagesnap -t 2 -w 1"
   alias wifiscan="/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport --scan"
 
@@ -190,7 +190,7 @@ else
   fi
 
   alias cal="cal -m"
-  alias vl='tail -n $LINES -f /var/log/syslog'
+  alias vl='less +F /var/log/syslog'
 fi
 
 alias free="free -h"
