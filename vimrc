@@ -139,6 +139,7 @@ nnoremap <Leader>t2 :setlocal noexpandtab shiftwidth=2 softtabstop=0 tabstop=2<C
 nnoremap <Leader>t4 :setlocal noexpandtab shiftwidth=4 softtabstop=0 tabstop=4<CR>
 nnoremap <Leader>t8 :setlocal noexpandtab shiftwidth=8 softtabstop=0 tabstop=8<CR>
 nnoremap <Leader>ta :tab sball<CR>
+nnoremap <Leader>tm :edit ~/Documents/Text\ Files/Temporary\ Notes.txt<CR>
 nnoremap <Leader>to :edit ~/Documents/Text\ Files/To-do\ List.todo<CR>
 nnoremap <Leader>tr :NERDTreeToggle<CR>
 nnoremap <Leader>tw :set textwidth=79
