@@ -9,7 +9,6 @@
 rm ~/examples.desktop
 
 sudo apt install \
-  abcde \
   curl \
   flac \
   git \
@@ -18,6 +17,7 @@ sudo apt install \
   tmux \
   tree \
   vim-nox \
+  weechat \
   zsh
 
 sudo chsh -s /bin/zsh $USER

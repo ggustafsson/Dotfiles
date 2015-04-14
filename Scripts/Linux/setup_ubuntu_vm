@@ -13,7 +13,6 @@ sudo apt install \
   gnuplot \
   gparted \
   hping3 \
-  mdadm \
   ncftp \
   netperf \
   nfs-kernel-server \
