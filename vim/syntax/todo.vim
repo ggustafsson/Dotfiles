@@ -5,14 +5,17 @@
 " Lines starting with - means normal.
 " Lines starting with ! means important.
 " Lines starting with @ means download.
-" Lines starting with # means comments.
+" Lines starting with = means work.
+" Lines starting with # means comment.
 
-syntax match TodoComments  +^#.*+
+syntax match TodoComment   +^#.*+
 syntax match TodoDownload  +^@.*+
 syntax match TodoImportant +^!.*+
 syntax match TodoNormal    +^-.*+
+syntax match TodoWork      +^=.*+
 
-highlight link TodoComments  Comment
+highlight link TodoComment   Comment
 highlight link TodoDownload  Title
 highlight link TodoImportant Statement
 highlight link TodoNormal    Identifier
+highlight link TodoWork      Type
