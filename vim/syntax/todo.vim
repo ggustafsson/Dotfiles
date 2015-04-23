@@ -2,11 +2,11 @@
 " depending on what character each line starts with. This is my way of
 " categorising all of my entries.
 "
-" Lines starting with - means normal.
-" Lines starting with ! means important.
-" Lines starting with @ means download.
-" Lines starting with = means work.
-" Lines starting with # means comment.
+" Character - means normal.
+" Character ! means important.
+" Character @ means download.
+" Character = means work.
+" Character # means comment.
 
 syntax match TodoComment   +^#.*+
 syntax match TodoDownload  +^@.*+
