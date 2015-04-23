@@ -50,8 +50,8 @@ for arg; do
 
     # Modify output with "sed" the following ways:
     # 1. Remove spaces and tabs at beginning of lines.
-    # 2. Replace "lastLine" with Line.
-    # 3. Replace "message" with Message.
+    # 2. Replace lastLine with Line.
+    # 3. Replace message with Message.
     # 4. Remove \" inside of messages.
     # 5. Remove , at end of lines.
     echo $parsed_results | \
