@@ -11,9 +11,10 @@ session=work
 if ! tmux attach -t $session &> /dev/null; then
   # \; is used to chain tmux commands.
   tmux new-session -s $session \; \
-    send-keys "vim" enter \; \
+    new-window -d \; \
     split-window -h \; \
-    send-keys "cd ~/Downloads" enter \; \
-    send-keys C-l \; \
-    send-keys "d" enter
+    send-keys -t 0 "vim" enter \; \
+    send-keys -t 1 "cd ~/Downloads" enter \; \
+    send-keys -t 1 C-l \; \
+    send-keys -t 1 "d" enter
 fi
