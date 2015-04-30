@@ -12,6 +12,7 @@ sudo apt install \
   curl \
   flac \
   git \
+  links \
   nmap \
   openssh-server \
   tmux \
