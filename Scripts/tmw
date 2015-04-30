@@ -8,12 +8,13 @@
 
 session=work
 
-if ! tmux attach -t work &> /dev/null; then
-  tmux new-session -d -s $session
-  tmux send-keys -t $session "vim" enter
-  tmux split-window -h -t $session
-  tmux send-keys -t $session "cd ~/Downloads" enter
-  tmux send-keys -t $session C-l
-  tmux send-keys -t $session "d" enter
-  tmux attach -t $session
+if ! tmux attach -t $session &> /dev/null; then
+  # \; is used to chain tmux commands.
+  tmux new-session -s $session \; \
+    send-keys "vim" enter \; \
+    split-window -h \; \
+    send-keys "cd ~/Downloads" enter \; \
+    send-keys C-l \; \
+    send-keys "d" enter \; \
+    attach
 fi
