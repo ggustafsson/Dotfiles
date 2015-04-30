@@ -1,0 +1,19 @@
+#!/usr/bin/env zsh
+
+# Written by Göran Gustafsson <gustafsson.g@gmail.com>.
+
+# Description: This script sets up tmux work session.
+
+# Usage: tmw
+
+session=work
+
+if ! tmux attach -t work &> /dev/null; then
+  tmux new-session -d -s $session
+  tmux send-keys -t $session "vim" enter
+  tmux split-window -h -t $session
+  tmux send-keys -t $session "cd ~/Downloads" enter
+  tmux send-keys -t $session C-l
+  tmux send-keys -t $session "d" enter
+  tmux attach -t $session
+fi
