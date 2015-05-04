@@ -72,14 +72,21 @@ bindkey -M vicmd "R" custom-vi-replace # Use custom Vi replace function.
 
 bindkey "jj" vi-cmd-mode
 bindkey "^?" backward-delete-char # Delete with backspace under Vi mode.
-bindkey "^U" kill-whole-line
 bindkey "^V" edit-command-line
+
+bindkey "^A" beginning-of-line
+bindkey "^E" end-of-line
+bindkey "^U" kill-whole-line
 
 bindkey "^F" history-incremental-search-forward
 bindkey "^R" history-incremental-search-backward
 
 bindkey "^[[A" up-line-or-beginning-search # Up key.
 bindkey "^[[B" down-line-or-beginning-search # Down key.
+
+bindkey $terminfo[khome] beginning-of-line # Home key.
+bindkey $terminfo[kend]  end-of-line # End key.
+bindkey $terminfo[kdch1] delete-char # Delete key.
 
 zstyle ":completion:*"          insert-tab pending # Disable tabs at prompt.
 zstyle ":completion:*"          list-colors ${(s.:.)LS_COLORS}
@@ -147,17 +154,19 @@ fi
 # Easily switch between short and long prompt. Convenient to have when using
 # vertical split windows in tmux and things get cramped.
 function prompts {
-  if [[ $zsh_prompt_set -eq 0 ]]; then
+  if [[ $zsh_full_prompt -ne 1 ]]; then
+    zsh_full_prompt=1
+  
     # Coruscant ~ $
     PROMPT='%B${zsh_host}%b ${PWD/${HOME}/~} %B$(zsh_mode)%b '
     # $ 0 master
     RPROMPT='%B%F{blue}$%f%b %?%B$(git_branch)%b'
-    zsh_prompt_set=1
   else
+    zsh_full_prompt=0
+  
     # Coruscant $
     PROMPT='%B${zsh_host}%b %B$(zsh_mode)%b '
     RPROMPT=''
-    zsh_prompt_set=0
   fi
 }
 prompts
