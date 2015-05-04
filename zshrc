@@ -156,14 +156,14 @@ fi
 function prompts {
   if [[ $zsh_full_prompt -ne 1 ]]; then
     zsh_full_prompt=1
-  
+
     # Coruscant ~ $
     PROMPT='%B${zsh_host}%b ${PWD/${HOME}/~} %B$(zsh_mode)%b '
     # $ 0 master
     RPROMPT='%B%F{blue}$%f%b %?%B$(git_branch)%b'
   else
     zsh_full_prompt=0
-  
+
     # Coruscant $
     PROMPT='%B${zsh_host}%b %B$(zsh_mode)%b '
     RPROMPT=''
