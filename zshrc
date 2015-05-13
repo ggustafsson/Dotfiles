@@ -10,8 +10,7 @@ export LANG="en_US.UTF-8"
 export LC_ALL="en_US.UTF-8"
 
 export LESS=FRSX
-export LESS_TERMCAP_md=$(printf "\e[1;36m")
-export LESS_TERMCAP_us=$(printf "\e[1;32m")
+export LESS_TERMCAP_us=$(printf "\e[0m")
 export PAGER=less
 
 export LS_COLORS="rs=0:di=01;34:ln=01;35:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=01;31;01:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32"
