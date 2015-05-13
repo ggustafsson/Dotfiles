@@ -210,6 +210,8 @@ alias free="free -h"
 alias iip="curl icanhazip.com"
 alias ka="killall"
 alias l="less"
+alias man='env LESS_TERMCAP_md=$(printf "\e[1;36m") LESS_TERMCAP_us=$(printf "\e[1;32m") man'
+alias mkdir="mkdir -pv"
 alias pyweb="python3 -m http.server 8080"
 alias tma="tmux attach"
 alias tree="tree --charset ascii -N"
@@ -227,7 +229,6 @@ alias cl="wc -l"
 alias cw="wc -w"
 
 alias cp="cp -vi"
-alias mkdir="mkdir -pv"
 alias mv="mv -vi"
 alias rm="rm -v"
 
