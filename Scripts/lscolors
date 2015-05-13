@@ -26,9 +26,9 @@ names[st]="sticky"
 names[su]="set uid"
 names[tw]="sticky other writable"
 
-for i in ${(s.:.)LS_COLORS}; do
-  key=${i%\=*}
-  color=${i#*\=}
+for item in ${(s.:.)LS_COLORS}; do
+  key=${item%\=*}
+  color=${item#*\=}
   name=${names[(e)$key]-$key}
   printf '\e[%sm%s\e[m\n' $color $name
 done
