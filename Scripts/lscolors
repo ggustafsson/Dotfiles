@@ -1,0 +1,34 @@
+#!/usr/bin/env zsh
+
+# Original script found here:
+#   <http://unix.stackexchange.com/questions/20721/testing-ls-colors-in-zsh>.
+
+# Description: This script prints out everything specified in $LS_COLORS.
+
+# Usage: lscolors
+
+typeset -A names
+names[bd]="block device"
+names[cd]="character device"
+names[di]="directory"
+names[do]="door"
+names[ex]="executable"
+names[fi]="normal file"
+names[ln]="symbolic link"
+names[mi]="missing file"
+names[no]="global default"
+names[or]="orphan symlink"
+names[ow]="other writable"
+names[pi]="named pipe"
+names[sg]="set gid"
+names[so]="socket"
+names[st]="sticky"
+names[su]="set uid"
+names[tw]="sticky other writable"
+
+for i in ${(s.:.)LS_COLORS}; do
+  key=${i%\=*}
+  color=${i#*\=}
+  name=${names[(e)$key]-$key}
+  printf '\e[%sm%s\e[m\n' $color $name
+done
