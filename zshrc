@@ -71,6 +71,9 @@ autoload -U up-line-or-beginning-search && zle -N up-line-or-beginning-search
 bindkey -v
 bindkey -M vicmd "R" custom-vi-replace # Use custom Vi replace function.
 
+bindkey -M vicmd "k" up-line-or-beginning-search
+bindkey -M vicmd "j" down-line-or-beginning-search
+
 bindkey -M vicmd $terminfo[khome] beginning-of-line # Home key.
 bindkey -M vicmd $terminfo[kend]  end-of-line # End key.
 bindkey -M vicmd $terminfo[kdch1] delete-char # Delete key.
