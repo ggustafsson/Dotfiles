@@ -1,7 +1,6 @@
 # Göran Gustafsson <gustafsson.g@gmail.com>
 
 [[ $TERM == xterm ]] && export TERM=xterm-256color # GNOME Terminal needs this.
-export GREP_OPTIONS="--color=auto"
 
 export EDITOR=vim
 export VISUAL=$EDITOR
@@ -19,7 +18,6 @@ export LS_COLORS="${LS_COLORS}:*.avi=01;36:*.flv=01;36:*.f4v=01;36:*.mkv=01;36:*
 export LS_COLORS="${LS_COLORS}:*.flac=01;35:*.nsf=01;35:*.nsfe=01;35:*.m4a=01;35:*.m4r=01;35:*.mp3=01;35:*.ogg=01;35:*.wav=01;35"
 export LS_COLORS="${LS_COLORS}:*.dmg=01;31:*.iso=01;31:*.rar=01;31:*.tar=01;31:*.tar.bz2=01;31:*.tar.gz=01;31:*.tgz=01;31:*.zip=01;31:*.7z=01;31"
 
-export ps_display="user,pid,command"
 export todo_file=~/Documents/Text\ Files/To-do\ List.todo
 
 DIRSTACKSIZE=20
@@ -27,9 +25,6 @@ DIRSTACKSIZE=20
 HISTFILE=~/.zsh_histfile
 HISTSIZE=10000
 SAVEHIST=$HISTSIZE
-
-# This must be inside of an array otherwise "ls" will take it as one argument.
-ls_options=(--classify --color=auto --human-readable -v)
 
 if [[ $OSTYPE == darwin* ]]; then
   d2=/Volumes/MicroSD/Downloads\ 2
@@ -68,30 +63,8 @@ autoload -U url-quote-magic && zle -N self-insert url-quote-magic
 autoload -U down-line-or-beginning-search && zle -N down-line-or-beginning-search
 autoload -U up-line-or-beginning-search && zle -N up-line-or-beginning-search
 
-bindkey -v
-bindkey -M vicmd "R" custom-vi-replace # Use custom Vi replace function.
-
-bindkey -M vicmd "k" up-line-or-beginning-search
-bindkey -M vicmd "j" down-line-or-beginning-search
-
-bindkey -M vicmd $terminfo[khome] beginning-of-line # Home key.
-bindkey -M vicmd $terminfo[kend]  end-of-line # End key.
-bindkey -M vicmd $terminfo[kdch1] delete-char # Delete key.
-
-bindkey $terminfo[khome] beginning-of-line # Home key.
-bindkey $terminfo[kend]  end-of-line # End key.
-bindkey $terminfo[kdch1] delete-char # Delete key.
-
-bindkey "jj" vi-cmd-mode
-bindkey "^?" backward-delete-char # Delete with backspace under Vi mode.
-bindkey "^V" edit-command-line
-
-bindkey "^A" beginning-of-line
-bindkey "^E" end-of-line
-bindkey "^U" kill-whole-line
-
-bindkey "^F" history-incremental-search-forward
-bindkey "^R" history-incremental-search-backward
+bindkey -e
+bindkey "^X^V" edit-command-line
 
 bindkey "^[[A" up-line-or-beginning-search # Up key.
 bindkey "^[[B" down-line-or-beginning-search # Down key.
@@ -124,33 +97,6 @@ function git_branch {
   fi
 }
 
-# Custom Vi replace function that changes a variable before entering replace
-# mode and afterwards resets the variable. The variable is used under the
-# zsh_mode function later on.
-function custom-vi-replace {
-  replace=1 && zle vi-replace && replace=0
-}
-zle -N custom-vi-replace
-
-# Part of the custom Vi replace functionality. This is needed to make the
-# prompt update when mode is switched.
-function zle-line-init zle-keymap-select {
-  zle reset-prompt
-}
-zle -N zle-line-init && zle -N zle-keymap-select
-
-# Part of the custom Vi replace functionality. This is the output part that
-# will be used in the prompt to indicate the current Vi mode.
-function zsh_mode {
-  if [[ $KEYMAP == vicmd ]]; then
-    echo "%F{red}E%f"
-  elif [[ $replace -eq 1 ]]; then
-    echo "%F{magenta}R%f"
-  else
-    echo "%F{blue}$%f"
-  fi
-}
-
 if [[ $HOST == Coruscant* ]]; then
   zsh_host="%F{yellow}%m%f"
 elif [[ $HOST == *-VM ]]; then
@@ -166,14 +112,14 @@ function prompts {
     zsh_full_prompt=1
 
     # Coruscant ~ $
-    PROMPT='%B${zsh_host}%b ${PWD/${HOME}/~} %B$(zsh_mode)%b '
+    PROMPT='%B${zsh_host}%b ${PWD/${HOME}/~} %B%F{blue}$%f%b '
     # $ 0 master
     RPROMPT='%B%F{blue}$%f%b %?%B$(git_branch)%b'
   else
     zsh_full_prompt=0
 
     # Coruscant $
-    PROMPT='%B${zsh_host}%b %B$(zsh_mode)%b '
+    PROMPT='%B${zsh_host}%b %B%F{blue}$%f%b '
     RPROMPT=''
   fi
 }
@@ -241,12 +187,13 @@ alias csvv="column -t -s ';'"
 alias d="ls -l"
 alias da="ls --all -l"
 alias la="ls --all"
-alias ls='ls $ls_options'
+alias ls='ls --classify --color=auto --human-readable -v'
 
 alias df="df -h"
 alias du="du -sh"
 
 alias g="grep"
+alias grep="grep --color=auto"
 alias rg="grep --exclude-dir .git --line-number --recursive"
 alias rg3="rg --after-context=3 --before-context=3"
 
