@@ -18,11 +18,11 @@ if [[ $# -ge 1 ]]; then
   ps_body=$(echo $ps_output | \
     tail -n +2 | \
     egrep --invert-match "(zsh $0 ${*}|${ps_command})" | \
-    grep --ignore-case "$*")
+    grep --color=always --ignore-case "$*")
 
   if [[ ! -z $ps_body ]]; then
     echo $ps_output | head -n 1 # Print the ps header.
-    echo $ps_body | grep --ignore-case "$*" # Run again for colored output.
+    echo $ps_body
   else
     echo "No processes found!"
   fi
