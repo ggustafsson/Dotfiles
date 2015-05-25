@@ -69,6 +69,10 @@ bindkey "^X^V" edit-command-line
 bindkey "^[[A" up-line-or-beginning-search # Up key.
 bindkey "^[[B" down-line-or-beginning-search # Down key.
 
+bindkey $terminfo[khome] beginning-of-line # Home key.
+bindkey $terminfo[kend]  end-of-line # End key.
+bindkey $terminfo[kdch1] delete-char # Delete key.
+
 zstyle ":completion:*"          insert-tab pending # Disable tabs at prompt.
 zstyle ":completion:*"          list-colors ${(s.:.)LS_COLORS}
 zstyle ":completion:*"          matcher-list "m:{[:lower:]}={[:upper:]}" # Works like smartcase in Vim.
