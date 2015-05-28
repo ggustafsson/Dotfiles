@@ -29,7 +29,6 @@ end
 
 $directory = "#{Dir.home}/.reddit"
 $filter_comments = 1 # Ignore URLs containing "/comments/".
-$sleep_between_urls = 0.6
 
 # Check if the default config file should be used or not.
 if ARGV.length == 0
@@ -41,29 +40,29 @@ end
 def check_subreddit(subreddit)
   new_log_file = "#{$directory}/r_#{subreddit}_tmp"
   old_log_file = "#{$directory}/r_#{subreddit}"
-  visited_urls = []
-  new_entry = 0
+  new_urls = []
+  old_urls = []
 
   puts "Checking r/#{subreddit} for new posts..."
 
   begin
-    raw_json = open("http://reddit.com/r/#{subreddit}.json").read
-    parsed_json = JSON.parse(raw_json)
+    json_raw = open("http://reddit.com/r/#{subreddit}.json").read
+    json_parsed = JSON.parse(json_raw)
   rescue
     abort "Failed when trying to fetch and parse json data! Exiting..."
   end
 
   if File.exist?(old_log_file)
-    # Read old log file and put all visited URLs inside of array visited_urls.
+    # Read old log file and put all visited URLs inside of array old_urls.
     File.readlines(old_log_file).each do |line|
-      visited_urls << Regexp.escape(line.strip)
+      old_urls << Regexp.escape(line.strip)
     end
   end
 
   log_file = File.open(new_log_file, "w")
 
   # Loop through all posts on the front page of each subreddit.
-  parsed_json["data"]["children"].each do |post|
+  json_parsed["data"]["children"].each do |post|
     # Put the current posts URL into a variable.
     url = post["data"]["url"]
 
@@ -73,23 +72,23 @@ def check_subreddit(subreddit)
     # Ignore URLs containing "/comments/" if filtering is turned on.
     next if $filter_comments == 1 and url.include?("/comments/")
 
-    # Open up the URL if it has not been visited before.
-    unless visited_urls.include?(Regexp.escape(url))
-      new_entry = 1
-      open_url(url)
-      sleep($sleep_between_urls)
+    # Save the URL in array if it has not been visited before.
+    unless old_urls.include?(Regexp.escape(url))
+      new_urls << url
     end
   end
 
   log_file.close
   FileUtils.mv(new_log_file, old_log_file) # Overwrite old log file.
 
-  puts "No new entries found!" if new_entry == 0
-end
-
-def open_url(url)
-  puts "URL: #{url}"
-  `#{$browser} "#{url}"` # Execute browser command with URL as argument.
+  if new_urls.size >= 1
+    `#{$browser} #{new_urls.join(" ")}` # Run browser with URLs as arguments.
+    new_urls.each { |url|
+      puts "URL: #{url}"
+    }
+  else
+    puts "No new posts found!"
+  end
 end
 
 unless File.directory?($directory)
