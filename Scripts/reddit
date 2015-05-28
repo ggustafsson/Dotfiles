@@ -22,7 +22,7 @@ require "json"
 require "open-uri"
 
 if RUBY_PLATFORM.include?("darwin")
-  $browser = "open"
+  $browser = "open -a Safari"
 else
   $browser = "firefox"
 end
