@@ -171,7 +171,7 @@ alias tree="tree --charset ascii -N"
 alias tv='vim $todo_file'
 alias wgetp="wget --adjust-extension --convert-links --page-requisites"
 alias ycal='cal $(date +%Y)'
-alias zreload="source ~/.zshenv && source ~/.zshrc && echo 'Zsh reloaded.'"
+alias zreload="source ~/.zshenv ~/.zshrc && [[ -f ~/.zsh_local ]] && source ~/.zsh_local"
 
 alias ..="source dotdot"
 alias cdh="dirs -v | sort --reverse"
