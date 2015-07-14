@@ -82,7 +82,8 @@ def check_subreddit(subreddit)
   FileUtils.mv(new_log_file, old_log_file) # Overwrite old log file.
 
   if new_urls.size >= 1
-    `#{$browser} #{new_urls.join(" ")}` # Run browser with URLs as arguments.
+    browser_args = "'#{new_urls.join("' '")}'" # Put quotes around each URL.
+    `#{$browser} #{browser_args}` # Run browser with URLs as arguments.
     new_urls.each { |url|
       puts "URL: #{url}"
     }
