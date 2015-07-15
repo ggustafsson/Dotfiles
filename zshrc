@@ -224,4 +224,4 @@ alias uniqs="sort | uniq"
 alias svtplay-dl="svtplay-dl --resume"
 alias youtube-dl="youtube-dl --continue --title"
 
-[[ -f ~/.zsh_local ]] && source ~/.zsh_local
+[[ -f ~/.zsh_local ]] && source ~/.zsh_local || true

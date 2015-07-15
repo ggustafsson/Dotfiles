@@ -20,6 +20,7 @@
 require "fileutils"
 require "json"
 require "open-uri"
+require "shellwords"
 
 if RUBY_PLATFORM.include?("darwin")
   $browser = "open -a Safari"
@@ -42,6 +43,7 @@ def check_subreddit(subreddit)
   old_log_file = "#{$directory}/r_#{subreddit}"
   new_urls = []
   old_urls = []
+  safe_urls = []
 
   puts "Checking r/#{subreddit} for new posts..."
 
@@ -82,11 +84,11 @@ def check_subreddit(subreddit)
   FileUtils.mv(new_log_file, old_log_file) # Overwrite old log file.
 
   if new_urls.size >= 1
-    browser_args = "'#{new_urls.join("' '")}'" # Put quotes around each URL.
-    `#{$browser} #{browser_args}` # Run browser with URLs as arguments.
     new_urls.each { |url|
       puts "URL: #{url}"
+      safe_urls << Shellwords.escape(url)
     }
+    `#{$browser} #{safe_urls.join(" ")}` # Run browser with URLs as arguments.
   else
     puts "No new posts found!"
   end
