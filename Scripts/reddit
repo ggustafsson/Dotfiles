@@ -86,6 +86,7 @@ def check_subreddit(subreddit)
   if new_urls.size >= 1
     new_urls.each { |url|
       puts "URL: #{url}"
+      # Escape characters in URL to make them safe to use as command arguments.
       safe_urls << Shellwords.escape(url)
     }
     `#{$browser} #{safe_urls.join(" ")}` # Run browser with URLs as arguments.
