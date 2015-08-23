@@ -48,7 +48,7 @@ def check_subreddit(subreddit)
   puts "Checking r/#{subreddit} for new posts..."
 
   begin
-    json_raw = open("http://reddit.com/r/#{subreddit}.json").read
+    json_raw = open("https://reddit.com/r/#{subreddit}.json").read
     json_parsed = JSON.parse(json_raw)
   rescue
     abort "Failed when trying to fetch and parse json data! Exiting..."
