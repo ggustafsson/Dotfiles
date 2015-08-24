@@ -1,0 +1,21 @@
+#!/usr/bin/env zsh
+
+# Written by Göran Gustafsson <gustafsson.g@gmail.com>.
+
+# Description: This script displays files modified within the last hour.
+
+# Usage: lasth
+#        lasth <path>
+
+if [[ $# -eq 0 ]]; then
+  ls -l **/*(mh-1)
+elif [[ $# -eq 1 ]]; then
+  if [[ -d $1 ]]; then
+    ls -l ${1}/**/*(mh-1)
+  else
+    echo "Path '${1}' is not a directory! Exiting..."
+    exit 1
+  fi
+else
+  echo "Usage: ${0:t} [PATH]..."
+fi
