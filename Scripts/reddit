@@ -71,6 +71,8 @@ def check_subreddit(subreddit)
     # Write down every URL to the log file so it can be checked next run.
     log_file.puts url
 
+    # Ignore all "URLs" that does not start with "http".
+    next unless url.start_with?("http")
     # Ignore URLs containing "/comments/" if filtering is turned on.
     next if $filter_comments == 1 and url.include?("/comments/")
 
@@ -86,7 +88,6 @@ def check_subreddit(subreddit)
   if new_urls.size >= 1
     new_urls.each { |url|
       puts "URL: #{url}"
-
       # Escape characters in URL to make them safe to use as command arguments.
       safe_urls << Shellwords.escape(url)
     }
