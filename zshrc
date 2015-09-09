@@ -86,7 +86,6 @@ if [[ $OSTYPE == darwin* ]]; then
   compdef _man   man2pdf
 fi
 
-
 # Displays the current git status. I use it for RPROMPT.
 function git_branch {
   reference=$(git symbolic-ref HEAD 2> /dev/null) || return
