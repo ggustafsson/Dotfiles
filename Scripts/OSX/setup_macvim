@@ -11,5 +11,5 @@
 
 defaults write org.vim.MacVim MMTextInsetTop 2
 defaults write org.vim.MacVim MMTextInsetLeft 5
-defaults write org.vim.MacVim MMTextInsetRight 5
+defaults write org.vim.MacVim MMTextInsetRight 7
 defaults write org.vim.MacVim MMTextInsetBottom 5
