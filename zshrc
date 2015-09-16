@@ -38,6 +38,7 @@ p=~/Projects
 t=~/Documents/Text\ Files
 
 [[ $OSTYPE == darwin* ]] && setopt combiningchars # HFS+ is fucked up.
+
 setopt correct
 setopt interactivecomments
 setopt nobeep
@@ -63,15 +64,33 @@ autoload -U url-quote-magic && zle -N self-insert url-quote-magic
 autoload -U down-line-or-beginning-search && zle -N down-line-or-beginning-search
 autoload -U up-line-or-beginning-search && zle -N up-line-or-beginning-search
 
-bindkey -e
-bindkey "^X^V" edit-command-line
+bindkey -v
+bindkey -M vicmd "R" custom-vi-replace # Use custom Vi replace function.
 
-bindkey "^[[A" up-line-or-beginning-search # Up key.
-bindkey "^[[B" down-line-or-beginning-search # Down key.
+bindkey -M vicmd "k" up-line-or-beginning-search
+bindkey -M vicmd "j" down-line-or-beginning-search
+
+bindkey -M vicmd $terminfo[khome] beginning-of-line # Home key.
+bindkey -M vicmd $terminfo[kend]  end-of-line # End key.
+bindkey -M vicmd $terminfo[kdch1] delete-char # Delete key.
 
 bindkey $terminfo[khome] beginning-of-line # Home key.
 bindkey $terminfo[kend]  end-of-line # End key.
 bindkey $terminfo[kdch1] delete-char # Delete key.
+
+bindkey "jj" vi-cmd-mode
+bindkey "^?" backward-delete-char # Delete with backspace under Vi mode.
+bindkey "^V" edit-command-line
+
+bindkey "^A" beginning-of-line
+bindkey "^E" end-of-line
+bindkey "^U" kill-whole-line
+
+bindkey "^F" history-incremental-search-forward
+bindkey "^R" history-incremental-search-backward
+
+bindkey "^[[A" up-line-or-beginning-search # Up key.
+bindkey "^[[B" down-line-or-beginning-search # Down key.
 
 zstyle ":completion:*"          insert-tab pending # Disable tabs at prompt.
 zstyle ":completion:*"          list-colors ${(s.:.)LS_COLORS}
@@ -104,6 +123,33 @@ function git_branch {
   fi
 }
 
+# Custom Vi replace function that changes a variable before entering replace
+# mode and afterwards resets the variable. The variable is used under the
+# zsh_mode function later on.
+function custom-vi-replace {
+  replace=1 && zle vi-replace && replace=0
+}
+zle -N custom-vi-replace
+
+# Part of the custom Vi replace functionality. This is needed to make the
+# prompt update when mode is switched.
+function zle-line-init zle-keymap-select {
+  zle reset-prompt
+}
+zle -N zle-line-init && zle -N zle-keymap-select
+
+# Part of the custom Vi replace functionality. This is the output part that
+# will be used in the prompt to indicate the current Vi mode.
+function zsh_mode {
+  if [[ $KEYMAP == vicmd ]]; then
+    echo "%F{red}E%f"
+  elif [[ $replace -eq 1 ]]; then
+    echo "%F{magenta}R%f"
+  else
+    echo "%F{blue}$%f"
+  fi
+}
+
 if [[ $HOST == Coruscant* ]]; then
   zsh_host="%F{yellow}%m%f"
 elif [[ $HOST == *-VM ]]; then
@@ -119,14 +165,14 @@ function prompts {
     zsh_full_prompt=1
 
     # Coruscant ~ $
-    PROMPT='%B${zsh_host}%b ${PWD/${HOME}/~} %B%F{blue}$%f%b '
+    PROMPT='%B${zsh_host}%b ${PWD/${HOME}/~} %B$(zsh_mode)%b '
     # $ 0 master
     RPROMPT='%B%F{blue}$%f%b %?%B$(git_branch)%b'
   else
     zsh_full_prompt=0
 
     # Coruscant $
-    PROMPT='%B${zsh_host}%b %B%F{blue}$%f%b '
+    PROMPT='%B${zsh_host}%b %B$(zsh_mode)%b '
     RPROMPT=''
   fi
 }
