@@ -220,7 +220,7 @@ alias tree="tree --charset ascii -N"
 alias tv='vim $todo_file'
 alias wgetp="wget --adjust-extension --convert-links --page-requisites"
 alias ycal='cal $(date +%Y)'
-alias zreload="source ~/.zshenv ~/.zshrc && [[ -f ~/.zsh_local ]] && source ~/.zsh_local"
+alias zreload="source ~/.zshenv && source ~/.zshrc && [[ -f ~/.zsh_local ]] && source ~/.zsh_local"
 
 alias ..="source dotdot"
 alias cdh="dirs -v | sort --reverse"
@@ -261,6 +261,7 @@ alias gmv="git mv"
 alias gpl="git pull"
 alias gpu="git push"
 alias grm="git rm"
+alias gsh="git show"
 alias gst="git status --branch --short"
 alias gun="git reset --soft HEAD^"
 
