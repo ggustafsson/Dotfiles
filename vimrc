@@ -140,7 +140,7 @@ nnoremap <Leader>t4 :setlocal noexpandtab shiftwidth=4 softtabstop=0 tabstop=4<C
 nnoremap <Leader>t8 :setlocal noexpandtab shiftwidth=8 softtabstop=0 tabstop=8<CR>
 nnoremap <Leader>ta :tab sball<CR>
 nnoremap <Leader>tm :edit ~/Documents/Text\ Files/Temporary\ Notes.txt<CR>
-nnoremap <Leader>to :edit ~/Documents/Text\ Files/To-do\ List.todo<CR>
+nnoremap <Leader>to :edit ~/Documents/Text\ Files/To-do\ List.txt \| set syntax=todo<CR>
 nnoremap <Leader>tr :NERDTreeToggle<CR>
 nnoremap <Leader>tw :set textwidth=79
 nnoremap <Leader>un :edit!<CR>
@@ -182,7 +182,7 @@ if has("gui_running") && has("mac")
     set linespace=1
 
     set columns=204
-    set lines=56
+    set lines=53
   endfunction
 
   if !exists("g:dont_set_font_again")
