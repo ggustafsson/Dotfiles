@@ -1,7 +1,6 @@
 # Göran Gustafsson <gustafsson.g@gmail.com>
 
 [[ $TERM == xterm ]] && export TERM=xterm-256color # GNOME Terminal needs this.
-
 export EDITOR=vim
 export VISUAL=$EDITOR
 
@@ -18,7 +17,7 @@ export LS_COLORS="${LS_COLORS}:*.avi=01;36:*.flv=01;36:*.f4v=01;36:*.mkv=01;36:*
 export LS_COLORS="${LS_COLORS}:*.flac=01;35:*.nsf=01;35:*.nsfe=01;35:*.m4a=01;35:*.m4r=01;35:*.mp3=01;35:*.ogg=01;35:*.wav=01;35"
 export LS_COLORS="${LS_COLORS}:*.dmg=01;31:*.iso=01;31:*.rar=01;31:*.tar=01;31:*.tar.bz2=01;31:*.tar.gz=01;31:*.tgz=01;31:*.zip=01;31:*.7z=01;31"
 
-export todo_file=~/Documents/Text\ Files/To-do\ List.todo
+export todo_file=~/Documents/Text\ Files/To-do\ List.txt
 
 DIRSTACKSIZE=20
 
@@ -38,7 +37,6 @@ p=~/Projects
 t=~/Documents/Text\ Files
 
 [[ $OSTYPE == darwin* ]] && setopt combiningchars # HFS+ is fucked up.
-
 setopt correct
 setopt interactivecomments
 setopt nobeep
@@ -163,20 +161,21 @@ fi
 function prompts {
   if [[ $zsh_full_prompt -ne 1 ]]; then
     zsh_full_prompt=1
-
     # Coruscant ~ $
     PROMPT='%B${zsh_host}%b ${PWD/${HOME}/~} %B$(zsh_mode)%b '
     # $ 0 master
     RPROMPT='%B%F{blue}$%f%b %?%B$(git_branch)%b'
   else
     zsh_full_prompt=0
-
     # Coruscant $
     PROMPT='%B${zsh_host}%b %B$(zsh_mode)%b '
     RPROMPT=''
   fi
 }
-prompts
+if [[ -z $dont_run_again ]]; then
+  dont_run_again=1
+  prompts
+fi
 
 if [[ $OSTYPE == darwin* ]]; then
   alias beep="afplay /System/Library/Sounds/Glass.aiff"
@@ -220,7 +219,7 @@ alias tree="tree --charset ascii -N"
 alias tv='vim $todo_file'
 alias wgetp="wget --adjust-extension --convert-links --page-requisites"
 alias ycal='cal $(date +%Y)'
-alias zreload="source ~/.zshenv && source ~/.zshrc && [[ -f ~/.zsh_local ]] && source ~/.zsh_local"
+alias zreload="source ~/.zshenv && source ~/.zshrc && [[ -f ~/.zsh_local ]] && source ~/.zsh_local || true"
 
 alias ..="source dotdot"
 alias cdh="dirs -v | sort --reverse"
