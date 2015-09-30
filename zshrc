@@ -279,4 +279,4 @@ if [[ -f ~/.ssh/config_local ]]; then
   alias ssh2="ssh -F ~/.ssh/config_local"
 fi
 
-[[ -f ~/.zsh_local ]] && source ~/.zsh_local || true
+[[ -f ~/.zshrc_local ]] && source ~/.zshrc_local || true
