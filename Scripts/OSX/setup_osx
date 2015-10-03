@@ -7,10 +7,18 @@
 # Usage: setup_osx
 
 sudo echo "Testing if this user is allowed to use sudo."
-
 if [[ $? -eq 1 ]]; then
   echo "User is not allowed to use sudo! Exiting..."
   exit 1
+fi
+
+echo "Testing if permissions on /usr/local are OK (SIP)."
+mkdir -p /usr/local/perm_test
+if [[ $? -eq 1 ]]; then
+  echo "User is not allowed to write! Exiting..."
+  exit 1
+else
+  rm -rf /usr/local/perm_test
 fi
 
 if [[ ! -d /Applications/Xcode.app ]]; then
@@ -25,14 +33,12 @@ fi
 
 echo -n "\nWhat hostname do you want? "
 read new_hostname
-
 if [[ -z $new_hostname ]]; then
-  echo "No hostname supplied! Exiting..."
-  exit 1
+  echo "No hostname supplied! Skipping..."
+else
+  # Override hostname from DHCP server.
+  sudo scutil --set HostName $new_hostname
 fi
-
-# Override hostname from DHCP server.
-sudo scutil --set HostName $new_hostname
 
 # Check for updates daily instead of once a week.
 sudo defaults write /Library/Preferences/com.apple.SoftwareUpdate ScheduleFrequency -int 1
@@ -45,7 +51,7 @@ echo "Press enter when Command Line Tools are installed and tested."
 read answer
 
 git clone https://github.com/mxcl/homebrew.git ~/Downloads/homebrew
-sudo mv ~/Downloads/homebrew /usr/local
+sudo mv ~/Downloads/homebrew/{*,.*} /usr/local/
 
 /usr/local/bin/brew tap homebrew/dupes
 /usr/local/bin/brew install \
@@ -72,7 +78,6 @@ sudo mv ~/Downloads/homebrew /usr/local
   rsync \
   ruby \
   svtplay-dl \
-  tidy \
   tmux \
   tree \
   vim \
@@ -85,7 +90,6 @@ sudo mv ~/Downloads/homebrew /usr/local
 if [[ ! -d ~/Applications ]]; then
   mkdir ~/Applications
 fi
-
 brew linkapps --local
 
 echo "Adding new Zsh to login shells:"
