@@ -125,6 +125,7 @@ nnoremap <Leader>gu :GundoToggle<CR>
 nnoremap <Leader>in :.-1read ~/.vim/templates/
 nnoremap <Leader>li :set list!<CR>
 nnoremap <Leader>ne :enew<CR>
+nnoremap <Leader>no :edit ~/Documents/Text\ Files/Notes.txt<CR>
 nnoremap <Leader>nu :set number! \| set relativenumber!<CR>
 nnoremap <Leader>pa :set paste!<CR>
 nnoremap <Leader>re :%s//gc \| nohlsearch<C-b><Right><Right><Right>
@@ -139,7 +140,6 @@ nnoremap <Leader>t2 :setlocal noexpandtab shiftwidth=2 softtabstop=0 tabstop=2<C
 nnoremap <Leader>t4 :setlocal noexpandtab shiftwidth=4 softtabstop=0 tabstop=4<CR>
 nnoremap <Leader>t8 :setlocal noexpandtab shiftwidth=8 softtabstop=0 tabstop=8<CR>
 nnoremap <Leader>ta :tab sball<CR>
-nnoremap <Leader>tm :edit ~/Documents/Text\ Files/Temporary\ Notes.txt<CR>
 nnoremap <Leader>to :edit ~/Documents/Text\ Files/To-do\ List.txt \| set syntax=todo<CR>
 nnoremap <Leader>tr :NERDTreeToggle<CR>
 nnoremap <Leader>tw :set textwidth=79
