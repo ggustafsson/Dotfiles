@@ -27,6 +27,7 @@ ln -s ~/Projects/Dot\ Files/zshrc ~/.zshrc
 
 if [[ $OSTYPE == darwin* ]]; then
   ln -s ~/Projects/Dot\ Files/gvimrc ~/.gvimrc
+  ln -s ~/Projects/hammerspoon ~/.hammerspoon
 else
   ln -s ~/Projects/IP\ Kalkylatorn/ipkalk ~/Scripts/ipkalk
   ln -s ~/Projects/Tim/tim ~/Scripts/tim
