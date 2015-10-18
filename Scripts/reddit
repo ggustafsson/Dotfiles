@@ -23,7 +23,7 @@ require "open-uri"
 require "shellwords"
 
 if RUBY_PLATFORM.include?("darwin")
-  $browser = "open -g -a Safari"
+  $browser = "open -a Safari"
 else
   $browser = "firefox"
 end
