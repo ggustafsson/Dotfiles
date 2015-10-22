@@ -63,8 +63,7 @@ autoload -U down-line-or-beginning-search && zle -N down-line-or-beginning-searc
 autoload -U up-line-or-beginning-search && zle -N up-line-or-beginning-search
 
 # Enable ci" di" vi" etc in Zsh's vi mode :)
-autoload -U select-quoted
-zle -N select-quoted
+autoload -U select-quoted && zle -N select-quoted
 for mode in visual viopp; do
   for char in {a,i}{\',\",\`}; do
     bindkey -M $mode $char select-quoted
