@@ -1,7 +1,5 @@
 #!/usr/bin/env zsh
 
-# Written by Göran Gustafsson <gustafsson.g@gmail.com>.
-
 # Description: This script is used to fix the capitalization of tags in MP3
 # files. I use this to fix old MP3 files (my FLAC to MP3 convert script
 # "flaccon" fixes the capitalization of tags by default). This script depends
@@ -13,6 +11,9 @@
 # Usage: mp3fix <file>
 #        mp3fix *.mp3
 #        find . -type f -iname "*.mp3" -exec mp3fix "{}" \;
+
+# Written by Göran Gustafsson (gustafsson.g at gmail.com).
+# License: BSD 3-Clause.
 
 if [[ $# -eq 0 ]]; then
   echo "Usage: ${0:t} [FILENAME(S)]..."

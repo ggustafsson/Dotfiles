@@ -1,10 +1,11 @@
 #!/usr/bin/env zsh
 
-# Written by Göran Gustafsson <gustafsson.g@gmail.com>.
-
 # Description: This script deletes various space hogging files/directories.
 
 # Usage: frees
+
+# Written by Göran Gustafsson (gustafsson.g at gmail.com).
+# License: BSD 3-Clause.
 
 remove_objects=(
   /Library/Caches/Homebrew

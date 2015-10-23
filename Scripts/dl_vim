@@ -1,11 +1,12 @@
 #!/usr/bin/env zsh
 
-# Written by Göran Gustafsson <gustafsson.g@gmail.com>.
-
 # Description: This script downloads and updates Vim plugins.
 
 # Usage: dl_vim
 #        dl_vim install
+
+# Written by Göran Gustafsson (gustafsson.g at gmail.com).
+# License: BSD 3-Clause.
 
 if [[ $1 == install ]]; then
   directory=~/.vim/bundle

@@ -1,13 +1,14 @@
 #!/usr/bin/env zsh
 
-# Written by Göran Gustafsson <gustafsson.g@gmail.com>.
-
 # Description: This script adds more border padding to the MacVim windows so it
 # looks exactly like Terminal.app windows. I use 1 as line spacing under
 # Terminal.app and "set linespace=1" under MacVim to keep the spacing the same
 # in both.
 
 # Usage: setup_macvim
+
+# Written by Göran Gustafsson (gustafsson.g at gmail.com).
+# License: BSD 3-Clause.
 
 defaults write org.vim.MacVim MMTextInsetTop 2
 defaults write org.vim.MacVim MMTextInsetLeft 5

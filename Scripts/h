@@ -1,7 +1,5 @@
 #!/usr/bin/env zsh
 
-# Written by Göran Gustafsson <gustafsson.g@gmail.com>.
-
 # Description: This script either displays 20 history entries or displays
 # entries all and use grep + the second argument to show the ones of interest.
 #
@@ -14,6 +12,9 @@
 
 # Usage: h
 #        h <pattern>
+
+# Written by Göran Gustafsson (gustafsson.g at gmail.com).
+# License: BSD 3-Clause.
 
 if [[ $# -ge 1 ]]; then
   history -i 1 | grep --ignore-case "$*"

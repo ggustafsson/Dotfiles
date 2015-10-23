@@ -1,10 +1,11 @@
 #!/bin/bash
 
-# Written by Göran Gustafsson <gustafsson.g@gmail.com>.
-
 # Description: This script configures a Ubuntu system the way i like.
 
 # Usage: setup_ubuntu
+
+# Written by Göran Gustafsson (gustafsson.g at gmail.com).
+# License: BSD 3-Clause.
 
 rm ~/examples.desktop
 

@@ -1,7 +1,5 @@
 #!/usr/bin/env ruby
 
-# Written by Göran Gustafsson <gustafsson.g@gmail.com>.
-
 # Description: This script reads the file ~/.countdowns and calculates the
 # remaining days until the specific date on each entry in the file.
 #
@@ -10,6 +8,9 @@
 # 2017-01-14,"Title here"
 
 # Usage: countd
+
+# Written by Göran Gustafsson (gustafsson.g at gmail.com).
+# License: BSD 3-Clause.
 
 require "csv"
 

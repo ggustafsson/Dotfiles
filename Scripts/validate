@@ -1,7 +1,5 @@
 #!/usr/bin/env zsh
 
-# Written by Göran Gustafsson <gustafsson.g@gmail.com>.
-
 # Description: This script makes it easy to validate HTML files through
 # http://validator.w3.org from the command line.
 #
@@ -10,6 +8,9 @@
 # nnoremap <Leader>w3 :!~/Scripts/validate "%"<CR>
 
 # Usage: validate <file(s)>
+
+# Written by Göran Gustafsson (gustafsson.g at gmail.com).
+# License: BSD 3-Clause.
 
 if [[ $# -eq 0 ]]; then
   echo "Usage: ${0:t} [FILENAME(S)]..."

@@ -1,12 +1,13 @@
 #!/usr/bin/env zsh
 
-# Written by Göran Gustafsson <gustafsson.g@gmail.com>.
-
 # Description: This script displays the running processes and if a argument is
 # supplied then only the processes that matches the pattern is displayed.
 
 # Usage: p
 #        p <pattern>
+
+# Written by Göran Gustafsson (gustafsson.g at gmail.com).
+# License: BSD 3-Clause.
 
 ps_command="ps ax -o user,pid,command"
 

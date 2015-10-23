@@ -1,12 +1,13 @@
 #!/usr/bin/env zsh
 
-# Written by Göran Gustafsson <gustafsson.g@gmail.com>.
-
 # Description: This script displays the 10 most recently modified
 # files/directories inside a directory.
 
 # Usage: recf
 #        recf <path>
+
+# Written by Göran Gustafsson (gustafsson.g at gmail.com).
+# License: BSD 3-Clause.
 
 if [[ $# -eq 0 ]]; then
   ls -t | head

@@ -1,7 +1,5 @@
 #!/usr/bin/env ruby
 
-# Written by Göran Gustafsson <gustafsson.g@gmail.com>.
-
 # Description: This script automatically opens up all new posts found in
 # specificed subreddits under new browser tabs. It keeps track of all the URLs
 # opened at the last run.
@@ -16,6 +14,9 @@
 
 # Usage: reddit
 #        reddit <config>
+
+# Written by Göran Gustafsson (gustafsson.g at gmail.com).
+# License: BSD 3-Clause.
 
 require "fileutils"
 require "json"

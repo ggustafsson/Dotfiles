@@ -1,13 +1,14 @@
 #!/usr/bin/env zsh
 
-# Written by Göran Gustafsson <gustafsson.g@gmail.com>.
-
 # Description: Scan the LAN for open network services (FTP, SSH, HTTP, HTTPS,
 # SMB, AFP and VNC).
 
 # Dependencies: nmap
 
 # Usage: servf
+
+# Written by Göran Gustafsson (gustafsson.g at gmail.com).
+# License: BSD 3-Clause.
 
 # Yes, /24 is hard-coded. Who cares?!
 network=$(ifconfig en0 | \

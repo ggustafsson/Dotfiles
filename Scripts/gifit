@@ -1,13 +1,14 @@
 #!/usr/bin/env zsh
 
-# Written by Göran Gustafsson <gustafsson.g@gmail.com>.
-
 # Description: This script creates an animated gif image of several images.
 
 # Dependencies: imagemagick
 
 # Usage: gifit <file1> <file2> ...
 #        gifit *.jpg
+
+# Written by Göran Gustafsson (gustafsson.g at gmail.com).
+# License: BSD 3-Clause.
 
 if [[ ! $# -ge 2 ]]; then
   echo "Usage: ${0:t} [FILENAMES]..."

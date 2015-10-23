@@ -1,10 +1,11 @@
 #!/bin/bash
 
-# Written by Göran Gustafsson <gustafsson.g@gmail.com>.
-
 # Description: This script configures specific things for my media center.
 
 # Usage: setup_ubuntu_tv
+
+# Written by Göran Gustafsson (gustafsson.g at gmail.com).
+# License: BSD 3-Clause.
 
 sudo add-apt-repository ppa:team-xbmc/ppa
 sudo apt-get update

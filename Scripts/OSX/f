@@ -1,12 +1,13 @@
 #!/usr/bin/env zsh
 
-# Written by Göran Gustafsson <gustafsson.g@gmail.com>.
-
 # Description: This script makes it easy to open the current working directory
 # or a specific directory in Finder.
 
 # Usage: f
 #        f <path>
+
+# Written by Göran Gustafsson (gustafsson.g at gmail.com).
+# License: BSD 3-Clause.
 
 if [[ $# -ge 1 ]]; then
   open -a Finder $*

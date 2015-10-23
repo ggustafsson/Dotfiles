@@ -1,10 +1,11 @@
 #!/usr/bin/env zsh
 
-# Written by Göran Gustafsson <gustafsson.g@gmail.com>.
-
 # Description: This script joins a specific IRC channel and slaps someone.
 
 # Usage: slapbot2000 <nick> <item>
+
+# Written by Göran Gustafsson (gustafsson.g at gmail.com).
+# License: BSD 3-Clause.
 
 server=se.quakenet.org
 port=6667

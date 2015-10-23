@@ -1,11 +1,12 @@
 #!/usr/bin/env zsh
 
-# Written by Göran Gustafsson <gustafsson.g@gmail.com>.
-
 # Description: This script executes a bunch of commands i run frequently to
 # back things up and keep things up-to-date.
 
 # Usage: maintenance
+
+# Written by Göran Gustafsson (gustafsson.g at gmail.com).
+# License: BSD 3-Clause.
 
 echo -n "Everything plugged in and ready to go? [y/n] "
 read answer

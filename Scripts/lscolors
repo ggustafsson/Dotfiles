@@ -1,11 +1,11 @@
 #!/usr/bin/env zsh
 
-# Original script found here:
-#   <http://unix.stackexchange.com/questions/20721/testing-ls-colors-in-zsh>.
-
 # Description: This script prints out everything specified in $LS_COLORS.
 
 # Usage: lscolors
+
+# Original script found here:
+#   <http://unix.stackexchange.com/questions/20721/testing-ls-colors-in-zsh>
 
 typeset -A names
 names[bd]="block device"

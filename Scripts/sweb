@@ -1,7 +1,5 @@
 #!/usr/bin/env ruby
 
-# Written by Göran Gustafsson <gustafsson.g@gmail.com>.
-
 # Description: This script is used for analysing and searching through my bank
 # transaction logs (specific to Swedbank). The logs are manually downloaded and
 # automatically converted from text files to CSV files with another script
@@ -12,6 +10,9 @@
 # Usage: sweb <file>
 #        sweb <file> <pattern>
 #        sweb -s <file>
+
+# Written by Göran Gustafsson (gustafsson.g at gmail.com).
+# License: BSD 3-Clause.
 
 filename = File.basename($0)
 

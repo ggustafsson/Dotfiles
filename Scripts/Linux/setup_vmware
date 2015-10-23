@@ -1,10 +1,11 @@
 #!/usr/bin/env zsh
 
-# Written by Göran Gustafsson <gustafsson.g@gmail.com>.
-
 # Description: This script automates the installation of VMware Tools.
 
 # Usage: setup_vmware
+
+# Written by Göran Gustafsson (gustafsson.g at gmail.com).
+# License: BSD 3-Clause.
 
 vmware_path=/media/gleg/VMware\ Tools
 output_path=~/vmware-tools-distrib

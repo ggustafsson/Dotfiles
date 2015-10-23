@@ -1,10 +1,11 @@
 #!/usr/bin/env zsh
 
-# Written by Göran Gustafsson <gustafsson.g@gmail.com>.
-
 # Description: This script configures a OS X system the way i like.
 
 # Usage: setup_osx
+
+# Written by Göran Gustafsson (gustafsson.g at gmail.com).
+# License: BSD 3-Clause.
 
 sudo echo "Testing if this user is allowed to use sudo."
 if [[ $? -eq 1 ]]; then

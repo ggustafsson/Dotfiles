@@ -1,11 +1,12 @@
 #!/usr/bin/env zsh
 
-# Written by Göran Gustafsson <gustafsson.g@gmail.com>.
-
 # Description: This script displays files modified within the last hour.
 
 # Usage: lasth
 #        lasth <path>
+
+# Written by Göran Gustafsson (gustafsson.g at gmail.com).
+# License: BSD 3-Clause.
 
 if [[ $# -eq 0 ]]; then
   ls -l **/*(mh-1)
