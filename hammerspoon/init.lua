@@ -23,12 +23,12 @@ function reloadConf(files)
   end
 
   if reload then
+    hs.alert.show(" Config Reloaded")
     hs.reload()
   end
 end
 
 hs.pathwatcher.new(os.getenv("HOME") .. "/.hammerspoon/", reloadConf):start()
-hs.alert.show(" Config Reloaded")
 
 -------------------------------------------------------------------------------
 -- Toggle Hammerspoon console.
