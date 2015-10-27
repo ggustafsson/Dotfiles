@@ -66,7 +66,7 @@ autoload -U up-line-or-beginning-search && zle -N up-line-or-beginning-search
 autoload -U select-quoted && zle -N select-quoted
 for mode in visual viopp; do
   for char in {a,i}{\',\",\`}; do
-    bindkey -M $mode $char select-quoted
+    bindkey -M $mode $char select-quoted 2> /dev/null # Shut up Ubuntu!
   done
 done
 
