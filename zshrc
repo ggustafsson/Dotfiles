@@ -91,6 +91,7 @@ bindkey "^V" edit-command-line
 bindkey "^A" beginning-of-line
 bindkey "^E" end-of-line
 bindkey "^U" kill-whole-line
+bindkey "^[." insert-last-word
 
 bindkey "^F" history-incremental-search-forward
 bindkey "^R" history-incremental-search-backward
