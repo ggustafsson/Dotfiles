@@ -88,13 +88,11 @@ bindkey "jj" vi-cmd-mode
 bindkey "^?" backward-delete-char # Delete with backspace under Vi mode.
 bindkey "^V" edit-command-line
 
-bindkey "^A" beginning-of-line
-bindkey "^E" end-of-line
-bindkey "^U" kill-whole-line
+bindkey "^A"  beginning-of-line
+bindkey "^E"  end-of-line
+bindkey "^R"  history-incremental-search-backward
+bindkey "^U"  kill-whole-line
 bindkey "^[." insert-last-word
-
-bindkey "^F" history-incremental-search-forward
-bindkey "^R" history-incremental-search-backward
 
 bindkey "^[[A" up-line-or-beginning-search # Up key.
 bindkey "^[[B" down-line-or-beginning-search # Down key.
