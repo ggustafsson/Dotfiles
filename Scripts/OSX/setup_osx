@@ -44,6 +44,10 @@ fi
 # Check for updates daily instead of once a week.
 sudo defaults write /Library/Preferences/com.apple.SoftwareUpdate ScheduleFrequency -int 1
 
+# Hide and unhide folders in Finder.
+chflags hidden ~/Public
+chflags nohidden ~/Library
+
 # Install Xcode Command Line Tools.
 echo
 xcode-select --install
