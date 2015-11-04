@@ -13,7 +13,7 @@ if [[ ! $OSTYPE == darwin* ]]; then
   git clone https://github.com/ggustafsson/Ninja-Color-Scheme.git ~/Projects/Ninja\ Color\ Scheme
   git clone https://github.com/ggustafsson/Tim.git ~/Projects/Tim
 
-  mkdir ~/.ssh
+  ln -s ~/Storage/Configs/ssh .ssh
 fi
 
 ln -s ~/Projects/Dot\ Files/Scripts ~/Scripts
