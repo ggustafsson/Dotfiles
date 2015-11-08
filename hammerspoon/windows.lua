@@ -135,3 +135,15 @@ end)
 hs.hotkey.bind(preKeys, "0", function()
   hs.window.focusedWindow():setTopLeft(0,0)
 end)
+
+-------------------------------------------------------------------------------
+-- +. Move window to the top left.
+-------------------------------------------------------------------------------
+hs.hotkey.bind(preKeys, "+", function()
+  local window = hs.window.focusedWindow()
+  local frame = window:frame()
+  local screen = window:screen():frame()
+
+  frame.x = screen.w - frame.w
+  window:setFrame(frame)
+end)
