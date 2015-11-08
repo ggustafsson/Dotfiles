@@ -18,6 +18,8 @@ sudo apt install \
   netperf \
   nfs-kernel-server \
   nginx \
+  open-vm-tools \
+  open-vm-tools-desktop \
   php5 \
   r-base \
   samba \
