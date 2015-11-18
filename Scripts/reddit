@@ -31,7 +31,7 @@ end
 
 $directory = "#{Dir.home}/.reddit"
 $filter_comments = 1 # Ignore URLs containing "/comments/".
-$wait_after_exec = 8 # Sleep X seconds between each subreddit.
+$wait_after_exec = 10 # Sleep X seconds between each subreddit.
 
 # Check if the default config file should be used or not.
 if ARGV.length == 0
