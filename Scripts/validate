@@ -6,9 +6,9 @@
 # I have this in ~/.vimrc so i can easily validate files inside of Vim:
 #
 # nnoremap <Leader>w3 :!~/Scripts/validate "%"<CR>
-
+#
 # Usage: validate <file(s)>
-
+#
 # Written by Göran Gustafsson (gustafsson.g at gmail.com).
 # License: BSD 3-Clause.
 

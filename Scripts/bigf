@@ -2,10 +2,10 @@
 
 # Description: This script displays the 20 biggest files/directories inside a
 # directory.
-
+#
 # Usage: bigf
 #        bigf <path>
-
+#
 # Written by Göran Gustafsson (gustafsson.g at gmail.com).
 # License: BSD 3-Clause.
 

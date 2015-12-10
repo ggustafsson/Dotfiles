@@ -6,9 +6,9 @@
 # An entry in the file looks like this:
 #
 # 2017-01-14,"Title here"
-
+#
 # Usage: countd
-
+#
 # Written by Göran Gustafsson (gustafsson.g at gmail.com).
 # License: BSD 3-Clause.
 

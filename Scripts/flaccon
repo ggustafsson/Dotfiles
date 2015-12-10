@@ -4,14 +4,14 @@
 # very easy and convenient way. By default this script depends on my
 # independent script called "title" which is used to automatically fix the
 # capitalization of every tag (use the -ic flag to stop it).
-
+#
 # Dependencies: flac, lame and title
-
+#
 # Usage: flaccon <file>
 #        flaccon -ic <file>
 #        flaccon *.flac
 #        find . -type f -iname "*.flac" -exec flaccon "{}" \;
-
+#
 # Written by Göran Gustafsson (gustafsson.g at gmail.com).
 # License: BSD 3-Clause.
 

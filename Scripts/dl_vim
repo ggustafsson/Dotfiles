@@ -1,10 +1,10 @@
 #!/usr/bin/env zsh
 
 # Description: This script downloads and updates Vim plugins.
-
+#
 # Usage: dl_vim
 #        dl_vim install
-
+#
 # Written by Göran Gustafsson (gustafsson.g at gmail.com).
 # License: BSD 3-Clause.
 

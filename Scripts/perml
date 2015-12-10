@@ -3,9 +3,9 @@
 # Description: This script changes the permissions on all files and directories
 # under the specified path(s). The permissions used are 755 for directories and
 # 644 (or 755) for files. It also removes ACLs under OS X.
-
+#
 # Usage: perml <path1> <path2> ...
-
+#
 # Written by Göran Gustafsson (gustafsson.g at gmail.com).
 # License: BSD 3-Clause.
 

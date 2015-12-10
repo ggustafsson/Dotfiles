@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # Description: This script configures specific things for my virtual machines.
-
+#
 # Usage: setup_ubuntu_vm
-
+#
 # Written by Göran Gustafsson (gustafsson.g at gmail.com).
 # License: BSD 3-Clause.
 

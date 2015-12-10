@@ -2,11 +2,11 @@
 
 # Description: Scan the LAN for open network services (FTP, SSH, HTTP, HTTPS,
 # SMB, AFP and VNC).
-
+#
 # Dependencies: nmap
-
+#
 # Usage: servf
-
+#
 # Written by Göran Gustafsson (gustafsson.g at gmail.com).
 # License: BSD 3-Clause.
 

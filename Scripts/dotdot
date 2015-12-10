@@ -14,10 +14,10 @@
 #
 # The source command before the script name must be there to make the script
 # run in the current shell.
-
+#
 # Usage: ..
 #        .. <pattern>
-
+#
 # Original script created by Vigneshwaran Raveendran:
 #   <https://github.com/vigneshwaranr/bd/blob/master/bd>
 # Modified by Göran Gustafsson (gustafsson.g at gmail.com).

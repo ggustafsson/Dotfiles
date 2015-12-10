@@ -2,9 +2,9 @@
 
 # Description: This script takes text as input and prints out text that is
 # capitalized as a headline. Should be correct most of the time.
-
+#
 # Usage: title <text>
-
+#
 # Written by Göran Gustafsson (gustafsson.g at gmail.com).
 # License: BSD 3-Clause.
 

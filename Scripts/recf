@@ -2,10 +2,10 @@
 
 # Description: This script displays the 10 most recently modified
 # files/directories inside a directory.
-
+#
 # Usage: recf
 #        recf <path>
-
+#
 # Written by Göran Gustafsson (gustafsson.g at gmail.com).
 # License: BSD 3-Clause.
 

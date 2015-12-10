@@ -2,11 +2,11 @@
 
 # Description: This script makes it easy to extract files from all of the most
 # common compressed file types.
-
+#
 # Dependencies: p7zip and unrar
-
+#
 # Usage: unp <file(s)>
-
+#
 # Written by Göran Gustafsson (gustafsson.g at gmail.com).
 # License: BSD 3-Clause.
 

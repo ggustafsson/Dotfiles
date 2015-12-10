@@ -2,9 +2,9 @@
 
 # Description: This script backs up several directories/files to two servers
 # with rsync (one through ssh and one locally mounted).
-
+#
 # Usage: backup2s
-
+#
 # Written by Göran Gustafsson (gustafsson.g at gmail.com).
 # License: BSD 3-Clause.
 

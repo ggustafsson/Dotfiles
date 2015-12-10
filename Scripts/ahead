@@ -1,9 +1,9 @@
 #!/usr/bin/env ruby
 
 # Description: Print out the date that is X days from now. Minus works too.
-
+#
 # Usage: ahead <days>
-
+#
 # Written by Göran Gustafsson (gustafsson.g at gmail.com).
 # License: BSD 3-Clause.
 

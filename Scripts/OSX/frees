@@ -1,9 +1,9 @@
 #!/usr/bin/env zsh
 
 # Description: This script deletes various space hogging files/directories.
-
+#
 # Usage: frees
-
+#
 # Written by Göran Gustafsson (gustafsson.g at gmail.com).
 # License: BSD 3-Clause.
 

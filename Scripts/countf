@@ -2,10 +2,10 @@
 
 # Description: This script counts the number of files/directories there are
 # inside a directory.
-
+#
 # Usage: countf
 #        countf <path>
-
+#
 # Written by Göran Gustafsson (gustafsson.g at gmail.com).
 # License: BSD 3-Clause.
 

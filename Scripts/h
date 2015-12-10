@@ -9,10 +9,10 @@
 #
 # The source command before the script name must be there to make the script
 # run in the current shell.
-
+#
 # Usage: h
 #        h <pattern>
-
+#
 # Written by Göran Gustafsson (gustafsson.g at gmail.com).
 # License: BSD 3-Clause.
 

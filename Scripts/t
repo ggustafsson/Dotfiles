@@ -3,10 +3,10 @@
 # Description: This script prints out the content of my $todo_file file or adds
 # a new entry to the bottom of the file. The variable todo_file is set from
 # ~/.zshrc with "export todo_file=path".
-
+#
 # Usage: t
 #        t <text>
-
+#
 # Written by Göran Gustafsson (gustafsson.g at gmail.com).
 # License: BSD 3-Clause.
 

@@ -1,11 +1,11 @@
 #!/usr/bin/env zsh
 
 # Description: This script checks the git status of all my projects.
-
+#
 # Dependencies: git
-
+#
 # Usage: chkp
-
+#
 # Written by Göran Gustafsson (gustafsson.g at gmail.com).
 # License: BSD 3-Clause.
 

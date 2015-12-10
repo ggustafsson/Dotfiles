@@ -6,10 +6,10 @@
 # more than one open window i am forced to use the command "open" to run
 # MacVim, the only alternative way opens up more windows under certain
 # scenarios. Using "open" is not perfect because each file must already exist.
-
+#
 # Usage: gvim
 #        gvim <file(s)>
-
+#
 # Written by Göran Gustafsson (gustafsson.g at gmail.com).
 # License: BSD 3-Clause.
 

@@ -2,9 +2,9 @@
 
 # Description: This script converts exported bank transcation logs from text
 # files to CSV files (specific to Swedbank).
-
+#
 # Usage: swebp <file(s)>
-
+#
 # Written by Göran Gustafsson (gustafsson.g at gmail.com).
 # License: BSD 3-Clause.
 

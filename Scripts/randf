@@ -2,10 +2,10 @@
 
 # Description: This script prints out the name of a random file/directory from
 # the current directory or a specified one.
-
+#
 # Usage: randf
 #        randf <path>
-
+#
 # Written by Göran Gustafsson (gustafsson.g at gmail.com).
 # License: BSD 3-Clause.
 

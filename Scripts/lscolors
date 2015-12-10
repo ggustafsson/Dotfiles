@@ -1,9 +1,9 @@
 #!/usr/bin/env zsh
 
 # Description: This script prints out everything specified in $LS_COLORS.
-
+#
 # Usage: lscolors
-
+#
 # Original script found here:
 #   <http://unix.stackexchange.com/questions/20721/testing-ls-colors-in-zsh>
 

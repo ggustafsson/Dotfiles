@@ -1,10 +1,10 @@
 #!/usr/bin/env zsh
 
 # Description: Easily delete .DS_Store files.
-
+#
 # Usage: rmds
 #        rmds <path>
-
+#
 # Written by Göran Gustafsson (gustafsson.g at gmail.com).
 # License: BSD 3-Clause.
 

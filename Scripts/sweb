@@ -6,11 +6,11 @@
 # called "swebp".
 #
 # THIS IS WORK IN PROGRESS! Half of it works.
-
+#
 # Usage: sweb <file>
 #        sweb <file> <pattern>
 #        sweb -s <file>
-
+#
 # Written by Göran Gustafsson (gustafsson.g at gmail.com).
 # License: BSD 3-Clause.
 

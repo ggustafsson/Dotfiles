@@ -5,13 +5,13 @@
 # "flaccon" fixes the capitalization of tags by default). This script depends
 # on my independent script called "title" which is used to automatically fix
 # the capitalization of every tag.
-
+#
 # Dependencies: mutagen and title
-
+#
 # Usage: mp3fix <file>
 #        mp3fix *.mp3
 #        find . -type f -iname "*.mp3" -exec mp3fix "{}" \;
-
+#
 # Written by Göran Gustafsson (gustafsson.g at gmail.com).
 # License: BSD 3-Clause.
 

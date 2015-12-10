@@ -1,9 +1,9 @@
 #!/usr/bin/env zsh
 
 # Description: This script prints out the different terminal colors.
-
+#
 # Usage: tcolors
-
+#
 # Written by Göran Gustafsson (gustafsson.g at gmail.com).
 # License: BSD 3-Clause.
 

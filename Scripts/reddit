@@ -3,7 +3,7 @@
 # Description: This script automatically opens up all new posts found in
 # specificed subreddits under new browser tabs. It keeps track of all the URLs
 # opened at the last run.
-
+#
 # The subreddits that are supposed to be checked should be specified in the
 # file ~/.reddit/config like this:
 #
@@ -11,10 +11,10 @@
 # funny
 # pics
 # wtf
-
+#
 # Usage: reddit
 #        reddit <config>
-
+#
 # Written by Göran Gustafsson (gustafsson.g at gmail.com).
 # License: BSD 3-Clause.
 
