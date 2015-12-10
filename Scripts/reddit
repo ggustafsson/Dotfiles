@@ -19,6 +19,7 @@
 # License: BSD 3-Clause.
 
 require "fileutils"
+require "io/console"
 require "json"
 require "open-uri"
 require "shellwords"
@@ -31,7 +32,6 @@ end
 
 $directory = "#{Dir.home}/.reddit"
 $filter_comments = 1 # Ignore URLs containing "/comments/".
-$wait_after_exec = 10 # Sleep X seconds between each subreddit.
 
 # Check if the default config file should be used or not.
 if ARGV.length == 0
@@ -94,7 +94,14 @@ def check_subreddit(subreddit)
       safe_urls << Shellwords.escape(url)
     }
     `#{$browser} #{safe_urls.join(" ")}` # Run browser with URLs as arguments.
-    sleep($wait_after_exec)
+    print "Press 'Return' key when ready to continue..."
+    begin
+      STDIN.noecho(&:gets)
+    rescue Exception
+      puts
+      exit
+    end
+    puts
   else
     puts "No new posts found!"
   end
