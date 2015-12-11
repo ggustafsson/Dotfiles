@@ -24,12 +24,7 @@ require "json"
 require "open-uri"
 require "shellwords"
 
-if RUBY_PLATFORM.include?("darwin")
-  $browser = "open -a Safari"
-else
-  $browser = "firefox"
-end
-
+$browser = "open -a Safari"
 $directory = "#{Dir.home}/.reddit"
 $filter_comments = 1 # Ignore URLs containing "/comments/".
 
@@ -40,14 +35,33 @@ else
   config_file = ARGV[0]
 end
 
-def check_subreddit(subreddit)
+unless File.directory?($directory)
+  puts "Directory '#{$directory}' does not exist! Creating it..."
+  Dir.mkdir($directory)
+end
+
+unless File.exist?(config_file)
+  abort "File '#{config_file}' does not exist! Exiting..."
+end
+
+subreddits = IO.readlines(config_file)
+last_item = subreddits.count
+
+if subreddits.empty?
+  abort "No subreddits found in #{config_file}! Exiting..."
+end
+
+puts "Checking Reddit for new posts."
+
+subreddits.each_with_index do |subreddit, index|
+  subreddit = subreddit.chomp
   new_log_file = "#{$directory}/r_#{subreddit}_tmp"
   old_log_file = "#{$directory}/r_#{subreddit}"
   new_urls = []
   old_urls = []
   safe_urls = []
 
-  puts "Checking r/#{subreddit} for new posts..."
+  puts "\nChecking r/#{subreddit} for new posts..."
 
   begin
     json_raw = open("https://reddit.com/r/#{subreddit}.json").read
@@ -94,6 +108,9 @@ def check_subreddit(subreddit)
       safe_urls << Shellwords.escape(url)
     }
     `#{$browser} #{safe_urls.join(" ")}` # Run browser with URLs as arguments.
+
+    next if index == last_item - 1
+
     print "Press 'Return' key when ready to continue..."
     begin
       STDIN.noecho(&:gets)
@@ -104,34 +121,5 @@ def check_subreddit(subreddit)
     puts
   else
     puts "No new posts found!"
-  end
-end
-
-unless File.directory?($directory)
-  puts "Directory '#{$directory}' does not exist! Creating it..."
-  Dir.mkdir($directory)
-end
-
-unless File.exist?(config_file)
-  abort "File '#{config_file}' does not exist! Exiting..."
-end
-
-if File.read(config_file).empty?
-  abort "Config file is empty! Exiting..."
-end
-
-puts "Checking Reddit for new posts."
-
-# Read the config file and run check_subreddit on the string on each line.
-File.readlines(config_file).each_with_index do |line, position|
-  subreddit = line.strip
-
-  puts
-
-  if subreddit.empty?
-    puts "Line #{position + 1} is empty. Skipping!"
-    next
-  else
-    check_subreddit(subreddit)
   end
 end
