@@ -169,7 +169,7 @@ nnoremap <Tab>       :LustyBufferExplorer<CR>
 vnoremap <Leader>cl :!column -t<CR>
 vnoremap <Leader>co :call NERDComment("x", "toggle")<CR>
 vnoremap <Leader>ne y:enew<CR>P
-vnoremap <Leader>re :s//gc \| nohlsearch<C-b><Right><Right><Right><Right><Right><Right><Right>
+vnoremap <Leader>re :s/\%V/gc \| nohlsearch<C-b><Right><Right><Right><Right><Right><Right><Right><Right><Right><Right>
 vnoremap <Leader>so :sort<CR>
 
 inoremap <expr><Tab> CompleteTab()
