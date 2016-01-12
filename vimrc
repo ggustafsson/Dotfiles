@@ -128,7 +128,7 @@ nnoremap <Leader>ne :enew<CR>
 nnoremap <Leader>no :edit ~/Documents/Text\ Files/Notes.txt<CR>
 nnoremap <Leader>nu :set number! \| set relativenumber!<CR>
 nnoremap <Leader>pa :set paste!<CR>
-nnoremap <Leader>re :%s//gc \| nohlsearch<C-b><Right><Right><Right>
+nnoremap <Leader>re :%s//gc<Left><Left><Left>
 nnoremap <Leader>rs :source ~/.vim/session.vim<CR>
 nnoremap <Leader>s2 :setlocal expandtab shiftwidth=2 softtabstop=2<CR>
 nnoremap <Leader>s4 :setlocal expandtab shiftwidth=4 softtabstop=4<CR>
@@ -169,7 +169,7 @@ nnoremap <Tab>       :LustyBufferExplorer<CR>
 vnoremap <Leader>cl :!column -t<CR>
 vnoremap <Leader>co :call NERDComment("x", "toggle")<CR>
 vnoremap <Leader>ne y:enew<CR>P
-vnoremap <Leader>re :s/\%V/gc \| nohlsearch<C-b><Right><Right><Right><Right><Right><Right><Right><Right><Right><Right>
+vnoremap <Leader>re :s/\%V/gc<Left><Left><Left>
 vnoremap <Leader>so :sort<CR>
 
 inoremap <expr><Tab> CompleteTab()
