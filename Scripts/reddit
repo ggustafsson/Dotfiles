@@ -64,9 +64,10 @@ subreddits.each_with_index do |subreddit, index|
   puts "\nChecking r/#{subreddit} for new posts..."
 
   begin
-    json_raw = open("https://reddit.com/r/#{subreddit}.json").read
+    json_raw = open("https://www.reddit.com/r/#{subreddit}.json").read
     json_parsed = JSON.parse(json_raw)
-  rescue
+  rescue Exception => e
+    puts e.message
     abort "Failed when trying to fetch and parse json data! Exiting..."
   end
 
