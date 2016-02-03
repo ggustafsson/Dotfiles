@@ -68,6 +68,7 @@ sudo mv ~/Downloads/homebrew/{*,.*} /usr/local/
   gawk \
   git \
   gnu-sed \
+  gnupg2 \
   gnuplot \
   html2text \
   imagemagick --without-x \

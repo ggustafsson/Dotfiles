@@ -11,6 +11,7 @@ sudo apt install \
   apache2 \
   bind9 \
   dia \
+  gnupg2 \
   gnuplot \
   gparted \
   hping3 \
