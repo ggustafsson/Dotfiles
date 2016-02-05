@@ -11,6 +11,7 @@
 if [[ $1 == install ]]; then
   echo "Downloading Vim plugins!\n"
 
+  mkdir -p ~/.vim/bundle
   cd ~/.vim/bundle
   git clone https://github.com/fatih/vim-go.git
   git clone https://github.com/scrooloose/nerdcommenter.git
