@@ -13,6 +13,7 @@ sudo apt install \
   dia \
   gnupg2 \
   gnuplot \
+  golang \
   gparted \
   hping3 \
   ncftp \

@@ -7,10 +7,11 @@ if [[ $OSTYPE == darwin* ]]; then
     ~/Scripts(N)
     /usr/local/bin(N)
     /usr/local/Cellar/curl/*/bin(N)
-    /usr/bin
-    /bin
+    /usr/local/opt/go/libexec/bin(N)
     /usr/local/sbin(N)
+    /usr/bin
     /usr/sbin
+    /bin
     /sbin
   )
 else
@@ -18,11 +19,11 @@ else
     ~/Scripts/Linux(N)
     ~/Scripts(N)
     /usr/local/bin
+    /usr/local/sbin
     /usr/bin
     /usr/bin/core_perl(N)
-    /bin
-    /usr/local/sbin
     /usr/sbin
+    /bin
     /sbin
   )
 fi

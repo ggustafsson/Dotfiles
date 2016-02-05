@@ -2,6 +2,7 @@
 
 [[ $TERM == xterm ]] && export TERM=xterm-256color # GNOME Terminal needs this.
 export EDITOR=vim
+export GOPATH=~/Golang
 export VISUAL=$EDITOR
 
 export LANG="en_US.UTF-8"
