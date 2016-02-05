@@ -280,6 +280,7 @@ augroup Main
   autocmd BufNewFile,BufReadPost *.todo        setlocal filetype=todo
 
   autocmd FileType gitcommit       setlocal colorcolumn=73 nolist spell textwidth=72
+  autocmd FileType go              setlocal noexpandtab shiftwidth=2 softtabstop=0 tabstop=2 nolist
   autocmd FileType help            setlocal colorcolumn= nolist
   autocmd FileType markdown,python setlocal shiftwidth=4 softtabstop=4
 augroup END
