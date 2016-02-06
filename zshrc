@@ -222,6 +222,7 @@ alias iip="curl icanhazip.com"
 alias ka="killall"
 alias l="less"
 alias mkdir="mkdir -pv"
+alias pyjson='python -m json.tool'
 alias pyweb="python3 -m http.server 8080"
 alias tma="tmux attach"
 alias tree="tree --charset ascii -N"
