@@ -139,8 +139,8 @@ nnoremap <Leader>zs :edit ~/.zshrc<CR>
 nnoremap vil ^vg_
 nnoremap Y   y$
 
-nnoremap gb :bn<CR>
-nnoremap gB :bp<CR>
+nnoremap <silent>gb :bn<CR>
+nnoremap <silent>gB :bp<CR>
 
 nnoremap j gj
 nnoremap k gk
@@ -150,11 +150,11 @@ nnoremap - <C-w>-
 nnoremap ? <C-w>>
 nnoremap _ <C-w><
 
-nnoremap §     :buffer #<CR>
-nnoremap <Tab> :buffer<Space>
+nnoremap <silent>§ :buffer #<CR>
+nnoremap <Tab>     :buffer<Space>
 
-nnoremap <C-w>t      :tab split<CR>
-nnoremap <Backspace> :nohlsearch<CR>
+nnoremap <silent><C-w>t      :tab split<CR>
+nnoremap <silent><Backspace> :nohlsearch \| echo<CR>
 
 vnoremap <Leader>cl :!column -t<CR>
 vnoremap <Leader>co :call NERDComment("x", "toggle")<CR>
