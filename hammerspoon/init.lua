@@ -2,7 +2,7 @@
 -- Settings and variables.
 -------------------------------------------------------------------------------
 hs.window.animationDuration = 0
-preKeys = {"ctrl", "alt"}
+preKeys = {"cmd", "ctrl"}
 
 -------------------------------------------------------------------------------
 -- Separate Lua files.

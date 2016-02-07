@@ -16,7 +16,6 @@ if [[ $answer == (y|yes) ]]; then
   brew update
   brew upgrade --all
   brew cleanup
-  brew linkapps --local
   echo
   dl_vim
   echo

@@ -74,7 +74,6 @@ sudo mv ~/Downloads/homebrew/{*,.*} /usr/local/
   imagemagick --without-x \
   imagesnap \
   lame \
-  macvim \
   ncftp \
   nmap \
   openssh \
@@ -92,11 +91,6 @@ sudo mv ~/Downloads/homebrew/{*,.*} /usr/local/
   wget \
   youtube-dl \
   zsh
-
-if [[ ! -d ~/Applications ]]; then
-  mkdir ~/Applications
-fi
-brew linkapps --local
 
 echo "Adding new Zsh to login shells:"
 echo "/usr/local/bin/zsh" | sudo tee -a /etc/shells

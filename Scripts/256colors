@@ -8,6 +8,11 @@
 # Written by Göran Gustafsson (gustafsson.g at gmail.com).
 # License: BSD 3-Clause.
 
+reset="\x1b[0m"
+
 for number in {0..255}; do
-  echo "\x1b[38;5;${number}mColor $number"
+  foreground="\x1b[38;5;${number}m"
+  background="\x1b[48;5;${number}m"
+
+  echo "$background    $reset ${foreground}Color ${number}$reset"
 done

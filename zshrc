@@ -1,8 +1,9 @@
 # Göran Gustafsson <gustafsson.g@gmail.com>
 
 [[ $TERM == xterm ]] && export TERM=xterm-256color # GNOME Terminal needs this.
-export EDITOR=vim
 export GOPATH=~/Golang
+
+export EDITOR=vim
 export VISUAL=$EDITOR
 
 export LANG="en_US.UTF-8"
@@ -29,7 +30,6 @@ SAVEHIST=$HISTSIZE
 if [[ $OSTYPE == darwin* ]]; then
   d2=/Volumes/MicroSD/Downloads\ 2
   e=/Volumes/External
-  m=/Volumes/MicroSD
 else
   e=/media/external
 fi
@@ -107,10 +107,7 @@ zstyle ":completion:*"          special-dirs true # Make "cd ..<tab>" turn into 
 zstyle ":completion:*:cd:*"     ignore-parents parent pwd
 zstyle ":completion:*:warnings" format "zsh: no matches found." # Display warning when x<tab> don't have matches.
 
-if [[ $OSTYPE == darwin* ]]; then
-  compdef _files du # It just stopped working one day.
-  compdef _man   man2pdf
-fi
+[[ $OSTYPE == darwin* ]] && compdef _man man2pdf
 
 # Displays the current git status. I use it for RPROMPT.
 function git_branch {
@@ -190,7 +187,6 @@ if [[ $OSTYPE == darwin* ]]; then
   alias beep="afplay /System/Library/Sounds/Glass.aiff"
   alias caffeinate="caffeinate -di"
   alias eject="osascript -e 'tell application \"Finder\" to eject (every disk whose ejectable is true)' && echo 'Ejecting all external drives.'"
-  alias gvimdiff='~/Applications/MacVim.app/Contents/MacOS/Vim -d -g $* &> /dev/null'
   alias o="open"
   alias tim="caffeinate tim"
   alias top="top -o cpu -s 2"

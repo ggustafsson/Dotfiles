@@ -10,22 +10,16 @@ if !exists("g:dont_run_again")
   runtime macros/matchit.vim
 
   syntax enable
-  colorscheme ninja
+  colorscheme static
 endif
 
-if has("gui_running")
-  set guicursor+=a:blinkon0
-  set guioptions=c
-  set showcmd
-endif
-
+set autochdir
 set backspace=indent,eol,start
 set colorcolumn=80
 set confirm
 set cryptmethod=blowfish
 set encoding=utf-8
 set formatoptions=cjlnoqrt
-set hidden
 set nowrap
 set sessionoptions-=options
 set showbreak=+
@@ -66,7 +60,7 @@ set statusline+=%(%v,\ %)
 set statusline+=%(%l/%L\ %)
 
 set list
-set listchars=tab:>-,trail:-,precedes:<,extends:>
+set listchars=tab:!-,trail:-,precedes:<,extends:>
 
 set number
 set numberwidth=3
@@ -85,13 +79,10 @@ let g:gundo_help = 0
 let g:gundo_preview_statusline = " Gundo Preview"
 let g:gundo_tree_statusline = " Gundo Tree"
 
-let g:LustyExplorerDefaultMappings = 0
-let g:LustyJugglerDefaultMappings = 0
-
 let g:NERDCreateDefaultMappings = 0
 let g:NERDCustomDelimiters = { "c": { "left": '//' } }
 
-let g:NERDTreeDirArrows = 0
+let g:NERDTreeHighlightCursorline = 0
 let g:NERDTreeMinimalUI = 1
 let g:NERDTreeStatusline = " NERDTree"
 
@@ -102,21 +93,16 @@ command! -nargs=? Helpt tab help <args>
 command! -nargs=? Helpv vertical help <args>
 
 if has("mac")
-  if has("gui")
-    nnoremap <Leader>fo :call FontSize()<CR>
-  endif
-
   nnoremap <Leader>fi :silent !open "%:p:h"<CR>
   nnoremap <Leader>op :silent !open -a Safari "%"<CR>
 endif
 
 nnoremap <Leader>bd :call BufferDelete()<CR>
 nnoremap <Leader>cc :call ColorColumn()<CR>
-nnoremap <Leader>cd :cd %:p:h \| pwd<CR>
 nnoremap <Leader>co :call NERDComment("n", "toggle")<CR>
-nnoremap <Leader>do :LustyFilesystemExplorer ~/Documents/Text\ Files<CR>
-nnoremap <Leader>ed :LustyFilesystemExplorerFromHere<CR>
-nnoremap <Leader>eh :LustyFilesystemExplorer ~<CR>
+nnoremap <Leader>do :edit ~/Documents/Text\ Files/
+nnoremap <Leader>ed :edit ./
+nnoremap <Leader>eh :edit ~/
 nnoremap <Leader>er :browse oldfiles<CR>
 nnoremap <Leader>fe :set fileformat=unix \| set fileencoding=utf-8
 nnoremap <Leader>ff :call FixFile()<CR>
@@ -140,7 +126,7 @@ nnoremap <Leader>t2 :setlocal noexpandtab shiftwidth=2 softtabstop=0 tabstop=2<C
 nnoremap <Leader>t4 :setlocal noexpandtab shiftwidth=4 softtabstop=0 tabstop=4<CR>
 nnoremap <Leader>t8 :setlocal noexpandtab shiftwidth=8 softtabstop=0 tabstop=8<CR>
 nnoremap <Leader>ta :tab sball<CR>
-nnoremap <Leader>to :edit ~/Documents/Text\ Files/To-do\ List.txt \| set syntax=todo<CR>
+nnoremap <Leader>to :edit ~/Documents/Text\ Files/To-do\ List.txt<CR>
 nnoremap <Leader>tr :NERDTreeToggle<CR>
 nnoremap <Leader>tw :set textwidth=79
 nnoremap <Leader>un :edit!<CR>
@@ -150,10 +136,11 @@ nnoremap <Leader>wr :set wrap!<CR>
 nnoremap <Leader>ws :%s/\s\+$//e \| nohlsearch<CR>
 nnoremap <Leader>zs :edit ~/.zshrc<CR>
 
-nnoremap ,. :
-
 nnoremap vil ^vg_
 nnoremap Y   y$
+
+nnoremap gb :bn<CR>
+nnoremap gB :bp<CR>
 
 nnoremap j gj
 nnoremap k gk
@@ -163,8 +150,11 @@ nnoremap - <C-w>-
 nnoremap ? <C-w>>
 nnoremap _ <C-w><
 
+nnoremap §     :buffer #<CR>
+nnoremap <Tab> :buffer<Space>
+
+nnoremap <C-w>t      :tab split<CR>
 nnoremap <Backspace> :nohlsearch<CR>
-nnoremap <Tab>       :LustyBufferExplorer<CR>
 
 vnoremap <Leader>cl :!column -t<CR>
 vnoremap <Leader>co :call NERDComment("x", "toggle")<CR>
@@ -174,32 +164,6 @@ vnoremap <Leader>so :sort<CR>
 
 inoremap <expr><Tab> CompleteTab()
 inoremap jj          <Esc>
-
-if has("gui_running") && has("mac")
-  " Sets the font settings. Using a function to be able to easily change back
-  " to default settings later on with the FontSize function.
-  function! FontSetup()
-    set guifont=Menlo:h12
-    set linespace=1
-
-    set columns=204
-    set lines=53
-  endfunction
-  if !exists("g:dont_set_font_again")
-    let g:dont_set_font_again = 1
-    call FontSetup()
-  endif
-
-  " Switches between two different font sizes. Either a big font or the default
-  " font settings set in the FontSetup function.
-  function! FontSize()
-    if &guifont != "Menlo:h22"
-      set guifont=Menlo:h22
-    else
-      call FontSetup()
-    endif
-  endfunction
-endif
 
 " Delete buffers in a more user friendly way (try to not close split windows).
 function! BufferDelete()
@@ -279,8 +243,9 @@ augroup Main
   autocmd BufNewFile,BufReadPost *.md          setlocal filetype=markdown
   autocmd BufNewFile,BufReadPost *.todo        setlocal filetype=todo
 
-  autocmd FileType gitcommit       setlocal colorcolumn=73 nolist spell textwidth=72
-  autocmd FileType go              setlocal noexpandtab shiftwidth=2 softtabstop=0 tabstop=2 nolist
-  autocmd FileType help            setlocal colorcolumn= nolist
-  autocmd FileType markdown,python setlocal shiftwidth=4 softtabstop=4
+  autocmd FileType gitcommit setlocal colorcolumn=73 nolist spell textwidth=72
+  autocmd FileType go        setlocal noexpandtab shiftwidth=4 softtabstop=0 tabstop=4 nolist
+  autocmd FileType help      setlocal colorcolumn= nolist
+  autocmd FileType markdown  setlocal shiftwidth=4 softtabstop=4 syntax=
+  autocmd FileType python    setlocal shiftwidth=4 softtabstop=4
 augroup END

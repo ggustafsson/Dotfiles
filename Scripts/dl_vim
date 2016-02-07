@@ -17,7 +17,6 @@ if [[ $1 == install ]]; then
   git clone https://github.com/scrooloose/nerdcommenter.git
   git clone https://github.com/scrooloose/nerdtree.git
   git clone https://github.com/scrooloose/syntastic.git
-  git clone https://github.com/sjbach/lusty.git
   git clone https://github.com/sjl/gundo.vim.git
   git clone https://github.com/tpope/vim-endwise.git
   git clone https://github.com/tpope/vim-pathogen.git
