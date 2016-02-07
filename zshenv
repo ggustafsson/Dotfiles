@@ -3,6 +3,7 @@ umask 022
 
 if [[ $OSTYPE == darwin* ]]; then
   path=(
+    ~/Golang/bin(N)
     ~/Scripts/OSX(N)
     ~/Scripts(N)
     /usr/local/bin(N)
@@ -16,6 +17,7 @@ if [[ $OSTYPE == darwin* ]]; then
   )
 else
   path=(
+    ~/Golang/bin(N)
     ~/Scripts/Linux(N)
     ~/Scripts(N)
     /usr/local/bin
