@@ -247,6 +247,6 @@ augroup Main
   autocmd FileType gitcommit setlocal colorcolumn=73 nolist spell textwidth=72
   autocmd FileType go        setlocal noexpandtab shiftwidth=4 softtabstop=0 tabstop=4 nolist
   autocmd FileType help      setlocal colorcolumn= nolist
-  autocmd FileType markdown  setlocal shiftwidth=4 softtabstop=4 syntax=
+  autocmd FileType markdown  setlocal shiftwidth=4 softtabstop=4
   autocmd FileType python    setlocal shiftwidth=4 softtabstop=4
 augroup END
