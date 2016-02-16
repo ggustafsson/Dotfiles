@@ -21,8 +21,6 @@ export LS_COLORS="${LS_COLORS}:*.dmg=01;31:*.iso=01;31:*.rar=01;31:*.tar=01;31:*
 
 export todo_file=~/Documents/Text\ Files/To-do\ List.txt
 
-DIRSTACKSIZE=20
-
 HISTFILE=~/.zsh_histfile
 HISTSIZE=10000
 SAVEHIST=$HISTSIZE

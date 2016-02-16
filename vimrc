@@ -97,7 +97,7 @@ if has("mac")
   nnoremap <Leader>op :silent !open -a Safari "%"<CR>
 endif
 
-nnoremap <Leader>bd :call BufferDelete()<CR>
+nnoremap <Leader>bd :bdelete<CR>
 nnoremap <Leader>cc :call ColorColumn()<CR>
 nnoremap <Leader>co :call NERDComment("n", "toggle")<CR>
 nnoremap <Leader>do :edit ~/Documents/Text\ Files/
@@ -165,27 +165,6 @@ vnoremap <Leader>so :sort<CR>
 
 inoremap <expr><Tab> CompleteTab()
 inoremap jj          <Esc>
-
-" Delete buffers in a more user friendly way (try to not close split windows).
-function! BufferDelete()
-  if &modified
-    echohl ErrorMsg
-    echo "No write since last change. Not closing buffer!"
-    echohl None
-  else
-    let buffer_count = len(filter(range(1, bufnr("$")), "buflisted(v:val)"))
-
-    if buffer_count == 1
-      bdelete
-      echohl WarningMsg
-      echo "Buffer deleted. Created new buffer."
-      echohl None
-    else
-      bprevious
-      bdelete #
-    endif
-  endif
-endfunction
 
 " Easily switch between two different colorcolumn settings and off state.
 " Never go above 72 or 79 characters (leave one character for diff etc).
