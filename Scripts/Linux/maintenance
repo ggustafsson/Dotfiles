@@ -1,0 +1,25 @@
+#!/usr/bin/env zsh
+
+# Description: This script executes a bunch of commands i run frequently to
+# keep things up-to-date etc.
+#
+# Usage: maintenance
+#
+# Written by Göran Gustafsson (gustafsson.g at gmail.com).
+# License: BSD 3-Clause.
+
+sudo apt update
+echo
+sudo apt full-upgrade
+echo
+sudo apt-get autoremove
+echo
+dl_vim
+
+for directory in ~/Projects/*; do
+  if [[ -d $directory ]]; then
+    print -P "\n%B%F{cyan}Running git pull on: ${directory:t}%f%b"
+    cd $directory
+    git pull
+  fi
+done
