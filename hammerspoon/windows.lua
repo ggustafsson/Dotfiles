@@ -53,9 +53,9 @@ hs.hotkey.bind(preKeys, "4", function()
   local margin = 279
 
   frame.x = screen.x + margin
-  frame.y = 109
+  frame.y = 113
   frame.w = screen.w - (margin * 2) - 1
-  frame.h = 600
+  frame.h = 593
   window:setFrame(frame)
 end)
 
@@ -69,9 +69,9 @@ hs.hotkey.bind(preKeys, "5", function()
   local margin = 468
 
   frame.x = screen.x + margin
-  frame.y = 94
+  frame.y = 97
   frame.w = screen.w - (margin * 2) - 1
-  frame.h = 660
+  frame.h = 657
   window:setFrame(frame)
 end)
 
