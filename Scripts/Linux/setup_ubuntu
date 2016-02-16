@@ -13,6 +13,7 @@ sudo apt install \
   curl \
   flac \
   git \
+  golang \
   links \
   nmap \
   openssh-server \
