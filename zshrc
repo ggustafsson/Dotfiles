@@ -57,6 +57,8 @@ setopt pushdignoredups
 
 autoload -U compinit && compinit
 autoload -U edit-command-line && zle -N edit-command-line
+
+autoload -U bracketed-paste-magic && zle -N bracketed-paste bracketed-paste-magic
 autoload -U url-quote-magic && zle -N self-insert url-quote-magic
 
 autoload -U down-line-or-beginning-search && zle -N down-line-or-beginning-search
