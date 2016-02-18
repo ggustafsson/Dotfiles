@@ -98,7 +98,9 @@ if has("mac")
   nnoremap <Leader>op :silent !open -a Safari "%"<CR>
 endif
 
-nnoremap <Leader>bd :bdelete<CR>
+nnoremap <Leader>bd :bdelete<Space>
+nnoremap <Leader>bf :buffer<Space>
+nnoremap <Leader>bl :buffers<CR>
 nnoremap <Leader>cc :call ColorColumn()<CR>
 nnoremap <Leader>co :call NERDComment("n", "toggle")<CR>
 nnoremap <Leader>do :edit ~/Documents/Text\ Files/
@@ -151,9 +153,6 @@ nnoremap + <C-w>+
 nnoremap - <C-w>-
 nnoremap ? <C-w>>
 nnoremap _ <C-w><
-
-nnoremap <silent>§ :buffer #<CR>
-nnoremap <Tab>     :buffer<Space>
 
 nnoremap <silent><C-w>t      :tab split<CR>
 nnoremap <silent><Backspace> :nohlsearch \| echo<CR>
