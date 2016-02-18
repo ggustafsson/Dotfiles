@@ -1,4 +1,4 @@
-#!/usr/bin/env x
+#!/usr/bin/env bash
 
 # Description: This script 
 #

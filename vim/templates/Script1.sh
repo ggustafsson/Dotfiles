@@ -1,4 +1,4 @@
-#!/usr/bin/env x
+#!/usr/bin/env zsh
 
 # Description: This script 
 #
