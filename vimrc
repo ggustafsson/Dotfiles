@@ -131,7 +131,7 @@ nnoremap <Leader>t8 :setlocal noexpandtab shiftwidth=8 softtabstop=0 tabstop=8<C
 nnoremap <Leader>ta :tab sball<CR>
 nnoremap <Leader>tm :edit ~/Documents/Text\ Files/Temporary.txt<CR>
 nnoremap <Leader>to :edit ~/Documents/Text\ Files/To-do\ List.txt<CR>
-nnoremap <Leader>tr :NERDTreeToggle<CR>
+nnoremap <Leader>tr :NERDTreeToggle ~/<CR>
 nnoremap <Leader>tw :set textwidth=79
 nnoremap <Leader>un :edit!<CR>
 nnoremap <Leader>vi :edit ~/.vimrc<CR>
