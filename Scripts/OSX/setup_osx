@@ -76,6 +76,7 @@ sudo mv ~/Downloads/homebrew/{*,.*} /usr/local/
   imagesnap \
   lame \
   ncftp \
+  neovim/neovim/neovim \
   nmap \
   openssh \
   python --build-from-source \
