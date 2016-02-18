@@ -1,9 +1,14 @@
 setopt no_global_rcs # Don't use config files from /etc.
 umask 022
 
+export GOPATH=~/Golang
+
+export LANG="en_US.UTF-8"
+export LC_ALL="en_US.UTF-8"
+
 if [[ $OSTYPE == darwin* ]]; then
   path=(
-    ~/Golang/bin(N)
+    $GOPATH/bin(N)
     ~/Scripts/OSX(N)
     ~/Scripts(N)
     /usr/local/bin(N)
@@ -17,7 +22,7 @@ if [[ $OSTYPE == darwin* ]]; then
   )
 else
   path=(
-    ~/Golang/bin(N)
+    $GOPATH/bin(N)
     ~/Scripts/Linux(N)
     ~/Scripts(N)
     /usr/local/bin

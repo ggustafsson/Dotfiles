@@ -20,6 +20,7 @@ set confirm
 set cryptmethod=blowfish
 set encoding=utf-8
 set formatoptions=cjlnoqrt
+set nofoldenable
 set nowrap
 set sessionoptions-=options
 set showbreak=+

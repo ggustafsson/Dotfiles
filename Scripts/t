@@ -1,8 +1,8 @@
 #!/usr/bin/env zsh
 
-# Description: This script prints out the content of my $todo_file file or adds
-# a new entry to the bottom of the file. The variable todo_file is set from
-# ~/.zshrc with "export todo_file=path".
+# Description: This script prints out the content of my $TODO_FILE file or adds
+# a new entry to the bottom of the file. The variable TODO_FILE is set from
+# ~/.zshrc with "export TODO_FILE=path".
 #
 # Usage: t
 #        t <text>
@@ -10,22 +10,22 @@
 # Written by Göran Gustafsson (gustafsson.g at gmail.com).
 # License: BSD 3-Clause.
 
-if [[ -z $todo_file ]]; then
-  echo "Variable 'todo_file' is not set! Exiting..."
+if [[ -z $TODO_FILE ]]; then
+  echo "Variable 'TODO_FILE' is not set! Exiting..."
   exit 1
 fi
 
 if [[ $# -ge 1 ]]; then
   echo "Adding new entry to to-do list."
-  cp $todo_file $todo_file.tmp
-  echo $* > $todo_file
-  cat $todo_file.tmp >> $todo_file
-  rm $todo_file.tmp
+  cp $TODO_FILE ${TODO_FILE}.tmp
+  echo $* > $TODO_FILE
+  cat ${TODO_FILE}.tmp >> $TODO_FILE
+  rm ${TODO_FILE}.tmp
 else
-  if [[ ! -f $todo_file ]]; then
-    echo "File '${todo_file}' does not exist! Exiting..."
+  if [[ ! -f $TODO_FILE ]]; then
+    echo "File '${TODO_FILE}' does not exist! Exiting..."
     exit 1
   fi
 
-  cat $todo_file
+  cat $TODO_FILE
 fi
