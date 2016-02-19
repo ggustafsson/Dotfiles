@@ -13,7 +13,6 @@ if !exists("g:dont_run_again")
   colorscheme static
 endif
 
-set autochdir
 set backspace=indent,eol,start
 set colorcolumn=80
 set confirm
@@ -98,13 +97,14 @@ if has("mac")
   nnoremap <Leader>op :silent !open -a Safari "%"<CR>
 endif
 
-nnoremap <Leader>bd :bdelete<Space>
+nnoremap <Leader>bd :call BufferDelete()<CR>
 nnoremap <Leader>bf :buffer<Space>
 nnoremap <Leader>bl :buffers<CR>
 nnoremap <Leader>cc :call ColorColumn()<CR>
+nnoremap <Leader>cd :cd <C-R>=expand("%:p:h")<CR><C-l>
 nnoremap <Leader>co :call NERDComment("n", "toggle")<CR>
 nnoremap <Leader>do :edit ~/Documents/Text\ Files/
-nnoremap <Leader>ed :edit ./
+nnoremap <Leader>ed :edit <C-R>=expand("%:p:h")<CR>/<C-l>
 nnoremap <Leader>eh :edit ~/
 nnoremap <Leader>er :browse oldfiles<CR>
 nnoremap <Leader>fe :set fileformat=unix \| set fileencoding=utf-8
@@ -131,7 +131,7 @@ nnoremap <Leader>t8 :setlocal noexpandtab shiftwidth=8 softtabstop=0 tabstop=8<C
 nnoremap <Leader>ta :tab sball<CR>
 nnoremap <Leader>tm :edit ~/Documents/Text\ Files/Temporary.txt<CR>
 nnoremap <Leader>to :edit ~/Documents/Text\ Files/To-do\ List.txt<CR>
-nnoremap <Leader>tr :NERDTreeToggle ~/<CR>
+nnoremap <Leader>tr :NERDTreeToggle<CR>
 nnoremap <Leader>tw :set textwidth=79
 nnoremap <Leader>un :edit!<CR>
 nnoremap <Leader>vi :edit ~/.vimrc<CR>
@@ -166,6 +166,24 @@ vnoremap <Leader>so :sort<CR>
 
 inoremap <expr><Tab> CompleteTab()
 inoremap jj          <Esc>
+
+" Delete buffers in a more user friendly way (try to not close split windows).
+function! BufferDelete()
+  if &modified
+    echohl ErrorMsg
+    echo "No write since last change. Not closing buffer!"
+    echohl None
+  else
+    let buffer_count = len(filter(range(1, bufnr("$")), "buflisted(v:val)"))
+
+    if buffer_count == 1
+      bdelete
+    else
+      bprevious
+      bdelete #
+    endif
+  endif
+endfunction
 
 " Easily switch between two different colorcolumn settings and off state.
 " Never go above 72 or 79 characters (leave one character for diff etc).

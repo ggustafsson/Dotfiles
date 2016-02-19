@@ -145,8 +145,8 @@ else
   zsh_host="%B%F{red}%m%f%b"
 fi
 
-# Coruscant ~ [+] [1] $
-PROMPT='${zsh_host} ${PWD/${HOME}/~} $(git_status)%(?..%B%F{red}[%?]%f%b )$(zsh_mode) '
+# Coruscant ~/Projects/Dot Files [+] $
+PROMPT='${zsh_host} ${PWD/${HOME}/~} $(git_status)$(zsh_mode) '
 
 if [[ $OSTYPE == darwin* ]]; then
   alias beep="afplay /System/Library/Sounds/Glass.aiff"
