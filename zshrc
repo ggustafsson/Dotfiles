@@ -103,21 +103,9 @@ zstyle ":completion:*:warnings" format "zsh: no matches found." # Display warnin
 
 [[ $OSTYPE == darwin* ]] && compdef _man man2pdf
 
-# Displays the current git status. I use it for RPROMPT.
-function git_branch {
-  reference=$(git symbolic-ref HEAD 2> /dev/null) || return
-  branch=${reference#refs/heads/}
-
-  if [[ -n $(git rev-list origin..HEAD 2> /dev/null) ]]; then
-    if [[ -n $(git status --short 2> /dev/null) ]]; then
-      echo " %F{cyan}ahead %F{red}${branch}%f"
-    else
-      echo " %F{cyan}ahead %F{green}${branch}%f"
-    fi
-  elif [[ -n $(git status --short 2> /dev/null) ]]; then
-    echo " %F{red}${branch}%f"
-  else
-    echo " %F{green}${branch}%f"
+function git_status {
+  if [[ -n $(git status --short 2> /dev/null) ]]; then
+    echo "%B%F{red}[+]%f%b "
   fi
 }
 
@@ -140,42 +128,25 @@ zle -N zle-line-init && zle -N zle-keymap-select
 # will be used in the prompt to indicate the current Vi mode.
 function zsh_mode {
   if [[ $KEYMAP == vicmd ]]; then
-    echo "%F{red}E%f"
+    mode_indicator=E
   elif [[ $replace -eq 1 ]]; then
-    echo "%F{magenta}R%f"
+    mode_indicator=R
   else
-    echo "%F{blue}$%f"
+    mode_indicator=$
   fi
+  echo "%B%F{blue}${mode_indicator}%f%b"
 }
 
 if [[ $HOST == Coruscant* ]]; then
-  zsh_host="%F{yellow}%m%f"
+  zsh_host="%B%F{yellow}%m%f%b"
 elif [[ $HOST == *-VM ]]; then
-  zsh_host="%F{green}%m%f"
+  zsh_host="%B%F{green}%m%f%b"
 else
-  zsh_host="%F{red}%m%f"
+  zsh_host="%B%F{red}%m%f%b"
 fi
 
-# Easily switch between short and long prompt. Convenient to have when using
-# vertical split windows in tmux and things get cramped.
-function prompts {
-  if [[ $zsh_full_prompt -ne 1 ]]; then
-    zsh_full_prompt=1
-    # Coruscant ~ $
-    PROMPT='%B${zsh_host}%b ${PWD/${HOME}/~} %B$(zsh_mode)%b '
-    # $ 0 master
-    RPROMPT='%B%F{blue}$%f%b %?%B$(git_branch)%b'
-  else
-    zsh_full_prompt=0
-    # Coruscant $
-    PROMPT='%B${zsh_host}%b %B$(zsh_mode)%b '
-    RPROMPT=''
-  fi
-}
-if [[ -z $dont_run_again ]]; then
-  dont_run_again=1
-  prompts
-fi
+# Coruscant ~ [+] [1] $
+PROMPT='${zsh_host} ${PWD/${HOME}/~} $(git_status)%(?..%B%F{red}[%?]%f%b )$(zsh_mode) '
 
 if [[ $OSTYPE == darwin* ]]; then
   alias beep="afplay /System/Library/Sounds/Glass.aiff"
