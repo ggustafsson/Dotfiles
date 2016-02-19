@@ -156,6 +156,7 @@ nnoremap _ <C-w><
 
 nnoremap <silent><C-w>t      :tab split<CR>
 nnoremap <silent><Backspace> :nohlsearch \| echo<CR>
+vnoremap <silent><Backspace> <Esc>:nohlsearch \| echo<CR>
 
 vnoremap <Leader>cl :!column -t<CR>
 vnoremap <Leader>co :call NERDComment("x", "toggle")<CR>
