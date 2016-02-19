@@ -74,6 +74,7 @@ set t_vb=
 set visualbell
 
 let g:mapleader = ","
+let g:syntastic_python_python_exec = system("which python3")
 
 let g:gundo_help = 0
 let g:gundo_preview_statusline = " Gundo Preview"
@@ -85,11 +86,6 @@ let g:NERDCustomDelimiters = { "c": { "left": '//' } }
 let g:NERDTreeHighlightCursorline = 0
 let g:NERDTreeMinimalUI = 1
 let g:NERDTreeStatusline = " NERDTree"
-
-let g:syntastic_python_python_exec = system("which python3")
-let g:syntastic_quiet_messages = {
-  \ "file:p":  '\.go$',
-  \ "regex":   'main redeclared in this blockprevious declaration' }
 
 command! Sudo w !sudo tee %
 
