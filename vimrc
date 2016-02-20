@@ -260,4 +260,12 @@ augroup Main
   autocmd FileType markdown   setlocal expandtab shiftwidth=4 softtabstop=4
   autocmd FileType python     setlocal expandtab shiftwidth=4 softtabstop=4
   autocmd FileType qf         setlocal colorcolumn= nolist nonumber norelativenumber
+
+  autocmd FileType go nmap <Leader>gb <Plug>(go-build)
+  autocmd FileType go nmap <Leader>gd <Plug>(go-doc)
+  autocmd FileType go nmap <Leader>gi <Plug>(go-install)
+  autocmd FileType go nmap <Leader>gl :GoLint<CR>
+  autocmd FileType go nmap <Leader>gr <Plug>(go-run)
+  autocmd FileType go nmap <Leader>gt <Plug>(go-test)
+  autocmd FileType go nmap <Leader>gv <Plug>(go-vet)
 augroup END
