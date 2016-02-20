@@ -1,0 +1,24 @@
+#!/usr/bin/env zsh
+
+# Description: This script installs/updates Go packages.
+#
+# Usage: dl_go
+#
+# Written by Göran Gustafsson (gustafsson.g at gmail.com).
+# License: BSD 3-Clause.
+
+packages=(
+  github.com/alecthomas/gometalinter
+  github.com/golang/lint/golint
+  github.com/kisielk/errcheck
+  github.com/nsf/gocode
+  github.com/rogpeppe/godef
+  golang.org/x/tools/cmd/goimports
+  golang.org/x/tools/cmd/gorename
+  golang.org/x/tools/cmd/oracle
+)
+
+for pkg in $packages; do
+  echo "Fetching package: $pkg"
+  go get -u $pkg
+done

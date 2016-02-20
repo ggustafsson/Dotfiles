@@ -17,6 +17,8 @@ if [[ $answer == (y|yes) ]]; then
   brew upgrade --all
   brew cleanup
   echo
+  dl_go
+  echo
   dl_vim
   echo
   frees

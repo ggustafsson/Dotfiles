@@ -15,6 +15,7 @@ colorscheme static
 
 set backspace=indent,eol,start
 set colorcolumn=80
+set completeopt-=preview
 set confirm
 set cryptmethod=blowfish
 set encoding=utf-8
@@ -74,6 +75,9 @@ set visualbell
 
 let g:mapleader = ","
 let g:syntastic_python_python_exec = system("which python3")
+
+let g:go_fmt_command = "goimports"
+let g:go_fmt_fail_silently = 1
 
 let g:gundo_help = 0
 let g:gundo_preview_statusline = " Gundo Preview"
@@ -211,7 +215,17 @@ function! CompleteTab()
   if empty(char) || char == " " || char =~ '\t'
     return "\<Tab>"
   else
-    return "\<C-n>"
+    " Try fancy completion before defaulting to keyword completion.
+    if !empty(&omnifunc)
+      " Only send <C-x> the first time, not when completion menu is present.
+      if !pumvisible()
+        return "\<C-x>\<C-o>"
+      else
+        return "\<C-o>"
+      endif
+    else
+      return "\<C-n>"
+    endif
   endif
 endfunction
 
@@ -245,4 +259,5 @@ augroup Main
   autocmd FileType godoc,help setlocal colorcolumn= nolist
   autocmd FileType markdown   setlocal expandtab shiftwidth=4 softtabstop=4
   autocmd FileType python     setlocal expandtab shiftwidth=4 softtabstop=4
+  autocmd FileType qf         setlocal colorcolumn= nolist nonumber norelativenumber
 augroup END
