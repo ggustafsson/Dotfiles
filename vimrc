@@ -98,8 +98,6 @@ if has("mac")
 endif
 
 nnoremap <Leader>bd :call BufferDelete()<CR>
-nnoremap <Leader>bf :buffer<Space>
-nnoremap <Leader>bl :buffers<CR>
 nnoremap <Leader>cc :call ColorColumn()<CR>
 nnoremap <Leader>cd :cd <C-R>=expand("%:p:h")<CR><C-l>
 nnoremap <Leader>co :call NERDComment("n", "toggle")<CR>
@@ -116,7 +114,6 @@ nnoremap <Leader>li :set list!<CR>
 nnoremap <Leader>ne :enew<CR>
 nnoremap <Leader>no :edit ~/Documents/Text\ Files/Notes.txt<CR>
 nnoremap <Leader>nu :set number! \| set relativenumber!<CR>
-nnoremap <Leader>pa :set paste!<CR>
 nnoremap <Leader>re :%s//gc<Left><Left><Left>
 nnoremap <Leader>rs :source ~/.vim/session.vim<CR>
 nnoremap <Leader>s2 :setlocal expandtab shiftwidth=2 softtabstop=2<CR>
@@ -154,6 +151,8 @@ nnoremap - <C-w>-
 nnoremap ? <C-w>>
 nnoremap _ <C-w><
 
+nnoremap <Tab>               :buffer<Space>
+nnoremap <silent><C-p>       :set paste!<CR>
 nnoremap <silent><C-w>t      :tab split<CR>
 nnoremap <silent><Backspace> :nohlsearch \| echo<CR>
 vnoremap <silent><Backspace> <Esc>:nohlsearch \| echo<CR>
