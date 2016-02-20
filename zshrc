@@ -187,10 +187,10 @@ alias pyjson='python -m json.tool'
 alias pyweb="python3 -m http.server 8080"
 alias tma="tmux attach"
 alias tree="tree --charset ascii -N"
-alias tv='vim $todo_file'
+alias tv='vim $TODO_FILE'
 alias wgetp="wget --adjust-extension --convert-links --page-requisites"
 alias ycal='cal $(date +%Y)'
-alias zreload="source ~/.zshenv && source ~/.zshrc && [[ -f ~/.zsh_local ]] && source ~/.zsh_local || true"
+alias zreload="source ~/.zshenv && source ~/.zshrc && [[ -f ~/.zshrc_local ]] && source ~/.zshrc_local || true"
 
 alias ..="source dotdot"
 alias cdh="dirs -v | sort --reverse"

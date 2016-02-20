@@ -8,10 +8,10 @@ if !exists("g:dont_run_again")
 
   filetype plugin indent on
   runtime macros/matchit.vim
-
-  syntax enable
-  colorscheme static
 endif
+
+syntax enable
+colorscheme static
 
 set backspace=indent,eol,start
 set colorcolumn=80
@@ -239,11 +239,10 @@ augroup Main
 
   autocmd BufNewFile,BufReadPost *.conf,config setlocal filetype=conf
   autocmd BufNewFile,BufReadPost *.md          setlocal filetype=markdown
-  autocmd BufNewFile,BufReadPost *.todo        setlocal filetype=todo
 
-  autocmd FileType gitcommit setlocal colorcolumn=73 nolist spell textwidth=72
-  autocmd FileType go        setlocal noexpandtab shiftwidth=4 softtabstop=0 tabstop=4 nolist
-  autocmd FileType help      setlocal colorcolumn= nolist
-  autocmd FileType markdown  setlocal shiftwidth=4 softtabstop=4
-  autocmd FileType python    setlocal shiftwidth=4 softtabstop=4
+  autocmd FileType gitcommit  setlocal colorcolumn=73 nolist spell textwidth=72
+  autocmd FileType go         setlocal noexpandtab nolist shiftwidth=4 softtabstop=0 tabstop=4
+  autocmd FileType godoc,help setlocal colorcolumn= nolist
+  autocmd FileType markdown   setlocal expandtab shiftwidth=4 softtabstop=4
+  autocmd FileType python     setlocal expandtab shiftwidth=4 softtabstop=4
 augroup END
