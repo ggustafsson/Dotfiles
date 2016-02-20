@@ -104,7 +104,7 @@ nnoremap <Leader>cc :call ColorColumn()<CR>
 nnoremap <Leader>cd :cd <C-R>=expand("%:p:h")<CR><C-l>
 nnoremap <Leader>co :call NERDComment("n", "toggle")<CR>
 nnoremap <Leader>do :edit ~/Documents/Text\ Files/
-nnoremap <Leader>ed :edit <C-R>=expand("%:p:h")<CR>/<C-l>
+nnoremap <Leader>ed :edit <C-R>=expand("%:p:h")<CR><C-l>
 nnoremap <Leader>eh :edit ~/
 nnoremap <Leader>er :browse oldfiles<CR>
 nnoremap <Leader>fe :set fileformat=unix \| set fileencoding=utf-8
