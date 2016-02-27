@@ -147,9 +147,6 @@ nnoremap Y   y$
 nnoremap <silent>gb :bn<CR>
 nnoremap <silent>gB :bp<CR>
 
-nnoremap j gj
-nnoremap k gk
-
 nnoremap + <C-w>+
 nnoremap - <C-w>-
 nnoremap ? <C-w>>
