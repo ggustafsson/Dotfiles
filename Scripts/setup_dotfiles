@@ -13,8 +13,21 @@ if [[ ! $OSTYPE == darwin* ]]; then
   git clone https://github.com/ggustafsson/Ninja-Color-Scheme.git ~/Projects/Ninja\ Color\ Scheme
   git clone https://github.com/ggustafsson/Static-Color-Scheme.git ~/Projects/Static\ Color\ Scheme
   git clone https://github.com/ggustafsson/Tim.git ~/Projects/Tim
+fi
 
-  ln -s ~/Storage/Configs/ssh .ssh
+mkdir ~/.ssh
+mkdir ~/.vim
+mkdir ~/.vim/autoload
+mkdir ~/.vim/backups
+mkdir ~/.vim/bundle
+mkdir ~/.vim/colors
+mkdir ~/.vim/undos
+
+if [[ $OSTYPE == darwin* ]]; then
+  ln -s ~/Projects/hammerspoon ~/.hammerspoon
+else
+  ln -s ~/Projects/IP\ Kalkylatorn/ipkalk ~/Scripts/ipkalk
+  ln -s ~/Projects/Tim/tim ~/Scripts/tim
 fi
 
 ln -s ~/Projects/Dot\ Files/Scripts ~/Scripts
@@ -26,21 +39,6 @@ ln -s ~/Projects/Dot\ Files/tmux.conf ~/.tmux.conf
 ln -s ~/Projects/Dot\ Files/vimrc ~/.vimrc
 ln -s ~/Projects/Dot\ Files/zshenv ~/.zshenv
 ln -s ~/Projects/Dot\ Files/zshrc ~/.zshrc
-
-if [[ $OSTYPE == darwin* ]]; then
-  ln -s ~/Projects/Dot\ Files/gvimrc ~/.gvimrc
-  ln -s ~/Projects/hammerspoon ~/.hammerspoon
-else
-  ln -s ~/Projects/IP\ Kalkylatorn/ipkalk ~/Scripts/ipkalk
-  ln -s ~/Projects/Tim/tim ~/Scripts/tim
-fi
-
-mkdir ~/.vim
-mkdir ~/.vim/autoload
-mkdir ~/.vim/backups
-mkdir ~/.vim/bundle
-mkdir ~/.vim/colors
-mkdir ~/.vim/undos
 
 ~/Scripts/dl_vim install
 
