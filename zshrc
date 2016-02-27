@@ -128,13 +128,12 @@ zle -N zle-line-init && zle -N zle-keymap-select
 # will be used in the prompt to indicate the current Vi mode.
 function zsh_mode {
   if [[ $KEYMAP == vicmd ]]; then
-    mode_indicator=E
+    echo "%B%F{red}E%f%b"
   elif [[ $replace -eq 1 ]]; then
-    mode_indicator=R
+    echo "%B%F{red}R%f%b"
   else
-    mode_indicator=$
+    echo "%B%F{blue}$%f%b"
   fi
-  echo "%B%F{blue}${mode_indicator}%f%b"
 }
 
 if [[ $HOST == Coruscant* ]]; then
