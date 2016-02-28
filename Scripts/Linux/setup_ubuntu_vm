@@ -10,6 +10,7 @@
 sudo apt install \
   apache2 \
   bind9 \
+  cuetools \
   dia \
   gnupg2 \
   gnuplot \
@@ -34,12 +35,5 @@ sudo apt install \
 sudo dpkg-reconfigure wireshark-common
 sudo usermod -a -G dialout,wireshark $USER
 
-sudo rm \
-  /etc/rc*.d/*apache2 \
-  /etc/rc*.d/*bind9 \
-  /etc/rc*.d/*netperf \
-  /etc/rc*.d/*nfs-kernel-server \
-  /etc/rc*.d/*nginx
-
-echo manual | sudo tee /etc/init/smbd.override
-echo manual | sudo tee /etc/init/ssh.override
+sudo systemctl disable apache2 bind9 netperf nfs-kernel-server nginx smbd
+sudo systemctl stop    apache2 bind9 netperf nfs-kernel-server nginx smbd
