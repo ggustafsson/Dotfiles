@@ -10,6 +10,7 @@
 server=se.quakenet.org
 port=6667
 channel=#degiz
+nick=slappy$$
 irc_stream=/tmp/irc_stream
 
 if [[ ! $# -eq 2 ]]; then
@@ -17,17 +18,19 @@ if [[ ! $# -eq 2 ]]; then
   exit
 fi
 
-echo "NICK slapbot2000" | tee $irc_stream
-echo "USER slapbot 0 * :Slapping bot 2000" | tee -a $irc_stream
+echo "NICK $nick" | tee $irc_stream
+echo "USER $nick 0 * :$nick" | tee -a $irc_stream
 
 tail -f $irc_stream | nc -i 1 $server $port | while read message; do
   echo $message
 
   if [[ $message == PING* ]]; then
     echo "PONG${message#PING}" | tee -a $irc_stream
-    sleep 5
+    sleep 4
     echo "JOIN $channel" | tee -a $irc_stream
+    sleep 2
     echo -e "PRIVMSG $channel :\x01ACTION slaps $1 around a bit with a large $2\x01" | tee -a $irc_stream
+    sleep 2
     echo "QUIT :Hehehe" | tee -a $irc_stream
     sleep 2
     rm $irc_stream
