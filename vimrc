@@ -185,15 +185,19 @@ function! BufferDelete()
   endif
 endfunction
 
-" Easily switch between two different colorcolumn settings and off state.
-" Never go above 72 or 79 characters (leave one character for diff etc).
+" Easily switch between different colorcolumn settings. If textwidth is set
+" then use textwidth + 1, if textwidth is not set then use colorcolumn=80, and
+" if colorcolumn is already set then turn it off.
 function! ColorColumn()
   if empty(&colorcolumn)
-    echo "setlocal colorcolumn=80"
-    setlocal colorcolumn=80
-  elseif &colorcolumn == "80"
-    echo "setlocal colorcolumn=73"
-    setlocal colorcolumn=73
+    if !empty(&textwidth)
+      let column = str2nr(&textwidth) + 1
+      echom "setlocal colorcolumn=" . column
+      setlocal colorcolumn=+1
+    else
+      echo "setlocal colorcolumn=80"
+      setlocal colorcolumn=80
+    endif
   else
     echo "setlocal colorcolumn="
     setlocal colorcolumn=
