@@ -23,6 +23,7 @@ SAVEHIST=$HISTSIZE
 if [[ $OSTYPE == darwin* ]]; then
   d2=/Volumes/MicroSD/Downloads\ 2
   e=/Volumes/External
+  m=/Volumes/MicroSD
 else
   e=/media/external
 fi
