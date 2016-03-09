@@ -17,10 +17,14 @@ fi
 
 if [[ $# -ge 1 ]]; then
   echo "Adding new entry to to-do list."
-  cp $TODO_FILE ${TODO_FILE}.tmp
-  echo $* > $TODO_FILE
-  cat ${TODO_FILE}.tmp >> $TODO_FILE
-  rm ${TODO_FILE}.tmp
+  if [[ -f $TODO_FILE ]]; then
+    cp $TODO_FILE ${TODO_FILE}.tmp
+    echo $* > $TODO_FILE
+    cat ${TODO_FILE}.tmp >> $TODO_FILE
+    rm ${TODO_FILE}.tmp
+  else
+    echo $* > $TODO_FILE
+  fi
 else
   if [[ ! -f $TODO_FILE ]]; then
     echo "File '${TODO_FILE}' does not exist! Exiting..."

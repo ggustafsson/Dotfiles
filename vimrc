@@ -103,10 +103,10 @@ endif
 
 nnoremap <Leader>bd :call BufferDelete()<CR>
 nnoremap <Leader>cc :call ColorColumn()<CR>
-nnoremap <Leader>cd :cd <C-R>=expand("%:p:h")<CR><C-l>
+nnoremap <Leader>cd :cd <C-R>=escape(expand("%:p:h"), ' \')<CR>/
 nnoremap <Leader>co :call NERDComment("n", "toggle")<CR>
 nnoremap <Leader>do :edit ~/Documents/Text\ Files/
-nnoremap <Leader>ed :edit <C-R>=expand("%:p:h")<CR><C-l>
+nnoremap <Leader>ed :edit <C-R>=escape(expand("%:p:h"), ' \')<CR>/
 nnoremap <Leader>eh :edit ~/
 nnoremap <Leader>er :browse oldfiles<CR>
 nnoremap <Leader>fe :set fileformat=unix \| set fileencoding=utf-8
