@@ -8,7 +8,7 @@ hs.hotkey.bind(preKeys, "1", function()
 
   frame.x = 0
   frame.y = 0
-  frame.w = 1321
+  frame.w = 1319
   frame.h = screen.h
   window:setFrame(frame)
 end)
