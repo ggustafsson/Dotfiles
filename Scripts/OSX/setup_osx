@@ -106,12 +106,7 @@ ln -s /usr/local/bin/guniq /usr/local/bin/uniq
 ln -s /usr/local/bin/gwc /usr/local/bin/wc
 
 echo
-/usr/local/bin/pip install mutagen simpy
-
-cd /usr/local/lib/python3.*
-for directory in /usr/local/lib/python2.*/site-packages/simpy*; do
-  ln -s $directory
-done
+/usr/local/bin/pip3 install mutagen simpy
 
 echo
 ~/Scripts/setup_dotfiles
