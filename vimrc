@@ -167,6 +167,9 @@ vnoremap <Leader>so :sort<CR>
 inoremap <expr><Tab> CompleteTab()
 inoremap jj          <Esc>
 
+inoremap {<CR> {<CR>}<Esc>O
+inoremap (<CR> (<CR>)<Esc>O
+
 " Delete buffers in a more user friendly way (try to not close split windows).
 function! BufferDelete()
   if &modified
