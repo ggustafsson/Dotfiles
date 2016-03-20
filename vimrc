@@ -102,6 +102,8 @@ if has("mac")
 endif
 
 nnoremap <Leader>bd :call BufferDelete()<CR>
+nnoremap <Leader>bk :bdelete<CR>
+nnoremap <Leader>bl :buffers<CR>
 nnoremap <Leader>cc :call ColorColumn()<CR>
 nnoremap <Leader>cd :cd <C-R>=escape(expand("%:p:h"), ' \')<CR>/
 nnoremap <Leader>co :call NERDComment("n", "toggle")<CR>
