@@ -268,7 +268,7 @@ augroup Main
   autocmd FileType qf         setlocal colorcolumn= nolist nonumber norelativenumber
 
   autocmd FileType go nmap <Leader>gd <Plug>(go-doc)
+  autocmd FileType go nmap <Leader>gi <Plug>(go-info)
   autocmd FileType go nmap <Leader>gl :GoLint<CR>
-  autocmd FileType go nmap <Leader>gt <Plug>(go-info)
   autocmd FileType go nmap <Leader>gv <Plug>(go-vet)
 augroup END
