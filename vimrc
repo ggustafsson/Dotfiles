@@ -166,11 +166,13 @@ vnoremap <Leader>ne y:enew<CR>P
 vnoremap <Leader>re :s/\%V/gc<Left><Left><Left>
 vnoremap <Leader>so :sort<CR>
 
-inoremap <expr><Tab> CompleteTab()
-inoremap jj          <Esc>
+inoremap jj <Esc>
 
-inoremap {<CR> {<CR>}<Esc>O
+inoremap <expr><Tab> CompleteTab()
+inoremap <expr><C-o> CompleteOmni()
+
 inoremap (<CR> (<CR>)<Esc>O
+inoremap {<CR> {<CR>}<Esc>O
 
 " Delete buffers in a more user friendly way (try to not close split windows).
 function! BufferDelete()
@@ -209,8 +211,20 @@ function! ColorColumn()
   endif
 endfunction
 
-" Turn the tab key into <C-n> (auto completion) if there are characters to the
-" left of the cursor, normal tab key is used otherwise.
+" Make it easier to use omni completion. Ctrl-O instead of Ctrl-X + Ctrl-O.
+"
+" inoremap <expr><C-o> CompleteOmni()
+function! CompleteOmni()
+  " Only send <C-x> the first time, not when completion menu is present.
+  if !pumvisible()
+    return "\<C-x>\<C-o>"
+  else
+    return "\<C-o>"
+  endif
+endfunction
+
+" Turn the tab key into <C-n> (keyboard completion) if there are characters to
+" the left of the cursor, normal tab key is inserted otherwise.
 "
 " inoremap <expr><Tab> CompleteTab()
 function! CompleteTab()
@@ -221,17 +235,7 @@ function! CompleteTab()
   if empty(char) || char == " " || char =~ '\t'
     return "\<Tab>"
   else
-    " Try fancy completion before defaulting to keyword completion.
-    if !empty(&omnifunc)
-      " Only send <C-x> the first time, not when completion menu is present.
-      if !pumvisible()
-        return "\<C-x>\<C-o>"
-      else
-        return "\<C-o>"
-      endif
-    else
-      return "\<C-n>"
-    endif
+    return "\<C-n>"
   endif
 endfunction
 
