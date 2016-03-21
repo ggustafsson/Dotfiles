@@ -22,6 +22,7 @@ set encoding=utf-8
 set formatoptions=cjlnoqrt
 set nofoldenable
 set nowrap
+set omnifunc=syntaxcomplete#Complete
 set sessionoptions-=options
 set showbreak=+
 set spelllang=en,sv
@@ -169,7 +170,7 @@ vnoremap <Leader>so :sort<CR>
 inoremap jj <Esc>
 
 inoremap <expr><Tab> CompleteTab()
-inoremap <expr><C-o> CompleteOmni()
+inoremap <expr><C-n> CompleteOmni()
 
 inoremap (<CR> (<CR>)<Esc>O
 inoremap {<CR> {<CR>}<Esc>O
@@ -211,11 +212,12 @@ function! ColorColumn()
   endif
 endfunction
 
-" Make it easier to use omni completion. Ctrl-O instead of Ctrl-X + Ctrl-O.
+" Makes it possible to use omni completion with one key instead of the default
+" Ctrl-X + Ctrl-O.
 "
-" inoremap <expr><C-o> CompleteOmni()
+" inoremap <expr><C-n> CompleteOmni()
 function! CompleteOmni()
-  " Only send <C-x> the first time, not when completion menu is present.
+  " Send <C-x> when completion menu is not already present.
   if !pumvisible()
     return "\<C-x>\<C-o>"
   else
@@ -223,7 +225,7 @@ function! CompleteOmni()
   endif
 endfunction
 
-" Turn the tab key into <C-n> (keyboard completion) if there are characters to
+" Turn the tab key into <C-n> (keyword completion) if there are characters to
 " the left of the cursor, normal tab key is inserted otherwise.
 "
 " inoremap <expr><Tab> CompleteTab()
