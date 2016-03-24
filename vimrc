@@ -20,6 +20,7 @@ set confirm
 set cryptmethod=blowfish
 set encoding=utf-8
 set formatoptions=cjlnoqrt
+set hidden
 set nofoldenable
 set nowrap
 set omnifunc=syntaxcomplete#Complete
@@ -74,6 +75,7 @@ set splitright
 set t_vb=
 set visualbell
 
+let g:loaded_matchparen = 1
 let g:mapleader = ","
 let g:syntastic_python_python_exec = system("which python3")
 
@@ -107,7 +109,6 @@ nnoremap <Leader>bk :bdelete<CR>
 nnoremap <Leader>bl :buffers<CR>
 nnoremap <Leader>cc :call ColorColumn()<CR>
 nnoremap <Leader>cd :cd <C-R>=escape(expand("%:p:h"), ' \')<CR>/
-nnoremap <Leader>co :call NERDComment("n", "toggle")<CR>
 nnoremap <Leader>do :edit ~/Documents/Text\ Files/
 nnoremap <Leader>ed :edit <C-R>=escape(expand("%:p:h"), ' \')<CR>/
 nnoremap <Leader>eh :edit ~/
@@ -118,10 +119,9 @@ nnoremap <Leader>ft :set filetype=
 nnoremap <Leader>gu :GundoToggle<CR>
 nnoremap <Leader>in :.-1read ~/.vim/templates/
 nnoremap <Leader>li :set list!<CR>
-nnoremap <Leader>ne :enew<CR>
 nnoremap <Leader>no :edit ~/Documents/Text\ Files/Notes.txt<CR>
 nnoremap <Leader>nu :set number! \| set relativenumber!<CR>
-nnoremap <Leader>re :%s//gc<Left><Left><Left>
+nnoremap <Leader>pa :set paste!<CR>
 nnoremap <Leader>rs :source ~/.vim/session.vim<CR>
 nnoremap <Leader>s2 :setlocal expandtab shiftwidth=2 softtabstop=2<CR>
 nnoremap <Leader>s4 :setlocal expandtab shiftwidth=4 softtabstop=4<CR>
@@ -137,12 +137,30 @@ nnoremap <Leader>tm :edit ~/Documents/Text\ Files/Temporary.txt<CR>
 nnoremap <Leader>to :edit ~/Documents/Text\ Files/To-do\ List.txt<CR>
 nnoremap <Leader>tr :NERDTreeToggle<CR>
 nnoremap <Leader>tw :set textwidth=79
-nnoremap <Leader>un :edit!<CR>
+nnoremap <Leader>un :call UndoAll()<CR>
 nnoremap <Leader>vi :edit ~/.vimrc<CR>
 nnoremap <Leader>w3 :!~/Scripts/validate "%"<CR>
 nnoremap <Leader>wr :set wrap!<CR>
 nnoremap <Leader>ws :%s/\s\+$//e \| nohlsearch<CR>
 nnoremap <Leader>zs :edit ~/.zshrc<CR>
+
+nnoremap <Leader>cl :%!column -t<CR>
+vnoremap <Leader>cl :!column -t<CR>
+
+nnoremap <Leader>co :call NERDComment("n", "toggle")<CR>
+vnoremap <Leader>co :call NERDComment("x", "toggle")<CR>
+
+nnoremap <Leader>ne :enew<CR>
+vnoremap <Leader>ne y:enew<CR>P
+
+vnoremap <Leader>re :s/\%V/gc<Left><Left><Left>
+nnoremap <Leader>re :%s//gc<Left><Left><Left>
+
+nnoremap <Leader>so :sort<CR>
+vnoremap <Leader>so :sort<CR>
+
+nnoremap <silent><Backspace> :nohlsearch \| echo<CR>
+vnoremap <silent><Backspace> <Esc>:nohlsearch \| echo<CR>
 
 nnoremap vil ^vg_
 nnoremap Y   y$
@@ -155,17 +173,8 @@ nnoremap - <C-w>-
 nnoremap ? <C-w>>
 nnoremap _ <C-w><
 
-nnoremap <Tab>               :buffer<Space>
-nnoremap <silent><C-p>       :set paste!<CR>
-nnoremap <silent><C-w>t      :tab split<CR>
-nnoremap <silent><Backspace> :nohlsearch \| echo<CR>
-vnoremap <silent><Backspace> <Esc>:nohlsearch \| echo<CR>
-
-vnoremap <Leader>cl :!column -t<CR>
-vnoremap <Leader>co :call NERDComment("x", "toggle")<CR>
-vnoremap <Leader>ne y:enew<CR>P
-vnoremap <Leader>re :s/\%V/gc<Left><Left><Left>
-vnoremap <Leader>so :sort<CR>
+nnoremap <Tab>          :buffer<Space>
+nnoremap <silent><C-w>t :tab split<CR>
 
 inoremap jj <Esc>
 
@@ -254,6 +263,17 @@ function! FixFile()
 
   %s/\s\+$//e " Remove all whitespaces.
   nohlsearch
+endfunction
+
+" Undo all changes since last file write, unsaved buffers are emptied.
+function! UndoAll()
+  let filename = expand("%")
+
+  if !empty(filename)
+    edit!
+  else
+    earlier 1f
+  endif
 endfunction
 
 augroup Main
