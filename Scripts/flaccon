@@ -72,7 +72,7 @@ for arg; do
     typeset $tag=$information
   done
 
-  print -P "%B%F{cyan}Converting file '${arg}' to MP3.%f%b\n"
+  print -P "%B%F{cyan}Converting file: ${arg/${HOME}/~}%f%b\n"
 
   # Print out all tag information.
   for tag in $tags; do

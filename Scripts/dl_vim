@@ -19,7 +19,7 @@ function fetch {
   fi
 }
 
-echo "Fetching Vim plugins!"
+echo "Fetching Vim plugins."
 
 mkdir -p ~/.vim/autoload
 mkdir -p ~/.vim/bundle

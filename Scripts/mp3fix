@@ -40,7 +40,7 @@ for arg; do
     continue
   fi
 
-  print -P "%B%F{cyan}Fixing tags in file '${arg}'.%f%b\n"
+  print -P "%B%F{cyan}Fixing file: ${arg/${HOME}/~}%f%b\n"
 
   # All the tags that will be saved. ARTIST, ALBUM and SONG.
   tags=(TPE1 TALB TIT2)
