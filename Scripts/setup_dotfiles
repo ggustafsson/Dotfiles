@@ -8,24 +8,19 @@
 # Written by Göran Gustafsson (gustafsson.g at gmail.com).
 # License: BSD 3-Clause.
 
-if [[ ! $OSTYPE == darwin* ]]; then
-  git clone https://github.com/ggustafsson/IP-Kalkylatorn.git ~/Projects/IP\ Kalkylatorn
-  git clone https://github.com/ggustafsson/Ninja-Color-Scheme.git ~/Projects/Ninja\ Color\ Scheme
-  git clone https://github.com/ggustafsson/Static-Color-Scheme.git ~/Projects/Static\ Color\ Scheme
-  git clone https://github.com/ggustafsson/Tim.git ~/Projects/Tim
-fi
-
-mkdir ~/.ssh
-mkdir ~/.vim
-mkdir ~/.vim/autoload
-mkdir ~/.vim/backups
-mkdir ~/.vim/bundle
-mkdir ~/.vim/colors
-mkdir ~/.vim/undos
+mkdir -p ~/.ssh
+mkdir -p ~/.vim/backups
+mkdir -p ~/.vim/colors
+mkdir -p ~/.vim/undos
 
 if [[ $OSTYPE == darwin* ]]; then
   ln -s ~/Projects/hammerspoon ~/.hammerspoon
 else
+  git clone https://github.com/ggustafsson/IP-Kalkylatorn.git ~/Projects/IP\ Kalkylatorn
+  git clone https://github.com/ggustafsson/Ninja-Color-Scheme.git ~/Projects/Ninja\ Color\ Scheme
+  git clone https://github.com/ggustafsson/Static-Color-Scheme.git ~/Projects/Static\ Color\ Scheme
+  git clone https://github.com/ggustafsson/Tim.git ~/Projects/Tim
+
   ln -s ~/Projects/IP\ Kalkylatorn/ipkalk ~/Scripts/ipkalk
   ln -s ~/Projects/Tim/tim ~/Scripts/tim
 fi
@@ -36,13 +31,11 @@ ln -s ~/Projects/Dot\ Files/gitignore_global ~/.gitignore_global
 ln -s ~/Projects/Dot\ Files/ssh_config ~/.ssh/config
 ln -s ~/Projects/Dot\ Files/timrc ~/.timrc
 ln -s ~/Projects/Dot\ Files/tmux.conf ~/.tmux.conf
+ln -s ~/Projects/Dot\ Files/vim/templates ~/.vim/templates
 ln -s ~/Projects/Dot\ Files/vimrc ~/.vimrc
 ln -s ~/Projects/Dot\ Files/zshenv ~/.zshenv
 ln -s ~/Projects/Dot\ Files/zshrc ~/.zshrc
-
-~/Scripts/dl_vim install
-
-ln -s ~/.vim/pathogen/autoload/pathogen.vim ~/.vim/autoload/
-ln -s ~/Projects/Dot\ Files/vim/templates ~/.vim/templates
 ln -s ~/Projects/Ninja\ Color\ Scheme/colors/ninja.vim ~/.vim/colors/
 ln -s ~/Projects/Static\ Color\ Scheme/colors/static.vim ~/.vim/colors/
+
+~/Scripts/dl_vim install

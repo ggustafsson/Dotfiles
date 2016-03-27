@@ -8,7 +8,12 @@
 # License: BSD 3-Clause.
 
 packages=(
+  github.com/alecthomas/gometalinter
+  github.com/fatih/motion
   github.com/golang/lint/golint
+  github.com/jstemmer/gotags
+  github.com/kisielk/errcheck
+  github.com/klauspost/asmfmt/cmd/asmfmt
   github.com/nsf/gocode
   github.com/rogpeppe/godef
   golang.org/x/tools/cmd/goimports
