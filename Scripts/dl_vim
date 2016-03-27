@@ -11,7 +11,7 @@ function fetch {
   dir=$1
   url=$2
 
-  print -P "\n%B%F{cyan}Fetching: ${dir:t}%f%b"
+  print -P "\n%B%F{cyan}Fetching plugin: ${dir:t}%f%b"
   if [[ -d $dir ]]; then
     git -C $dir pull
   else
