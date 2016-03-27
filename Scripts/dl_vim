@@ -1,47 +1,38 @@
 #!/usr/bin/env zsh
 
-# Description: This script downloads and updates Vim plugins.
+# Description: This script downloads/updates Vim plugins.
 #
 # Usage: dl_vim
-#        dl_vim install
 #
 # Written by Göran Gustafsson (gustafsson.g at gmail.com).
 # License: BSD 3-Clause.
 
-if [[ $1 == install ]]; then
-  echo "Downloading Vim plugins!\n"
+function fetch {
+  dir=$1
+  url=$2
 
-  mkdir -p ~/.vim/bundle
-  cd ~/.vim/bundle
-
-  git clone https://github.com/fatih/vim-go.git
-  git clone https://github.com/scrooloose/nerdcommenter.git
-  git clone https://github.com/scrooloose/nerdtree.git
-  git clone https://github.com/scrooloose/syntastic.git
-  git clone https://github.com/sjl/gundo.vim.git
-  git clone https://github.com/tpope/vim-endwise.git
-  git clone https://github.com/tpope/vim-pathogen.git ~/.vim/vim-pathogen
-  git clone https://github.com/tpope/vim-repeat.git
-  git clone https://github.com/tpope/vim-speeddating.git
-  git clone https://github.com/tpope/vim-surround.git
-
-  mkdir -p ~/.vim/autoload
-  ln -s ~/.vim/vim-pathogen/autoload/pathogen.vim ~/.vim/autoload/
-else
-  plugins=(~/.vim/vim-pathogen(N) ~/.vim/bundle/*(N))
-
-  if [[ -z $plugins ]]; then
-    echo "No Vim plugins found! Exiting..."
-    exit 1
+  print -P "\n%B%F{cyan}Fetching: ${dir:t}%f%b"
+  if [[ -d $dir ]]; then
+    git -C $dir pull
+  else
+    git clone $url $dir
   fi
+}
 
-  echo "Updating all Vim plugins!"
+echo "Fetching Vim plugins!"
 
-  for plugin in $plugins; do
-    if [[ -d $plugin ]]; then
-      print -P "\n%B%F{cyan}Running git pull on: ${plugin:t}%f%b"
-      cd $plugin
-      git pull
-    fi
-  done
-fi
+mkdir -p ~/.vim/autoload
+mkdir -p ~/.vim/bundle
+
+fetch ~/.vim/vim-pathogen https://github.com/tpope/vim-pathogen.git
+ln -s ~/.vim/vim-pathogen/autoload/pathogen.vim ~/.vim/autoload/pathogen.vim &> /dev/null
+
+fetch ~/.vim/bundle/gundo.vim       https://github.com/sjl/gundo.vim.git
+fetch ~/.vim/bundle/nerdcommenter   https://github.com/scrooloose/nerdcommenter.git
+fetch ~/.vim/bundle/nerdtree        https://github.com/scrooloose/nerdtree.git
+fetch ~/.vim/bundle/syntastic       https://github.com/scrooloose/syntastic.git
+fetch ~/.vim/bundle/vim-endwise     https://github.com/tpope/vim-endwise.git
+fetch ~/.vim/bundle/vim-go          https://github.com/fatih/vim-go.git
+fetch ~/.vim/bundle/vim-repeat      https://github.com/tpope/vim-repeat.git
+fetch ~/.vim/bundle/vim-speeddating https://github.com/tpope/vim-speeddating.git
+fetch ~/.vim/bundle/vim-surround    https://github.com/tpope/vim-surround.git
