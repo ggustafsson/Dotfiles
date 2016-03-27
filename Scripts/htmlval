@@ -4,10 +4,9 @@
 # http://validator.w3.org from the command line.
 #
 # I have this in ~/.vimrc so i can easily validate files inside of Vim:
+# nnoremap <Leader>w3 :!~/Scripts/htmlval "%"<CR>
 #
-# nnoremap <Leader>w3 :!~/Scripts/validate "%"<CR>
-#
-# Usage: validate <file(s)>
+# Usage: htmlval <file(s)>
 #
 # Written by Göran Gustafsson (gustafsson.g at gmail.com).
 # License: BSD 3-Clause.
@@ -17,7 +16,7 @@ if [[ $# -eq 0 ]]; then
   exit
 fi
 
-echo "Validating HTML file(s)."
+echo "Validating HTML file(s) using W3C's Markup Validation Service."
 
 for arg; do
   if [[ ! -f $arg ]]; then
@@ -25,7 +24,7 @@ for arg; do
     continue
   fi
 
-  print -P "\n%B%F{cyan}Validating file: ${arg/${HOME}/~}%f%b\n"
+  print -P "\n%B%F{cyan}Checking file: ${arg/${HOME}/~}%f%b"
 
   # Changes the directory to where the file is. Otherwise upload won't work :(
   cd ${arg:A:h}
@@ -45,7 +44,7 @@ for arg; do
   parsed_results=$(echo $results | egrep "(\"lastLine\":|\"message\":)")
 
   if [[ ! -z $parsed_results ]]; then
-    echo "Found error(s) on line(s):\n"
+    echo "Found error(s) on line(s):"
 
     # Modify output with "sed" the following ways:
     # 1. Remove spaces and tabs at beginning of lines.

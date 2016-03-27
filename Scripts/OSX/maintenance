@@ -19,9 +19,9 @@ if [[ $answer == (y|yes) ]]; then
   echo
   brew cleanup
   echo
-  fetch_go
+  fetch-go
   echo
-  fetch_vim
+  fetch-vim
   echo
   frees
   echo

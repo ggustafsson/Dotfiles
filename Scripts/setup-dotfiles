@@ -3,7 +3,7 @@
 # Description: This script fetches git repos, creates symlinks, directories etc
 # so i can easily get my environment the way i want.
 #
-# Usage: setup_dotfiles
+# Usage: setup-dotfiles
 #
 # Written by Göran Gustafsson (gustafsson.g at gmail.com).
 # License: BSD 3-Clause.
@@ -38,4 +38,4 @@ ln -s ~/Projects/Dot\ Files/zshrc ~/.zshrc
 ln -s ~/Projects/Ninja\ Color\ Scheme/colors/ninja.vim ~/.vim/colors/
 ln -s ~/Projects/Static\ Color\ Scheme/colors/static.vim ~/.vim/colors/
 
-~/Scripts/fetch_vim
+~/Scripts/fetch-vim

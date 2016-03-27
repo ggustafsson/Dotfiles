@@ -2,7 +2,7 @@
 
 # Description: This script installs/updates Go packages.
 #
-# Usage: fetch_go
+# Usage: fetch-go
 #
 # Written by Göran Gustafsson (gustafsson.g at gmail.com).
 # License: BSD 3-Clause.

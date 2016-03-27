@@ -2,7 +2,7 @@
 
 # Description: This script configures a Ubuntu system the way i like.
 #
-# Usage: setup_ubuntu
+# Usage: setup-ubuntu
 #
 # Written by Göran Gustafsson (gustafsson.g at gmail.com).
 # License: BSD 3-Clause.
@@ -28,4 +28,4 @@ sudo chsh -s /bin/zsh $USER
 mkdir ~/Projects
 git clone https://github.com/ggustafsson/Dot-Files.git ~/Projects/Dot\ Files
 
-~/Projects/Dot\ Files/Scripts/setup_dotfiles
+~/Projects/Dot\ Files/Scripts/setup-dotfiles

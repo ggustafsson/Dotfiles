@@ -2,7 +2,7 @@
 
 # Description: This script configures a OS X system the way i like.
 #
-# Usage: setup_osx
+# Usage: setup-osx
 #
 # Written by Göran Gustafsson (gustafsson.g at gmail.com).
 # License: BSD 3-Clause.
@@ -109,4 +109,4 @@ echo
 /usr/local/bin/pip3 install mutagen simpy
 
 echo
-~/Scripts/setup_dotfiles
+~/Scripts/setup-dotfiles

@@ -22,6 +22,6 @@ for directory in ~/Projects/*; do
 done
 
 echo
-fetch_go
+fetch-go
 echo
-fetch_vim
+fetch-vim

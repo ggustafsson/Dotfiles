@@ -2,7 +2,7 @@
 
 # Description: This script downloads/updates Vim plugins.
 #
-# Usage: fetch_vim
+# Usage: fetch-vim
 #
 # Written by Göran Gustafsson (gustafsson.g at gmail.com).
 # License: BSD 3-Clause.
