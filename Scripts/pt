@@ -1,0 +1,31 @@
+#!/usr/bin/env zsh
+
+# Description: This script prints out the content of file .todo or adds a new
+# entry to the bottom of the file.
+#
+# I use the following in Vim:
+# nnoremap <Leader>pt :edit <C-R>=escape(expand("%:p:h"), ' \')<CR>/.todo<CR>
+#
+# Usage: pt
+#        pt <text>
+#
+# Written by Göran Gustafsson (gustafsson.g at gmail.com).
+# License: BSD 3-Clause.
+
+filename=.todo
+
+if [[ $# -ge 1 ]]; then
+  echo "Adding to-do entry."
+  if [[ -f $filename ]]; then
+    echo $* >> $filename
+  else
+    echo $* > $filename
+  fi
+else
+  if [[ ! -f $filename ]]; then
+    echo "File '${filename}' does not exist! Exiting..."
+    exit 1
+  fi
+
+  cat $filename
+fi

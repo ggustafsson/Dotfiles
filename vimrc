@@ -121,6 +121,7 @@ nnoremap <Leader>li :set list!<CR>
 nnoremap <Leader>no :edit ~/Documents/Text\ Files/Notes.txt<CR>
 nnoremap <Leader>nu :set number! \| set relativenumber!<CR>
 nnoremap <Leader>pa :set paste!<CR>
+nnoremap <Leader>pt :edit <C-R>=escape(expand("%:p:h"), ' \')<CR>/.todo<CR>
 nnoremap <Leader>rs :source ~/.vim/session.vim<CR>
 nnoremap <Leader>s2 :setlocal expandtab shiftwidth=2 softtabstop=2<CR>
 nnoremap <Leader>s4 :setlocal expandtab shiftwidth=4 softtabstop=4<CR>

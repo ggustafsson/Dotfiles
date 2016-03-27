@@ -1,8 +1,11 @@
 #!/usr/bin/env zsh
 
 # Description: This script prints out the content of my $TODO_FILE file or adds
-# a new entry to the bottom of the file. The variable TODO_FILE is set from
+# a new entry to the top of the file. The variable TODO_FILE is set from
 # ~/.zshrc with "export TODO_FILE=path".
+#
+# I use the following in Vim:
+# nnoremap <Leader>to :edit ~/Documents/Text\ Files/To-do\ List.txt<CR>
 #
 # Usage: t
 #        t <text>
@@ -16,7 +19,7 @@ if [[ -z $TODO_FILE ]]; then
 fi
 
 if [[ $# -ge 1 ]]; then
-  echo "Adding new entry to to-do list."
+  echo "Adding to-do entry."
   if [[ -f $TODO_FILE ]]; then
     cp $TODO_FILE ${TODO_FILE}.tmp
     echo $* > $TODO_FILE
