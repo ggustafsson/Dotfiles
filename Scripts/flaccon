@@ -37,15 +37,13 @@ else
 fi
 
 for arg; do
-  echo
-
   if [[ ! -f $arg ]]; then
-    echo "File '${arg}' does not exist! Skipping..."
+    echo "\nFile '${arg}' does not exist! Skipping..."
     continue
   fi
 
   if [[ ! $arg == *.flac ]]; then
-    echo "File '${arg}' does not end with '.flac'! Skipping..."
+    echo "\nFile '${arg}' does not end with '.flac'! Skipping..."
     continue
   fi
 
@@ -72,7 +70,7 @@ for arg; do
     typeset $tag=$information
   done
 
-  print -P "%B%F{cyan}Converting file: ${arg/${HOME}/~}%f%b\n"
+  print -P "\n%B%F{cyan}Converting file: ${arg/${HOME}/~}%f%b\n"
 
   # Print out all tag information.
   for tag in $tags; do

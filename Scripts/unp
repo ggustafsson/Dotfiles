@@ -18,14 +18,12 @@ fi
 echo "Extracting archive(s)."
 
 for arg; do
-  echo
-
   if [[ ! -f $arg ]]; then
-    echo "File '${arg}' does not exist! Skipping..."
+    echo "\nFile '${arg}' does not exist! Skipping..."
     continue
   fi
 
-  echo "Unpacking file '${arg}'."
+  print -P "\n%B%F{cyan}Unpacking file: ${arg/${HOME}/~}%f%b\n"
 
   case $arg in
     *.tar.bz2) tar xvf $arg ;; # Must come before "*.bz2".

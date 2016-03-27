@@ -20,14 +20,12 @@ fi
 echo "Validating HTML file(s)."
 
 for arg; do
-  echo
-
   if [[ ! -f $arg ]]; then
-    echo "File '${arg}' does not exist! Skipping..."
+    echo "\nFile '${arg}' does not exist! Skipping..."
     continue
   fi
 
-  echo "Validating file '${arg}'."
+  print -P "\n%B%F{cyan}Validating file: ${arg/${HOME}/~}%f%b\n"
 
   # Changes the directory to where the file is. Otherwise upload won't work :(
   cd ${arg:A:h}

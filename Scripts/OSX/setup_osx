@@ -97,13 +97,13 @@ sudo mv ~/Downloads/homebrew/{*,.*} /usr/local/
 echo "Adding new Zsh to login shells:"
 echo "/usr/local/bin/zsh" | sudo tee -a /etc/shells
 
-ln -s /usr/local/bin/ghead /usr/local/bin/head
-ln -s /usr/local/bin/gls /usr/local/bin/ls
-ln -s /usr/local/bin/gsed /usr/local/bin/sed
-ln -s /usr/local/bin/gsort /usr/local/bin/sort
-ln -s /usr/local/bin/gtail /usr/local/bin/tail
-ln -s /usr/local/bin/guniq /usr/local/bin/uniq
-ln -s /usr/local/bin/gwc /usr/local/bin/wc
+ln -s /usr/local/bin/{g,}head
+ln -s /usr/local/bin/{g,}ls
+ln -s /usr/local/bin/{g,}sed
+ln -s /usr/local/bin/{g,}sort
+ln -s /usr/local/bin/{g,}tail
+ln -s /usr/local/bin/{g,}uniq
+ln -s /usr/local/bin/{g,}wc
 
 echo
 /usr/local/bin/pip3 install mutagen simpy
