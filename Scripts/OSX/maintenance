@@ -14,7 +14,9 @@ read answer
 if [[ $answer == (y|yes) ]]; then
   echo
   brew update
+  echo
   brew upgrade --all
+  echo
   brew cleanup
   echo
   dl_go

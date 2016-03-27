@@ -13,10 +13,6 @@ echo
 sudo apt full-upgrade
 echo
 sudo apt-get autoremove
-echo
-dl_go
-echo
-dl_vim
 
 for directory in ~/Projects/*; do
   if [[ -d $directory ]]; then
@@ -25,3 +21,8 @@ for directory in ~/Projects/*; do
     git pull
   fi
 done
+
+echo
+dl_go
+echo
+dl_vim
