@@ -104,17 +104,23 @@ zstyle ":completion:*:warnings" format "zsh: no matches found." # Display warnin
 
 [[ $OSTYPE == darwin* ]] && compdef _man man2pdf
 
-function git_status {
+function prompt_git {
   if [[ -n $(git status --short 2> /dev/null) ]]; then
     echo "%B%F{red}[+]%f%b "
   fi
 }
 
+function prompt_todo {
+  if [[ -f .todo ]]; then
+    echo "%B%F{green}[t]%f%b "
+  fi
+}
+
 # Custom Vi replace function that changes a variable before entering replace
 # mode and afterwards resets the variable. The variable is used under the
-# zsh_mode function later on.
+# prompt_mode function later on.
 function custom-vi-replace {
-  replace=1 && zle vi-replace && replace=0
+  prompt_replace=1 && zle vi-replace && prompt_replace=0
 }
 zle -N custom-vi-replace
 
@@ -127,10 +133,10 @@ zle -N zle-line-init && zle -N zle-keymap-select
 
 # Part of the custom Vi replace functionality. This is the output part that
 # will be used in the prompt to indicate the current Vi mode.
-function zsh_mode {
+function prompt_mode {
   if [[ $KEYMAP == vicmd ]]; then
     echo "%B%F{red}E%f%b"
-  elif [[ $replace -eq 1 ]]; then
+  elif [[ $prompt_replace -eq 1 ]]; then
     echo "%B%F{red}R%f%b"
   else
     echo "%B%F{blue}$%f%b"
@@ -138,15 +144,15 @@ function zsh_mode {
 }
 
 if [[ $HOST == Coruscant* ]]; then
-  zsh_host="%B%F{yellow}%m%f%b"
+  prompt_host="%B%F{yellow}%m%f%b"
 elif [[ $HOST == *-VM ]]; then
-  zsh_host="%B%F{green}%m%f%b"
+  prompt_host="%B%F{green}%m%f%b"
 else
-  zsh_host="%B%F{red}%m%f%b"
+  prompt_host="%B%F{red}%m%f%b"
 fi
 
-# Coruscant ~/Projects/Dot Files [+] $
-PROMPT='${zsh_host} ${PWD/${HOME}/~} $(git_status)$(zsh_mode) '
+# Coruscant ~/Projects/Dot Files [t] [+] $
+PROMPT='${prompt_host} ${PWD/${HOME}/~} $(prompt_todo)$(prompt_git)$(prompt_mode) '
 
 if [[ $OSTYPE == darwin* ]]; then
   alias beep="afplay /System/Library/Sounds/Glass.aiff"
