@@ -15,7 +15,6 @@ colorscheme static
 
 set backspace=indent,eol,start
 set colorcolumn=80
-set completeopt-=preview
 set confirm
 set cryptmethod=blowfish
 set encoding=utf-8
@@ -23,7 +22,6 @@ set formatoptions=cjlnoqrt
 set hidden
 set nofoldenable
 set nowrap
-set omnifunc=syntaxcomplete#Complete
 set sessionoptions-=options
 set showbreak=+
 set spelllang=en,sv
@@ -40,14 +38,15 @@ set directory=~/.vim/backups
 set undofile
 set undodir=~/.vim/undos
 
+set completeopt-=preview
+set omnifunc=syntaxcomplete#Complete
+
 set expandtab
 set shiftwidth=2
 set softtabstop=2
 
 set hlsearch
-set ignorecase
 set incsearch
-set smartcase
 
 " ~/.vimrc [+] [utf-8] [unix] [vim]    1, 46/260
 set laststatus=2
