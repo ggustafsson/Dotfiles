@@ -4,10 +4,10 @@
 # entry to the bottom of the file.
 #
 # I use the following in Vim:
-# nnoremap <Leader>tp :edit <C-R>=escape(expand("%:p:h"), ' \')<CR>/.todo<CR>
+# nnoremap <Leader>pt :edit <C-R>=escape(expand("%:p:h"), ' \')<CR>/.todo<CR>
 #
-# Usage: tp
-#        tp <text>
+# Usage: pt
+#        pt <text>
 #
 # Written by Göran Gustafsson (gustafsson.g at gmail.com).
 # License: BSD 3-Clause.

@@ -121,6 +121,7 @@ nnoremap <Leader>li :set list!<CR>
 nnoremap <Leader>no :edit ~/Documents/Text\ Files/Notes.txt<CR>
 nnoremap <Leader>nu :set number! \| set relativenumber!<CR>
 nnoremap <Leader>pa :set paste!<CR>
+nnoremap <Leader>pt :edit <C-R>=escape(expand("%:p:h"), ' \')<CR>/.todo<CR>
 nnoremap <Leader>rs :source ~/.vim/session.vim<CR>
 nnoremap <Leader>s2 :setlocal expandtab shiftwidth=2 softtabstop=2<CR>
 nnoremap <Leader>s4 :setlocal expandtab shiftwidth=4 softtabstop=4<CR>
@@ -134,7 +135,6 @@ nnoremap <Leader>t8 :setlocal noexpandtab shiftwidth=8 softtabstop=0 tabstop=8<C
 nnoremap <Leader>ta :tab sball<CR>
 nnoremap <Leader>tm :edit ~/Documents/Text\ Files/Temporary.txt<CR>
 nnoremap <Leader>to :edit ~/Documents/Text\ Files/To-do\ List.txt<CR>
-nnoremap <Leader>tp :edit <C-R>=escape(expand("%:p:h"), ' \')<CR>/.todo<CR>
 nnoremap <Leader>tr :NERDTreeToggle<CR>
 nnoremap <Leader>tw :set textwidth=79
 nnoremap <Leader>un :call UndoAll()<CR>
