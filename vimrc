@@ -120,7 +120,6 @@ nnoremap <Leader>in :.-1read ~/.vim/templates/
 nnoremap <Leader>li :set list!<CR>
 nnoremap <Leader>no :edit ~/Documents/Text\ Files/Notes.txt<CR>
 nnoremap <Leader>nu :set number! \| set relativenumber!<CR>
-nnoremap <Leader>pa :set paste!<CR>
 nnoremap <Leader>pt :edit <C-R>=escape(expand("%:p:h"), ' \')<CR>/.todo<CR>
 nnoremap <Leader>rs :source ~/.vim/session.vim<CR>
 nnoremap <Leader>s2 :setlocal expandtab shiftwidth=2 softtabstop=2<CR>
@@ -179,7 +178,6 @@ nnoremap <silent><C-w>t :tab split<CR>
 inoremap jj <Esc>
 
 inoremap <expr><Tab> CompleteTab()
-inoremap <expr><C-n> CompleteOmni()
 
 inoremap (<CR> (<CR>)<Esc>O
 inoremap {<CR> {<CR>}<Esc>O
@@ -218,19 +216,6 @@ function! ColorColumn()
   else
     echo "setlocal colorcolumn="
     setlocal colorcolumn=
-  endif
-endfunction
-
-" Makes it possible to use omni completion with one key instead of the default
-" Ctrl-X + Ctrl-O.
-"
-" inoremap <expr><C-n> CompleteOmni()
-function! CompleteOmni()
-  " Send <C-x> when completion menu is not already present.
-  if !pumvisible()
-    return "\<C-x>\<C-o>"
-  else
-    return "\<C-o>"
   endif
 endfunction
 
