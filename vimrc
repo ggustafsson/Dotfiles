@@ -184,20 +184,15 @@ inoremap (<CR> (<CR>)<Esc>O
 inoremap {<CR> {<CR>}<Esc>O
 
 " Delete buffers in a more user friendly way (try to not close split windows).
+" This function will act odd if options confirm and hidden are not enabled.
 function! BufferDelete()
-  if &modified
-    echohl ErrorMsg
-    echo "No write since last change. Not closing buffer!"
-    echohl None
-  else
-    let buffer_count = len(filter(range(1, bufnr("$")), "buflisted(v:val)"))
+  let buffer_count = len(filter(range(1, bufnr("$")), "buflisted(v:val)"))
 
-    if buffer_count == 1
-      bdelete
-    else
-      bprevious
-      bdelete #
-    endif
+  if buffer_count == 1
+    bdelete
+  else
+    bprevious
+    bdelete #
   endif
 endfunction
 
