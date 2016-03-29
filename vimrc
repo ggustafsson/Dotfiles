@@ -18,7 +18,7 @@ set colorcolumn=80
 set confirm
 set cryptmethod=blowfish
 set encoding=utf-8
-set formatoptions=cjlnoqrt
+set formatoptions+=jlnor
 set hidden
 set nofoldenable
 set nowrap
@@ -160,7 +160,7 @@ nnoremap <Leader>so :sort<CR>
 vnoremap <Leader>so :sort<CR>
 
 nnoremap <silent><Backspace> :nohlsearch \| echo<CR>
-vnoremap <silent><Backspace> <Esc>:nohlsearch \| echo<CR>
+vnoremap <silent><Backspace> <Esc>:nohlsearch<CR>
 
 nnoremap vil ^vg_
 nnoremap Y   y$
@@ -238,8 +238,8 @@ endfunction
 
 " Fix file encoding, file format, tabs and remove whitespaces.
 function! FixFile()
-  set fileencoding=utf-8
-  set fileformat=unix
+  setlocal fileencoding=utf-8
+  setlocal fileformat=unix
 
   setlocal expandtab
   setlocal shiftwidth=2
@@ -277,7 +277,7 @@ augroup Main
   autocmd FileType godoc,help setlocal colorcolumn= nolist
   autocmd FileType markdown   setlocal expandtab shiftwidth=4 softtabstop=4
   autocmd FileType python     setlocal expandtab shiftwidth=4 softtabstop=4
-  autocmd FileType qf         setlocal colorcolumn= nolist nonumber norelativenumber
+  autocmd FileType qf         setlocal colorcolumn= nolist nonumber norelativenumber " QuickFix buffer.
 
   autocmd FileType go nmap <Leader>gd <Plug>(go-doc)
   autocmd FileType go nmap <Leader>gi <Plug>(go-info)
