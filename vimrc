@@ -173,6 +173,7 @@ nnoremap ? <C-w>>
 nnoremap _ <C-w><
 
 nnoremap <Tab>          :buffer<Space>
+nnoremap <silent><C-p>  :set paste!<CR>
 nnoremap <silent><C-w>t :tab split<CR>
 
 inoremap jj <Esc>
