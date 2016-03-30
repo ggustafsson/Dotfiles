@@ -1,5 +1,6 @@
-// Created by Göran Gustafsson (gustafsson.g at gmail.com).
-// License: BSD 3-Clause.
+// Version: 0.1
+// License: BSD 3-Clause
+// Creator: Göran Gustafsson (gustafsson.g at gmail.com)
 
 package main
 
