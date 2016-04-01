@@ -9,9 +9,7 @@
 # License: BSD 3-Clause.
 
 sudo apt update
-echo
 sudo apt full-upgrade
-echo
 sudo apt-get autoremove
 
 for directory in ~/Projects/*; do
