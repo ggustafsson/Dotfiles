@@ -97,6 +97,7 @@ command! Sudo w !sudo tee %
 " -nargs=? means 0 or 1 arguments are allowed.
 command! -nargs=? Helpt tab help <args>
 command! -nargs=? Helpv vertical help <args>
+command! -nargs=1 -complete=file Insert call Insert(<q-args>)
 
 if has("mac")
   nnoremap <Leader>fi :silent !open "%:p:h"<CR>
@@ -116,7 +117,7 @@ nnoremap <Leader>fe :set fileformat=unix \| set fileencoding=utf-8
 nnoremap <Leader>ff :call FixFile()<CR>
 nnoremap <Leader>ft :set filetype=
 nnoremap <Leader>gu :GundoToggle<CR>
-nnoremap <Leader>in :.-1read ~/.vim/templates/
+nnoremap <Leader>in :Insert ~/.vim/templates/
 nnoremap <Leader>li :set list!<CR>
 nnoremap <Leader>no :edit ~/Documents/Text\ Files/Notes.txt<CR>
 nnoremap <Leader>nu :set number! \| set relativenumber!<CR>
@@ -244,6 +245,24 @@ function! FixFile()
 
   %s/\s\+$//e " Remove all whitespaces.
   nohlsearch
+endfunction
+
+" Inserts template files above cursor, not below which is the read commands
+" default behavior. If the buffer only has one empty line then it also removes
+" the empty line after insert.
+"
+" command! -nargs=1 -complete=file Insert call Insert(<q-args>)
+" nnoremap <Leader>in :Insert ~/.vim/templates/
+function! Insert(file)
+  let lines = line('$')
+  let text = getline('.')
+
+  if lines == 1 && empty(text)
+    execute "read" fnameescape(a:file)
+    execute "normal ggdd\<Esc>"
+  else
+    execute ".-read" fnameescape(a:file)
+  endif
 endfunction
 
 " Undo all changes since last file write, unsaved buffers are emptied.
