@@ -1,6 +1,6 @@
 # I use this so the connection will die by itself when my laptop goes to sleep.
-# Otherwise i will have to kill ssh by hand when i return.
-ServerAliveInterval 15
+# Otherwise I will have to kill the SSH client by hand when I return.
+ServerAliveInterval 30
 ServerAliveCountMax 2
 
 Host fulknark.se
