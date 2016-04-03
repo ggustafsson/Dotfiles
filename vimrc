@@ -286,8 +286,8 @@ augroup Main
   autocmd BufNewFile,BufReadPost *.conf,config setlocal filetype=conf
   autocmd BufNewFile,BufReadPost *.md          setlocal filetype=markdown
 
-  autocmd FileType gitcommit  setlocal colorcolumn=73 nolist spell textwidth=72
-  autocmd FileType go         setlocal noexpandtab nolist shiftwidth=4 softtabstop=0 tabstop=4
+  autocmd FileType gitcommit  setlocal colorcolumn=73 spell textwidth=72
+  autocmd FileType go         setlocal listchars+=tab:\ \  noexpandtab shiftwidth=4 softtabstop=0 tabstop=4
   autocmd FileType godoc,help setlocal colorcolumn= nolist
   autocmd FileType markdown   setlocal expandtab shiftwidth=4 softtabstop=4
   autocmd FileType python     setlocal expandtab shiftwidth=4 softtabstop=4
