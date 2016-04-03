@@ -8,10 +8,10 @@ if !exists("g:dont_run_again")
 
   filetype plugin indent on
   runtime macros/matchit.vim
-endif
 
-syntax enable
-colorscheme static
+  syntax enable
+  colorscheme static
+endif
 
 set backspace=indent,eol,start
 set colorcolumn=80
@@ -85,9 +85,6 @@ let g:gundo_help = 0
 let g:gundo_preview_statusline = " Gundo Preview"
 let g:gundo_tree_statusline = " Gundo Tree"
 
-let g:NERDCreateDefaultMappings = 0
-let g:NERDCustomDelimiters = { "c": { "left": '//' } }
-
 let g:NERDTreeHighlightCursorline = 0
 let g:NERDTreeMinimalUI = 1
 let g:NERDTreeStatusline = " NERDTree"
@@ -147,9 +144,6 @@ nnoremap <Leader>zs :edit ~/.zshrc<CR>
 
 nnoremap <Leader>cl :%!column -t<CR>
 vnoremap <Leader>cl :!column -t<CR>
-
-nnoremap <Leader>co :call NERDComment("n", "toggle")<CR>
-vnoremap <Leader>co :call NERDComment("x", "toggle")<CR>
 
 nnoremap <Leader>ne :enew<CR>
 vnoremap <Leader>ne y:enew<CR>P
