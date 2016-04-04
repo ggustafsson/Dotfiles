@@ -175,9 +175,6 @@ inoremap jj <Esc>
 
 inoremap <expr><Tab> CompleteTab()
 
-inoremap (<CR> (<CR>)<Esc>O
-inoremap {<CR> {<CR>}<Esc>O
-
 " Delete buffers in a more user friendly way (try to not close split windows).
 " This function will act odd if options confirm and hidden are not enabled.
 function! BufferDelete()
