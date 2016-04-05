@@ -28,4 +28,5 @@ sudo chsh -s /bin/zsh $USER
 mkdir ~/Projects
 git clone https://github.com/ggustafsson/Dot-Files.git ~/Projects/Dot\ Files
 
+sudo cp ~/Projects/Dot\ Files/motd /etc/motd
 ~/Projects/Dot\ Files/Scripts/setup-dotfiles
