@@ -29,6 +29,7 @@ else
     /usr/local/sbin
     /usr/bin
     /usr/bin/core_perl(N)
+    /usr/games
     /usr/sbin
     /bin
     /sbin
