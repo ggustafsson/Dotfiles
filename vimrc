@@ -76,7 +76,6 @@ set visualbell
 
 let g:loaded_matchparen = 1
 let g:mapleader = ","
-let g:syntastic_python_python_exec = system("which python3")
 
 let g:go_fmt_command = "goimports"
 let g:go_fmt_fail_silently = 1
@@ -88,6 +87,9 @@ let g:gundo_tree_statusline = " Gundo Tree"
 let g:NERDTreeHighlightCursorline = 0
 let g:NERDTreeMinimalUI = 1
 let g:NERDTreeStatusline = " NERDTree"
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_python_python_exec = system("which python3")
 
 command! Sudo w !sudo tee %
 
@@ -108,6 +110,7 @@ nnoremap <Leader>cc :call ColorColumn()<CR>
 nnoremap <Leader>cd :cd <C-R>=escape(expand("%:p:h"), ' \')<CR>/
 nnoremap <Leader>do :edit ~/Documents/Text\ Files/
 nnoremap <Leader>ed :edit <C-R>=escape(expand("%:p:h"), ' \')<CR>/
+nnoremap <Leader>ef :silent! call ErrorFind()<CR>
 nnoremap <Leader>eh :edit ~/
 nnoremap <Leader>er :browse oldfiles<CR>
 nnoremap <Leader>fe :set fileformat=unix \| set fileencoding=utf-8
@@ -221,6 +224,15 @@ function! CompleteTab()
   else
     return "\<C-n>"
   endif
+endfunction
+
+" Go to next error in location list, go back to first error after last error.
+function! ErrorFind()
+  try
+    lnext
+  catch /^Vim\%((\a\+)\)\=:E553/
+    lfirst
+  endtry
 endfunction
 
 " Fix file encoding, file format, tabs and remove whitespaces.
