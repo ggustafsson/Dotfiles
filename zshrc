@@ -111,7 +111,7 @@ function prompt_git {
 }
 
 function prompt_todo {
-  if [[ -f .todo ]]; then
+  if [[ -s .todo ]]; then
     echo "%B%F{green}[t]%f%b "
   fi
 }
