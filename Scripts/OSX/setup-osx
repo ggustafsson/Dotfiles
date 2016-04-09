@@ -97,6 +97,9 @@ sudo mv ~/Downloads/homebrew/{*,.*} /usr/local/
 echo "Adding new Zsh to login shells:"
 echo "/usr/local/bin/zsh" | sudo tee -a /etc/shells
 
+ln -s ~/.vim ~/.config/nvim
+ln -s ~/.vimrc ~/.config/nvim/init.vim
+
 ln -s /usr/local/bin/{g,}head
 ln -s /usr/local/bin/{g,}ls
 ln -s /usr/local/bin/{g,}sed

@@ -13,10 +13,13 @@ if !exists("g:dont_run_again")
   colorscheme static
 endif
 
+if !has("nvim")
+  set cryptmethod=blowfish
+endif
+
 set backspace=indent,eol,start
 set colorcolumn=80
 set confirm
-set cryptmethod=blowfish
 set encoding=utf-8
 set formatoptions+=jlnor
 set hidden
