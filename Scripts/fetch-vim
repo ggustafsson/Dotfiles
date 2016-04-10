@@ -27,13 +27,9 @@ mkdir -p ~/.vim/bundle
 fetch ~/.vim/vim-pathogen https://github.com/tpope/vim-pathogen.git
 ln -s ~/.vim/vim-pathogen/autoload/pathogen.vim ~/.vim/autoload/pathogen.vim &> /dev/null
 
-fetch ~/.vim/bundle/auto-pairs      https://github.com/jiangmiao/auto-pairs.git
-fetch ~/.vim/bundle/gundo.vim       https://github.com/sjl/gundo.vim.git
-fetch ~/.vim/bundle/nerdtree        https://github.com/scrooloose/nerdtree.git
-fetch ~/.vim/bundle/syntastic       https://github.com/scrooloose/syntastic.git
-fetch ~/.vim/bundle/tcomment_vim    https://github.com/tomtom/tcomment_vim.git
-fetch ~/.vim/bundle/vim-endwise     https://github.com/tpope/vim-endwise.git
-fetch ~/.vim/bundle/vim-go          https://github.com/fatih/vim-go.git
-fetch ~/.vim/bundle/vim-repeat      https://github.com/tpope/vim-repeat.git
-fetch ~/.vim/bundle/vim-speeddating https://github.com/tpope/vim-speeddating.git
-fetch ~/.vim/bundle/vim-surround    https://github.com/tpope/vim-surround.git
+fetch ~/.vim/bundle/gundo.vim    https://github.com/sjl/gundo.vim.git
+fetch ~/.vim/bundle/nerdtree     https://github.com/scrooloose/nerdtree.git
+fetch ~/.vim/bundle/syntastic    https://github.com/scrooloose/syntastic.git
+fetch ~/.vim/bundle/tcomment_vim https://github.com/tomtom/tcomment_vim.git
+fetch ~/.vim/bundle/vim-go       https://github.com/fatih/vim-go.git
+fetch ~/.vim/bundle/vim-surround https://github.com/tpope/vim-surround.git
