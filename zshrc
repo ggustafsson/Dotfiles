@@ -237,7 +237,7 @@ alias gpl="git pull"
 alias gpu="git push"
 alias grm="git rm"
 alias gsh="git show"
-alias gst="git status --branch --short"
+alias gst="git status --branch"
 alias gun="git reset --soft HEAD^"
 
 alias h="source h"
