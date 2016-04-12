@@ -32,7 +32,6 @@ set showbreak=+
 set spelllang=en,sv
 set textwidth=79
 set virtualedit=block
-set wildmode=longest,list
 
 set autoindent
 set smartindent
@@ -78,6 +77,9 @@ set splitright
 
 set t_vb=
 set visualbell
+
+set wildignorecase
+set wildmode=longest,list
 
 let g:loaded_matchparen = 1
 let g:mapleader = ","
