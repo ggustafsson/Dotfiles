@@ -17,7 +17,6 @@ if [[ $OSTYPE == darwin* ]]; then
   ln -s ~/Projects/hammerspoon ~/.hammerspoon
 else
   git clone https://github.com/ggustafsson/IP-Kalkylatorn.git ~/Projects/IP\ Kalkylatorn
-  git clone https://github.com/ggustafsson/Ninja-Color-Scheme.git ~/Projects/Ninja\ Color\ Scheme
   git clone https://github.com/ggustafsson/Static-Color-Scheme.git ~/Projects/Static\ Color\ Scheme
   git clone https://github.com/ggustafsson/Tim.git ~/Projects/Tim
 
@@ -38,4 +37,5 @@ ln -s ~/Projects/Dot\ Files/zshrc ~/.zshrc
 ln -s ~/Projects/Ninja\ Color\ Scheme/colors/ninja.vim ~/.vim/colors/
 ln -s ~/Projects/Static\ Color\ Scheme/colors/static.vim ~/.vim/colors/
 
+~/Scripts/fetch-go
 ~/Scripts/fetch-vim
