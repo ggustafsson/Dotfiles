@@ -7,16 +7,15 @@
 # Written by Göran Gustafsson (gustafsson.g at gmail.com).
 # License: BSD 3-Clause.
 
-sudo echo "Testing if this user is allowed to use sudo."
+sudo test
 if [[ $? -eq 1 ]]; then
   echo "User is not allowed to use sudo! Exiting..."
   exit 1
 fi
 
-echo "Testing if permissions on /usr/local are OK (SIP)."
 mkdir -p /usr/local/perm_test
 if [[ $? -eq 1 ]]; then
-  echo "User is not allowed to write! Exiting..."
+  echo "User is not allowed to write to /usr/local! Exiting..."
   exit 1
 else
   rm -rf /usr/local/perm_test
@@ -32,29 +31,29 @@ if [[ ! -f ~/.ssh/id_rsa ]]; then
   exit 1
 fi
 
-echo -n "\nWhat hostname do you want? "
+chflags hidden ~/Public
+chflags nohidden ~/Library
+
+# Override hostname from DHCP server.
+echo -n "What hostname do you want? "
 read new_hostname
 if [[ -z $new_hostname ]]; then
   echo "No hostname supplied! Skipping..."
 else
-  # Override hostname from DHCP server.
   sudo scutil --set HostName $new_hostname
 fi
 
 # Check for updates daily instead of once a week.
 sudo defaults write /Library/Preferences/com.apple.SoftwareUpdate ScheduleFrequency -int 1
 
-# Hide and unhide folders in Finder.
-chflags hidden ~/Public
-chflags nohidden ~/Library
-
 # Install Xcode Command Line Tools.
 echo
 xcode-select --install
 
-echo "Press enter when Command Line Tools are installed and tested."
-read answer
+echo -n "Press 'Return' when Command Line Tools are installed..."
+read -s wait_for_input
 
+echo
 git clone https://github.com/mxcl/homebrew.git ~/Downloads/homebrew
 sudo mv ~/Downloads/homebrew/{*,.*} /usr/local/
 
@@ -94,11 +93,9 @@ sudo mv ~/Downloads/homebrew/{*,.*} /usr/local/
   youtube-dl \
   zsh
 
-echo "Adding new Zsh to login shells:"
-echo "/usr/local/bin/zsh" | sudo tee -a /etc/shells
+/usr/local/bin/pip3 install mutagen simpy
 
-ln -s ~/.vim ~/.config/nvim
-ln -s ~/.vimrc ~/.config/nvim/init.vim
+echo "/usr/local/bin/zsh" | sudo tee -a /etc/shells
 
 ln -s /usr/local/bin/{g,}head
 ln -s /usr/local/bin/{g,}ls
@@ -108,8 +105,4 @@ ln -s /usr/local/bin/{g,}tail
 ln -s /usr/local/bin/{g,}uniq
 ln -s /usr/local/bin/{g,}wc
 
-echo
-/usr/local/bin/pip3 install mutagen simpy
-
-echo
 ~/Scripts/setup-dotfiles

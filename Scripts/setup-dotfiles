@@ -8,33 +8,28 @@
 # Written by Göran Gustafsson (gustafsson.g at gmail.com).
 # License: BSD 3-Clause.
 
+mkdir -p ~/.config
 mkdir -p ~/.ssh
 mkdir -p ~/.vim/backups
 mkdir -p ~/.vim/colors
 mkdir -p ~/.vim/undos
 
 if [[ $OSTYPE == darwin* ]]; then
-  ln -s ~/Projects/hammerspoon ~/.hammerspoon
-else
-  git clone https://github.com/ggustafsson/IP-Kalkylatorn.git ~/Projects/IP\ Kalkylatorn
-  git clone https://github.com/ggustafsson/Static-Color-Scheme.git ~/Projects/Static\ Color\ Scheme
-  git clone https://github.com/ggustafsson/Tim.git ~/Projects/Tim
-
-  ln -s ~/Projects/IP\ Kalkylatorn/ipkalk ~/Scripts/ipkalk
-  ln -s ~/Projects/Tim/tim ~/Scripts/tim
+  ln -s ~/Projects/Dot\ Files/hammerspoon ~/.hammerspoon
 fi
 
+ln -s ~/.vim ~/.config/nvim
+ln -s ~/.vimrc ~/.config/nvim/init.vim
 ln -s ~/Projects/Dot\ Files/Scripts ~/Scripts
 ln -s ~/Projects/Dot\ Files/gitconfig ~/.gitconfig
 ln -s ~/Projects/Dot\ Files/gitignore_global ~/.gitignore_global
 ln -s ~/Projects/Dot\ Files/ssh_config ~/.ssh/config
 ln -s ~/Projects/Dot\ Files/timrc ~/.timrc
 ln -s ~/Projects/Dot\ Files/tmux.conf ~/.tmux.conf
-ln -s ~/Projects/Dot\ Files/vim/templates ~/.vim/templates
+ln -s ~/Projects/Dot\ Files/vim/templates ~/.vim/
 ln -s ~/Projects/Dot\ Files/vimrc ~/.vimrc
 ln -s ~/Projects/Dot\ Files/zshenv ~/.zshenv
 ln -s ~/Projects/Dot\ Files/zshrc ~/.zshrc
-ln -s ~/Projects/Ninja\ Color\ Scheme/colors/ninja.vim ~/.vim/colors/
 ln -s ~/Projects/Static\ Color\ Scheme/colors/static.vim ~/.vim/colors/
 
 ~/Scripts/fetch-go
