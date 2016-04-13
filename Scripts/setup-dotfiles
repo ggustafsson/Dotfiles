@@ -19,11 +19,13 @@ chmod 700 ~/.ssh
 if [[ $OSTYPE == darwin* ]]; then
   ln -s ~/Projects/Dot\ Files/hammerspoon ~/.hammerspoon
   ln -s ~/Projects/Dot\ Files/timrc ~/.timrc
+else
+  sudo cp ~/Projects/Dot\ Files/motd /etc/motd
 fi
 
 ln -s ~/.vim ~/.config/nvim
 ln -s ~/.vimrc ~/.config/nvim/init.vim
-ln -s ~/Projects/Dot\ Files/Scripts ~/Scripts
+ln -s ~/Projects/Dot\ Files/Scripts ~/
 ln -s ~/Projects/Dot\ Files/gitconfig ~/.gitconfig
 ln -s ~/Projects/Dot\ Files/gitignore_global ~/.gitignore_global
 ln -s ~/Projects/Dot\ Files/ssh_config ~/.ssh/config

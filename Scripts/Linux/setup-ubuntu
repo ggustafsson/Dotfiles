@@ -28,5 +28,4 @@ sudo chsh -s /bin/zsh $USER
 mkdir -p ~/Projects
 git clone https://github.com/ggustafsson/Dot-Files.git ~/Projects/Dot\ Files
 git clone https://github.com/ggustafsson/Static-Color-Scheme.git ~/Projects/Static\ Color\ Scheme
-sudo cp ~/Projects/Dot\ Files/motd /etc/motd
 ~/Projects/Dot\ Files/Scripts/setup-dotfiles
