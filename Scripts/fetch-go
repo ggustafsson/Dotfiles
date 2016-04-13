@@ -15,11 +15,11 @@ packages=(
   github.com/kisielk/errcheck
   github.com/klauspost/asmfmt/cmd/asmfmt
   github.com/nsf/gocode
-  github.com/rogpeppe/godef
+  github.com/zmb3/gogetdoc
   golang.org/x/crypto/ssh/terminal
   golang.org/x/tools/cmd/goimports
   golang.org/x/tools/cmd/gorename
-  golang.org/x/tools/cmd/oracle
+  golang.org/x/tools/cmd/guru
 )
 
 for pkg in $packages; do
