@@ -13,6 +13,8 @@ mkdir -p ~/.vim/backups
 mkdir -p ~/.vim/colors
 mkdir -p ~/.vim/undos
 
+chmod 700 ~/.ssh
+
 if [[ $OSTYPE == darwin* ]]; then
   ln -s ~/Projects/hammerspoon ~/.hammerspoon
 else
