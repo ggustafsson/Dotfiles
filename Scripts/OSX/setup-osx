@@ -12,7 +12,7 @@ if [[ $? -eq 1 ]]; then
   echo "User is not allowed to use sudo! Exiting..."
   exit 1
 fi
-
+# Check write permission for homebrew (SIP blocking?).
 mkdir -p /usr/local/perm_test
 if [[ $? -eq 1 ]]; then
   echo "User is not allowed to write to /usr/local! Exiting..."
@@ -20,12 +20,11 @@ if [[ $? -eq 1 ]]; then
 else
   rm -rf /usr/local/perm_test
 fi
-
 if [[ ! -d /Applications/Xcode.app ]]; then
   echo "Install Xcode first! Exiting..."
   exit 1
 fi
-
+# Check for GitHub keys.
 if [[ ! -f ~/.ssh/id_rsa ]]; then
   echo "Install the SSH key first! Exiting..."
   exit 1
@@ -33,6 +32,11 @@ fi
 
 chflags hidden ~/Public
 chflags nohidden ~/Library
+
+mkdir -p ~/.config
+
+# Check for updates daily instead of once a week.
+sudo defaults write /Library/Preferences/com.apple.SoftwareUpdate ScheduleFrequency -int 1
 
 # Override hostname from DHCP server.
 echo -n "What hostname do you want? "
@@ -42,18 +46,13 @@ if [[ -z $new_hostname ]]; then
 else
   sudo scutil --set HostName $new_hostname
 fi
-
-# Check for updates daily instead of once a week.
-sudo defaults write /Library/Preferences/com.apple.SoftwareUpdate ScheduleFrequency -int 1
-
-# Install Xcode Command Line Tools.
 echo
-xcode-select --install
 
+xcode-select --install
 echo -n "Press 'Return' when Command Line Tools are installed..."
 read -s wait_for_input
-
 echo
+
 git clone https://github.com/mxcl/homebrew.git ~/Downloads/homebrew
 sudo mv ~/Downloads/homebrew/{*,.*} /usr/local/
 
@@ -105,4 +104,23 @@ ln -s /usr/local/bin/{g,}tail
 ln -s /usr/local/bin/{g,}uniq
 ln -s /usr/local/bin/{g,}wc
 
-~/Scripts/setup-dotfiles
+ln -s ~/Projects/Dot\ Files/Scripts ~/
+ln -s ~/Projects/Dot\ Files/gitconfig ~/.gitconfig
+ln -s ~/Projects/Dot\ Files/gitignore_global ~/.gitignore_global
+ln -s ~/Projects/Dot\ Files/hammerspoon ~/.hammerspoon
+ln -s ~/Projects/Dot\ Files/timrc ~/.timrc
+ln -s ~/Projects/Dot\ Files/tmux.conf ~/.tmux.conf
+ln -s ~/Projects/Dot\ Files/vimrc ~/.vimrc
+ln -s ~/Projects/Dot\ Files/zshenv ~/.zshenv
+ln -s ~/Projects/Dot\ Files/zshrc ~/.zshrc
+
+ln -s ~/Projects/IP-Kalkylatorn/ipkalk ~/Scripts/
+ln -s ~/Projects/Tim/tim ~/Scripts/
+
+ln -s ~/.vim ~/.config/nvim
+ln -s ~/.vimrc ~/.config/nvim/init.vim
+
+sudo cp ~/Projects/Dot\ Files/motd-osx /etc/motd
+
+~/Scripts/fetch-go
+~/Scripts/fetch-vim

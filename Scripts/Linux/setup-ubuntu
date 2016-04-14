@@ -9,6 +9,13 @@
 
 rm ~/examples.desktop
 
+mkdir -p ~/.config
+mkdir -p ~/.ssh && chmod 700 ~/.ssh
+mkdir -p ~/.vim/backups
+mkdir -p ~/.vim/colors
+mkdir -p ~/.vim/undos
+mkdir -p ~/Projects
+
 sudo apt install \
   curl \
   flac \
@@ -25,7 +32,30 @@ sudo apt install \
 
 sudo chsh -s /bin/zsh $USER
 
-mkdir -p ~/Projects
 git clone https://github.com/ggustafsson/Dot-Files.git ~/Projects/Dot\ Files
+git clone https://github.com/ggustafsson/IP-Kalkylatorn.git ~/Projects/IP-Kalkylatorn
 git clone https://github.com/ggustafsson/Static-Color-Scheme.git ~/Projects/Static\ Color\ Scheme
-~/Projects/Dot\ Files/Scripts/setup-dotfiles
+git clone https://github.com/ggustafsson/Tim.git ~/Projects/Tim
+
+ln -s ~/Projects/Dot\ Files/Scripts ~/
+ln -s ~/Projects/Dot\ Files/gitconfig ~/.gitconfig
+ln -s ~/Projects/Dot\ Files/gitignore_global ~/.gitignore_global
+ln -s ~/Projects/Dot\ Files/ssh_config ~/.ssh/config
+ln -s ~/Projects/Dot\ Files/timrc ~/.timrc
+ln -s ~/Projects/Dot\ Files/tmux.conf ~/.tmux.conf
+ln -s ~/Projects/Dot\ Files/vim_templates ~/.vim/templates
+ln -s ~/Projects/Dot\ Files/vimrc ~/.vimrc
+ln -s ~/Projects/Dot\ Files/zshenv ~/.zshenv
+ln -s ~/Projects/Dot\ Files/zshrc ~/.zshrc
+
+ln -s ~/Projects/IP-Kalkylatorn/ipkalk ~/Scripts/
+ln -s ~/Projects/Static\ Color\ Scheme/colors/static.vim ~/.vim/colors/
+ln -s ~/Projects/Tim/tim ~/Scripts/
+
+ln -s ~/.vim ~/.config/nvim
+ln -s ~/.vimrc ~/.config/nvim/init.vim
+
+sudo cp ~/Projects/Dot\ Files/motd-linux /etc/motd
+
+~/Scripts/fetch-go
+~/Scripts/fetch-vim

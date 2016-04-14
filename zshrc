@@ -190,7 +190,6 @@ alias iip="curl icanhazip.com"
 alias ka="killall"
 alias l="less"
 alias mkdir="mkdir -pv"
-alias tma="tmux attach"
 alias tree="tree --charset ascii -N"
 alias wgetp="wget --adjust-extension --convert-links --page-requisites"
 alias ycal='cal $(date +%Y)'
@@ -200,9 +199,6 @@ alias ..="source dotdot"
 alias cdh="dirs -v | sort --reverse"
 alias cdj='cd "$(< ~/.saved_pwd)"'
 alias cds='echo "Saving current path." && echo $PWD >| ~/.saved_pwd'
-
-alias cl="wc -l"
-alias cw="wc -w"
 
 alias cp="cp -vi"
 alias mv="mv -vi"
