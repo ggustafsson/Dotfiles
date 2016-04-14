@@ -190,8 +190,6 @@ alias iip="curl icanhazip.com"
 alias ka="killall"
 alias l="less"
 alias mkdir="mkdir -pv"
-alias pyjson='python -m json.tool'
-alias pyweb="python3 -m http.server 8080"
 alias tma="tmux attach"
 alias tree="tree --charset ascii -N"
 alias wgetp="wget --adjust-extension --convert-links --page-requisites"
@@ -243,6 +241,9 @@ alias gun="git reset --soft HEAD^"
 
 alias h="source h"
 alias hist="history -i 1 | less"
+
+alias pyjson='python -m json.tool'
+alias pyweb="python3 -m http.server 8080"
 
 alias sort="sort --numeric-sort"
 alias uniqs="sort | uniq"
