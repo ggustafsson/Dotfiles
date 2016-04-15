@@ -9,6 +9,7 @@
 
 packages=(
   github.com/alecthomas/gometalinter
+  github.com/aws/aws-sdk-go
   github.com/fatih/motion
   github.com/golang/lint/golint
   github.com/jstemmer/gotags
