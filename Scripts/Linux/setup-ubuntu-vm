@@ -10,6 +10,7 @@
 sudo apt install \
   apache2 \
   bind9 \
+  cntlm \
   cuetools \
   dia \
   gnupg2 \
