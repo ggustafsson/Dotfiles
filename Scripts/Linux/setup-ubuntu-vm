@@ -36,5 +36,5 @@ sudo apt install \
 sudo dpkg-reconfigure wireshark-common
 sudo usermod -a -G dialout,wireshark $USER
 
-sudo systemctl disable apache2 bind9 netperf nfs-kernel-server nginx smbd ssh
-sudo systemctl stop    apache2 bind9 netperf nfs-kernel-server nginx smbd ssh
+sudo systemctl disable apache2 bind9 cntlm netperf nfs-kernel-server nginx smbd ssh
+sudo systemctl stop    apache2 bind9 cntlm netperf nfs-kernel-server nginx smbd ssh
