@@ -23,6 +23,7 @@ sudo apt install \
   golang \
   links \
   nmap \
+  ntp \
   openssh-server \
   tmux \
   tree \
