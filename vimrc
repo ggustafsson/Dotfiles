@@ -301,6 +301,8 @@ augroup Main
   autocmd FileType qf         setlocal colorcolumn= nolist nonumber norelativenumber " QuickFix buffer.
 
   autocmd FileType go nmap <Leader>gd :GoDoc<CR>
+  autocmd FileType go nmap <Leader>ge :GoErrCheck<CR>
   autocmd FileType go nmap <Leader>gi :GoInfo<CR>
-  autocmd FileType go nmap <Leader>gl :GoMetaLinter<CR>
+  autocmd FileType go nmap <Leader>gl :GoLint<CR>
+  autocmd FileType go nmap <Leader>gv :GoVet<CR>
 augroup END
