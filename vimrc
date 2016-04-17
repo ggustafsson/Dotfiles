@@ -293,6 +293,8 @@ augroup Main
   " Check if last cursor position still exist and if so then go to it.
   autocmd BufReadPost * if line("'\"") <= line("$") | execute "normal! g`\"" | endif
 
+  autocmd BufNewFile,BufReadPost *.conf,config setlocal filetype=conf
+
   autocmd FileType gitcommit  setlocal colorcolumn=73 spell textwidth=72
   autocmd FileType go         setlocal listchars+=tab:\ \  noexpandtab shiftwidth=4 softtabstop=0 tabstop=4
   autocmd FileType godoc,help setlocal colorcolumn= nolist
