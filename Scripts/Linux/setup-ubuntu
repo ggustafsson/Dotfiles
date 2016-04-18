@@ -24,6 +24,7 @@ sudo apt install \
   links \
   nmap \
   ntp \
+  ntpdate \
   openssh-server \
   tmux \
   tree \
