@@ -31,7 +31,6 @@ fi
 d=~/Downloads
 p=~/Projects
 
-[[ $OSTYPE == darwin* ]] && setopt combiningchars # HFS+ is fucked up.
 setopt correct
 setopt interactivecomments
 setopt nobeep
@@ -68,36 +67,45 @@ for mode in visual viopp; do
 done
 
 bindkey -v
-bindkey -M vicmd "R" custom-vi-replace # Use custom Vi replace function.
-
-bindkey -M vicmd "k" up-line-or-beginning-search
-bindkey -M vicmd "j" down-line-or-beginning-search
-
-bindkey -M vicmd $terminfo[kdch1] delete-char # Delete key.
-bindkey -M vicmd $terminfo[kich1] overwrite-mode # Insert key.
-bindkey -M vicmd $terminfo[knp]   down-line-or-beginning-search # Page down key.
-bindkey -M vicmd $terminfo[kpp]   up-line-or-beginning-search # Page up key.
-
-bindkey $terminfo[kdch1] delete-char # Delete key.
-bindkey $terminfo[kich1] overwrite-mode # Insert key.
-bindkey $terminfo[knp]   down-line-or-beginning-search # Page down key.
-bindkey $terminfo[kpp]   up-line-or-beginning-search # Page up key.
-
-# $terminfo is not reliable when using Putty + xterm-256color on Ubuntu.
-bindkey -M vicmd "^[[1~" beginning-of-line
-bindkey -M vicmd "^[[4~" end-of-line
-bindkey "^[[1~" beginning-of-line
-bindkey "^[[4~" end-of-line
 
 bindkey "jj" vi-cmd-mode
-bindkey "^?" backward-delete-char # Delete with backspace under Vi mode.
 bindkey "^V" edit-command-line
+bindkey "^?" backward-delete-char # Delete with backspace under Vi mode.
 
 bindkey "^A"  beginning-of-line
 bindkey "^E"  end-of-line
 bindkey "^R"  history-incremental-search-backward
 bindkey "^U"  kill-whole-line
 bindkey "^[." insert-last-word
+
+bindkey -M vicmd "R" custom-vi-replace # Use custom Vi replace function.
+
+# Insert key.
+bindkey -M vicmd $terminfo[kich1] overwrite-mode
+bindkey          $terminfo[kich1] overwrite-mode
+
+# Delete key.
+bindkey -M vicmd $terminfo[kdch1] delete-char
+bindkey          $terminfo[kdch1] delete-char
+
+# Page up key.
+bindkey -M vicmd $terminfo[kpp] up-line-or-beginning-search
+bindkey          $terminfo[kpp] up-line-or-beginning-search
+
+# Page down key.
+bindkey -M vicmd $terminfo[knp] down-line-or-beginning-search
+bindkey          $terminfo[knp] down-line-or-beginning-search
+
+# Home key. $terminfo is not reliable.
+bindkey -M vicmd "^[[H"  beginning-of-line # Terminal.app, Cygwin ...
+bindkey -M vicmd "^[[1~" beginning-of-line # Tmux ...
+bindkey "^[[H"           beginning-of-line
+bindkey "^[[1~"          beginning-of-line
+
+bindkey -M vicmd "^[[F"  end-of-line # Terminal.app, Cygwin ...
+bindkey -M vicmd "^[[4~" end-of-line # Tmux ...
+bindkey "^[[F"           end-of-line
+bindkey "^[[4~"          end-of-line
 
 zstyle ":completion:*"          insert-tab pending # Disable tabs at prompt.
 zstyle ":completion:*"          list-colors ${(s.:.)LS_COLORS}
