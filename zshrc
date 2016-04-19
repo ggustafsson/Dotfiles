@@ -1,6 +1,5 @@
 # Göran Gustafsson <gustafsson.g@gmail.com>
 
-[[ $TERM == xterm ]] && export TERM=xterm-256color # GNOME Terminal needs this.
 export GOPATH=~/Golang
 export TODO_FILE=~/Documents/Text\ Files/To-do\ List.txt
 
