@@ -74,13 +74,19 @@ bindkey -M vicmd "R" custom-vi-replace # Use custom Vi replace function.
 bindkey -M vicmd "k" up-line-or-beginning-search
 bindkey -M vicmd "j" down-line-or-beginning-search
 
-bindkey -M vicmd $terminfo[khome] beginning-of-line # Home key.
-bindkey -M vicmd $terminfo[kend]  end-of-line # End key.
 bindkey -M vicmd $terminfo[kdch1] delete-char # Delete key.
+bindkey -M vicmd $terminfo[kend]  end-of-line # End key.
+bindkey -M vicmd $terminfo[khome] beginning-of-line # Home key.
+bindkey -M vicmd $terminfo[kich1] overwrite-mode # Insert key.
+bindkey -M vicmd $terminfo[knp]   down-line-or-beginning-search # Page down key.
+bindkey -M vicmd $terminfo[kpp]   up-line-or-beginning-search # Page up key.
 
-bindkey $terminfo[khome] beginning-of-line # Home key.
-bindkey $terminfo[kend]  end-of-line # End key.
 bindkey $terminfo[kdch1] delete-char # Delete key.
+bindkey $terminfo[kend]  end-of-line # End key.
+bindkey $terminfo[khome] beginning-of-line # Home key.
+bindkey $terminfo[kich1] overwrite-mode # Insert key.
+bindkey $terminfo[knp]   down-line-or-beginning-search # Page down key.
+bindkey $terminfo[kpp]   up-line-or-beginning-search # Page up key.
 
 bindkey "jj" vi-cmd-mode
 bindkey "^?" backward-delete-char # Delete with backspace under Vi mode.
@@ -91,9 +97,6 @@ bindkey "^E"  end-of-line
 bindkey "^R"  history-incremental-search-backward
 bindkey "^U"  kill-whole-line
 bindkey "^[." insert-last-word
-
-bindkey "^[[A" up-line-or-beginning-search # Up key.
-bindkey "^[[B" down-line-or-beginning-search # Down key.
 
 zstyle ":completion:*"          insert-tab pending # Disable tabs at prompt.
 zstyle ":completion:*"          list-colors ${(s.:.)LS_COLORS}
