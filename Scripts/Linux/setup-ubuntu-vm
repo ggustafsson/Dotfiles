@@ -13,7 +13,6 @@ sudo apt install -y \
   cntlm \
   cuetools \
   dia \
-  gnupg2 \
   gnuplot \
   gparted \
   hping3 \
@@ -23,7 +22,7 @@ sudo apt install -y \
   nginx-full \
   open-vm-tools \
   open-vm-tools-desktop \
-  php5 \
+  php \
   r-base \
   samba \
   shntool \
@@ -33,7 +32,6 @@ sudo apt install -y \
   tshark \
   wireshark
 
-sudo dpkg-reconfigure wireshark-common
 sudo usermod -a -G dialout,wireshark $USER
 
 sudo systemctl disable apache2 bind9 cntlm netperf nfs-kernel-server nginx smbd ssh
