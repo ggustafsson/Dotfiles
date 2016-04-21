@@ -7,7 +7,7 @@
 # Written by Göran Gustafsson (gustafsson.g at gmail.com).
 # License: BSD 3-Clause.
 
-sudo apt install \
+sudo apt install -y \
   apache2 \
   bind9 \
   cntlm \

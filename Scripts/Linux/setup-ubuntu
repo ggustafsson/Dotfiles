@@ -16,7 +16,7 @@ mkdir -p ~/.vim/colors
 mkdir -p ~/.vim/undos
 mkdir -p ~/Projects
 
-sudo apt install \
+sudo apt install -y \
   flac \
   git \
   golang \

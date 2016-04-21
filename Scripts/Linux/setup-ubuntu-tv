@@ -10,7 +10,7 @@
 sudo add-apt-repository ppa:team-xbmc/ppa
 sudo apt-get update
 
-sudo apt install \
+sudo apt install -y \
   abcde \
   kodi \
   sshguard
