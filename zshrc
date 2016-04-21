@@ -1,6 +1,3 @@
-# Göran Gustafsson <gustafsson.g@gmail.com>
-
-export GOPATH=~/Golang
 export TODO_FILE=~/Documents/Text\ Files/To-do\ List.txt
 
 export EDITOR=vim

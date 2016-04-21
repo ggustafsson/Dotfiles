@@ -17,7 +17,6 @@ mkdir -p ~/.vim/undos
 mkdir -p ~/Projects
 
 sudo apt install \
-  curl \
   flac \
   git \
   golang \

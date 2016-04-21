@@ -1,5 +1,3 @@
-" Göran Gustafsson <gustafsson.g@gmail.com>
-
 if !exists("g:dont_run_again")
   let g:dont_run_again = 1
 
