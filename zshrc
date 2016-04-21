@@ -260,9 +260,9 @@ alias svtplay-dl="svtplay-dl --resume"
 alias youtube-dl="youtube-dl --continue --title"
 
 if [[ -f ~/.ssh/config_local ]]; then
-  alias scp2="scp -F ~/.ssh/config_local"
-  alias sftp2="sftp -F ~/.ssh/config_local"
-  alias ssh2="ssh -F ~/.ssh/config_local"
+  alias lscp="scp -F ~/.ssh/config_local"
+  alias lsftp="sftp -F ~/.ssh/config_local"
+  alias lssh="ssh -F ~/.ssh/config_local"
 fi
 
 [[ -f ~/.zshrc_local ]] && source ~/.zshrc_local || true
