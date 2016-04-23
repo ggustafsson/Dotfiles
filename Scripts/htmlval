@@ -3,7 +3,7 @@
 # Description: This script makes it easy to validate HTML files through
 # http://validator.w3.org from the command line.
 #
-# I have this in ~/.vimrc so i can easily validate files inside of Vim:
+# I have this in ~/.vimrc so I can easily validate files inside of Vim:
 # nnoremap <Leader>w3 :!~/Scripts/htmlval "%"<CR>
 #
 # Usage: htmlval <file(s)>
