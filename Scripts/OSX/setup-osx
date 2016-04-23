@@ -122,5 +122,7 @@ ln -s ~/.vimrc ~/.config/nvim/init.vim
 
 sudo cp ~/Projects/Dot\ Files/motd-osx /etc/motd
 
+echo
 ~/Scripts/fetch-go
+echo
 ~/Scripts/fetch-vim

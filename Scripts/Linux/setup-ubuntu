@@ -33,6 +33,7 @@ sudo apt install -y \
 
 sudo chsh -s /bin/zsh $USER
 
+echo
 git clone https://github.com/ggustafsson/Dot-Files.git ~/Projects/Dot\ Files
 git clone https://github.com/ggustafsson/IP-Kalkylatorn.git ~/Projects/IP-Kalkylatorn
 git clone https://github.com/ggustafsson/Static-Color-Scheme.git ~/Projects/Static\ Color\ Scheme
@@ -58,5 +59,7 @@ ln -s ~/.vimrc ~/.config/nvim/init.vim
 
 sudo cp ~/Projects/Dot\ Files/motd-linux /etc/motd
 
+echo
 ~/Scripts/fetch-go
+echo
 ~/Scripts/fetch-vim
