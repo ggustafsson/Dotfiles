@@ -168,6 +168,7 @@ if [[ $OSTYPE == darwin* ]]; then
   alias beep="afplay /System/Library/Sounds/Glass.aiff"
   alias caffeinate="caffeinate -di"
   alias eject="osascript -e 'tell application \"Finder\" to eject (every disk whose ejectable is true)' && echo 'Ejecting all external drives.'"
+  alias ls='ls --classify --color=auto --human-readable -U' # HFS + U = <3
   alias o="open"
   alias tim="caffeinate tim"
   alias top="top -o cpu -s 2"
@@ -191,6 +192,7 @@ else
   fi
 
   alias cal="cal -m"
+  alias ls='ls --classify --color=auto --human-readable -v'
   alias vl='less +F /var/log/syslog'
 fi
 
@@ -219,7 +221,6 @@ alias csvv="column -t -s ';'"
 alias d="ls -l"
 alias da="ls --all -l"
 alias la="ls --all"
-alias ls='ls --classify --color=auto --human-readable -v'
 
 alias df="df -h"
 alias du="du -sh"
