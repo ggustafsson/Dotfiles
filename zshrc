@@ -243,6 +243,7 @@ alias gpu="git push"
 alias grm="git rm"
 alias gsh="git show"
 alias gst="git status --branch"
+alias gsu="git submodule update --recursive"
 alias gun="git reset --soft HEAD^"
 
 alias h="source h"
