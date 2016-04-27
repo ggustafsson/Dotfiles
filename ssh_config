@@ -7,6 +7,12 @@ Host fulknark.se
   HostName fulknark.se
   Port 443
 
+Host alderaan1
+  HostName 192.168.1.1
+
+Host alderaan2
+  HostName 192.168.1.254
+
 Host hoth
   HostName 192.168.1.2
   Port 443
