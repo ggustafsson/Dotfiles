@@ -26,7 +26,6 @@ set hidden
 set nofoldenable
 set nowrap
 set sessionoptions-=options
-set showbreak=+
 set spelllang=en,sv
 set textwidth=79
 set virtualedit=block
