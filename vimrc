@@ -303,5 +303,6 @@ augroup Main
   autocmd FileType go nmap <Leader>ge :GoErrCheck<CR>
   autocmd FileType go nmap <Leader>gi :GoInfo<CR>
   autocmd FileType go nmap <Leader>gl :GoLint<CR>
+  autocmd FileType go nmap <Leader>gr :GoRename<CR>
   autocmd FileType go nmap <Leader>gv :GoVet<CR>
 augroup END
