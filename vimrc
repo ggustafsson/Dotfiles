@@ -22,7 +22,6 @@ set colorcolumn=80
 set confirm
 set encoding=utf-8
 set formatoptions+=jlnor
-set hidden
 set nofoldenable
 set nowrap
 set sessionoptions-=options
@@ -107,8 +106,7 @@ if has("mac")
   nnoremap <Leader>op :silent !open -a Safari "%"<CR>
 endif
 
-nnoremap <Leader>bd :call BufferDelete()<CR>
-nnoremap <Leader>bk :bdelete<CR>
+nnoremap <Leader>bd :bdelete<CR>
 nnoremap <Leader>bl :buffers<CR>
 nnoremap <Leader>cc :call ColorColumn()<CR>
 nnoremap <Leader>cd :cd <C-R>=escape(expand("%:p:h"), ' \')<CR>/
@@ -181,19 +179,6 @@ nnoremap <silent><C-w>t :tab split<CR>
 inoremap jj <Esc>
 
 inoremap <expr><Tab> CompleteTab()
-
-" Delete buffers in a more user friendly way (try to not close split windows).
-" This function will act odd if options confirm and hidden are not enabled.
-function! BufferDelete()
-  let buffer_count = len(filter(range(1, bufnr("$")), "buflisted(v:val)"))
-
-  if buffer_count == 1
-    bdelete
-  else
-    bprevious
-    bdelete #
-  endif
-endfunction
 
 " Easily switch between different colorcolumn settings. If textwidth is set
 " then use textwidth + 1, if textwidth is not set then use colorcolumn=80, and
