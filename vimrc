@@ -24,6 +24,7 @@ set encoding=utf-8
 set formatoptions+=jlnor
 set nofoldenable
 set nowrap
+set pastetoggle=<C-p>
 set sessionoptions-=options
 set spelllang=en,sv
 set textwidth=79
@@ -123,7 +124,6 @@ nnoremap <Leader>in :Insert ~/.vim/templates/
 nnoremap <Leader>li :set list!<CR>
 nnoremap <Leader>no :edit ~/Documents/Text\ Files/Notes.txt<CR>
 nnoremap <Leader>nu :set number! \| set relativenumber!<CR>
-nnoremap <Leader>pa :set paste!<CR>
 nnoremap <Leader>pt :edit <C-R>=escape(expand("%:p:h"), ' \')<CR>/.todo<CR>
 nnoremap <Leader>rs :source ~/.vim/session.vim<CR>
 nnoremap <Leader>s2 :setlocal expandtab shiftwidth=2 softtabstop=2<CR>
