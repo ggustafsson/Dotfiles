@@ -258,10 +258,4 @@ alias uniqs="sort | uniq"
 alias svtplay-dl="svtplay-dl --resume"
 alias youtube-dl="youtube-dl --continue --title"
 
-if [[ -f ~/.ssh/config_local ]]; then
-  alias lscp="scp -F ~/.ssh/config_local"
-  alias lsftp="sftp -F ~/.ssh/config_local"
-  alias lssh="ssh -F ~/.ssh/config_local"
-fi
-
 [[ -f ~/.zshrc_local ]] && source ~/.zshrc_local || true
