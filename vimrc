@@ -235,8 +235,10 @@ function! FixFile()
   setlocal tabstop=2
   retab
 
+  normal! ml
   %s/\s\+$//e " Remove all whitespaces.
   nohlsearch
+  normal! `l
 endfunction
 
 " Inserts template files above cursor, not below which is the read commands
