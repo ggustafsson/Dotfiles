@@ -144,7 +144,7 @@ nnoremap <Leader>un :call UndoAll()<CR>
 nnoremap <Leader>vi :edit ~/.vimrc<CR>
 nnoremap <Leader>w3 :!~/Scripts/validate "%"<CR>
 nnoremap <Leader>wr :set wrap!<CR>
-nnoremap <Leader>ws :%s/\s\+$//e \| nohlsearch<CR>
+nnoremap <Leader>ws ml:%s/\s\+$//e \| nohlsearch<CR>`l
 nnoremap <Leader>zs :edit ~/.zshrc<CR>
 
 nnoremap <Leader>cl :%!column -t<CR>
