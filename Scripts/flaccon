@@ -18,7 +18,7 @@
 if [[ $# -eq 0 ]]; then
   echo "Usage: ${0:t} [OPTION]... [FILENAME(S)]...
 
-  -ic, --ignore-case  Don't fix capitalization in tags and filenames."
+  -ic, --ignore-case  Don't fix capitalization in ID3 tags."
   exit
 fi
 
