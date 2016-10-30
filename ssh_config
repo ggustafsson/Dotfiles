@@ -18,6 +18,3 @@ Host fulknark.se
 Host hoth
   HostName 192.168.0.2
   Port 443
-
-Host tatooine
-  HostName 192.168.1.2

@@ -24,6 +24,7 @@ if [[ $answer == (y|yes) ]]; then
   frees
   echo
   backup
+  backup2s
 else
   echo "Bye bye!"
 fi
