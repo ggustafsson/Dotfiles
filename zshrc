@@ -180,9 +180,6 @@ if [[ $OSTYPE == darwin* ]]; then
   alias brewr="brew uninstall"
   alias brews="brew search"
   alias brewu="brew update && brew upgrade"
-
-  alias mext="open smb://gleg@192.168.1.2/External"
-  alias umext="umount //gleg@192.168.1.2/External"
 else
   if type -p apt &> /dev/null; then
     alias apti="sudo apt install"
