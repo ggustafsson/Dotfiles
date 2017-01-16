@@ -7,10 +7,11 @@
 # Written by Göran Gustafsson (gustafsson.g at gmail.com).
 # License: BSD 3-Clause.
 
-sudo add-apt-repository ppa:team-xbmc/ppa
-sudo apt-get update
-
 sudo apt install -y \
   abcde \
-  kodi \
   sshguard
+
+echo
+git clone --depth=1 https://github.com/RetroPie/RetroPie-Setup.git
+cd RetroPie-Setup
+sudo ./retropie_setup.sh
