@@ -17,6 +17,7 @@ backup_objects=(
   ~/.ssh
   ~/Development
   ~/Documents
+  ~/Downloads
   ~/Dropbox
   ~/Golang
   ~/Library/Application\ Support/OpenEmu
