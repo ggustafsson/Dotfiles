@@ -73,6 +73,7 @@ sudo mv ~/Downloads/homebrew/{*,.*} /usr/local/
   imagemagick --without-x \
   imagesnap \
   lame \
+  links \
   ncftp \
   neovim/neovim/neovim \
   nmap \
