@@ -1,17 +1,13 @@
 #!/usr/bin/env zsh
 
-# Description: This script mounts an encrypted dmg file (sparseimage), backs up
-# a few specific directories/files to it and then unmounts the image file.
+# Description: This script backs up a few specific directories/files to device.
 #
 # Usage: backup
 #
-# Original script created by Zach Holman:
-#   <https://github.com/holman/dotfiles/blob/master/bin/backup>
-# Modified by Göran Gustafsson (gustafsson.g at gmail.com).
+# Written by Göran Gustafsson (gustafsson.g at gmail.com).
+# License: BSD 3-Clause.
 
-device=Keychain
-sparseimage=/Volumes/${device}/Backup.sparseimage
-destination=/Volumes/Backup
+destination=/Volumes/Keychain
 
 backup_objects=(
   ~/.ssh
@@ -36,14 +32,6 @@ backup_objects=(
   ~/Web\ Archives
 )
 
-if [[ ! -f $sparseimage ]]; then
-  echo "File '${sparseimage}' does not exist! Exiting..."
-  exit 1
-fi
-
-echo "Mounting encrypted image file."
-hdiutil attach -noverify $sparseimage
-
 if [[ ! -d $destination ]]; then
   echo "\nDirectory '${destination}' does not exist! Exiting..."
   exit 1
@@ -62,5 +50,5 @@ for object in $backup_objects; do
   fi
 done
 
-echo "\nUnmounting encrypted image file and device."
-hdiutil detach $destination && diskutil eject $device
+echo "\nUnmounting external device."
+diskutil eject $device
