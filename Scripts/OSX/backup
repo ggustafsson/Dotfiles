@@ -51,4 +51,4 @@ for object in $backup_objects; do
 done
 
 echo "\nUnmounting external device."
-diskutil eject $device
+diskutil eject $destination
