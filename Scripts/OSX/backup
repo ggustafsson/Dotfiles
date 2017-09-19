@@ -51,4 +51,5 @@ for object in $backup_objects; do
 done
 
 echo "\nUnmounting external device."
+sleep 5
 diskutil eject $destination
