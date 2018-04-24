@@ -167,6 +167,7 @@ PROMPT='${prompt_host} ${PWD/${HOME}/~} $(prompt_todo)$(prompt_git)$(prompt_mode
 if [[ $OSTYPE == darwin* ]]; then
   alias beep="afplay /System/Library/Sounds/Glass.aiff"
   alias caffeinate="caffeinate -di"
+  alias df="df -hP"
   alias eject="osascript -e 'tell application \"Finder\" to eject (every disk whose ejectable is true)' && echo 'Ejecting all external drives.'"
   alias ls='ls --classify --color=auto --human-readable -U' # HFS + U = <3
   alias o="open"
@@ -189,6 +190,7 @@ else
   fi
 
   alias cal="cal -m"
+  alias df="df -h"
   alias ls='ls --classify --color=auto --human-readable -v'
   alias vl='less +F /var/log/syslog'
 fi
@@ -202,6 +204,7 @@ alias tree="tree --charset ascii -N"
 alias wgetp="wget --adjust-extension --convert-links --page-requisites"
 alias ycal='cal $(date +%Y)'
 alias zreload="source ~/.zshenv && source ~/.zshrc && [[ -f ~/.zshrc_local ]] && source ~/.zshrc_local || true"
+alias du="du -sh"
 
 alias ..="source dotdot"
 alias cdh="dirs -v | sort --reverse"
@@ -218,9 +221,6 @@ alias csvv="column -t -s ';'"
 alias d="ls -l"
 alias da="ls --all -l"
 alias la="ls --all"
-
-alias df="df -h"
-alias du="du -sh"
 
 alias g="grep"
 alias grep="grep --color=auto"
