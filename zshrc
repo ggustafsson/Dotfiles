@@ -167,7 +167,7 @@ PROMPT='${prompt_host} ${PWD/${HOME}/~} $(prompt_todo)$(prompt_git)$(prompt_mode
 if [[ $OSTYPE == darwin* ]]; then
   alias beep="afplay /System/Library/Sounds/Glass.aiff"
   alias caffeinate="caffeinate -di"
-  alias df="df -hP"
+  alias df="df -Ph"
   alias eject="osascript -e 'tell application \"Finder\" to eject (every disk whose ejectable is true)' && echo 'Ejecting all external drives.'"
   alias ls='ls --classify --color=auto --human-readable -U' # HFS + U = <3
   alias o="open"
