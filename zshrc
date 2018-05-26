@@ -169,11 +169,11 @@ if [[ $OSTYPE == darwin* ]]; then
   alias caffeinate="caffeinate -di"
   alias df="df -Ph"
   alias eject="osascript -e 'tell application \"Finder\" to eject (every disk whose ejectable is true)' && echo 'Ejecting all external drives.'"
-  alias ls='ls --classify --color=auto --human-readable -U' # HFS + U = <3
+  alias ls="ls --classify --color=auto --human-readable"
   alias o="open"
   alias tim="caffeinate tim"
   alias top="top -o cpu -s 2"
-  alias vl='sudo less +F /var/log/system.log'
+  alias vl="sudo less +F /var/log/system.log"
   alias webcam="imagesnap -t 2 -w 1"
   alias wifiscan="/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport --scan"
 
@@ -191,8 +191,8 @@ else
 
   alias cal="cal -m"
   alias df="df -h"
-  alias ls='ls --classify --color=auto --human-readable -v'
-  alias vl='less +F /var/log/syslog'
+  alias ls="ls --classify --color=auto --human-readable -v"
+  alias vl="less +F /var/log/syslog"
 fi
 
 alias free="free -h"
@@ -246,7 +246,7 @@ alias gun="git reset --soft HEAD^"
 alias h="source h"
 alias hist="history -i 1 | less"
 
-alias pyjson='python -m json.tool'
+alias pyjson="python -m json.tool"
 alias pyweb="python3 -m http.server 8080"
 
 alias sort="sort --numeric-sort"
