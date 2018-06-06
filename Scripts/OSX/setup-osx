@@ -12,6 +12,7 @@ if [[ $? -eq 1 ]]; then
   echo "User is not allowed to use sudo! Exiting..."
   exit 1
 fi
+
 # Check write permission for homebrew (SIP blocking?).
 mkdir -p /usr/local/perm_test
 if [[ $? -eq 1 ]]; then
@@ -20,10 +21,12 @@ if [[ $? -eq 1 ]]; then
 else
   rm -rf /usr/local/perm_test
 fi
+
 if [[ ! -d /Applications/Xcode.app ]]; then
   echo "Install Xcode first! Exiting..."
   exit 1
 fi
+
 # Check for GitHub keys.
 if [[ ! -f ~/.ssh/id_rsa ]]; then
   echo "Install the SSH key first! Exiting..."
@@ -32,8 +35,6 @@ fi
 
 chflags hidden ~/Public
 chflags nohidden ~/Library
-
-mkdir -p ~/.config
 
 # Check for updates daily instead of once a week.
 sudo defaults write /Library/Preferences/com.apple.SoftwareUpdate ScheduleFrequency -int 1
@@ -118,6 +119,7 @@ ln -s ~/Projects/Dot\ Files/zshrc ~/.zshrc
 ln -s ~/Projects/IP-Kalkylatorn/ipkalk ~/Scripts/
 ln -s ~/Projects/Tim/tim ~/Scripts/
 
+mkdir -p ~/.config
 ln -s ~/.vim ~/.config/nvim
 ln -s ~/.vimrc ~/.config/nvim/init.vim
 

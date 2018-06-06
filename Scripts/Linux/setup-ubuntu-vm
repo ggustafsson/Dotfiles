@@ -34,9 +34,10 @@ sudo apt install -y \
 
 sudo usermod -a -G dialout,wireshark $USER
 
+services="apache2 bind9 cntlm netperf nfs-kernel-server nginx smbd ssh"
 echo
-sudo systemctl disable apache2 bind9 cntlm netperf nfs-kernel-server nginx smbd ssh
-sudo systemctl stop    apache2 bind9 cntlm netperf nfs-kernel-server nginx smbd ssh
+sudo systemctl disable $services
+sudo systemctl stop $services
 
 echo
 mkdir -p ~/.fonts/truetype/Inconsolata
