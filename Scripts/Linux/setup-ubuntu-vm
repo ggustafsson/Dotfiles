@@ -34,8 +34,8 @@ sudo apt install -y \
 
 sudo usermod -a -G dialout,wireshark $USER
 
-services="apache2 bind9 cntlm netperf nfs-kernel-server nginx smbd ssh"
 echo
+services="apache2 bind9 cntlm netperf nfs-kernel-server nginx smbd ssh"
 sudo systemctl disable $services
 sudo systemctl stop $services
 

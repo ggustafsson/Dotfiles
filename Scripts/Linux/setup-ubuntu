@@ -7,8 +7,6 @@
 # Written by Göran Gustafsson (gustafsson.g at gmail.com).
 # License: BSD 3-Clause.
 
-rm ~/examples.desktop
-
 mkdir -p ~/.config
 mkdir -p ~/.ssh && chmod 700 ~/.ssh
 mkdir -p ~/.vim/backups
