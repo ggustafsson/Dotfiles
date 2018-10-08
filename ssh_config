@@ -11,10 +11,10 @@ Host alderaan2
   User ubnt
   HostName 192.168.1.254
 
-Host fulknark.se
-  HostName fulknark.se
-  Port 443
-
 Host hoth
   HostName 192.168.0.2
+  Port 443
+
+Host thesharksays.mooo.com
+  HostName thesharksays.mooo.com
   Port 443
