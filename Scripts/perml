@@ -38,7 +38,7 @@ for arg; do
       -exec chmod $perm_file "{}" \;
   else
     find $arg -type d -exec chmod $perm_dir "{}" \;
-    find $arg -type f -perm +111 -exec chmod $perm_exec "{}" \;
-    find $arg -type f ! -perm +111 -exec chmod $perm_file "{}" \;
+    find $arg -type f -perm /111 -exec chmod $perm_exec "{}" \;
+    find $arg -type f ! -perm /111 -exec chmod $perm_file "{}" \;
   fi
 done
