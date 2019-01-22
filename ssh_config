@@ -1,7 +1,5 @@
-# I use this so the connection will die by itself when my laptop goes to sleep.
-# Otherwise I will have to kill the SSH client by hand when I return.
-ServerAliveInterval 30
-ServerAliveCountMax 2
+Host *
+  ServerAliveInterval 30
 
 Host alderaan1
   User ubnt
