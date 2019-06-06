@@ -81,9 +81,6 @@ set wildmode=longest,list
 let g:loaded_matchparen = 1
 let g:mapleader = ","
 
-let g:go_fmt_command = "goimports"
-let g:go_fmt_fail_silently = 1
-
 let g:gundo_help = 0
 let g:gundo_preview_statusline = " Gundo Preview"
 let g:gundo_tree_statusline = " Gundo Tree"
@@ -285,11 +282,4 @@ augroup Main
   autocmd FileType markdown   setlocal expandtab shiftwidth=4 softtabstop=4
   autocmd FileType python     setlocal expandtab shiftwidth=4 softtabstop=4
   autocmd FileType qf         setlocal colorcolumn= nolist nonumber norelativenumber " QuickFix buffer.
-
-  autocmd FileType go nmap <Leader>gd :GoDoc<CR>
-  autocmd FileType go nmap <Leader>ge :GoErrCheck<CR>
-  autocmd FileType go nmap <Leader>gi :GoInfo<CR>
-  autocmd FileType go nmap <Leader>gl :GoLint<CR>
-  autocmd FileType go nmap <Leader>gr :GoRename<CR>
-  autocmd FileType go nmap <Leader>gv :GoVet<CR>
 augroup END

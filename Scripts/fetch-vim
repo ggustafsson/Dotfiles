@@ -31,5 +31,4 @@ fetch ~/.vim/bundle/gundo.vim    https://github.com/sjl/gundo.vim.git
 fetch ~/.vim/bundle/nerdtree     https://github.com/scrooloose/nerdtree.git
 fetch ~/.vim/bundle/syntastic    https://github.com/scrooloose/syntastic.git
 fetch ~/.vim/bundle/tcomment_vim https://github.com/tomtom/tcomment_vim.git
-fetch ~/.vim/bundle/vim-go       https://github.com/fatih/vim-go.git
 fetch ~/.vim/bundle/vim-surround https://github.com/tpope/vim-surround.git

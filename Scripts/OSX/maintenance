@@ -17,8 +17,6 @@ if [[ $answer == (y|yes) ]]; then
   brew upgrade
   brew cleanup
   echo
-  fetch-go
-  echo
   fetch-vim
   echo
   frees

@@ -20,6 +20,4 @@ for directory in ~/Projects/*; do
 done
 
 echo
-fetch-go
-echo
 fetch-vim
