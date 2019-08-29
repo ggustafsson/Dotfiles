@@ -195,6 +195,7 @@ else
   alias vl="less +F /var/log/syslog"
 fi
 
+alias du="du -sh"
 alias free="free -h"
 alias iip="curl icanhazip.com"
 alias ka="killall"
@@ -204,7 +205,6 @@ alias tree="tree --charset ascii -N"
 alias wgetp="wget --adjust-extension --convert-links --page-requisites"
 alias ycal='cal $(date +%Y)'
 alias zreload="source ~/.zshenv && source ~/.zshrc && [[ -f ~/.zshrc_local ]] && source ~/.zshrc_local || true"
-alias du="du -sh"
 
 alias ..="source dotdot"
 alias cdh="dirs -v | sort --reverse"
