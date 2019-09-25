@@ -17,17 +17,13 @@ backup_objects=(
   ~/Dropbox
   ~/Golang
   ~/Library/Application\ Support/OpenEmu
-  ~/Library/Containers/com.apple.iWork.Pages/Data/Library/Application\ Support/User\ Templates
   ~/Library/Safari/Bookmarks.plist
   ~/Movies
   ~/Music/FLAC
-  ~/Music/GBS
   ~/Music/MP3
-  ~/Music/NSFe
   ~/Pictures
   ~/Projects
   ~/School
-  ~/Sites
   ~/Storage
   ~/Web\ Archives
 )
