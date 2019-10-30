@@ -61,6 +61,7 @@ sudo mv ~/Downloads/homebrew/{*,.*} /usr/local/
 /usr/local/bin/brew install \
   bash \
   coreutils \
+  cuetools \
   curl \
   ffmpeg \
   flac \
@@ -84,6 +85,7 @@ sudo mv ~/Downloads/homebrew/{*,.*} /usr/local/
   renameutils \
   rsync \
   ruby \
+  shntool \
   svtplay-dl \
   tmux \
   tree \
