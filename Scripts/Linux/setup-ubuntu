@@ -7,7 +7,6 @@
 # Written by Göran Gustafsson (gustafsson.g at gmail.com).
 # License: BSD 3-Clause.
 
-mkdir -p ~/.config
 mkdir -p ~/.ssh && chmod 700 ~/.ssh
 mkdir -p ~/.vim/backups
 mkdir -p ~/.vim/colors
@@ -20,7 +19,6 @@ sudo apt install -y \
   golang \
   links \
   nmap \
-  ntp \
   ntpdate \
   openssh-server \
   tmux \
@@ -51,9 +49,6 @@ ln -s ~/Projects/Dot\ Files/zshrc ~/.zshrc
 ln -s ~/Projects/IP-Kalkylatorn/ipkalk ~/Scripts/
 ln -s ~/Projects/Static\ Color\ Scheme/colors/static.vim ~/.vim/colors/
 ln -s ~/Projects/Tim/tim ~/Scripts/
-
-ln -s ~/.vim ~/.config/nvim
-ln -s ~/.vimrc ~/.config/nvim/init.vim
 
 sudo cp ~/Projects/Dot\ Files/motd-linux /etc/motd
 

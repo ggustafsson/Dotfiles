@@ -36,9 +36,6 @@ fi
 chflags hidden ~/Public
 chflags nohidden ~/Library
 
-# Check for updates daily instead of once a week.
-sudo defaults write /Library/Preferences/com.apple.SoftwareUpdate ScheduleFrequency -int 1
-
 # Override hostname from DHCP server.
 echo -n "What hostname do you want? "
 read new_hostname
@@ -77,7 +74,6 @@ sudo mv ~/Downloads/homebrew/{*,.*} /usr/local/
   lame \
   links \
   ncftp \
-  neovim/neovim/neovim \
   nmap \
   openssh \
   python --build-from-source \
@@ -120,10 +116,6 @@ ln -s ~/Projects/Dot\ Files/zshrc ~/.zshrc
 
 ln -s ~/Projects/IP-Kalkylatorn/ipkalk ~/Scripts/
 ln -s ~/Projects/Tim/tim ~/Scripts/
-
-mkdir -p ~/.config
-ln -s ~/.vim ~/.config/nvim
-ln -s ~/.vimrc ~/.config/nvim/init.vim
 
 sudo cp ~/Projects/Dot\ Files/motd-osx /etc/motd
 

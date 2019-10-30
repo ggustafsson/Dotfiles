@@ -11,12 +11,6 @@ if !exists("g:dont_run_again")
   colorscheme static
 endif
 
-if has("nvim")
-  set mouse=
-else
-  set cryptmethod=blowfish
-endif
-
 set backspace=indent,eol,start
 set colorcolumn=80
 set confirm
