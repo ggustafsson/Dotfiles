@@ -21,14 +21,10 @@ function fetch {
 
 echo "Fetching Vim plugins."
 
-mkdir -p ~/.vim/autoload
-mkdir -p ~/.vim/bundle
+mkdir -p ~/.vim/pack/others
 
-fetch ~/.vim/vim-pathogen https://github.com/tpope/vim-pathogen.git
-ln -s ~/.vim/vim-pathogen/autoload/pathogen.vim ~/.vim/autoload/pathogen.vim &> /dev/null
-
-fetch ~/.vim/bundle/gundo.vim    https://github.com/sjl/gundo.vim.git
-fetch ~/.vim/bundle/nerdtree     https://github.com/scrooloose/nerdtree.git
-fetch ~/.vim/bundle/syntastic    https://github.com/scrooloose/syntastic.git
-fetch ~/.vim/bundle/tcomment_vim https://github.com/tomtom/tcomment_vim.git
-fetch ~/.vim/bundle/vim-surround https://github.com/tpope/vim-surround.git
+fetch ~/.vim/pack/others/gundo.vim    https://github.com/sjl/gundo.vim.git
+fetch ~/.vim/pack/others/nerdtree     https://github.com/scrooloose/nerdtree.git
+fetch ~/.vim/pack/others/syntastic    https://github.com/scrooloose/syntastic.git
+fetch ~/.vim/pack/others/tcomment_vim https://github.com/tomtom/tcomment_vim.git
+fetch ~/.vim/pack/others/vim-surround https://github.com/tpope/vim-surround.git

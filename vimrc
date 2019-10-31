@@ -1,15 +1,8 @@
-if !exists("g:dont_run_again")
-  let g:dont_run_again = 1
+filetype plugin indent on
+packadd! matchit
 
-  call pathogen#infect()
-  call pathogen#helptags()
-
-  filetype plugin indent on
-  runtime macros/matchit.vim
-
-  syntax enable
-  colorscheme static
-endif
+syntax enable
+colorscheme static
 
 set backspace=indent,eol,start
 set colorcolumn=80
