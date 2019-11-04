@@ -8,8 +8,8 @@
 # License: BSD 3-Clause.
 
 remove_objects=(
-  /Library/Caches/Homebrew
   ~/Library/Application\ Support/com.github.GitHub.ShipIt/update.*(N)
+  ~/Library/Caches/Homebrew
   ~/Library/Caches/com.apple.dt.Xcode/Downloads
   ~/Library/Caches/com.spotify.client
   ~/Library/Logs/Homebrew
