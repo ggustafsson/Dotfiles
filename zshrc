@@ -174,7 +174,6 @@ if [[ $OSTYPE == darwin* ]]; then
   alias tim="caffeinate tim"
   alias top="top -o cpu -s 2"
   alias vl="sudo less +F /var/log/system.log"
-  alias webcam="imagesnap -t 2 -w 1"
   alias wifiscan="/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport --scan"
 
   alias brewi="brew install"

@@ -69,15 +69,14 @@ sudo mv ~/Downloads/homebrew/{*,.*} /usr/local/
   gnuplot \
   golang \
   html2text \
-  imagemagick --without-x \
-  imagesnap \
+  imagemagick \
   lame \
   links \
   ncftp \
   nmap \
   openssh \
-  python --build-from-source \
-  python3 \
+  python \
+  python@2 \
   renameutils \
   rsync \
   ruby \
@@ -87,7 +86,6 @@ sudo mv ~/Downloads/homebrew/{*,.*} /usr/local/
   tree \
   vim \
   vorbis-tools \
-  weechat --with-lua --with-perl --with-python --with-ruby \
   wget \
   youtube-dl \
   zsh
