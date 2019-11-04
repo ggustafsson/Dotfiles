@@ -25,7 +25,6 @@ sudo apt install -y \
   tmux \
   tree \
   vim-nox \
-  weechat \
   zsh
 
 sudo chsh -s /bin/zsh $USER
