@@ -42,7 +42,7 @@ ln -s ~/Projects/Dot\ Files/vimrc ~/.vimrc
 ln -s ~/Projects/Dot\ Files/zshenv ~/.zshenv
 ln -s ~/Projects/Dot\ Files/zshrc ~/.zshrc
 
-ln -s ~/Projects/Static\ Color\ Scheme ~/.vim/pack/ggustafsson/start/Static\ Color\ Scheme
+ln -s ~/.vim/pack/ggustafsson/start/Static\ Color\ Scheme ~/Projects/Static\ Color\ Scheme
 
 sudo cp ~/Projects/Dot\ Files/motd-linux /etc/motd
 
