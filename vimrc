@@ -68,12 +68,10 @@ set wildmode=longest,list
 let g:loaded_matchparen = 1
 let g:mapleader = ","
 
-let g:gundo_help = 0
-let g:gundo_preview_statusline = " Gundo Preview"
-let g:gundo_tree_statusline = " Gundo Tree"
+let g:mundo_preview_statusline = " Mundo Preview"
+let g:mundo_tree_statusline = " Mundo Tree"
 
 let g:NERDTreeHighlightCursorline = 0
-let g:NERDTreeMinimalUI = 1
 let g:NERDTreeStatusline = " NERDTree"
 
 let g:syntastic_always_populate_loc_list = 1
@@ -103,7 +101,6 @@ nnoremap <Leader>er :browse oldfiles<CR>
 nnoremap <Leader>fe :set fileformat=unix \| set fileencoding=utf-8
 nnoremap <Leader>ff :call FixFile()<CR>
 nnoremap <Leader>ft :set filetype=
-nnoremap <Leader>gu :GundoToggle<CR>
 nnoremap <Leader>in :Insert ~/.vim/templates/
 nnoremap <Leader>li :set list!<CR>
 nnoremap <Leader>no :edit ~/Documents/Text\ Files/Notes.txt<CR>
@@ -125,6 +122,7 @@ nnoremap <Leader>to :edit ~/Documents/Text\ Files/To-do\ List.txt<CR>
 nnoremap <Leader>tr :NERDTreeToggle<CR>
 nnoremap <Leader>tw :set textwidth=79
 nnoremap <Leader>un :call UndoAll()<CR>
+nnoremap <Leader>ut :MundoToggle<CR>
 nnoremap <Leader>vi :edit ~/.vimrc<CR>
 nnoremap <Leader>w3 :!~/Scripts/validate "%"<CR>
 nnoremap <Leader>wr :set wrap!<CR>
