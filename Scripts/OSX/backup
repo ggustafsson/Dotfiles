@@ -38,9 +38,10 @@ echo "Backing up to directory '${destination}'."
 for object in $backup_objects; do
   if [[ -a $object ]]; then
     print -P "\n%B%F{green}Backing up: ${object/${HOME}/~}%f%b"
-    rsync --archive --delete --exclude=Dropbox/.dropbox.cache \
-      --exclude=Dropbox/Public/Tmp --exclude=Dropbox/Shared\ Files \
-      --human-readable --verbose \
+    rsync --archive --delete --human-readable --verbose \
+      --exclude=Dropbox/.dropbox.cache \
+      --exclude=Dropbox/Public \
+      --exclude=Dropbox/Shared\ Files \
       $object $destination
   else
     echo "\nObject '${object}' not found! Exiting..."
