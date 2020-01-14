@@ -10,14 +10,14 @@
 server=hoth
 destination=/media/external
 
-backup_server=(
+backup_objects=(
   ~/Music/FLAC
   ~/Music/MP3
 )
 
 echo "Backing up to server '${server}'."
 
-for object in $backup_server; do
+for object in $backup_objects; do
   if [[ -a $object ]]; then
     print -P "\n%B%F{green}Backing up: ${object/${HOME}/~}%f%b"
     rsync --archive --chmod=D755,F644 --delete --human-readable --progress \
