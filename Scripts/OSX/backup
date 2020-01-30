@@ -13,17 +13,14 @@ backup_objects=(
   ~/.ssh
   ~/Development
   ~/Documents
-  ~/Downloads
   ~/Dropbox
   ~/Golang
   ~/Library/Application\ Support/OpenEmu
   ~/Library/Safari/Bookmarks.plist
   ~/Movies
-  ~/Music/FLAC
   ~/Music/MP3
   ~/Pictures
   ~/Projects
-  ~/School
   ~/Storage
   ~/Web\ Archives
 )
