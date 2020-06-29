@@ -8,6 +8,7 @@ export LC_ALL=en_US.UTF-8
 
 if [[ $OSTYPE == darwin* ]]; then
   path=(
+    ~/.local/bin(N)
     ~/Golang/bin(N)
     ~/Scripts/OSX(N)
     ~/Scripts(N)
@@ -22,6 +23,7 @@ if [[ $OSTYPE == darwin* ]]; then
   )
 else
   path=(
+    ~/.local/bin(N)
     ~/Golang/bin(N)
     ~/Scripts/Linux(N)
     ~/Scripts(N)
