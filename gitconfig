@@ -8,14 +8,12 @@
 [core]
 	excludesfile = ~/.gitignore_global
 
+[pull]
+	rebase = false
+
 [push]
 	default = simple
 
 [user]
 	name  = Göran Gustafsson
 	email = gustafsson.g@gmail.com
-
-[filter "lfs"]
-	clean = git-lfs clean %f
-	smudge = git-lfs smudge %f
-	required = true
