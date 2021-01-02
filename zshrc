@@ -190,12 +190,12 @@ else
 
   alias cal="cal -m"
   alias df="df -h"
+  alias free="free -h"
   alias ls="ls --classify --color=auto --human-readable -v"
   alias vl="less +F /var/log/syslog"
 fi
 
 alias du="du -sh"
-alias free="free -h"
 alias iip="curl icanhazip.com"
 alias ka="killall"
 alias l="less"
