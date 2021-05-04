@@ -252,6 +252,6 @@ alias sort="sort --numeric-sort"
 alias uniqs="sort | uniq"
 
 alias svtplay-dl="svtplay-dl --resume"
-alias youtube-dl="youtube-dl --continue --title"
+alias youtube-dl="youtube-dl --continue --output '%(title)s.%(ext)s'"
 
 [[ -f ~/.zshrc_local ]] && source ~/.zshrc_local || true
