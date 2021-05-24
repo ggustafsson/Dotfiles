@@ -73,7 +73,6 @@ sudo mv ~/Downloads/homebrew/{*,.*} /usr/local/
   nmap \
   openssh \
   python \
-  python@2 \
   renameutils \
   rsync \
   ruby \
