@@ -10,7 +10,6 @@
 remove_objects=(
   ~/Library/Caches/Homebrew
   ~/Library/Caches/com.apple.dt.Xcode/Downloads
-  ~/Library/Caches/com.spotify.client
   ~/Library/Logs/Homebrew
   ~/Library/Mail\ Downloads
   ~/Library/iTunes/iPhone\ Software\ Updates
