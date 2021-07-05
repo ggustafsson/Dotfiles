@@ -12,7 +12,3 @@ Host alderaan2
 Host hoth
   HostName 192.168.0.2
   Port 443
-
-Host thesharksays.mooo.com
-  HostName thesharksays.mooo.com
-  Port 443
