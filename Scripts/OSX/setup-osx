@@ -36,22 +36,12 @@ fi
 chflags hidden ~/Public
 chflags nohidden ~/Library
 
-# Override hostname from DHCP server.
-echo -n "What hostname do you want? "
-read new_hostname
-if [[ -z $new_hostname ]]; then
-  echo "No hostname supplied! Skipping..."
-else
-  sudo scutil --set HostName $new_hostname
-fi
-echo
-
 xcode-select --install
 echo -n "Press 'Return' when Command Line Tools are installed..."
 read -s wait_for_input
 echo
 
-git clone https://github.com/mxcl/homebrew.git ~/Downloads/homebrew
+git clone https://github.com/Homebrew/brew.git ~/Downloads/homebrew
 sudo mv ~/Downloads/homebrew/{*,.*} /usr/local/
 
 /usr/local/bin/brew tap homebrew/dupes
@@ -69,7 +59,6 @@ sudo mv ~/Downloads/homebrew/{*,.*} /usr/local/
   imagemagick \
   lame \
   links \
-  ncftp \
   nmap \
   openssh \
   python \
