@@ -34,20 +34,23 @@ for directory in ${project_dir}/*; do
 
   cd $directory
 
-  if [[ -n $(git rev-list origin..HEAD 2> /dev/null) ]]; then
-    print -P "%B%F{cyan}${directory:t}:%f%b"
-  elif [[ -n $(git status --short 2> /dev/null) ]]; then
-    print -P "%B%F{red}${directory:t}:%f%b"
-  elif [[ -d .git ]]; then
-    clean_repos+=(${directory:t})
-    continue
+  if [[ -d .git ]]; then
+    if [[ -n $(git rev-list origin..HEAD 2> /dev/null) ]]; then
+      print -P "%B%F{cyan}${directory:t}:%f%b"
+      git status --branch --short
+      echo
+    elif [[ -n $(git status --short 2> /dev/null) ]]; then
+      print -P "%B%F{red}${directory:t}:%f%b"
+      git status --branch --short
+      echo
+    else
+      clean_repos+=(${directory:t})
+    fi
   else
     not_repos+=(${directory:t})
-    continue
   fi
 
-  git status --branch --short
-  echo
+  cd -
 done
 
 print -P "%B%F{green}Clean repo(s):%f%b"
