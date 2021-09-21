@@ -5,11 +5,19 @@
 # Dependencies: git
 #
 # Usage: chkp
+#        chkp <path>
 #
 # Written by Göran Gustafsson (gustafsson.g at gmail.com).
 # License: BSD 3-Clause.
 
-project_dir=~/Projects
+if [[ $# -eq 0 ]]; then
+  project_dir=~/Projects
+elif [[ $# -eq 1 ]]; then
+  project_dir=$1
+else
+  echo "Usage: ${0:t} [PATH]..."
+  exit
+fi
 
 if [[ ! -d $project_dir ]]; then
   echo "Directory '${project_dir}' not found! Exiting..."
@@ -20,6 +28,10 @@ elif [[ -z $(echo ${project_dir}/*(N)) ]]; then
 fi
 
 for directory in ${project_dir}/*; do
+  if [[ ! -d $directory ]]; then
+    continue
+  fi
+
   cd $directory
 
   if [[ -n $(git rev-list origin..HEAD 2> /dev/null) ]]; then
