@@ -97,7 +97,6 @@ ln -s ~/Projects/Dot\ Files/vimrc ~/.vimrc
 ln -s ~/Projects/Dot\ Files/zshenv ~/.zshenv
 ln -s ~/Projects/Dot\ Files/zshrc ~/.zshrc
 
-ln -s ~/Projects/IP-Kalkylatorn/ipkalk ~/Scripts/
 ln -s ~/Projects/Tim/tim ~/Scripts/
 
 sudo cp ~/Projects/Dot\ Files/motd-osx /etc/motd
