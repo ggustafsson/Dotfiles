@@ -4,7 +4,7 @@ export EDITOR=vim
 export VISUAL=$EDITOR
 
 export LESS=FRSX
-export LESS_TERMCAP_us=$(printf "\e[0m")
+export LESS_TERMCAP_us=$(printf "\e[0m") # Remove underscores in 'man' etc.
 export PAGER=less
 
 export LS_COLORS="rs=0:di=01;34:ln=01;35:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=01;31;01:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32"
@@ -55,11 +55,11 @@ autoload -U url-quote-magic && zle -N self-insert url-quote-magic
 autoload -U down-line-or-beginning-search && zle -N down-line-or-beginning-search
 autoload -U up-line-or-beginning-search && zle -N up-line-or-beginning-search
 
-# Enable ci" di" vi" etc in Zsh's vi mode :)
+# Enable ci" di" vi" etc in Zsh's Vi mode :)
 autoload -U select-quoted && zle -N select-quoted
 for mode in visual viopp; do
   for char in {a,i}{\',\",\`}; do
-    bindkey -M $mode $char select-quoted 2> /dev/null # Shut up Ubuntu!
+    bindkey -M $mode $char select-quoted
   done
 done
 
@@ -77,32 +77,29 @@ bindkey "^[." insert-last-word
 
 bindkey -M vicmd "R" custom-vi-replace # Use custom Vi replace function.
 
-# Insert key.
+# Insert & Delete key.
 bindkey -M vicmd $terminfo[kich1] overwrite-mode
 bindkey          $terminfo[kich1] overwrite-mode
-
-# Delete key.
 bindkey -M vicmd $terminfo[kdch1] delete-char
 bindkey          $terminfo[kdch1] delete-char
 
-# Page up key.
+# Page Up & Page Down keys.
 bindkey -M vicmd $terminfo[kpp] up-line-or-beginning-search
 bindkey          $terminfo[kpp] up-line-or-beginning-search
-
-# Page down key.
 bindkey -M vicmd $terminfo[knp] down-line-or-beginning-search
 bindkey          $terminfo[knp] down-line-or-beginning-search
 
-# Home key. $terminfo is not reliable.
-bindkey -M vicmd "^[[H"  beginning-of-line # Terminal.app, Cygwin ...
-bindkey -M vicmd "^[[1~" beginning-of-line # Tmux ...
-bindkey "^[[H"           beginning-of-line
-bindkey "^[[1~"          beginning-of-line
+# Home & End key fix for Terminal.app, Cygwin etc.
+bindkey -M vicmd "^[[H"  beginning-of-line
+bindkey          "^[[H"  beginning-of-line
+bindkey -M vicmd "^[[F"  end-of-line
+bindkey          "^[[F"  end-of-line
 
-bindkey -M vicmd "^[[F"  end-of-line # Terminal.app, Cygwin ...
-bindkey -M vicmd "^[[4~" end-of-line # Tmux ...
-bindkey "^[[F"           end-of-line
-bindkey "^[[4~"          end-of-line
+# Home & End key fix for Tmux.
+bindkey -M vicmd "^[[1~" beginning-of-line
+bindkey          "^[[1~" beginning-of-line
+bindkey -M vicmd "^[[4~" end-of-line
+bindkey          "^[[4~" end-of-line
 
 zstyle ":completion:*"          insert-tab pending # Disable tabs at prompt.
 zstyle ":completion:*"          list-colors ${(s.:.)LS_COLORS}
@@ -231,6 +228,7 @@ alias gca="git commit --all --verbose"
 alias gcl="git clone"
 alias gco="git commit --verbose"
 alias gdi="git diff"
+alias gfp="echo -n 'Confirm action...' && read && git reset --hard origin/master"
 alias gin="git init"
 alias glo="git log"
 alias gmv="git mv"
@@ -240,7 +238,7 @@ alias grm="git rm"
 alias gsh="git show"
 alias gst="git status --branch"
 alias gsu="git submodule update --recursive"
-alias gun="git reset --soft HEAD^"
+alias gun="echo -n 'Confirm action...' && read && git reset --soft HEAD^"
 
 alias h="source h"
 alias hist="history -i 1 | less"
