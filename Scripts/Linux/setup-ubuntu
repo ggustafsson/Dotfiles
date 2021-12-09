@@ -14,23 +14,19 @@ mkdir -p ~/.vim/undos
 mkdir -p ~/Projects
 
 sudo apt install -y \
+  dnsutils \
   flac \
-  git \
   golang \
   links \
   nmap \
-  ntpdate \
-  openssh-server \
-  tmux \
   tree \
-  vim-nox \
   zsh
 
 sudo chsh -s /bin/zsh $USER
 
 echo
 git clone https://github.com/ggustafsson/Dot-Files.git ~/Projects/Dot\ Files
-git clone https://github.com/ggustafsson/Static-Color-Scheme.git ~/.vim/pack/ggustafsson/Static\ Color\ Scheme
+git clone https://github.com/ggustafsson/Static-Color-Scheme.git ~/.vim/pack/ggustafsson/start/Static\ Color\ Scheme
 
 ln -s ~/Projects/Dot\ Files/Scripts ~/
 ln -s ~/Projects/Dot\ Files/gitconfig ~/.gitconfig
