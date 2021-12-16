@@ -17,6 +17,7 @@ sudo apt install -y \
   dnsutils \
   flac \
   golang \
+  html2text \
   links \
   nmap \
   tree \

@@ -27,12 +27,6 @@ if [[ ! -d /Applications/Xcode.app ]]; then
   exit 1
 fi
 
-# Check for GitHub keys.
-if [[ ! -f ~/.ssh/id_rsa ]]; then
-  echo "Install the SSH key first! Exiting..."
-  exit 1
-fi
-
 chflags hidden ~/Public
 chflags nohidden ~/Library
 
@@ -56,6 +50,7 @@ sudo mv ~/Downloads/homebrew/{*,.*} /usr/local/
   git \
   gnu-sed \
   golang \
+  html2text \
   imagemagick \
   lame \
   links \
