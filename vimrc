@@ -136,7 +136,7 @@ nnoremap <Leader>cl :%!column -t<CR>
 vnoremap <Leader>cl :!column -t<CR>
 
 nnoremap <Leader>ne :enew<CR>
-vnoremap <Leader>ne y:enew<CR>P
+vnoremap <Leader>ne y:enew<CR>PGdd
 
 vnoremap <Leader>re :s/\%V/gc<Left><Left><Left>
 nnoremap <Leader>re :%s//gc<Left><Left><Left>
