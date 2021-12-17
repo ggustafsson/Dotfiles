@@ -29,6 +29,9 @@ set undodir=~/.vim/undos
 set completeopt-=preview
 set omnifunc=syntaxcomplete#Complete
 
+set cursorline
+set cursorlineopt=number
+
 set expandtab
 set shiftwidth=2
 set softtabstop=2
