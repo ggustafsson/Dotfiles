@@ -1,5 +1,3 @@
-export TODO_FILE=~/Documents/Text\ Files/To-do\ List.txt
-
 export EDITOR=vim
 export VISUAL=$EDITOR
 
@@ -16,17 +14,6 @@ export LS_COLORS="${LS_COLORS}:*.dmg=01;31:*.iso=01;31:*.rar=01;31:*.tar=01;31:*
 HISTFILE=~/.zsh_histfile
 HISTSIZE=10000
 SAVEHIST=$HISTSIZE
-
-if [[ $OSTYPE == darwin* ]]; then
-  d2=/Volumes/MicroSD/Downloads\ 2
-  e=/Volumes/External
-  m=/Volumes/MicroSD
-else
-  e=/media/external
-fi
-
-d=~/Downloads
-p=~/Projects
 
 setopt correct
 setopt interactivecomments
@@ -118,7 +105,7 @@ function prompt_git {
 }
 
 function prompt_todo {
-  if [[ -s .todo ]]; then
+  if [[ -f .todo.txt ]]; then
     echo "%B%F{green}[t]%f%b "
   fi
 }
@@ -150,23 +137,18 @@ function prompt_mode {
   fi
 }
 
-if [[ $HOST == Coruscant* ]]; then
+if [[ $OSTYPE == darwin* ]]; then
   prompt_host="%B%F{yellow}%m%f%b"
-elif [[ $HOST == *-VM ]]; then
-  prompt_host="%B%F{green}%m%f%b"
 else
-  prompt_host="%B%F{red}%m%f%b"
+  prompt_host="%B%F{green}%m%f%b"
 fi
 
 # Coruscant ~/Projects/Dot Files [t] [+] $
-PROMPT='${prompt_host} ${PWD/${HOME}/~} $(prompt_todo)$(prompt_git)$(prompt_mode) '
+PROMPT='$prompt_host ${PWD/${HOME}/~} $(prompt_todo)$(prompt_git)$(prompt_mode) '
 
 if [[ $OSTYPE == darwin* ]]; then
   alias beep="afplay /System/Library/Sounds/Glass.aiff"
   alias caffeinate="caffeinate -di"
-  alias df="df -Ph"
-  alias eject="osascript -e 'tell application \"Finder\" to eject (every disk whose ejectable is true)' && echo 'Ejecting all external drives.'"
-  alias ls="ls --classify --color=auto --human-readable"
   alias o="open"
   alias tim="caffeinate tim"
   alias top="top -o cpu -s 2"
@@ -186,19 +168,18 @@ else
   fi
 
   alias cal="cal -m"
-  alias df="df -h"
   alias free="free -h"
-  alias ls="ls --classify --color=auto --human-readable -v"
   alias vl="less +F /var/log/syslog"
 fi
 
+alias df="df -h"
 alias du="du -sh"
 alias iip="curl icanhazip.com"
 alias ka="killall"
 alias l="less"
+alias ls="ls --classify --color --human-readable"
 alias mkdir="mkdir -pv"
 alias tree="tree --charset ascii -N"
-alias wgetp="wget --adjust-extension --convert-links --page-requisites"
 alias ycal='cal $(date +%Y)'
 alias zreload="source ~/.zshenv && source ~/.zshrc && [[ -f ~/.zshrc_local ]] && source ~/.zshrc_local || true"
 
@@ -219,9 +200,9 @@ alias da="ls --all -l"
 alias la="ls --all"
 
 alias g="grep"
+alias gr="grep --binary-file=without-match --exclude-dir .git --line-number --recursive"
+alias gr3="gr --after-context=3 --before-context=3"
 alias grep="grep --color=auto"
-alias rg="grep --exclude-dir .git --line-number --recursive"
-alias rg3="rg --after-context=3 --before-context=3"
 
 alias gad="git add"
 alias gca="git commit --all --verbose"
@@ -242,6 +223,11 @@ alias gun="echo -n 'Confirm action...' && read && git reset --soft HEAD^"
 
 alias h="source h"
 alias hist="history -i 1 | less"
+
+alias pt="[[ -f .todo.txt ]] && cat .todo.txt"
+alias ptv="vim .todo.txt"
+alias t="[[ -f ~/Documents/Text\ Files/Todo.txt ]] && cat ~/Documents/Text\ Files/Todo.txt"
+alias tv="vim ~/Documents/Text\ Files/Todo.txt"
 
 alias pyjson="python -m json.tool"
 alias pyweb="python3 -m http.server 8080"

@@ -13,14 +13,16 @@ backup_objects=(
   ~/.ssh
   ~/Development
   ~/Documents
-  ~/Dropbox
   ~/Golang
   ~/Library/Application\ Support/OpenEmu
+  ~/Library/Mobile\ Documents/com\~apple\~CloudDocs
   ~/Library/Safari/Bookmarks.plist
   ~/Movies
   ~/Music/MP3
   ~/Pictures
   ~/Projects
+  #~/School
+  ~/Sites
   ~/Storage
   ~/Web\ Archives
 )
@@ -35,11 +37,7 @@ echo "Backing up to directory '${destination}'."
 for object in $backup_objects; do
   if [[ -a $object ]]; then
     print -P "\n%B%F{green}Backing up: ${object/${HOME}/~}%f%b"
-    rsync --archive --delete --human-readable --verbose \
-      --exclude=Dropbox/.dropbox.cache \
-      --exclude=Dropbox/Public \
-      --exclude=Dropbox/Shared\ Files \
-      $object $destination
+    rsync --archive --delete --human-readable --verbose $object $destination
   else
     echo "\nObject '${object}' not found! Exiting..."
     exit 1

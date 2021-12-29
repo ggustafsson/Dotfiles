@@ -5,7 +5,6 @@ syntax enable
 colorscheme static
 
 set backspace=indent,eol,start
-set colorcolumn=80
 set confirm
 set encoding=utf-8
 set formatoptions+=jlnor
@@ -14,7 +13,6 @@ set nowrap
 set pastetoggle=<C-p>
 set sessionoptions-=options
 set spelllang=en,sv
-set textwidth=79
 set virtualedit=block
 
 set autoindent
@@ -25,6 +23,9 @@ set backupdir=~/.vim/backups
 set directory=~/.vim/backups
 set undofile
 set undodir=~/.vim/undos
+
+set colorcolumn=+1
+set textwidth=80
 
 set completeopt-=preview
 set omnifunc=syntaxcomplete#Complete
@@ -108,7 +109,7 @@ nnoremap <Leader>in :Insert ~/.vim/templates/
 nnoremap <Leader>li :set list!<CR>
 nnoremap <Leader>no :edit ~/Documents/Text\ Files/Notes.txt<CR>
 nnoremap <Leader>nu :set number! \| set relativenumber!<CR>
-nnoremap <Leader>pt :edit <C-R>=escape(expand("%:p:h"), ' \')<CR>/.todo<CR>
+nnoremap <Leader>pt :edit <C-R>=escape(expand("%:p:h"), ' \')<CR>/.todo.txt<CR>
 nnoremap <Leader>rs :source ~/.vim/session.vim<CR>
 nnoremap <Leader>s2 :setlocal expandtab shiftwidth=2 softtabstop=2<CR>
 nnoremap <Leader>s4 :setlocal expandtab shiftwidth=4 softtabstop=4<CR>
@@ -120,10 +121,9 @@ nnoremap <Leader>t2 :setlocal noexpandtab shiftwidth=2 softtabstop=0 tabstop=2<C
 nnoremap <Leader>t4 :setlocal noexpandtab shiftwidth=4 softtabstop=0 tabstop=4<CR>
 nnoremap <Leader>t8 :setlocal noexpandtab shiftwidth=8 softtabstop=0 tabstop=8<CR>
 nnoremap <Leader>ta :tab sball<CR>
-nnoremap <Leader>tm :edit ~/Documents/Text\ Files/Temporary.txt<CR>
-nnoremap <Leader>to :edit ~/Documents/Text\ Files/To-do\ List.txt<CR>
+nnoremap <Leader>to :edit ~/Documents/Text\ Files/Todo.txt<CR>
 nnoremap <Leader>tr :NERDTreeToggle<CR>
-nnoremap <Leader>tw :set textwidth=79
+nnoremap <Leader>tw :set textwidth=80
 nnoremap <Leader>un :call UndoAll()<CR>
 nnoremap <Leader>ut :MundoToggle<CR>
 nnoremap <Leader>vi :edit ~/.vimrc<CR>
@@ -166,7 +166,7 @@ inoremap jj <Esc>
 inoremap <expr><Tab> CompleteTab()
 
 " Easily switch between different colorcolumn settings. If textwidth is set
-" then use textwidth + 1, if textwidth is not set then use colorcolumn=80, and
+" then use textwidth + 1, if textwidth is not set then use colorcolumn=81, and
 " if colorcolumn is already set then turn it off.
 function! ColorColumn()
   if empty(&colorcolumn)
@@ -175,8 +175,8 @@ function! ColorColumn()
       echom "setlocal colorcolumn=" . column
       setlocal colorcolumn=+1
     else
-      echo "setlocal colorcolumn=80"
-      setlocal colorcolumn=80
+      echo "setlocal colorcolumn=81"
+      setlocal colorcolumn=81
     endif
   else
     echo "setlocal colorcolumn="
@@ -264,7 +264,7 @@ augroup Main
 
   autocmd BufNewFile,BufReadPost *.conf,config setlocal filetype=conf
 
-  autocmd FileType gitcommit  setlocal colorcolumn=73 spell textwidth=72
+  autocmd FileType gitcommit  setlocal colorcolumn=+1 spell textwidth=72
   autocmd FileType go         setlocal listchars+=tab:\ \  noexpandtab shiftwidth=4 softtabstop=0 tabstop=4
   autocmd FileType godoc,help setlocal colorcolumn= nolist
   autocmd FileType markdown   setlocal expandtab shiftwidth=4 softtabstop=4
