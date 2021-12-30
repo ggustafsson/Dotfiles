@@ -4,7 +4,6 @@ packadd! matchit " Makes % jump to matching HTML tags, if/else/endif, etc.
 syntax enable
 colorscheme static
 
-
 set backspace=indent,eol,start
 set confirm
 set encoding=utf-8
@@ -68,7 +67,6 @@ set visualbell
 set wildignorecase
 set wildmode=longest,list
 
-
 let g:mapleader = ","
 
 let g:mundo_preview_statusline = " Mundo Preview"
@@ -80,10 +78,8 @@ let g:NERDTreeStatusline = " NERDTree"
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_python_python_exec = system("which python3")
 
-
 command! -nargs=1 -complete=file Insert call Insert(<q-args>)
 command! Sudo w !sudo tee %
-
 
 if has("mac")
   nnoremap <Leader>fi :silent !open "%:p:h"<CR>
@@ -99,31 +95,32 @@ nnoremap <Leader>ed :edit <C-R>=escape(expand("%:p:h"), ' \')<CR>/
 nnoremap <Leader>ef :silent! call ErrorFind()<CR>
 nnoremap <Leader>eh :edit ~/
 nnoremap <Leader>er :browse oldfiles<CR>
-nnoremap <Leader>fe :set fileformat=unix \| set fileencoding=utf-8
+nnoremap <Leader>fe :setlocal fileformat=unix fileencoding=utf-8
 nnoremap <Leader>ff :call FixFile()<CR>
-nnoremap <Leader>ft :set filetype=
+nnoremap <Leader>ft :setlocal filetype=
 nnoremap <Leader>in :Insert ~/.vim/templates/
-nnoremap <Leader>li :set list!<CR>
+nnoremap <Leader>li :setlocal list! list?<CR>
 nnoremap <Leader>no :edit ~/Documents/Text\ Files/Notes.txt<CR>
-nnoremap <Leader>nu :set number! \| set relativenumber!<CR>
+nnoremap <Leader>nu :setlocal number! relativenumber!<CR>
 nnoremap <Leader>pt :edit <C-R>=escape(expand("%:p:h"), ' \')<CR>/.todo.txt<CR>
 nnoremap <Leader>rs :source ~/.vim/session.vim<CR>
 nnoremap <Leader>s2 :setlocal expandtab shiftwidth=2 softtabstop=2<CR>
 nnoremap <Leader>s4 :setlocal expandtab shiftwidth=4 softtabstop=4<CR>
 nnoremap <Leader>s8 :setlocal expandtab shiftwidth=8 softtabstop=8<CR>
 nnoremap <Leader>sh :shell<CR>
-nnoremap <Leader>sp :setlocal spell!<CR>
+nnoremap <Leader>sp :setlocal spell! spell?<CR>
 nnoremap <Leader>ss :mksession! ~/.vim/session.vim<CR>
 nnoremap <Leader>t2 :setlocal noexpandtab shiftwidth=2 softtabstop=0 tabstop=2<CR>
 nnoremap <Leader>t4 :setlocal noexpandtab shiftwidth=4 softtabstop=0 tabstop=4<CR>
 nnoremap <Leader>t8 :setlocal noexpandtab shiftwidth=8 softtabstop=0 tabstop=8<CR>
 nnoremap <Leader>to :edit ~/Documents/Text\ Files/Todo.txt<CR>
 nnoremap <Leader>tr :NERDTreeToggle<CR>
+nnoremap <Leader>tw :setlocal textwidth=79
 nnoremap <Leader>un :call UndoAll()<CR>
 nnoremap <Leader>ut :MundoToggle<CR>
 nnoremap <Leader>vi :edit ~/.vimrc<CR>
 nnoremap <Leader>w3 :!~/Scripts/htmlval "%"<CR>
-nnoremap <Leader>wr :set wrap!<CR>
+nnoremap <Leader>wr :setlocal wrap! wrap?<CR>
 nnoremap <Leader>ws ml:%s/\s\+$//e \| nohlsearch<CR>`l
 nnoremap <Leader>zs :edit ~/.zshrc<CR>
 
@@ -156,15 +153,21 @@ nnoremap _ <C-w><
 inoremap jj <Esc>
 inoremap <expr><Tab> CompleteTab()
 
-
-" Easily switch colorcolumn on and off.
+" Easily switch colorcolumn on and off. Remembers previously used setting.
+let g:colorcolumn_orig = &colorcolumn
 function! ColorColumn()
+  let w:colorcolumn_last = &colorcolumn
+
   if empty(&colorcolumn)
-    echom "setlocal colorcolumn=81"
-    setlocal colorcolumn=81
+    if !empty(w:colorcolumn_last)
+      let &l:colorcolumn = w:colorcolumn_last
+      setlocal colorcolumn?
+    else
+      let &l:colorcolumn = g:colorcolumn_orig
+      setlocal colorcolumn?
+    endif
   else
-    echo "setlocal colorcolumn="
-    setlocal colorcolumn=
+    setlocal colorcolumn= colorcolumn?
   endif
 endfunction
 
@@ -239,7 +242,6 @@ function! UndoAll()
   endif
 endfunction
 
-
 augroup Main
   autocmd!
   autocmd BufWritePost ~/.vimrc source %
@@ -249,7 +251,7 @@ augroup Main
 
   autocmd BufNewFile,BufReadPost *.conf,config setlocal filetype=conf
 
-  autocmd FileType gitcommit  setlocal colorcolumn=73,81 spell textwidth=72
+  autocmd FileType gitcommit  setlocal colorcolumn=73 spell textwidth=72
   autocmd FileType go         setlocal listchars+=tab:\ \  noexpandtab shiftwidth=4 softtabstop=0 tabstop=4
   autocmd FileType godoc,help setlocal colorcolumn= nolist
   autocmd FileType markdown   setlocal expandtab shiftwidth=4 softtabstop=4

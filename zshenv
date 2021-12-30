@@ -1,7 +1,6 @@
 setopt no_global_rcs # Don't use config files from /etc.
 umask 022
 
-
 export GOPATH=~/Golang
 
 export LANG=en_US.UTF-8
