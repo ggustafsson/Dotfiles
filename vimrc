@@ -26,7 +26,7 @@ set directory=~/.vim/backups
 set undofile
 set undodir=~/.vim/undos
 
-set colorcolumn=+2
+set colorcolumn=81
 set textwidth=79
 
 set cursorline
@@ -157,11 +157,11 @@ inoremap jj <Esc>
 inoremap <expr><Tab> CompleteTab()
 
 
-" Easily switch colorcolumn on and off. Displays textwidth info in output.
+" Easily switch colorcolumn on and off.
 function! ColorColumn()
   if empty(&colorcolumn)
-    echom "setlocal colorcolumn=+2  (textwidth=" . &textwidth . ")"
-    setlocal colorcolumn=+2
+    echom "setlocal colorcolumn=81"
+    setlocal colorcolumn=81
   else
     echo "setlocal colorcolumn="
     setlocal colorcolumn=
@@ -249,7 +249,7 @@ augroup Main
 
   autocmd BufNewFile,BufReadPost *.conf,config setlocal filetype=conf
 
-  autocmd FileType gitcommit  setlocal colorcolumn=+1 spell textwidth=72
+  autocmd FileType gitcommit  setlocal colorcolumn=73,81 spell textwidth=72
   autocmd FileType go         setlocal listchars+=tab:\ \  noexpandtab shiftwidth=4 softtabstop=0 tabstop=4
   autocmd FileType godoc,help setlocal colorcolumn= nolist
   autocmd FileType markdown   setlocal expandtab shiftwidth=4 softtabstop=4
