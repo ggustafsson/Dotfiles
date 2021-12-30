@@ -133,7 +133,7 @@ function prompt_mode {
   elif [[ $prompt_replace -eq 1 ]]; then
     echo "%B%F{red}R%f%b"
   else
-    echo "%B%F{blue}$%f%b"
+    echo "%B%F{blue}%#%f%b"
   fi
 }
 
@@ -144,7 +144,7 @@ else
 fi
 
 # Coruscant ~/Projects/Dot Files [t] [+] $
-PROMPT='$prompt_host ${PWD/${HOME}/~} $(prompt_todo)$(prompt_git)$(prompt_mode) '
+PROMPT='$prompt_host %2~ $(prompt_todo)$(prompt_git)$(prompt_mode) '
 
 if [[ $OSTYPE == darwin* ]]; then
   alias beep="afplay /System/Library/Sounds/Glass.aiff"
@@ -183,7 +183,8 @@ alias tree="tree --charset ascii -N"
 alias ycal='cal $(date +%Y)'
 alias zreload="source ~/.zshenv && source ~/.zshrc && [[ -f ~/.zshrc_local ]] && source ~/.zshrc_local || true"
 
-alias ..="source dotdot"
+alias ..="cd .."
+alias ...="cd ../.."
 alias cdh="dirs -v | sort --reverse"
 alias cdj='cd "$(< ~/.saved_pwd)"'
 alias cds='echo "Saving current path." && echo $PWD >| ~/.saved_pwd'
@@ -224,12 +225,12 @@ alias gun="echo -n 'Confirm action...' && read && git reset --soft HEAD^"
 alias h="source h"
 alias hist="history -i 1 | less"
 
-alias pt="[[ -f .todo.txt ]] && cat .todo.txt"
+alias pt="cat .todo.txt 2> /dev/null"
 alias ptv="vim .todo.txt"
-alias t="[[ -f ~/Documents/Text\ Files/Todo.txt ]] && cat ~/Documents/Text\ Files/Todo.txt"
+alias t="cat ~/Documents/Text\ Files/Todo.txt 2> /dev/null"
 alias tv="vim ~/Documents/Text\ Files/Todo.txt"
 
-alias pyjson="python -m json.tool"
+alias pyjson="python3 -m json.tool"
 alias pyweb="python3 -m http.server 8080"
 
 alias sort="sort --numeric-sort"

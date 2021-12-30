@@ -1,5 +1,5 @@
 filetype plugin indent on
-packadd! matchit
+packadd! matchit " Makes % jump to matching HTML tags, if/else/endif, etc.
 
 syntax enable
 colorscheme static
@@ -10,6 +10,7 @@ set encoding=utf-8
 set formatoptions+=jlnor
 set nofoldenable
 set nowrap
+set omnifunc=syntaxcomplete#Complete
 set pastetoggle=<C-p>
 set sessionoptions-=options
 set spelllang=en,sv
@@ -26,9 +27,6 @@ set undodir=~/.vim/undos
 
 set colorcolumn=+1
 set textwidth=80
-
-set completeopt-=preview
-set omnifunc=syntaxcomplete#Complete
 
 set cursorline
 set cursorlineopt=number
@@ -69,7 +67,6 @@ set visualbell
 set wildignorecase
 set wildmode=longest,list
 
-let g:loaded_matchparen = 1
 let g:mapleader = ","
 
 let g:mundo_preview_statusline = " Mundo Preview"
@@ -95,6 +92,7 @@ endif
 
 nnoremap <Leader>bd :bdelete<CR>
 nnoremap <Leader>bl :buffers<CR>
+nnoremap <Leader>bu :buffer<Space>
 nnoremap <Leader>cc :call ColorColumn()<CR>
 nnoremap <Leader>cd :cd <C-R>=escape(expand("%:p:h"), ' \')<CR>/
 nnoremap <Leader>do :edit ~/Documents/Text\ Files/
@@ -123,11 +121,10 @@ nnoremap <Leader>t8 :setlocal noexpandtab shiftwidth=8 softtabstop=0 tabstop=8<C
 nnoremap <Leader>ta :tab sball<CR>
 nnoremap <Leader>to :edit ~/Documents/Text\ Files/Todo.txt<CR>
 nnoremap <Leader>tr :NERDTreeToggle<CR>
-nnoremap <Leader>tw :set textwidth=80
 nnoremap <Leader>un :call UndoAll()<CR>
 nnoremap <Leader>ut :MundoToggle<CR>
 nnoremap <Leader>vi :edit ~/.vimrc<CR>
-nnoremap <Leader>w3 :!~/Scripts/validate "%"<CR>
+nnoremap <Leader>w3 :!~/Scripts/htmlval "%"<CR>
 nnoremap <Leader>wr :set wrap!<CR>
 nnoremap <Leader>ws ml:%s/\s\+$//e \| nohlsearch<CR>`l
 nnoremap <Leader>zs :edit ~/.zshrc<CR>
@@ -158,7 +155,6 @@ nnoremap - <C-w>-
 nnoremap ? <C-w>>
 nnoremap _ <C-w><
 
-nnoremap <Tab>          :buffer<Space>
 nnoremap <silent><C-w>t :tab split<CR>
 
 inoremap jj <Esc>
