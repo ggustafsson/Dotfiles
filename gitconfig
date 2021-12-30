@@ -1,19 +1,12 @@
-[color]
-	branch      = auto
-	diff        = auto
-	interactive = auto
-	status      = auto
-	ui          = auto
-
 [core]
-	excludesfile = ~/.gitignore_global
+  excludesfile = ~/.gitignore_global
 
 [pull]
-	rebase = false
+  rebase = false
 
 [push]
-	default = simple
+  default = simple
 
 [user]
-	name  = Göran Gustafsson
-	email = gustafsson.g@gmail.com
+  name  = Göran Gustafsson
+  email = gustafsson.g@gmail.com

@@ -33,7 +33,6 @@ ln -s ~/Projects/Dot\ Files/Scripts ~/
 ln -s ~/Projects/Dot\ Files/gitconfig ~/.gitconfig
 ln -s ~/Projects/Dot\ Files/gitignore_global ~/.gitignore_global
 ln -s ~/Projects/Dot\ Files/ssh_config ~/.ssh/config
-ln -s ~/Projects/Dot\ Files/tmux.conf ~/.tmux.conf
 ln -s ~/Projects/Dot\ Files/vim_templates ~/.vim/templates
 ln -s ~/Projects/Dot\ Files/vimrc ~/.vimrc
 ln -s ~/Projects/Dot\ Files/zshenv ~/.zshenv

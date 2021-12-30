@@ -15,6 +15,7 @@ HISTFILE=~/.zsh_histfile
 HISTSIZE=10000
 SAVEHIST=$HISTSIZE
 
+
 setopt correct
 setopt interactivecomments
 setopt nobeep
@@ -33,6 +34,7 @@ setopt incappendhistory
 setopt autopushd
 setopt pushdignoredups
 
+
 autoload -U compinit && compinit
 autoload -U edit-command-line && zle -N edit-command-line
 
@@ -49,6 +51,7 @@ for mode in visual viopp; do
     bindkey -M $mode $char select-quoted
   done
 done
+
 
 bindkey -v
 
@@ -88,6 +91,7 @@ bindkey          "^[[1~" beginning-of-line
 bindkey -M vicmd "^[[4~" end-of-line
 bindkey          "^[[4~" end-of-line
 
+
 zstyle ":completion:*"          insert-tab pending # Disable tabs at prompt.
 zstyle ":completion:*"          list-colors ${(s.:.)LS_COLORS}
 zstyle ":completion:*"          matcher-list "m:{[:lower:]}={[:upper:]}" # Works like smartcase in Vim.
@@ -97,6 +101,7 @@ zstyle ":completion:*:cd:*"     ignore-parents parent pwd
 zstyle ":completion:*:warnings" format "zsh: no matches found." # Display warning when x<tab> don't have matches.
 
 [[ $OSTYPE == darwin* ]] && compdef _man man2pdf
+
 
 function prompt_git {
   if [[ -n $(git status --short 2> /dev/null) ]]; then
@@ -145,6 +150,7 @@ fi
 
 # Coruscant ~/Projects/Dot Files [t] [+] $
 PROMPT='$prompt_host %2~ $(prompt_todo)$(prompt_git)$(prompt_mode) '
+
 
 if [[ $OSTYPE == darwin* ]]; then
   alias beep="afplay /System/Library/Sounds/Glass.aiff"
@@ -238,5 +244,6 @@ alias uniqs="sort | uniq"
 
 alias svtplay-dl="svtplay-dl --resume"
 alias youtube-dl="youtube-dl --continue --output '%(title)s.%(ext)s'"
+
 
 [[ -f ~/.zshrc_local ]] && source ~/.zshrc_local || true

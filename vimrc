@@ -4,6 +4,7 @@ packadd! matchit " Makes % jump to matching HTML tags, if/else/endif, etc.
 syntax enable
 colorscheme static
 
+
 set backspace=indent,eol,start
 set confirm
 set encoding=utf-8
@@ -25,8 +26,8 @@ set directory=~/.vim/backups
 set undofile
 set undodir=~/.vim/undos
 
-set colorcolumn=+1
-set textwidth=80
+set colorcolumn=+2
+set textwidth=79
 
 set cursorline
 set cursorlineopt=number
@@ -67,6 +68,7 @@ set visualbell
 set wildignorecase
 set wildmode=longest,list
 
+
 let g:mapleader = ","
 
 let g:mundo_preview_statusline = " Mundo Preview"
@@ -78,16 +80,13 @@ let g:NERDTreeStatusline = " NERDTree"
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_python_python_exec = system("which python3")
 
+
+command! -nargs=1 -complete=file Insert call Insert(<q-args>)
 command! Sudo w !sudo tee %
 
-" -nargs=? means 0 or 1 arguments are allowed.
-command! -nargs=? Helpt tab help <args>
-command! -nargs=? Helpv vertical help <args>
-command! -nargs=1 -complete=file Insert call Insert(<q-args>)
 
 if has("mac")
   nnoremap <Leader>fi :silent !open "%:p:h"<CR>
-  nnoremap <Leader>op :silent !open -a Safari "%"<CR>
 endif
 
 nnoremap <Leader>bd :bdelete<CR>
@@ -118,7 +117,6 @@ nnoremap <Leader>ss :mksession! ~/.vim/session.vim<CR>
 nnoremap <Leader>t2 :setlocal noexpandtab shiftwidth=2 softtabstop=0 tabstop=2<CR>
 nnoremap <Leader>t4 :setlocal noexpandtab shiftwidth=4 softtabstop=0 tabstop=4<CR>
 nnoremap <Leader>t8 :setlocal noexpandtab shiftwidth=8 softtabstop=0 tabstop=8<CR>
-nnoremap <Leader>ta :tab sball<CR>
 nnoremap <Leader>to :edit ~/Documents/Text\ Files/Todo.txt<CR>
 nnoremap <Leader>tr :NERDTreeToggle<CR>
 nnoremap <Leader>un :call UndoAll()<CR>
@@ -147,33 +145,23 @@ vnoremap <silent><Backspace> <Esc>:nohlsearch<CR>
 nnoremap vil ^vg_
 nnoremap Y   y$
 
-nnoremap <silent>gb :bn<CR>
-nnoremap <silent>gB :bp<CR>
+nnoremap <silent>gb :bnext<CR>
+nnoremap <silent>gB :bprevious<CR>
 
 nnoremap + <C-w>+
 nnoremap - <C-w>-
 nnoremap ? <C-w>>
 nnoremap _ <C-w><
 
-nnoremap <silent><C-w>t :tab split<CR>
-
 inoremap jj <Esc>
-
 inoremap <expr><Tab> CompleteTab()
 
-" Easily switch between different colorcolumn settings. If textwidth is set
-" then use textwidth + 1, if textwidth is not set then use colorcolumn=81, and
-" if colorcolumn is already set then turn it off.
+
+" Easily switch colorcolumn on and off. Displays textwidth info in output.
 function! ColorColumn()
   if empty(&colorcolumn)
-    if !empty(&textwidth)
-      let column = str2nr(&textwidth) + 1
-      echom "setlocal colorcolumn=" . column
-      setlocal colorcolumn=+1
-    else
-      echo "setlocal colorcolumn=81"
-      setlocal colorcolumn=81
-    endif
+    echom "setlocal colorcolumn=+2  (textwidth=" . &textwidth . ")"
+    setlocal colorcolumn=+2
   else
     echo "setlocal colorcolumn="
     setlocal colorcolumn=
@@ -251,6 +239,7 @@ function! UndoAll()
   endif
 endfunction
 
+
 augroup Main
   autocmd!
   autocmd BufWritePost ~/.vimrc source %
@@ -265,5 +254,5 @@ augroup Main
   autocmd FileType godoc,help setlocal colorcolumn= nolist
   autocmd FileType markdown   setlocal expandtab shiftwidth=4 softtabstop=4
   autocmd FileType python     setlocal expandtab shiftwidth=4 softtabstop=4
-  autocmd FileType qf         setlocal colorcolumn= nolist nonumber norelativenumber " QuickFix buffer.
+  autocmd FileType qf         setlocal colorcolumn= nolist nonumber norelativenumber
 augroup END
