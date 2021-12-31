@@ -4,9 +4,9 @@
 # http://validator.w3.org from the command line.
 #
 # I have this in ~/.vimrc so I can easily validate files inside of Vim:
-# nnoremap <Leader>w3 :!~/Scripts/htmlval "%"<CR>
+# nnoremap <Leader>w3 :!~/Scripts/w3validator "%"<CR>
 #
-# Usage: htmlval <file(s)>
+# Usage: w3validator <file(s)>
 #
 # Written by Göran Gustafsson (gustafsson.g at gmail.com).
 # License: BSD 3-Clause.

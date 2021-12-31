@@ -151,7 +151,6 @@ if [[ $OSTYPE == darwin* ]]; then
   alias caffeinate="caffeinate -di"
   alias o="open"
   alias tim="caffeinate tim"
-  alias top="top -o cpu -s 2"
   alias vl="sudo less +F /var/log/system.log"
   alias wifiscan="/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport --scan"
 
@@ -172,6 +171,7 @@ else
   alias vl="less +F /var/log/syslog"
 fi
 
+alias caly='cal $(date +%Y)'
 alias df="df -h"
 alias du="du -sh"
 alias iip="curl icanhazip.com"
@@ -180,8 +180,7 @@ alias l="less"
 alias ls="ls --classify --color --human-readable"
 alias mkdir="mkdir -pv"
 alias tree="tree --charset ascii -N"
-alias ycal='cal $(date +%Y)'
-alias zreload="source ~/.zshenv && source ~/.zshrc && [[ -f ~/.zshrc_local ]] && source ~/.zshrc_local || true"
+alias zreload="source ~/.zshenv && source ~/.zshrc"
 
 alias ..="cd .."
 alias ...="cd ../.."
@@ -198,7 +197,6 @@ alias csvv="column -t -s ';'"
 
 alias d="ls -l"
 alias da="ls --all -l"
-alias la="ls --all"
 
 alias g="grep"
 alias gr="grep --binary-file=without-match --exclude-dir .git --line-number --recursive"
@@ -239,4 +237,6 @@ alias uniqs="sort | uniq"
 alias svtplay-dl="svtplay-dl --resume"
 alias youtube-dl="youtube-dl --continue --output '%(title)s.%(ext)s'"
 
-[[ -f ~/.zshrc_local ]] && source ~/.zshrc_local || true
+if [[ -f ~/.zshrc_local ]]; then
+  source ~/.zshrc_local
+fi

@@ -86,7 +86,6 @@ if has("mac")
 endif
 
 nnoremap <Leader>bd :bdelete<CR>
-nnoremap <Leader>bl :buffers<CR>
 nnoremap <Leader>bu :buffer<Space>
 nnoremap <Leader>cc :call ColorColumn()<CR>
 nnoremap <Leader>cd :cd <C-R>=escape(expand("%:p:h"), ' \')<CR>/
@@ -119,7 +118,7 @@ nnoremap <Leader>tw :setlocal textwidth=79
 nnoremap <Leader>un :call UndoAll()<CR>
 nnoremap <Leader>ut :MundoToggle<CR>
 nnoremap <Leader>vi :edit ~/.vimrc<CR>
-nnoremap <Leader>w3 :!~/Scripts/htmlval "%"<CR>
+nnoremap <Leader>w3 :!~/Scripts/w3validator "%"<CR>
 nnoremap <Leader>wr :setlocal wrap! wrap?<CR>
 nnoremap <Leader>ws ml:%s/\s\+$//e \| nohlsearch<CR>`l
 nnoremap <Leader>zs :edit ~/.zshrc<CR>
