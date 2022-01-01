@@ -25,4 +25,6 @@ done
 filename=animated_$(date '+%Y-%m-%d_%H%M').gif
 convert -delay 30 -loop 0 $* $filename
 
-[[ $OSTYPE == darwin* ]] && open -a Safari $filename
+if [[ $OSTYPE == darwin* ]]; then
+  open -a Safari $filename
+fi

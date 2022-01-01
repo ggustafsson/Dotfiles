@@ -96,7 +96,9 @@ zstyle ":completion:*"          special-dirs true # Make "cd ..<tab>" turn into 
 zstyle ":completion:*:cd:*"     ignore-parents parent pwd
 zstyle ":completion:*:warnings" format "zsh: no matches found." # Display warning when x<tab> don't have matches.
 
-[[ $OSTYPE == darwin* ]] && compdef _man man2pdf
+if [[ $OSTYPE == darwin* ]]; then
+  compdef _man man2pdf
+fi
 
 function prompt_git {
   if [[ -n $(git status --short 2> /dev/null) ]]; then
