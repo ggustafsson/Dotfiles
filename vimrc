@@ -128,8 +128,8 @@ vnoremap <Leader>ne y:enew<CR>PGdd
 vnoremap <Leader>re :s/\%V/gc<Left><Left><Left>
 nnoremap <Leader>re :%s//gc<Left><Left><Left>
 
-nnoremap <Leader>so :sort<CR>
-vnoremap <Leader>so :sort<CR>
+nnoremap <Leader>so :sort l<CR>
+vnoremap <Leader>so :sort l<CR>
 
 nnoremap <silent><Backspace> :nohlsearch \| echo<CR>
 vnoremap <silent><Backspace> <Esc>:nohlsearch<CR>
