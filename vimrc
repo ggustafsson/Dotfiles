@@ -72,9 +72,6 @@ let g:mapleader = ","
 let g:mundo_preview_statusline = " Mundo Preview"
 let g:mundo_tree_statusline = " Mundo Tree"
 
-let g:NERDTreeHighlightCursorline = 0
-let g:NERDTreeStatusline = " NERDTree"
-
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_python_python_exec = system("which python3")
 
@@ -113,7 +110,6 @@ nnoremap <Leader>t2 :setlocal noexpandtab shiftwidth=2 softtabstop=0 tabstop=2<C
 nnoremap <Leader>t4 :setlocal noexpandtab shiftwidth=4 softtabstop=0 tabstop=4<CR>
 nnoremap <Leader>t8 :setlocal noexpandtab shiftwidth=8 softtabstop=0 tabstop=8<CR>
 nnoremap <Leader>to :edit ~/Documents/Text\ Files/Todo.txt<CR>
-nnoremap <Leader>tr :NERDTreeToggle<CR>
 nnoremap <Leader>tw :setlocal textwidth=79
 nnoremap <Leader>un :call UndoAll()<CR>
 nnoremap <Leader>ut :MundoToggle<CR>
