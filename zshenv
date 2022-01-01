@@ -4,7 +4,7 @@ umask 022
 export GOPATH=~/Golang
 
 export LANG=en_US.UTF-8
-export LC_ALL=en_US.UTF-8
+export LC_COLLATE=sv_SE.ISO8859-1 # Sort åäö correctly.
 
 if [[ $OSTYPE == darwin* ]]; then
   path=(

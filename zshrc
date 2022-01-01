@@ -181,12 +181,13 @@ alias ka="killall"
 alias l="less"
 alias ls="ls --classify --color --human-readable"
 alias mkdir="mkdir -pv"
+alias sort="sort --numeric-sort"
 alias tree="tree --charset ascii -N"
 alias zreload="source ~/.zshenv && source ~/.zshrc"
 
 alias ..="cd .."
 alias ...="cd ../.."
-alias cdh="dirs -v | sort --reverse"
+alias cdh="dirs -v | tac"
 alias cdj='cd "$(< ~/.saved_pwd)"'
 alias cds='echo "Saving current path." && echo $PWD >| ~/.saved_pwd'
 
@@ -232,9 +233,6 @@ alias tv="vim ~/Documents/Text\ Files/Todo.txt"
 
 alias pyjson="python3 -m json.tool"
 alias pyweb="python3 -m http.server 8080"
-
-alias sort="sort --numeric-sort"
-alias uniqs="sort | uniq"
 
 alias svtplay-dl="svtplay-dl --resume"
 alias youtube-dl="youtube-dl --continue --output '%(title)s.%(ext)s'"
