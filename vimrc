@@ -78,6 +78,7 @@ command! Sudo w !sudo tee %
 
 if has("mac")
   nnoremap <Leader>fi :silent !open "%:p:h"<CR>:redraw!<CR>
+  nnoremap <Leader>op :silent !open "%"<CR>:redraw!<CR>
 endif
 
 nnoremap <Leader>bd :bdelete<CR>
@@ -101,6 +102,7 @@ nnoremap <Leader>rs :source ~/.vim/session.vim<CR>
 nnoremap <Leader>s2 :setlocal expandtab shiftwidth=2 softtabstop=2<CR>
 nnoremap <Leader>s4 :setlocal expandtab shiftwidth=4 softtabstop=4<CR>
 nnoremap <Leader>s8 :setlocal expandtab shiftwidth=8 softtabstop=8<CR>
+nnoremap <Leader>sc :SyntasticCheck<CR>
 nnoremap <Leader>sh :shell<CR>
 nnoremap <Leader>sp :setlocal spell! spell?<CR>
 nnoremap <Leader>ss :mksession! ~/.vim/session.vim<CR>
@@ -112,7 +114,6 @@ nnoremap <Leader>tw :setlocal textwidth=79
 nnoremap <Leader>un :call UndoAll()<CR>
 nnoremap <Leader>ut :MundoToggle<CR>
 nnoremap <Leader>vi :edit ~/.vimrc<CR>
-nnoremap <Leader>w3 :!~/Scripts/w3validator "%"<CR>
 nnoremap <Leader>wr :setlocal wrap! wrap?<CR>
 nnoremap <Leader>ws ml:%s/\s\+$//e \| nohlsearch<CR>`l
 nnoremap <Leader>zs :edit ~/.zshrc<CR>

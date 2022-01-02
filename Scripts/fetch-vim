@@ -28,3 +28,6 @@ fetch ~/.vim/pack/others/start/tcomment_vim https://github.com/tomtom/tcomment_v
 fetch ~/.vim/pack/others/start/vim-go       https://github.com/fatih/vim-go.git
 fetch ~/.vim/pack/others/start/vim-mundo    https://github.com/simnalamburt/vim-mundo.git
 fetch ~/.vim/pack/others/start/vim-surround https://github.com/tpope/vim-surround.git
+
+# Generate help tags for all plugins under ~/.vim/pack/*/start.
+vim -u NONE -c "helptags ALL" -c q
