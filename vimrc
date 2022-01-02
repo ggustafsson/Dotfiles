@@ -102,7 +102,7 @@ nnoremap <Leader>rs :source ~/.vim/session.vim<CR>
 nnoremap <Leader>s2 :setlocal expandtab shiftwidth=2 softtabstop=2<CR>
 nnoremap <Leader>s4 :setlocal expandtab shiftwidth=4 softtabstop=4<CR>
 nnoremap <Leader>s8 :setlocal expandtab shiftwidth=8 softtabstop=8<CR>
-nnoremap <Leader>sc :SyntasticCheck<CR>
+nnoremap <Leader>sc :SyntasticCheck \| :lopen<CR>
 nnoremap <Leader>sh :shell<CR>
 nnoremap <Leader>sp :setlocal spell! spell?<CR>
 nnoremap <Leader>ss :mksession! ~/.vim/session.vim<CR>
