@@ -150,7 +150,6 @@ PROMPT='$prompt_host %2~ $(prompt_todo)$(prompt_git)$(prompt_mode) '
 
 if [[ $OSTYPE == darwin* ]]; then
   alias beep="afplay /System/Library/Sounds/Glass.aiff"
-  alias caffeinate="caffeinate -di"
   alias o="open"
   alias tim="caffeinate tim"
   alias vl="sudo less +F /var/log/system.log"
@@ -174,12 +173,9 @@ else
 fi
 
 alias caly='cal $(date +%Y)'
-alias df="df -h"
-alias du="du -sh"
 alias iip="curl icanhazip.com"
 alias ka="killall"
 alias l="less"
-alias ls="ls --classify --color=auto --human-readable"
 alias mkdir="mkdir -pv"
 alias sort="sort --numeric-sort"
 alias tree="tree --charset ascii -N"
@@ -195,11 +191,12 @@ alias cp="cp -vi"
 alias mv="mv -vi"
 alias rm="rm -v"
 
-alias csv="column -t -s ,"
-alias csvv="column -t -s ';'"
-
 alias d="ls -l"
 alias da="ls --all -l"
+alias ls="ls --classify --color=auto --human-readable"
+
+alias df="df -h"
+alias du="du -sh"
 
 alias g="grep"
 alias gr="grep --binary-file=without-match --exclude-dir .git --line-number --recursive"
