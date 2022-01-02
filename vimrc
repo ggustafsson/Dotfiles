@@ -68,18 +68,16 @@ set wildignorecase
 set wildmode=longest,list
 
 let g:mapleader = ","
+let g:syntastic_always_populate_loc_list = 1
 
 let g:mundo_preview_statusline = " Mundo Preview"
 let g:mundo_tree_statusline = " Mundo Tree"
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_python_python_exec = system("which python3")
 
 command! -nargs=1 -complete=file Insert call Insert(<q-args>)
 command! Sudo w !sudo tee %
 
 if has("mac")
-  nnoremap <Leader>fi :silent !open "%:p:h"<CR>
+  nnoremap <Leader>fi :silent !open "%:p:h"<CR>:redraw!<CR>
 endif
 
 nnoremap <Leader>bd :bdelete<CR>

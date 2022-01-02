@@ -56,6 +56,7 @@ sudo mv ~/Downloads/homebrew/{*,.*} /usr/local/
   links \
   nmap \
   openssh \
+  pylint \
   python \
   renameutils \
   rsync \

@@ -23,7 +23,7 @@ echo "Fetching Vim plugins."
 
 mkdir -p ~/.vim/pack/others/start
 
-fetch ~/.vim/pack/others/start/syntastic    https://github.com/scrooloose/syntastic.git
+fetch ~/.vim/pack/others/start/syntastic    https://github.com/vim-syntastic/syntastic.git
 fetch ~/.vim/pack/others/start/tcomment_vim https://github.com/tomtom/tcomment_vim.git
 fetch ~/.vim/pack/others/start/vim-go       https://github.com/fatih/vim-go.git
 fetch ~/.vim/pack/others/start/vim-mundo    https://github.com/simnalamburt/vim-mundo.git
