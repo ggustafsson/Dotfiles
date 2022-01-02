@@ -20,6 +20,7 @@ sudo apt install -y \
   html2text \
   links \
   nmap \
+  pylint3 \
   tree \
   zsh
 
