@@ -71,7 +71,7 @@ sudo mv ~/Downloads/homebrew/{*,.*} /usr/local/
   youtube-dl \
   zsh
 
-/usr/local/bin/pip3 install mutagen simpy
+/usr/local/bin/pip3 install mutagen
 
 echo "/usr/local/bin/zsh" | sudo tee -a /etc/shells
 

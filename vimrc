@@ -87,7 +87,6 @@ nnoremap <Leader>cc :call ColorColumn()<CR>
 nnoremap <Leader>cd :cd <C-R>=escape(expand("%:p:h"), ' \')<CR>/
 nnoremap <Leader>do :edit ~/Documents/Text\ Files/
 nnoremap <Leader>ed :edit <C-R>=escape(expand("%:p:h"), ' \')<CR>/
-nnoremap <Leader>ef :silent! call ErrorFind()<CR>
 nnoremap <Leader>eh :edit ~/
 nnoremap <Leader>er :browse oldfiles<CR>
 nnoremap <Leader>fe :setlocal fileformat=unix fileencoding=utf-8
@@ -95,6 +94,9 @@ nnoremap <Leader>ff :call FixFile()<CR>
 nnoremap <Leader>ft :setlocal filetype=
 nnoremap <Leader>in :Insert ~/.vim/templates/
 nnoremap <Leader>li :setlocal list! list?<CR>
+nnoremap <Leader>ln :lnext<CR>
+nnoremap <Leader>lp :lprevious<CR>
+nnoremap <Leader>lw :lwindow<CR>
 nnoremap <Leader>no :edit ~/Documents/Text\ Files/Notes.txt<CR>
 nnoremap <Leader>nu :setlocal number! relativenumber!<CR>
 nnoremap <Leader>pt :edit <C-R>=escape(expand("%:p:h"), ' \')<CR>/.todo.txt<CR>
@@ -102,7 +104,7 @@ nnoremap <Leader>rs :source ~/.vim/session.vim<CR>
 nnoremap <Leader>s2 :setlocal expandtab shiftwidth=2 softtabstop=2<CR>
 nnoremap <Leader>s4 :setlocal expandtab shiftwidth=4 softtabstop=4<CR>
 nnoremap <Leader>s8 :setlocal expandtab shiftwidth=8 softtabstop=8<CR>
-nnoremap <Leader>sc :SyntasticCheck \| :lopen<CR>
+nnoremap <Leader>sc :SyntasticCheck \| :lwindow \| :lfirst<CR>
 nnoremap <Leader>sh :shell<CR>
 nnoremap <Leader>sp :setlocal spell! spell?<CR>
 nnoremap <Leader>ss :mksession! ~/.vim/session.vim<CR>
@@ -181,15 +183,6 @@ function! CompleteTab()
   endif
 endfunction
 
-" Go to next error in location list, go back to first error after last error.
-function! ErrorFind()
-  try
-    lnext
-  catch /^Vim\%((\a\+)\)\=:E553/
-    lfirst
-  endtry
-endfunction
-
 " Fix file encoding, file format, tabs and remove whitespaces.
 function! FixFile()
   setlocal fileencoding=utf-8
@@ -250,5 +243,5 @@ augroup Main
   autocmd FileType godoc,help setlocal colorcolumn= nolist
   autocmd FileType markdown   setlocal expandtab shiftwidth=4 softtabstop=4
   autocmd FileType python     setlocal expandtab shiftwidth=4 softtabstop=4
-  autocmd FileType qf         setlocal colorcolumn= nolist nonumber norelativenumber
+  autocmd FileType qf         setlocal colorcolumn= nocursorline nolist norelativenumber
 augroup END
