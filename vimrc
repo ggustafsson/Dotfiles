@@ -173,7 +173,7 @@ endfunction
 "
 " inoremap <expr><Tab> CompleteTab()
 function! CompleteTab()
-  let char = getline('.')[col('.')-2] " Get the character left of the cursor.
+  let char = getline(".")[col(".")-2] " Get the character left of the cursor.
 
   " Insert a normal tab if the character left of the cursor is non existent, a
   " space or a tab. Otherwise use autocomplete.
@@ -208,8 +208,8 @@ endfunction
 " command! -nargs=1 -complete=file Insert call Insert(<q-args>)
 " nnoremap <Leader>in :Insert ~/.vim/templates/
 function! Insert(file)
-  let lines = line('$')
-  let text = getline('.')
+  let lines = line("$")
+  let text = getline(".")
 
   if lines == 1 && empty(text)
     execute "read" fnameescape(a:file)
@@ -244,5 +244,5 @@ augroup Main
   autocmd FileType godoc,help setlocal colorcolumn= nolist
   autocmd FileType markdown   setlocal expandtab shiftwidth=4 softtabstop=4
   autocmd FileType python     setlocal expandtab shiftwidth=4 softtabstop=4
-  autocmd FileType qf         setlocal colorcolumn= nocursorline nolist norelativenumber statusline=\ %t%{exists('w:quickfix_title')?'\ '.w:quickfix_title:''}%=%(%v,\ %)%(%l/%L\ %)
+  autocmd FileType qf         setlocal colorcolumn= nocursorline norelativenumber statusline=\ %t%{exists('w:quickfix_title')?'\ '.w:quickfix_title:''}%=%(%l/%L\ %)
 augroup END

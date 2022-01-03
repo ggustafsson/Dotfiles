@@ -5,7 +5,7 @@ export LESS=FRSX
 export LESS_TERMCAP_us=$(printf "\e[0m") # Remove underscores in 'man' etc.
 export PAGER=less
 
-# First LS_COLORS line is based on output from dircolors version 9.0.
+# First LS_COLORS line is based on output from 'dircolors' version 9.0.
 export LS_COLORS="rs=0:di=01;34:ln=01;35:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=01;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32"
 export LS_COLORS="${LS_COLORS}:*.bmp=01;33:*.gif=01;33:*.heic=01;33:*.ico=01;33:*.jpg=01;33:*.jpeg=01;33:*.png=01;33:*.pxi=01;33:*.svg=01;33:*.tif=01;33:*.tiff=01;33"
 export LS_COLORS="${LS_COLORS}:*.avi=01;36:*.flv=01;36:*.f4v=01;36:*.mkv=01;36:*.mov=01;36:*.mpg=01;36:*.mpeg=01;36:*.mp4=01;36:*.m4v=01;36:*.ts=01;36:*.webm=01;36:*.wmv=01;36"
@@ -78,10 +78,10 @@ bindkey -M vicmd $terminfo[knp] down-line-or-beginning-search
 bindkey          $terminfo[knp] down-line-or-beginning-search
 
 # Home & End key fix for Terminal.app, Cygwin etc.
-bindkey -M vicmd "^[[H"  beginning-of-line
-bindkey          "^[[H"  beginning-of-line
-bindkey -M vicmd "^[[F"  end-of-line
-bindkey          "^[[F"  end-of-line
+bindkey -M vicmd "^[[H" beginning-of-line
+bindkey          "^[[H" beginning-of-line
+bindkey -M vicmd "^[[F" end-of-line
+bindkey          "^[[F" end-of-line
 
 # Home & End key fix for Tmux.
 bindkey -M vicmd "^[[1~" beginning-of-line
