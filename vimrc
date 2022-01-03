@@ -40,7 +40,7 @@ set incsearch
 
 " ~/.vimrc [+] [utf-8] [unix] [vim]    1, 46/260
 set laststatus=2
-set statusline=%(\ %F\ %)
+set statusline=\ %(%F\ %)
 set statusline+=%(%r\ %)
 set statusline+=%(%m\ %)
 set statusline+=%([%{&fileencoding==''?&encoding:&fileencoding}]\ %)
@@ -94,8 +94,6 @@ nnoremap <Leader>ff :call FixFile()<CR>
 nnoremap <Leader>ft :setlocal filetype=
 nnoremap <Leader>in :Insert ~/.vim/templates/
 nnoremap <Leader>li :setlocal list! list?<CR>
-nnoremap <Leader>ln :lnext<CR>
-nnoremap <Leader>lp :lprevious<CR>
 nnoremap <Leader>lw :lwindow<CR>
 nnoremap <Leader>no :edit ~/Documents/Text\ Files/Notes.txt<CR>
 nnoremap <Leader>nu :setlocal number! relativenumber!<CR>
@@ -140,6 +138,9 @@ nnoremap Y   y$
 
 nnoremap <silent>gb :bnext<CR>
 nnoremap <silent>gB :bprevious<CR>
+
+nnoremap <silent>gl :lnext<CR>
+nnoremap <silent>gL :lprevious<CR>
 
 nnoremap + <C-w>+
 nnoremap - <C-w>-
@@ -243,5 +244,5 @@ augroup Main
   autocmd FileType godoc,help setlocal colorcolumn= nolist
   autocmd FileType markdown   setlocal expandtab shiftwidth=4 softtabstop=4
   autocmd FileType python     setlocal expandtab shiftwidth=4 softtabstop=4
-  autocmd FileType qf         setlocal colorcolumn= nocursorline nolist norelativenumber
+  autocmd FileType qf         setlocal colorcolumn= nocursorline nolist norelativenumber statusline=\ %t%{exists('w:quickfix_title')?'\ '.w:quickfix_title:''}%=%(%v,\ %)%(%l/%L\ %)
 augroup END
