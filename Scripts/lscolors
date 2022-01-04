@@ -7,19 +7,23 @@
 # Original script found here:
 #   <http://unix.stackexchange.com/questions/20721/testing-ls-colors-in-zsh>
 
+# Options here are based on output from 'dircolors' version 9.0.
 typeset -A names
 names[bd]="block device"
+names[ca]="capability"
 names[cd]="character device"
 names[di]="directory"
 names[do]="door"
 names[ex]="executable"
 names[fi]="normal file"
 names[ln]="symbolic link"
+names[mh]="multiple hard links"
 names[mi]="missing file"
 names[no]="global default"
 names[or]="orphan symlink"
 names[ow]="other writable"
 names[pi]="named pipe"
+names[rs]="reset"
 names[sg]="set gid"
 names[so]="socket"
 names[st]="sticky"
