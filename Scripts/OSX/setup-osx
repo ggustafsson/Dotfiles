@@ -40,6 +40,8 @@ sudo mv ~/Downloads/homebrew/{*,.*} /usr/local/
 
 /usr/local/bin/brew tap homebrew/dupes
 /usr/local/bin/brew install \
+  ansible \
+  ansible-lint \
   bash \
   coreutils \
   cuetools \

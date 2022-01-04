@@ -14,6 +14,8 @@ mkdir -p ~/.vim/undos
 mkdir -p ~/Projects
 
 sudo apt install -y \
+  ansible \
+  ansible-lint \
   dnsutils \
   flac \
   golang \
