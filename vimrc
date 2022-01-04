@@ -40,16 +40,14 @@ set incsearch
 
 " ~/.vimrc [+] [utf-8] [unix] [vim]    1, 46/260
 set laststatus=2
-set statusline=\ %(%F\ %)
+set statusline=\ %F\ 
 set statusline+=%(%r\ %)
 set statusline+=%(%m\ %)
 set statusline+=%([%{&fileencoding==''?&encoding:&fileencoding}]\ %)
 set statusline+=%([%{&fileformat}]\ %)
 set statusline+=%(%y\ %)
 set statusline+=%(%{&paste?'[paste]':''}\ %)
-set statusline+=%=
-set statusline+=%(%v,\ %)
-set statusline+=%(%l/%L\ %)
+set statusline+=%=%v,\ %l/%L\ 
 
 set list
 set listchars=tab:!-,trail:-,precedes:<,extends:>
@@ -67,6 +65,7 @@ set visualbell
 set wildignorecase
 set wildmode=longest,list
 
+let g:go_template_autocreate = 0
 let g:mapleader = ","
 let g:syntastic_always_populate_loc_list = 1
 
@@ -244,5 +243,5 @@ augroup Main
   autocmd FileType godoc,help setlocal colorcolumn= nolist
   autocmd FileType markdown   setlocal expandtab shiftwidth=4 softtabstop=4
   autocmd FileType python     setlocal expandtab shiftwidth=4 softtabstop=4
-  autocmd FileType qf         setlocal colorcolumn= nocursorline norelativenumber statusline=\ %t%{exists('w:quickfix_title')?'\ '.w:quickfix_title:''}%=%(%l/%L\ %)
+  autocmd FileType qf         setlocal colorcolumn= nocursorline norelativenumber statusline=\ %t%{exists('w:quickfix_title')?'\ '.w:quickfix_title:''}%=%l/%L\ 
 augroup END
