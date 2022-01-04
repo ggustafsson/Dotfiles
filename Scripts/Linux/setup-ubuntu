@@ -24,6 +24,7 @@ sudo apt install -y \
   nmap \
   pylint3 \
   tree \
+  yamllint \
   zsh
 
 sudo chsh -s /bin/zsh $USER

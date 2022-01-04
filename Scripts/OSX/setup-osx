@@ -70,6 +70,7 @@ sudo mv ~/Downloads/homebrew/{*,.*} /usr/local/
   vim \
   vorbis-tools \
   wget \
+  yamllint \
   youtube-dl \
   zsh
 
