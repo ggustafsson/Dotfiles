@@ -154,20 +154,17 @@ nnoremap _ <C-w><
 inoremap jj <Esc>
 inoremap <expr><Tab> CompleteTab()
 
-" Easily switch colorcolumn on and off. Remembers initial colorcolumn setting.
-let g:colorcolumn_orig = &colorcolumn
+" Easily switch colorcolumn on and off. Remembers last colorcolumn setting.
 function! ColorColumn()
-  let w:colorcolumn_last = &colorcolumn
-
   if empty(&colorcolumn)
-    if !empty(w:colorcolumn_last)
+    if exists("w:colorcolumn_last")
       let &l:colorcolumn = w:colorcolumn_last
       setlocal colorcolumn?
     else
-      let &l:colorcolumn = g:colorcolumn_orig
-      setlocal colorcolumn?
+      setlocal colorcolumn=+1 colorcolumn?
     endif
   else
+    let w:colorcolumn_last = &colorcolumn
     setlocal colorcolumn= colorcolumn?
   endif
 endfunction
