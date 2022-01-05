@@ -65,15 +65,18 @@ set visualbell
 set wildignorecase
 set wildmode=longest,list
 
-let g:go_template_autocreate = 0
 let g:mapleader = ","
+
+let g:go_metalinter_autosave = 1
+let g:go_template_autocreate = 0
 
 let g:mundo_preview_statusline = " Mundo Preview"
 let g:mundo_tree_statusline = " Mundo Tree"
 
 let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_jump = 1
-let g:syntastic_auto_loc_list = 1
+let g:syntastic_auto_jump = 1 " Runs :lfirst at start of syntax check.
+let g:syntastic_auto_loc_list = 1 " Runs :lwindow and :lclose automatically.
+let g:syntastic_enable_highlighting = 0
 
 command! -nargs=1 -complete=file Insert call Insert(<q-args>)
 command! Sudo w !sudo tee %
@@ -127,10 +130,10 @@ vnoremap <Leader>ne y:enew<CR>PGdd
 vnoremap <Leader>re :s/\%V/gc<Left><Left><Left>
 nnoremap <Leader>re :%s//gc<Left><Left><Left>
 
-nnoremap <Leader>so :sort l<CR>
-vnoremap <Leader>so :sort l<CR>
+nnoremap <Leader>so :sort<CR>
+vnoremap <Leader>so :sort<CR>
 
-nnoremap <silent><Backspace> :nohlsearch \| echo<CR>
+nnoremap <silent><Backspace> :nohlsearch<CR>
 vnoremap <silent><Backspace> <Esc>:nohlsearch<CR>
 
 nnoremap vil ^vg_
@@ -138,7 +141,8 @@ nnoremap Y   y$
 
 nnoremap <silent>gb :bnext<CR>
 nnoremap <silent>gB :bprevious<CR>
-
+nnoremap <silent>gc :cnext<CR>
+nnoremap <silent>gC :cprevious<CR>
 nnoremap <silent>gl :lnext<CR>
 nnoremap <silent>gL :lprevious<CR>
 
@@ -150,7 +154,7 @@ nnoremap _ <C-w><
 inoremap jj <Esc>
 inoremap <expr><Tab> CompleteTab()
 
-" Easily switch colorcolumn on and off. Remembers previously used setting.
+" Easily switch colorcolumn on and off. Remembers initial colorcolumn setting.
 let g:colorcolumn_orig = &colorcolumn
 function! ColorColumn()
   let w:colorcolumn_last = &colorcolumn
