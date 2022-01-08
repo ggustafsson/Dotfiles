@@ -1,0 +1,29 @@
+#!/usr/bin/env zsh
+
+# Description: This script displays all history and if an argument is supplied
+# then only the entries that matches the pattern is displayed.
+#
+# This script must be used from an alias. I have this in ~/.zshrc:
+#
+# alias hist="source hist"
+#
+# The source command before the script name must be there to make the script
+# run in the current shell.
+#
+# Usage: hist
+#        hist <pattern>
+#
+# Written by Göran Gustafsson (gustafsson.g at gmail.com).
+# License: BSD 3-Clause.
+
+if [[ $# -ge 1 ]]; then
+  output=$(history -i 1 | grep --ignore-case "$*")
+
+  if [[ ! -z $output ]]; then
+    echo $output | less
+  else
+    echo "No matching entries found!"
+  fi
+else
+  history -i 1 | less
+fi
