@@ -13,7 +13,7 @@ export LS_COLORS="${LS_COLORS}:*.flac=01;35:*.nsf=01;35:*.nsfe=01;35:*.m4a=01;35
 export LS_COLORS="${LS_COLORS}:*.dmg=01;31:*.iso=01;31:*.rar=01;31:*.tar=01;31:*.tar.bz2=01;31:*.tar.gz=01;31:*.tgz=01;31:*.zip=01;31:*.7z=01;31"
 
 HISTFILE=~/.zsh_histfile
-HISTSIZE=10000
+HISTSIZE=9999
 SAVEHIST=$HISTSIZE
 
 if [[ $OSTYPE == darwin* ]]; then
@@ -22,6 +22,9 @@ if [[ $OSTYPE == darwin* ]]; then
 else
   hash -d ext=/media/external
 fi
+
+tmp=~/Documents/Text\ Files/Tmp.txt
+todo=~/Documents/Text\ Files/Todo.txt
 
 setopt correct
 setopt interactivecomments
@@ -181,7 +184,6 @@ alias caly='cal $(date +%Y)'
 alias hist="source hist"
 alias iip="curl icanhazip.com"
 alias mkdir="mkdir -pv"
-alias todo="cat ~/Documents/Text\ Files/Todo.txt 2> /dev/null"
 alias tree="tree --charset ascii -N"
 alias zreload="source ~/.zshenv && source ~/.zshrc"
 
