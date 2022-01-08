@@ -1,0 +1,32 @@
+#!/usr/bin/env zsh
+
+# Description: This script displays the running processes and if an argument is
+# supplied then only the processes that matches the pattern is displayed.
+#
+# Usage: psx
+#        psx <pattern>
+#
+# Written by Göran Gustafsson (gustafsson.g at gmail.com).
+# License: BSD 3-Clause.
+
+ps_command="ps ax -o user,tt,pid,command"
+
+if [[ $# -ge 1 ]]; then
+  ps_output=$(eval $ps_command)
+  ps_head=$(echo $ps_output | head -n 1)
+
+  # Skip the first row and ignore the text "zsh /Users/GLEG/Scripts/psx x" and
+  # "ps ax -o user,tt,pid,command".
+  ps_body=$(echo $ps_output | \
+    tail -n +2 | \
+    egrep --invert-match "(zsh $0 ${*}|${ps_command})" | \
+    grep --ignore-case "$*")
+
+  if [[ ! -z $ps_body ]]; then
+    echo "$ps_head\n$ps_body" | less
+  else
+    echo "No matching processes found!"
+  fi
+else
+  eval $ps_command | less
+fi
