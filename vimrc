@@ -73,6 +73,7 @@ let g:go_template_autocreate = 0
 let g:mundo_preview_statusline = " Mundo Preview"
 let g:mundo_tree_statusline = " Mundo Tree"
 
+let g:syntastic_aggregate_errors = 1
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_jump = 1 " Runs :lfirst at start of syntax check.
 let g:syntastic_auto_loc_list = 1 " Runs :lwindow and :lclose automatically.
@@ -90,7 +91,6 @@ nnoremap <Leader>bd :bdelete<CR>
 nnoremap <Leader>bu :buffer<Space>
 nnoremap <Leader>cc :call ColorColumn()<CR>
 nnoremap <Leader>cd :cd <C-R>=escape(expand("%:p:h"), ' \')<CR>/
-nnoremap <Leader>do :edit ~/Documents/Text\ Files/
 nnoremap <Leader>ed :edit <C-R>=escape(expand("%:p:h"), ' \')<CR>/
 nnoremap <Leader>eh :edit ~/
 nnoremap <Leader>er :browse oldfiles<CR>
@@ -99,7 +99,6 @@ nnoremap <Leader>ff :call FixFile()<CR>
 nnoremap <Leader>ft :setlocal filetype=
 nnoremap <Leader>in :Insert ~/.vim/templates/
 nnoremap <Leader>li :setlocal list! list?<CR>
-nnoremap <Leader>no :edit ~/Documents/Text\ Files/Notes.txt<CR>
 nnoremap <Leader>nu :setlocal number! relativenumber!<CR>
 nnoremap <Leader>rs :source ~/.vim/session.vim<CR>
 nnoremap <Leader>s2 :setlocal expandtab shiftwidth=2 softtabstop=2<CR>
@@ -111,14 +110,12 @@ nnoremap <Leader>ss :mksession! ~/.vim/session.vim<CR>
 nnoremap <Leader>t2 :setlocal noexpandtab shiftwidth=2 softtabstop=0 tabstop=2<CR>
 nnoremap <Leader>t4 :setlocal noexpandtab shiftwidth=4 softtabstop=0 tabstop=4<CR>
 nnoremap <Leader>t8 :setlocal noexpandtab shiftwidth=8 softtabstop=0 tabstop=8<CR>
-nnoremap <Leader>to :edit ~/Documents/Text\ Files/Todo.txt<CR>
+nnoremap <Leader>te :edit ~/Documents/Text\ Files/
 nnoremap <Leader>tw :setlocal textwidth=79
 nnoremap <Leader>un :call UndoAll()<CR>
 nnoremap <Leader>ut :MundoToggle<CR>
-nnoremap <Leader>vi :edit ~/.vimrc<CR>
 nnoremap <Leader>wr :setlocal wrap! wrap?<CR>
 nnoremap <Leader>ws ml:%s/\s\+$//e \| nohlsearch<CR>`l
-nnoremap <Leader>zs :edit ~/.zshrc<CR>
 
 nnoremap <Leader>cl :%!column -t<CR>
 vnoremap <Leader>cl :!column -t<CR>

@@ -63,6 +63,7 @@ sudo mv ~/Downloads/homebrew/{*,.*} /usr/local/
   renameutils \
   rsync \
   ruby \
+  shellcheck \
   shntool \
   svtplay-dl \
   tmux \
@@ -73,8 +74,6 @@ sudo mv ~/Downloads/homebrew/{*,.*} /usr/local/
   yamllint \
   youtube-dl \
   zsh
-
-/usr/local/bin/pip3 install mutagen
 
 echo "/usr/local/bin/zsh" | sudo tee -a /etc/shells
 

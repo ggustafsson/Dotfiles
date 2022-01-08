@@ -23,6 +23,8 @@ sudo apt install -y \
   links \
   nmap \
   pylint3 \
+  ruby \
+  shellcheck \
   tree \
   yamllint \
   zsh
