@@ -16,6 +16,13 @@ HISTFILE=~/.zsh_histfile
 HISTSIZE=10000
 SAVEHIST=$HISTSIZE
 
+if [[ $OSTYPE == darwin* ]]; then
+  hash -d ext=/Volumes/External
+  hash -d msd=/Volumes/MicroSD
+else
+  hash -d ext=/media/external
+fi
+
 setopt correct
 setopt interactivecomments
 setopt nobeep
