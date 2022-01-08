@@ -151,9 +151,7 @@ PROMPT='$prompt_host %2~ $(prompt_todo)$(prompt_git)$(prompt_mode) '
 
 if [[ $OSTYPE == darwin* ]]; then
   alias beep="afplay /System/Library/Sounds/Glass.aiff"
-  alias o="open"
   alias tim="caffeinate tim"
-  alias vl="sudo less +F /var/log/system.log"
   alias wifiscan="/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport --scan"
 
   alias brewi="brew install"
@@ -170,20 +168,16 @@ else
 
   alias cal="cal -m"
   alias free="free -h"
-  alias vl="less +F /var/log/syslog"
 fi
 
 alias caly='cal $(date +%Y)'
+alias hist="source hist"
 alias iip="curl icanhazip.com"
-alias ka="killall"
-alias l="less"
 alias mkdir="mkdir -pv"
-alias sort="sort --numeric-sort"
+alias todo="cat ~/Documents/Text\ Files/Todo.txt 2> /dev/null"
 alias tree="tree --charset ascii -N"
 alias zreload="source ~/.zshenv && source ~/.zshrc"
 
-alias ..="cd .."
-alias ...="cd ../.."
 alias cdh="dirs -v | tac"
 alias cdj='cd "$(< ~/.saved_pwd)"'
 alias cds='echo "Saving current path." && echo $PWD >| ~/.saved_pwd'
@@ -192,17 +186,16 @@ alias cp="cp -vi"
 alias mv="mv -vi"
 alias rm="rm -v"
 
-alias d="ls -l"
-alias da="ls --all -l"
+alias la="ls --all -l"
+alias ll="ls -l"
 alias ls="ls --classify --color=auto --human-readable"
 
 alias df="df -h"
 alias du="du -sh"
 
-alias g="grep"
-alias gr="grep --binary-file=without-match --exclude-dir .git --line-number --recursive"
-alias gr3="gr --after-context=3 --before-context=3"
 alias grep="grep --color=auto"
+alias grepr="grep --binary-file=without-match --exclude-dir .git --line-number --recursive"
+alias grepr3="grepr --after-context=3 --before-context=3"
 
 alias gad="git add"
 alias gca="git commit --all --verbose"
@@ -221,14 +214,7 @@ alias gst="git status --branch"
 alias gsu="git submodule update --recursive"
 alias gun="echo -n 'Confirm action...' && read && git reset --soft HEAD^"
 
-alias h="source h"
-alias hist="history -i 1 | less"
-
-alias pt="cat .todo.txt 2> /dev/null"
-alias ptv="vim .todo.txt"
-alias t="cat ~/Documents/Text\ Files/Todo.txt 2> /dev/null"
-alias tv="vim ~/Documents/Text\ Files/Todo.txt"
-
+alias py="python3"
 alias pyjson="python3 -m json.tool"
 alias pyweb="python3 -m http.server 8080"
 

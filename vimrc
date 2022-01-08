@@ -101,7 +101,6 @@ nnoremap <Leader>in :Insert ~/.vim/templates/
 nnoremap <Leader>li :setlocal list! list?<CR>
 nnoremap <Leader>no :edit ~/Documents/Text\ Files/Notes.txt<CR>
 nnoremap <Leader>nu :setlocal number! relativenumber!<CR>
-nnoremap <Leader>pt :edit <C-R>=escape(expand("%:p:h"), ' \')<CR>/.todo.txt<CR>
 nnoremap <Leader>rs :source ~/.vim/session.vim<CR>
 nnoremap <Leader>s2 :setlocal expandtab shiftwidth=2 softtabstop=2<CR>
 nnoremap <Leader>s4 :setlocal expandtab shiftwidth=4 softtabstop=4<CR>
@@ -130,11 +129,27 @@ vnoremap <Leader>ne y:enew<CR>PGdd
 vnoremap <Leader>re :s/\%V/gc<Left><Left><Left>
 nnoremap <Leader>re :%s//gc<Left><Left><Left>
 
+" Locale files are broken under macOS and the latest Ubuntu Desktop LTS version
+" don't include Vim with ':sort l' support yet. Using the default incorrect but
+" stable sort until the future arrives...
+"
+" Vim 8.2.3950 @ macOS 11.6.2 Big Sur:
+"   :sort   - en_US.UTF-8     - 1 2 3 A B C U V W a b c u v w Ä Å Ö ä å ö
+"   :sort l - en_US.UTF-8     - 1 2 3 A Å Ä B C Ö U V W a å ä b c ö u v w
+"   :sort l - sv_SE.UTF-8     - 1 2 3 A B C U V W a b c u v w Ä Å Ö ä å ö
+"   :sort l - sv_SE.ISO8859-1 - 1 2 3 A B C U V W Å Ä Ö a b c u v w å ä ö
+"                               + v & w are treated as the same letter.
+"
+" Vim 8.1.2269 @ Ubuntu Desktop 20.04.3 LTS:
+"   :sort   - en_US.UTF-8     - 1 2 3 A B C U V W a b c u v w Ä Å Ö ä å ö
+"   :sort l - en_US.UTF-8     - Invalid argument: l
+"   :sort l - sv_SE.UTF-8     - Invalid argument: l
+"   :sort l - sv_SE.ISO8859-1 - Invalid argument: l
 nnoremap <Leader>so :sort<CR>
 vnoremap <Leader>so :sort<CR>
 
-nnoremap <silent><Backspace> :nohlsearch<CR>
-vnoremap <silent><Backspace> <Esc>:nohlsearch<CR>
+nnoremap <silent><Backspace> :nohlsearch \| :echo<CR>
+vnoremap <silent><Backspace> <Esc>:nohlsearch \| :echo<CR>
 
 nnoremap vil ^vg_
 nnoremap Y   y$
