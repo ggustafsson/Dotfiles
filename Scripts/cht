@@ -1,0 +1,22 @@
+#!/usr/bin/env zsh
+
+# Description: An extremely simple frontend for https://cheat.sh.
+#
+# Usage: cht
+#        cht <query>
+#
+# Written by Göran Gustafsson (gustafsson.g at gmail.com).
+# License: BSD 3-Clause.
+
+url="https://cheat.sh"
+
+if [[ $# -ge 1 ]]; then
+  # Replace spaces with + that is needed in the URL.
+  query="${*/ /+}?T"
+
+  echo "${url}/$query"
+  # Replace multiple empty lines with only one.
+  curl --no-progress-meter "${url}/$query" | sed '/^$/N;/^\n$/D' | less
+else
+  curl --no-progress-meter "${url}/:help" | less
+fi
