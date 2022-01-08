@@ -18,6 +18,7 @@ sudo apt install -y \
   ansible-lint \
   dnsutils \
   flac \
+  flake8 \
   golang \
   html2text \
   links \

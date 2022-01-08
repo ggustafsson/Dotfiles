@@ -48,6 +48,7 @@ sudo mv ~/Downloads/homebrew/{*,.*} /usr/local/
   curl \
   ffmpeg \
   flac \
+  flake8 \
   gawk \
   git \
   gnu-sed \
