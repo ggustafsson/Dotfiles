@@ -1,0 +1,15 @@
+#!/usr/bin/env zsh
+
+# Description: This script opens a file or several files in Quick Look.
+#
+# Usage: openq <file(s)>
+#
+# Written by Göran Gustafsson (gustafsson.g at gmail.com).
+# License: BSD 3-Clause.
+
+if [[ $# -eq 0 ]]; then
+  echo "Usage: ${0:t} [FILENAME(S)]..."
+  exit
+fi
+
+qlmanage -p $* &> /dev/null
