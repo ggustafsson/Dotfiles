@@ -73,11 +73,11 @@ let g:go_template_autocreate = 0
 let g:mundo_preview_statusline = " Mundo Preview"
 let g:mundo_tree_statusline = " Mundo Tree"
 
-let g:syntastic_aggregate_errors = 1
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_jump = 1 " Runs :lfirst at start of syntax check.
 let g:syntastic_auto_loc_list = 1 " Runs :lwindow and :lclose automatically.
 let g:syntastic_enable_highlighting = 0
+let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
 
 command! -nargs=1 -complete=file Insert call Insert(<q-args>)
 command! Sudo w !sudo tee %
