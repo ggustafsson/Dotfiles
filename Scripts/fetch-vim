@@ -23,10 +23,13 @@ echo "Fetching Vim plugins."
 
 mkdir -p ~/.vim/pack/others/start
 
-fetch ~/.vim/pack/others/start/syntastic    https://github.com/vim-syntastic/syntastic.git
-fetch ~/.vim/pack/others/start/vim-go       https://github.com/fatih/vim-go.git
-fetch ~/.vim/pack/others/start/vim-mundo    https://github.com/simnalamburt/vim-mundo.git
-fetch ~/.vim/pack/others/start/vim-surround https://github.com/tpope/vim-surround.git
+fetch ~/.vim/pack/others/start/syntastic       https://github.com/vim-syntastic/syntastic.git
+fetch ~/.vim/pack/others/start/vim-endwise     https://github.com/tpope/vim-endwise.git
+fetch ~/.vim/pack/others/start/vim-go          https://github.com/fatih/vim-go.git
+fetch ~/.vim/pack/others/start/vim-mundo       https://github.com/simnalamburt/vim-mundo.git
+fetch ~/.vim/pack/others/start/vim-repeat      https://github.com/tpope/vim-repeat.git
+fetch ~/.vim/pack/others/start/vim-speeddating https://github.com/tpope/vim-speeddating.git
+fetch ~/.vim/pack/others/start/vim-surround    https://github.com/tpope/vim-surround.git
 
 # Generate help tags for all plugins under ~/.vim/pack/*/start.
 vim -u NONE -c "helptags ALL" -c q
