@@ -79,8 +79,8 @@ let g:syntastic_auto_loc_list = 1 " Runs :lwindow and :lclose automatically.
 let g:syntastic_enable_highlighting = 0
 let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
 
-command! -nargs=1 -complete=file Insert call Insert(<q-args>)
-command! Sudo w !sudo tee %
+command! -nargs=1 -complete=file InsertF call InsertF(<q-args>)
+command! SudoW w !sudo tee %
 
 if has("mac")
   nnoremap <Leader>fi :silent !open "%:p:h"<CR>:redraw!<CR>
@@ -97,7 +97,7 @@ nnoremap <Leader>er :browse oldfiles<CR>
 nnoremap <Leader>fe :setlocal fileformat=unix fileencoding=utf-8
 nnoremap <Leader>ff :call FixFile()<CR>
 nnoremap <Leader>ft :setlocal filetype=
-nnoremap <Leader>in :Insert ~/.vim/templates/
+nnoremap <Leader>in :InsertF ~/.vim/templates/
 nnoremap <Leader>li :setlocal list! list?<CR>
 nnoremap <Leader>nu :setlocal number! relativenumber!<CR>
 nnoremap <Leader>rs :source ~/.vim/session.vim<CR>
@@ -218,9 +218,9 @@ endfunction
 " default behavior. If the buffer only has one empty line then it also removes
 " the empty line after insert.
 "
-" command! -nargs=1 -complete=file Insert call Insert(<q-args>)
-" nnoremap <Leader>in :Insert ~/.vim/templates/
-function! Insert(file)
+" command! -nargs=1 -complete=file InsertF call InsertF(<q-args>)
+" nnoremap <Leader>in :InsertF ~/.vim/templates/
+function! InsertF(file)
   let lines = line("$")
   let text = getline(".")
 
