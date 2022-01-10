@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 
-# Description: This script displays all history and if an argument is supplied
-# then only the entries that matches the pattern is displayed.
+# Description: This script displays either the last 25 history entries or all
+# entries that matches a specific pattern.
 #
 # This script must be used from an alias. I have this in ~/.zshrc:
 #
@@ -20,10 +20,10 @@ if [[ $# -ge 1 ]]; then
   output=$(history -i 1 | grep --ignore-case "$*")
 
   if [[ ! -z $output ]]; then
-    echo $output | less
+    echo $output
   else
     echo "No matching entries found!"
   fi
 else
-  history -i 1 | less
+  history -i -25
 fi
