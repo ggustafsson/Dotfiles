@@ -53,6 +53,7 @@ sudo mv ~/Downloads/homebrew/{*,.*} /usr/local/
   git \
   gnu-sed \
   golang \
+  grep \
   html2text \
   imagemagick \
   lame \
@@ -78,6 +79,7 @@ sudo mv ~/Downloads/homebrew/{*,.*} /usr/local/
 
 echo "/usr/local/bin/zsh" | sudo tee -a /etc/shells
 
+ln -s /usr/local/bin/{g,}grep
 ln -s /usr/local/bin/{g,}head
 ln -s /usr/local/bin/{g,}ls
 ln -s /usr/local/bin/{g,}sed
@@ -98,8 +100,6 @@ ln -s ~/Projects/Dot\ Files/zshenv ~/.zshenv
 ln -s ~/Projects/Dot\ Files/zshrc ~/.zshrc
 
 ln -s ~/Projects/Tim/tim ~/Scripts/
-
-sudo cp ~/Projects/Dot\ Files/motd-osx /etc/motd
 
 echo
 ~/Scripts/fetch-vim
