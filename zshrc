@@ -1,9 +1,12 @@
 export EDITOR=vim
 export VISUAL=$EDITOR
 
-export LESS=FRSX
+export LESS=R # --RAW-CONTROL-CHARS
 export LESS_TERMCAP_us=$(printf "\e[0m") # Remove underscores in 'man' etc.
 export PAGER=less
+
+# fn = filename, ln = line number, and se = separator.
+export GREP_COLORS="fn=01;34:ln=00;34:se=01;30"
 
 # First LS_COLORS line is based on output from 'dircolors' version 9.0.
 export LS_COLORS="rs=0:di=01;34:ln=01;35:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=01;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32"
@@ -142,18 +145,19 @@ zle -N zle-line-init && zle -N zle-keymap-select
 # will be used in the prompt to indicate the current Vi mode.
 function prompt_mode {
   if [[ $KEYMAP == vicmd ]]; then
-    echo "%B%F{red}E%f%b"
+    prompt_char=E
   elif [[ $prompt_replace -eq 1 ]]; then
-    echo "%B%F{red}R%f%b"
+    prompt_char=R
   else
-    echo "%B%F{blue}%#%f%b"
+    prompt_char="%#"
   fi
+  echo "%B%F{cyan}${prompt_char}%f%b"
 }
 
 if [[ $OSTYPE == darwin* ]]; then
   prompt_host="%B%F{yellow}%m%f%b"
 else
-  prompt_host="%B%F{green}%m%f%b"
+  prompt_host="%B%F{red}%m%f%b"
 fi
 
 # Coruscant ~/Projects/Dot Files [t] [+] $
@@ -184,7 +188,6 @@ alias caly='cal $(date +%Y)'
 alias hist="source hist"
 alias iip="curl icanhazip.com"
 alias mkdir="mkdir -pv"
-alias tree="tree --charset ascii -N"
 alias zreload="source ~/.zshenv && source ~/.zshrc"
 
 alias cdh="dirs -v | tac"
@@ -203,7 +206,7 @@ alias df="df -h"
 alias du="du -sh"
 
 alias grep="grep --color=auto"
-alias grepr="grep --binary-file=without-match --exclude-dir .git --line-number --recursive"
+alias grepr="grep --binary-file=without-match --exclude-dir .git --recursive"
 alias grepr3="grepr --after-context=3 --before-context=3"
 
 alias gad="git add"
@@ -231,6 +234,9 @@ alias pyweb="python3 -m http.server 8080"
 
 alias svtplay-dl="svtplay-dl --resume"
 alias youtube-dl="youtube-dl --continue --output '%(title)s.%(ext)s'"
+
+alias tree="tree --charset ascii"
+alias treed="tree -d -L 2"
 
 if [[ -f ~/.zshrc_local ]]; then
   source ~/.zshrc_local
