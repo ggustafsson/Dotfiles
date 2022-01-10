@@ -48,7 +48,7 @@ ln -s ~/Projects/Dot\ Files/zshrc ~/.zshrc
 
 ln -s ~/.vim/pack/ggustafsson/start/Static\ Color\ Scheme ~/Projects/Static\ Color\ Scheme
 
-sudo cp ~/Projects/Dot\ Files/motd-linux /etc/motd
+sudo cp ~/Projects/Dot\ Files/motd /etc/motd
 
 echo
 ~/Scripts/fetch-vim
