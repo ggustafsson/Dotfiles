@@ -14,9 +14,10 @@ if [[ $# -ge 1 ]]; then
   # Replace spaces with + that is needed in the URL.
   query="${*/ /+}?T"
 
-  echo "${url}/$query\n"
-  # Replace multiple empty lines with only one.
-  curl --no-progress-meter "${url}/$query" | sed '/^$/N;/^\n$/D' | less
+  # Fetch page and replace multiple empty lines with only one.
+  response=$(curl --no-progress-meter "${url}/$query" | sed '/^$/N;/^\n$/D')
+
+  echo "# ${url}/${query}\n\n$response" | view -
 else
-  curl --no-progress-meter "${url}/:help" | less
+  curl --no-progress-meter "${url}/:help"
 fi
