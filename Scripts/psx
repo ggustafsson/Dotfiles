@@ -23,10 +23,10 @@ if [[ $# -ge 1 ]]; then
     grep --ignore-case "$*")
 
   if [[ ! -z $ps_body ]]; then
-    echo "$ps_head\n$ps_body" | less
+    echo "$ps_head\n$ps_body"
   else
     echo "No matching processes found!"
   fi
 else
-  eval $ps_command | less
+  eval $ps_command
 fi
