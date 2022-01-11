@@ -60,9 +60,6 @@ set relativenumber
 set splitbelow
 set splitright
 
-set t_vb=
-set visualbell
-
 set wildignorecase
 set wildmode=longest,list
 
@@ -86,12 +83,11 @@ if has("mac")
 endif
 
 nnoremap <Leader>bd :bdelete<CR>
-nnoremap <Leader>bu :buffer<Space>
+nnoremap <Leader>bu :buffers<CR>:buffer<Space>
 nnoremap <Leader>cc :call ColorColumn()<CR>
 nnoremap <Leader>cd :cd <C-R>=escape(expand("%:p:h"), ' \')<CR>/
 nnoremap <Leader>ed :edit <C-R>=escape(expand("%:p:h"), ' \')<CR>/
 nnoremap <Leader>eh :edit ~/
-nnoremap <Leader>er :browse oldfiles<CR>
 nnoremap <Leader>fe :setlocal fileformat=unix fileencoding=utf-8
 nnoremap <Leader>ff :call FixFile()<CR>
 nnoremap <Leader>ft :setlocal filetype=
@@ -115,8 +111,8 @@ nnoremap <Leader>ut :MundoToggle<CR>
 nnoremap <Leader>wr :setlocal wrap! wrap?<CR>
 nnoremap <Leader>ws ml:%s/\s\+$//e \| nohlsearch<CR>`l
 
-nnoremap <Leader>co :%!column -t<CR>
-vnoremap <Leader>co :!column -t<CR>
+nnoremap <Leader>cl :%!column -t<CR>
+vnoremap <Leader>cl :!column -t<CR>
 
 nnoremap <Leader>cp :%y*
 vnoremap <Leader>cp "*y
@@ -149,23 +145,19 @@ vnoremap <Leader>so :sort<CR>
 nnoremap <silent><Backspace> :nohlsearch \| :echo<CR>
 vnoremap <silent><Backspace> <Esc>:nohlsearch \| :echo<CR>
 
+nnoremap Y y$
+
+nnoremap cil ^cg_
+nnoremap dil ^dg_
 nnoremap vil ^vg_
-nnoremap Y   y$
 
-nnoremap <silent>gb :bnext<CR>
-nnoremap <silent>gB :bprevious<CR>
-nnoremap <silent>gc :cnext<CR>
-nnoremap <silent>gC :cprevious<CR>
-nnoremap <silent>gl :lnext<CR>
-nnoremap <silent>gL :lprevious<CR>
+nnoremap <silent><Tab>   :bnext<CR>
+nnoremap <silent><S-Tab> :bprevious<CR>
 
-nnoremap + <C-w>+
-nnoremap - <C-w>-
-nnoremap ? <C-w>>
-nnoremap _ <C-w><
+nnoremap <silent><C-j> :silent! call LocationJump("next")<CR>
+nnoremap <silent><C-k> :silent! call LocationJump("prev")<CR>
 
 inoremap jj <Esc>
-inoremap <expr><Tab> CompleteTab()
 
 command! -nargs=1 -complete=file InsertFile call InsertFile(<q-args>)
 command! SudoWrite w !sudo tee %
@@ -182,22 +174,6 @@ function! ColorColumn()
   else
     let w:colorcolumn_last = &colorcolumn
     setlocal colorcolumn= colorcolumn?
-  endif
-endfunction
-
-" Turn the tab key into <C-n> (keyword completion) if there are characters to
-" the left of the cursor, normal tab key is inserted otherwise.
-"
-" inoremap <expr><Tab> CompleteTab()
-function! CompleteTab()
-  let char = getline(".")[col(".")-2] " Get the character left of the cursor.
-
-  " Insert a normal tab if the character left of the cursor is non existent, a
-  " space or a tab. Otherwise use autocomplete.
-  if empty(char) || char == " " || char =~ '\t'
-    return "\<Tab>"
-  else
-    return "\<C-n>"
   endif
 endfunction
 
@@ -234,6 +210,28 @@ function! InsertFile(file)
   else
     execute ".-read" fnameescape(a:file)
   endif
+endfunction
+
+" Jump to the next or previous item in the current windows location list. If
+" error 'E776: No location list' is encountered jump to the next or previous
+" item in the global quickfix list instead.
+"
+" nnoremap <silent><C-j> :silent! call LocationJump("next")<CR>
+" nnoremap <silent><C-k> :silent! call LocationJump("prev")<CR>
+function! LocationJump(action)
+  try
+    if a:action == "next"
+      lnext
+    else
+      lprevious
+    endif
+  catch /:E776:/
+    if a:action == "next"
+      cnext
+    else
+      cprevious
+    endif
+  endtry
 endfunction
 
 " Undo all changes since last file write, unsaved buffers are emptied.
