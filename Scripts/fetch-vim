@@ -27,7 +27,7 @@ if [[ ! -d $pack_path ]]; then
   echo
 fi
 
-echo "Fetching Vim plugins."
+echo "Fetching Vim plugins..."
 
 fetch start/syntastic       https://github.com/vim-syntastic/syntastic.git
 fetch start/vim-commentary  https://github.com/tpope/vim-commentary.git

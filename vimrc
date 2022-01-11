@@ -11,6 +11,7 @@ set formatoptions+=jlnor
 set mouse=a
 set nofoldenable
 set nowrap
+set nrformats-=octal
 set omnifunc=syntaxcomplete#Complete
 set pastetoggle=<C-p>
 set sessionoptions-=options
