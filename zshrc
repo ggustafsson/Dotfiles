@@ -1,12 +1,11 @@
+export GREP_COLORS="fn=01;34:ln=00;34:se=01;30" # Filename, line nr & separator.
+
 export EDITOR=vim
 export VISUAL=$EDITOR
 
 export LESS=FR # --quit-if-one-screen --RAW-CONTROL-CHARS
 export LESS_TERMCAP_us=$(printf "\e[0m") # Remove underscores in 'man' etc.
 export PAGER=less
-
-# fn = filename, ln = line number, and se = separator.
-export GREP_COLORS="fn=01;34:ln=00;34:se=01;30"
 
 # First LS_COLORS line is based on output from 'dircolors' version 9.0.
 export LS_COLORS="rs=0:di=01;34:ln=01;35:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=01;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32"
@@ -224,7 +223,7 @@ alias grm="git rm"
 alias gsh="git show"
 alias gst="git status"
 alias gsu="git submodule update --recursive"
-alias gun="echo -n 'Confirm action...' && read && git reset --soft HEAD^"
+alias gun="git reset --soft HEAD^"
 
 alias py="python3"
 alias pyjson="python3 -m json.tool"

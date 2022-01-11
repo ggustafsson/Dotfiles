@@ -14,6 +14,7 @@ set nowrap
 set omnifunc=syntaxcomplete#Complete
 set pastetoggle=<C-p>
 set sessionoptions-=options
+set showcmd
 set spelllang=en,sv
 set virtualedit=block
 
