@@ -1,7 +1,7 @@
 export EDITOR=vim
 export VISUAL=$EDITOR
 
-export LESS=R # --RAW-CONTROL-CHARS
+export LESS=FR # --quit-if-one-screen --RAW-CONTROL-CHARS
 export LESS_TERMCAP_us=$(printf "\e[0m") # Remove underscores in 'man' etc.
 export PAGER=less
 
@@ -180,11 +180,9 @@ else
     alias aptu="sudo apt update && sudo apt full-upgrade && sudo apt-get autoremove"
   fi
 
-  alias cal="cal -m"
   alias free="free -h"
 fi
 
-alias caly='cal $(date +%Y)'
 alias hist="source hist"
 alias iip="curl icanhazip.com"
 alias mkdir="mkdir -pv"
@@ -206,7 +204,7 @@ alias df="df -h"
 alias du="du -sh"
 
 alias grep="grep --color=auto"
-alias grepr="grep --binary-file=without-match --exclude-dir .git --recursive"
+alias grepr="grep --binary-file=without-match --dereference-recursive --exclude-dir .git"
 alias grepr3="grepr --after-context=3 --before-context=3"
 
 alias gad="git add"

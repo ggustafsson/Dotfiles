@@ -8,6 +8,7 @@ set backspace=indent,eol,start
 set confirm
 set encoding=utf-8
 set formatoptions+=jlnor
+set mouse=a
 set nofoldenable
 set nowrap
 set omnifunc=syntaxcomplete#Complete
@@ -114,8 +115,11 @@ nnoremap <Leader>ut :MundoToggle<CR>
 nnoremap <Leader>wr :setlocal wrap! wrap?<CR>
 nnoremap <Leader>ws ml:%s/\s\+$//e \| nohlsearch<CR>`l
 
-nnoremap <Leader>cl :%!column -t<CR>
-vnoremap <Leader>cl :!column -t<CR>
+nnoremap <Leader>co :%!column -t<CR>
+vnoremap <Leader>co :!column -t<CR>
+
+nnoremap <Leader>cp :%y*
+vnoremap <Leader>cp "*y
 
 nnoremap <Leader>ne :enew<CR>
 vnoremap <Leader>ne y:enew<CR>PGdd

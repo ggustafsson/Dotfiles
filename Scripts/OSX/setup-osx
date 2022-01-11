@@ -57,6 +57,7 @@ sudo mv ~/Downloads/homebrew/{*,.*} /usr/local/
   html2text \
   imagemagick \
   lame \
+  less \
   links \
   nmap \
   openssh \

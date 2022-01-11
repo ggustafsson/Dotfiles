@@ -32,5 +32,5 @@ fetch ~/.vim/pack/others/start/vim-repeat      https://github.com/tpope/vim-repe
 fetch ~/.vim/pack/others/start/vim-speeddating https://github.com/tpope/vim-speeddating.git
 fetch ~/.vim/pack/others/start/vim-surround    https://github.com/tpope/vim-surround.git
 
-# Generate help tags for all plugins under ~/.vim/pack/*/start.
+echo "\nGenerating help tags for all plugins under ~/.vim/pack/*/start"
 vim -u NONE -c "helptags ALL" -c q
