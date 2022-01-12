@@ -2,7 +2,7 @@
 
 # Description: This script configures a OS X system the way I like.
 #
-# Usage: setup-osx
+# Usage: setup-macos
 #
 # Written by Göran Gustafsson (gustafsson.g at gmail.com).
 # License: BSD 3-Clause.
@@ -76,6 +76,19 @@ sudo mv ~/Downloads/homebrew/{*,.*} /usr/local/
   yamllint \
   youtube-dl \
   zsh
+
+/usr/local/bin/brew tap homebrew/cask
+
+/usr/local/bin/brew install --cask --appdir=~/Applications \
+  1password \
+  docker \
+  google-chrome \
+  hammerspoon \
+  handbrake \
+  openemu \
+  tor-browser \
+  transmission \
+  vlc
 
 echo "/usr/local/bin/zsh" | sudo tee -a /etc/shells
 

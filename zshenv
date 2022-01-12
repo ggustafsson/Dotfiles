@@ -26,7 +26,7 @@ fi
 if [[ $OSTYPE == darwin* ]]; then
   path=(
     ~/Golang/bin(N)
-    ~/Scripts/OSX(N)
+    ~/Scripts/macOS(N)
     ~/Scripts(N)
     /usr/local/bin(N)
     /usr/local/sbin(N)

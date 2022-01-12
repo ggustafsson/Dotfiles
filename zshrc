@@ -1,3 +1,7 @@
+if [[ $OSTYPE == darwin* ]]; then
+  export HOMEBREW_CASK_OPTS="--appdir=~/Applications"
+fi
+
 export GREP_COLORS="fn=01;34:ln=00;34:se=01;30" # Filename, line nr & separator.
 
 export EDITOR=vim
