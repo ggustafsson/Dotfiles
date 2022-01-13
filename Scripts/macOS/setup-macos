@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-# Description: This script configures a OS X system the way I like.
+# Description: This script configures a macOS system the way I like.
 #
 # Usage: setup-macos
 #
@@ -38,6 +38,8 @@ echo
 git clone https://github.com/Homebrew/brew.git ~/Downloads/homebrew
 sudo mv ~/Downloads/homebrew/{*,.*} /usr/local/
 
+/usr/local/bin/brew tap homebrew/cask
+
 /usr/local/bin/brew install \
   ansible \
   ansible-lint \
@@ -51,6 +53,7 @@ sudo mv ~/Downloads/homebrew/{*,.*} /usr/local/
   gawk \
   git \
   gnu-sed \
+  gnu-tar \
   golang \
   grep \
   html2text \
@@ -70,14 +73,12 @@ sudo mv ~/Downloads/homebrew/{*,.*} /usr/local/
   svtplay-dl \
   tmux \
   tree \
+  unzip \
   vim \
-  vorbis-tools \
   wget \
   yamllint \
   youtube-dl \
   zsh
-
-/usr/local/bin/brew tap homebrew/cask
 
 /usr/local/bin/brew install --cask --appdir=~/Applications \
   1password \
@@ -88,7 +89,8 @@ sudo mv ~/Downloads/homebrew/{*,.*} /usr/local/
   openemu \
   tor-browser \
   transmission \
-  vlc
+  vlc \
+  wireshark
 
 echo "/usr/local/bin/zsh" | sudo tee -a /etc/shells
 

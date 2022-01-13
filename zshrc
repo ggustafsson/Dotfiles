@@ -189,6 +189,7 @@ fi
 alias hist="source hist"
 alias iip="curl icanhazip.com"
 alias mkdir="mkdir -pv"
+alias untar="tar -xvf"
 alias zreload="source ~/.zshenv && source ~/.zshrc"
 
 alias cdh="dirs -v | tac"
