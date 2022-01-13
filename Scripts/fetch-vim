@@ -2,6 +2,8 @@
 
 # Description: This script downloads/updates Vim plugins.
 #
+# Dependencies: git
+#
 # Usage: fetch-vim
 #
 # Written by Göran Gustafsson (gustafsson.g at gmail.com).
@@ -29,6 +31,7 @@ fi
 
 echo "Fetching Vim plugins..."
 
+fetch start/ack.vim         https://github.com/mileszs/ack.vim.git
 fetch start/syntastic       https://github.com/vim-syntastic/syntastic.git
 fetch start/vim-commentary  https://github.com/tpope/vim-commentary.git
 fetch start/vim-endwise     https://github.com/tpope/vim-endwise.git

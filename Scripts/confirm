@@ -1,0 +1,20 @@
+#!/usr/bin/env zsh
+
+# Description: This script asks if you want to proceed and exits with status 0
+# (success) or status 1 (error) depending on the answer. Anything but input of
+# "y" or "Y" leads to exit status 1 to avoid shell quirks and human f-ups.
+#
+# Usage: confirm && x
+#        confirm || exit 1
+#
+# Written by Göran Gustafsson (gustafsson.g at gmail.com).
+# License: BSD 3-Clause.
+
+read -q "REPLY?Are you sure you want to proceed? [y/n] "
+echo
+
+if [[ $REPLY == (y|Y) ]]; then
+  exit 0
+fi
+
+exit 1

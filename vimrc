@@ -8,7 +8,6 @@ set backspace=indent,eol,start
 set confirm
 set encoding=utf-8
 set formatoptions+=jlnor
-set mouse=a
 set nofoldenable
 set nowrap
 set nrformats-=octal
@@ -65,6 +64,7 @@ set splitright
 set wildignorecase
 set wildmode=longest,list
 
+let g:ackprg = "ag --vimgrep"
 let g:mapleader = ","
 
 let g:go_metalinter_autosave = 1
@@ -116,7 +116,7 @@ nnoremap <Leader>ws ml:%s/\s\+$//e \| nohlsearch<CR>`l
 nnoremap <Leader>cl :%!column -t<CR>
 vnoremap <Leader>cl :!column -t<CR>
 
-nnoremap <Leader>cp :%y*
+nnoremap <Leader>cp :%yank *
 vnoremap <Leader>cp "*y
 
 nnoremap <Leader>ne :enew<CR>

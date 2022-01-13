@@ -48,6 +48,7 @@ sudo mv ~/Downloads/homebrew/{*,.*} /usr/local/
   cuetools \
   curl \
   ffmpeg \
+  findutils \
   flac \
   flake8 \
   gawk \
@@ -71,6 +72,8 @@ sudo mv ~/Downloads/homebrew/{*,.*} /usr/local/
   shellcheck \
   shntool \
   svtplay-dl \
+  the_silver_searcher \
+  tidy-html5 \
   tmux \
   tree \
   vim \
@@ -93,6 +96,7 @@ sudo mv ~/Downloads/homebrew/{*,.*} /usr/local/
 
 echo "/usr/local/bin/zsh" | sudo tee -a /etc/shells
 
+ln -s /usr/local/bin/{g,}find
 ln -s /usr/local/bin/{g,}grep
 ln -s /usr/local/bin/{g,}head
 ln -s /usr/local/bin/{g,}ls
@@ -102,6 +106,7 @@ ln -s /usr/local/bin/{g,}tail
 ln -s /usr/local/bin/{g,}tar
 ln -s /usr/local/bin/{g,}uniq
 ln -s /usr/local/bin/{g,}wc
+ln -s /usr/local/bin/{g,}xargs
 
 ln -s ~/Projects/Dot\ Files/Scripts ~/
 ln -s ~/Projects/Dot\ Files/gitconfig ~/.gitconfig

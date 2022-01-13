@@ -10,7 +10,7 @@
 
 sudo apt update
 sudo apt full-upgrade
-sudo apt-get autoremove
+sudo apt autoremove
 
 for directory in ~/Projects/*; do
   if [[ -d $directory ]]; then

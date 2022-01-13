@@ -26,6 +26,7 @@ sudo apt install -y \
   pylint3 \
   ruby \
   shellcheck \
+  tidy \
   tree \
   yamllint \
   zsh

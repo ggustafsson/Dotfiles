@@ -3,27 +3,23 @@
 # Description: This script executes a bunch of commands I run frequently to
 # back things up and keep things up-to-date.
 #
+# Dependencies: confirm
+#
 # Usage: maintenance
 #
 # Written by Göran Gustafsson (gustafsson.g at gmail.com).
 # License: BSD 3-Clause.
 
-echo -n "Everything plugged in and ready to go? [y/n] "
-read answer
+confirm || exit 1
 
-if [[ $answer == (y|yes) ]]; then
-  echo
-  brew update
-  brew upgrade
-  brew cleanup
-  echo
-  fetch-vim
-  echo
-  frees
-  echo
-  backup
-  echo
-  backup2s
-else
-  echo "Bye bye!"
-fi
+brew update
+brew upgrade
+brew cleanup
+echo
+fetch-vim
+echo
+frees
+echo
+backup
+echo
+backup2s
