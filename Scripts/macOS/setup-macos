@@ -73,7 +73,6 @@ sudo mv ~/Downloads/homebrew/{*,.*} /usr/local/
   svtplay-dl \
   tmux \
   tree \
-  unzip \
   vim \
   wget \
   yamllint \
@@ -100,6 +99,7 @@ ln -s /usr/local/bin/{g,}ls
 ln -s /usr/local/bin/{g,}sed
 ln -s /usr/local/bin/{g,}sort
 ln -s /usr/local/bin/{g,}tail
+ln -s /usr/local/bin/{g,}tar
 ln -s /usr/local/bin/{g,}uniq
 ln -s /usr/local/bin/{g,}wc
 
