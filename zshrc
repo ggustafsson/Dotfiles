@@ -180,7 +180,7 @@ else
     alias apti="sudo apt install"
     alias aptr="sudo apt remove"
     alias apts="apt search"
-    alias aptu="sudo apt update && sudo apt full-upgrade && sudo apt-get autoremove"
+    alias aptu="sudo apt update && sudo apt full-upgrade && sudo apt autoremove"
   fi
 
   alias free="free -h"
