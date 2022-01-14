@@ -10,6 +10,7 @@
 mkdir -p ~/.ssh && chmod 700 ~/.ssh
 mkdir -p ~/.vim/backups
 mkdir -p ~/.vim/pack/ggustafsson/start
+mkdir -p ~/.vim/pack/others/start
 mkdir -p ~/.vim/undos
 mkdir -p ~/Projects
 
@@ -49,6 +50,7 @@ ln -s ~/Projects/Dot\ Files/zshenv ~/.zshenv
 ln -s ~/Projects/Dot\ Files/zshrc ~/.zshrc
 
 ln -s ~/.vim/pack/ggustafsson/start/Static\ Color\ Scheme ~/Projects/Static\ Color\ Scheme
+ln -s /usr/share/doc/fzf/examples ~/.vim/pack/others/start/fzf
 
 sudo cp ~/Projects/Dot\ Files/motd /etc/motd
 

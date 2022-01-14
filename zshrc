@@ -18,7 +18,7 @@ export LS_COLORS="${LS_COLORS}:*.avi=01;36:*.flv=01;36:*.f4v=01;36:*.mkv=01;36:*
 export LS_COLORS="${LS_COLORS}:*.flac=01;35:*.nsf=01;35:*.nsfe=01;35:*.m4a=01;35:*.m4r=01;35:*.mp3=01;35:*.ogg=01;35:*.wav=01;35"
 export LS_COLORS="${LS_COLORS}:*.dmg=01;31:*.iso=01;31:*.rar=01;31:*.tar=01;31:*.tar.bz2=01;31:*.tar.gz=01;31:*.tgz=01;31:*.zip=01;31:*.7z=01;31"
 
-HISTFILE=~/.zsh_histfile
+HISTFILE=~/.zsh_history
 HISTSIZE=9999
 SAVEHIST=$HISTSIZE
 
@@ -37,7 +37,6 @@ setopt interactivecomments
 setopt noclobber
 setopt promptsubst
 
-setopt appendhistory
 setopt extendedhistory
 setopt histexpiredupsfirst
 setopt histignoredups
@@ -185,7 +184,6 @@ else
   alias free="free -h"
 fi
 
-alias hist="source hist"
 alias iip="curl icanhazip.com"
 alias mkdir="mkdir -pv"
 alias untar="tar -xvf"

@@ -13,7 +13,6 @@ set nowrap
 set nrformats-=octal
 set omnifunc=syntaxcomplete#Complete
 set pastetoggle=<C-p>
-set runtimepath+=/usr/local/opt/fzf
 set sessionoptions-=options
 set showcmd
 set spelllang=en,sv
