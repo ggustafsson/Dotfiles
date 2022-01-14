@@ -1,13 +1,10 @@
-if [[ $OSTYPE == darwin* ]]; then
-  export HOMEBREW_CASK_OPTS="--appdir=~/Applications"
-fi
-
 export GREP_COLORS="fn=01;34:ln=00;34:se=01;30" # Filename, line nr & separator.
 
 export EDITOR=vim
 export VISUAL=$EDITOR
 
 export FZF_DEFAULT_COMMAND="find -L . \! \( -type d -path '*/.git/*' -prune \) -printf '%P\n' 2> /dev/null"
+export FZF_ALT_C_COMMAND="find -L . \! \( -type d -path '*/.git/*' -prune \) -type d -printf '%P\n' 2> /dev/null"
 export FZF_CTRL_T_COMMAND=$FZF_DEFAULT_COMMAND
 
 export LESS=FR # --quit-if-one-screen --RAW-CONTROL-CHARS
@@ -37,7 +34,6 @@ todo=~/Documents/Text\ Files/Todo.txt
 
 setopt correct
 setopt interactivecomments
-setopt nobeep
 setopt noclobber
 setopt promptsubst
 
@@ -177,6 +173,7 @@ if [[ $OSTYPE == darwin* ]]; then
   alias brewr="brew uninstall"
   alias brews="brew search"
   alias brewu="brew update && brew upgrade"
+  alias caski="brew install --cask --appdir=~/Applications"
 else
   if type -p apt &> /dev/null; then
     alias apti="sudo apt install"

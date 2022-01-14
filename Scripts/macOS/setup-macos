@@ -92,8 +92,7 @@ sudo mv ~/Downloads/homebrew/{*,.*} /usr/local/
   openemu \
   tor-browser \
   transmission \
-  vlc \
-  wireshark
+  vlc
 
 echo "/usr/local/bin/zsh" | sudo tee -a /etc/shells
 
