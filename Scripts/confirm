@@ -14,6 +14,7 @@ read -q "REPLY?Are you sure you want to proceed? [y/n] "
 echo
 
 if [[ $REPLY == (y|Y) ]]; then
+  echo
   exit 0
 fi
 
