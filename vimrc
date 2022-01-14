@@ -66,6 +66,7 @@ set wildignorecase
 set wildmode=longest,list
 
 let g:mapleader = ","
+let g:fzf_command_prefix = "Fzf"
 
 let g:go_metalinter_autosave = 1
 let g:go_template_autocreate = 0
@@ -84,17 +85,19 @@ if has("mac")
   nnoremap <Leader>op :silent !open "%"<CR>:redraw!<CR>
 endif
 
+nnoremap <Leader>ag :FzfAg<Space>
 nnoremap <Leader>bd :bdelete<CR>
-nnoremap <Leader>bu :buffers<CR>:buffer<Space>
+nnoremap <Leader>bu :FzfBuffers<CR>
 nnoremap <Leader>cc :call ColorColumn()<CR>
-nnoremap <Leader>cd :cd <C-R>=escape(expand("%:p:h"), ' \')<CR>/
+nnoremap <Leader>cd :call ChangeDirectory()<CR>
 nnoremap <Leader>ed :edit <C-R>=escape(expand("%:p:h"), ' \')<CR>/
 nnoremap <Leader>eh :edit ~/
-nnoremap <Leader>fd :FZF<CR>
+nnoremap <Leader>fd :FzfFiles <C-R>=escape(expand("%:~:h"), ' \')<CR><CR>
 nnoremap <Leader>fe :setlocal fileformat=unix fileencoding=utf-8
 nnoremap <Leader>ff :call FixFile()<CR>
-nnoremap <Leader>fh :FZF ~<CR>
-nnoremap <Leader>ft :setlocal filetype=
+nnoremap <Leader>fh :FzfFiles ~<CR>
+nnoremap <Leader>ft :FzfFiletypes<CR>
+nnoremap <Leader>hi :FzfHistory<CR>
 nnoremap <Leader>in :InsertFile ~/.vim/templates/
 nnoremap <Leader>li :setlocal list! list?<CR>
 nnoremap <Leader>nu :setlocal number! relativenumber!<CR>
@@ -103,13 +106,14 @@ nnoremap <Leader>rs :source ~/.vim/session.vim<CR>
 nnoremap <Leader>s2 :setlocal expandtab shiftwidth=2 softtabstop=2<CR>
 nnoremap <Leader>s4 :setlocal expandtab shiftwidth=4 softtabstop=4<CR>
 nnoremap <Leader>s8 :setlocal expandtab shiftwidth=8 softtabstop=8<CR>
+nnoremap <Leader>se :FzfLines<CR>
 nnoremap <Leader>sh :terminal<CR>
 nnoremap <Leader>sp :setlocal spell! spell?<CR>
 nnoremap <Leader>ss :mksession! ~/.vim/session.vim<CR>
 nnoremap <Leader>t2 :setlocal noexpandtab shiftwidth=2 softtabstop=0 tabstop=2<CR>
 nnoremap <Leader>t4 :setlocal noexpandtab shiftwidth=4 softtabstop=0 tabstop=4<CR>
 nnoremap <Leader>t8 :setlocal noexpandtab shiftwidth=8 softtabstop=0 tabstop=8<CR>
-nnoremap <Leader>te :edit ~/Documents/Text\ Files/
+nnoremap <Leader>te :FzfFiles ~/Documents/Text\ Files<CR>
 nnoremap <Leader>tw :setlocal textwidth=79
 nnoremap <Leader>un :call UndoAll()<CR>
 nnoremap <Leader>ut :MundoToggle<CR>
@@ -167,8 +171,27 @@ inoremap jj <Esc>
 inoremap <expr><Tab> CompleteTab()
 inoremap <C-n>       <C-x><C-o>
 
+imap <C-x><C-f> <Plug>(fzf-complete-path)
+imap <C-x><C-l> <Plug>(fzf-complete-line)
+
 command! -nargs=1 -complete=file InsertFile call InsertFile(<q-args>)
 command! SudoWrite w !sudo tee %
+
+" Jump back and forth between directory of file in current buffer and the home
+" directory.
+function! ChangeDirectory()
+  let l:buffer_path = escape(expand("%:p:h"), ' \')
+  let l:buffer_path_short = escape(expand("%:~:h"), ' \')
+  let l:current_path = escape(getcwd(), ' \')
+
+  if l:current_path != l:buffer_path
+    execute "cd " . l:buffer_path
+    echo "cd " . l:buffer_path_short
+  else
+    execute "cd ~"
+    echo "cd ~"
+  endif
+endfunction
 
 " Easily switch colorcolumn on and off. Remembers last colorcolumn setting.
 function! ColorColumn()
@@ -223,7 +246,6 @@ endfunction
 " the empty line after insert.
 "
 " command! -nargs=1 -complete=file InsertFile call InsertFile(<q-args>)
-" nnoremap <Leader>in :InsertFile ~/.vim/templates/
 function! InsertFile(file)
   let lines = line("$")
   let text = getline(".")
@@ -239,9 +261,6 @@ endfunction
 " Jump to the next or previous item in the current windows location list. If
 " error 'E776: No location list' is encountered jump to the next or previous
 " item in the global quickfix list instead.
-"
-" nnoremap <silent><C-j> :silent! call LocationJump("next")<CR>
-" nnoremap <silent><C-k> :silent! call LocationJump("prev")<CR>
 function! LocationJump(action)
   try
     if a:action == "next"
@@ -258,7 +277,7 @@ function! LocationJump(action)
   endtry
 endfunction
 
-" Undo all changes since last file write, unsaved buffers are emptied.
+" Undo all changes since last file write. Unsaved buffers are emptied.
 function! UndoAll()
   let filename = expand("%")
 

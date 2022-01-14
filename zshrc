@@ -7,6 +7,9 @@ export GREP_COLORS="fn=01;34:ln=00;34:se=01;30" # Filename, line nr & separator.
 export EDITOR=vim
 export VISUAL=$EDITOR
 
+export FZF_DEFAULT_COMMAND="find -L . \! \( -type d -path '*/.git/*' -prune \) -printf '%P\n' 2> /dev/null"
+export FZF_CTRL_T_COMMAND=$FZF_DEFAULT_COMMAND
+
 export LESS=FR # --quit-if-one-screen --RAW-CONTROL-CHARS
 export LESS_TERMCAP_us=$(printf "\e[0m") # Remove underscores in 'man' etc.
 export PAGER=less
@@ -75,7 +78,6 @@ bindkey "^?" backward-delete-char # Delete with backspace under Vi mode.
 
 bindkey "^A"  beginning-of-line
 bindkey "^E"  end-of-line
-bindkey "^R"  history-incremental-search-backward
 bindkey "^U"  kill-whole-line
 bindkey "^[." insert-last-word
 
@@ -224,6 +226,7 @@ alias glo="git log"
 alias gmv="git mv"
 alias gpl="git pull"
 alias gpu="git push"
+alias gre="git restore"
 alias grm="git rm"
 alias gsh="git show"
 alias gst="git status"
@@ -239,6 +242,11 @@ alias youtube-dl="youtube-dl --continue --output '%(title)s.%(ext)s'"
 
 alias tree="tree --charset ascii"
 alias treed="tree -d -L 2"
+
+if [[ -d /usr/local/opt/fzf/shell ]]; then
+  source /usr/local/opt/fzf/shell/completion.zsh
+  source /usr/local/opt/fzf/shell/key-bindings.zsh
+fi
 
 if [[ -f ~/.zshrc_local ]]; then
   source ~/.zshrc_local
