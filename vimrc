@@ -13,6 +13,7 @@ set nowrap
 set nrformats-=octal
 set omnifunc=syntaxcomplete#Complete
 set pastetoggle=<C-p>
+set runtimepath+=/usr/local/opt/fzf
 set sessionoptions-=options
 set showcmd
 set spelllang=en,sv
@@ -64,7 +65,6 @@ set splitright
 set wildignorecase
 set wildmode=longest,list
 
-let g:ackprg = "ag --vimgrep"
 let g:mapleader = ","
 
 let g:go_metalinter_autosave = 1
@@ -90,8 +90,10 @@ nnoremap <Leader>cc :call ColorColumn()<CR>
 nnoremap <Leader>cd :cd <C-R>=escape(expand("%:p:h"), ' \')<CR>/
 nnoremap <Leader>ed :edit <C-R>=escape(expand("%:p:h"), ' \')<CR>/
 nnoremap <Leader>eh :edit ~/
+nnoremap <Leader>fd :FZF<CR>
 nnoremap <Leader>fe :setlocal fileformat=unix fileencoding=utf-8
 nnoremap <Leader>ff :call FixFile()<CR>
+nnoremap <Leader>fh :FZF ~<CR>
 nnoremap <Leader>ft :setlocal filetype=
 nnoremap <Leader>in :InsertFile ~/.vim/templates/
 nnoremap <Leader>li :setlocal list! list?<CR>
@@ -100,7 +102,7 @@ nnoremap <Leader>rs :source ~/.vim/session.vim<CR>
 nnoremap <Leader>s2 :setlocal expandtab shiftwidth=2 softtabstop=2<CR>
 nnoremap <Leader>s4 :setlocal expandtab shiftwidth=4 softtabstop=4<CR>
 nnoremap <Leader>s8 :setlocal expandtab shiftwidth=8 softtabstop=8<CR>
-nnoremap <Leader>sh :shell<CR>
+nnoremap <Leader>sh :terminal<CR>
 nnoremap <Leader>sp :setlocal spell! spell?<CR>
 nnoremap <Leader>ss :mksession! ~/.vim/session.vim<CR>
 nnoremap <Leader>t2 :setlocal noexpandtab shiftwidth=2 softtabstop=0 tabstop=2<CR>
@@ -161,6 +163,9 @@ nnoremap <silent><C-k> :silent! call LocationJump("prev")<CR>
 
 inoremap jj <Esc>
 
+inoremap <expr><Tab> CompleteTab()
+inoremap <C-n>       <C-x><C-o>
+
 command! -nargs=1 -complete=file InsertFile call InsertFile(<q-args>)
 command! SudoWrite w !sudo tee %
 
@@ -176,6 +181,22 @@ function! ColorColumn()
   else
     let w:colorcolumn_last = &colorcolumn
     setlocal colorcolumn= colorcolumn?
+  endif
+endfunction
+
+" Turn the tab key into <C-n> (keyword completion) if there are characters to
+" the left of the cursor, normal tab key is inserted otherwise.
+"
+" inoremap <expr><Tab> CompleteTab()
+function! CompleteTab()
+  let char = getline(".")[col(".")-2] " Get the character left of the cursor.
+
+  " Insert a normal tab if the character left of the cursor is non existent, a
+  " space or a tab. Otherwise use autocomplete.
+  if empty(char) || char == " " || char =~ '\t'
+    return "\<Tab>"
+  else
+    return "\<C-n>"
   endif
 endfunction
 

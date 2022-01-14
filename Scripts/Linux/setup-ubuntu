@@ -19,6 +19,7 @@ sudo apt install -y \
   dnsutils \
   flac \
   flake8 \
+  fzf \
   golang \
   html2text \
   links \

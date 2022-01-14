@@ -51,6 +51,7 @@ sudo mv ~/Downloads/homebrew/{*,.*} /usr/local/
   findutils \
   flac \
   flake8 \
+  fzf \
   gawk \
   git \
   gnu-sed \
