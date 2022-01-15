@@ -8,10 +8,10 @@ export FZF_ALT_C_COMMAND="find -L . \! \( -type d -path '*/.git/*' -prune \) -ty
 export FZF_CTRL_T_COMMAND=$FZF_DEFAULT_COMMAND
 
 export LESS=FR # --quit-if-one-screen --RAW-CONTROL-CHARS
-export LESS_TERMCAP_us=$(printf "\e[0m") # Remove underscores in 'man' etc.
+export LESS_TERMCAP_us=$(printf "\e[0m") # Remove underscores in "man" etc.
 export PAGER=less
 
-# First LS_COLORS line is based on output from 'dircolors' version 9.0.
+# First LS_COLORS line is based on output from "dircolors" version 9.0.
 export LS_COLORS="rs=0:di=01;34:ln=01;35:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=01;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32"
 export LS_COLORS="${LS_COLORS}:*.bmp=01;33:*.gif=01;33:*.heic=01;33:*.ico=01;33:*.jpg=01;33:*.jpeg=01;33:*.png=01;33:*.pxi=01;33:*.svg=01;33:*.tif=01;33:*.tiff=01;33"
 export LS_COLORS="${LS_COLORS}:*.avi=01;36:*.flv=01;36:*.f4v=01;36:*.mkv=01;36:*.mov=01;36:*.mpg=01;36:*.mpeg=01;36:*.mp4=01;36:*.m4v=01;36:*.ts=01;36:*.webm=01;36:*.wmv=01;36"
@@ -54,9 +54,6 @@ autoload -U edit-command-line && zle -N edit-command-line
 autoload -U bracketed-paste-magic && zle -N bracketed-paste bracketed-paste-magic
 autoload -U url-quote-magic && zle -N self-insert url-quote-magic
 
-autoload -U down-line-or-beginning-search && zle -N down-line-or-beginning-search
-autoload -U up-line-or-beginning-search && zle -N up-line-or-beginning-search
-
 # Enable ci" di" vi" etc in Zsh's Vi mode :)
 autoload -U select-quoted && zle -N select-quoted
 for mode in visual viopp; do
@@ -66,41 +63,16 @@ for mode in visual viopp; do
 done
 
 bindkey -v
+bindkey -M vicmd "R" custom-vi-replace # Use custom Vi replace function.
 
 bindkey "jj" vi-cmd-mode
 bindkey "^V" edit-command-line
-bindkey "^?" backward-delete-char # Delete with backspace under Vi mode.
 
 bindkey "^A"  beginning-of-line
 bindkey "^E"  end-of-line
+bindkey "^R"  history-incremental-search-backward
 bindkey "^U"  kill-whole-line
 bindkey "^[." insert-last-word
-
-bindkey -M vicmd "R" custom-vi-replace # Use custom Vi replace function.
-
-# Insert & Delete key.
-bindkey -M vicmd $terminfo[kich1] overwrite-mode
-bindkey          $terminfo[kich1] overwrite-mode
-bindkey -M vicmd $terminfo[kdch1] delete-char
-bindkey          $terminfo[kdch1] delete-char
-
-# Page Up & Page Down keys.
-bindkey -M vicmd $terminfo[kpp] up-line-or-beginning-search
-bindkey          $terminfo[kpp] up-line-or-beginning-search
-bindkey -M vicmd $terminfo[knp] down-line-or-beginning-search
-bindkey          $terminfo[knp] down-line-or-beginning-search
-
-# Home & End key fix for Terminal.app, Cygwin etc.
-bindkey -M vicmd "^[[H" beginning-of-line
-bindkey          "^[[H" beginning-of-line
-bindkey -M vicmd "^[[F" end-of-line
-bindkey          "^[[F" end-of-line
-
-# Home & End key fix for Tmux.
-bindkey -M vicmd "^[[1~" beginning-of-line
-bindkey          "^[[1~" beginning-of-line
-bindkey -M vicmd "^[[4~" end-of-line
-bindkey          "^[[4~" end-of-line
 
 zstyle ":completion:*"          insert-tab pending # Disable tabs at prompt.
 zstyle ":completion:*"          list-colors ${(s.:.)LS_COLORS}
@@ -114,12 +86,37 @@ if [[ $OSTYPE == darwin* ]]; then
   compdef _man man2pdf
 fi
 
+# Prints "[+] " when uncommited git changes are found.
 function prompt_git {
   if [[ -n $(git status --short 2> /dev/null) ]]; then
     echo "%B%F{red}[+]%f%b "
   fi
 }
 
+# Prints hostname in different ways depending on various rules.
+function prompt_host {
+  if [[ $OSTYPE == darwin* ]]; then
+    host="%B%F{yellow}%m%f%b"
+  else
+    host="%B%F{red}%m%f%b"
+  fi
+  echo $host
+}
+
+# Prints current Vi mode. Insert "%#", command "V" and replace "R".
+function prompt_mode {
+  if [[ $KEYMAP == vicmd ]]; then
+    mode=V
+  elif [[ $prompt_replace -eq 1 ]]; then
+    # Function "custom-vi-replace" is needed for this to work.
+    mode=R
+  else
+    mode="%#"
+  fi
+  echo "%B%F{blue}${mode}%f%b"
+}
+
+# Prints "[t] " when file ".todo.txt" is found in the current directory.
 function prompt_todo {
   if [[ -f .todo.txt ]]; then
     echo "%B%F{green}[t]%f%b "
@@ -141,27 +138,8 @@ function zle-line-init zle-keymap-select {
 }
 zle -N zle-line-init && zle -N zle-keymap-select
 
-# Part of the custom Vi replace functionality. This is the output part that
-# will be used in the prompt to indicate the current Vi mode.
-function prompt_mode {
-  if [[ $KEYMAP == vicmd ]]; then
-    prompt_char=E
-  elif [[ $prompt_replace -eq 1 ]]; then
-    prompt_char=R
-  else
-    prompt_char="%#"
-  fi
-  echo "%B%F{cyan}${prompt_char}%f%b"
-}
-
-if [[ $OSTYPE == darwin* ]]; then
-  prompt_host="%B%F{yellow}%m%f%b"
-else
-  prompt_host="%B%F{red}%m%f%b"
-fi
-
 # Coruscant ~/Projects/Dot Files [t] [+] $
-PROMPT='$prompt_host %2~ $(prompt_todo)$(prompt_git)$(prompt_mode) '
+PROMPT='$(prompt_host) %~ $(prompt_todo)$(prompt_git)$(prompt_mode) '
 
 if [[ $OSTYPE == darwin* ]]; then
   alias beep="afplay /System/Library/Sounds/Glass.aiff"
@@ -216,12 +194,10 @@ alias gcl="git clone"
 alias gco="git commit --verbose"
 alias gdi="git diff"
 alias gfp="confirm && git reset --hard origin/master && git pull"
-alias gin="git init"
 alias glo="git log"
 alias gmv="git mv"
 alias gpl="git pull"
 alias gpu="git push"
-alias gre="git restore"
 alias grm="git rm"
 alias gsh="git show"
 alias gst="git status"
@@ -238,9 +214,13 @@ alias youtube-dl="youtube-dl --continue --output '%(title)s.%(ext)s'"
 alias tree="tree --charset ascii"
 alias treed="tree -d -L 2"
 
-if [[ -d /usr/local/opt/fzf/shell ]]; then
+if [[ -d /usr/local/opt/fzf ]]; then
   source /usr/local/opt/fzf/shell/completion.zsh
   source /usr/local/opt/fzf/shell/key-bindings.zsh
+fi
+if [[ -d /usr/share/doc/fzf ]]; then
+  source /usr/share/doc/fzf/examples/completion.zsh
+  source /usr/share/doc/fzf/examples/key-bindings.zsh
 fi
 
 if [[ -f ~/.zshrc_local ]]; then

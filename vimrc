@@ -64,8 +64,8 @@ set splitright
 set wildignorecase
 set wildmode=longest,list
 
-let g:mapleader = ","
 let g:fzf_command_prefix = "Fzf"
+let g:mapleader = ","
 
 let g:go_metalinter_autosave = 1
 let g:go_template_autocreate = 0
