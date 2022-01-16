@@ -8,11 +8,12 @@ set backspace=indent,eol,start
 set confirm
 set encoding=utf-8
 set formatoptions+=jlnor
+set history=999
 set nofoldenable
 set nowrap
 set nrformats-=octal
 set omnifunc=syntaxcomplete#Complete
-set pastetoggle=<C-p>
+set pastetoggle=<C-p> " Overrides 'Find previous keyword' under insert mode.
 set sessionoptions-=options
 set showcmd
 set spelllang=en,sv
@@ -21,11 +22,11 @@ set virtualedit=block
 set autoindent
 set smartindent
 
+set directory=~/.vim/swap
 set backup
-set backupdir=~/.vim/backups
-set directory=~/.vim/backups
+set backupdir=~/.vim/backup
 set undofile
-set undodir=~/.vim/undos
+set undodir=~/.vim/undo
 
 set colorcolumn=81
 set textwidth=79
@@ -86,6 +87,8 @@ endif
 
 nnoremap <Leader>ag :FzfAg<Space>
 nnoremap <Leader>bd :bdelete<CR>
+nnoremap <Leader>bn :bnext<CR>
+nnoremap <Leader>bp :bprevious<CR>
 nnoremap <Leader>bu :FzfBuffers<CR>
 nnoremap <Leader>cc :call ColorColumn()<CR>
 nnoremap <Leader>cd :call ChangeDirectory()<CR>
@@ -155,13 +158,13 @@ vnoremap <silent><Backspace> <Esc>:nohlsearch \| :echo<CR>
 
 nnoremap Y y$
 
+" Text object consisting of all text inside current line, first character up
+" until last character. Like 'w' (word), 'p' (paragraph) etc.
 nnoremap cil ^cg_
 nnoremap dil ^dg_
 nnoremap vil ^vg_
 
-nnoremap <silent><Tab>   :bnext<CR>
-nnoremap <silent><S-Tab> :bprevious<CR>
-
+" CTRL-J and CTRL-K are unused and perfect for function LocationJump().
 nnoremap <silent><C-j> :silent! call LocationJump("next")<CR>
 nnoremap <silent><C-k> :silent! call LocationJump("prev")<CR>
 
@@ -292,7 +295,7 @@ augroup Main
   autocmd BufWritePost ~/.vimrc source %
 
   " Check if last cursor position still exist and if so then go to it.
-  autocmd BufReadPost * if line("'\"") <= line("$") | execute "normal! g`\"" | endif
+  autocmd BufReadPost * if line("'\"") >= 1 && line("'\"") <= line("$") && &ft !~# 'commit' | execute "normal! g`\"" | endif
 
   autocmd BufNewFile,BufReadPost *.conf,config setlocal filetype=conf
 

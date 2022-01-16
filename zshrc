@@ -34,7 +34,7 @@ todo=~/Documents/Text\ Files/Todo.txt
 
 setopt correct
 setopt interactivecomments
-setopt noclobber
+setopt noclobber # Don't allow overwrites of existing files with ">".
 setopt promptsubst
 
 setopt extendedhistory
@@ -50,20 +50,20 @@ setopt pushdignoredups
 
 autoload -U compinit && compinit
 autoload -U edit-command-line && zle -N edit-command-line
+autoload -U select-quoted && zle -N select-quoted
 
 autoload -U bracketed-paste-magic && zle -N bracketed-paste bracketed-paste-magic
 autoload -U url-quote-magic && zle -N self-insert url-quote-magic
 
+bindkey -v
+bindkey -M vicmd "R" custom-vi-replace # Use custom Vi replace function.
+
 # Enable ci" di" vi" etc in Zsh's Vi mode :)
-autoload -U select-quoted && zle -N select-quoted
 for mode in visual viopp; do
   for char in {a,i}{\',\",\`}; do
     bindkey -M $mode $char select-quoted
   done
 done
-
-bindkey -v
-bindkey -M vicmd "R" custom-vi-replace # Use custom Vi replace function.
 
 bindkey "jj" vi-cmd-mode
 bindkey "^V" edit-command-line
@@ -85,6 +85,14 @@ zstyle ":completion:*:warnings" format "zsh: no matches found." # Display warnin
 if [[ $OSTYPE == darwin* ]]; then
   compdef _man man2pdf
 fi
+
+# Custom Vi replace function that changes a variable before entering replace
+# mode and afterwards resets the variable. The variable is used under the
+# prompt_mode function later on.
+function custom-vi-replace {
+  prompt_replace=1 && zle vi-replace && prompt_replace=0
+}
+zle -N custom-vi-replace
 
 # Prints "[+] " when uncommited git changes are found.
 function prompt_git {
@@ -123,14 +131,6 @@ function prompt_todo {
   fi
 }
 
-# Custom Vi replace function that changes a variable before entering replace
-# mode and afterwards resets the variable. The variable is used under the
-# prompt_mode function later on.
-function custom-vi-replace {
-  prompt_replace=1 && zle vi-replace && prompt_replace=0
-}
-zle -N custom-vi-replace
-
 # Part of the custom Vi replace functionality. This is needed to make the
 # prompt update when mode is switched.
 function zle-line-init zle-keymap-select {
@@ -162,6 +162,7 @@ else
   alias free="free -h"
 fi
 
+alias hist="source hist"
 alias iip="curl icanhazip.com"
 alias mkdir="mkdir -pv"
 alias untar="tar -xvf"
