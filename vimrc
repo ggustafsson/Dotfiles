@@ -8,6 +8,7 @@ set backspace=indent,eol,start
 set confirm
 set encoding=utf-8
 set formatoptions+=jlnor
+set hidden
 set history=999
 set nofoldenable
 set nowrap
@@ -87,8 +88,6 @@ endif
 
 nnoremap <Leader>ag :FzfAg<Space>
 nnoremap <Leader>bd :bdelete<CR>
-nnoremap <Leader>bn :bnext<CR>
-nnoremap <Leader>bp :bprevious<CR>
 nnoremap <Leader>bu :FzfBuffers<CR>
 nnoremap <Leader>cc :call ColorColumn()<CR>
 nnoremap <Leader>cd :call ChangeDirectory()<CR>
@@ -107,12 +106,10 @@ nnoremap <Leader>py :terminal python3<CR>
 nnoremap <Leader>rs :source ~/.vim/session.vim<CR>
 nnoremap <Leader>s2 :setlocal expandtab shiftwidth=2 softtabstop=2<CR>
 nnoremap <Leader>s4 :setlocal expandtab shiftwidth=4 softtabstop=4<CR>
-nnoremap <Leader>s8 :setlocal expandtab shiftwidth=8 softtabstop=8<CR>
 nnoremap <Leader>se :FzfLines<CR>
 nnoremap <Leader>sh :terminal<CR>
 nnoremap <Leader>sp :setlocal spell! spell?<CR>
 nnoremap <Leader>ss :mksession! ~/.vim/session.vim<CR>
-nnoremap <Leader>t2 :setlocal noexpandtab shiftwidth=2 softtabstop=0 tabstop=2<CR>
 nnoremap <Leader>t4 :setlocal noexpandtab shiftwidth=4 softtabstop=0 tabstop=4<CR>
 nnoremap <Leader>t8 :setlocal noexpandtab shiftwidth=8 softtabstop=0 tabstop=8<CR>
 nnoremap <Leader>te :FzfFiles ~/Documents/Text\ Files<CR>
@@ -158,23 +155,24 @@ vnoremap <silent><Backspace> <Esc>:nohlsearch \| :echo<CR>
 
 nnoremap Y y$
 
-" Text object consisting of all text inside current line, first character up
-" until last character. Like 'w' (word), 'p' (paragraph) etc.
-nnoremap cil ^cg_
-nnoremap dil ^dg_
-nnoremap vil ^vg_
-
-" CTRL-J and CTRL-K are unused and perfect for function LocationJump().
-nnoremap <silent><C-j> :silent! call LocationJump("next")<CR>
-nnoremap <silent><C-k> :silent! call LocationJump("prev")<CR>
+" These key combos are unused and similar to 'gt' and 'gT' for tabs.
+nnoremap <silent>gb :bnext<CR>
+nnoremap <Silent>gB :bprevious<CR>
+nnoremap <silent>gl :silent! call GoToLocation("next")<CR>
+nnoremap <silent>gL :silent! call GoToLocation("previous")<CR>
 
 inoremap jj <Esc>
 
-inoremap <expr><Tab> CompleteTab()
+inoremap <expr><Tab> CompletionTab()
 inoremap <C-n>       <C-x><C-o>
 
 imap <C-x><C-f> <Plug>(fzf-complete-path)
 imap <C-x><C-l> <Plug>(fzf-complete-line)
+
+" Text object consisting of all text inside current line, first character up
+" until last character. Like 'w' (word), 'p' (paragraph) etc.
+xnoremap il ^og_
+onoremap <silent>il :normal vil<CR>
 
 command! -nargs=1 -complete=file InsertFile call InsertFile(<q-args>)
 command! SudoWrite w !sudo tee %
@@ -213,8 +211,8 @@ endfunction
 " Turn the tab key into <C-n> (keyword completion) if there are characters to
 " the left of the cursor, normal tab key is inserted otherwise.
 "
-" inoremap <expr><Tab> CompleteTab()
-function! CompleteTab()
+" inoremap <expr><Tab> CompletionTab()
+function! CompletionTab()
   let char = getline(".")[col(".")-2] " Get the character left of the cursor.
 
   " Insert a normal tab if the character left of the cursor is non existent, a
@@ -243,6 +241,25 @@ function! FixFile()
   normal! `l
 endfunction
 
+" Jump to the next or previous item in the current windows location list. If
+" error 'E776: No location list' is encountered jump to the next or previous
+" item in the global quickfix list instead.
+function! GoToLocation(action)
+  try
+    if a:action == "next"
+      lnext
+    elseif a:action == "previous"
+      lprevious
+    endif
+  catch /:E776:/
+    if a:action == "next"
+      cnext
+    elseif a:action == "previous"
+      cprevious
+    endif
+  endtry
+endfunction
+
 " Inserts template files above cursor, not below which is the read commands
 " default behavior. If the buffer only has one empty line then it also removes
 " the empty line after insert.
@@ -258,25 +275,6 @@ function! InsertFile(file)
   else
     execute ".-read" fnameescape(a:file)
   endif
-endfunction
-
-" Jump to the next or previous item in the current windows location list. If
-" error 'E776: No location list' is encountered jump to the next or previous
-" item in the global quickfix list instead.
-function! LocationJump(action)
-  try
-    if a:action == "next"
-      lnext
-    else
-      lprevious
-    endif
-  catch /:E776:/
-    if a:action == "next"
-      cnext
-    else
-      cprevious
-    endif
-  endtry
 endfunction
 
 " Undo all changes since last file write. Unsaved buffers are emptied.
