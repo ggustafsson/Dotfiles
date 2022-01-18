@@ -3,6 +3,7 @@ export GREP_COLORS="fn=01;34:ln=00;34:se=01;30" # Filename, line nr & separator.
 export EDITOR=vim
 export VISUAL=$EDITOR
 
+# Fzf's default commands ignore hidden files. WTF...
 export FZF_DEFAULT_COMMAND="find -L . \! \( -type d -path '*/.git/*' -prune \) -printf '%P\n' 2> /dev/null"
 export FZF_ALT_C_COMMAND="find -L . \! \( -type d -path '*/.git/*' -prune \) -type d -printf '%P\n' 2> /dev/null"
 export FZF_CTRL_T_COMMAND=$FZF_DEFAULT_COMMAND
@@ -18,6 +19,8 @@ export LS_COLORS="${LS_COLORS}:*.avi=01;36:*.flv=01;36:*.f4v=01;36:*.mkv=01;36:*
 export LS_COLORS="${LS_COLORS}:*.flac=01;35:*.nsf=01;35:*.nsfe=01;35:*.m4a=01;35:*.m4r=01;35:*.mp3=01;35:*.ogg=01;35:*.wav=01;35"
 export LS_COLORS="${LS_COLORS}:*.dmg=01;31:*.iso=01;31:*.rar=01;31:*.tar=01;31:*.tar.bz2=01;31:*.tar.gz=01;31:*.tgz=01;31:*.zip=01;31:*.7z=01;31"
 
+ZLE_RPROMPT_INDENT=0
+
 HISTFILE=~/.zsh_history
 HISTSIZE=9999
 SAVEHIST=$HISTSIZE
@@ -32,7 +35,7 @@ fi
 tmp=~/Documents/Text\ Files/Tmp.txt
 todo=~/Documents/Text\ Files/Todo.txt
 
-setopt correct
+setopt correct # Try to correct the spelling of commands.
 setopt interactivecomments
 setopt noclobber # Don't allow overwrites of existing files with ">".
 setopt promptsubst
@@ -42,7 +45,7 @@ setopt histexpiredupsfirst
 setopt histignoredups
 setopt histignorespace
 setopt histreduceblanks
-setopt histverify
+setopt histverify # "!" and "!!" commands are expanded instead of executed.
 setopt incappendhistory
 
 setopt autopushd
@@ -50,18 +53,24 @@ setopt pushdignoredups
 
 autoload -U compinit && compinit
 autoload -U edit-command-line && zle -N edit-command-line
-autoload -U select-quoted && zle -N select-quoted
 
 autoload -U bracketed-paste-magic && zle -N bracketed-paste bracketed-paste-magic
 autoload -U url-quote-magic && zle -N self-insert url-quote-magic
 
-bindkey -v
-bindkey -M vicmd "R" custom-vi-replace # Use custom Vi replace function.
+autoload -U select-bracketed && zle -N select-bracketed
+autoload -U select-quoted && zle -N select-quoted
 
-# Enable ci" di" vi" etc in Zsh's Vi mode :)
-for mode in visual viopp; do
-  for char in {a,i}{\',\",\`}; do
-    bindkey -M $mode $char select-quoted
+bindkey -v
+
+# Enable Vim quote and bracket selections in Zsh's Vi mode :)
+for mode in viopp visual; do
+  # a' a" a` i' i" i`
+  for seq in {a,i}{\',\",\`}; do
+    bindkey -M $mode $seq select-quoted
+  done
+  # a( i( a) i) a[ i[ a] i] a{ i{ a} i} a< i< a> i>
+  for seq in {a,i}${(s..)^:-'()[]{}<>'}; do
+    bindkey -M $mode $seq select-bracketed
   done
 done
 
@@ -74,76 +83,68 @@ bindkey "^R"  history-incremental-search-backward
 bindkey "^U"  kill-whole-line
 bindkey "^[." insert-last-word
 
-zstyle ":completion:*"          insert-tab pending # Disable tabs at prompt.
-zstyle ":completion:*"          list-colors ${(s.:.)LS_COLORS}
-zstyle ":completion:*"          matcher-list "m:{[:lower:]}={[:upper:]}" # Works like smartcase in Vim.
-zstyle ":completion:*"          menu select
-zstyle ":completion:*"          special-dirs true # Make "cd ..<tab>" turn into "cd ../" etc.
-zstyle ":completion:*:cd:*"     ignore-parents parent pwd
-zstyle ":completion:*:warnings" format "zsh: no matches found." # Display warning when x<tab> don't have matches.
+zstyle ":completion:*" insert-tab pending # Don't insert tab characters at prompt.
+zstyle ":completion:*" list-colors ${(s.:.)LS_COLORS}
+zstyle ":completion:*" matcher-list "m:{[:lower:]}={[:upper:]}" # Works like smartcase in Vim.
+zstyle ":completion:*" menu select
+zstyle ":completion:*" special-dirs true # Make "cd ..<tab>" turn into "cd ../" etc.
 
 if [[ $OSTYPE == darwin* ]]; then
   compdef _man man2pdf
 fi
 
-# Custom Vi replace function that changes a variable before entering replace
-# mode and afterwards resets the variable. The variable is used under the
-# prompt_mode function later on.
-function custom-vi-replace {
-  prompt_replace=1 && zle vi-replace && prompt_replace=0
-}
-zle -N custom-vi-replace
-
-# Prints "[+] " when uncommited git changes are found.
-function prompt_git {
-  if [[ -n $(git status --short 2> /dev/null) ]]; then
-    echo "%B%F{red}[+]%f%b "
-  fi
-}
-
-# Prints hostname in different ways depending on various rules.
-function prompt_host {
-  if [[ $OSTYPE == darwin* ]]; then
-    host="%B%F{yellow}%m%f%b"
-  else
-    host="%B%F{red}%m%f%b"
-  fi
-  echo $host
-}
-
-# Prints current Vi mode. Insert "%#", command "V" and replace "R".
-function prompt_mode {
-  if [[ $KEYMAP == vicmd ]]; then
-    mode=V
-  elif [[ $prompt_replace -eq 1 ]]; then
-    # Function "custom-vi-replace" is needed for this to work.
-    mode=R
-  else
-    mode="%#"
-  fi
-  echo "%B%F{blue}${mode}%f%b"
-}
-
-# Prints "[t] " when file ".todo.txt" is found in the current directory.
-function prompt_todo {
-  if [[ -f .todo.txt ]]; then
-    echo "%B%F{green}[t]%f%b "
-  fi
-}
-
-# Part of the custom Vi replace functionality. This is needed to make the
-# prompt update when mode is switched.
+# This is needed to make the prompt update when mode is switched.
 function zle-line-init zle-keymap-select {
   zle reset-prompt
 }
 zle -N zle-line-init && zle -N zle-keymap-select
 
-# Coruscant ~/Projects/Dot Files [t] [+] $
-PROMPT='$(prompt_host) %~ $(prompt_todo)$(prompt_git)$(prompt_mode) '
+# Prints hostname in different ways depending on various rules.
+function prompt_host {
+  if [[ $OSTYPE == darwin* ]]; then
+    echo "%B%F{yellow}%m%f%b"
+  else
+    echo "%B%F{cyan}%m%f%b"
+  fi
+}
+
+# Prints current Vi mode. Insert "❯" and command "❮".
+function prompt_mode {
+  if [[ $KEYMAP == vicmd ]]; then
+    echo "%B%F{red}❮%f%b"
+  else
+    echo "%B%F{green}❯%f%b"
+  fi
+}
+
+# Prints " ✔︎ todo" when file ".todo(.txt)" is found in the current directory.
+function prompt_todo {
+  if [[ -f .todo || -f .todo.txt ]]; then
+    echo " ✔︎ %B%F{cyan}todo%f%b"
+  fi
+}
+
+# Prints " ♦︎ <branch>" when git repo is found in the current directory.
+function prompt_git {
+  if [[ ! -d .git ]]; then
+    return 1
+  fi
+
+  branch=$(git branch --show-current 2> /dev/null)
+  if [[ -n $(git status --porcelain 2> /dev/null) ]]; then
+    echo " ♦︎ %B%F{red}${branch}%f%b"
+  else
+    echo " ♦︎ %B%F{green}${branch}%f%b"
+  fi
+}
+
+# Coruscant ~/Projects/Dot Files ❯                              ✔︎ todo ♦︎ master
+PROMPT='$(prompt_host) %~ $(prompt_mode) '
+RPROMPT='$(prompt_todo)$(prompt_git)'
 
 if [[ $OSTYPE == darwin* ]]; then
   alias beep="afplay /System/Library/Sounds/Glass.aiff"
-  alias tim="caffeinate tim"
+  alias tim="caffeinate tim" # Give Tim a cup of Joe! :)
   alias wifiscan="/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport --scan"
 
   alias brewi="brew install"
@@ -162,6 +163,7 @@ else
   alias free="free -h"
 fi
 
+alias dog="tac" # Woof woof! :)
 alias hist="source hist"
 alias iip="curl icanhazip.com"
 alias mkdir="mkdir -pv"

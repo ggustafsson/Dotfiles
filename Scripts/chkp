@@ -27,48 +27,40 @@ elif [[ -z $(echo ${project_dir}/*(N)) ]]; then
   exit 1
 fi
 
+echo "Checking git repositories..."
+
 for directory in ${project_dir}/*; do
   if [[ ! -d $directory ]]; then
     continue
   fi
 
-  cd $directory
-
-  if [[ -d .git ]]; then
+  if [[ -d ${directory}/.git ]]; then
+    pushd $directory
     if [[ -n $(git rev-list origin..HEAD 2> /dev/null) ]]; then
-      print -P "%B%F{cyan}${directory:t}:%f%b"
-      git status --branch --short
-      echo
+      print -P "\n%B%F{cyan}${directory:t}%f%b [%B%F{magenta}$(git branch --show-current)%f%b]"
+      git status --short
     elif [[ -n $(git status --short 2> /dev/null) ]]; then
-      print -P "%B%F{red}${directory:t}:%f%b"
-      git status --branch --short
-      echo
+      print -P "\n%B%F{red}${directory:t}%f%b [%B%F{magenta}$(git branch --show-current)%f%b]"
+      git status --short
     else
       clean_repos+=(${directory:t})
     fi
+    popd
   else
     not_repos+=(${directory:t})
   fi
-
-  cd -
 done
 
-print -P "%B%F{green}Clean repo(s):%f%b"
 if [[ ${#clean_repos} -gt 0 ]]; then
+  print -P "\n%B%F{green}Clean Git repo(s):%f%b"
   for repo_name in $clean_repos; do
-    echo " * $repo_name"
+    echo " - $repo_name"
   done
-else
-  echo " - None found"
 fi
 
-echo
-
-print -P "%B%F{blue}Not Git repo(s):%f%b"
 if [[ ${#not_repos} -gt 0 ]]; then
+  print -P "\n%B%F{blue}Not Git repo(s):%f%b"
   for repo_name in $not_repos; do
-    echo " * $repo_name"
+    echo " - $repo_name"
   done
-else
-  echo " - None found"
 fi

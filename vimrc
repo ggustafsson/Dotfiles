@@ -7,16 +7,16 @@ colorscheme static
 set backspace=indent,eol,start
 set confirm
 set encoding=utf-8
-set formatoptions+=jlnor
+set formatoptions+=jlnor " See ':help fo-table'.
 set hidden
 set history=999
 set nofoldenable
 set nowrap
-set nrformats-=octal
+set nrformats-=octal " CTRL-A on 007 != 010. Shaken, not stirred! :)
 set omnifunc=syntaxcomplete#Complete
 set pastetoggle=<C-p> " Overrides 'Find previous keyword' under insert mode.
 set sessionoptions-=options
-set showcmd
+set showcmd " This is for some reason 'off for Unix'. WTF?
 set spelllang=en,sv
 set virtualedit=block
 
@@ -260,7 +260,7 @@ function! GoToLocation(action)
   endtry
 endfunction
 
-" Inserts template files above cursor, not below which is the read commands
+" Inserts file above cursor instead of below which is the 'read' commands
 " default behavior. If the buffer only has one empty line then it also removes
 " the empty line after insert.
 "
@@ -277,10 +277,9 @@ function! InsertFile(file)
   endif
 endfunction
 
-" Undo all changes since last file write. Unsaved buffers are emptied.
+" Undo all changes since last file save. Unsaved buffers are emptied.
 function! UndoAll()
   let filename = expand("%")
-
   if !empty(filename)
     edit!
   else
