@@ -8,7 +8,6 @@ set backspace=indent,eol,start
 set confirm
 set encoding=utf-8
 set formatoptions+=jlnor " See ':help fo-table'.
-set hidden
 set history=999
 set nofoldenable
 set nowrap

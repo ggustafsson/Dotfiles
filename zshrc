@@ -205,6 +205,7 @@ alias grepr3="grepr --after-context=3 --before-context=3"
 
 alias gad="git add"
 alias gbr="git branch"
+alias gca="git commit --all --verbose"
 alias gch="git checkout"
 alias gcl="git clone"
 alias gco="git commit --verbose"
