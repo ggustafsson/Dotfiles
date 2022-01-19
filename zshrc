@@ -62,6 +62,12 @@ autoload -U select-quoted && zle -N select-quoted
 
 bindkey -v
 
+# Same as "backspace=indent,eol,start" in Vim.
+bindkey "^?" backward-delete-char
+bindkey "^H" backward-delete-char
+bindkey "^U" backward-kill-line
+bindkey "^W" backward-kill-word
+
 # Enable Vim quote and bracket selections in Zsh's Vi mode :)
 for mode in viopp visual; do
   # a' a" a` i' i" i`
@@ -80,7 +86,6 @@ bindkey "^V" edit-command-line
 bindkey "^A"  beginning-of-line
 bindkey "^E"  end-of-line
 bindkey "^R"  history-incremental-search-backward
-bindkey "^U"  kill-whole-line
 bindkey "^[." insert-last-word
 
 zstyle ":completion:*" insert-tab pending # Don't insert tab characters at prompt.
@@ -141,6 +146,7 @@ function prompt_git {
 # Coruscant ~/Projects/Dot Files ❯                              ✔︎ todo ♦︎ master
 PROMPT='$(prompt_host) %~ $(prompt_mode) '
 RPROMPT='$(prompt_todo)$(prompt_git)'
+PS2='$(prompt_mode) ' # Used when entering multline commands.
 
 if [[ $OSTYPE == darwin* ]]; then
   alias beep="afplay /System/Library/Sounds/Glass.aiff"
@@ -191,7 +197,6 @@ alias grepr3="grepr --after-context=3 --before-context=3"
 
 alias gad="git add"
 alias gbr="git branch"
-alias gca="git commit --all --verbose"
 alias gch="git checkout"
 alias gcl="git clone"
 alias gco="git commit --verbose"
