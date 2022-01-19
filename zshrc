@@ -8,7 +8,7 @@ export FZF_DEFAULT_COMMAND="find -L . \! \( -type d -path '*/.git/*' -prune \) -
 export FZF_ALT_C_COMMAND="find -L . \! \( -type d -path '*/.git/*' -prune \) -type d -printf '%P\n' 2> /dev/null"
 export FZF_CTRL_T_COMMAND=$FZF_DEFAULT_COMMAND
 
-export LESS=FR # --quit-if-one-screen --RAW-CONTROL-CHARS
+export LESS=FRi # --quit-if-one-screen --RAW-CONTROL-CHARS --ignore-case
 export LESS_TERMCAP_us=$(printf "\e[0m") # Remove underscores in "man" etc.
 export PAGER=less
 
