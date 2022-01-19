@@ -19,8 +19,6 @@ export LS_COLORS="${LS_COLORS}:*.avi=01;36:*.flv=01;36:*.f4v=01;36:*.mkv=01;36:*
 export LS_COLORS="${LS_COLORS}:*.flac=01;35:*.nsf=01;35:*.nsfe=01;35:*.m4a=01;35:*.m4r=01;35:*.mp3=01;35:*.ogg=01;35:*.wav=01;35"
 export LS_COLORS="${LS_COLORS}:*.dmg=01;31:*.iso=01;31:*.rar=01;31:*.tar=01;31:*.tar.bz2=01;31:*.tar.gz=01;31:*.tgz=01;31:*.zip=01;31:*.7z=01;31"
 
-ZLE_RPROMPT_INDENT=0
-
 HISTFILE=~/.zsh_history
 HISTSIZE=9999
 SAVEHIST=$HISTSIZE
@@ -145,8 +143,8 @@ function prompt_git {
 
 # Coruscant ~/Projects/Dot Files ❯                              ✔︎ todo ♦︎ master
 PROMPT='$(prompt_host) %~ $(prompt_mode) '
-RPROMPT='$(prompt_todo)$(prompt_git)'
-PS2='$(prompt_mode) ' # Used when entering multline commands.
+PROMPT2='$(prompt_mode) ' # Used when entering multi-line commands.
+RPROMPT='$(prompt_todo)$(prompt_git)' && ZLE_RPROMPT_INDENT=0
 
 if [[ $OSTYPE == darwin* ]]; then
   alias beep="afplay /System/Library/Sounds/Glass.aiff"
