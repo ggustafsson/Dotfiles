@@ -59,6 +59,7 @@ autoload -U select-bracketed && zle -N select-bracketed
 autoload -U select-quoted && zle -N select-quoted
 
 bindkey -v
+bindkey -M vicmd "R" custom-vi-replace
 
 # Same as "backspace=indent,eol,start" in Vim.
 bindkey "^?" backward-delete-char
@@ -96,6 +97,13 @@ if [[ $OSTYPE == darwin* ]]; then
   compdef _man man2pdf
 fi
 
+# Custom Vi replace function that changes a variable before entering replace
+# mode and afterwards resets the variable. The variable is used under the
+# prompt_mode function later on.
+function custom-vi-replace {
+  prompt_replace=1 && zle vi-replace && prompt_replace=0
+}
+zle -N custom-vi-replace
 # This is needed to make the prompt update when mode is switched.
 function zle-line-init zle-keymap-select {
   zle reset-prompt
@@ -111,10 +119,12 @@ function prompt_host {
   fi
 }
 
-# Prints current Vi mode. Insert "❯" and command "❮".
+# Prints current Vi mode. Insert "❯", command "❮" and replace "★".
 function prompt_mode {
   if [[ $KEYMAP == vicmd ]]; then
     echo "%B%F{red}❮%f%b"
+  elif [[ $prompt_replace -eq 1 ]]; then
+    echo "%B%F{red}★%f%b"
   else
     echo "%B%F{green}❯%f%b"
   fi
