@@ -43,14 +43,16 @@ set incsearch
 
 " ~/.vimrc [+] [utf-8] [unix] [vim]    1, 46/260
 set laststatus=2
-set statusline=\ %F\ 
+set statusline=\ %(%F\ %)
 set statusline+=%(%r\ %)
 set statusline+=%(%m\ %)
 set statusline+=%([%{&fileencoding==''?&encoding:&fileencoding}]\ %)
 set statusline+=%([%{&fileformat}]\ %)
 set statusline+=%(%y\ %)
 set statusline+=%(%{&paste?'[paste]':''}\ %)
-set statusline+=%=%v,\ %l/%L\ 
+set statusline+=%=
+set statusline+=%(%v,\ %)
+set statusline+=%(%l/%L\ %)
 
 set list
 set listchars=tab:!-,trail:-,precedes:<,extends:>
@@ -78,7 +80,7 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_jump = 1 " Runs :lfirst at start of syntax check.
 let g:syntastic_auto_loc_list = 1 " Runs :lwindow and :lclose automatically.
 let g:syntastic_enable_highlighting = 0
-let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
+let g:syntastic_mode_map = { "mode": "active", "passive_filetypes": ["go"] }
 
 if has("mac")
   nnoremap <Leader>fi :silent !open "%:p:h"<CR>:redraw!<CR>
@@ -216,7 +218,7 @@ function! CompletionTab()
 
   " Insert a normal tab if the character left of the cursor is non existent, a
   " space or a tab. Otherwise use autocomplete.
-  if empty(char) || char == " " || char =~ '\t'
+  if empty(char) || char == " " || char =~ "\t"
     return "\<Tab>"
   else
     return "\<C-n>"
@@ -235,7 +237,7 @@ function! FixFile()
   retab
 
   normal! ml
-  %s/\s\+$//e " Remove all whitespaces.
+  %s/\s\+$//e " Removes trailing whitespaces.
   nohlsearch
   normal! `l
 endfunction
@@ -291,14 +293,23 @@ augroup Main
   autocmd BufWritePost ~/.vimrc source %
 
   " Check if last cursor position still exist and if so then go to it.
-  autocmd BufReadPost * if line("'\"") >= 1 && line("'\"") <= line("$") && &ft !~# 'commit' | execute "normal! g`\"" | endif
+  autocmd BufReadPost *
+    \ if line("'\"") >= 1 && line("'\"") <= line("$") && &filetype !~# "commit"
+    \ |   execute "normal! g`\""
+    \ | endif
 
   autocmd BufNewFile,BufReadPost *.conf,config setlocal filetype=conf
 
   autocmd FileType gitcommit  setlocal colorcolumn=73 spell textwidth=72
-  autocmd FileType go         setlocal listchars+=tab:\ \  noexpandtab shiftwidth=4 softtabstop=0 tabstop=4
+  autocmd FileType go         setlocal noexpandtab shiftwidth=4 softtabstop=0 tabstop=4
   autocmd FileType godoc,help setlocal colorcolumn= nolist
   autocmd FileType markdown   setlocal expandtab shiftwidth=4 softtabstop=4
   autocmd FileType python     setlocal expandtab shiftwidth=4 softtabstop=4
-  autocmd FileType qf         setlocal colorcolumn= nocursorline norelativenumber statusline=\ %t%{exists('w:quickfix_title')?'\ '.w:quickfix_title:''}%=%l/%L\ 
+
+  " Quickfix and location list windows.
+  autocmd FileType qf setlocal colorcolumn= nocursorline norelativenumber
+    \ statusline=\ %(%t\ %)
+    \ statusline+=%(%{exists('w:quickfix_title')?''.w:quickfix_title:''}\ %)
+    \ statusline+=%=
+    \ statusline+=%(%l/%L\ %)
 augroup END
