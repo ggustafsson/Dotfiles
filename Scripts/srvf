@@ -26,19 +26,9 @@ fi
 # Port 80   = HTTP
 # Port 443  = HTTPS
 # Port 445  = SMB
-# Port 548  = AFP
 # Port 5900 = VNC
 # Port 8080 = Alternative HTTP
-ports="21,22,80,443,445,548,5900,8080"
+ports="21,22,80,443,445,5900,8080"
 
 echo "Scanning network..."
-
-results=$(nmap -sT $network -p $ports --open 2> /dev/null | \
-  egrep -v "(Host is up|Not shown)" | \
-  tail -n +3 | head -n -2)
-
-if [[ ! -z $results ]]; then
-  echo "\n$results"
-else
-  echo "\nNo services found on network!"
-fi
+nmap -sT $network -p $ports --open

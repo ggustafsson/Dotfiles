@@ -177,6 +177,7 @@ else
   alias free="free -h"
 fi
 
+alias ag="ag --color-line-number '1;40' --color-match '1;31' --follow --hidden --ignore '.git/'"
 alias dog="tac" # Woof woof! :)
 alias hist="source hist"
 alias iip="curl icanhazip.com"
