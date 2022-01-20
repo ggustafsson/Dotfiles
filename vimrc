@@ -112,6 +112,8 @@ nnoremap <Leader>ss :mksession! ~/.vim/session.vim<CR>
 nnoremap <Leader>t4 :setlocal noexpandtab shiftwidth=4 softtabstop=0 tabstop=4<CR>
 nnoremap <Leader>t8 :setlocal noexpandtab shiftwidth=8 softtabstop=0 tabstop=8<CR>
 nnoremap <Leader>te :FzfFiles ~/Documents/Text\ Files<CR>
+nnoremap <Leader>tm :vsplit ~/Documents/Text\ Files/Tmp.txt<CR>
+nnoremap <Leader>to :vsplit ~/Documents/Text\ Files/Todo.txt<CR>
 nnoremap <Leader>tw :setlocal textwidth=79
 nnoremap <Leader>un :call UndoAll()<CR>
 nnoremap <Leader>ut :MundoToggle<CR>
