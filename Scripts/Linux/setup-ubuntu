@@ -20,7 +20,6 @@ sudo apt install -y \
   dnsutils \
   flac \
   flake8 \
-  fzf \
   golang \
   html2text \
   links \
@@ -50,7 +49,6 @@ ln -s ~/Projects/Dot\ Files/zshenv ~/.zshenv
 ln -s ~/Projects/Dot\ Files/zshrc ~/.zshrc
 
 ln -s ~/.vim/pack/ggustafsson/start/Static\ Color\ Scheme ~/Projects/Static\ Color\ Scheme
-ln -s /usr/share/doc/fzf/examples ~/.vim/pack/others/start/fzf
 
 sudo cp ~/Projects/Dot\ Files/motd /etc/motd
 

@@ -234,10 +234,6 @@ if [[ -d /usr/local/opt/fzf ]]; then
   source /usr/local/opt/fzf/shell/completion.zsh
   source /usr/local/opt/fzf/shell/key-bindings.zsh
 fi
-if [[ -d /usr/share/doc/fzf ]]; then
-  source /usr/share/doc/fzf/examples/completion.zsh
-  source /usr/share/doc/fzf/examples/key-bindings.zsh
-fi
 
 if [[ -f ~/.zshrc_local ]]; then
   source ~/.zshrc_local
