@@ -244,19 +244,35 @@ endfunction
 
 " Jump to the next or previous item in the current windows location list. If
 " error 'E776: No location list' is encountered jump to the next or previous
-" item in the global quickfix list instead.
+" item in the global quickfix list instead. This rotates through the lists.
 function! GoToLocation(action)
   try
     if a:action == "next"
-      lnext
+      try
+        lnext
+      catch /:E553:/ " E553: No more items
+        lfirst
+      endtry
     elseif a:action == "previous"
-      lprevious
+      try
+        lprevious
+      catch /:E553:/ " E553: No more items
+        llast
+      endtry
     endif
-  catch /:E776:/
+  catch /:E776:/ " E776: No location list
     if a:action == "next"
-      cnext
+      try
+        cnext
+      catch /:E553:/ " E553: No more items
+        cfirst
+      endtry
     elseif a:action == "previous"
-      cprevious
+      try
+        cprevious
+      catch /:E553:/ " E553: No more items
+        clast
+      endtry
     endif
   endtry
 endfunction
