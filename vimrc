@@ -95,8 +95,6 @@ nnoremap <Leader>cd :call ChangeDirectory()<CR>
 nnoremap <Leader>ed :edit <C-R>=escape(expand("%:p:h"), ' \')<CR>/
 nnoremap <Leader>eh :edit ~/
 nnoremap <Leader>fd :FzfFiles <C-R>=escape(expand("%:~:h"), ' \')<CR><CR>
-nnoremap <Leader>fe :setlocal fileformat=unix fileencoding=utf-8
-nnoremap <Leader>ff :call FixFile()<CR>
 nnoremap <Leader>fh :FzfFiles ~<CR>
 nnoremap <Leader>ft :FzfFiletypes<CR>
 nnoremap <Leader>hi :FzfHistory<CR>
@@ -175,9 +173,6 @@ imap <C-x><C-l> <Plug>(fzf-complete-line)
 xnoremap il ^og_
 onoremap <silent>il :normal vil<CR>
 
-command! -nargs=1 -complete=file InsertFile call InsertFile(<q-args>)
-command! SudoWrite w !sudo tee %
-
 " Jump back and forth between directory of file in current buffer and the home
 " directory.
 function! ChangeDirectory()
@@ -225,7 +220,7 @@ function! CompletionTab()
   endif
 endfunction
 
-" Fix file encoding, file format, tabs and remove whitespaces.
+" Fix file encoding, file format, tabs and remove trailing whitespaces.
 function! FixFile()
   setlocal fileencoding=utf-8
   setlocal fileformat=unix
@@ -241,6 +236,7 @@ function! FixFile()
   nohlsearch
   normal! `l
 endfunction
+command! -nargs=0 FixFile call FixFile()
 
 " Jump to the next or previous item in the current windows location list. If
 " error 'E776: No location list' is encountered jump to the next or previous
@@ -279,9 +275,7 @@ endfunction
 
 " Inserts file above cursor instead of below which is the 'read' commands
 " default behavior. If the buffer only has one empty line then it also removes
-" the empty line after insert.
-"
-" command! -nargs=1 -complete=file InsertFile call InsertFile(<q-args>)
+" the empty line after insert so HTML templates and similar works better.
 function! InsertFile(file)
   let lines = line("$")
   let text = getline(".")
@@ -293,6 +287,7 @@ function! InsertFile(file)
     execute ".-read" fnameescape(a:file)
   endif
 endfunction
+command! -nargs=1 -complete=file InsertFile call InsertFile(<q-args>)
 
 " Undo all changes since last file save. Unsaved buffers are emptied.
 function! UndoAll()

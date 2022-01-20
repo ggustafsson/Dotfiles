@@ -98,8 +98,8 @@ if [[ $OSTYPE == darwin* ]]; then
 fi
 
 # Custom Vi replace function that changes a variable before entering replace
-# mode and afterwards resets the variable. The variable is used under the
-# prompt_mode function later on.
+# mode and afterwards resets the variable. The variable is used in the function
+# "prompt_mode" later on.
 function custom-vi-replace {
   prompt_replace=1 && zle vi-replace && prompt_replace=0
 }
@@ -119,12 +119,12 @@ function prompt_host {
   fi
 }
 
-# Prints current Vi mode. Insert "❯", command "❮" and replace "★".
+# Prints current Vi mode. Insert "❯", command "❮" and replace "✱".
 function prompt_mode {
   if [[ $KEYMAP == vicmd ]]; then
     echo "%B%F{red}❮%f%b"
   elif [[ $prompt_replace -eq 1 ]]; then
-    echo "%B%F{red}★%f%b"
+    echo "%B%F{red}✱%f%b"
   else
     echo "%B%F{green}❯%f%b"
   fi
@@ -201,7 +201,6 @@ alias du="du -sh"
 
 alias grep="grep --color=auto"
 alias grepr="grep --binary-file=without-match --dereference-recursive --exclude-dir .git"
-alias grepr3="grepr --after-context=3 --before-context=3"
 
 alias gad="git add"
 alias gbr="git branch"
