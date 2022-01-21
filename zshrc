@@ -3,11 +3,6 @@ export GREP_COLORS="fn=01;34:ln=00;34:se=01;30" # Filename, line nr & separator.
 export EDITOR=vim
 export VISUAL=$EDITOR
 
-# Fzf's default commands ignore hidden files. WTF...
-export FZF_DEFAULT_COMMAND="find -L . \! \( -type d -path '*/.git/*' -prune \) -printf '%P\n' 2> /dev/null"
-export FZF_ALT_C_COMMAND="find -L . \! \( -type d -path '*/.git/*' -prune \) -type d -printf '%P\n' 2> /dev/null"
-export FZF_CTRL_T_COMMAND=$FZF_DEFAULT_COMMAND
-
 export LESS=FRi # --quit-if-one-screen --RAW-CONTROL-CHARS --ignore-case
 export LESS_TERMCAP_us=$(printf "\e[0m") # Remove underscores in "man" etc.
 export PAGER=less
@@ -177,7 +172,7 @@ else
   alias free="free -h"
 fi
 
-alias ag="ag --color-line-number '1;40' --color-match '1;31' --follow --hidden --ignore '.git/'"
+alias ag="ag --color-line-number '1;40' --color-match '1;31' --follow --nonumbers"
 alias dog="tac" # Woof woof! :)
 alias hist="source hist"
 alias iip="curl icanhazip.com"

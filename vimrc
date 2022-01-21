@@ -41,6 +41,9 @@ set softtabstop=2
 set hlsearch
 set incsearch
 
+set ignorecase
+set smartcase
+
 " ~/.vimrc [+] [utf-8] [unix] [vim]    1, 46/260
 set laststatus=2
 set statusline=\ %(%F\ %)
@@ -87,17 +90,27 @@ if has("mac")
   nnoremap <Leader>op :silent !open "%"<CR>:redraw!<CR>
 endif
 
-nnoremap <Leader>ag :FzfAg<Space>
+if isdirectory($HOME . "/.vim/pack/others/start/fzf")
+  nnoremap <Leader>ag :FzfAg<Space>
+  nnoremap <Leader>bu :FzfBuffers<CR>
+  nnoremap <Leader>fd :FzfFiles<CR>
+  nnoremap <Leader>fh :FzfFiles ~/
+  nnoremap <Leader>ft :FzfFiletypes<CR>
+  nnoremap <Leader>hi :FzfHistory<CR>
+  nnoremap <Leader>se :FzfLines<CR>
+  nnoremap <Leader>te :FzfFiles ~/Documents/Text\ Files<CR>
+else
+  nnoremap <Leader>bu :buffers<CR>:buffer<Space>
+  nnoremap <Leader>ft :setlocal filetype=
+  nnoremap <Leader>hi :browse oldfiles<CR>
+  nnoremap <Leader>te :edit ~/Documents/Text\ Files/
+endif
+
 nnoremap <Leader>bd :bdelete<CR>
-nnoremap <Leader>bu :FzfBuffers<CR>
 nnoremap <Leader>cc :call ColorColumn()<CR>
 nnoremap <Leader>cd :call ChangeDirectory()<CR>
 nnoremap <Leader>ed :edit <C-R>=escape(expand("%:p:h"), ' \')<CR>/
 nnoremap <Leader>eh :edit ~/
-nnoremap <Leader>fd :FzfFiles <C-R>=escape(expand("%:~:h"), ' \')<CR><CR>
-nnoremap <Leader>fh :FzfFiles ~<CR>
-nnoremap <Leader>ft :FzfFiletypes<CR>
-nnoremap <Leader>hi :FzfHistory<CR>
 nnoremap <Leader>in :InsertFile ~/.vim/templates/
 nnoremap <Leader>li :setlocal list! list?<CR>
 nnoremap <Leader>nu :setlocal number! relativenumber!<CR>
@@ -105,13 +118,11 @@ nnoremap <Leader>py :terminal python3<CR>
 nnoremap <Leader>rs :source ~/.vim/session.vim<CR>
 nnoremap <Leader>s2 :setlocal expandtab shiftwidth=2 softtabstop=2<CR>
 nnoremap <Leader>s4 :setlocal expandtab shiftwidth=4 softtabstop=4<CR>
-nnoremap <Leader>se :FzfLines<CR>
 nnoremap <Leader>sh :terminal<CR>
 nnoremap <Leader>sp :setlocal spell! spell?<CR>
 nnoremap <Leader>ss :mksession! ~/.vim/session.vim<CR>
 nnoremap <Leader>t4 :setlocal noexpandtab shiftwidth=4 softtabstop=0 tabstop=4<CR>
 nnoremap <Leader>t8 :setlocal noexpandtab shiftwidth=8 softtabstop=0 tabstop=8<CR>
-nnoremap <Leader>te :FzfFiles ~/Documents/Text\ Files<CR>
 nnoremap <Leader>tm :vsplit ~/Documents/Text\ Files/Tmp.txt<CR>
 nnoremap <Leader>to :vsplit ~/Documents/Text\ Files/Todo.txt<CR>
 nnoremap <Leader>tw :setlocal textwidth=79
@@ -159,35 +170,42 @@ nnoremap Y y$
 " These key combos are unused and similar to 'gt' and 'gT' for tabs.
 nnoremap <silent>gb :bnext<CR>
 nnoremap <Silent>gB :bprevious<CR>
-nnoremap <silent>gl :silent! call GoToLocation("next")<CR>
-nnoremap <silent>gL :silent! call GoToLocation("previous")<CR>
+nnoremap <silent>gl :call GoToLocation("next")<CR>
+nnoremap <silent>gL :call GoToLocation("previous")<CR>
 
 inoremap jj <Esc>
 
 inoremap <expr><Tab> CompletionTab()
 inoremap <C-n>       <C-x><C-o>
 
-imap <C-x><C-f> <Plug>(fzf-complete-path)
-imap <C-x><C-l> <Plug>(fzf-complete-line)
+if isdirectory($HOME . "/.vim/pack/others/start/fzf")
+  imap <C-x><C-f> <Plug>(fzf-complete-path)
+  imap <C-x><C-l> <Plug>(fzf-complete-line)
+endif
 
 " Text object consisting of all text inside current line, first character up
 " until last character. Like 'w' (word), 'p' (paragraph) etc.
 xnoremap il ^og_
 onoremap <silent>il :normal vil<CR>
 
-" Jump back and forth between directory of file in current buffer and the home
-" directory.
+" Jump back and forth between directory of file in current buffer and Vim's
+" initial working directory.
+let s:vim_startup_pwd = getcwd()
 function! ChangeDirectory()
-  let l:buffer_path = escape(expand("%:p:h"), ' \')
-  let l:buffer_path_short = escape(expand("%:~:h"), ' \')
-  let l:current_path = escape(getcwd(), ' \')
+  let l:buffer_path = expand("%:p:h")
+  let l:current_path = getcwd()
 
   if l:current_path != l:buffer_path
     execute "cd " . l:buffer_path
-    echo "cd " . l:buffer_path_short
+    echo "cd " . getcwd()
   else
-    execute "cd ~"
-    echo "cd ~"
+    if exists("s:vim_startup_pwd")
+      execute "cd " . s:vim_startup_pwd
+      echo "cd " . getcwd()
+    else
+      execute "cd ~"
+      echo "cd " . getcwd()
+    endif
   endif
 endfunction
 
@@ -211,7 +229,7 @@ endfunction
 "
 " inoremap <expr><Tab> CompletionTab()
 function! CompletionTab()
-  let char = getline(".")[col(".")-2] " Get the character left of the cursor.
+  let l:char = getline(".")[col(".")-2] " Get the character left of the cursor.
 
   " Insert a normal tab if the character left of the cursor is non existent, a
   " space or a tab. Otherwise use autocomplete.
@@ -244,43 +262,43 @@ command! -nargs=0 FixFile call FixFile()
 " error 'E776: No location list' is encountered jump to the next or previous
 " item in the global quickfix list instead. This rotates through the lists.
 function! GoToLocation(action)
-  try
-    if a:action == "next"
-      try
-        lnext
-      catch /:E553:/ " E553: No more items
-        lfirst
-      endtry
-    elseif a:action == "previous"
-      try
-        lprevious
-      catch /:E553:/ " E553: No more items
-        llast
-      endtry
-    endif
-  catch /:E776:/ " E776: No location list
-    if a:action == "next"
+  if a:action == "next"
+    try
+      lnext
+    catch /:E553:/ " E553: No more items
+      lfirst
+    catch /:E776:/ " E776: No location list
       try
         cnext
       catch /:E553:/ " E553: No more items
         cfirst
+      catch /:E42:/ " E42: No Errors
+        silent
       endtry
-    elseif a:action == "previous"
+    endtry
+  elseif a:action == "previous"
+    try
+      lprevious
+    catch /:E553:/ " E553: No more items
+      llast
+    catch /:E776:/ " E776: No location list
       try
         cprevious
       catch /:E553:/ " E553: No more items
         clast
+      catch /:E42:/ " E42: No Errors
+        silent
       endtry
-    endif
-  endtry
+    endtry
+  endif
 endfunction
 
 " Inserts file above cursor instead of below which is the 'read' commands
 " default behavior. If the buffer only has one empty line then it also removes
 " the empty line after insert so HTML templates and similar works better.
 function! InsertFile(file)
-  let lines = line("$")
-  let text = getline(".")
+  let l:lines = line("$")
+  let l:text = getline(".")
 
   if lines == 1 && empty(text)
     execute "read" fnameescape(a:file)
@@ -293,7 +311,7 @@ command! -nargs=1 -complete=file InsertFile call InsertFile(<q-args>)
 
 " Undo all changes since last file save. Unsaved buffers are emptied.
 function! UndoAll()
-  let filename = expand("%")
+  let l:filename = expand("%")
   if !empty(filename)
     edit!
   else
