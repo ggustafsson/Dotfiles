@@ -1,8 +1,13 @@
-filetype plugin indent on
-packadd! matchit " Makes % jump to matching HTML tags, if/else/endif, etc.
+if !exists("g:dont_run_again_if_we_have_already_bought_chicken_nuggets")
+  filetype plugin indent on
+  packadd! matchit " Makes % jump to matching HTML tags, if/else/endif, etc.
 
-syntax enable
-colorscheme static
+  syntax enable
+  colorscheme static
+
+  let s:vim_startup_dir = getcwd() " Used by 'ChangeDirectory()' later.
+  let g:dont_run_again_if_we_have_already_bought_chicken_nuggets = 1
+endif
 
 set backspace=indent,eol,start
 set confirm
@@ -123,8 +128,8 @@ nnoremap <Leader>sp :setlocal spell! spell?<CR>
 nnoremap <Leader>ss :mksession! ~/.vim/session.vim<CR>
 nnoremap <Leader>t4 :setlocal noexpandtab shiftwidth=4 softtabstop=0 tabstop=4<CR>
 nnoremap <Leader>t8 :setlocal noexpandtab shiftwidth=8 softtabstop=0 tabstop=8<CR>
-nnoremap <Leader>tm :vsplit ~/Documents/Text\ Files/Tmp.txt<CR>
-nnoremap <Leader>to :vsplit ~/Documents/Text\ Files/Todo.txt<CR>
+nnoremap <Leader>tm :vsplit ~/Documents/Text\ Files/Tmp.txt \| :setlocal bufhidden=delete<CR>
+nnoremap <Leader>to :vsplit ~/Documents/Text\ Files/Todo.txt \| :setlocal bufhidden=delete<CR>
 nnoremap <Leader>tw :setlocal textwidth=79
 nnoremap <Leader>un :call UndoAll()<CR>
 nnoremap <Leader>ut :MundoToggle<CR>
@@ -190,7 +195,6 @@ onoremap <silent>il :normal vil<CR>
 
 " Jump back and forth between directory of file in current buffer and Vim's
 " initial working directory.
-let s:vim_startup_pwd = getcwd()
 function! ChangeDirectory()
   let l:buffer_path = expand("%:p:h")
   let l:current_path = getcwd()
@@ -199,8 +203,8 @@ function! ChangeDirectory()
     execute "cd " . l:buffer_path
     echo "cd " . getcwd()
   else
-    if exists("s:vim_startup_pwd")
-      execute "cd " . s:vim_startup_pwd
+    if exists("s:vim_startup_dir")
+      execute "cd " . s:vim_startup_dir
       echo "cd " . getcwd()
     else
       execute "cd ~"
@@ -241,22 +245,37 @@ function! CompletionTab()
 endfunction
 
 " Fix file encoding, file format, tabs and remove trailing whitespaces.
-function! FixFile()
+function! FixFile(spaces)
+  if a:spaces !~ "^[248]$"
+    echo "Select 2, 4 or 8 spaces!"
+    return
+  endif
+
   setlocal fileencoding=utf-8
   setlocal fileformat=unix
 
-  setlocal expandtab
-  setlocal shiftwidth=2
-  setlocal softtabstop=2
-  setlocal tabstop=2
-  retab
+  call FixTabs(a:spaces)
 
   normal! ml
   %s/\s\+$//e " Removes trailing whitespaces.
   nohlsearch
   normal! `l
 endfunction
-command! -nargs=0 FixFile call FixFile()
+command! -nargs=1 FixFile call FixFile(<args>)
+
+function! FixTabs(spaces)
+  if a:spaces !~ "^[248]$"
+    echo "Select 2, 4 or 8 spaces!"
+    return
+  endif
+
+  setlocal expandtab
+  let &l:shiftwidth = a:spaces
+  let &l:softtabstop = a:spaces
+  let &l:tabstop = a:spaces
+  retab
+endfunction
+command! -nargs=1 FixTabs call FixTabs(<args>)
 
 " Jump to the next or previous item in the current windows location list. If
 " error 'E776: No location list' is encountered jump to the next or previous
@@ -273,7 +292,7 @@ function! GoToLocation(action)
       catch /:E553:/ " E553: No more items
         cfirst
       catch /:E42:/ " E42: No Errors
-        silent
+        return
       endtry
     endtry
   elseif a:action == "previous"
@@ -287,7 +306,7 @@ function! GoToLocation(action)
       catch /:E553:/ " E553: No more items
         clast
       catch /:E42:/ " E42: No Errors
-        silent
+        return
       endtry
     endtry
   endif
@@ -334,6 +353,7 @@ augroup Main
   autocmd FileType gitcommit  setlocal colorcolumn=73 spell textwidth=72
   autocmd FileType go         setlocal noexpandtab shiftwidth=4 softtabstop=0 tabstop=4
   autocmd FileType godoc,help setlocal colorcolumn= nolist
+  autocmd FileType json       setlocal expandtab shiftwidth=4 softtabstop=4
   autocmd FileType markdown   setlocal expandtab shiftwidth=4 softtabstop=4
   autocmd FileType python     setlocal expandtab shiftwidth=4 softtabstop=4
 

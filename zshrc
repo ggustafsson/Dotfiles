@@ -1,4 +1,4 @@
-export GREP_COLORS="fn=01;34:ln=00;34:se=01;30" # Filename, line nr & separator.
+export GREP_COLORS="fn=01;34:ln=00;34:se=01;30" # Filename, line & separator.
 
 export EDITOR=vim
 export VISUAL=$EDITOR
