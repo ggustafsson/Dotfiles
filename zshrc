@@ -99,11 +99,20 @@ function custom-vi-replace {
   prompt_replace=1 && zle vi-replace && prompt_replace=0
 }
 zle -N custom-vi-replace
-# This is needed to make the prompt update when mode is switched.
-function zle-line-init zle-keymap-select {
-  zle reset-prompt
+
+# Prints " ♦︎ <branch>" when git repo is found in the current directory.
+function prompt_git {
+  if [[ ! -d .git ]]; then
+    return 1
+  fi
+
+  branch=$(git branch --show-current 2> /dev/null)
+  if [[ -n $(git status --porcelain 2> /dev/null) ]]; then
+    echo " ♦︎ %B%F{red}${branch}%f%b"
+  else
+    echo " ♦︎ %B%F{green}${branch}%f%b"
+  fi
 }
-zle -N zle-line-init && zle -N zle-keymap-select
 
 # Prints hostname in different ways depending on various rules.
 function prompt_host {
@@ -132,19 +141,11 @@ function prompt_todo {
   fi
 }
 
-# Prints " ♦︎ <branch>" when git repo is found in the current directory.
-function prompt_git {
-  if [[ ! -d .git ]]; then
-    return 1
-  fi
-
-  branch=$(git branch --show-current 2> /dev/null)
-  if [[ -n $(git status --porcelain 2> /dev/null) ]]; then
-    echo " ♦︎ %B%F{red}${branch}%f%b"
-  else
-    echo " ♦︎ %B%F{green}${branch}%f%b"
-  fi
+# This is needed to make the prompt update when mode is switched.
+function zle-line-init zle-keymap-select {
+  zle reset-prompt
 }
+zle -N zle-line-init && zle -N zle-keymap-select
 
 # Coruscant ~/Projects/Dot Files ❯                              ✔︎ todo ♦︎ master
 PROMPT='$(prompt_host) %~ $(prompt_mode) '
@@ -177,6 +178,7 @@ alias dog="tac" # Woof woof! :)
 alias hist="source hist"
 alias iip="curl icanhazip.com"
 alias mkdir="mkdir -pv"
+alias tree="tree --charset ascii"
 alias untar="tar -xvf"
 alias zreload="source ~/.zshenv && source ~/.zshrc"
 
@@ -222,9 +224,6 @@ alias pyweb="python3 -m http.server 8080"
 
 alias svtplay-dl="svtplay-dl --resume"
 alias youtube-dl="youtube-dl --continue --output '%(title)s.%(ext)s'"
-
-alias tree="tree --charset ascii"
-alias treed="tree -d -L 2"
 
 if [[ -d /usr/local/opt/fzf ]]; then
   source /usr/local/opt/fzf/shell/completion.zsh

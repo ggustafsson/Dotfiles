@@ -27,9 +27,9 @@ set virtualedit=block
 set autoindent
 set smartindent
 
-set directory=~/.vim/swap
 set backup
 set backupdir=~/.vim/backup
+set directory=~/.vim/swap
 set undofile
 set undodir=~/.vim/undo
 
@@ -194,7 +194,7 @@ endif
 xnoremap il ^og_
 onoremap <silent>il :normal vil<CR>
 
-command -nargs=* -complete=help Help vertical help <args>
+command! -nargs=* -complete=help Help vertical help <args>
 
 " Jump back and forth between directory of file in current buffer and Vim's
 " initial working directory.
@@ -339,16 +339,6 @@ function! InsertFile(file)
 endfunction
 command! -nargs=1 -complete=file InsertFile call InsertFile(<q-args>)
 
-" Toggles location list window, 'lwindow' only toggles when list is empty.
-function! ToggleLWindow()
-  if empty(filter(getwininfo(), 'v:val.loclist'))
-    " Shut up about 'E776: No location list' please!
-    silent! lopen
-  else
-    lclose
-  endif
-endfunction
-
 " Toggles quickfix window, 'cwindow' only toggles when list is empty.
 function! ToggleCWindow()
   if empty(filter(getwininfo(), 'v:val.quickfix'))
@@ -356,6 +346,16 @@ function! ToggleCWindow()
     cwindow
   else
     cclose
+  endif
+endfunction
+
+" Toggles location list window, 'lwindow' only toggles when list is empty.
+function! ToggleLWindow()
+  if empty(filter(getwininfo(), 'v:val.loclist'))
+    " Shut up about 'E776: No location list' please!
+    silent! lopen
+  else
+    lclose
   endif
 endfunction
 
