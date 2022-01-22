@@ -342,7 +342,7 @@ command! -nargs=1 -complete=file InsertFile call InsertFile(<q-args>)
 " Toggles quickfix window, 'cwindow' only toggles when list is empty.
 function! ToggleCWindow()
   if empty(filter(getwininfo(), "v:val.quickfix"))
-    " Use 'cwindow' instead of 'copen' so we don't open up empty window.
+    " Use 'cwindow' so we don't open up empty window.
     cwindow
   else
     cclose
@@ -352,8 +352,9 @@ endfunction
 " Toggles location list window, 'lwindow' only toggles when list is empty.
 function! ToggleLWindow()
   if empty(filter(getwininfo(), "v:val.loclist"))
-    " Shut up about 'E776: No location list' please!
-    silent! lopen
+    " Use 'lwindow' so we don't open up empty window.
+    " + Shut up about 'E776: No location list' please!
+    silent! lwindow
   else
     lclose
   endif
