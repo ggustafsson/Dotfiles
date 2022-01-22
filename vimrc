@@ -186,7 +186,7 @@ inoremap <C-n>       <C-x><C-o>
 if isdirectory($HOME .. "/.vim/pack/others/start/fzf")
   imap <C-x><C-f> <Plug>(fzf-complete-path)
   imap <C-x><C-l> <Plug>(fzf-complete-line)
-  imap <c-x><c-k> <plug>(fzf-complete-word)
+  imap <C-x><C-k> <plug>(fzf-complete-word)
 endif
 
 " Text object consisting of all text inside current line, first character up
