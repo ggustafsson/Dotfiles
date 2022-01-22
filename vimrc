@@ -33,7 +33,7 @@ set backupdir=~/.vim/backup
 set undofile
 set undodir=~/.vim/undo
 
-set colorcolumn=81
+set colorcolumn=+1
 set textwidth=79
 
 set cursorline
@@ -86,7 +86,6 @@ let g:mundo_tree_statusline = " Mundo Tree"
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_jump = 1 " Runs :lfirst at start of syntax check.
-let g:syntastic_auto_loc_list = 1 " Runs :lwindow and :lclose automatically.
 let g:syntastic_enable_highlighting = 0
 let g:syntastic_mode_map = { "mode": "active", "passive_filetypes": ["go"] }
 
@@ -95,7 +94,7 @@ if has("mac")
   nnoremap <Leader>op :silent !open "%"<CR>:redraw!<CR>
 endif
 
-if isdirectory($HOME . "/.vim/pack/others/start/fzf")
+if isdirectory($HOME .. "/.vim/pack/others/start/fzf")
   nnoremap <Leader>ag :FzfAg<Space>
   nnoremap <Leader>bu :FzfBuffers<CR>
   nnoremap <Leader>fd :FzfFiles<CR>
@@ -114,10 +113,12 @@ endif
 nnoremap <Leader>bd :bdelete<CR>
 nnoremap <Leader>cc :call ColorColumn()<CR>
 nnoremap <Leader>cd :call ChangeDirectory()<CR>
+nnoremap <Leader>cw :call ToggleCWindow()<CR>
 nnoremap <Leader>ed :edit <C-R>=escape(expand("%:p:h"), ' \')<CR>/
 nnoremap <Leader>eh :edit ~/
 nnoremap <Leader>in :InsertFile ~/.vim/templates/
 nnoremap <Leader>li :setlocal list! list?<CR>
+nnoremap <Leader>lw :call ToggleLWindow()<CR>
 nnoremap <Leader>nu :setlocal number! relativenumber!<CR>
 nnoremap <Leader>py :terminal python3<CR>
 nnoremap <Leader>rs :source ~/.vim/session.vim<CR>
@@ -128,8 +129,8 @@ nnoremap <Leader>sp :setlocal spell! spell?<CR>
 nnoremap <Leader>ss :mksession! ~/.vim/session.vim<CR>
 nnoremap <Leader>t4 :setlocal noexpandtab shiftwidth=4 softtabstop=0 tabstop=4<CR>
 nnoremap <Leader>t8 :setlocal noexpandtab shiftwidth=8 softtabstop=0 tabstop=8<CR>
-nnoremap <Leader>tm :vsplit ~/Documents/Text\ Files/Tmp.txt \| :setlocal bufhidden=delete<CR>
-nnoremap <Leader>to :vsplit ~/Documents/Text\ Files/Todo.txt \| :setlocal bufhidden=delete<CR>
+nnoremap <Leader>tm :vsplit ~/Documents/Text\ Files/Tmp.txt \| :setlocal nobuflisted<CR>
+nnoremap <Leader>to :vsplit ~/Documents/Text\ Files/Todo.txt \| :setlocal nobuflisted<CR>
 nnoremap <Leader>tw :setlocal textwidth=79
 nnoremap <Leader>un :call UndoAll()<CR>
 nnoremap <Leader>ut :MundoToggle<CR>
@@ -174,7 +175,7 @@ nnoremap Y y$
 
 " These key combos are unused and similar to 'gt' and 'gT' for tabs.
 nnoremap <silent>gb :bnext<CR>
-nnoremap <Silent>gB :bprevious<CR>
+nnoremap <silent>gB :bprevious<CR>
 nnoremap <silent>gl :call GoToLocation("next")<CR>
 nnoremap <silent>gL :call GoToLocation("previous")<CR>
 
@@ -183,7 +184,7 @@ inoremap jj <Esc>
 inoremap <expr><Tab> CompletionTab()
 inoremap <C-n>       <C-x><C-o>
 
-if isdirectory($HOME . "/.vim/pack/others/start/fzf")
+if isdirectory($HOME .. "/.vim/pack/others/start/fzf")
   imap <C-x><C-f> <Plug>(fzf-complete-path)
   imap <C-x><C-l> <Plug>(fzf-complete-line)
 endif
@@ -200,15 +201,15 @@ function! ChangeDirectory()
   let l:current_path = getcwd()
 
   if l:current_path != l:buffer_path
-    execute "cd " . l:buffer_path
-    echo "cd " . getcwd()
+    execute "cd " .. l:buffer_path
+    echo "cd " .. getcwd()
   else
     if exists("s:vim_startup_dir")
-      execute "cd " . s:vim_startup_dir
-      echo "cd " . getcwd()
+      execute "cd " .. s:vim_startup_dir
+      echo "cd " .. getcwd()
     else
-      execute "cd ~"
-      echo "cd " . getcwd()
+      cd ~
+      echo "cd " .. getcwd()
     endif
   endif
 endfunction
@@ -216,27 +217,27 @@ endfunction
 " Easily switch colorcolumn on and off. Remembers last colorcolumn setting.
 function! ColorColumn()
   if empty(&colorcolumn)
-    if exists("w:colorcolumn_last")
-      let &l:colorcolumn = w:colorcolumn_last
+    if exists("b:colorcolumn_last")
+      let &l:colorcolumn = b:colorcolumn_last
       setlocal colorcolumn?
     else
       setlocal colorcolumn=+1 colorcolumn?
     endif
   else
-    let w:colorcolumn_last = &colorcolumn
+    let b:colorcolumn_last = &colorcolumn
     setlocal colorcolumn= colorcolumn?
   endif
 endfunction
 
-" Turn the tab key into <C-n> (keyword completion) if there are characters to
-" the left of the cursor, normal tab key is inserted otherwise.
+" Turns the tab key into <C-n> (keyword completion) if there are characters to
+" the left of the cursor, normal tab character is inserted otherwise.
 "
 " inoremap <expr><Tab> CompletionTab()
 function! CompletionTab()
   let l:char = getline(".")[col(".")-2] " Get the character left of the cursor.
 
   " Insert a normal tab if the character left of the cursor is non existent, a
-  " space or a tab. Otherwise use autocomplete.
+  " space or a tab. Otherwise use keyword completion.
   if empty(char) || char == " " || char =~ "\t"
     return "\<Tab>"
   else
@@ -244,7 +245,8 @@ function! CompletionTab()
   endif
 endfunction
 
-" Fix file encoding, file format, tabs and remove trailing whitespaces.
+" Changes file encoding plus file format, converts tabs to spaces and removes
+" trailing whitespaces.
 function! FixFile(spaces)
   if a:spaces !~ "^[248]$"
     echo "Select 2, 4 or 8 spaces!"
@@ -263,6 +265,7 @@ function! FixFile(spaces)
 endfunction
 command! -nargs=1 FixFile call FixFile(<args>)
 
+" Converts tabs to 2, 4 or 8 spaces.
 function! FixTabs(spaces)
   if a:spaces !~ "^[248]$"
     echo "Select 2, 4 or 8 spaces!"
@@ -294,7 +297,11 @@ function! GoToLocation(action)
       catch /:E42:/ " E42: No Errors
         return
       endtry
+    " Quickfix and location list don't play nicely together.
+    catch /:E926:/ " E926: Current location list was changed
+      lnext
     endtry
+  " Same code below as above, just [lc]previous and [lc]last instead.
   elseif a:action == "previous"
     try
       lprevious
@@ -308,6 +315,8 @@ function! GoToLocation(action)
       catch /:E42:/ " E42: No Errors
         return
       endtry
+    catch /:E926:/ " E926: Current location list was changed
+      lprevious
     endtry
   endif
 endfunction
@@ -320,13 +329,33 @@ function! InsertFile(file)
   let l:text = getline(".")
 
   if lines == 1 && empty(text)
-    execute "read" fnameescape(a:file)
-    execute "normal ggdd\<Esc>"
+    execute "read " .. fnameescape(a:file)
+    normal! ggdd
   else
-    execute ".-read" fnameescape(a:file)
+    execute ".-read " .. fnameescape(a:file)
   endif
 endfunction
 command! -nargs=1 -complete=file InsertFile call InsertFile(<q-args>)
+
+" Toggles location list window, 'lwindow' only toggles when list is empty.
+function! ToggleLWindow()
+  if empty(filter(getwininfo(), 'v:val.loclist'))
+    " Shut up about 'E776: No location list' please!
+    silent! lopen
+  else
+    lclose
+  endif
+endfunction
+
+" Toggles quickfix window, 'cwindow' only toggles when list is empty.
+function! ToggleCWindow()
+  if empty(filter(getwininfo(), 'v:val.quickfix'))
+    " Use 'cwindow' instead of 'copen' so we don't open up empty window.
+    cwindow
+  else
+    cclose
+  endif
+endfunction
 
 " Undo all changes since last file save. Unsaved buffers are emptied.
 function! UndoAll()
@@ -350,7 +379,7 @@ augroup Main
 
   autocmd BufNewFile,BufReadPost *.conf,config setlocal filetype=conf
 
-  autocmd FileType gitcommit  setlocal colorcolumn=73 spell textwidth=72
+  autocmd FileType gitcommit  setlocal spell textwidth=72
   autocmd FileType go         setlocal noexpandtab shiftwidth=4 softtabstop=0 tabstop=4
   autocmd FileType godoc,help setlocal colorcolumn= nolist
   autocmd FileType json       setlocal expandtab shiftwidth=4 softtabstop=4
