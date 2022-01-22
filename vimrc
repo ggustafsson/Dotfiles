@@ -102,12 +102,10 @@ if isdirectory($HOME .. "/.vim/pack/others/start/fzf")
   nnoremap <Leader>ft :FzfFiletypes<CR>
   nnoremap <Leader>hi :FzfHistory<CR>
   nnoremap <Leader>se :FzfLines<CR>
-  nnoremap <Leader>te :FzfFiles ~/Documents/Text\ Files<CR>
 else
   nnoremap <Leader>bu :buffers<CR>:buffer<Space>
   nnoremap <Leader>ft :setlocal filetype=
   nnoremap <Leader>hi :browse oldfiles<CR>
-  nnoremap <Leader>te :edit ~/Documents/Text\ Files/
 endif
 
 nnoremap <Leader>bd :bdelete<CR>
@@ -129,6 +127,7 @@ nnoremap <Leader>sp :setlocal spell! spell?<CR>
 nnoremap <Leader>ss :mksession! ~/.vim/session.vim<CR>
 nnoremap <Leader>t4 :setlocal noexpandtab shiftwidth=4 softtabstop=0 tabstop=4<CR>
 nnoremap <Leader>t8 :setlocal noexpandtab shiftwidth=8 softtabstop=0 tabstop=8<CR>
+nnoremap <Leader>te :edit ~/Documents/Text\ Files/
 nnoremap <Leader>tm :vsplit ~/Documents/Text\ Files/Tmp.txt \| :setlocal nobuflisted<CR>
 nnoremap <Leader>to :vsplit ~/Documents/Text\ Files/Todo.txt \| :setlocal nobuflisted<CR>
 nnoremap <Leader>tw :setlocal textwidth=79
@@ -187,12 +186,15 @@ inoremap <C-n>       <C-x><C-o>
 if isdirectory($HOME .. "/.vim/pack/others/start/fzf")
   imap <C-x><C-f> <Plug>(fzf-complete-path)
   imap <C-x><C-l> <Plug>(fzf-complete-line)
+  imap <c-x><c-k> <plug>(fzf-complete-word)
 endif
 
 " Text object consisting of all text inside current line, first character up
 " until last character. Like 'w' (word), 'p' (paragraph) etc.
 xnoremap il ^og_
 onoremap <silent>il :normal vil<CR>
+
+command -nargs=* -complete=help Help vertical help <args>
 
 " Jump back and forth between directory of file in current buffer and Vim's
 " initial working directory.
