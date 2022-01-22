@@ -186,7 +186,7 @@ inoremap <C-n>       <C-x><C-o>
 if isdirectory($HOME .. "/.vim/pack/others/start/fzf")
   imap <C-x><C-f> <Plug>(fzf-complete-path)
   imap <C-x><C-l> <Plug>(fzf-complete-line)
-  imap <C-x><C-k> <plug>(fzf-complete-word)
+  imap <C-x><C-k> <Plug>(fzf-complete-word)
 endif
 
 " Text object consisting of all text inside current line, first character up
@@ -341,7 +341,7 @@ command! -nargs=1 -complete=file InsertFile call InsertFile(<q-args>)
 
 " Toggles quickfix window, 'cwindow' only toggles when list is empty.
 function! ToggleCWindow()
-  if empty(filter(getwininfo(), 'v:val.quickfix'))
+  if empty(filter(getwininfo(), "v:val.quickfix"))
     " Use 'cwindow' instead of 'copen' so we don't open up empty window.
     cwindow
   else
@@ -351,7 +351,7 @@ endfunction
 
 " Toggles location list window, 'lwindow' only toggles when list is empty.
 function! ToggleLWindow()
-  if empty(filter(getwininfo(), 'v:val.loclist'))
+  if empty(filter(getwininfo(), "v:val.loclist"))
     " Shut up about 'E776: No location list' please!
     silent! lopen
   else
