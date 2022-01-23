@@ -2,7 +2,7 @@
 
 # Description: This script deletes various space hogging files/directories.
 #
-# Usage: frees
+# Usage: rmhogs
 #
 # Written by Göran Gustafsson (gustafsson.g at gmail.com).
 # License: BSD 3-Clause.
@@ -12,10 +12,11 @@ remove_objects=(
   ~/Library/Caches/com.apple.dt.Xcode/Downloads
   ~/Library/Logs/Homebrew
   ~/Library/Mail\ Downloads
+  ~/Library/iTunes/iPad\ Software\ Updates
   ~/Library/iTunes/iPhone\ Software\ Updates
 )
 
-echo "Deleting unnecessary files."
+echo "Deleting space hogging files."
 
 for object in $remove_objects; do
   if [[ -a $object ]]; then

@@ -18,7 +18,7 @@ brew cleanup
 echo
 fetch-vim
 echo
-frees
+rmhogs
 echo
 backup
 echo
