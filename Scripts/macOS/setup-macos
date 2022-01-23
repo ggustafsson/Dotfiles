@@ -124,4 +124,4 @@ ln -s ~/Projects/Dot\ Files/zshrc ~/.zshrc
 ln -s ~/Projects/Tim/tim ~/Scripts/
 
 echo
-~/Scripts/fetch-vim
+~/Scripts/maint-vim

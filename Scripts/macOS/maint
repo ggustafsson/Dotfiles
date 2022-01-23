@@ -5,7 +5,7 @@
 #
 # Dependencies: confirm
 #
-# Usage: maintenance
+# Usage: maint
 #
 # Written by Göran Gustafsson (gustafsson.g at gmail.com).
 # License: BSD 3-Clause.
@@ -16,7 +16,7 @@ brew update
 brew upgrade
 brew cleanup
 echo
-fetch-vim
+maint-vim
 echo
 rmhogs
 echo

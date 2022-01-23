@@ -3,7 +3,7 @@
 # Description: This script executes a bunch of commands I run frequently to
 # keep things up-to-date etc.
 #
-# Usage: maintenance
+# Usage: maint
 #
 # Written by Göran Gustafsson (gustafsson.g at gmail.com).
 # License: BSD 3-Clause.
@@ -20,4 +20,4 @@ for directory in ~/Projects/*; do
 done
 
 echo
-fetch-vim
+maint-vim

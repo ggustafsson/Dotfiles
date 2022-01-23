@@ -4,7 +4,7 @@
 #
 # Dependencies: git
 #
-# Usage: fetch-vim
+# Usage: maint-vim
 #
 # Written by Göran Gustafsson (gustafsson.g at gmail.com).
 # License: BSD 3-Clause.
@@ -41,5 +41,5 @@ fetch start/vim-repeat      https://github.com/tpope/vim-repeat.git
 fetch start/vim-speeddating https://github.com/tpope/vim-speeddating.git
 fetch start/vim-surround    https://github.com/tpope/vim-surround.git
 
-echo "\nGenerating help tags for all plugins under ~/.vim/pack/*/start"
+echo "\nGenerating help tags for all plugins under ~/.vim/pack/*/start."
 vim -c "helptags ALL" -c q

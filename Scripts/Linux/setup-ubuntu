@@ -53,4 +53,4 @@ ln -s ~/.vim/pack/ggustafsson/start/Static\ Color\ Scheme ~/Projects/Static\ Col
 sudo cp ~/Projects/Dot\ Files/motd /etc/motd
 
 echo
-~/Scripts/fetch-vim
+~/Scripts/maint-vim
