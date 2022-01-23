@@ -100,12 +100,19 @@ if isdirectory($HOME .. "/.vim/pack/others/start/fzf")
   nnoremap <Leader>fd :FzfFiles<CR>
   nnoremap <Leader>fh :FzfFiles ~/
   nnoremap <Leader>ft :FzfFiletypes<CR>
+  nnoremap <Leader>he :FzfHelptags<CR>
   nnoremap <Leader>hi :FzfHistory<CR>
+  nnoremap <Leader>ma :FzfMarks<CR>
   nnoremap <Leader>se :FzfLines<CR>
+  nnoremap <Leader>:  :FzfHistory:<CR>
+  nnoremap <Leader>/  :FzfHistory/<CR>
 else
   nnoremap <Leader>bu :buffers<CR>:buffer<Space>
   nnoremap <Leader>ft :setlocal filetype=
   nnoremap <Leader>hi :browse oldfiles<CR>
+  nnoremap <Leader>ma :marks<CR>
+  nnoremap <Leader>:  :history cmd<CR>
+  nnoremap <Leader>/  :history search<CR>
 endif
 
 nnoremap <Leader>bd :bdelete<CR>
