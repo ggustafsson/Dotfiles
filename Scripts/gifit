@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-# Description: This script creates an animated gif image of several images.
+# Description: This script creates an animated gif image out of several images.
 #
 # Dependencies: imagemagick
 #
@@ -22,7 +22,8 @@ for arg; do
   fi
 done
 
-filename=animated_$(date '+%Y-%m-%d_%H%M').gif
+date=$(date '+%Y-%m-%d_%H%M')
+filename=animated_${date}.gif
 convert -delay 30 -loop 0 $* $filename
 
 if [[ $OSTYPE == darwin* ]]; then
