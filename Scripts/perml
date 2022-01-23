@@ -24,7 +24,7 @@ for arg; do
     continue
   fi
 
-  echo "Changing permissions on: ${arg}"
+  echo "Changing permissions recursively on: ${arg}"
 
   if [[ $OSTYPE == darwin* ]]; then
     find $arg -type d -exec chmod -N "{}" \; -exec chmod $perm_dir "{}" \;

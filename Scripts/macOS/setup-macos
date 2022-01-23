@@ -48,14 +48,10 @@ sudo mv ~/Downloads/homebrew/{*,.*} /usr/local/
   cuetools \
   curl \
   ffmpeg \
-  findutils \
   flac \
   flake8 \
   fzf \
-  gawk \
   git \
-  gnu-sed \
-  gnu-tar \
   golang \
   grep \
   html2text \
@@ -96,17 +92,8 @@ sudo mv ~/Downloads/homebrew/{*,.*} /usr/local/
 
 echo "/usr/local/bin/zsh" | sudo tee -a /etc/shells
 
-ln -s /usr/local/bin/{g,}find
 ln -s /usr/local/bin/{g,}grep
-ln -s /usr/local/bin/{g,}head
 ln -s /usr/local/bin/{g,}ls
-ln -s /usr/local/bin/{g,}sed
-ln -s /usr/local/bin/{g,}sort
-ln -s /usr/local/bin/{g,}tail
-ln -s /usr/local/bin/{g,}tar
-ln -s /usr/local/bin/{g,}uniq
-ln -s /usr/local/bin/{g,}wc
-ln -s /usr/local/bin/{g,}xargs
 
 mkdir -p ~/.vim/pack/others/start
 ln -s /usr/local/opt/fzf ~/.vim/pack/others/start/fzf
