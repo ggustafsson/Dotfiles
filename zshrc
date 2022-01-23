@@ -154,6 +154,7 @@ RPROMPT='$(prompt_todo)$(prompt_git)' && ZLE_RPROMPT_INDENT=0
 
 if [[ $OSTYPE == darwin* ]]; then
   alias beep="afplay /System/Library/Sounds/Glass.aiff"
+  alias locate="mdfind -name"
   alias tim="caffeinate tim" # Give Tim a cup of Joe! :)
   alias wifiscan="/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport --scan"
 
@@ -176,6 +177,7 @@ fi
 alias ag="ag --color-line-number '1;40' --color-match '1;31' --follow --nonumbers"
 alias dog="tac" # Woof woof! :)
 alias hist="source hist"
+alias hogs="du -sk * | sort --numeric-sort --reverse | head -n 15"
 alias iip="curl icanhazip.com"
 alias mkdir="mkdir -pv"
 alias tree="tree --charset ascii"
@@ -198,7 +200,7 @@ alias df="df -h"
 alias du="du -sh"
 
 alias grep="grep --color=auto"
-alias grepr="grep --binary-file=without-match --dereference-recursive --exclude-dir .git"
+alias rgrep="grep --binary-file=without-match --dereference-recursive --exclude-dir .git"
 
 alias gad="git add"
 alias gbr="git branch"
