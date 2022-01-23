@@ -1,16 +1,18 @@
 #!/usr/bin/env zsh
 
 # Description: This script performs a case insensitive search for files under
-# the current working directory and prints out the relative path to them.
+# the current working directory or the supplied path.
 #
-# Usage: findf <pattern> <path>
+# Usage: findf <pattern>
+#        findf <pattern> <path>
 #
 # Written by Göran Gustafsson (gustafsson.g at gmail.com).
 # License: BSD 3-Clause.
 
-if [[ ! $# -eq 2 ]]; then
+if [[ $# -eq 1 ]]; then
+  find -L . -iname "*${1}*"
+elif [[ $# -eq 2 ]]; then
+  find -L "$2" -iname "*${1}*"
+else
   echo "Usage: ${0:t} [PATTERN]... [PATH]..."
-  exit
 fi
-
-find -L "$2" -iname "*${1}*"
