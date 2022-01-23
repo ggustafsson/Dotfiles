@@ -1,8 +1,8 @@
 #!/usr/bin/env zsh
 
-# Description: This script opens a file or several files in Quick Look.
+# Description: This script opens one or several files in Quick Look.
 #
-# Usage: openq <file(s)>
+# Usage: qlopen <file(s)>
 #
 # Written by Göran Gustafsson (gustafsson.g at gmail.com).
 # License: BSD 3-Clause.
