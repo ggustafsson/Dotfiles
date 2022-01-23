@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 
 # Description: This script executes a bunch of commands I run frequently to
-# back things up and keep things up-to-date.
+# back things up and keep things up-to-date etc.
 #
 # Dependencies: confirm
 #
@@ -15,11 +15,10 @@ confirm || exit 1
 brew update
 brew upgrade
 brew cleanup
-echo
-maint-vim
-echo
-rmhogs
-echo
-backup
-echo
-backup2srv
+
+echo; maint-vim
+
+echo; rmhogs
+
+echo; backup
+echo; backup2srv

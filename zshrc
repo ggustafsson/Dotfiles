@@ -186,7 +186,7 @@ alias zreload="source ~/.zshenv && source ~/.zshrc"
 
 alias cdh="dirs -v | tac"
 alias cdj='cd "$(< ~/.saved_pwd)"'
-alias cds='echo "Saving current path." && echo $PWD >| ~/.saved_pwd'
+alias cds='echo "Saving current path."; echo $PWD >| ~/.saved_pwd'
 
 alias cp="cp -vi"
 alias mv="mv -vi"

@@ -13,7 +13,7 @@ backup_objects=(
   ~/.ssh
   ~/Development
   ~/Documents
-  ~/Golang
+  ~/Golang/src
   ~/Library/Application\ Support/OpenEmu
   ~/Library/Mobile\ Documents/com\~apple\~CloudDocs
   ~/Library/Safari/Bookmarks.plist
