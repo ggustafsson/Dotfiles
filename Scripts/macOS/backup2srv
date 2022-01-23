@@ -15,6 +15,11 @@ backup_objects=(
   ~/Music/MP3
 )
 
+if ! ssh -o ConnectTimeout=10 -q $server exit; then
+  echo "SSH test connection to server '${server}' failed! Exiting..."
+  exit 1
+fi
+
 echo "Backing up to server '${server}'."
 
 for object in $backup_objects; do

@@ -20,7 +20,7 @@ else
   # 192.168.1.2/24
   network=$(ip addr show eth0 | awk '/inet /{print $2}')
 fi
-echo "Scanning network ${network}...\n"
+echo "Scanning network ${network}.\n"
 
 # -sS (TCP SYN scan) is better but requires root privileges.
 nmap -sT $network --open
