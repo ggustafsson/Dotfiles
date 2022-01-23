@@ -4,7 +4,7 @@
 #
 # Dependencies: nmap
 #
-# Usage: srvf
+# Usage: netscan
 #
 # Written by Göran Gustafsson (gustafsson.g at gmail.com).
 # License: BSD 3-Clause.
@@ -21,14 +21,7 @@ else
   network=$(ip addr show eth0 | awk '/inet /{print $2}')
 fi
 
-# Port 21   = FTP
-# Port 22   = SSH
-# Port 80   = HTTP
-# Port 443  = HTTPS
-# Port 445  = SMB
-# Port 5900 = VNC
-# Port 8080 = Alternative HTTP
-ports="21,22,80,443,445,5900,8080"
+echo "Scanning network...\n"
 
-echo "Scanning network..."
-nmap -sT $network -p $ports --open
+# -sS (TCP SYN scan) is better but requires root privileges.
+nmap -sT $network --open
