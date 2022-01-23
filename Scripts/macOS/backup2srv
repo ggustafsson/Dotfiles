@@ -2,7 +2,7 @@
 
 # Description: This script backs up directories/files to server with rsync.
 #
-# Usage: backup2s
+# Usage: backup2srv
 #
 # Written by Göran Gustafsson (gustafsson.g at gmail.com).
 # License: BSD 3-Clause.
