@@ -1,4 +1,5 @@
 Host *
+  ConnectTimeout 30
   ServerAliveInterval 30
 
 Host alderaan1
