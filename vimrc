@@ -111,12 +111,12 @@ endif
 nnoremap <Leader>bd :bdelete<CR>
 nnoremap <Leader>cc :call ColorColumn()<CR>
 nnoremap <Leader>cd :call ChangeDirectory()<CR>
-nnoremap <Leader>cw :call ToggleCWindow()<CR>
+nnoremap <Leader>cw :call ToggleWindow("quickfix")<CR>
 nnoremap <Leader>ed :edit <C-R>=escape(expand("%:p:h"), ' \')<CR>/
 nnoremap <Leader>eh :edit ~/
 nnoremap <Leader>in :InsertFile ~/.vim/templates/
 nnoremap <Leader>li :setlocal list! list?<CR>
-nnoremap <Leader>lw :call ToggleLWindow()<CR>
+nnoremap <Leader>lw :call ToggleWindow("loclist")<CR>
 nnoremap <Leader>nu :setlocal number! relativenumber!<CR>
 nnoremap <Leader>py :terminal python3<CR>
 nnoremap <Leader>rs :source ~/.vim/session.vim<CR>
@@ -339,24 +339,23 @@ function! InsertFile(file)
 endfunction
 command! -nargs=1 -complete=file InsertFile call InsertFile(<q-args>)
 
-" Toggles quickfix window, 'cwindow' only toggles when list is empty.
-function! ToggleCWindow()
-  if empty(filter(getwininfo(), "v:val.quickfix"))
-    " Use 'cwindow' so we don't open up empty window.
-    cwindow
-  else
-    cclose
-  endif
-endfunction
-
-" Toggles location list window, 'lwindow' only toggles when list is empty.
-function! ToggleLWindow()
-  if empty(filter(getwininfo(), "v:val.loclist"))
-    " Use 'lwindow' so we don't open up empty window.
-    " + Shut up about 'E776: No location list' please!
-    silent! lwindow
-  else
-    lclose
+" Toggles quickfix or location list window, '[cl]window' will only close window
+" if list is empty so this is needed to get around that.
+function! ToggleWindow(action)
+  if a:action == "loclist"
+    if empty(filter(getwininfo(), "v:val.loclist"))
+      " + Shut up about 'E776: No location list' please!
+      silent! lwindow " Use instead of 'lopen' to avoid empty window.
+    else
+      lclose
+    endif
+  " Same code below as above, just 'cwindow' and 'cclose' instead.
+  elseif a:action == "quickfix"
+    if empty(filter(getwininfo(), "v:val.quickfix"))
+      cwindow " Use instead of 'copen' to avoid empty window.
+    else
+      cclose
+    endif
   endif
 endfunction
 
