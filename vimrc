@@ -118,12 +118,12 @@ endif
 nnoremap <Leader>bd :bdelete<CR>
 nnoremap <Leader>cc :call ColorColumn()<CR>
 nnoremap <Leader>cd :call ChangeDirectory()<CR>
-nnoremap <Leader>cw :call ToggleWindow("quickfix")<CR>
+nnoremap <Leader>cw :cwindow<CR>
 nnoremap <Leader>ed :edit <C-R>=escape(expand("%:p:h"), ' \')<CR>/
 nnoremap <Leader>eh :edit ~/
 nnoremap <Leader>in :InsertFile ~/.vim/templates/
 nnoremap <Leader>li :setlocal list! list?<CR>
-nnoremap <Leader>lw :call ToggleWindow("loclist")<CR>
+nnoremap <Leader>lw :silent! lwindow<CR>
 nnoremap <Leader>nu :setlocal number! relativenumber!<CR>
 nnoremap <Leader>py :terminal python3<CR>
 nnoremap <Leader>rs :source ~/.vim/session.vim<CR>
@@ -294,40 +294,31 @@ command! -nargs=1 FixTabs call FixTabs(<args>)
 " item in the global quickfix list instead. This rotates through the lists.
 function! GoToLocation(action)
   if a:action == "next"
-    try
-      lnext
-    catch /:E553:/ " E553: No more items
-      lfirst
-    catch /:E776:/ " E776: No location list
-      try
-        cnext
-      catch /:E553:/ " E553: No more items
-        cfirst
-      catch /:E42:/ " E42: No Errors
-        return
-      endtry
-    " Quickfix and location list don't play nicely together.
-    catch /:E926:/ " E926: Current location list was changed
-      lnext
-    endtry
-  " Same code below as above, just [lc]previous and [lc]last instead.
+    let l:cmds_loclist  = { "next": "lnext", "rotate": "lfirst" }
+    let l:cmds_quickfix = { "next": "cnext", "rotate": "cfirst" }
   elseif a:action == "previous"
-    try
-      lprevious
-    catch /:E553:/ " E553: No more items
-      llast
-    catch /:E776:/ " E776: No location list
-      try
-        cprevious
-      catch /:E553:/ " E553: No more items
-        clast
-      catch /:E42:/ " E42: No Errors
-        return
-      endtry
-    catch /:E926:/ " E926: Current location list was changed
-      lprevious
-    endtry
+    let l:cmds_loclist  = { "next": "lprevious", "rotate": "llast" }
+    let l:cmds_quickfix = { "next": "cprevious", "rotate": "clast" }
+  else
+    return
   endif
+
+  try
+    execute l:cmds_loclist.next
+  catch /:E553:/ " E553: No more items
+    execute l:cmds_loclist.rotate
+  catch /:E776:/ " E776: No location list
+    try
+      execute l:cmds_quickfix.next
+    catch /:E553:/ " E553: No more items
+      execute l:cmds_quickfix.rotate
+    catch /:E42:/ " E42: No Errors
+      return
+    endtry
+  " Quickfix and location list don't play nicely together.
+  catch /:E926:/ " E926: Current location list was changed
+    execute l:cmds_loclist.next
+  endtry
 endfunction
 
 " Inserts file above cursor instead of below which is the 'read' commands
@@ -345,26 +336,6 @@ function! InsertFile(file)
   endif
 endfunction
 command! -nargs=1 -complete=file InsertFile call InsertFile(<q-args>)
-
-" Toggles quickfix or location list window, '[cl]window' will only close window
-" if list is empty so this is needed to get around that.
-function! ToggleWindow(action)
-  if a:action == "loclist"
-    if empty(filter(getwininfo(), "v:val.loclist"))
-      " + Shut up about 'E776: No location list' please!
-      silent! lwindow " Use instead of 'lopen' to avoid empty window.
-    else
-      lclose
-    endif
-  " Same code below as above, just 'cwindow' and 'cclose' instead.
-  elseif a:action == "quickfix"
-    if empty(filter(getwininfo(), "v:val.quickfix"))
-      cwindow " Use instead of 'copen' to avoid empty window.
-    else
-      cclose
-    endif
-  endif
-endfunction
 
 " Undo all changes since last file save. Unsaved buffers are emptied.
 function! UndoAll()
