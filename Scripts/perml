@@ -6,8 +6,8 @@
 #
 # Usage: perml <path1> <path2> ...
 #
-# Written by Göran Gustafsson (gustafsson.g at gmail.com).
-# License: BSD 3-Clause.
+# Creator: Göran Gustafsson (gustafsson.g at gmail.com)
+# License: BSD 3-Clause
 
 if [[ $# -eq 0 ]]; then
   echo "Usage: ${0:t} [PATH(S)]..."

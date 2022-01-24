@@ -13,8 +13,8 @@
 # Usage: hist
 #        hist <pattern>
 #
-# Written by Göran Gustafsson (gustafsson.g at gmail.com).
-# License: BSD 3-Clause.
+# Creator: Göran Gustafsson (gustafsson.g at gmail.com)
+# License: BSD 3-Clause
 
 if [[ $# -ge 1 ]]; then
   output=$(history -i 1 | grep --ignore-case "$*")

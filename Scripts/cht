@@ -5,8 +5,8 @@
 # Usage: cht
 #        cht <query>
 #
-# Written by Göran Gustafsson (gustafsson.g at gmail.com).
-# License: BSD 3-Clause.
+# Creator: Göran Gustafsson (gustafsson.g at gmail.com)
+# License: BSD 3-Clause
 
 url="https://cheat.sh"
 pager="less" # pager="view -c 'setlocal colorcolumn= nolist' -"

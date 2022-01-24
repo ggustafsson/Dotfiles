@@ -6,8 +6,8 @@
 # Usage: psx
 #        psx <pattern>
 #
-# Written by Göran Gustafsson (gustafsson.g at gmail.com).
-# License: BSD 3-Clause.
+# Creator: Göran Gustafsson (gustafsson.g at gmail.com)
+# License: BSD 3-Clause
 
 ps_command="ps ax -o user,tt,pid,command"
 

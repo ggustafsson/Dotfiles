@@ -5,8 +5,8 @@
 #
 # Usage: title <text>
 #
-# Written by Göran Gustafsson (gustafsson.g at gmail.com).
-# License: BSD 3-Clause.
+# Creator: Göran Gustafsson (gustafsson.g at gmail.com)
+# License: BSD 3-Clause
 
 if ARGV.empty?
   puts "Usage: #{File.basename($0)} [TEXT]..."

@@ -4,8 +4,8 @@
 #
 # Usage: qlopen <file(s)>
 #
-# Written by Göran Gustafsson (gustafsson.g at gmail.com).
-# License: BSD 3-Clause.
+# Creator: Göran Gustafsson (gustafsson.g at gmail.com)
+# License: BSD 3-Clause
 
 if [[ $# -eq 0 ]]; then
   echo "Usage: ${0:t} [FILENAME(S)]..."

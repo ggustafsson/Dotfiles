@@ -5,8 +5,8 @@
 # Usage: rmds
 #        rmds <path>
 #
-# Written by Göran Gustafsson (gustafsson.g at gmail.com).
-# License: BSD 3-Clause.
+# Creator: Göran Gustafsson (gustafsson.g at gmail.com)
+# License: BSD 3-Clause
 
 if [[ $# -eq 0 ]]; then
   find . -type f -name .DS_Store -exec rm -v "{}" \;

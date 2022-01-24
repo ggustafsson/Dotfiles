@@ -4,8 +4,8 @@
 #
 # Usage: backup2srv
 #
-# Written by Göran Gustafsson (gustafsson.g at gmail.com).
-# License: BSD 3-Clause.
+# Creator: Göran Gustafsson (gustafsson.g at gmail.com)
+# License: BSD 3-Clause
 
 server=hoth
 destination=/media/external

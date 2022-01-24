@@ -6,8 +6,8 @@
 # Usage: findf <pattern>
 #        findf <pattern> <path>
 #
-# Written by Göran Gustafsson (gustafsson.g at gmail.com).
-# License: BSD 3-Clause.
+# Creator: Göran Gustafsson (gustafsson.g at gmail.com)
+# License: BSD 3-Clause
 
 if [[ $# -eq 1 ]]; then
   find -L . -iname "*${1}*"

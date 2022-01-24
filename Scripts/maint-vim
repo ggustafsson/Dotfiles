@@ -6,8 +6,8 @@
 #
 # Usage: maint-vim
 #
-# Written by Göran Gustafsson (gustafsson.g at gmail.com).
-# License: BSD 3-Clause.
+# Creator: Göran Gustafsson (gustafsson.g at gmail.com)
+# License: BSD 3-Clause
 
 pack_path=~/.vim/pack/others
 

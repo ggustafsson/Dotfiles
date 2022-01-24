@@ -4,8 +4,8 @@
 #
 # Usage: 16colors
 #
-# Written by Göran Gustafsson (gustafsson.g at gmail.com).
-# License: BSD 3-Clause.
+# Creator: Göran Gustafsson (gustafsson.g at gmail.com)
+# License: BSD 3-Clause
 
 for number in {30..37}; do
   echo -n "\033[0;${number}m0;${number}m\033[0m "

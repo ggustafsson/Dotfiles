@@ -12,8 +12,8 @@
 #        flaccon *.flac
 #        find . -type f -iname "*.flac" -exec flaccon "{}" \;
 #
-# Written by Göran Gustafsson (gustafsson.g at gmail.com).
-# License: BSD 3-Clause.
+# Creator: Göran Gustafsson (gustafsson.g at gmail.com)
+# License: BSD 3-Clause
 
 if [[ $# -eq 0 ]]; then
   echo "Usage: ${0:t} [OPTION]... [FILENAME(S)]...

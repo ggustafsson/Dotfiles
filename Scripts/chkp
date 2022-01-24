@@ -7,8 +7,8 @@
 # Usage: chkp
 #        chkp <path>
 #
-# Written by Göran Gustafsson (gustafsson.g at gmail.com).
-# License: BSD 3-Clause.
+# Creator: Göran Gustafsson (gustafsson.g at gmail.com)
+# License: BSD 3-Clause
 
 if [[ $# -eq 0 ]]; then
   dir=~/Projects

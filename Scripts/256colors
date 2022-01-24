@@ -5,8 +5,8 @@
 #
 # Usage: 256colors
 #
-# Written by Göran Gustafsson (gustafsson.g at gmail.com).
-# License: BSD 3-Clause.
+# Creator: Göran Gustafsson (gustafsson.g at gmail.com)
+# License: BSD 3-Clause
 
 reset="\x1b[0m"
 

@@ -4,8 +4,8 @@
 #
 # Usage: setup-ubuntu
 #
-# Written by Göran Gustafsson (gustafsson.g at gmail.com).
-# License: BSD 3-Clause.
+# Creator: Göran Gustafsson (gustafsson.g at gmail.com)
+# License: BSD 3-Clause
 
 mkdir -p ~/.ssh && chmod 700 ~/.ssh
 mkdir -p ~/.vim/backups
