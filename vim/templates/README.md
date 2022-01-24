@@ -23,7 +23,7 @@ Dependencies
 
 License
 -------
-Released under the BSD 3-Clause License.
+Released under the BSD 3-Clause license.
 
     Copyright (c) YEAR, Göran Gustafsson. All rights reserved.
 
