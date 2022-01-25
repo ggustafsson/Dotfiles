@@ -46,9 +46,6 @@ set softtabstop=2
 set hlsearch
 set incsearch
 
-set ignorecase
-set smartcase
-
 " ~/.vimrc [+] [utf-8] [unix] [vim]    1, 46/260
 set laststatus=2
 set statusline=\ %(%F\ %)
@@ -87,6 +84,11 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_jump = 1 " Runs :lfirst at start of syntax check.
 let g:syntastic_enable_highlighting = 0
 let g:syntastic_mode_map = { "mode": "active", "passive_filetypes": ["go"] }
+
+let g:syntastic_error_symbol = "\u2717"
+let g:syntastic_warning_symbol = "\u26A0"
+let g:syntastic_style_error_symbol = g:syntastic_warning_symbol
+let g:syntastic_style_warning_symbol = g:syntastic_warning_symbol
 
 if has("mac")
   nnoremap <Leader>fi :silent !open "%:p:h"<CR>:redraw!<CR>

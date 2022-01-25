@@ -3,7 +3,7 @@ export GREP_COLORS="fn=01;34:ln=00;34:se=01;30" # File, line & separator.
 export EDITOR=vim
 export VISUAL=$EDITOR
 
-export LESS=FRi # --quit-if-one-screen --RAW-CONTROL-CHARS --ignore-case
+export LESS=FR # --quit-if-one-screen --RAW-CONTROL-CHARS
 export LESS_TERMCAP_us=$(printf "\e[0m") # Remove underscores in "man" etc.
 export PAGER=less
 
