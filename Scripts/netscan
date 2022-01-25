@@ -2,8 +2,6 @@
 
 # Description: Scan local network to find open network services.
 #
-# Dependencies: nmap
-#
 # Usage: netscan
 #
 # Creator: Göran Gustafsson (gustafsson.g at gmail.com)

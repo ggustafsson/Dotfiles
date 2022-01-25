@@ -23,7 +23,7 @@ for arg; do
 done
 
 date=$(date '+%Y-%m-%d_%H%M')
-filename=animated_${date}.gif
+filename=animated_${date}.gif # animated_2022-01-25_2104.gif
 convert -delay 30 -loop 0 $* $filename
 
 if [[ $OSTYPE == darwin* ]]; then

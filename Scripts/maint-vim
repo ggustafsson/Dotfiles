@@ -2,8 +2,6 @@
 
 # Description: This script downloads/updates Vim plugins.
 #
-# Dependencies: git
-#
 # Usage: maint-vim
 #
 # Creator: Göran Gustafsson (gustafsson.g at gmail.com)

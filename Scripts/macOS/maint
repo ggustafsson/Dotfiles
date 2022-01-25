@@ -3,8 +3,6 @@
 # Description: This script executes a bunch of commands I run frequently to
 # back things up and keep things up-to-date etc.
 #
-# Dependencies: confirm
-#
 # Usage: maint
 #
 # Creator: Göran Gustafsson (gustafsson.g at gmail.com)
@@ -20,5 +18,5 @@ echo; maint-vim
 
 echo; rmhogs
 
-echo; backup
+echo; backup --yes
 echo; backup2srv

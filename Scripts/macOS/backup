@@ -7,6 +7,10 @@
 # Creator: Göran Gustafsson (gustafsson.g at gmail.com)
 # License: BSD 3-Clause
 
+if [[ ! $1 == (-y|--yes) ]]; then
+  confirm || exit 1
+fi
+
 destination=/Volumes/Keychain
 
 backup_objects=(

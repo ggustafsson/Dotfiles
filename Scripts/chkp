@@ -2,8 +2,6 @@
 
 # Description: This script checks the git status of all my projects.
 #
-# Dependencies: git
-#
 # Usage: chkp
 #        chkp <path>
 #
