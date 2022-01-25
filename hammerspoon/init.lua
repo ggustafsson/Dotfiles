@@ -5,34 +5,34 @@ hs.window.animationDuration = 0
 preKeys = {"cmd", "ctrl"}
 
 -------------------------------------------------------------------------------
--- Separate Lua files.
+-- Separate config files.
 -------------------------------------------------------------------------------
 dofile("windows.lua")
 
 -------------------------------------------------------------------------------
+-- Toggle Hammerspoon console.
+-------------------------------------------------------------------------------
+hs.hotkey.bind(preKeys, "h", function()
+  hs.toggleConsole()
+  hs.window.frontmostWindow():focus() -- Focus previous window afterwards.
+end)
+
+-------------------------------------------------------------------------------
 -- Automatically reload configuration.
 -------------------------------------------------------------------------------
-function reloadConf(files)
-  local reload = false
+function reloadConfig(files)
+  local changes = false
 
   for _,file in pairs(files) do
     if file:sub(-4) == ".lua" then
-      reload = true
+      changes = true
     end
   end
 
-  if reload then
-    hs.alert.show(" Config Reloaded")
+  if changes then
     hs.reload()
   end
 end
 
-hs.pathwatcher.new(os.getenv("HOME") .. "/.hammerspoon/", reloadConf):start()
-
--------------------------------------------------------------------------------
--- Toggle Hammerspoon console.
--------------------------------------------------------------------------------
-hs.hotkey.bind(preKeys, "c", function()
-  hs.toggleConsole()
-  hs.window.frontmostWindow():focus() -- Focus previous window afterwards.
-end)
+hs.pathwatcher.new(os.getenv("HOME") .. "/.hammerspoon/", reloadConfig):start()
+hs.alert.show("There Is No Spoon", 1)
