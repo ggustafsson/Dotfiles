@@ -75,7 +75,6 @@ set splitright
 set wildignorecase
 set wildmode=longest,list
 
-let g:fzf_command_prefix = "Fzf"
 let g:mapleader = ","
 
 let g:go_metalinter_autosave = 1
@@ -94,36 +93,20 @@ if has("mac")
   nnoremap <Leader>op :silent !open "%"<CR>:redraw!<CR>
 endif
 
-if isdirectory($HOME .. "/.vim/pack/others/start/fzf")
-  nnoremap <Leader>ag :FzfAg<Space>
-  nnoremap <Leader>bu :FzfBuffers<CR>
-  nnoremap <Leader>fd :FzfFiles<CR>
-  nnoremap <Leader>fh :FzfFiles ~/
-  nnoremap <Leader>ft :FzfFiletypes<CR>
-  nnoremap <Leader>he :FzfHelptags<CR>
-  nnoremap <Leader>hi :FzfHistory<CR>
-  nnoremap <Leader>ma :FzfMarks<CR>
-  nnoremap <Leader>se :FzfLines<CR>
-  nnoremap <Leader>:  :FzfHistory:<CR>
-  nnoremap <Leader>/  :FzfHistory/<CR>
-else
-  nnoremap <Leader>bu :buffers<CR>:buffer<Space>
-  nnoremap <Leader>ft :setlocal filetype=
-  nnoremap <Leader>hi :browse oldfiles<CR>
-  nnoremap <Leader>ma :marks<CR>
-  nnoremap <Leader>:  :history cmd<CR>
-  nnoremap <Leader>/  :history search<CR>
-endif
-
 nnoremap <Leader>bd :bdelete<CR>
+nnoremap <Leader>bu :buffers<CR>:buffer<Space>
 nnoremap <Leader>cc :call ColorColumn()<CR>
 nnoremap <Leader>cd :call ChangeDirectory()<CR>
 nnoremap <Leader>cw :cwindow<CR>
 nnoremap <Leader>ed :edit <C-R>=escape(expand("%:p:h"), ' \')<CR>/
 nnoremap <Leader>eh :edit ~/
+nnoremap <Leader>er :browse oldfiles<CR>
+nnoremap <Leader>et :edit ~/Documents/Text\ Files/
+nnoremap <Leader>ft :setlocal filetype=
 nnoremap <Leader>in :InsertFile ~/.vim/templates/
 nnoremap <Leader>li :setlocal list! list?<CR>
 nnoremap <Leader>lw :silent! lwindow<CR>
+nnoremap <Leader>ma :marks<CR>
 nnoremap <Leader>nu :setlocal number! relativenumber!<CR>
 nnoremap <Leader>py :terminal python3<CR>
 nnoremap <Leader>rs :source ~/.vim/session.vim<CR>
@@ -134,9 +117,7 @@ nnoremap <Leader>sp :setlocal spell! spell?<CR>
 nnoremap <Leader>ss :mksession! ~/.vim/session.vim<CR>
 nnoremap <Leader>t4 :setlocal noexpandtab shiftwidth=4 softtabstop=0 tabstop=4<CR>
 nnoremap <Leader>t8 :setlocal noexpandtab shiftwidth=8 softtabstop=0 tabstop=8<CR>
-nnoremap <Leader>te :edit ~/Documents/Text\ Files/
 nnoremap <Leader>tm :vsplit ~/Documents/Text\ Files/Tmp.txt \| :setlocal nobuflisted<CR>
-nnoremap <Leader>to :vsplit ~/Documents/Text\ Files/Todo.txt \| :setlocal nobuflisted<CR>
 nnoremap <Leader>tw :setlocal textwidth=79
 nnoremap <Leader>un :call UndoAll()<CR>
 nnoremap <Leader>ut :MundoToggle<CR>
@@ -189,12 +170,6 @@ inoremap jj <Esc>
 
 inoremap <expr><Tab> CompletionTab()
 inoremap <C-n>       <C-x><C-o>
-
-if isdirectory($HOME .. "/.vim/pack/others/start/fzf")
-  imap <C-x><C-f> <Plug>(fzf-complete-path)
-  imap <C-x><C-l> <Plug>(fzf-complete-line)
-  imap <C-x><C-k> <Plug>(fzf-complete-word)
-endif
 
 " Text object consisting of all text inside current line, first character up
 " until last character. Like 'w' (word), 'p' (paragraph) etc.

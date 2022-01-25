@@ -50,7 +50,6 @@ sudo mv ~/Downloads/homebrew/{*,.*} /usr/local/
   ffmpeg \
   flac \
   flake8 \
-  fzf \
   git \
   golang \
   grep \
@@ -69,7 +68,6 @@ sudo mv ~/Downloads/homebrew/{*,.*} /usr/local/
   shellcheck \
   shntool \
   svtplay-dl \
-  the_silver_searcher \
   tidy-html5 \
   tmux \
   tree \
@@ -96,7 +94,6 @@ ln -s /usr/local/bin/{g,}grep
 ln -s /usr/local/bin/{g,}ls
 
 mkdir -p ~/.vim/pack/others/start
-ln -s /usr/local/opt/fzf ~/.vim/pack/others/start/fzf
 
 ln -s ~/Projects/Dot\ Files/Scripts ~/
 ln -s ~/Projects/Dot\ Files/gitconfig ~/.gitconfig

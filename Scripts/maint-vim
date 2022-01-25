@@ -31,7 +31,6 @@ fi
 
 echo "Fetching Vim plugins."
 
-fetch start/fzf.vim         https://github.com/junegunn/fzf.vim.git
 fetch start/syntastic       https://github.com/vim-syntastic/syntastic.git
 fetch start/vim-commentary  https://github.com/tpope/vim-commentary.git
 fetch start/vim-endwise     https://github.com/tpope/vim-endwise.git
