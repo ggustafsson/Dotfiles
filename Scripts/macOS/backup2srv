@@ -17,7 +17,7 @@ backup_objects=(
 
 echo -n "SSH test connection to server '${server}'... "
 if ! ssh -o ConnectTimeout=10 -q $server exit; then
-  echo "Failed! Exiting..."
+  echo "Failed!"
   exit 1
 fi
 echo "OK!\n"
