@@ -1,3 +1,19 @@
+[alias]
+	ad = add
+	br = branch
+	ch = checkout
+	cl = clone
+	co = commit --verbose
+	di = diff
+	lo = log
+	pl = pull
+	pu = push
+	sh = show
+	st = status
+
+	forgive-me-for-i-have-sinned = git reset --soft HEAD^
+	fucked-up-beyond-all-repair  = git reset --hard origin/master
+
 [core]
 	excludesfile = ~/.gitignore_global
 
