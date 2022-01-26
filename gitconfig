@@ -20,3 +20,6 @@
 [user]
 	name  = Göran Gustafsson
 	email = gustafsson.g@gmail.com
+
+[include]
+	path = ~/.gitconfig_local
