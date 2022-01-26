@@ -51,8 +51,8 @@ set laststatus=2
 set statusline=\ %(%F\ %)
 set statusline+=%(%r\ %)
 set statusline+=%(%m\ %)
-set statusline+=%([%{&fileencoding==''?&encoding:&fileencoding}]\ %)
 set statusline+=%([%{&fileformat}]\ %)
+set statusline+=%([%{&fileencoding==''?&encoding:&fileencoding}]\ %)
 set statusline+=%(%y\ %)
 set statusline+=%(%{&paste?'[paste]':''}\ %)
 set statusline+=%=

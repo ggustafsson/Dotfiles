@@ -21,15 +21,15 @@ end)
 -- Automatically reload configuration.
 -------------------------------------------------------------------------------
 function reloadConfig(files)
-  local changes = false
+  local modified = false
 
   for _,file in pairs(files) do
     if file:sub(-4) == ".lua" then
-      changes = true
+      modified = true
     end
   end
 
-  if changes then
+  if modified then
     hs.reload()
   end
 end
