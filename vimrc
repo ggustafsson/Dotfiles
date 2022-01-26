@@ -178,6 +178,9 @@ inoremap <C-n>       <C-x><C-o>
 xnoremap il ^og_
 onoremap <silent>il :normal vil<CR>
 
+" Lets make the command-line Emacsy! :)
+cnoremap <C-A> <Home>
+
 command! -nargs=* -complete=help Help vertical help <args>
 
 " Jump back and forth between directory of file in current buffer and Vim's
