@@ -14,7 +14,7 @@ dofile("windows.lua")
 -------------------------------------------------------------------------------
 hs.hotkey.bind(preKeys, "h", function()
   hs.toggleConsole()
-  hs.window.frontmostWindow():focus() -- Focus previous window afterwards.
+  hs.window.frontmostWindow():focus() -- Focus on previous window afterwards.
 end)
 
 -------------------------------------------------------------------------------
@@ -34,5 +34,8 @@ function reloadConfig(files)
   end
 end
 
-hs.pathwatcher.new(os.getenv("HOME") .. "/.hammerspoon/", reloadConfig):start()
+-- Catch in variable to avoid Lua's garbage collection.
+watcher = hs.pathwatcher.new(os.getenv("HOME") .. "/.hammerspoon/",
+  reloadConfig):start()
+
 hs.alert.show("There Is No Spoon", 1)

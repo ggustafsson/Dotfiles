@@ -1,7 +1,7 @@
-local frameCache = {}
+frameCache = {}
 
 -------------------------------------------------------------------------------
--- 1. Main size.
+-- 1. Large size 1.
 -------------------------------------------------------------------------------
 hs.hotkey.bind(preKeys, "1", function()
   local window = hs.window.focusedWindow()
@@ -17,7 +17,7 @@ hs.hotkey.bind(preKeys, "1", function()
 end)
 
 -------------------------------------------------------------------------------
--- 2. Main size 2.
+-- 2. Large size 2.
 -------------------------------------------------------------------------------
 hs.hotkey.bind(preKeys, "2", function()
   local window = hs.window.focusedWindow()
@@ -33,7 +33,7 @@ hs.hotkey.bind(preKeys, "2", function()
 end)
 
 -------------------------------------------------------------------------------
--- 3. Main size 3.
+-- 3. Large size 3.
 -------------------------------------------------------------------------------
 hs.hotkey.bind(preKeys, "3", function()
   local window = hs.window.focusedWindow()
@@ -91,7 +91,7 @@ hs.hotkey.bind(preKeys, "7", function()
 end)
 
 -------------------------------------------------------------------------------
--- 8. Move and resize window 50% left.
+-- 8. Split window 50% left, or revert.
 -------------------------------------------------------------------------------
 hs.hotkey.bind(preKeys, "8", function()
   local window = hs.window.focusedWindow()
@@ -108,7 +108,7 @@ hs.hotkey.bind(preKeys, "8", function()
 end)
 
 -------------------------------------------------------------------------------
--- 9. Move and resize window 50% right.
+-- 9. Split window 50% right, or revert.
 -------------------------------------------------------------------------------
 hs.hotkey.bind(preKeys, "9", function()
   local window = hs.window.focusedWindow()
@@ -140,7 +140,7 @@ hs.hotkey.bind(preKeys, "0", function()
 end)
 
 -------------------------------------------------------------------------------
--- +. Maximize window.
+-- +. Maximize window, or revert.
 -------------------------------------------------------------------------------
 hs.hotkey.bind(preKeys, "+", function()
   local window = hs.window.focusedWindow()
@@ -154,4 +154,39 @@ hs.hotkey.bind(preKeys, "+", function()
     window:maximize()
     hs.alert.show("Maximized", 0.5)
   end
+end)
+
+-------------------------------------------------------------------------------
+-- Move window up, down, left or right.
+-------------------------------------------------------------------------------
+hs.hotkey.bind(preKeys, "Up", function()
+  local window = hs.window.focusedWindow()
+  local frame  = window:frame()
+
+  frame.y = frame.y - 30
+  window:setFrame(frame)
+end)
+
+hs.hotkey.bind(preKeys, "Down", function()
+  local window = hs.window.focusedWindow()
+  local frame  = window:frame()
+
+  frame.y = frame.y + 30
+  window:setFrame(frame)
+end)
+
+hs.hotkey.bind(preKeys, "Left", function()
+  local window = hs.window.focusedWindow()
+  local frame  = window:frame()
+
+  frame.x = frame.x - 30
+  window:setFrame(frame)
+end)
+
+hs.hotkey.bind(preKeys, "Right", function()
+  local window = hs.window.focusedWindow()
+  local frame  = window:frame()
+
+  frame.x = frame.x + 30
+  window:setFrame(frame)
 end)
