@@ -46,7 +46,7 @@ set softtabstop=2
 set hlsearch
 set incsearch
 
-" ~/.vimrc [+] [utf-8] [unix] [vim]    1, 46/260
+" ~/.vimrc [+] [unix] [utf-8] [vim]    1, 46/260
 set laststatus=2
 set statusline=\ %(%F\ %)
 set statusline+=%(%r\ %)
