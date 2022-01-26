@@ -81,7 +81,10 @@ bindkey "^V" edit-command-line
 bindkey "^A"  beginning-of-line
 bindkey "^E"  end-of-line
 bindkey "^R"  history-incremental-search-backward
+
+# Escape + ...
 bindkey "^[." insert-last-word
+bindkey "^[h" run-help
 
 zstyle ":completion:*" insert-tab pending # Don't insert tab characters at prompt.
 zstyle ":completion:*" list-colors ${(s.:.)LS_COLORS}
@@ -175,7 +178,6 @@ else
   alias free="free -h"
 fi
 
-alias dog="tac" # Woof woof! :)
 alias hist="source hist"
 alias hogs="du -sk * | sort --numeric-sort --reverse | head -n 15"
 alias iip="curl icanhazip.com"
