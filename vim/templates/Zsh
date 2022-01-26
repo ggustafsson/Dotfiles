@@ -1,10 +1,10 @@
 #!/usr/bin/env zsh
 
-# Description: X
+# Description: #A
 #
-# Usage: Y
+# Usage: #B
 #
 # Creator: Göran Gustafsson (gustafsson.g at gmail.com)
 # License: BSD 3-Clause
 
-Z
+#C

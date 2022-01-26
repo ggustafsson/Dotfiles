@@ -105,7 +105,6 @@ nnoremap <Leader>eh :edit ~/
 nnoremap <Leader>er :browse oldfiles<CR>
 nnoremap <Leader>et :edit ~/Documents/Text\ Files/
 nnoremap <Leader>ft :setlocal filetype=
-nnoremap <Leader>in :InsertFile ~/.vim/templates/
 nnoremap <Leader>li :setlocal list! list?<CR>
 nnoremap <Leader>lw :silent! lwindow<CR>
 nnoremap <Leader>ma :marks<CR>
@@ -119,6 +118,7 @@ nnoremap <Leader>sp :setlocal spell! spell?<CR>
 nnoremap <Leader>ss :mksession! ~/.vim/session.vim<CR>
 nnoremap <Leader>t4 :setlocal noexpandtab shiftwidth=4 softtabstop=0 tabstop=4<CR>
 nnoremap <Leader>t8 :setlocal noexpandtab shiftwidth=8 softtabstop=0 tabstop=8<CR>
+nnoremap <Leader>te :InsertTemplate ~/.vim/templates/
 nnoremap <Leader>tm :vsplit ~/Documents/Text\ Files/Tmp.txt \| :setlocal nobuflisted<CR>
 nnoremap <Leader>tw :setlocal textwidth=79
 nnoremap <Leader>un :call UndoAll()<CR>
@@ -301,10 +301,10 @@ function! GoToLocation(action)
   endtry
 endfunction
 
-" Inserts file above cursor instead of below which is the 'read' commands
-" default behavior. If the buffer only has one empty line then it also removes
-" the empty line after insert so HTML templates and similar works better.
-function! InsertFile(file)
+" Insert file above cursor and replace '#YEAR#' and '#DATE#' with '2022' and
+" '2022-01-26' respectively. If buffer has only one empty line remove it after
+" insert so HTML templates and similar works better.
+function! InsertTemplate(file)
   let l:lines = line("$")
   let l:text = getline(".")
 
@@ -314,8 +314,12 @@ function! InsertFile(file)
   else
     execute ".-read " .. fnameescape(a:file)
   endif
+
+  execute "%s/#YEAR#/\\=system(\"date +'%Y' | tr -d '\n'\")/ge"
+  execute "%s/#DATE#/\\=system(\"date +'%Y-%m-%d' | tr -d '\n'\")/ge"
 endfunction
-command! -nargs=1 -complete=file InsertFile call InsertFile(<q-args>)
+" Highlight '#[A-Z]' here because of ':help function-search-undo'.
+command! -nargs=1 -complete=file InsertTemplate call InsertTemplate(<q-args>) | silent! /#[A-Z]
 
 " Undo all changes since last file save. Unsaved buffers are emptied.
 function! UndoAll()
