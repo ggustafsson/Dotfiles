@@ -321,6 +321,14 @@ endfunction
 " Highlight '#[A-Z]' here because of ':help function-search-undo'.
 command! -nargs=1 -complete=file InsertTemplate call InsertTemplate(<q-args>) | silent! /#[A-Z]
 
+" Display syntax group used at cursor position.
+" Found here: https://stackoverflow.com/a/37040415/448700
+function! SyntaxGroup()
+  let l:syn = synID(line("."), col("."), 1)
+  echo synIDattr(l:syn, "name") . " -> " . synIDattr(synIDtrans(l:syn), "name")
+endfunction
+command! -nargs=0 SyntaxGroup call SyntaxGroup()
+
 " Undo all changes since last file save. Unsaved buffers are emptied.
 function! UndoAll()
   let l:filename = expand("%")

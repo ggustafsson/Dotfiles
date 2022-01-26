@@ -1,2 +1,3 @@
-" Match shebang line so it is cleared instead of linked to 'shComment'.
-syntax match shShebang /^#!.*/
+" Shebang is by default matched as 'shComment->Comment', mimic Zsh and Ruby
+" syntax and match as PreProc instead.
+syntax match PreProc /^#!.*/
