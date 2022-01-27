@@ -144,17 +144,17 @@ end)
 -------------------------------------------------------------------------------
 -- +. Maximize window, or revert.
 -------------------------------------------------------------------------------
-frameCacheMaximize = {}
+frameCacheMax = {}
 
 hs.hotkey.bind(preKeys, "+", function()
   local window = hs.window.focusedWindow()
 
-  if frameCacheMaximize[window:id()] then
-    window:setFrame(frameCacheMaximize[window:id()])
-    frameCacheMaximize[window:id()] = nil
+  if frameCacheMax[window:id()] then
+    window:setFrame(frameCacheMax[window:id()])
+    frameCacheMax[window:id()] = nil
     hs.alert.show("Reverted", 0.5)
   else
-    frameCacheMaximize[window:id()] = window:frame()
+    frameCacheMax[window:id()] = window:frame()
     window:maximize()
     hs.alert.show("Maximized", 0.5)
   end
