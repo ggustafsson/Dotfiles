@@ -1,5 +1,3 @@
-frameCache = {}
-
 -------------------------------------------------------------------------------
 -- 1. Large size 1.
 -------------------------------------------------------------------------------
@@ -93,15 +91,17 @@ end)
 -------------------------------------------------------------------------------
 -- 8. Split window 50% left, or revert.
 -------------------------------------------------------------------------------
+frameCacheLeft = {}
+
 hs.hotkey.bind(preKeys, "8", function()
   local window = hs.window.focusedWindow()
 
-  if frameCache[window:id()] then
-    window:setFrame(frameCache[window:id()])
-    frameCache[window:id()] = nil
+  if frameCacheLeft[window:id()] then
+    window:setFrame(frameCacheLeft[window:id()])
+    frameCacheLeft[window:id()] = nil
     hs.alert.show("Reverted", 0.5)
   else
-    frameCache[window:id()] = window:frame()
+    frameCacheLeft[window:id()] = window:frame()
     window:moveToUnit(hs.layout.left50)
     hs.alert.show("Left Split", 0.5)
   end
@@ -110,15 +110,17 @@ end)
 -------------------------------------------------------------------------------
 -- 9. Split window 50% right, or revert.
 -------------------------------------------------------------------------------
+frameCacheRight = {}
+
 hs.hotkey.bind(preKeys, "9", function()
   local window = hs.window.focusedWindow()
 
-  if frameCache[window:id()] then
-    window:setFrame(frameCache[window:id()])
-    frameCache[window:id()] = nil
+  if frameCacheRight[window:id()] then
+    window:setFrame(frameCacheRight[window:id()])
+    frameCacheRight[window:id()] = nil
     hs.alert.show("Reverted", 0.5)
   else
-    frameCache[window:id()] = window:frame()
+    frameCacheRight[window:id()] = window:frame()
     window:moveToUnit(hs.layout.right50)
     hs.alert.show("Right Split", 0.5)
   end
@@ -142,15 +144,17 @@ end)
 -------------------------------------------------------------------------------
 -- +. Maximize window, or revert.
 -------------------------------------------------------------------------------
+frameCacheMaximize = {}
+
 hs.hotkey.bind(preKeys, "+", function()
   local window = hs.window.focusedWindow()
 
-  if frameCache[window:id()] then
-    window:setFrame(frameCache[window:id()])
-    frameCache[window:id()] = nil
+  if frameCacheMaximize[window:id()] then
+    window:setFrame(frameCacheMaximize[window:id()])
+    frameCacheMaximize[window:id()] = nil
     hs.alert.show("Reverted", 0.5)
   else
-    frameCache[window:id()] = window:frame()
+    frameCacheMaximize[window:id()] = window:frame()
     window:maximize()
     hs.alert.show("Maximized", 0.5)
   end
