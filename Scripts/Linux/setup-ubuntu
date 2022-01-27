@@ -36,7 +36,7 @@ sudo chsh -s /bin/zsh $USER
 
 echo
 git clone https://github.com/ggustafsson/Dot-Files.git ~/Projects/Dot\ Files
-git clone https://github.com/ggustafsson/Static-Color-Scheme.git ~/.vim/pack/ggustafsson/start/Static\ Color\ Scheme
+git clone https://github.com/ggustafsson/Static-Color-Scheme.git ~/Projects/Static\ Color\ Scheme
 
 ln -s ~/Projects/Dot\ Files/Scripts ~/
 ln -s ~/Projects/Dot\ Files/gitconfig ~/.gitconfig
@@ -48,7 +48,7 @@ ln -s ~/Projects/Dot\ Files/vimrc ~/.vimrc
 ln -s ~/Projects/Dot\ Files/zshenv ~/.zshenv
 ln -s ~/Projects/Dot\ Files/zshrc ~/.zshrc
 
-ln -s ~/.vim/pack/ggustafsson/start/Static\ Color\ Scheme ~/Projects/Static\ Color\ Scheme
+ln -s ~/Projects/Static\ Color\ Scheme ~/.vim/pack/ggustafsson/start/Static\ Color\ Scheme
 
 sudo cp ~/Projects/Dot\ Files/motd /etc/motd
 
