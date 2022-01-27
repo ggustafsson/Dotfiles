@@ -11,8 +11,8 @@
 	sh = show
 	st = status
 
-	forgive-me-for-i-have-sinned = git reset --soft HEAD^
-	fucked-up-beyond-all-repair  = git reset --hard origin/master
+	forgive-me-for-i-have-sinned = reset --soft HEAD^
+	fucked-up-beyond-all-repair  = reset --hard origin/master
 
 [core]
 	excludesfile = ~/.gitignore_global
