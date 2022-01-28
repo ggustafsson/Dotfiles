@@ -319,10 +319,13 @@ endfunction
 command! -nargs=1 -complete=file InsertTemplate call InsertTemplate(<q-args>) | silent! /#[A-Z]
 
 " Display syntax group used at cursor position.
-" Found here: https://stackoverflow.com/a/37040415/448700
 function! SyntaxGroup()
-  let l:syn = synID(line("."), col("."), 1)
-  echo synIDattr(l:syn, "name") . " -> " . synIDattr(synIDtrans(l:syn), "name")
+  let l:syntax_id    = synID(line("."), col("."), 1)
+  let l:syntax_name  = synIDattr(l:syntax_id, "name")
+  let l:syntax_trans = synIDattr(synIDtrans(l:syntax_id), "name")
+
+  echo syntax_name . " -> " . syntax_trans
+  execute "highlight " . syntax_trans
 endfunction
 command! -nargs=0 SyntaxGroup call SyntaxGroup()
 
