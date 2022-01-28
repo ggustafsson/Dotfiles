@@ -81,8 +81,8 @@ bindkey "^[[B" down-line-or-beginning-search
 # Not all is bad in Emacs land. Lets assimilate instead of annihilate!
 bindkey "^A"  beginning-of-line
 bindkey "^E"  end-of-line
-bindkey "^R"  history-incremental-search-backward
 bindkey "^F"  history-incremental-search-forward
+bindkey "^R"  history-incremental-search-backward
 bindkey "^[." insert-last-word
 bindkey "^['" quote-line
 bindkey "^[h" run-help
