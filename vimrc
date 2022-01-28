@@ -49,7 +49,7 @@ set incsearch
 
 " ~/.vimrc [+] [unix] [utf-8] [vim]    1, 46/260
 set laststatus=2
-set statusline=\ %(%F\ %)
+set statusline=\ %(%f\ %)
 set statusline+=%(%r\ %)
 set statusline+=%(%m\ %)
 set statusline+=%([%{&fileformat}]\ %)
@@ -121,6 +121,7 @@ nnoremap <Leader>t4 :setlocal noexpandtab shiftwidth=4 softtabstop=0 tabstop=4<C
 nnoremap <Leader>t8 :setlocal noexpandtab shiftwidth=8 softtabstop=0 tabstop=8<CR>
 nnoremap <Leader>te :InsertTemplate ~/.vim/templates/
 nnoremap <Leader>tm :vsplit ~/Documents/Text/Tmp.txt \| :setlocal nobuflisted<CR>
+nnoremap <Leader>to :vsplit ~/Documents/Text/Todo.txt \| :setlocal nobuflisted<CR>
 nnoremap <Leader>tw :setlocal textwidth=79
 nnoremap <Leader>un :call UndoAll()<CR>
 nnoremap <Leader>ut :MundoToggle<CR>
