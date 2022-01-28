@@ -82,6 +82,7 @@ bindkey "^[[B" down-line-or-beginning-search
 bindkey "^A"  beginning-of-line
 bindkey "^E"  end-of-line
 bindkey "^R"  history-incremental-search-backward
+bindkey "^F"  history-incremental-search-forward
 bindkey "^[." insert-last-word
 bindkey "^['" quote-line
 bindkey "^[h" run-help
