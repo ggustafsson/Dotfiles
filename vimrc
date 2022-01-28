@@ -15,6 +15,7 @@ set confirm
 set encoding=utf-8
 set formatoptions+=jlnor " See ':help fo-table'.
 set history=999
+set mouse=a
 set nofoldenable
 set nowrap
 set nrformats-=octal " CTRL-A on 007 != 010. Shaken, not stirred! :)
