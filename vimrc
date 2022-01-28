@@ -181,7 +181,6 @@ inoremap <C-n>       <C-x><C-o>
 xnoremap il ^og_
 onoremap <silent>il :normal vil<CR>
 
-" Lets make the command-line Emacsy! :)
 cnoremap <C-A> <Home>
 
 command! -nargs=* -complete=help Help vertical help <args>
@@ -215,15 +214,13 @@ function! ColorColumn()
   endif
 endfunction
 
-" Turns the tab key into <C-n> (keyword completion) if there are characters to
-" the left of the cursor, normal tab character is inserted otherwise.
+" Turn tab key into <C-n> (keyword completion) if there is a character left of
+" cursor position, normal tab character is inserted otherwise.
 "
 " inoremap <expr><Tab> CompletionTab()
 function! CompletionTab()
-  let l:char = getline(".")[col(".")-2] " Get the character left of the cursor.
+  let l:char = getline(".")[col(".")-2] " Character left of cursor.
 
-  " Insert a normal tab if the character left of the cursor is non existent, a
-  " space or a tab. Otherwise use keyword completion.
   if empty(char) || char == " " || char =~ "\t"
     return "\<Tab>"
   else
@@ -231,7 +228,7 @@ function! CompletionTab()
   endif
 endfunction
 
-" Changes file encoding plus file format, converts tabs to spaces and removes
+" Change file encoding plus file format, convert tabs to spaces and remove
 " trailing whitespaces.
 function! FixFile(spaces)
   if a:spaces !~ "^[248]$"
@@ -251,7 +248,7 @@ function! FixFile(spaces)
 endfunction
 command! -nargs=1 FixFile call FixFile(<args>)
 
-" Converts tabs to 2, 4 or 8 spaces.
+" Convert tabs to 2, 4 or 8 spaces.
 function! FixTabs(spaces)
   if a:spaces !~ "^[248]$"
     echo "Select 2, 4 or 8 spaces!"
@@ -266,9 +263,8 @@ function! FixTabs(spaces)
 endfunction
 command! -nargs=1 FixTabs call FixTabs(<args>)
 
-" Jump to the next or previous item in the current windows location list. If
-" error 'E776: No location list' is encountered jump to the next or previous
-" item in the global quickfix list instead. This rotates through the lists.
+" Jump to next or previous location list entry. If location list is empty jump
+" to next or previous quickfix list entry instead.
 function! GoToLocation(action)
   if a:action == "next"
     let l:cmds_loclist  = { "next": "lnext", "rotate": "lfirst" }
@@ -298,8 +294,8 @@ function! GoToLocation(action)
   endtry
 endfunction
 
-" Insert file above cursor and replace '#YEAR#' and '#DATE#' with '2022' and
-" '2022-01-26' respectively. If buffer has only one empty line remove it after
+" Insert file above cursor, replace #YEAR# with 'YYYY' and replace '#DATE#'
+" with 'YYYY-MM-DD'. If buffer has only one empty line then remove it after
 " insert so HTML templates and similar works better.
 function! InsertTemplate(file)
   let l:lines = line("$")
@@ -315,7 +311,7 @@ function! InsertTemplate(file)
   execute "%s/#YEAR#/\\=system(\"date +'%Y' | tr -d '\n'\")/ge"
   execute "%s/#DATE#/\\=system(\"date +'%Y-%m-%d' | tr -d '\n'\")/ge"
 endfunction
-" Highlight '#[A-Z]' here because of ':help function-search-undo'.
+" Search for '#[A-Z]' here because of ':help function-search-undo'.
 command! -nargs=1 -complete=file InsertTemplate call InsertTemplate(<q-args>) | silent! /#[A-Z]
 
 " Display syntax group used at cursor position.
@@ -343,7 +339,7 @@ augroup Main
   autocmd!
   autocmd BufWritePost ~/.vimrc source %
 
-  " Check if last cursor position still exist and if so then go to it.
+  " If last cursor position still exist then go to it.
   autocmd BufReadPost *
     \ if line("'\"") >= 1 && line("'\"") <= line("$") && &filetype !~# "commit"
     \ |   execute "normal! g`\""

@@ -74,7 +74,7 @@ done
 bindkey "jj" vi-cmd-mode
 bindkey "^V" edit-command-line
 
-# Search based on text already typed at prompt.
+# Search for history entry matching current line up to the cursor position.
 bindkey "^[[A" up-line-or-beginning-search
 bindkey "^[[B" down-line-or-beginning-search
 
@@ -97,9 +97,8 @@ if [[ $OSTYPE == darwin* ]]; then
   compdef _man man2pdf
 fi
 
-# Custom Vi replace function that changes a variable before entering replace
-# mode and afterwards resets the variable. The variable is used in the function
-# "prompt_mode" later on.
+# Custom Vi replace function that change a variable before and after entering
+# replace mode. The variable is used in function "prompt_mode" later on.
 function custom-vi-replace {
   prompt_replace=1 && zle vi-replace && prompt_replace=0
 }
