@@ -86,8 +86,8 @@ let g:syntastic_auto_jump = 1 " Runs :lfirst at start of syntax check.
 let g:syntastic_enable_highlighting = 0
 let g:syntastic_mode_map = { "mode": "active", "passive_filetypes": ["go"] }
 
-let g:syntastic_error_symbol = "\u2717"
-let g:syntastic_warning_symbol = "\u26A0"
+let g:syntastic_error_symbol = ">>"
+let g:syntastic_warning_symbol = ">>"
 let g:syntastic_style_error_symbol = g:syntastic_warning_symbol
 let g:syntastic_style_warning_symbol = g:syntastic_warning_symbol
 
@@ -104,7 +104,7 @@ nnoremap <Leader>cw :cwindow<CR>
 nnoremap <Leader>ed :edit <C-R>=escape(expand("%:p:h"), ' \')<CR>/
 nnoremap <Leader>eh :edit ~/
 nnoremap <Leader>er :browse oldfiles<CR>
-nnoremap <Leader>et :edit ~/Documents/Text\ Files/
+nnoremap <Leader>et :edit ~/Documents/Text/
 nnoremap <Leader>ft :setlocal filetype=
 nnoremap <Leader>li :setlocal list! list?<CR>
 nnoremap <Leader>lw :silent! lwindow<CR>
@@ -120,7 +120,7 @@ nnoremap <Leader>ss :mksession! ~/.vim/session.vim<CR>
 nnoremap <Leader>t4 :setlocal noexpandtab shiftwidth=4 softtabstop=0 tabstop=4<CR>
 nnoremap <Leader>t8 :setlocal noexpandtab shiftwidth=8 softtabstop=0 tabstop=8<CR>
 nnoremap <Leader>te :InsertTemplate ~/.vim/templates/
-nnoremap <Leader>tm :vsplit ~/Documents/Text\ Files/Tmp.txt \| :setlocal nobuflisted<CR>
+nnoremap <Leader>tm :vsplit ~/Documents/Text/Tmp.txt \| :setlocal nobuflisted<CR>
 nnoremap <Leader>tw :setlocal textwidth=79
 nnoremap <Leader>un :call UndoAll()<CR>
 nnoremap <Leader>ut :MundoToggle<CR>

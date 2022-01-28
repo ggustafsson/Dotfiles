@@ -14,7 +14,7 @@ sudo apt autoremove
 
 for directory in ~/Projects/*(N); do
   if [[ -d ${directory}/.git ]]; then
-    print -P "\n%B%F{cyan}Updating repo: ${directory:t}%f%b"
+    print -P "\n%F{cyan}Updating repo: ${directory/${HOME}/~}%f"
     git -C $directory pull
   fi
 done

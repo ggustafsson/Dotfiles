@@ -42,7 +42,7 @@ for subdir in ${dir}/*(N); do
 done
 
 if [[ ${#clean_repos} -gt 0 ]]; then
-  print -P "\n%B%F{green}Clean Git repositories:%f%b"
+  print -P "\n%F{green}Clean Git repositories:%f"
   for repo in $clean_repos; do
     echo " - $repo"
   done

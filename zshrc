@@ -5,7 +5,6 @@ export EDITOR=vim
 export VISUAL=$EDITOR
 
 export LESS=FR # --quit-if-one-screen --RAW-CONTROL-CHARS
-export LESS_TERMCAP_us=$(printf "\e[0m") # Remove underscores in "man" etc.
 export PAGER=less
 
 HISTFILE=~/.zsh_history
@@ -19,8 +18,8 @@ else
   hash -d ext=/media/external
 fi
 
-tmp=~/Documents/Text\ Files/Tmp.txt
-todo=~/Documents/Text\ Files/Todo.txt
+tmp=~/Documents/Text/Tmp.txt
+todo=~/Documents/Text/Todo.txt
 
 setopt correct # Try to correct the spelling of commands.
 setopt extendedglob
@@ -98,7 +97,8 @@ function custom-vi-replace {
 }
 zle -N custom-vi-replace
 
-# Prints " ♦︎ <branch>" when git repo is found in the current directory.
+# Print " X<branch>" if git repo is found in the current directory. Appended
+# with either "." or "*" depending on state of git repo.
 function prompt_git {
   if [[ ! -d .git ]]; then
     return 1
@@ -106,36 +106,38 @@ function prompt_git {
 
   branch=$(git branch --show-current 2> /dev/null)
   if [[ -n $(git status --porcelain 2> /dev/null) ]]; then
-    echo " ♦︎ %B%F{red}${branch}%f%b"
+    echo " %F{red}*${branch}%f"
   else
-    echo " ♦︎ %B%F{green}${branch}%f%b"
+    echo " %F{green}.${branch}%f"
   fi
 }
 
-# Prints hostname in different ways depending on various rules.
+# Print hostname in different colors depending on various rules.
 function prompt_host {
   if [[ $OSTYPE == darwin* ]]; then
-    echo "%B%F{yellow}%m%f%b"
+    echo "%F{yellow}%m%f"
+  elif [[ $HOST == *-VM ]]; then
+    echo "%F{cyan}%m%f"
   else
-    echo "%B%F{cyan}%m%f%b"
+    echo "%F{red}%m%f"
   fi
 }
 
-# Prints current Vi mode. Insert "❯", command "❮" and replace "✱".
+# Print current Vi mode. Insert "%", command "C" and replace "R".
 function prompt_mode {
   if [[ $KEYMAP == vicmd ]]; then
-    echo "%B%F{red}❮%f%b"
+    echo "%F{red}C%f"
   elif [[ $prompt_replace -eq 1 ]]; then
-    echo "%B%F{red}✱%f%b"
+    echo "%F{red}R%f"
   else
-    echo "%B%F{green}❯%f%b"
+    echo "%F{green}%%%f"
   fi
 }
 
-# Prints " ✔︎ todo" when file ".todo(.txt)" is found in the current directory.
+# Print " .todo" if file ".todo(.txt)" is found in the current directory.
 function prompt_todo {
   if [[ -f .todo || -f .todo.txt ]]; then
-    echo " ✔︎ %B%F{cyan}todo%f%b"
+    echo " %F{blue}.todo%f"
   fi
 }
 
@@ -145,7 +147,7 @@ function zle-line-init zle-keymap-select {
 }
 zle -N zle-line-init && zle -N zle-keymap-select
 
-# Coruscant ~/Projects/Dot Files ❯                              ✔︎ todo ♦︎ master
+# Coruscant ~/Projects/Dot-Files %                                .todo *master
 PROMPT='$(prompt_host) %~ $(prompt_mode) '
 PROMPT2='$(prompt_mode) ' # Used when entering multi-line commands.
 RPROMPT='$(prompt_todo)$(prompt_git)' && ZLE_RPROMPT_INDENT=0

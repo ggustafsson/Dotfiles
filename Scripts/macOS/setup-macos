@@ -80,6 +80,7 @@ sudo mv ~/Downloads/homebrew/{*,.*} /usr/local/
 /usr/local/bin/brew install --cask --appdir=~/Applications \
   1password \
   docker \
+  dropbox \
   google-chrome \
   hammerspoon \
   handbrake \
@@ -95,16 +96,16 @@ ln -s /usr/local/bin/{g,}ls
 
 mkdir -p ~/.vim/pack/others/start
 
-ln -s ~/Projects/Dot\ Files/Scripts ~/
-ln -s ~/Projects/Dot\ Files/gitconfig ~/.gitconfig
-ln -s ~/Projects/Dot\ Files/gitignore_global ~/.gitignore_global
-ln -s ~/Projects/Dot\ Files/hammerspoon ~/.hammerspoon
-ln -s ~/Projects/Dot\ Files/timrc ~/.timrc
-ln -s ~/Projects/Dot\ Files/vim/after ~/.vim/after
-ln -s ~/Projects/Dot\ Files/vim/templates ~/.vim/templates
-ln -s ~/Projects/Dot\ Files/vimrc ~/.vimrc
-ln -s ~/Projects/Dot\ Files/zshenv ~/.zshenv
-ln -s ~/Projects/Dot\ Files/zshrc ~/.zshrc
+ln -s ~/Projects/Dot-Files/Scripts ~/
+ln -s ~/Projects/Dot-Files/gitconfig ~/.gitconfig
+ln -s ~/Projects/Dot-Files/gitignore_global ~/.gitignore_global
+ln -s ~/Projects/Dot-Files/hammerspoon ~/.hammerspoon
+ln -s ~/Projects/Dot-Files/timrc ~/.timrc
+ln -s ~/Projects/Dot-Files/vim/after ~/.vim/after
+ln -s ~/Projects/Dot-Files/vim/templates ~/.vim/templates
+ln -s ~/Projects/Dot-Files/vimrc ~/.vimrc
+ln -s ~/Projects/Dot-Files/zshenv ~/.zshenv
+ln -s ~/Projects/Dot-Files/zshrc ~/.zshrc
 ln -s ~/Projects/Tim/tim ~/Scripts/
 
 echo
