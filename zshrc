@@ -44,6 +44,9 @@ autoload -U edit-command-line && zle -N edit-command-line
 autoload -U bracketed-paste-magic && zle -N bracketed-paste bracketed-paste-magic
 autoload -U url-quote-magic && zle -N self-insert url-quote-magic
 
+autoload -U down-line-or-beginning-search && zle -N down-line-or-beginning-search
+autoload -U up-line-or-beginning-search && zle -N up-line-or-beginning-search
+
 autoload -U select-bracketed && zle -N select-bracketed
 autoload -U select-quoted && zle -N select-quoted
 
@@ -70,6 +73,10 @@ done
 
 bindkey "jj" vi-cmd-mode
 bindkey "^V" edit-command-line
+
+# Search based on text already typed at prompt.
+bindkey "^[[A" up-line-or-beginning-search
+bindkey "^[[B" down-line-or-beginning-search
 
 # Not all is bad in Emacs land. Lets assimilate instead of annihilate!
 bindkey "^A"  beginning-of-line
