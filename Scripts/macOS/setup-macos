@@ -87,6 +87,7 @@ sudo mv ~/Downloads/homebrew/{*,.*} /usr/local/
   openemu \
   tor-browser \
   transmission \
+  visual-studio-code \
   vlc
 
 echo "/usr/local/bin/zsh" | sudo tee -a /etc/shells
