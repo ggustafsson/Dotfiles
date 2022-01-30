@@ -129,8 +129,9 @@ nnoremap <Leader>ut :MundoToggle<CR>
 nnoremap <Leader>wr :set wrap! wrap?<CR>
 nnoremap <Leader>ws ml:%s/\s\+$//e \| nohlsearch<CR>`l
 
-nnoremap <Leader>cl :%!column -t<CR>
-vnoremap <Leader>cl :!column -t<CR>
+" sed turns two spaces delimiter into one space.
+nnoremap <Leader>cl :%!column -t \| sed 's/\( *\) /\1/g'<CR>
+vnoremap <Leader>cl :!column -t \| sed 's/\( *\) /\1/g'<CR>
 
 nnoremap <Leader>cp :%yank *
 vnoremap <Leader>cp "*y

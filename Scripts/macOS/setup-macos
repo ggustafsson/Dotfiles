@@ -58,6 +58,7 @@ sudo mv ~/Downloads/homebrew/{*,.*} /usr/local/
   lame \
   less \
   links \
+  neovim \
   nmap \
   openssh \
   pylint \
