@@ -9,41 +9,29 @@
 # License: BSD 3-Clause
 
 if [[ $# -eq 0 ]]; then
-  dir=~/Projects
+  projects_path=~/Projects
 elif [[ $# -eq 1 ]]; then
-  dir=$1
+  projects_path=$1
 else
   echo "Usage: ${0:t} [PATH]..."
   exit
 fi
 
-if [[ ! -d $dir ]]; then
-  echo "Directory '${dir}' not found! Exiting..."
+if [[ ! -d $projects_path ]]; then
+  echo "Directory '${projects_path}' not found! Exiting..."
   exit 1
 fi
 
-echo "Checking Git repositories."
+echo "Checking Git repositories in '${projects_path}'."
 
-for subdir in ${dir}/*(N); do
-  if [[ ! -d $subdir ]]; then
-    continue
-  fi
-
-  if [[ -d ${subdir}/.git ]]; then
-    pushd $subdir
-    if [[ -n $(git status --porcelain 2> /dev/null) ]]; then
-      echo "\n${subdir:t}"
-      git status --branch --short
+for directory in ${projects_path}/*(N); do
+  if [[ -d ${directory}/.git ]]; then
+    echo -n "\n${directory:t}"
+    if [[ -f ${directory}/.todo ]]; then
+      print -P "  %F{blue}.todo%f"
     else
-      clean_repos+=(${subdir:t})
+      echo
     fi
-    popd
+    git -C $directory status --branch --short
   fi
 done
-
-if [[ ${#clean_repos} -gt 0 ]]; then
-  print -P "\n%F{green}Clean Git repositories:%f"
-  for repo in $clean_repos; do
-    echo " - $repo"
-  done
-fi

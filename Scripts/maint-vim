@@ -10,19 +10,19 @@
 pack_path=~/.vim/pack/others
 
 function fetch {
-  dir=${pack_path}/$1
+  directory=${pack_path}/$1
   url=$2
 
-  print -P "\n%F{cyan}Fetching plugin: ${dir:t}%f"
-  if [[ -d $dir ]]; then
-    git -C $dir pull
+  print -P "\n%F{cyan}Fetching plugin: ${directory:t}%f"
+  if [[ -d $directory ]]; then
+    git -C $directory pull
   else
-    git clone $url $dir
+    git clone $url $directory
   fi
 }
 
 if [[ ! -d $pack_path ]]; then
-  echo "Creating directory: $pack_path"
+  echo "Creating directory '${pack_path}'."
   mkdir -p $pack_path
   echo
 fi

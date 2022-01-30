@@ -34,7 +34,7 @@ for arg; do
     continue
   fi
 
-  echo "Changing permissions on: ${arg}"
+  echo "Changing permissions on '${arg}'."
 
   find $arg -type d -exec chmod $perm_dir "{}" \;
 
