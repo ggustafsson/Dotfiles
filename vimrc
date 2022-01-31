@@ -313,7 +313,8 @@ function! InsertTemplate(file)
   execute "%s/#DATE#/\\=system(\"date +'%Y-%m-%d' | tr -d '\n'\")/ge"
 endfunction
 " Search for '#[A-Z]' here because of ':help function-search-undo'.
-command! -nargs=1 -complete=file InsertTemplate call InsertTemplate(<q-args>) | silent! /#[A-Z]
+command! -nargs=1 -complete=file InsertTemplate call InsertTemplate(<q-args>)
+  \ | /#[A-Z]
 
 " Display syntax group used at cursor position.
 function! SyntaxGroup()
@@ -353,6 +354,7 @@ augroup Main
   autocmd FileType godoc,help set colorcolumn= nolist
   autocmd FileType json       set expandtab shiftwidth=4 softtabstop=4
   autocmd FileType markdown   set expandtab shiftwidth=4 softtabstop=4
+  autocmd FileType netrw      set nolist
   autocmd FileType python     set expandtab shiftwidth=4 softtabstop=4
 
   " Quickfix and location list windows.

@@ -87,11 +87,11 @@ bindkey "^[." insert-last-word
 bindkey "^['" quote-line
 bindkey "^[h" run-help
 
-zstyle ":completion:*" insert-tab pending # Don't insert tab characters at prompt.
+zstyle ":completion:*" insert-tab pending # No tab characters at prompt.
 zstyle ":completion:*" list-colors ${(s.:.)LS_COLORS}
-zstyle ":completion:*" matcher-list "m:{[:lower:]}={[:upper:]}" # Works like smartcase in Vim.
+zstyle ":completion:*" matcher-list "m:{[:lower:]}={[:upper:]}" # Smartcase.
 zstyle ":completion:*" menu select
-zstyle ":completion:*" special-dirs true # Make "cd ..<tab>" turn into "cd ../" etc.
+zstyle ":completion:*" special-dirs true # Make "cd ..<tab>" append "/" etc.
 
 if [[ $OSTYPE == darwin* ]]; then
   compdef _man man2pdf
