@@ -14,7 +14,7 @@ function fetch {
   url=$2
 
   print -P "\n%F{cyan}Fetching plugin: ${directory:t}%f"
-  if [[ -d $directory ]]; then
+  if [[ -d ${directory}/.git ]]; then
     git -C $directory pull
   else
     git clone $url $directory

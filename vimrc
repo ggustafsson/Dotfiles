@@ -15,14 +15,13 @@ set confirm
 set encoding=utf-8
 set formatoptions+=jlnor " See ':help fo-table'.
 set history=999
-set mouse=a
+set mouse=nvi " Why the heck would you want command-line mode here?
 set nofoldenable
 set nowrap
 set nrformats-=octal " CTRL-A on 007 != 010. Shaken, not stirred! :)
 set omnifunc=syntaxcomplete#Complete
 set pastetoggle=<C-p> " Overrides 'Find previous keyword' under insert mode.
 set sessionoptions-=options
-set showcmd " This is for some reason 'off for Unix'. WTF?
 set spelllang=en,sv
 set virtualedit=block
 
@@ -50,11 +49,11 @@ set incsearch
 
 " ~/.vimrc [+] [unix] [utf-8] [vim]    1, 46/260
 set laststatus=2
-set statusline=\ %(%f\ %)
+set statusline=\ %(%F\ %)
 set statusline+=%(%r\ %)
 set statusline+=%(%m\ %)
-set statusline+=%([%{&fileformat}]\ %)
-set statusline+=%([%{&fileencoding==''?&encoding:&fileencoding}]\ %)
+set statusline+=%([%{&fileformat=='unix'?'':&fileformat}]\ %)
+set statusline+=%([%{&fileencoding=='utf-8'?'':&fileencoding}]\ %)
 set statusline+=%(%y\ %)
 set statusline+=%(%{&paste?'[paste]':''}\ %)
 set statusline+=%=
