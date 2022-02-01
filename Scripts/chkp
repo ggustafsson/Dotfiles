@@ -30,8 +30,8 @@ for directory in ${projects_path}/*(N); do
   if [[ -d ${directory}/.git ]]; then
     pushd $directory
     echo -n "\n${directory:t}"
-    if [[ -f .todo || .todo.txt ]]; then
-      print -P "  %F{blue}.todo%f"
+    if [[ -f .todo || -f .todo.txt ]]; then
+      print -P " %F{blue}.todo%f"
     else
       echo
     fi
