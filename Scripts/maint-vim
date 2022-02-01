@@ -33,13 +33,11 @@ fetch start/syntastic https://github.com/vim-syntastic/syntastic.git
 fetch start/vim-go    https://github.com/fatih/vim-go.git
 fetch start/vim-mundo https://github.com/simnalamburt/vim-mundo.git
 
-fetch start/vim-characterize https://github.com/tpope/vim-characterize.git
-fetch start/vim-commentary   https://github.com/tpope/vim-commentary.git
-fetch start/vim-endwise      https://github.com/tpope/vim-endwise.git
-fetch start/vim-repeat       https://github.com/tpope/vim-repeat.git
-fetch start/vim-speeddating  https://github.com/tpope/vim-speeddating.git
-fetch start/vim-surround     https://github.com/tpope/vim-surround.git
-fetch start/vim-vinegar      https://github.com/tpope/vim-vinegar.git
+fetch start/vim-commentary  https://github.com/tpope/vim-commentary.git
+fetch start/vim-endwise     https://github.com/tpope/vim-endwise.git
+fetch start/vim-repeat      https://github.com/tpope/vim-repeat.git
+fetch start/vim-speeddating https://github.com/tpope/vim-speeddating.git
+fetch start/vim-surround    https://github.com/tpope/vim-surround.git
 
 echo "\nGenerating help tags for all plugins under ~/.vim/pack/*/start."
 vim -c "helptags ALL" -c q
