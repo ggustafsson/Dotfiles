@@ -50,15 +50,14 @@ set incsearch
 " ~/.vimrc [+] [unix] [utf-8] [vim]    1, 46/260
 set laststatus=2
 set statusline=\ %(%F\ %)
-set statusline+=%(%r\ %)
 set statusline+=%(%m\ %)
 set statusline+=%([%{&fileformat=='unix'?'':&fileformat}]\ %)
 set statusline+=%([%{&fileencoding=='utf-8'?'':&fileencoding}]\ %)
 set statusline+=%(%y\ %)
 set statusline+=%(%{&paste?'[paste]':''}\ %)
 set statusline+=%=
-set statusline+=%(%v,\ %)
-set statusline+=%(%l/%L\ %)
+set statusline+=%-11.(%l,%v\ %) " 99999,999 would still has two spaces.
+set statusline+=%(%P\ %)
 
 set list
 set listchars=tab:!-,trail:-,precedes:<,extends:>
@@ -361,5 +360,6 @@ augroup Main
     \ statusline=\ %(%t\ %)
     \ statusline+=%(%{exists('w:quickfix_title')?''.w:quickfix_title:''}\ %)
     \ statusline+=%=
-    \ statusline+=%(%l/%L\ %)
+    \ statusline+=%-11.(%l,%v\ %)
+    \ statusline+=%(%P\ %)
 augroup END
