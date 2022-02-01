@@ -1,6 +1,7 @@
 #!/usr/bin/env zsh
 
-# Description: This script configures a macOS system the way I like.
+# Description: Configures a macOS system the way I like. This will be ported
+# over to Ansible Playbook any year now.
 #
 # Usage: setup-macos
 #
@@ -12,6 +13,7 @@ if [[ $? -eq 1 ]]; then
   echo "User is not allowed to use sudo! Exiting..."
   exit 1
 fi
+
 
 # Check write permission for homebrew (SIP blocking?).
 mkdir -p /usr/local/perm_test
@@ -27,13 +29,16 @@ if [[ ! -d /Applications/Xcode.app ]]; then
   exit 1
 fi
 
+
 chflags hidden ~/Public
 chflags nohidden ~/Library
+
 
 xcode-select --install
 echo -n "Press 'Return' when Command Line Tools are installed..."
 read -s wait_for_input
 echo
+
 
 git clone https://github.com/Homebrew/brew.git ~/Downloads/homebrew
 sudo mv ~/Downloads/homebrew/{*,.*} /usr/local/
@@ -96,6 +101,8 @@ echo "/usr/local/bin/zsh" | sudo tee -a /etc/shells
 ln -s /usr/local/bin/{g,}grep
 ln -s /usr/local/bin/{g,}ls
 
+
+chmod 700 $HOME
 mkdir -p ~/.vim/pack/others/start
 
 ln -s ~/Projects/Dot-Files/Scripts ~/
@@ -109,6 +116,7 @@ ln -s ~/Projects/Dot-Files/vimrc ~/.vimrc
 ln -s ~/Projects/Dot-Files/zshenv ~/.zshenv
 ln -s ~/Projects/Dot-Files/zshrc ~/.zshrc
 ln -s ~/Projects/Tim/tim ~/Scripts/
+
 
 echo
 ~/Scripts/maint-vim

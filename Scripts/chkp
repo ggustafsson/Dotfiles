@@ -1,6 +1,8 @@
 #!/usr/bin/env zsh
 
-# Description: This script checks the git status of all my projects.
+# Description: Checks status of all git repos under default projects path, or
+# path specified through argument. If file ".todo(.txt)" is found in directory
+# it is displayed next to directory name.
 #
 # Usage: chkp
 #        chkp <path>
@@ -22,16 +24,18 @@ if [[ ! -d $projects_path ]]; then
   exit 1
 fi
 
-echo "Checking Git repositories in '${projects_path}'."
+echo "Checking Git repositories in '${projects_path:a}'."
 
 for directory in ${projects_path}/*(N); do
   if [[ -d ${directory}/.git ]]; then
+    pushd $directory
     echo -n "\n${directory:t}"
-    if [[ -f ${directory}/.todo ]]; then
+    if [[ -f .todo || .todo.txt ]]; then
       print -P "  %F{blue}.todo%f"
     else
       echo
     fi
-    git -C $directory status --branch --short
+    git status --branch --short
+    popd
   fi
 done

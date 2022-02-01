@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-# Description: This script downloads/updates Vim plugins.
+# Description: Downloads/updates Vim plugins with git.
 #
 # Usage: maint-vim
 #

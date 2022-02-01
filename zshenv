@@ -1,6 +1,7 @@
 setopt no_global_rcs # Don't use config files from /etc.
 umask 022
 
+
 if [[ $OSTYPE == darwin* ]]; then
   # Swedish sorting order under macOS is wrong because of broken locale files,
   # picking the least messed up option.

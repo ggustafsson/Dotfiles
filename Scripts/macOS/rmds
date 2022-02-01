@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-# Description: Easily delete .DS_Store files.
+# Description: Deletes all ".DS_Store" files recursively.
 #
 # Usage: rmds
 #        rmds <path>

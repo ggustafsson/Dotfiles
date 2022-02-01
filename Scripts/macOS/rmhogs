@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-# Description: This script deletes various space hogging files/directories.
+# Description: Deletes various space hogging files/directories.
 #
 # Usage: rmhogs
 #

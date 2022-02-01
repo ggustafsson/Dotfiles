@@ -1,8 +1,8 @@
 #!/usr/bin/env zsh
 
-# Description: This script asks if you want to proceed and exits with status 0
-# (success) or status 1 (error) depending on the answer. Anything but input of
-# "y" or "Y" leads to exit status 1 to avoid shell quirks and human f-ups.
+# Description: Asks for confirmation to proceed. Exits with status 0 (success)
+# or status 1 (error) depending on answer. Anything but input of "y" or "Y"
+# leads to exit status 1.
 #
 # Usage: confirm && x
 #        confirm || exit 1

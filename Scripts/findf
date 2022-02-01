@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 
-# Description: This script performs a case insensitive search for files under
-# the current working directory or the supplied path.
+# Description: Perform case insensitive search for files under current working
+# directory or path specified through argument.
 #
 # Usage: findf <pattern>
 #        findf <pattern> <path>

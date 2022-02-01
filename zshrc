@@ -21,6 +21,7 @@ fi
 tmp=~/Documents/Text/Tmp.txt
 todo=~/Documents/Text/Todo.txt
 
+
 setopt correct # Try to correct the spelling of commands.
 setopt extendedglob
 setopt interactivecomments
@@ -38,6 +39,7 @@ setopt incappendhistory
 setopt autopushd
 setopt pushdignoredups
 
+
 autoload -U compinit && compinit
 autoload -U edit-command-line && zle -N edit-command-line
 
@@ -49,6 +51,7 @@ autoload -U up-line-or-beginning-search && zle -N up-line-or-beginning-search
 
 autoload -U select-bracketed && zle -N select-bracketed
 autoload -U select-quoted && zle -N select-quoted
+
 
 bindkey -v
 bindkey -M vicmd "R" custom-vi-replace
@@ -87,6 +90,7 @@ bindkey "^[." insert-last-word
 bindkey "^['" quote-line
 bindkey "^[h" run-help
 
+
 zstyle ":completion:*" insert-tab pending # No tab characters at prompt.
 zstyle ":completion:*" list-colors ${(s.:.)LS_COLORS}
 zstyle ":completion:*" matcher-list "m:{[:lower:]}={[:upper:]}" # Smartcase.
@@ -96,6 +100,7 @@ zstyle ":completion:*" special-dirs true # Make "cd ..<tab>" append "/" etc.
 if [[ $OSTYPE == darwin* ]]; then
   compdef _man man2pdf
 fi
+
 
 # Custom Vi replace function that change a variable before and after entering
 # replace mode. The variable is used in function "prompt_mode" later on.
@@ -154,10 +159,12 @@ function zle-line-init zle-keymap-select {
 }
 zle -N zle-line-init && zle -N zle-keymap-select
 
+
 # Coruscant ~/Projects/Dot-Files %                                .todo *master
 PROMPT='$(prompt_host) %~ $(prompt_mode) '
 PROMPT2='$(prompt_mode) ' # Used when entering multi-line commands.
 RPROMPT='$(prompt_todo)$(prompt_git)' && ZLE_RPROMPT_INDENT=0
+
 
 if [[ $OSTYPE == darwin* ]]; then
   alias beep="afplay /System/Library/Sounds/Glass.aiff"
@@ -197,12 +204,12 @@ alias cp="cp -vi"
 alias mv="mv -vi"
 alias rm="rm -v"
 
-alias la="ls --all -l"
+alias la="ls -l --all"
 alias ll="ls -l"
 alias ls="ls --classify --color=auto --human-readable"
 
 alias df="df -h"
-alias du="du -sh"
+alias du="du -hs"
 
 alias grep="grep --color=auto"
 alias rgrep="grep --binary-file=without-match --dereference-recursive --exclude-dir .git"
@@ -213,6 +220,7 @@ alias pyweb="python3 -m http.server 8080"
 
 alias svtplay-dl="svtplay-dl --resume"
 alias youtube-dl="youtube-dl --continue --output '%(title)s.%(ext)s'"
+
 
 if [[ -f ~/.zshrc_local ]]; then
   source ~/.zshrc_local

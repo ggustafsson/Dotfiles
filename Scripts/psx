@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 
-# Description: This script displays the running processes and if an argument is
-# supplied then only the processes that matches the pattern is displayed.
+# Description: Displays list of running processes. If argument is supplied only
+# processes that matches the pattern are displayed.
 #
 # Usage: psx
 #        psx <pattern>

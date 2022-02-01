@@ -1,6 +1,7 @@
 #!/bin/bash
 
-# Description: This script configures specific things for my media center.
+# Description: Configures misc things specific for my media center. This will
+# be ported over to Ansible Playbook any year now.
 #
 # Usage: setup-ubuntu-tv
 #

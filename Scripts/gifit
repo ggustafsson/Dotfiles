@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-# Description: This script creates an animated gif image out of several images.
+# Description: Creates animated gif image out of several images.
 #
 # Dependencies: imagemagick
 #

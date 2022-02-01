@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-# Description: This script backs up a few specific directories/files to device.
+# Description: Backs up various files/directories to external device.
 #
 # Usage: backup
 #

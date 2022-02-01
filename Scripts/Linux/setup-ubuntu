@@ -1,18 +1,20 @@
 #!/bin/bash
 
-# Description: This script configures a Ubuntu system the way I like.
+# Description: Configures a Ubuntu system the way I like. This will be ported
+# over to Ansible Playbook any year now.
 #
 # Usage: setup-ubuntu
 #
 # Creator: Göran Gustafsson (gustafsson.g at gmail.com)
 # License: BSD 3-Clause
 
-mkdir -p ~/.ssh && chmod 700 ~/.ssh
+mkdir -m 700 ~/.ssh
 mkdir -p ~/.vim/backups
 mkdir -p ~/.vim/pack/ggustafsson/start
 mkdir -p ~/.vim/pack/others/start
 mkdir -p ~/.vim/undos
-mkdir -p ~/Projects
+mkdir ~/Projects
+
 
 sudo apt install -y \
   ansible \
@@ -34,6 +36,7 @@ sudo apt install -y \
 
 sudo chsh -s /bin/zsh $USER
 
+
 echo
 git clone https://github.com/ggustafsson/Dot-Files.git ~/Projects/Dot-Files
 git clone https://github.com/ggustafsson/Static-Color-Scheme.git ~/Projects/Static-Color-Scheme
@@ -47,10 +50,10 @@ ln -s ~/Projects/Dot-Files/vim/templates ~/.vim/templates
 ln -s ~/Projects/Dot-Files/vimrc ~/.vimrc
 ln -s ~/Projects/Dot-Files/zshenv ~/.zshenv
 ln -s ~/Projects/Dot-Files/zshrc ~/.zshrc
-
 ln -s ~/Projects/Static-Color-Scheme ~/.vim/pack/ggustafsson/start/Static-Color-Scheme
 
 sudo cp ~/Projects/Dot-Files/motd /etc/motd
+
 
 echo
 ~/Scripts/maint-vim

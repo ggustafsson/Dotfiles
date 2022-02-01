@@ -1,14 +1,10 @@
 #!/usr/bin/env zsh
 
-# Description: This script displays either the last 25 history entries or all
-# entries that matches a specific pattern.
+# Description: Displays last 25 history entries. If argument is supplied only
+# history entries that matches the pattern are displayed.
 #
-# This script must be used from an alias. I have this in ~/.zshrc:
-#
+# Caveat: Script must be sourced to run in current shell.
 # alias hist="source hist"
-#
-# The source command before the script name must be there to make the script
-# run in the current shell.
 #
 # Usage: hist
 #        hist <pattern>

@@ -1,7 +1,8 @@
 #!/usr/bin/env ruby
 
-# Description: This script takes text as input and prints out text that is
-# capitalized as a headline. Should be correct most of the time.
+# Description: Rewrites input text following title capitalization rules.
+# Brackets () {} [] <>, quotes "" '', first word, and last word is handled
+# correctly etc. Corner case proofness is good but should not be expected.
 #
 # Usage: title <text>
 #
@@ -13,8 +14,7 @@ if ARGV.empty?
   exit
 end
 
-# All the words that should be downcased.
-word_list = %w(
+lowercase_words = %w(
   a
   an
   and
@@ -39,30 +39,29 @@ word_list = %w(
   with
 )
 
-# Using .join and .split to turn the argument(s) into one single string.
+ignore_chars = %w(\( { [ < " ')
+
+# Turn multiple arguments into one single string.
 text = $*.join(" ").split(" ")
-last_position = text.length - 1
+last_word = text.length - 1
 
 text.each_with_index do |word, position|
-  # Capitalize the first and last word if it starts with a normal letter.
-  if (position == 0 or position == last_position) and word[0] =~ /[[:alpha:]]/
+  # Always capitalize first and last word.
+  if (position == 0 or position == last_word) and word[0] =~ /[[:alpha:]]/
     text[position] = word.capitalize
     next
   end
 
-  # If the current word starts with "(" or "[" then ignore the first character
-  # and capitalize the remaining text. Useful for capitalizing FLAC/MP3 tags.
-  # Everything behind "(" or "[" will be seen as a new sentence.
-  if word[0] == "(" or word[0] == "["
+  # Ignore leading brackets/quotes and capitalize remaining text.
+  if ignore_chars.include?(word[0])
     first_char = word[0]
     remaining = word[1..-1]
     text[position] = first_char + remaining.capitalize
     next
   end
 
-  # Check if the current word (in lower cased form) is included in the
-  # word_list array.
-  if word_list.include?(word.downcase)
+  # Lowercase or capitalize word not matched by previous rules.
+  if lowercase_words.include?(word.downcase)
     text[position] = word.downcase
   else
     text[position] = word.capitalize

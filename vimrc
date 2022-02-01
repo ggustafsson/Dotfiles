@@ -9,6 +9,7 @@ if !exists("g:dont_run_again_if_we_have_already_bought_chicken_nuggets")
   let g:dont_run_again_if_we_have_already_bought_chicken_nuggets = 1
 endif
 
+
 set autoread
 set backspace=indent,eol,start
 set confirm
@@ -20,7 +21,7 @@ set nofoldenable
 set nowrap
 set nrformats-=octal " CTRL-A on 007 != 010. Shaken, not stirred! :)
 set omnifunc=syntaxcomplete#Complete
-set pastetoggle=<C-p> " Overrides 'Find previous keyword' under insert mode.
+set pastetoggle=<C-P> " Overrides 'Find previous keyword' under insert mode.
 set sessionoptions-=options
 set spelllang=en,sv
 set virtualedit=block
@@ -72,6 +73,7 @@ set splitright
 set wildignorecase
 set wildmode=longest,list
 
+
 let g:mapleader = ","
 
 let g:go_metalinter_autosave = 1
@@ -84,11 +86,11 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_jump = 1 " Runs :lfirst at start of syntax check.
 let g:syntastic_enable_highlighting = 0
 let g:syntastic_mode_map = { "mode": "active", "passive_filetypes": ["go"] }
-
 let g:syntastic_error_symbol = ">>"
 let g:syntastic_warning_symbol = ">>"
 let g:syntastic_style_error_symbol = g:syntastic_warning_symbol
 let g:syntastic_style_warning_symbol = g:syntastic_warning_symbol
+
 
 if has("mac")
   nnoremap <Leader>fi :silent !open "%:p:h"<CR>:redraw!<CR>
@@ -137,8 +139,8 @@ vnoremap <Leader>cp "*y
 nnoremap <Leader>ne :enew<CR>
 vnoremap <Leader>ne y:enew<CR>PGdd
 
-vnoremap <Leader>re :s/\%V/gc<Left><Left><Left>
 nnoremap <Leader>re :%s//gc<Left><Left><Left>
+vnoremap <Leader>re :s/\%V/gc<Left><Left><Left>
 
 " Locale files are broken under macOS and the latest Ubuntu Desktop LTS version
 " don't include Vim with ':sort l' support yet. Using the default incorrect but
@@ -173,7 +175,7 @@ nnoremap <silent>gL :call GoToLocation("previous")<CR>
 inoremap jj <Esc>
 
 inoremap <expr><Tab> CompletionTab()
-inoremap <C-n>       <C-x><C-o>
+inoremap <C-N> <C-X><C-O>
 
 " Text object consisting of all text inside current line, first character up
 " until last character. Like 'w' (word), 'p' (paragraph) etc.
@@ -182,7 +184,9 @@ onoremap <silent>il :normal vil<CR>
 
 cnoremap <C-A> <Home>
 
+
 command! -nargs=* -complete=help Help vertical help <args>
+
 
 " Jump back and forth between directory of file in current buffer and Vim's
 " initial working directory.
@@ -204,7 +208,7 @@ function! ChangeDirectory()
   endif
 endfunction
 
-" Toggle colorcolumn setting on and off.
+" Toggle 'colorcolumn' setting on and off.
 function! ColorColumn()
   if empty(&colorcolumn)
     set colorcolumn=+1 colorcolumn?
@@ -213,7 +217,7 @@ function! ColorColumn()
   endif
 endfunction
 
-" Turn tab key into <C-n> (keyword completion) if there is a character left of
+" Turn tab key into <C-N> (keyword completion) if there is a character left of
 " cursor position, normal tab character is inserted otherwise.
 "
 " inoremap <expr><Tab> CompletionTab()
@@ -223,7 +227,7 @@ function! CompletionTab()
   if empty(char) || char == " " || char =~ "\t"
     return "\<Tab>"
   else
-    return "\<C-n>"
+    return "\<C-N>"
   endif
 endfunction
 
@@ -287,7 +291,6 @@ function! GoToLocation(action)
     catch /:E42:/ " E42: No Errors
       return
     endtry
-  " Quickfix and location list don't play nicely together.
   catch /:E926:/ " E926: Current location list was changed
     execute l:cmds_loclist.next
   endtry
@@ -316,8 +319,8 @@ command! -nargs=1 -complete=file InsertTemplate call InsertTemplate(<q-args>)
 
 " Display syntax group used at cursor position.
 function! SyntaxGroup()
-  let l:syntax_id    = synID(line("."), col("."), 1)
-  let l:syntax_name  = synIDattr(l:syntax_id, "name")
+  let l:syntax_id = synID(line("."), col("."), 1)
+  let l:syntax_name = synIDattr(l:syntax_id, "name")
   let l:syntax_trans = synIDattr(synIDtrans(l:syntax_id), "name")
 
   echo syntax_name . " -> " . syntax_trans
@@ -334,6 +337,7 @@ function! UndoAll()
     earlier 1f
   endif
 endfunction
+
 
 augroup Main
   autocmd!

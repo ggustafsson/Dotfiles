@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-# Description: This script backs up directories/files to server with rsync.
+# Description: Backs up various files/directories to server with Rsync.
 #
 # Usage: backup2srv
 #

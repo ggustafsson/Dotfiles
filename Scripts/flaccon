@@ -1,14 +1,13 @@
 #!/usr/bin/env zsh
 
-# Description: This script converts FLAC files to high quality MP3 files in a
-# very easy and convenient way. By default this script depends on my
-# independent script called "title" which is used to automatically fix the
-# capitalization of every tag (use the -ic flag to stop it).
+# Description: Converts FLAC files to high quality MP3 files. Automatic title
+# capitalization of tags are enabled by default and depends on "title" script,
+# disable feature with -i flag.
 #
-# Dependencies: flac, lame and title
+# Dependencies: flac and lame. title is optional.
 #
 # Usage: flaccon <file>
-#        flaccon -ic <file>
+#        flaccon -i <file>
 #        flaccon *.flac
 #        find . -type f -iname "*.flac" -exec flaccon "{}" \;
 #
@@ -18,21 +17,21 @@
 if [[ $# -eq 0 ]]; then
   echo "Usage: ${0:t} [OPTION]... [FILENAME(S)]...
 
-  -ic, --ignore-case  Don't fix capitalization in ID3 tags."
+  -i, --ignore-case  Don't fix capitalization in ID3 tags."
   exit
 fi
 
 echo "Converting FLAC file(s) to MP3 file(s)."
 
-if [[ $1 == (-ic|--ignore-case) ]]; then
-  fix_capitalization=0
+if [[ $1 == (-i|--ignore-case) ]]; then
+  capitalize=0
   shift # Removes $1 from argument list.
 else
   if type -p title &> /dev/null; then
-    fix_capitalization=1
+    capitalize=1
   else
-    echo "\nCommand 'title' not found! Skipping capitalization fix..."
-    fix_capitalization=0
+    echo "\nCommand 'title' not found! Skipping capitalization..."
+    capitalize=0
   fi
 fi
 
@@ -47,27 +46,21 @@ for arg; do
     continue
   fi
 
-  # All the tags that will be saved.
+  # All tags that will be kept.
   tags=(title artist album tracknumber totaltracks genre date)
 
-  # Put all tag information inside of various shell variables.
+  # Put all tag information into shell variables.
   for tag in $tags; do
-    # The info variable will contain something like "TITLE=Text here".
-    output=$(metaflac --show-tag=$tag $arg)
+    output=$(metaflac --show-tag=$tag $arg) # "TITLE=Text".
+    value=${output#*=} # Remove tag name, keep text.
 
-    # The information variable will contain just the text from output.
-    information=${output#*=}
-
-    if [[ $fix_capitalization -eq 1 ]]; then
-      # If the variable information is not empty run my external script "title"
-      # on it to fix the capitalization of the text.
-      if [[ ! -z $information ]]; then
-        information=$(title $information)
-      fi
+    # Title capitalize non-empty values if feature is not disabled.
+    if [[ ! -z $value && $capitalize -eq 1 ]]; then
+      value=$(title $value)
     fi
 
-    # Put the value of $information inside of the current tag variable.
-    typeset $tag=$information
+    # Save value in tag variable. e.g. "title=Text".
+    typeset ${tag}=$value
   done
 
   print -P "\n%F{cyan}Converting file: ${arg/${HOME}/~}%f\n"
@@ -77,8 +70,8 @@ for arg; do
     echo "${(C)tag}: ${(P)tag}"
   done
 
-  # Decode FLAC file with "flac" and encode it to MP3 with "lame".
-  flac -dc $arg | lame -b 320 -h --ignore-tag-errors \
+  # Decode FLAC and encode MP3. 320kbit/s bitrate and quality level 2.
+  flac -dc $arg | lame -b 320 -q 2 --ignore-tag-errors \
     --tt "$title" \
     --ta "$artist" \
     --tl "$album" \

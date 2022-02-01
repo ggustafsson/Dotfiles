@@ -1,8 +1,8 @@
 #!/usr/bin/env zsh
 
-# Description: This script changes the permissions on all files and directories
-# under the specified path(s). The permissions used are 755/700 for directories
-# and 644/600 (or 755/700) for files.
+# Description: Changes permissions on files and directories recursively.
+# Permissions used are 755/700 for directories and 644/600 for files, prior
+# execute flags on files are left untouched.
 #
 # Usage: perm -s <path1> <path2> ...
 #        perm -l <path1> <path2> ...

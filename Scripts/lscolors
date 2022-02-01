@@ -1,11 +1,16 @@
 #!/usr/bin/env zsh
 
-# Description: This script prints out everything specified in $LS_COLORS.
+# Description: Pretty prints "LS_COLORS" setting.
 #
 # Usage: lscolors
 #
 # Original script found here:
 #   <http://unix.stackexchange.com/questions/20721/testing-ls-colors-in-zsh>
+
+if [[ ! $LS_COLORS ]]; then
+  echo "Variable 'LS_COLORS' is not set! Exiting..."
+  exit 1
+fi
 
 # Options here are based on output from 'dircolors' version 9.0.
 typeset -A names

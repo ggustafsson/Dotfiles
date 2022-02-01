@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-# Description: An extremely simple frontend for https://cheat.sh.
+# Description: Extremely simple frontend for https://cheat.sh.
 #
 # Usage: cht
 #        cht <query>

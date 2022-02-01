@@ -1,11 +1,7 @@
 #!/usr/bin/env ruby
 
-# Description: This script reads the file ~/.countdowns and calculates the
-# remaining days until the specific date on each entry in the file.
-#
-# An entry in the file looks like this:
-#
-# 2017-01-14,"Title here"
+# Description: Calculates remaining days until date(s) specified in file
+# ~/.countdowns. Entry format is "YYYY-MM-DD,Title".
 #
 # Usage: countd
 #
@@ -23,12 +19,11 @@ elsif CSV.read(csv_file).empty?
 end
 
 CSV.foreach(csv_file) do |row|
-  # Print empty line unless the current line in the CSV file is the first one.
-  # Using this empty line as a separator between every entry/error message.
+  # Print empty line before each entry except first.
   puts unless $. == 1
 
   unless row.size == 2
-    puts "The row on line #{$.} is not 2 columns. Skipping!"
+    puts "Row on line #{$.} is not 2 columns! Skipping..."
     next
   end
 
@@ -38,7 +33,7 @@ CSV.foreach(csv_file) do |row|
   begin
     future = Date.parse(date)
   rescue
-    puts "Invalid date on line #{$.}. Skipping!"
+    puts "Invalid date on line #{$.}! Skipping..."
     next
   end
 

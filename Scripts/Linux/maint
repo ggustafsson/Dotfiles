@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 
-# Description: This script executes a bunch of commands I run frequently to
-# keep things up-to-date etc.
+# Description: Executes a bunch of commands I run frequently to keep things
+# up-to-date etc.
 #
 # Usage: maint
 #
@@ -19,4 +19,5 @@ for directory in ~/Projects/*(N); do
   fi
 done
 
-echo; maint-vim
+echo
+maint-vim

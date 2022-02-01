@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-# Description: This script converts man pages to PDF files with Preview.app.
+# Description: Converts man pages to PDF files with Preview.app.
 #
 # Usage: man2pdf <man>
 #        man2pdf <man> <man> ...
