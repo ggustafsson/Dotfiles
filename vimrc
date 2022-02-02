@@ -48,7 +48,7 @@ set softtabstop=2
 set hlsearch
 set incsearch
 
-" ~/.vimrc [+] [unix] [utf-8] [vim]    1, 46/260
+" ~/.vimrc [+] [dos] [latin1] [vim] [paste]        132,47    62%
 set laststatus=2
 set statusline=\ %(%F\ %)
 set statusline+=%(%m\ %)
@@ -57,7 +57,7 @@ set statusline+=%([%{&fileencoding=='utf-8'?'':&fileencoding}]\ %)
 set statusline+=%(%y\ %)
 set statusline+=%(%{&paste?'[paste]':''}\ %)
 set statusline+=%=
-set statusline+=%-11.(%l,%v\ %) " 99999,999 would still has two spaces.
+set statusline+=%-11.(%l,%v\ %) " 99999,999 would still have two spaces.
 set statusline+=%(%P\ %)
 
 set list
@@ -86,7 +86,7 @@ let g:netrw_banner = 0
 let g:netrw_sort_sequence = "*"
 
 let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_jump = 1 " Runs :lfirst at start of syntax check.
+let g:syntastic_auto_jump = 1 " Runs 'lfirst' at start of syntax check.
 let g:syntastic_enable_highlighting = 0
 let g:syntastic_mode_map = { "mode": "active", "passive_filetypes": ["go"] }
 let g:syntastic_error_symbol = ">>"
@@ -369,3 +369,8 @@ augroup Main
     \ statusline+=%-11.(%l,%v\ %)
     \ statusline+=%(%P\ %)
 augroup END
+
+
+if filereadable(expand("~/.vimrc_local"))
+  source ~/.vimrc_local
+endif
