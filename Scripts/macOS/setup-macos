@@ -101,6 +101,8 @@ echo "/usr/local/bin/zsh" | sudo tee -a /etc/shells
 ln -s /usr/local/bin/{g,}grep
 ln -s /usr/local/bin/{g,}ls
 
+defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
+
 
 chmod 700 $HOME
 mkdir -p ~/.vim/pack/others/start
