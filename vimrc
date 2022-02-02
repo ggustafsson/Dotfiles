@@ -359,7 +359,6 @@ augroup Main
   autocmd FileType godoc,help set colorcolumn= nolist
   autocmd FileType json       set expandtab shiftwidth=4 softtabstop=4
   autocmd FileType markdown   set expandtab shiftwidth=4 softtabstop=4
-  autocmd FileType netrw      set nolist
   autocmd FileType python     set expandtab shiftwidth=4 softtabstop=4
 
   " Quickfix and location list windows.
