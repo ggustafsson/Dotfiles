@@ -33,6 +33,10 @@ fetch start/syntastic https://github.com/vim-syntastic/syntastic.git
 fetch start/vim-go    https://github.com/fatih/vim-go.git
 fetch start/vim-mundo https://github.com/simnalamburt/vim-mundo.git
 
+fetch start/fern.vim            https://github.com/lambdalisue/fern.vim.git
+fetch start/fern-hijack.vim     https://github.com/lambdalisue/fern-hijack.vim.git
+fetch start/fern-git-status.vim https://github.com/lambdalisue/fern-git-status.vim.git
+
 fetch start/vim-commentary  https://github.com/tpope/vim-commentary.git
 fetch start/vim-endwise     https://github.com/tpope/vim-endwise.git
 fetch start/vim-repeat      https://github.com/tpope/vim-repeat.git

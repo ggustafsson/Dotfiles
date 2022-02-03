@@ -82,9 +82,6 @@ let g:go_template_autocreate = 0
 let g:mundo_preview_statusline = " Mundo Preview"
 let g:mundo_tree_statusline = " Mundo Tree"
 
-let g:netrw_banner = 0
-let g:netrw_sort_sequence = "*"
-
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_jump = 1 " Runs 'lfirst' at start of syntax check.
 let g:syntastic_enable_highlighting = 0
@@ -126,6 +123,7 @@ nnoremap <Leader>t8 :set noexpandtab shiftwidth=8 softtabstop=0 tabstop=8<CR>
 nnoremap <Leader>te :InsertTemplate ~/.vim/templates/
 nnoremap <Leader>tm :vsplit ~/Documents/Text/Tmp.txt \| :set nobuflisted<CR>
 nnoremap <Leader>to :vsplit ~/Documents/Text/Todo.txt \| :set nobuflisted<CR>
+nnoremap <Leader>tr :Fern . -drawer -toggle<CR>
 nnoremap <Leader>tw :set textwidth=79
 nnoremap <Leader>un :call UndoAll()<CR>
 nnoremap <Leader>ut :MundoToggle<CR>
