@@ -64,7 +64,6 @@ set list
 set listchars=tab:!-,trail:-,precedes:<,extends:>
 
 set number
-set numberwidth=3
 set relativenumber
 
 set splitbelow
@@ -123,7 +122,7 @@ nnoremap <Leader>t8 :set noexpandtab shiftwidth=8 softtabstop=0 tabstop=8<CR>
 nnoremap <Leader>te :InsertTemplate ~/.vim/templates/
 nnoremap <Leader>tm :vsplit ~/Documents/Text/Tmp.txt \| :set nobuflisted<CR>
 nnoremap <Leader>to :vsplit ~/Documents/Text/Todo.txt \| :set nobuflisted<CR>
-nnoremap <Leader>tr :Fern . -drawer -toggle<CR>
+nnoremap <Leader>tr :Fern . -drawer -width=35 -toggle<CR>
 nnoremap <Leader>tw :set textwidth=79
 nnoremap <Leader>un :call UndoAll()<CR>
 nnoremap <Leader>ut :MundoToggle<CR>
@@ -352,15 +351,19 @@ augroup Main
 
   autocmd BufNewFile,BufReadPost *.conf,config set filetype=conf
 
-  autocmd FileType gitcommit  set spell textwidth=72
-  autocmd FileType go         set noexpandtab shiftwidth=4 softtabstop=0 tabstop=4
-  autocmd FileType godoc,help set colorcolumn= nolist
-  autocmd FileType json       set expandtab shiftwidth=4 softtabstop=4
-  autocmd FileType markdown   set expandtab shiftwidth=4 softtabstop=4
-  autocmd FileType python     set expandtab shiftwidth=4 softtabstop=4
+  autocmd FileType gitcommit set spell textwidth=72
+  autocmd FileType help      set colorcolumn=
+  autocmd FileType json      set expandtab shiftwidth=4 softtabstop=4
+  autocmd FileType markdown  set expandtab shiftwidth=4 softtabstop=4
+  autocmd FileType python    set expandtab shiftwidth=4 softtabstop=4
+
+  autocmd FileType go
+    \ set noexpandtab shiftwidth=4 softtabstop=0 tabstop=4
+    \     nolist
+  autocmd FileType godoc set colorcolumn= nolist
 
   " Quickfix and location list windows.
-  autocmd FileType qf set colorcolumn= nocursorline norelativenumber
+  autocmd FileType qf set colorcolumn= norelativenumber
     \ statusline=\ %(%t\ %)
     \ statusline+=%(%{exists('w:quickfix_title')?''.w:quickfix_title:''}\ %)
     \ statusline+=%=
