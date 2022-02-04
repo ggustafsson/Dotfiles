@@ -133,7 +133,7 @@ nnoremap <Leader>ws ml:%s/\s\+$//e \| nohlsearch<CR>`l
 nnoremap <Leader>cl :%!column -t \| sed 's/\( *\) /\1/g'<CR>
 vnoremap <Leader>cl :!column -t \| sed 's/\( *\) /\1/g'<CR>
 
-nnoremap <Leader>cp :%yank *
+nnoremap <Leader>cp :%yank *<CR>
 vnoremap <Leader>cp "*y
 
 nnoremap <Leader>ne :enew<CR>
