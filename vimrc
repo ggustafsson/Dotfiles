@@ -110,11 +110,9 @@ nnoremap <Leader>li :set list! list?<CR>
 nnoremap <Leader>lw :silent! lwindow<CR>
 nnoremap <Leader>ma :marks<CR>
 nnoremap <Leader>nu :set number! relativenumber!<CR>
-nnoremap <Leader>py :terminal python3<CR>
 nnoremap <Leader>rs :source ~/.vim/session.vim<CR>
 nnoremap <Leader>s2 :set expandtab shiftwidth=2 softtabstop=2<CR>
 nnoremap <Leader>s4 :set expandtab shiftwidth=4 softtabstop=4<CR>
-nnoremap <Leader>sh :terminal<CR>
 nnoremap <Leader>sp :set spell! spell?<CR>
 nnoremap <Leader>ss :mksession! ~/.vim/session.vim<CR>
 nnoremap <Leader>t4 :set noexpandtab shiftwidth=4 softtabstop=0 tabstop=4<CR>
