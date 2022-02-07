@@ -17,6 +17,9 @@
 [core]
 	excludesfile = ~/.gitignore_global
 
+[init]
+	defaultBranch = master
+
 [user]
 	name  = Göran Gustafsson
 	email = gustafsson.g@gmail.com
