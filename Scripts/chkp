@@ -24,7 +24,7 @@ if [[ ! -d $projects_path ]]; then
   exit 1
 fi
 
-echo "Checking Git repositories in '${projects_path:a}'."
+echo "Checking Git repos in '${projects_path:a}'."
 
 for directory in ${projects_path}/*(N); do
   if [[ -d ${directory}/.git ]]; then
