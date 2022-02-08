@@ -56,7 +56,7 @@ set statusline+=%([%{&fileencoding=='utf-8'?'':&fileencoding}]\ %)
 set statusline+=%(%y\ %)
 set statusline+=%(%{&paste?'[paste]':''}\ %)
 set statusline+=%=
-set statusline+=%-11.(%l,%v\ %) " 99999,999 would still have two spaces.
+set statusline+=%-12.(\ %l,%v\ %) " 99999,999 would still have two spaces.
 set statusline+=%(%P\ %)
 
 set list
