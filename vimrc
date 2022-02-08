@@ -335,6 +335,33 @@ function! UndoAll()
   endif
 endfunction
 
+function VimTabLine()
+  let string = ""
+  for i in range(tabpagenr("$"))
+    let tabnr = i + 1
+    let string .= "%" .. (tabnr) .. "T" " Set tab number for mouse clicks.
+    if tabnr == tabpagenr()
+      let string .= "%#TabLineSel#"
+    else
+      let string .= "%#TabLine#"
+    endif
+    let buflist = tabpagebuflist(tabnr)
+    let winnr = tabpagewinnr(tabnr)
+    let file = bufname(buflist[winnr - 1])
+    if file == ""
+      let file = "[No Name]"
+    else
+      let file = fnamemodify(file, ":p:t")
+    endif
+    let string .= " " .. tabnr .. ":" .. file .. " "
+  endfor
+  let string .= "%#TabLineFill#%T"
+  if tabpagenr("$") > 1
+    let string .= "%=%#TabLine#%999X X "
+  endif
+  return string
+endfunction
+set tabline=%!VimTabLine()
 
 augroup Main
   autocmd!
