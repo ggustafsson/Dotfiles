@@ -109,18 +109,14 @@ function custom-vi-replace {
 }
 zle -N custom-vi-replace
 
-# Print " X<branch>" if git repo is found in the current directory. Appended
-# with either "." or "*" depending on state of git repo.
+# Print "[+] " if dirty git repo is found in current directory.
 function prompt_git {
   if [[ ! -d .git ]]; then
     return 1
   fi
 
-  branch=$(git branch --show-current 2> /dev/null)
   if [[ -n $(git status --porcelain 2> /dev/null) ]]; then
-    echo " %F{red}*${branch}%f"
-  else
-    echo " %F{green}.${branch}%f"
+    echo "%F{red}[+]%f "
   fi
 }
 
@@ -146,10 +142,10 @@ function prompt_mode {
   fi
 }
 
-# Print " .todo" if file ".todo(.txt)" is found in the current directory.
+# Print "[t] " if file ".todo(.txt)" is found in the current directory.
 function prompt_todo {
   if [[ -f .todo || -f .todo.txt ]]; then
-    echo " %F{blue}.todo%f"
+    echo "%F{blue}[t]%f "
   fi
 }
 
@@ -160,10 +156,9 @@ function zle-line-init zle-keymap-select {
 zle -N zle-line-init && zle -N zle-keymap-select
 
 
-# Coruscant ~/Projects/Dot-Files %                                .todo *master
-PROMPT='$(prompt_host) %~ $(prompt_mode) '
+# Coruscant ~/Projects/Dot-Files [t] [+] %
+PROMPT='$(prompt_host) %~ $(prompt_todo)$(prompt_git)$(prompt_mode) '
 PROMPT2='$(prompt_mode) ' # Used when entering multi-line commands.
-RPROMPT='$(prompt_todo)$(prompt_git)' && ZLE_RPROMPT_INDENT=0
 
 
 if [[ $OSTYPE == darwin* ]]; then
