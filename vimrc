@@ -47,7 +47,7 @@ set softtabstop=2
 set hlsearch
 set incsearch
 
-" ~/.vimrc [+] [dos] [latin1] [vim] [paste]        132,47    62%
+" ~/.vimrc [+] [dos] [latin1] [vim] [paste]                     142,47     30%
 set laststatus=2
 set statusline=\ %(%F\ %)
 set statusline+=%(%m\ %)
@@ -335,6 +335,7 @@ function! UndoAll()
   endif
 endfunction
 
+" 1:.vimrc  2:Xresources  3:[No Name]                                        X
 function VimTabLine()
   let string = ""
   for i in range(tabpagenr("$"))
