@@ -103,61 +103,51 @@ fi
 
 
 # Custom Vi replace function that change a variable before and after entering
-# replace mode. The variable is used in function "prompt_mode" later on.
+# replace mode. Variable is used in function "prompt_mode" later on.
 function custom-vi-replace {
   prompt_replace=1 && zle vi-replace && prompt_replace=0
 }
+function zle-line-init zle-keymap-select {
+  zle reset-prompt
+}
 zle -N custom-vi-replace
+zle -N zle-line-init && zle -N zle-keymap-select
 
-# Print "[+] " if dirty git repo is found in current directory.
+# Print username and hostname when outside of localhost.
+function prompt_host {
+  if [[ $OSTYPE != darwin* ]]; then
+    echo "%F{cyan}${(L)USER}@${(L)HOST}%f "
+  fi
+}
+
+# Print git branch name if repo is found in current directory.
 function prompt_git {
   if [[ ! -d .git ]]; then
     return 1
   fi
 
+  branch=$(git branch --show-current 2> /dev/null)
   if [[ -n $(git status --porcelain 2> /dev/null) ]]; then
-    echo "%F{red}[+]%f "
-  fi
-}
-
-# Print hostname in different colors depending on various rules.
-function prompt_host {
-  if [[ $OSTYPE == darwin* ]]; then
-    echo "%F{yellow}%m%f"
-  elif [[ $HOST == *-VM ]]; then
-    echo "%F{cyan}%m%f"
+    echo " %F{red}${branch}%f"
   else
-    echo "%F{red}%m%f"
+    echo " %F{green}${branch}%f"
   fi
 }
 
 # Print current Vi mode. Insert "%", command "C" and replace "R".
 function prompt_mode {
   if [[ $KEYMAP == vicmd ]]; then
-    echo "%F{red}C%f"
+    echo " %F{red}C%f"
   elif [[ $prompt_replace -eq 1 ]]; then
-    echo "%F{red}R%f"
+    echo " %F{red}R%f"
   else
-    echo "%F{green}%%%f"
+    echo " %F{green}%%%f"
   fi
 }
 
-# Print "[t] " if file ".todo(.txt)" is found in the current directory.
-function prompt_todo {
-  if [[ -f .todo || -f .todo.txt ]]; then
-    echo "%F{blue}[t]%f "
-  fi
-}
-
-# This is needed to make the prompt update when mode is switched.
-function zle-line-init zle-keymap-select {
-  zle reset-prompt
-}
-zle -N zle-line-init && zle -N zle-keymap-select
-
-
-# Coruscant ~/Projects/Dot-Files [t] [+] %
-PROMPT='$(prompt_host) %~ $(prompt_todo)$(prompt_git)$(prompt_mode) '
+# ~/Projects/Dot-Files master %
+# gleg@hoth ~/Projects/Dot-Files master %
+PROMPT='$(prompt_host)%~$(prompt_git)$(prompt_mode) '
 PROMPT2='$(prompt_mode) ' # Used when entering multi-line commands.
 
 

@@ -1,8 +1,7 @@
 #!/usr/bin/env zsh
 
 # Description: Checks status of all git repos under default projects path, or
-# path specified through argument. If file ".todo(.txt)" is found in directory
-# it is displayed next to directory name.
+# path specified through argument.
 #
 # Usage: chkp
 #        chkp <path>
@@ -29,12 +28,7 @@ echo "Checking Git repos in '${projects_path:a}'."
 for directory in ${projects_path}/*(N); do
   if [[ -d ${directory}/.git ]]; then
     pushd $directory
-    echo -n "\n${directory:t}"
-    if [[ -f .todo || -f .todo.txt ]]; then
-      print -P " %F{blue}.todo%f"
-    else
-      echo
-    fi
+    echo "\n${directory:t}"
     git status --branch --short
     popd
   fi
