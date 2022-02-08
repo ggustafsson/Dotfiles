@@ -147,7 +147,7 @@ function prompt_mode {
 
 # ~/Projects/Dot-Files master %
 # gleg@hoth ~/Projects/Dot-Files master %
-PROMPT='$(prompt_host)%~$(prompt_git)$(prompt_mode) '
+PROMPT='$(prompt_host)%F{blue}%~%f$(prompt_git)$(prompt_mode) '
 PROMPT2='$(prompt_mode) ' # Used when entering multi-line commands.
 
 
