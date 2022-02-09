@@ -49,7 +49,7 @@ set incsearch
 
 " ~/.vimrc [+] [dos] [latin1] [vim] [paste]                     142,47     30%
 set laststatus=2
-set statusline=\ %(%F\ %)
+set statusline=\ %(%f\ %)
 set statusline+=%(%m\ %)
 set statusline+=%([%{&fileformat=='unix'?'':&fileformat}]\ %)
 set statusline+=%([%{&fileencoding=='utf-8'?'':&fileencoding}]\ %)
