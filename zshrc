@@ -127,7 +127,7 @@ function prompt_path {
   echo "%F{blue}%2d%f"
 }
 
-# Display Git branch name and current state.
+# Display Git branch name. State is indicated through color.
 function prompt_git {
   if [[ ! -d .git ]]; then
     return 1
@@ -141,12 +141,17 @@ function prompt_git {
   fi
 }
 
-# Display notification if TODO file is found in current directory.
+# Display info if a TODO file is found in current directory.
 function prompt_todo {
   files=(.todo(N) .todo.*(N) TODO(N) TODO.*(N))
   if [[ ! -z $files ]]; then
     echo " has %F{magenta}todo%f"
   fi
+}
+
+# Display last exit code if not equal to 0.
+function prompt_exit {
+  echo "%(?..%F{red}%?%f )"
 }
 
 # Display current Vi mode. Insert "$", command "C" and replace "R".
@@ -165,7 +170,7 @@ function prompt_mode {
 #
 # Coruscant: Projects/Dot-Files on master has todo
 # $
-PROMPT=$'\n$(prompt_host)$(prompt_path)$(prompt_git)$(prompt_todo)\n$(prompt_mode) '
+PROMPT=$'\n$(prompt_host)$(prompt_path)$(prompt_git)$(prompt_todo)\n$(prompt_exit)$(prompt_mode) '
 PROMPT2='$(prompt_mode) ' # Used when entering multi-line commands.
 
 
