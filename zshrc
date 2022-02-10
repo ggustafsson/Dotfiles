@@ -118,13 +118,13 @@ zle -N zle-keymap-select
 # Display hostname if not on main system.
 function prompt_host {
   if [[ $OSTYPE != darwin* ]]; then
-    echo "%F{yellow}${HOST}%f: "
+    echo "💀 %F{yellow}${HOST}%f "
   fi
 }
 
 # Display current path but limit depth to two levels.
 function prompt_path {
-  echo "%F{blue}%2d%f"
+  echo "📁 %F{blue}%2d%f"
 }
 
 # Display Git branch name. State is indicated through color.
@@ -135,9 +135,9 @@ function prompt_git {
 
   branch=$(git branch --show-current 2> /dev/null)
   if [[ -n $(git status --porcelain 2> /dev/null) ]]; then
-    echo " on %F{red}${branch}%f"
+    echo " 📦 %F{red}${branch}%f"
   else
-    echo " on %F{green}${branch}%f"
+    echo " 📦 %F{green}${branch}%f"
   fi
 }
 
@@ -145,28 +145,28 @@ function prompt_git {
 function prompt_todo {
   files=(.todo(N) .todo.*(N) TODO(N) TODO.*(N))
   if [[ ! -z $files ]]; then
-    echo " has %F{magenta}todo%f"
+    echo " 📄 %F{magenta}todo%f"
   fi
 }
 
-# Display current Vi mode. Insert "$", command "C" and replace "R".
+# Display current Vi mode. Insert ">", command "<" and replace "*".
 function prompt_mode {
   if [[ $KEYMAP == vicmd ]]; then
-    echo "%F{red}C%f"
+    echo "%F{red}<%f"
   elif [[ $prompt_replace == 1 ]]; then
-    echo "%F{red}R%f"
+    echo "%F{red}*%f"
   else
     # if $? == true then green
     # if $? == false then red
-    echo "%(?.%F{green}.%F{red})$%f"
+    echo "%(?.%F{green}.%F{red})>%f"
   fi
 }
 
-# Projects/Dot-Files on master has todo
-# $
+# 📁 Projects/Dot-Files 📦 master 📄 todo
+# >
 #
-# Coruscant: Projects/Dot-Files on master has todo
-# $
+# 💀 Coruscant 📁 Projects/Dot-Files 📦 master 📄 todo
+# >
 PROMPT=$'\n$(prompt_host)$(prompt_path)$(prompt_git)$(prompt_todo)\n$(prompt_mode) '
 PROMPT2='$(prompt_mode) ' # Used when entering multi-line commands.
 
