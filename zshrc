@@ -149,11 +149,6 @@ function prompt_todo {
   fi
 }
 
-# Display last exit code if not equal to 0.
-function prompt_exit {
-  echo "%(?..%F{red}%?%f )"
-}
-
 # Display current Vi mode. Insert "$", command "C" and replace "R".
 function prompt_mode {
   if [[ $KEYMAP == vicmd ]]; then
@@ -161,7 +156,9 @@ function prompt_mode {
   elif [[ $prompt_replace == 1 ]]; then
     echo "%F{red}R%f"
   else
-    echo "%F{green}$%f"
+    # if $? == true then green
+    # if $? == false then red
+    echo "%(?.%F{green}.%F{red})$%f"
   fi
 }
 
@@ -170,7 +167,7 @@ function prompt_mode {
 #
 # Coruscant: Projects/Dot-Files on master has todo
 # $
-PROMPT=$'\n$(prompt_host)$(prompt_path)$(prompt_git)$(prompt_todo)\n$(prompt_exit)$(prompt_mode) '
+PROMPT=$'\n$(prompt_host)$(prompt_path)$(prompt_git)$(prompt_todo)\n$(prompt_mode) '
 PROMPT2='$(prompt_mode) ' # Used when entering multi-line commands.
 
 
