@@ -280,7 +280,7 @@ function! GoToLocation(action)
     execute l:cmds_loclist.next
   catch /:E553:/ " E553: No more items
     execute l:cmds_loclist.rotate
-  catch /:E776:/ " E776: No location list
+  catch /:E42:\|:E776:/ " E42: No Errors + E776: No location list
     try
       execute l:cmds_quickfix.next
     catch /:E553:/ " E553: No more items
