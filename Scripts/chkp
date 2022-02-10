@@ -1,8 +1,14 @@
 #!/usr/bin/env zsh
 
-# Description: Checks status of all git repos under default projects path, or
-# path specified through argument. If TODO file is found in directory it is
-# displayed next to directory name.
+# Description: Checks status of all Git repos under default projects path, or
+# path specified through argument. State of repo is indicated through color.
+# If TODO file exist in directory display info about it.
+#
+# Example:
+#   Ansible: master
+#   Dot-Files: master + todo
+#   Project-Assets: master
+#   ...
 #
 # Usage: chkp
 #        chkp <path>
@@ -24,19 +30,22 @@ if [[ ! -d $projects_path ]]; then
   exit 1
 fi
 
-echo "Checking Git repos in '${projects_path:a}'."
-
 for directory in ${projects_path}/*(N); do
   if [[ -d ${directory}/.git ]]; then
     pushd $directory
-    echo -n "\n${directory:t}"
+    branch=$(git branch --show-current 2> /dev/null)
+    echo -n "${directory:t}: "
+    if [[ -n $(git status --porcelain 2> /dev/null) ]]; then
+      print -Pn "%F{red}${branch}%f"
+    else
+      print -Pn "%F{green}${branch}%f"
+    fi
     files=(.todo(N) .todo.*(N) TODO(N) TODO.*(N))
     if [[ ! -z $files ]]; then
-      print -P " - %F{magenta}todo%f"
+      echo " + todo"
     else
       echo
     fi
-    git status --branch --short
     popd
   fi
 done
