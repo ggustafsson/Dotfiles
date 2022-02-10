@@ -5,9 +5,9 @@
 # Checks if a TODO file exist at root level of repository.
 #
 # Example:
-#   Ansible: master
-#   Dot-Files: master + todo
-#   Project-Assets: master
+#   Ansible        master
+#   Dot-Files      master + todo
+#   Project-Assets master
 #   ...
 #
 # Usage: chkp
@@ -30,24 +30,28 @@ if [[ ! -d $projects_path ]]; then
   exit 1
 fi
 
+output=""
+
 for directory in ${projects_path}/*(N); do
   if ! git -C $directory rev-parse --is-inside-work-tree &> /dev/null; then
     continue
   fi
 
   pushd $directory
-  echo -n "${directory:t}: "
+  output="${output}${directory:t}: "
   branch=$(git branch --show-current 2> /dev/null)
   if [[ -n $(git status --porcelain 2> /dev/null) ]]; then
-    print -Pn "%F{red}${branch}%f"
+    output="${output}%F{red}${branch}%f"
   else
-    print -Pn "%F{green}${branch}%f"
+    output="${output}%F{green}${branch}%f"
   fi
   files=(.todo(N) .todo.*(N) TODO(N) TODO.*(N))
   if [[ ! -z $files ]]; then
-    echo " + todo"
-  else
-    echo
+    output="${output} + todo"
   fi
+  output="${output}\n"
   popd
 done
+
+# sed turns two spaces delimiter into one space.
+print -P $output | column -s ": " -t | sed 's/\( *\) /\1/g'
