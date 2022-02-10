@@ -11,13 +11,16 @@ Host alderaan2
   HostName 192.168.1.254
 
 Host arch-vm
+  User gleg
   HostName 127.0.0.1
   Port 2222
 
 Host hoth
+  User gleg
   HostName 192.168.0.2
   Port 443
 
 Host ubuntu-vm
+  User gleg
   HostName 127.0.0.1
   Port 2244

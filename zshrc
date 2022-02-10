@@ -107,20 +107,29 @@ fi
 function custom-vi-replace {
   prompt_replace=1 && zle vi-replace && prompt_replace=0
 }
-function zle-line-init zle-keymap-select {
+zle -N custom-vi-replace
+
+# Reset prompt when switching Vi mode so function "prompt_mode" works.
+function zle-keymap-select {
   zle reset-prompt
 }
-zle -N custom-vi-replace
-zle -N zle-line-init && zle -N zle-keymap-select
+zle -N zle-keymap-select
 
-# Print username and hostname when outside of localhost.
+# Display hostname if not on main system.
 function prompt_host {
   if [[ $OSTYPE != darwin* ]]; then
-    echo "%F{cyan}${(L)USER}@${(L)HOST}%f "
+    echo "@ %F{yellow}${HOST}%f in "
+  else
+    echo "@ "
   fi
 }
 
-# Print git branch name if repo is found in current directory.
+# Display current path but limit depth to two levels.
+function prompt_path {
+  echo "%F{blue}%2d%f"
+}
+
+# Display Git branch name and current state.
 function prompt_git {
   if [[ ! -d .git ]]; then
     return 1
@@ -128,27 +137,42 @@ function prompt_git {
 
   branch=$(git branch --show-current 2> /dev/null)
   if [[ -n $(git status --porcelain 2> /dev/null) ]]; then
-    echo " %F{red}${branch}%f"
+    echo " on %F{red}${branch}%f"
   else
-    echo " %F{green}${branch}%f"
+    echo " on %F{green}${branch}%f"
   fi
 }
 
-# Print current Vi mode. Insert "%", command "C" and replace "R".
+# Display notification if TODO file is found in current directory.
+function prompt_todo {
+  files=(.todo(N) .todo.*(N) TODO(N) TODO.*(N))
+  if [[ ! -z $files ]]; then
+    echo " has %F{magenta}todo%f"
+  fi
+}
+
+# Display current Vi mode. Insert "$" or $1, command "C" and replace "R".
 function prompt_mode {
   if [[ $KEYMAP == vicmd ]]; then
-    echo " %F{red}C%f"
-  elif [[ $prompt_replace -eq 1 ]]; then
-    echo " %F{red}R%f"
+    echo "%F{red}C%f"
+  elif [[ $prompt_replace == 1 ]]; then
+    echo "%F{red}R%f"
   else
-    echo " %F{green}%%%f"
+    if [[ ! -z $1 ]]; then
+      echo "%F{green}${1}%f"
+    else
+      echo "%F{green}$%f"
+    fi
   fi
 }
 
-# ~/Projects/Dot-Files master %
-# gleg@hoth ~/Projects/Dot-Files master %
-PROMPT='$(prompt_host)%F{blue}%~%f$(prompt_git)$(prompt_mode) '
-PROMPT2='$(prompt_mode) ' # Used when entering multi-line commands.
+# @ Projects/Dot-Files on master has todo
+# $
+#
+# @ Coruscant in Projects/Dot-Files on master has todo
+# $
+PROMPT=$'\n$(prompt_host)$(prompt_path)$(prompt_git)$(prompt_todo)\n$(prompt_mode) '
+PROMPT2='$(prompt_mode \>) ' # Used when entering multi-line commands.
 
 
 if [[ $OSTYPE == darwin* ]]; then
@@ -177,6 +201,7 @@ alias hist="source hist"
 alias hogs="du -sk * | sort --numeric-sort --reverse | head -n 15"
 alias iip="curl icanhazip.com"
 alias mkdir="mkdir -pv"
+alias tmuxa="tmux new-session -A -s 0"
 alias tree="tree --charset ascii"
 alias untar="tar -xvf"
 alias zreload="source ~/.zshenv && source ~/.zshrc"
