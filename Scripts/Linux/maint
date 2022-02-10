@@ -13,7 +13,7 @@ sudo apt full-upgrade
 sudo apt autoremove
 
 for directory in ~/Projects/*(N); do
-  if [[ -d ${directory}/.git ]]; then
+  if git -C $directory rev-parse --is-inside-work-tree &> /dev/null; then
     print -P "\n%F{cyan}Updating repo: ${directory:t}%f"
     git -C $directory pull
   fi

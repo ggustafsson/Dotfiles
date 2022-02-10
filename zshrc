@@ -129,7 +129,7 @@ function prompt_path {
 
 # Display Git branch name. State is indicated through color.
 function prompt_git {
-  if [[ ! -d .git ]]; then
+  if ! git rev-parse --is-inside-work-tree &> /dev/null; then
     return 1
   fi
 

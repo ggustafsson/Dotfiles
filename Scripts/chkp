@@ -2,7 +2,7 @@
 
 # Description: Checks status of all Git repos under default projects path, or
 # path specified through argument. State of repo is indicated through color.
-# If TODO file exist in directory display info about it.
+# Checks if a TODO file exist at root level of repository.
 #
 # Example:
 #   Ansible: master
@@ -31,21 +31,23 @@ if [[ ! -d $projects_path ]]; then
 fi
 
 for directory in ${projects_path}/*(N); do
-  if [[ -d ${directory}/.git ]]; then
-    pushd $directory
-    branch=$(git branch --show-current 2> /dev/null)
-    echo -n "${directory:t}: "
-    if [[ -n $(git status --porcelain 2> /dev/null) ]]; then
-      print -Pn "%F{red}${branch}%f"
-    else
-      print -Pn "%F{green}${branch}%f"
-    fi
-    files=(.todo(N) .todo.*(N) TODO(N) TODO.*(N))
-    if [[ ! -z $files ]]; then
-      echo " + todo"
-    else
-      echo
-    fi
-    popd
+  if ! git -C $directory rev-parse --is-inside-work-tree &> /dev/null; then
+    continue
   fi
+
+  pushd $directory
+  echo -n "${directory:t}: "
+  branch=$(git branch --show-current 2> /dev/null)
+  if [[ -n $(git status --porcelain 2> /dev/null) ]]; then
+    print -Pn "%F{red}${branch}%f"
+  else
+    print -Pn "%F{green}${branch}%f"
+  fi
+  files=(.todo(N) .todo.*(N) TODO(N) TODO.*(N))
+  if [[ ! -z $files ]]; then
+    echo " + todo"
+  else
+    echo
+  fi
+  popd
 done
