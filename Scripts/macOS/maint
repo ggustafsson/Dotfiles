@@ -24,4 +24,4 @@ echo
 backup --yes
 
 echo
-backup2srv
+backup2srv || true # Ignore exit code.
