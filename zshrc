@@ -118,9 +118,7 @@ zle -N zle-keymap-select
 # Display hostname if not on main system.
 function prompt_host {
   if [[ $OSTYPE != darwin* ]]; then
-    echo "@ %F{yellow}${HOST}%f in "
-  else
-    echo "@ "
+    echo "%F{yellow}${HOST}%f: "
   fi
 }
 
@@ -151,28 +149,24 @@ function prompt_todo {
   fi
 }
 
-# Display current Vi mode. Insert "$" or $1, command "C" and replace "R".
+# Display current Vi mode. Insert "$", command "C" and replace "R".
 function prompt_mode {
   if [[ $KEYMAP == vicmd ]]; then
     echo "%F{red}C%f"
   elif [[ $prompt_replace == 1 ]]; then
     echo "%F{red}R%f"
   else
-    if [[ ! -z $1 ]]; then
-      echo "%F{green}${1}%f"
-    else
-      echo "%F{green}$%f"
-    fi
+    echo "%F{green}$%f"
   fi
 }
 
-# @ Projects/Dot-Files on master has todo
+# Projects/Dot-Files on master has todo
 # $
 #
-# @ Coruscant in Projects/Dot-Files on master has todo
+# Coruscant: Projects/Dot-Files on master has todo
 # $
 PROMPT=$'\n$(prompt_host)$(prompt_path)$(prompt_git)$(prompt_todo)\n$(prompt_mode) '
-PROMPT2='$(prompt_mode \>) ' # Used when entering multi-line commands.
+PROMPT2='$(prompt_mode) ' # Used when entering multi-line commands.
 
 
 if [[ $OSTYPE == darwin* ]]; then
