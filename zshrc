@@ -118,7 +118,11 @@ zle -N zle-keymap-select
 # Display hostname if not on main system.
 function prompt_host {
   if [[ $OSTYPE != darwin* ]]; then
-    echo "💀 %F{yellow}${HOST}%f "
+    if grep -qs docker /proc/1/cgroup; then
+      echo "🐳 %F{cyan}${HOST}%f "
+    else
+      echo "💀 %F{yellow}${HOST}%f "
+    fi
   fi
 }
 
@@ -149,24 +153,27 @@ function prompt_todo {
   fi
 }
 
-# Display current Vi mode. Insert ">", command "<" and replace "*".
+# Display current Vi mode. Insert ">>", command "<<" and replace "**".
 function prompt_mode {
   if [[ $KEYMAP == vicmd ]]; then
-    echo "%F{red}<%f"
+    echo "%F{red}<<%f"
   elif [[ $prompt_replace == 1 ]]; then
-    echo "%F{red}*%f"
+    echo "%F{red}**%f"
   else
     # if $? == true then green
     # if $? == false then red
-    echo "%(?.%F{green}.%F{red})>%f"
+    echo "%(?.%F{green}.%F{red})>>%f"
   fi
 }
 
 # 📁 Projects/Dot-Files 📦 master 📄 todo
-# >
+# >>
 #
-# 💀 Coruscant 📁 Projects/Dot-Files 📦 master 📄 todo
-# >
+# 🐳 Ubuntu-VM 📁 Projects/Dot-Files 📦 master 📄 todo
+# >>
+#
+# 💀 Hoth 📁 Projects/Dot-Files 📦 master 📄 todo
+# >>
 PROMPT=$'\n$(prompt_host)$(prompt_path)$(prompt_git)$(prompt_todo)\n$(prompt_mode) '
 PROMPT2='$(prompt_mode) ' # Used when entering multi-line commands.
 
