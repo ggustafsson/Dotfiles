@@ -1,0 +1,36 @@
+#!/usr/bin/env zsh
+
+# Description: Start new (or attach existing) custom Tmux session.
+#
+# Usage: tmux-init
+#
+# Creator: Göran Gustafsson (gustafsson.g at gmail.com)
+# License: BSD 3-Clause
+
+session1="misc"
+session2="dev"
+
+# For future reference:
+#   -h creates vertically divided panes...
+#   -v creates horizontally divided panes...
+
+tmux \
+  new-session -d -s $session1 \; \
+  rename-window "main" \; \
+  new-window -n "secondary" \; \
+  select-window -t :1
+
+tmux \
+  new-session -d -s $session2 \; \
+  send-keys "cd ~/Projects" C-m \; \
+  send-keys C-l \; \
+  send-keys "ll" C-m \; \
+  rename-window "main" \; \
+  new-window -n "secondary" \; \
+  send-keys "cd ~/Projects" C-m \; \
+  send-keys C-l \; \
+  select-window -t :1
+
+if [[ -z $TMUX ]]; then
+  tmux attach-session -t $session1
+fi
