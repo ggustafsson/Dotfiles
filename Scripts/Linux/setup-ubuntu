@@ -9,10 +9,11 @@
 # License: BSD 3-Clause
 
 mkdir -m 700 ~/.ssh
-mkdir -p ~/.vim/backups
+mkdir -p ~/.vim/backup
 mkdir -p ~/.vim/pack/ggustafsson/start
 mkdir -p ~/.vim/pack/others/start
-mkdir -p ~/.vim/undos
+mkdir -p ~/.vim/swap
+mkdir -p ~/.vim/undo
 mkdir ~/Projects
 
 
