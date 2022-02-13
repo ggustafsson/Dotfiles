@@ -26,7 +26,7 @@ tmux \
   new-session -d -s $session2 -c ~/Projects \; \
   rename-window main \; \
   new-window -n secondary -c ~/Projects \; \
-  split-window -h \; \
+  split-window -h -c ~/Projects \; \
   select-pane -L \; \
   select-window -t :1
 
