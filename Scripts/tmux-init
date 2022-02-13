@@ -7,8 +7,8 @@
 # Creator: Göran Gustafsson (gustafsson.g at gmail.com)
 # License: BSD 3-Clause
 
-session1="misc"
-session2="dev"
+session1=misc
+session2=dev
 
 # For future reference:
 #   -h creates vertically divided panes...
@@ -16,19 +16,18 @@ session2="dev"
 
 tmux \
   new-session -d -s $session1 \; \
-  rename-window "main" \; \
-  new-window -n "secondary" \; \
+  rename-window main \; \
+  new-window -n secondary \; \
+  split-window -h \; \
+  select-pane -L \; \
   select-window -t :1
 
 tmux \
-  new-session -d -s $session2 \; \
-  send-keys "cd ~/Projects" C-m \; \
-  send-keys C-l \; \
-  send-keys "ll" C-m \; \
-  rename-window "main" \; \
-  new-window -n "secondary" \; \
-  send-keys "cd ~/Projects" C-m \; \
-  send-keys C-l \; \
+  new-session -d -s $session2 -c ~/Projects \; \
+  rename-window main \; \
+  new-window -n secondary -c ~/Projects \; \
+  split-window -h \; \
+  select-pane -L \; \
   select-window -t :1
 
 if [[ -z $TMUX ]]; then
