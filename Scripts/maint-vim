@@ -29,9 +29,10 @@ fi
 
 echo "Fetching Vim plugins."
 
-fetch start/syntastic https://github.com/vim-syntastic/syntastic.git
-fetch start/vim-go    https://github.com/fatih/vim-go.git
-fetch start/vim-mundo https://github.com/simnalamburt/vim-mundo.git
+fetch start/ansible-vim https://github.com/pearofducks/ansible-vim.git
+fetch start/syntastic   https://github.com/vim-syntastic/syntastic.git
+fetch start/vim-go      https://github.com/fatih/vim-go.git
+fetch start/vim-mundo   https://github.com/simnalamburt/vim-mundo.git
 
 fetch start/fern.vim            https://github.com/lambdalisue/fern.vim.git
 fetch start/fern-hijack.vim     https://github.com/lambdalisue/fern-hijack.vim.git
