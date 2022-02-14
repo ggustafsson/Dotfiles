@@ -155,16 +155,22 @@ function prompt_todo {
   fi
 }
 
-# Display current Vi mode. Insert ">>", command "<<" and replace "**".
+# Display current Vi mode. Insert ">>" or "++", command "<<" and replace "**".
 function prompt_mode {
   if [[ $KEYMAP == vicmd ]]; then
     echo "%F{red}<<%f"
   elif [[ $prompt_replace == 1 ]]; then
     echo "%F{red}**%f"
   else
+    if [[ $1 == 2 ]]; then
+      char="++"
+    else
+      char=">>"
+    fi
+
     # if $? == true then green
     # if $? == false then red
-    echo "%(?.%F{green}.%F{red})>>%f"
+    echo "%(?.%F{green}.%F{red})${char}%f"
   fi
 }
 
@@ -177,7 +183,7 @@ function prompt_mode {
 # 💀 Hoth 📁 Projects/Dot-Files 📦 master 📄 todo
 # >>
 PROMPT=$'\n$(prompt_host)$(prompt_path)$(prompt_git)$(prompt_todo)\n$(prompt_mode) '
-PROMPT2='$(prompt_mode) ' # Used when entering multi-line commands.
+PROMPT2='$(prompt_mode 2) ' # Used when entering multi-line commands.
 
 
 if [[ $OSTYPE == darwin* ]]; then
