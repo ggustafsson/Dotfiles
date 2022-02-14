@@ -1,5 +1,5 @@
 setopt no_global_rcs # Don't use config files from /etc.
-umask 022
+umask 077
 
 
 if [[ $OSTYPE == darwin* ]]; then
