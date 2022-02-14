@@ -43,7 +43,6 @@ git clone https://github.com/ggustafsson/Dot-Files.git ~/Projects/Dot-Files
 git clone https://github.com/ggustafsson/Static-Color-Scheme.git ~/Projects/Static-Color-Scheme
 
 ln -s ~/Projects/Dot-Files/Scripts ~/
-ln -s ~/Projects/Dot-Files/ansible.cfg ~/.ansible.cfg
 ln -s ~/Projects/Dot-Files/gitconfig ~/.gitconfig
 ln -s ~/Projects/Dot-Files/gitignore_global ~/.gitignore_global
 ln -s ~/Projects/Dot-Files/ssh_config ~/.ssh/config

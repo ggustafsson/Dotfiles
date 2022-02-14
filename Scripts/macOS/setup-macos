@@ -108,7 +108,6 @@ chmod 700 $HOME
 mkdir -p ~/.vim/pack/others/start
 
 ln -s ~/Projects/Dot-Files/Scripts ~/
-ln -s ~/Projects/Dot-Files/ansible.cfg ~/.ansible.cfg
 ln -s ~/Projects/Dot-Files/gitconfig ~/.gitconfig
 ln -s ~/Projects/Dot-Files/gitignore_global ~/.gitignore_global
 ln -s ~/Projects/Dot-Files/hammerspoon ~/.hammerspoon
