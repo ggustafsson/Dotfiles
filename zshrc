@@ -7,7 +7,7 @@ export VISUAL=$EDITOR
 export LESS=FR # --quit-if-one-screen --RAW-CONTROL-CHARS
 export PAGER=less
 
-ZLE_REMOVE_SUFFIX_CHARS=$" \t\n;" # Removed "&|" from defaults to keep space.
+ZLE_REMOVE_SUFFIX_CHARS=$' \t\n;' # Removed "&|" from defaults to keep space.
 
 HISTFILE=~/.zsh_history
 HISTSIZE=9999
