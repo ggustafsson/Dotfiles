@@ -7,6 +7,8 @@ export VISUAL=$EDITOR
 export LESS=FR # --quit-if-one-screen --RAW-CONTROL-CHARS
 export PAGER=less
 
+ZLE_REMOVE_SUFFIX_CHARS=$" \t\n;" # Removed "&|" from defaults to keep space.
+
 HISTFILE=~/.zsh_history
 HISTSIZE=9999
 SAVEHIST=$HISTSIZE
@@ -59,7 +61,6 @@ bindkey -M vicmd "R" custom-vi-replace
 # Same as "backspace=indent,eol,start" in Vim.
 bindkey "^?" backward-delete-char
 bindkey "^H" backward-delete-char
-bindkey "^U" backward-kill-line
 bindkey "^W" backward-kill-word
 
 # Enable Vim quote and bracket selections in Zsh's Vi mode :)
@@ -86,6 +87,7 @@ bindkey "^A"  beginning-of-line
 bindkey "^E"  end-of-line
 bindkey "^F"  history-incremental-search-forward
 bindkey "^R"  history-incremental-search-backward
+bindkey "^U"  kill-whole-line
 bindkey "^[." insert-last-word
 bindkey "^['" quote-line
 bindkey "^[h" run-help
