@@ -119,12 +119,12 @@ zle -N zle-keymap-select
 
 # Display hostname according to various rules.
 function prompt_host {
-  if [[ $OSTYPE == darwin* ]]; then
-    echo "🏠 %F{green}${HOST}%f "
-  elif grep -qs docker /proc/1/cgroup; then
-    echo "🐳 %F{cyan}${HOST}%f "
-  else
-    echo "💀 %F{yellow}${HOST}%f "
+  if [[ ! $OSTYPE == darwin* ]]; then
+    if grep -qs docker /proc/1/cgroup; then
+      echo "🐳 %F{cyan}${HOST}%f "
+    else
+      echo "💀 %F{yellow}${HOST}%f "
+    fi
   fi
 }
 
