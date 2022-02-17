@@ -7,7 +7,7 @@
 # Creator: Göran Gustafsson (gustafsson.g at gmail.com)
 # License: BSD 3-Clause
 
-server=hoth
+server=ubuntu-tv1
 destination=/media/external
 
 backup_objects=(

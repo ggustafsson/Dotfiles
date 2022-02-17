@@ -15,12 +15,12 @@ Host arch-lxc1
   HostName 127.0.0.1
   Port 2201
 
-Host hoth
-  User gleg
-  HostName 192.168.0.2
-  Port 443
-
 Host ubuntu-lxc1
   User gleg
   HostName 127.0.0.1
   Port 2211
+
+Host ubuntu-tv1
+  User gleg
+  HostName 192.168.0.2
+  Port 443
