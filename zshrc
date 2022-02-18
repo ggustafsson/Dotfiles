@@ -233,6 +233,7 @@ alias du="du -hs"
 
 alias grep="grep --color=auto"
 alias rgrep="grep --binary-file=without-match --dereference-recursive --exclude-dir .git"
+alias xxx="rgrep -E '(FIXME|TODO|XXX)'"
 
 alias py="python3"
 alias pyjson="python3 -m json.tool"
