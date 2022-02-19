@@ -28,10 +28,14 @@ export GOPATH=~/Golang
 export LANG=en_US.UTF-8
 
 if [[ $OSTYPE == darwin* ]]; then
+  # TODO: Adjust path after moving over to new MacBook Pro.
   path=(
     ${GOPATH}/bin(N)
     ~/Scripts/macOS(N)
     ~/Scripts(N)
+    #/opt/homebrew/bin(N)
+    #/opt/homebrew/sbin(N)
+    #/opt/homebrew/opt/curl/bin(N)
     /usr/local/bin(N)
     /usr/local/sbin(N)
     /usr/local/opt/curl/bin(N)

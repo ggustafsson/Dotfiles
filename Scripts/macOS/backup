@@ -13,6 +13,7 @@ fi
 
 destination=/Volumes/Keychain
 
+# TODO: Adjust paths after buying larger USB flash drive.
 backup_objects=(
   ~/.ssh
   ~/Development
