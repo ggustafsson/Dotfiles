@@ -381,6 +381,7 @@ augroup Main
   autocmd FileType json      set expandtab shiftwidth=4 softtabstop=4
   autocmd FileType markdown  set expandtab shiftwidth=4 softtabstop=4
   autocmd FileType python    set expandtab shiftwidth=4 softtabstop=4
+  autocmd FileType yaml      set indentkeys-=<:>
 
   autocmd FileType go
     \ set noexpandtab shiftwidth=4 softtabstop=0 tabstop=4
