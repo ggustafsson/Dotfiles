@@ -9,7 +9,7 @@ export PAGER=less
 
 ZLE_REMOVE_SUFFIX_CHARS=$' \t\n;' # Removed "&|" from defaults to keep space.
 
-HISTFILE=~/.zsh_history
+HISTFILE=~/.zhistory
 HISTSIZE=9999
 SAVEHIST=$HISTSIZE
 
@@ -147,7 +147,7 @@ function prompt_git {
   fi
 }
 
-# Display info if a TODO file is found in current directory.
+# Display info if a todo file is found in current directory.
 function prompt_todo {
   files=(.todo(N) .todo.*(N) TODO(N) TODO.*(N))
   if [[ ! -z $files ]]; then
@@ -233,7 +233,7 @@ alias du="du -hs"
 
 alias grep="grep --color=auto"
 alias rgrep="grep --binary-file=without-match --dereference-recursive --exclude-dir .git"
-alias xxx="rgrep -E '(FIXME|TODO|XXX)'"
+alias xxx="rgrep -E '\b(FIXME|TODO|XXX)(:|$| )'"
 
 alias py="python3"
 alias pyjson="python3 -m json.tool"

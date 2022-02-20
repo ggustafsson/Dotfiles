@@ -2,7 +2,7 @@
 
 # Description: Checks status of all Git repos under default projects path, or
 # path specified through argument. State of repo is indicated through color.
-# Checks if a TODO file exist at root level of repository.
+# Checks if a todo file exist at root level of repository.
 #
 # Example:
 #   Ansible         master

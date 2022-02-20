@@ -398,6 +398,7 @@ augroup Main
 augroup END
 
 
+" TODO: Remove after starting new job.
 if filereadable(expand("~/.vimrc_local"))
   source ~/.vimrc_local
 endif
