@@ -4,5 +4,6 @@ if [[ $OSTYPE == darwin* ]]; then
     /usr/bin/ssh-add -K -q ~/.ssh/id_ed25519
   fi
 else
-  figlet -f ~/.figlet/bigmoney-nw.flf $(hostname) 2> /dev/null
+  text=$(hostname | sed $'s/-/\t/')
+  figlet -c -f ~/.figlet/bigmoney-nw.flf $text 2> /dev/null
 fi
