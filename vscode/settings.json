@@ -1,0 +1,23 @@
+{
+    "editor.fontFamily": "Inconsolata",
+    "editor.fontSize": 14,
+    "terminal.integrated.fontSize": 14,
+
+    "workbench.colorCustomizations": {
+        "editor.background": "#181818"
+    },
+
+    "python.defaultInterpreterPath": "/usr/local/bin/python3",
+    "vscode-neovim.neovimExecutablePaths.darwin": "/usr/local/bin/nvim",
+
+    "editor.cursorBlinking": "solid",
+    "editor.guides.highlightActiveIndentation": false,
+    "editor.matchBrackets": "near",
+    "editor.occurrencesHighlight": false,
+
+    "editor.lineNumbers": "relative",
+    "editor.scrollBeyondLastLine": false,
+
+    "zenMode.centerLayout": false,
+    "zenMode.hideLineNumbers": false
+}
