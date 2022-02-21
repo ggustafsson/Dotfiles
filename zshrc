@@ -174,13 +174,13 @@ function prompt_mode {
   fi
 }
 
-# 📁 Projects/Dot-Files 📦 master 📄 todo
+# 🏠 Onett 📁 Projects/Dot-Files 📦 master 📄 todo
 # >>
 #
-# 🐳 Ubuntu-VM 📁 Projects/Dot-Files 📦 master 📄 todo
+# 🐳 ubuntu-lxc1 📁 Projects/Dot-Files 📦 master 📄 todo
 # >>
 #
-# 💀 Hoth 📁 Projects/Dot-Files 📦 master 📄 todo
+# 💀 Twoson 📁 Projects/Dot-Files 📦 master 📄 todo
 # >>
 PROMPT=$'\n$(prompt_host)$(prompt_path)$(prompt_git)$(prompt_todo)\n$(prompt_mode) '
 PROMPT2='$(prompt_mode 2) ' # Used when entering multi-line commands.

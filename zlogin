@@ -5,5 +5,7 @@ if [[ $OSTYPE == darwin* ]]; then
   fi
 else
   text=$(hostname | sed $'s/-/\t/')
+  print -P "%F{yellow}"
   figlet -c -f ~/.figlet/bigmoney-nw.flf $text 2> /dev/null
+  print -Pn "%f"
 fi
