@@ -8,7 +8,7 @@
 
 -->
 <!--Last edited by Ukelele version 346 on 2022-01-31 at 22:19 (CET)-->
-<keyboard group="126" id="-24875" name="Swedish - Pro - No Dead Keys" maxout="1">
+<keyboard group="126" id="-666" name="Swedish - Pro - No Dead Keys" maxout="1">
     <layouts>
         <layout first="0" last="0" mapSet="154" modifiers="4c"/>
         <layout first="1" last="1" mapSet="96c" modifiers="4c"/>
