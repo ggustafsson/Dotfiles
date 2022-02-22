@@ -23,6 +23,7 @@ set omnifunc=syntaxcomplete#Complete
 set pastetoggle=<C-P> " Overrides 'Find previous keyword' under insert mode.
 set sessionoptions-=options
 set spelllang=en,sv
+set textwidth=79
 set virtualedit=block
 
 set autoindent
@@ -34,9 +35,6 @@ set directory=~/.vim/swap
 set undofile
 set undodir=~/.vim/undo
 
-set colorcolumn=+1
-set textwidth=79
-
 set cursorline
 set cursorlineopt=number
 
@@ -47,7 +45,7 @@ set softtabstop=2
 set hlsearch
 set incsearch
 
-" ~/.vimrc [+] [dos] [latin1] [vim] [paste]                     142,47     30%
+" ~/.vimrc [+] [dos] [latin1] [vim] [paste]        142,47     30%
 set laststatus=2
 set statusline=\ %(%f\ %)
 set statusline+=%(%m\ %)
@@ -335,7 +333,7 @@ function! UndoAll()
   endif
 endfunction
 
-" 1:.vimrc  2:Xresources  3:[No Name]                                        X
+" 1:.vimrc  2:Xresources  3:[No Name]        X
 function VimTabLine()
   let string = ""
   for i in range(tabpagenr("$"))
@@ -377,7 +375,6 @@ augroup Main
   autocmd BufNewFile,BufReadPost *.conf,config set filetype=conf
 
   autocmd FileType gitcommit set spell textwidth=72
-  autocmd FileType help      set colorcolumn=
   autocmd FileType json      set expandtab shiftwidth=4 softtabstop=4
   autocmd FileType markdown  set expandtab shiftwidth=4 softtabstop=4
   autocmd FileType python    set expandtab shiftwidth=4 softtabstop=4
@@ -386,10 +383,10 @@ augroup Main
   autocmd FileType go
     \ set noexpandtab shiftwidth=4 softtabstop=0 tabstop=4
     \     nolist
-  autocmd FileType godoc set colorcolumn= nolist
+  autocmd FileType godoc set nolist
 
   " Quickfix and location list windows.
-  autocmd FileType qf set colorcolumn= norelativenumber
+  autocmd FileType qf set norelativenumber
     \ statusline=\ %(%t\ %)
     \ statusline+=%(%{exists('w:quickfix_title')?''.w:quickfix_title:''}\ %)
     \ statusline+=%=
@@ -398,7 +395,6 @@ augroup Main
 augroup END
 
 
-" TODO: Remove after starting new job.
 if filereadable(expand("~/.vimrc_local"))
   source ~/.vimrc_local
 endif
