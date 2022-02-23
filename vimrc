@@ -102,26 +102,26 @@ nnoremap <Leader>ed :edit <C-R>=escape(expand("%:p:h"), ' \')<CR>/
 nnoremap <Leader>eh :edit ~/
 nnoremap <Leader>er :browse oldfiles<CR>
 nnoremap <Leader>et :edit ~/Documents/Text/
-nnoremap <Leader>ft :set filetype=
-nnoremap <Leader>li :set list! list?<CR>
+nnoremap <Leader>ft :setlocal filetype=
+nnoremap <Leader>li :setlocal list! list?<CR>
 nnoremap <Leader>lw :silent! lwindow<CR>
 nnoremap <Leader>ma :marks<CR>
-nnoremap <Leader>nu :set number! relativenumber!<CR>
+nnoremap <Leader>nu :setlocal number! relativenumber!<CR>
 nnoremap <Leader>rs :source ~/.vim/session.vim<CR>
-nnoremap <Leader>s2 :set expandtab shiftwidth=2 softtabstop=2<CR>
-nnoremap <Leader>s4 :set expandtab shiftwidth=4 softtabstop=4<CR>
-nnoremap <Leader>sp :set spell! spell?<CR>
+nnoremap <Leader>s2 :setlocal expandtab shiftwidth=2 softtabstop=2<CR>
+nnoremap <Leader>s4 :setlocal expandtab shiftwidth=4 softtabstop=4<CR>
+nnoremap <Leader>sp :setlocal spell! spell?<CR>
 nnoremap <Leader>ss :mksession! ~/.vim/session.vim<CR>
-nnoremap <Leader>t4 :set noexpandtab shiftwidth=4 softtabstop=0 tabstop=4<CR>
-nnoremap <Leader>t8 :set noexpandtab shiftwidth=8 softtabstop=0 tabstop=8<CR>
+nnoremap <Leader>t4 :setlocal noexpandtab shiftwidth=4 softtabstop=0 tabstop=4<CR>
+nnoremap <Leader>t8 :setlocal noexpandtab shiftwidth=8 softtabstop=0 tabstop=8<CR>
 nnoremap <Leader>te :InsertTemplate ~/.vim/templates/
-nnoremap <Leader>tm :vsplit ~/Documents/Text/Tmp.txt \| :set nobuflisted<CR>
-nnoremap <Leader>to :vsplit ~/Documents/Text/Todo.txt \| :set nobuflisted<CR>
+nnoremap <Leader>tm :vsplit ~/Documents/Text/Tmp.txt \| :setlocal nobuflisted<CR>
+nnoremap <Leader>to :vsplit ~/Documents/Text/Todo.txt \| :setlocal nobuflisted<CR>
 nnoremap <Leader>tr :Fern . -drawer -width=35 -toggle<CR>
-nnoremap <Leader>tw :set textwidth=79
+nnoremap <Leader>tw :setlocal textwidth=79
 nnoremap <Leader>un :call UndoAll()<CR>
 nnoremap <Leader>ut :MundoToggle<CR>
-nnoremap <Leader>wr :set wrap! wrap?<CR>
+nnoremap <Leader>wr :setlocal wrap! wrap?<CR>
 nnoremap <Leader>ws ml:%s/\s\+$//e \| nohlsearch<CR>`l
 
 " sed turns two spaces delimiter into one space.
@@ -206,9 +206,9 @@ endfunction
 " Toggle 'colorcolumn' setting on and off.
 function! ColorColumn()
   if empty(&colorcolumn)
-    set colorcolumn=+1 colorcolumn?
+    setlocal colorcolumn=+1 colorcolumn?
   else
-    set colorcolumn= colorcolumn?
+    setlocal colorcolumn= colorcolumn?
   endif
 endfunction
 
@@ -234,8 +234,8 @@ function! FixFile(spaces)
     return
   endif
 
-  set fileencoding=utf-8
-  set fileformat=unix
+  setlocal fileencoding=utf-8
+  setlocal fileformat=unix
 
   call FixTabs(a:spaces)
 
@@ -253,7 +253,7 @@ function! FixTabs(spaces)
     return
   endif
 
-  set expandtab
+  setlocal expandtab
   let &l:shiftwidth = a:spaces
   let &l:softtabstop = a:spaces
   let &l:tabstop = a:spaces
@@ -372,21 +372,21 @@ augroup Main
     \ |   execute "normal! g`\""
     \ | endif
 
-  autocmd BufNewFile,BufReadPost *.conf,config set filetype=conf
+  autocmd BufNewFile,BufReadPost *.conf,config setlocal filetype=conf
 
-  autocmd FileType gitcommit set spell textwidth=72
-  autocmd FileType json      set expandtab shiftwidth=4 softtabstop=4
-  autocmd FileType markdown  set expandtab shiftwidth=4 softtabstop=4
-  autocmd FileType python    set expandtab shiftwidth=4 softtabstop=4
-  autocmd FileType yaml      set indentkeys-=<:>
+  autocmd FileType gitcommit setlocal nolist spell textwidth=72
+  autocmd FileType json      setlocal expandtab shiftwidth=4 softtabstop=4
+  autocmd FileType markdown  setlocal expandtab shiftwidth=4 softtabstop=4
+  autocmd FileType python    setlocal expandtab shiftwidth=4 softtabstop=4
+  autocmd FileType yaml      setlocal indentkeys-=<:>
 
   autocmd FileType go
-    \ set noexpandtab shiftwidth=4 softtabstop=0 tabstop=4
+    \ setlocal noexpandtab shiftwidth=4 softtabstop=0 tabstop=4
     \     nolist
-  autocmd FileType godoc set nolist
+  autocmd FileType godoc setlocal nolist
 
   " Quickfix and location list windows.
-  autocmd FileType qf set norelativenumber
+  autocmd FileType qf setlocal norelativenumber
     \ statusline=\ %(%t\ %)
     \ statusline+=%(%{exists('w:quickfix_title')?''.w:quickfix_title:''}\ %)
     \ statusline+=%=
