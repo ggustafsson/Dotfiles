@@ -10,7 +10,10 @@
 
 confirm || exit 1
 
-ansible-playbook ~/Projects/Ansible/setup_macos_home.yml --ask-become
+pushd ~/Projects/Ansible
+ansible-playbook setup_macos_home.yml --ask-become
+#ansible-playbook setup_macos_work.yml --ask-become
+popd
 
 echo
 rmhogs
