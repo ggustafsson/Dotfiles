@@ -1,0 +1,22 @@
+#!/usr/bin/env zsh
+
+# Description: Executes a bunch of maintenance commands I run regularly.
+# TODO: Rewrite with 'dialog' and handle setup_macos_work.yml etc...
+#
+# Usage: maint
+#
+# Creator: Göran Gustafsson (gustafsson.g at gmail.com)
+# License: BSD 3-Clause
+
+confirm || exit 1
+
+ansible-playbook ~/Projects/Ansible/setup_macos_home.yml --ask-become
+
+echo
+rmhogs
+
+echo
+backup --yes
+
+echo
+backup2srv || true # Ignore exit code.
