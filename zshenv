@@ -33,12 +33,14 @@ if [[ $OSTYPE == darwin* ]]; then
     ${GOPATH}/bin(N)
     ~/Scripts/macOS(N)
     ~/Scripts(N)
+    #/opt/homebrew/opt/curl/bin(N)
+    #/opt/homebrew/opt/python/libexec/bin(N)
     #/opt/homebrew/bin(N)
     #/opt/homebrew/sbin(N)
-    #/opt/homebrew/opt/curl/bin(N)
+    /usr/local/opt/curl/bin(N)
+    /usr/local/opt/python/libexec/bin(N)
     /usr/local/bin(N)
     /usr/local/sbin(N)
-    /usr/local/opt/curl/bin(N)
     /usr/bin
     /usr/sbin
     /bin
