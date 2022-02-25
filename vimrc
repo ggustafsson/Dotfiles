@@ -45,6 +45,9 @@ set softtabstop=2
 set hlsearch
 set incsearch
 
+set ignorecase
+set smartcase
+
 " ~/.vimrc [+] [dos] [latin1] [vim] [paste]        142,47     30%
 set laststatus=2
 set statusline=\ %(%f\ %)

@@ -4,7 +4,7 @@ export LS_COLORS="rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;
 export EDITOR=vim
 export VISUAL=$EDITOR
 
-export LESS=FR # --quit-if-one-screen --RAW-CONTROL-CHARS
+export LESS=FiR # --quit-if-one-screen --ignore-case --RAW-CONTROL-CHARS
 export PAGER=less
 
 ZLE_REMOVE_SUFFIX_CHARS=$' \t\n;' # Removed "&|" from defaults to keep space.
