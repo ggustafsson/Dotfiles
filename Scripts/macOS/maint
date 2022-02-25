@@ -1,25 +1,47 @@
 #!/usr/bin/env zsh
 
 # Description: Executes a bunch of maintenance commands I run regularly.
-# TODO: Rewrite with 'dialog' and handle setup_macos_work.yml etc...
 #
 # Usage: maint
 #
 # Creator: Göran Gustafsson (gustafsson.g at gmail.com)
 # License: BSD 3-Clause
 
-confirm || exit 1
+if [[ $HOST == Twoson ]]; then
+  ansible_playbook=setup_macos_work.yml
+else
+  ansible_playbook=setup_macos_home.yml
+fi
 
-cd ~/Projects/Ansible
-ansible-playbook setup_macos_home.yml --ask-become
-#ansible-playbook setup_macos_work.yml --ask-become
-cd -
+selections=$(dialog \
+  --default-button "Cancel" \
+  --checklist "Select maintenance commands:" 0 0 0 \
+  1 "ansible-playbook $ansible_playbook" on \
+  2 "rmhogs" on \
+  3 "backup" on \
+  4 "backup2srv" on 2>&1 >/dev/tty)
 
-echo
-rmhogs
+clear
 
-echo
-backup --yes
-
-echo
-backup2srv || true # Ignore exit code.
+for selection in ${(z)selections}; do
+  case $selection in
+    1)
+      echo
+      cd ~/Projects/Ansible
+      ansible-playbook $ansible_playbook --ask-become
+      cd -
+      ;;
+    2)
+      echo
+      rmhogs
+      ;;
+    3)
+      echo
+      backup --yes
+      ;;
+    4)
+      echo
+      backup2srv
+      ;;
+  esac
+done

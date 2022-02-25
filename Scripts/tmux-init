@@ -15,17 +15,11 @@ session2=dev
 #   split-window -v creates horizontally divided panes...
 
 tmux \
-  new-session -d -s $session1 \; \
-  rename-window main \; \
-  new-window -n secondary \; \
-  select-window -t :1
+  new-session -d -s $session1 \;
 
 tmux \
   new-session -d -s $session2 -c ~/Projects \; \
-  rename-window main \; \
-  send-keys "ls -l" C-l Enter \; \
-  new-window -n secondary -c ~/Projects \; \
-  select-window -t :1
+  send-keys "chkp" C-l Enter \;
 
 if [[ -z $TMUX ]]; then
   tmux attach-session -t $session1
