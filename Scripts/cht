@@ -9,16 +9,19 @@
 # License: BSD 3-Clause
 
 url="https://cheat.sh"
-pager="less" # pager="view -c 'setlocal colorcolumn= nolist' -"
+pager="view -c 'setlocal nolist' -"
 
 if [[ $# -ge 1 ]]; then
   # Replace spaces with + that is needed in the URL.
   query="${*/ /+}?T"
 
-  # Fetch page and replace multiple empty lines with only one.
-  response=$(curl --no-progress-meter "${url}/$query" | sed '/^$/N;/^\n$/D')
+  # Fetch cheat page and fix some formatting issues.
+  response=$(curl --no-progress-meter "${url}/$query" | \
+    sed -e '/^$/N;/^\n$/D' \
+        -e 's/#\[cheat/\n\n## \[cheat/g' \
+        -e 's/#\[tldr/\n\n## \[tldr/g')
 
-  echo "# ${url}/${query}\n\n$response" | eval $pager
+  echo "## ${url}/${query}\n$response" | eval $pager
 else
   curl --no-progress-meter "${url}/:help"
 fi
