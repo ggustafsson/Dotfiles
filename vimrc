@@ -10,6 +10,7 @@ if !exists("g:dont_run_again_if_we_have_already_bought_chicken_nuggets")
 endif
 
 
+set autoread
 set backspace=indent,eol,start
 set confirm
 set encoding=utf-8
