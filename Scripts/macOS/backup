@@ -16,7 +16,6 @@ destination=/Volumes/Keychain
 # TODO: Adjust list after buying larger USB flash drive.
 backup_objects=(
   ~/.ssh
-  ~/Development
   ~/Documents
   ~/Dropbox
   ~/Golang/src
@@ -26,10 +25,8 @@ backup_objects=(
   ~/Music/MP3
   ~/Pictures
   ~/Projects
-  #~/School
   ~/Sites
-  ~/Storage
-  ~/Web\ Archives
+  ~/X-Files
 )
 
 if [[ ! -d $destination ]]; then
