@@ -159,16 +159,16 @@ vnoremap <Leader>re :s/\%V/gc<Left><Left><Left>
 nnoremap <Leader>so :sort<CR>
 vnoremap <Leader>so :sort<CR>
 
-nnoremap <silent><Backspace> :nohlsearch \| :echo<CR>
-vnoremap <silent><Backspace> <Esc>:nohlsearch \| :echo<CR>
+nnoremap <C-L> <Cmd>nohlsearch<CR><C-L>
+vnoremap <C-L> <Esc><Cmd>nohlsearch<CR><C-L>
 
 nnoremap Y y$
 
 " These key combos are unused and similar to 'gt' and 'gT' for tabs.
-nnoremap <silent>gb :bnext<CR>
-nnoremap <silent>gB :bprevious<CR>
-nnoremap <silent>gl :call GoToLocation("next")<CR>
-nnoremap <silent>gL :call GoToLocation("previous")<CR>
+nnoremap gb <Cmd>bnext<CR>
+nnoremap gB <Cmd>bprevious<CR>
+nnoremap gl <Cmd>call GoToLocation("next")<CR>
+nnoremap gL <Cmd>call GoToLocation("previous")<CR>
 
 inoremap jj <Esc>
 
@@ -178,7 +178,7 @@ inoremap <C-N> <C-X><C-O>
 " Text object consisting of all text inside current line, first character up
 " until last character. Like 'w' (word), 'p' (paragraph) etc.
 xnoremap il ^og_
-onoremap <silent>il :normal vil<CR>
+onoremap il <Cmd>normal vil<CR>
 
 cnoremap <C-A> <Home>
 
