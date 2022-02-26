@@ -6,6 +6,7 @@ export VISUAL=$EDITOR
 
 export LESS=FiR # --quit-if-one-screen --ignore-case --RAW-CONTROL-CHARS
 export PAGER=less
+export MANPAGER='nvim +Man!'
 
 ZLE_REMOVE_SUFFIX_CHARS=$' \t\n;' # Removed "&|" from defaults to keep space.
 
@@ -15,6 +16,7 @@ SAVEHIST=$HISTSIZE
 
 if [[ $OSTYPE == darwin* ]]; then
   hash -d ext=/Volumes/External
+  hash -d key=/Volumes/Keychain
   hash -d msd=/Volumes/MicroSD
 else
   hash -d ext=/media/external
