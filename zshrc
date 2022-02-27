@@ -211,6 +211,7 @@ else
   alias free="free -h"
 fi
 
+alias ag="ag --color-match '1;31' --color-path '1;34' --follow --nonumbers"
 alias hist="source hist"
 alias hogs="du -sk * | sort --numeric-sort --reverse | head -n 15"
 alias iip="curl icanhazip.com"
@@ -245,6 +246,10 @@ alias pyweb="python3 -m http.server 8080"
 alias svtplay-dl="svtplay-dl --resume"
 alias youtube-dl="youtube-dl --continue --output '%(title)s.%(ext)s'"
 
+if [[ -d /usr/local/opt/fzf ]]; then
+  source /usr/local/opt/fzf/shell/completion.zsh
+  source /usr/local/opt/fzf/shell/key-bindings.zsh
+fi
 
 if [[ -f ~/.zshrc_local ]]; then
   source ~/.zshrc_local
