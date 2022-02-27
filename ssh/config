@@ -20,6 +20,11 @@ Host ubuntu-lxc1
   HostName 127.0.0.1
   Port 2211
 
+Host ubuntu-lxc2
+  User gleg
+  HostName 127.0.0.1
+  Port 2212
+
 Host ubuntu-tv1
   User gleg
   HostName 192.168.0.2
