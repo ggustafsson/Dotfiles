@@ -9,7 +9,7 @@
 # License: BSD 3-Clause
 
 url="https://cheat.sh"
-pager="nvim -R -c 'setlocal nolist' -"
+pager="nvim -R -c 'setlocal nolist | nmap q :q<CR>' -"
 
 if [[ $# -ge 1 ]]; then
   # Replace spaces with + that is needed in the URL.
