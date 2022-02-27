@@ -246,10 +246,12 @@ alias pyweb="python3 -m http.server 8080"
 alias svtplay-dl="svtplay-dl --resume"
 alias youtube-dl="youtube-dl --continue --output '%(title)s.%(ext)s'"
 
-if [[ -d /usr/local/opt/fzf ]]; then
-  source /usr/local/opt/fzf/shell/completion.zsh
-  source /usr/local/opt/fzf/shell/key-bindings.zsh
-fi
+
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+source ~/.zsh/fzf/completion.zsh
+source ~/.zsh/fzf/key-bindings.zsh
+
 
 if [[ -f ~/.zshrc_local ]]; then
   source ~/.zshrc_local

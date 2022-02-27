@@ -21,5 +21,5 @@ if [[ $# -ge 1 ]]; then
     echo "No matching entries found!"
   fi
 else
-  history -i -25
+  history -i 1 | eval $PAGER
 fi

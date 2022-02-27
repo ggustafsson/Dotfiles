@@ -28,5 +28,5 @@ if [[ $# -ge 1 ]]; then
     echo "No matching processes found!"
   fi
 else
-  eval $ps_command | less
+  eval $ps_command | eval $PAGER
 fi
