@@ -246,10 +246,10 @@ alias svtplay-dl="svtplay-dl --resume"
 alias youtube-dl="youtube-dl --continue --output '%(title)s.%(ext)s'"
 
 
-source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-
-source ~/.zsh/fzf/completion.zsh
-source ~/.zsh/fzf/key-bindings.zsh
+if [[ -d ~/.fzf ]]; then
+  source ~/.fzf/shell/completion.zsh
+  source ~/.fzf/shell/key-bindings.zsh
+fi
 
 
 if [[ -f ~/.zshrc_local ]]; then
