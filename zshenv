@@ -52,6 +52,7 @@ else
     ${GOPATH}/bin(N)
     ~/Scripts/Linux(N)
     ~/Scripts(N)
+    ~/.local/bin(N)
     /usr/local/bin
     /usr/local/sbin
     /usr/bin

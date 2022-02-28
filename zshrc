@@ -246,7 +246,7 @@ alias svtplay-dl="svtplay-dl --resume"
 alias youtube-dl="youtube-dl --continue --output '%(title)s.%(ext)s'"
 
 
-if [[ -d ~/.fzf ]]; then
+if [[ -d ~/.fzf/shell ]]; then
   source ~/.fzf/shell/completion.zsh
   source ~/.fzf/shell/key-bindings.zsh
 fi
