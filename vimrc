@@ -126,7 +126,7 @@ nnoremap <Leader>ed :edit <C-R>=escape(expand("%:p:h"), ' \')<CR>/
 nnoremap <Leader>eh :edit ~/
 nnoremap <Leader>in :InsertTemplate ~/.vim/templates/
 nnoremap <Leader>li :setlocal list! list?<CR>
-nnoremap <Leader>lo :cwindow \| silent! lwindow<CR>
+nnoremap <Leader>lo :silent! lwindow \| cwindow<CR>
 nnoremap <Leader>nu :setlocal number! relativenumber!<CR>
 nnoremap <Leader>rs :source ~/.vim/session.vim<CR>
 nnoremap <Leader>s2 :setlocal expandtab shiftwidth=2 softtabstop=2<CR>
@@ -197,12 +197,6 @@ if isdirectory($HOME .. "/.vim/pack/others/start/fzf")
   imap <C-x><C-f> <Plug>(fzf-complete-path)
   imap <C-x><C-k> <Plug>(fzf-complete-word)
   imap <C-x><C-l> <Plug>(fzf-complete-line)
-
-  " What the heck is this?
-  imap <leader><tab> <plug>(fzf-maps-i)
-  nmap <leader><tab> <plug>(fzf-maps-n)
-  omap <leader><tab> <plug>(fzf-maps-o)
-  xmap <leader><tab> <plug>(fzf-maps-x)
 endif
 
 " Text object consisting of all text inside current line, first character up

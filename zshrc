@@ -4,7 +4,7 @@ export LS_COLORS="rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;
 export EDITOR=vim
 export VISUAL=$EDITOR
 
-export LESS=FiR # --quit-if-one-screen --ignore-case --RAW-CONTROL-CHARS
+export LESS=FRi # --quit-if-one-screen --RAW-CONTROL-CHARS --ignore-case
 export PAGER=less
 export MANPAGER='nvim +Man!'
 
@@ -191,7 +191,6 @@ PROMPT2='$(prompt_mode 2) ' # Used when entering multi-line commands.
 if [[ $OSTYPE == darwin* ]]; then
   alias beep="afplay /System/Library/Sounds/Glass.aiff"
   alias locate="mdfind -name"
-  alias maint-vim="cd ~/Projects/Ansible; ansible-playbook setup_vim.yml --limit macos; cd -"
   alias tim="caffeinate tim" # Give Tim a cup of Joe! :)
   alias wifiscan="/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport --scan"
 
