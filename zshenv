@@ -53,6 +53,7 @@ else
     ~/Scripts/Linux(N)
     ~/Scripts(N)
     ~/.local/bin(N)
+    ~/.linuxbrew/bin(N)
     /usr/local/bin
     /usr/local/sbin
     /usr/bin
