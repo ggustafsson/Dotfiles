@@ -10,11 +10,6 @@ Host wifi-home1
   User ubnt
   HostName 192.168.1.254
 
-Host arch-lxc1
-  User gleg
-  HostName 127.0.0.1
-  Port 2201
-
 Host ubuntu-lxc1
   User gleg
   HostName 127.0.0.1
