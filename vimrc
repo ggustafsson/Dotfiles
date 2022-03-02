@@ -399,18 +399,23 @@ augroup Main
     \ |   execute "normal! g`\""
     \ | endif
 
-  autocmd BufNewFile,BufReadPost *.conf,config setlocal filetype=conf
+  autocmd BufNewFile,BufReadPost *.conf,config
+    \ setlocal filetype=conf
 
-  autocmd FileType gitcommit setlocal nolist spell textwidth=72
-  autocmd FileType json      setlocal expandtab shiftwidth=4 softtabstop=4
-  autocmd FileType markdown  setlocal expandtab shiftwidth=4 softtabstop=4
-  autocmd FileType python    setlocal expandtab shiftwidth=4 softtabstop=4
-  autocmd FileType yaml      setlocal indentkeys-=<:>
+  autocmd FileType gitcommit
+    \ setlocal nolist spell textwidth=72
 
   autocmd FileType go
-    \ setlocal noexpandtab shiftwidth=4 softtabstop=0 tabstop=4
-    \     nolist
-  autocmd FileType godoc setlocal nolist
+    \ setlocal noexpandtab shiftwidth=4 softtabstop=0 tabstop=4 nolist
+
+  autocmd FileType godoc
+    \ setlocal nolist
+
+  autocmd FileType json,markdown,python
+    \ setlocal expandtab shiftwidth=4 softtabstop=4
+
+  autocmd FileType yaml,yaml.ansible
+    \ setlocal indentkeys-=0#
 
   " Quickfix and location list windows.
   autocmd FileType qf setlocal norelativenumber
