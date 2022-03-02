@@ -418,7 +418,8 @@ augroup Main
     \ setlocal indentkeys-=0#
 
   " Quickfix and location list windows.
-  autocmd FileType qf setlocal norelativenumber
+  autocmd FileType qf
+    \ setlocal norelativenumber
     \ statusline=\ %(%t\ %)
     \ statusline+=%(%{exists('w:quickfix_title')?''.w:quickfix_title:''}\ %)
     \ statusline+=%=
