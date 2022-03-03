@@ -87,7 +87,6 @@ bindkey "^[[B" down-line-or-beginning-search
 # Not all is bad in Emacs land. Lets assimilate instead of annihilate!
 bindkey "^A"  beginning-of-line
 bindkey "^E"  end-of-line
-bindkey "^F"  history-incremental-search-forward
 bindkey "^R"  history-incremental-search-backward
 bindkey "^U"  kill-whole-line
 bindkey "^[." insert-last-word
@@ -210,7 +209,6 @@ else
   alias free="free -h"
 fi
 
-alias ag="ag --color-match '1;31' --color-path '1;34' --follow --nonumbers"
 alias hist="source hist"
 alias hogs="du -sk * | sort --numeric-sort --reverse | head -n 15"
 alias iip="curl icanhazip.com"
@@ -236,11 +234,13 @@ alias du="du -hs"
 
 alias grep="grep --color=auto"
 alias rgrep="grep --binary-file=without-match --dereference-recursive --exclude-dir .git"
-alias xxx="rgrep -E '\b(FIXME|TODO|XXX)(:|$| )'"
 
 alias py="python3"
 alias pyjson="python3 -m json.tool"
 alias pyweb="python3 -m http.server 8080"
+
+alias rg="rg --follow --sort path"
+alias xxx="rg '\b(FIXME|TODO|XXX)(:|$| )'"
 
 alias svtplay-dl="svtplay-dl --resume"
 alias youtube-dl="youtube-dl --continue --output '%(title)s.%(ext)s'"
@@ -249,6 +249,12 @@ alias youtube-dl="youtube-dl --continue --output '%(title)s.%(ext)s'"
 if [[ -d ~/.local/share/fzf/shell ]]; then
   source ~/.local/share/fzf/shell/completion.zsh
   source ~/.local/share/fzf/shell/key-bindings.zsh
+
+  bindkey -r "^T"
+  bindkey "^O" fzf-file-widget
+
+  bindkey -r "^[c"
+  bindkey "^P" fzf-cd-widget
 fi
 
 

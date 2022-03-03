@@ -99,7 +99,6 @@ if has("mac")
 endif
 
 if isdirectory($HOME .. "/.vim/pack/others/start/fzf")
-  nnoremap <Leader>ag :FzfAg<Space>
   nnoremap <Leader>bu :FzfBuffers<CR>
   nnoremap <Leader>fd :FzfFiles<CR>
   nnoremap <Leader>fh :FzfFiles ~/
@@ -107,6 +106,7 @@ if isdirectory($HOME .. "/.vim/pack/others/start/fzf")
   nnoremap <Leader>he :FzfHelptags<CR>
   nnoremap <Leader>hi :FzfHistory<CR>
   nnoremap <Leader>ma :FzfMarks<CR>
+  nnoremap <Leader>rg :FzfRg<Space>
   nnoremap <Leader>se :FzfLines<CR>
   nnoremap <Leader>:  :FzfHistory:<CR>
   nnoremap <Leader>/  :FzfHistory/<CR>
