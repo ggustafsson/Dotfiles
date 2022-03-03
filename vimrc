@@ -109,6 +109,7 @@ if isdirectory($HOME .. "/.vim/pack/others/start/fzf")
   nnoremap <Leader>rg :FzfRg<Space>
   nnoremap <Leader>se :FzfLines<CR>
   nnoremap <Leader>wi :FzfWindows<CR>
+  nnoremap <Leader>xx :FzfRg \b(FIXME\|TODO\|XXX)(:\|$\| )<CR>
   nnoremap <Leader>:  :FzfHistory:<CR>
   nnoremap <Leader>/  :FzfHistory/<CR>
 else
