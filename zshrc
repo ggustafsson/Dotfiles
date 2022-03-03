@@ -257,6 +257,10 @@ if [[ -d ~/.local/share/fzf/shell ]]; then
   bindkey "^P" fzf-cd-widget
 fi
 
+if [[ -d ~/.zsh/zsh-autosuggestions ]]; then
+  source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+fi
+
 
 if [[ -f ~/.zshrc_local ]]; then
   source ~/.zshrc_local

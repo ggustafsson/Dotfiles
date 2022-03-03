@@ -100,8 +100,8 @@ endif
 
 if isdirectory($HOME .. "/.vim/pack/others/start/fzf")
   nnoremap <Leader>bu :FzfBuffers<CR>
-  nnoremap <Leader>fd :FzfFiles <C-R>=escape(expand("%:p:h"), ' \')<CR>/
-  nnoremap <Leader>fh :FzfFiles ~/
+  nnoremap <Leader>fd :FzfFiles<CR>
+  nnoremap <Leader>fh :FzfFiles ~/<CR>
   nnoremap <Leader>ft :FzfFiletypes<CR>
   nnoremap <Leader>he :FzfHelptags<CR>
   nnoremap <Leader>hi :FzfHistory<CR>
