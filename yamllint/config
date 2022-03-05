@@ -1,7 +1,5 @@
 extends: default
 
 rules:
-  document-start: disable
-  line-length: disable
-  truthy:
-    allowed-values: ["true", "false", "yes", "no"]
+  document-start: disable  # Tripple dash is optional.
+  line-length: disable     # Limit is 1024 Unicode characters.
