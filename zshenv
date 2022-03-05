@@ -3,8 +3,8 @@ umask 077
 
 
 if [[ $OSTYPE == darwin* ]]; then
-  # Swedish sorting order under macOS is wrong because of broken locale files,
-  # picking the least messed up option.
+  # XXX: Swedish sorting order under macOS is wrong because of broken locale
+  # files, picking the least messed up option.
   #
   # macOS 11.6.2 Big Sur:
   #   en_US.UTF-8     - 1 2 3 A Å Ä B C Ö U V W a å ä b c ö u v w
@@ -13,8 +13,8 @@ if [[ $OSTYPE == darwin* ]]; then
   #                     + v & w are treated as the same letter.
   export LC_COLLATE=sv_SE.ISO8859-1
 else
-  # Swedish sorting order under Linux is almost correct, letters are treated
-  # correctly but "." is ignored so directory listing is messy.
+  # XXX: Swedish sorting order under Linux is almost correct, letters are
+  # treated correctly but "." is ignored so directory listing is messy.
   #
   # Ubuntu Desktop 20.04.3 LTS:
   #   en_US.UTF-8     - 1 2 3 a A å Å ä Ä b B c C ö Ö u U v V w W

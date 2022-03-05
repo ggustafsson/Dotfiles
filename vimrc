@@ -157,9 +157,9 @@ vnoremap <Leader>ne y:enew<CR>PGdd
 nnoremap <Leader>re :%s//gc<Left><Left><Left>
 vnoremap <Leader>re :s/\%V/gc<Left><Left><Left>
 
-" Locale files are broken under macOS and the latest Ubuntu Desktop LTS version
-" don't include Vim with ':sort l' support yet. Using the default incorrect but
-" stable sort until the future arrives...
+" XXX: Locale files are broken under macOS and the latest Ubuntu Desktop LTS
+" version don't include Vim with ':sort l' support yet. Using the default
+" incorrect but stable sort until the future arrives...
 "
 " Vim 8.2.3950 @ macOS 11.6.2 Big Sur:
 "   :sort   - en_US.UTF-8     - 1 2 3 A B C U V W a b c u v w Ä Å Ö ä å ö
