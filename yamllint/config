@@ -1,5 +1,5 @@
 extends: default
 
 rules:
-  document-start: disable  # Tripple dash is optional.
-  line-length: disable     # Limit is 1024 Unicode characters.
+  document-start: disable
+  line-length: disable
