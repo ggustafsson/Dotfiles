@@ -74,23 +74,20 @@ set wildignorecase
 set wildmode=longest,list
 
 
+let g:fern#mark_symbol = "🔸"
 let g:fzf_command_prefix = "Fzf"
 let g:mapleader = ","
+
+let g:ale_sign_error = "💀 "
+let g:ale_sign_warning = "🔥 "
+let g:ale_sign_style_error = "⚡️ "
+let g:ale_sign_style_warning = "⚡️ "
 
 let g:go_metalinter_autosave = 1
 let g:go_template_autocreate = 0
 
 let g:mundo_preview_statusline = " Mundo Preview"
 let g:mundo_tree_statusline = " Mundo Tree"
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_jump = 1 " Runs 'lfirst' at start of syntax check.
-let g:syntastic_enable_highlighting = 0
-let g:syntastic_mode_map = { "mode": "active", "passive_filetypes": ["go"] }
-let g:syntastic_error_symbol = ">>"
-let g:syntastic_warning_symbol = ">>"
-let g:syntastic_style_error_symbol = g:syntastic_warning_symbol
-let g:syntastic_style_warning_symbol = g:syntastic_warning_symbol
 
 
 if has("mac")
