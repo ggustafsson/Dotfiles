@@ -2,7 +2,7 @@
 
 # Description: Start new (or attach existing) custom Tmux session.
 #
-# Usage: tmux-init
+# Usage: tmuxa
 #
 # Creator: Göran Gustafsson (gustafsson.g at gmail.com)
 # License: BSD 3-Clause
