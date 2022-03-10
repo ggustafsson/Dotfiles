@@ -7,6 +7,7 @@
         "editor.background": "#181818"
     },
 
+    // TODO: Adjust paths after moving over to new MacBook Pro.
     "python.defaultInterpreterPath": "/usr/local/bin/python3",
     "vscode-neovim.neovimExecutablePaths.darwin": "/usr/local/bin/nvim",
 
@@ -15,8 +16,5 @@
     "editor.occurrencesHighlight": false,
 
     "editor.lineNumbers": "relative",
-    "editor.scrollBeyondLastLine": false,
-
-    "zenMode.centerLayout": false,
-    "zenMode.hideLineNumbers": false
+    "editor.scrollBeyondLastLine": false
 }
