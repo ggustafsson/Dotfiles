@@ -74,7 +74,6 @@ set wildignorecase
 set wildmode=longest,list
 
 
-let g:fern#mark_symbol = "🔸"
 let g:fzf_command_prefix = "Fzf"
 let g:mapleader = ","
 
@@ -137,7 +136,7 @@ nnoremap <Leader>t8 :setlocal noexpandtab shiftwidth=8 softtabstop=0 tabstop=8<C
 nnoremap <Leader>te :edit ~/Documents/Text/
 nnoremap <Leader>tm :vsplit ~/Documents/Text/Tmp.txt \| :setlocal nobuflisted<CR>
 nnoremap <Leader>to :vsplit ~/Documents/Text/Todo.txt \| :setlocal nobuflisted<CR>
-nnoremap <Leader>tr :Fern . -drawer -width=35 -toggle<CR>
+nnoremap <Leader>tr :Fern . -drawer -toggle<CR>
 nnoremap <Leader>tw :setlocal textwidth=79
 nnoremap <Leader>un :call UndoAll()<CR>
 nnoremap <Leader>ut :MundoToggle<CR>
@@ -400,6 +399,9 @@ augroup Main
 
   autocmd BufNewFile,BufReadPost *.conf,config
     \ setlocal filetype=conf
+
+  autocmd FileType fern
+    \ setlocal nonumber norelativenumber
 
   autocmd FileType gitcommit
     \ setlocal nolist spell textwidth=72
