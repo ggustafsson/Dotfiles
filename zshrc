@@ -91,6 +91,8 @@ bindkey "^R"  history-incremental-search-backward
 bindkey "^U"  kill-whole-line
 bindkey "^[." insert-last-word
 bindkey "^['" quote-line
+bindkey "^[b" backward-word
+bindkey "^[f" forward-word
 bindkey "^[h" run-help
 
 
