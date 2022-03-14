@@ -7,10 +7,12 @@
 # Creator: Göran Gustafsson (gustafsson.g at gmail.com)
 # License: BSD 3-Clause
 
-if [[ $HOST == Twoson ]]; then
+if [[ $HOST == Onett ]]; then
+  ansible_playbook=setup_macos_home.yml
+elif [[ $HOST == Twoson ]]; then
   ansible_playbook=setup_macos_work.yml
 else
-  ansible_playbook=setup_macos_home.yml
+  ansible_playbook=setup_macos_home_legacy.yml
 fi
 
 selections=$(dialog \
