@@ -3,7 +3,7 @@ if !exists("g:dont_run_again_if_we_have_already_bought_chicken_nuggets")
   packadd! matchit " Makes % jump to matching HTML tags, if/else/endif, etc.
 
   syntax enable
-  colorscheme static
+  colorscheme electric-boogaloo
 
   let s:vim_startup_dir = getcwd() " Used by 'ChangeDirectory()' later.
   let g:dont_run_again_if_we_have_already_bought_chicken_nuggets = 1
@@ -424,8 +424,3 @@ augroup Main
     \ statusline+=%-11.(%l,%v\ %)
     \ statusline+=%(%P\ %)
 augroup END
-
-
-if filereadable(expand("~/.vimrc_local"))
-  source ~/.vimrc_local
-endif
