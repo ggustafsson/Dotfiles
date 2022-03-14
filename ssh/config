@@ -2,6 +2,7 @@ Host *
   ConnectTimeout 30
   ServerAliveInterval 30
 
+
 Host router-home1
   User ubnt
   HostName 192.168.1.1
@@ -10,17 +11,28 @@ Host wifi-home1
   User ubnt
   HostName 192.168.1.254
 
+
 Host ubuntu-lxc1
   User gleg
   HostName 127.0.0.1
-  Port 2211
+  Port 2201
 
 Host ubuntu-lxc2
   User gleg
   HostName 127.0.0.1
-  Port 2212
+  Port 2202
 
 Host ubuntu-tv1
   User gleg
   HostName 192.168.0.2
   Port 443
+
+Host ubuntu-vm1
+  User gleg
+  HostName 127.0.0.1
+  Port 2211
+
+Host ubuntu-vm2
+  User gleg
+  HostName 127.0.0.1
+  Port 2212
