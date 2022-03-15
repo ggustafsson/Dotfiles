@@ -20,11 +20,6 @@ Host ubuntu-lxc1
   HostName 127.0.0.1
   Port 2201
 
-Host ubuntu-lxc2
-  User gleg
-  HostName 127.0.0.1
-  Port 2202
-
 Host ubuntu-tv1
   User gleg
   HostName 192.168.0.2
@@ -34,8 +29,3 @@ Host ubuntu-vm1
   User gleg
   HostName 127.0.0.1
   Port 2211
-
-Host ubuntu-vm2
-  User gleg
-  HostName 127.0.0.1
-  Port 2212
