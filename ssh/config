@@ -38,4 +38,4 @@ Host ubuntu-vm2
   Port 2212
 
 
-Include config_local
+Include ~/.ssh/config_local
