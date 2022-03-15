@@ -1,0 +1,4 @@
+skip_list:
+  - experimental
+  - git-latest
+  - package-latest
