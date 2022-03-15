@@ -1,0 +1,20 @@
+{
+    "editor.fontFamily": "Inconsolata",
+    "editor.fontSize": 14,
+    "terminal.integrated.fontSize": 14,
+
+    "workbench.colorCustomizations": {
+        "editor.background": "#181818"
+    },
+
+    // TODO: Adjust paths after moving over to new MacBook Pro.
+    "python.defaultInterpreterPath": "/usr/local/bin/python3",
+    "vscode-neovim.neovimExecutablePaths.darwin": "/usr/local/bin/nvim",
+
+    "editor.cursorBlinking": "solid",
+    "editor.matchBrackets": "near",
+    "editor.occurrencesHighlight": false,
+
+    "editor.lineNumbers": "relative",
+    "editor.scrollBeyondLastLine": false
+}
