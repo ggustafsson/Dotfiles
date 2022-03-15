@@ -36,3 +36,6 @@ Host ubuntu-vm2
   User gleg
   HostName 127.0.0.1
   Port 2212
+
+
+Include config_local
