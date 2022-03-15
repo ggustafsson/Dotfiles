@@ -1,3 +1,6 @@
+Include ~/.ssh/config_local
+
+
 Host *
   ConnectTimeout 30
   ServerAliveInterval 30
@@ -36,6 +39,3 @@ Host ubuntu-vm2
   User gleg
   HostName 127.0.0.1
   Port 2212
-
-
-Include ~/.ssh/config_local
