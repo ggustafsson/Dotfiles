@@ -12,6 +12,7 @@ if [[ $HOST == Onett ]]; then
 elif [[ $HOST == Twoson ]]; then
   ansible_playbook=setup_macos_work.yml
 else
+  # TODO: Remove after legacy decom.
   ansible_playbook=setup_macos_home_legacy.yml
 fi
 

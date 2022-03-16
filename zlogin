@@ -1,7 +1,8 @@
 if [[ $OSTYPE == darwin* ]]; then
   if ! pgrep -q ssh-agent; then
-    # TODO: Check if things have changed in macOS Monterey.
+    # TODO: Replace after legacy decom.
     /usr/bin/ssh-add -K -q ~/.ssh/id_ed25519
+    #/usr/bin/ssh-add --apple-use-keychain -q ~/.ssh/id_ed25519
   fi
 else
   text=$(hostname | sed $'s/-/\t/')
