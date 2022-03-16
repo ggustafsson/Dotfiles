@@ -255,11 +255,8 @@ if [[ -d ~/.local/share/fzf/shell ]]; then
   source ~/.local/share/fzf/shell/completion.zsh
   source ~/.local/share/fzf/shell/key-bindings.zsh
 
-  bindkey -r "^T"
-  bindkey "^O" fzf-file-widget
-
-  bindkey -r "^[c"
-  bindkey "^P" fzf-cd-widget
+  bindkey "^F" fzf-file-widget && bindkey -r "^T"
+  bindkey "^J" fzf-cd-widget   && bindkey -r "^[c"
 fi
 
 if [[ -d ~/.zsh/zsh-autosuggestions ]]; then
