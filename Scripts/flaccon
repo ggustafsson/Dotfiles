@@ -55,7 +55,7 @@ for arg; do
     value=${output#*=} # Remove tag name, keep text.
 
     # Title capitalize non-empty values if feature is not disabled.
-    if [[ ! -z $value && $capitalize -eq 1 ]]; then
+    if [[ -n $value && $capitalize -eq 1 ]]; then
       value=$(title $value)
     fi
 

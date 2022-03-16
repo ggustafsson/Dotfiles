@@ -153,7 +153,7 @@ function prompt_git {
 # Display info if a todo file is found in current directory.
 function prompt_todo {
   files=(.todo(N) .todo.*(N) TODO(N) TODO.*(N))
-  if [[ ! -z $files ]]; then
+  if [[ -n $files ]]; then
     echo " 📄 %F{magenta}todo%f"
   fi
 }

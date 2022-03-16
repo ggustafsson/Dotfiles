@@ -15,7 +15,7 @@
 if [[ $# -ge 1 ]]; then
   output=$(history -i 1 | grep --ignore-case "$*")
 
-  if [[ ! -z $output ]]; then
+  if [[ -n $output ]]; then
     echo $output
   else
     echo "No matching entries found!"

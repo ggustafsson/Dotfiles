@@ -46,7 +46,7 @@ for directory in ${projects_path}/*(N); do
     output="${output}%F{green}${branch}%f"
   fi
   files=(.todo(N) .todo.*(N) TODO(N) TODO.*(N))
-  if [[ ! -z $files ]]; then
+  if [[ -n $files ]]; then
     output="${output} + todo"
   fi
   output="${output}\n"
