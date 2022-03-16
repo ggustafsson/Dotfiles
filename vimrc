@@ -5,7 +5,6 @@ if !exists("g:dont_run_again_if_we_have_already_bought_chicken_nuggets")
   syntax enable
   colorscheme electric-boogaloo
 
-  let s:vim_startup_dir = getcwd() " Used by 'ChangeDirectory()' later.
   let g:dont_run_again_if_we_have_already_bought_chicken_nuggets = 1
 endif
 
@@ -91,41 +90,26 @@ if has("mac")
   nnoremap <Leader>op :silent !open "%"<CR>:redraw!<CR>
 endif
 
-if isdirectory($HOME .. "/.vim/pack/others/start/fzf")
-  nnoremap <Leader>bu :FzfBuffers<CR>
-  nnoremap <Leader>fd :FzfFiles<CR>
-  nnoremap <Leader>fh :FzfFiles ~/<CR>
-  nnoremap <Leader>ft :FzfFiletypes<CR>
-  nnoremap <Leader>he :FzfHelptags<CR>
-  nnoremap <Leader>hi :FzfHistory<CR>
-  nnoremap <Leader>ma :FzfMarks<CR>
-  nnoremap <Leader>rg :FzfRg<Space>
-  nnoremap <Leader>se :FzfLines<CR>
-  nnoremap <Leader>wi :FzfWindows<CR>
-  nnoremap <Leader>xx :FzfRg \b(FIXME\|TODO\|XXX)(:\|$\| )<CR>
-  nnoremap <Leader>:  :FzfHistory:<CR>
-  nnoremap <Leader>/  :FzfHistory/<CR>
-else
-  nnoremap <Leader>bu :buffers<CR>:buffer<Space>
-  nnoremap <Leader>ft :setlocal filetype=
-  nnoremap <Leader>hi :browse oldfiles<CR>
-  nnoremap <Leader>ma :marks<CR>
-  nnoremap <Leader>:  :history cmd<CR>
-  nnoremap <Leader>/  :history search<CR>
-endif
-
+nnoremap <Leader>/  :FzfHistory/<CR>
+nnoremap <Leader>:  :FzfHistory:<CR>
 nnoremap <Leader>bd :bdelete<CR>
 nnoremap <Leader>cc :call ColorColumn()<CR>
-nnoremap <Leader>cd :call ChangeDirectory()<CR>
+nnoremap <Leader>cd :cd <C-R>=escape(expand("%:p:h"), ' \')<CR>/
 nnoremap <Leader>ed :edit <C-R>=escape(expand("%:p:h"), ' \')<CR>/
 nnoremap <Leader>eh :edit ~/
+nnoremap <Leader>ft :FzfFiletypes<CR>
+nnoremap <Leader>he :FzfHelptags<CR>
+nnoremap <Leader>hi :FzfHistory<CR>
 nnoremap <Leader>in :InsertTemplate ~/.vim/templates/
 nnoremap <Leader>li :setlocal list! list?<CR>
 nnoremap <Leader>lo :silent! lwindow \| cwindow<CR>
+nnoremap <Leader>ma :FzfMarks<CR>
 nnoremap <Leader>nu :setlocal number! relativenumber!<CR>
+nnoremap <Leader>rg :FzfRg<Space>
 nnoremap <Leader>rs :source ~/.vim/session.vim<CR>
 nnoremap <Leader>s2 :setlocal expandtab shiftwidth=2 softtabstop=2<CR>
 nnoremap <Leader>s4 :setlocal expandtab shiftwidth=4 softtabstop=4<CR>
+nnoremap <Leader>se :FzfLines<CR>
 nnoremap <Leader>sp :setlocal spell! spell?<CR>
 nnoremap <Leader>ss :mksession! ~/.vim/session.vim<CR>
 nnoremap <Leader>t4 :setlocal noexpandtab shiftwidth=4 softtabstop=0 tabstop=4<CR>
@@ -137,8 +121,10 @@ nnoremap <Leader>tr :Fern . -drawer -toggle<CR>
 nnoremap <Leader>tw :setlocal textwidth=79
 nnoremap <Leader>un :call UndoAll()<CR>
 nnoremap <Leader>ut :MundoToggle<CR>
+nnoremap <Leader>wi :FzfWindows<CR>
 nnoremap <Leader>wr :setlocal wrap! wrap?<CR>
 nnoremap <Leader>ws ml:%s/\s\+$//e \| nohlsearch<CR>`l
+nnoremap <Leader>xx :FzfRg \b(FIXME\|TODO\|XXX)(:\|$\| )<CR>
 
 " sed turns two spaces delimiter into one space.
 nnoremap <Leader>cl :%!column -t \| sed 's/\( *\) /\1/g'<CR>
@@ -177,6 +163,9 @@ vnoremap <C-L> <Esc><Cmd>nohlsearch<CR><C-L>
 
 nnoremap <C-Q> <Cmd>qall<CR>
 
+nnoremap <C-F> <Cmd>FzfFiles<CR>
+nnoremap <C-J> <Cmd>FzfBuffers<CR>
+
 nnoremap Y y$
 
 " These key combos are unused and similar to 'gt' and 'gT' for tabs.
@@ -190,11 +179,9 @@ inoremap jj <Esc>
 inoremap <expr><Tab> CompletionTab()
 inoremap <C-N> <C-X><C-O>
 
-if isdirectory($HOME .. "/.vim/pack/others/start/fzf")
-  imap <C-x><C-f> <Plug>(fzf-complete-path)
-  imap <C-x><C-k> <Plug>(fzf-complete-word)
-  imap <C-x><C-l> <Plug>(fzf-complete-line)
-endif
+inoremap <C-x><C-f> <Plug>(fzf-complete-path)
+inoremap <C-x><C-k> <Plug>(fzf-complete-word)
+inoremap <C-x><C-l> <Plug>(fzf-complete-line)
 
 " Text object consisting of all text inside current line, first character up
 " until last character. Like 'w' (word), 'p' (paragraph) etc.
@@ -206,26 +193,6 @@ cnoremap <C-A> <Home>
 
 command! -nargs=* -complete=help Help vertical help <args>
 
-
-" Jump back and forth between directory of file in current buffer and Vim's
-" initial working directory.
-function! ChangeDirectory()
-  let l:buffer_path = expand("%:p:h")
-  let l:current_path = getcwd()
-
-  if l:current_path != l:buffer_path
-    execute "cd " .. l:buffer_path
-    echo "cd " .. getcwd()
-  else
-    if exists("s:vim_startup_dir")
-      execute "cd " .. s:vim_startup_dir
-      echo "cd " .. getcwd()
-    else
-      cd ~
-      echo "cd " .. getcwd()
-    endif
-  endif
-endfunction
 
 " Toggle 'colorcolumn' setting on and off.
 function! ColorColumn()
