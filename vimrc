@@ -131,8 +131,8 @@ nnoremap <Leader>ss :mksession! ~/.vim/session.vim<CR>
 nnoremap <Leader>t4 :setlocal noexpandtab shiftwidth=4 softtabstop=0 tabstop=4<CR>
 nnoremap <Leader>t8 :setlocal noexpandtab shiftwidth=8 softtabstop=0 tabstop=8<CR>
 nnoremap <Leader>te :edit ~/Documents/Text/
-nnoremap <Leader>tm :vsplit ~/Documents/Text/Tmp.txt \| :setlocal nobuflisted<CR>
-nnoremap <Leader>to :vsplit ~/Documents/Text/Todo.txt \| :setlocal nobuflisted<CR>
+nnoremap <Leader>tm :edit ~/Documents/Text/Tmp.txt \| :setlocal nobuflisted<CR>
+nnoremap <Leader>to :edit ~/Documents/Text/Todo.txt \| :setlocal nobuflisted<CR>
 nnoremap <Leader>tr :Fern . -drawer -toggle<CR>
 nnoremap <Leader>tw :setlocal textwidth=79
 nnoremap <Leader>un :call UndoAll()<CR>
