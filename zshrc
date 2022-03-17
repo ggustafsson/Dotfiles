@@ -211,7 +211,6 @@ else
   alias free="free -h"
 fi
 
-alias hist="source hist"
 alias hogs="du -sk * | sort --numeric-sort --reverse | head -n 15"
 alias iip="curl icanhazip.com"
 alias mkdir="mkdir -pv"
@@ -227,15 +226,18 @@ alias cp="cp -vi"
 alias mv="mv -vi"
 alias rm="rm -v"
 
-alias la="ls -l --all"
-alias ll="ls -l"
-alias ls="ls --classify --color=auto --human-readable"
-
 alias df="df -h"
 alias du="du -hs"
 
 alias grep="grep --color=auto"
 alias rgrep="grep --binary-file=without-match --dereference-recursive --exclude-dir .git"
+
+alias hist="\history -i -25"
+alias history="history -i 1"
+
+alias la="ls -l --all"
+alias ll="ls -l"
+alias ls="ls --classify --color=auto --human-readable"
 
 alias ps="ps a -o user,tt,pid,command"
 alias psx="\ps ax -o user,tt,pid,command"

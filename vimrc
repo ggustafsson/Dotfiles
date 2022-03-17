@@ -70,13 +70,15 @@ set wildignorecase
 set wildmode=longest,list
 
 
-let g:fzf_command_prefix = "Fzf"
 let g:mapleader = ","
 
 let g:ale_sign_error = "💀 "
 let g:ale_sign_warning = "🔥 "
 let g:ale_sign_style_error = "⚡️ "
 let g:ale_sign_style_warning = "⚡️ "
+
+let g:fzf_action = {'ctrl-t': 'tab split', 'ctrl-s': 'split', 'ctrl-v': 'vsplit'}
+let g:fzf_command_prefix = "Fzf"
 
 let g:go_metalinter_autosave = 1
 let g:go_template_autocreate = 0
@@ -97,9 +99,9 @@ nnoremap <Leader>cc :call ColorColumn()<CR>
 nnoremap <Leader>cd :cd <C-R>=escape(expand("%:p:h"), ' \')<CR>/
 nnoremap <Leader>ed :edit <C-R>=escape(expand("%:p:h"), ' \')<CR>/
 nnoremap <Leader>eh :edit ~/
+nnoremap <Leader>er :FzfHistory<CR>
 nnoremap <Leader>ft :FzfFiletypes<CR>
 nnoremap <Leader>he :FzfHelptags<CR>
-nnoremap <Leader>hi :FzfHistory<CR>
 nnoremap <Leader>in :InsertTemplate ~/.vim/templates/
 nnoremap <Leader>li :setlocal list! list?<CR>
 nnoremap <Leader>lo :silent! lwindow \| cwindow<CR>
@@ -256,11 +258,11 @@ command! -nargs=1 FixTabs call FixTabs(<args>)
 " to next or previous quickfix list entry instead.
 function! GoToLocation(action)
   if a:action == "next"
-    let l:cmds_loclist  = { "next": "lnext", "rotate": "lfirst" }
-    let l:cmds_quickfix = { "next": "cnext", "rotate": "cfirst" }
+    let l:cmds_loclist  = {"next": "lnext", "rotate": "lfirst"}
+    let l:cmds_quickfix = {"next": "cnext", "rotate": "cfirst"}
   elseif a:action == "previous"
-    let l:cmds_loclist  = { "next": "lprevious", "rotate": "llast" }
-    let l:cmds_quickfix = { "next": "cprevious", "rotate": "clast" }
+    let l:cmds_loclist  = {"next": "lprevious", "rotate": "llast"}
+    let l:cmds_quickfix = {"next": "cprevious", "rotate": "clast"}
   else
     return
   endif
