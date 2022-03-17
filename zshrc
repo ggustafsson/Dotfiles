@@ -211,6 +211,7 @@ else
   alias free="free -h"
 fi
 
+alias fd="fd --case-sensitive --follow"
 alias hogs="du -sk * | sort --numeric-sort --reverse | head -n 15"
 alias iip="curl icanhazip.com"
 alias mkdir="mkdir -pv"
