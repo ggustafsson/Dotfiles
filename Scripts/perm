@@ -1,8 +1,9 @@
 #!/usr/bin/env zsh
 
-# Description: Changes permissions on files and directories recursively.
-# Permissions used are 755/700 for directories and 644/600 for files, prior
-# execute flags on files are left untouched.
+# Description: Change permissions on files and directories recursively.
+# Permissions used are 755/700 for directories and 644/600 for files (755/700
+# are used if any prior executable flag is found). Under macOS ACL attributes
+# are removed.
 #
 # Usage: perm -s <path1> <path2> ...
 #        perm -l <path1> <path2> ...
@@ -11,13 +12,13 @@
 # License: BSD 3-Clause
 
 if [[ $# -ge 2 && $1 == (-l|--loose) ]]; then
-  perm_dir=755
-  perm_file=644
-  perm_exec=$perm_dir
+  mode_dir=755
+  mode_file=644
+  mode_exec=$mode_dir
 elif [[ $# -ge 2 && $1 == (-s|--strict) ]]; then
-  perm_dir=700
-  perm_file=600
-  perm_exec=$perm_dir
+  mode_dir=700
+  mode_file=600
+  mode_exec=$mode_dir
 else
   echo "Usage: ${0:t} [OPTION]... [PATH(S)]...
 
@@ -36,13 +37,13 @@ for arg; do
 
   echo "Changing permissions on '${arg}'."
 
-  find $arg -type d -exec chmod $perm_dir "{}" \;
-
   if [[ $OSTYPE == darwin* ]]; then
-    find $arg -type f -perm +111 -exec chmod $perm_exec "{}" \;
-    find $arg -type f ! -perm +111 -exec chmod $perm_file "{}" \;
+    find $arg -type d              -exec chmod -N "{}" \; -exec chmod $mode_dir "{}" \;
+    find $arg -type f   -perm +111 -exec chmod -N "{}" \; -exec chmod $mode_exec "{}" \;
+    find $arg -type f ! -perm +111 -exec chmod -N "{}" \; -exec chmod $mode_file "{}" \;
   else
-    find $arg -type f -perm /111 -exec chmod $perm_exec "{}" \;
-    find $arg -type f ! -perm /111 -exec chmod $perm_file "{}" \;
+    find $arg -type d              -exec chmod $mode_dir "{}" \;
+    find $arg -type f   -perm /111 -exec chmod $mode_exec "{}" \;
+    find $arg -type f ! -perm /111 -exec chmod $mode_file "{}" \;
   fi
 done
