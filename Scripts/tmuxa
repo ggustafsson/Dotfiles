@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-# Description: Start new (or attach existing) custom Tmux session.
+# Description: Start new (or attach existing) custom Tmux sessions.
 #
 # Usage: tmuxa
 #
@@ -9,17 +9,15 @@
 
 session1=home
 session2=work
+session3=xxxx
 
 # For future reference:
 #   split-window -h creates vertically divided panes...
 #   split-window -v creates horizontally divided panes...
 
-tmux \
-  new-session -d -s $session1
-
-tmux \
-  new-session -d -s $session2 \; \
-  send-keys "chkp" C-l Enter
+tmux new-session -d -s $session1
+tmux new-session -d -s $session2
+tmux new-session -d -s $session3
 
 if [[ -z $TMUX ]]; then
   tmux attach-session -t $session1
