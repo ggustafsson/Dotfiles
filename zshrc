@@ -231,7 +231,7 @@ alias history="history -i 1"
 
 alias la="ls --long --all"
 alias ll="ls --long"
-alias ls="exa --header --group --git"
+alias ls="exa --header --group"
 alias tree="exa --tree"
 
 alias ps="ps a -o user,tt,pid,command"
