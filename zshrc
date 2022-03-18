@@ -215,7 +215,6 @@ alias fd="fd --follow --no-ignore"
 alias hogs="du -sk * | sort --numeric-sort --reverse | head -n 15"
 alias iip="curl icanhazip.com"
 alias mkdir="mkdir -pv"
-alias tree="tree --charset ascii"
 alias untar="tar -xvf"
 alias zreload="source ~/.zshenv && source ~/.zshrc"
 
@@ -236,9 +235,10 @@ alias rgrep="grep --binary-file=without-match --dereference-recursive --exclude-
 alias hist="\history -i -25"
 alias history="history -i 1"
 
-alias la="ls -l --all"
-alias ll="ls -l"
-alias ls="ls --classify --color=auto --human-readable"
+alias la="ls --long --all"
+alias ll="ls --long"
+alias ls="exa"
+alias tree="exa --tree"
 
 alias ps="ps a -o user,tt,pid,command"
 alias psx="\ps ax -o user,tt,pid,command"
