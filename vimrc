@@ -95,6 +95,7 @@ endif
 nnoremap <Leader>/  :FzfHistory/<CR>
 nnoremap <Leader>:  :FzfHistory:<CR>
 nnoremap <Leader>bd :bdelete<CR>
+nnoremap <Leader>bu :FzfBuffers<CR>
 nnoremap <Leader>cc :call ColorColumn()<CR>
 nnoremap <Leader>cd :cd <C-R>=escape(expand("%:p:h"), ' \')<CR>/
 nnoremap <Leader>ed :edit <C-R>=escape(expand("%:p:h"), ' \')<CR>/
@@ -181,9 +182,9 @@ inoremap jj <Esc>
 inoremap <expr><Tab> CompletionTab()
 inoremap <C-N> <C-X><C-O>
 
-inoremap <C-x><C-f> <Plug>(fzf-complete-path)
-inoremap <C-x><C-k> <Plug>(fzf-complete-word)
-inoremap <C-x><C-l> <Plug>(fzf-complete-line)
+inoremap <C-X><C-F> <Plug>(fzf-complete-path)
+inoremap <C-X><C-K> <Plug>(fzf-complete-word)
+inoremap <C-X><C-L> <Plug>(fzf-complete-line)
 
 " Text object consisting of all text inside current line, first character up
 " until last character. Like 'w' (word), 'p' (paragraph) etc.
