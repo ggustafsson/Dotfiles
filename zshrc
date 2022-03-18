@@ -211,7 +211,7 @@ else
   alias free="free -h"
 fi
 
-alias fd="fd --follow"
+alias fd="fd --follow --no-ignore"
 alias hogs="du -sk * | sort --numeric-sort --reverse | head -n 15"
 alias iip="curl icanhazip.com"
 alias mkdir="mkdir -pv"
@@ -247,7 +247,7 @@ alias py="python3"
 alias pyjson="python3 -m json.tool"
 alias pyweb="python3 -m http.server 8080"
 
-alias rg="rg --follow --sort path"
+alias rg="rg --follow --no-ignore --sort path"
 alias xxx="rg '\b(FIXME|TODO|XXX)(:|$| )'"
 
 alias svtplay-dl="svtplay-dl --resume"
