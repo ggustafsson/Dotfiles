@@ -1,0 +1,40 @@
+! White - 231, Grey100, #ffffff, rgb(255,255,255)
+! Black - 233, Grey7,   #121212, rgb(18,18,18)
+*.foreground:   #ffffff
+*.background:   #121212
+
+! Same as macOS dark mode selection color.
+*.cursorColor:  #646f82
+
+! Black - 233, Grey7,  #121212, rgb(18,18,18)
+!         244, Grey50, #808080, rgb(128,128,128)
+*.color0:       #121212
+*.color8:       #808080
+
+! Red - 210, LightCoral, #ff8787, rgb(255,135,135)
+*.color1:       #ff8787
+*.color9:       #ff8787
+
+! Green - 121, PaleGreen1, #87ffaf, rgb(135,255,175)
+*.color2:       #87ffaf
+*.color10:      #87ffaf
+
+! Yellow - 229, Wheat1, #ffffaf, rgb(255,255,175)
+*.color3:       #ffffaf
+*.color11:      #ffffaf
+
+! Blue - 81, SteelBlue1, #5fd7ff, rgb(95,215,255)
+*.color4:       #5fd7ff
+*.color12:      #5fd7ff
+
+! Magenta - 183, Plum2, #d7afff, rgb(215,175,255)
+*.color5:       #d7afff
+*.color13:      #d7afff
+
+! Cyan - 86, Aquamarine1, #5fffd7, rgb(95,255,215)
+*.color6:       #5fffd7
+*.color14:      #5fffd7
+
+! White - 231, Grey100, #ffffff, rgb(255,255,255)
+*.color7:       #ffffff
+*.color15:      #ffffff
