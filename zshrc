@@ -208,6 +208,7 @@ else
 fi
 
 alias fd="fd --follow --no-ignore"
+alias grep="grep --color=auto"
 alias hogs="du -sk * | sort --numeric-sort --reverse | head -n 15"
 alias iip="curl icanhazip.com"
 alias mkdir="mkdir -pv"
@@ -225,15 +226,12 @@ alias rm="rm -v"
 alias df="df -h"
 alias du="du -hs"
 
-alias grep="grep --color=auto"
-alias rgrep="grep --binary-file=without-match --dereference-recursive --exclude-dir .git"
-
 alias hist="\history -i -25"
 alias history="history -i 1"
 
 alias la="ls --long --all"
 alias ll="ls --long"
-alias ls="exa"
+alias ls="exa --git"
 alias tree="exa --tree"
 
 alias ps="ps a -o user,tt,pid,command"
