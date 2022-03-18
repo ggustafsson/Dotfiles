@@ -9,7 +9,6 @@
 
 session1=home
 session2=work
-session3=xxxx
 
 # For future reference:
 #   split-window -h creates vertically divided panes...
