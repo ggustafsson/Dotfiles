@@ -99,6 +99,7 @@ nnoremap <Leader>bu :FzfBuffers<CR>
 nnoremap <Leader>cc :call ColorColumn()<CR>
 nnoremap <Leader>cd :cd <C-R>=escape(expand("%:p:h"), ' \')<CR>/
 nnoremap <Leader>ed :edit <C-R>=escape(expand("%:p:h"), ' \')<CR>/
+nnoremap <Leader>ef :FzfFiles<CR>
 nnoremap <Leader>eh :edit ~/
 nnoremap <Leader>er :FzfHistory<CR>
 nnoremap <Leader>ft :FzfFiletypes<CR>
@@ -165,9 +166,6 @@ nnoremap <C-L> <Cmd>nohlsearch<CR><C-L>
 vnoremap <C-L> <Esc><Cmd>nohlsearch<CR><C-L>
 
 nnoremap <C-Q> <Cmd>qall<CR>
-
-nnoremap <C-F> <Cmd>FzfFiles<CR>
-nnoremap <C-J> <Cmd>FzfBuffers<CR>
 
 nnoremap Y y$
 
