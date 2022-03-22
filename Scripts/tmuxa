@@ -7,9 +7,8 @@
 # Creator: Göran Gustafsson (gustafsson.g at gmail.com)
 # License: BSD 3-Clause
 
-session1=main
-session2=code
-session3=xxxx
+session1=alpha
+session2=omega
 
 # For future reference:
 #   split-window -h creates vertically divided panes...
@@ -17,7 +16,6 @@ session3=xxxx
 
 tmux new-session -d -s $session1
 tmux new-session -d -s $session2
-tmux new-session -d -s $session3
 
 if [[ -z $TMUX ]]; then
   tmux attach-session -t $session1
