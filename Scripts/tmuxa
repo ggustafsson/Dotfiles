@@ -7,8 +7,9 @@
 # Creator: Göran Gustafsson (gustafsson.g at gmail.com)
 # License: BSD 3-Clause
 
-session1=home
-session2=work
+session1=main
+session2=code
+session3=xxxx
 
 # For future reference:
 #   split-window -h creates vertically divided panes...

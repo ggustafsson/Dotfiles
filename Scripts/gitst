@@ -10,8 +10,8 @@
 #   Project-Assets  master
 #   ...
 #
-# Usage: chkp
-#        chkp <path>
+# Usage: gitst
+#        gitst <path>
 #
 # Creator: Göran Gustafsson (gustafsson.g at gmail.com)
 # License: BSD 3-Clause
