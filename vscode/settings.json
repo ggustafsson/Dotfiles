@@ -1,0 +1,19 @@
+{
+    "editor.fontFamily": "Inconsolata",
+    "editor.fontSize": 14,
+    "terminal.integrated.fontSize": 14,
+
+    "workbench.colorCustomizations": {
+        "editor.background": "#181818"
+    },
+
+    "python.defaultInterpreterPath": "/opt/homebrew/bin/python3",
+    "vscode-neovim.neovimExecutablePaths.darwin": "/opt/homebrew/bin/nvim",
+
+    "editor.cursorBlinking": "solid",
+    "editor.matchBrackets": "near",
+    "editor.occurrencesHighlight": false,
+
+    "editor.lineNumbers": "relative",
+    "editor.scrollBeyondLastLine": false
+}
