@@ -9,11 +9,14 @@
 
 if [[ $HOST == Onett ]]; then
   ansible_playbook=setup_macos_home.yml
+  backup_toggle=on
 elif [[ $HOST == Twoson ]]; then
   ansible_playbook=setup_macos_work.yml
+  backup_toggle=off
 else
   # TODO: Remove after legacy decom.
   ansible_playbook=setup_macos_home_legacy.yml
+  backup_toggle=on
 fi
 
 selections=$(dialog \
@@ -21,8 +24,8 @@ selections=$(dialog \
   --checklist "Select maintenance commands:" 0 0 0 \
   1 "ansible-playbook $ansible_playbook" on \
   2 "rmhogs" on \
-  3 "backup" on \
-  4 "backup2srv" on 2>&1 >/dev/tty)
+  3 "backup" $backup_toggle \
+  4 "backup2srv" $backup_toggle 2>&1 > /dev/tty)
 
 clear
 
@@ -31,6 +34,7 @@ for selection in ${(z)selections}; do
     1)
       echo
       cd ~/Projects/Ansible
+      git pull
       ansible-playbook $ansible_playbook --ask-become
       cd -
       ;;
