@@ -35,6 +35,7 @@ for selection in ${(z)selections}; do
       echo
       cd ~/Projects/Ansible
       git pull
+      echo
       ansible-playbook $ansible_playbook --ask-become
       cd -
       ;;

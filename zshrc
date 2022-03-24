@@ -1,3 +1,6 @@
+export GREP_COLORS="fn=01;34:ln=00;34:se=01;30" # File, line & separator.
+export LS_COLORS="rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32"
+
 export EDITOR=vim
 export VISUAL=$EDITOR
 
@@ -188,6 +191,7 @@ PROMPT2='$(prompt_mode 2) ' # Used when entering multi-line commands.
 
 if [[ $OSTYPE == darwin* ]]; then
   alias beep="afplay /System/Library/Sounds/Glass.aiff"
+  alias locate="mdfind -name"
   alias tim="caffeinate tim" # Give Tim a cup of Joe! :)
   alias wifiscan="/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport --scan"
 
@@ -212,6 +216,7 @@ alias grep="grep --color=auto"
 alias hogs="du -sk * | sort --numeric-sort --reverse | head -n 15"
 alias iip="curl icanhazip.com"
 alias mkdir="mkdir -pv"
+alias tree="tree --charset ascii"
 alias untar="tar -xvf"
 alias zreload="source ~/.zshenv && source ~/.zshrc"
 
@@ -226,13 +231,15 @@ alias rm="rm -v"
 alias df="df -h"
 alias du="du -hs"
 
+alias grep="grep --color=auto"
+alias rgrep="grep --binary-file=without-match --dereference-recursive --exclude-dir .git"
+
 alias hist="\history -i -25"
 alias history="history -i 1"
 
-alias la="ls --long --all"
-alias ll="ls --long"
-alias ls="exa --header --group"
-alias tree="exa --tree"
+alias la="ls -l --all"
+alias ll="ls -l"
+alias ls="ls --classify --color=auto --human-readable"
 
 alias ps="ps a -o user,tt,pid,command"
 alias psx="\ps ax -o user,tt,pid,command"
