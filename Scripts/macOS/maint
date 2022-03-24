@@ -7,25 +7,18 @@
 # Creator: Göran Gustafsson (gustafsson.g at gmail.com)
 # License: BSD 3-Clause
 
-if [[ $HOST == Onett ]]; then
-  ansible_playbook=setup_macos_home.yml
-  backup_toggle=on
-elif [[ $HOST == Twoson ]]; then
-  ansible_playbook=setup_macos_work.yml
-  backup_toggle=off
+# TODO: Remove Coruscant after legacy decom.
+if [[ $HOST == (Onett|Coruscant) ]]; then
+  choices=(1 "maint-ansible" on 2 "rmhogs" on 3 "backup" on 4 "backup2srv" on)
 else
-  # TODO: Remove after legacy decom.
-  ansible_playbook=setup_macos_home_legacy.yml
-  backup_toggle=on
+  choices=(1 "maint-ansible" on 2 "rmhogs" on)
 fi
 
+echo $choices
 selections=$(dialog \
   --default-button "Cancel" \
   --checklist "Select maintenance commands:" 0 0 0 \
-  1 "ansible-playbook $ansible_playbook" on \
-  2 "rmhogs" on \
-  3 "backup" $backup_toggle \
-  4 "backup2srv" $backup_toggle 2>&1 > /dev/tty)
+  $choices 2>&1 > /dev/tty)
 
 clear
 
@@ -33,11 +26,7 @@ for selection in ${(z)selections}; do
   case $selection in
     1)
       echo
-      cd ~/Projects/Ansible
-      git pull
-      echo
-      ansible-playbook $ansible_playbook --ask-become
-      cd -
+      maint-ansible
       ;;
     2)
       echo

@@ -1,0 +1,31 @@
+#!/usr/bin/env zsh
+
+# Description: Executes Ansible playbook for local setup.
+#
+# Usage: maint-ansible
+#
+# Creator: Göran Gustafsson (gustafsson.g at gmail.com)
+# License: BSD 3-Clause
+
+# TODO: Rewrite after legacy decom.
+if [[ $HOST == Onett ]]; then
+  playbook=setup_macos_home.yml
+elif [[ $HOST == Twoson ]]; then
+  playbook=setup_macos_work.yml
+elif [[ $HOST == Coruscant ]]; then
+  playbook=setup_macos_home_legacy.yml
+else
+  echo "Could not determine which Ansible playbook to use! Exiting..."
+  exit 1
+fi
+
+directory=~/Projects/Ansible
+
+print -P "%F{cyan}git pull @ ${directory/$HOME/~}:%f"
+git -C $directory pull
+
+print -P "\n%F{cyan}ansible-playbook ${playbook}:%f"
+confirm || exit 1
+pushd $directory
+ansible-playbook $playbook --ask-become
+popd
