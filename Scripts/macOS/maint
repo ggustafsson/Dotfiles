@@ -14,7 +14,6 @@ else
   choices=(1 "maint-ansible" on 2 "rmhogs" on)
 fi
 
-echo $choices
 selections=$(dialog \
   --default-button "Cancel" \
   --checklist "Select maintenance commands:" 0 40 0 \
