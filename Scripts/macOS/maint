@@ -9,7 +9,7 @@
 
 # TODO: Remove Coruscant after legacy decom.
 if [[ $HOST == (Onett|Coruscant) ]]; then
-  choices=(1 "maint-ansible" on 2 "rmhogs" on 3 "backup" on 4 "backup2srv" on)
+  choices=(1 "maint-ansible" on 2 "rmhogs" on 3 "backup" on 4 "backup2srv" off)
 else
   choices=(1 "maint-ansible" on 2 "rmhogs" on)
 fi
@@ -17,7 +17,7 @@ fi
 echo $choices
 selections=$(dialog \
   --default-button "Cancel" \
-  --checklist "Select maintenance commands:" 0 0 0 \
+  --checklist "Select maintenance commands:" 0 40 0 \
   $choices 2>&1 > /dev/tty)
 
 clear
