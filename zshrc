@@ -212,7 +212,6 @@ else
 fi
 
 alias fd="fd --follow --no-ignore"
-alias grep="grep --color=auto"
 alias hogs="du -sk * | sort --numeric-sort --reverse | head -n 15"
 alias iip="curl icanhazip.com"
 alias mkdir="mkdir -pv"
@@ -239,7 +238,7 @@ alias history="history -i 1"
 
 alias la="ls -l --all"
 alias ll="ls -l"
-alias ls="ls --classify --color=auto --human-readable"
+alias ls="ls --classify --color=auto --human-readable" # GNU Coreutils ls.
 
 alias ps="ps a -o user,tt,pid,command"
 alias psx="\ps ax -o user,tt,pid,command"

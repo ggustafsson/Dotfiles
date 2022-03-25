@@ -1,6 +1,6 @@
--------------------------------------------------------------------------------
--- 1. Large size 1.
--------------------------------------------------------------------------------
+---------------------
+-- 1. Large size 1 --
+---------------------
 hs.hotkey.bind(preKeys, "1", function()
   local window = hs.window.focusedWindow()
   local frame  = window:frame()
@@ -14,9 +14,9 @@ hs.hotkey.bind(preKeys, "1", function()
   hs.alert.show("Size 1", 0.5)
 end)
 
--------------------------------------------------------------------------------
--- 2. Large size 2.
--------------------------------------------------------------------------------
+---------------------
+-- 2. Large size 2 --
+---------------------
 hs.hotkey.bind(preKeys, "2", function()
   local window = hs.window.focusedWindow()
   local frame  = window:frame()
@@ -30,9 +30,9 @@ hs.hotkey.bind(preKeys, "2", function()
   hs.alert.show("Size 2", 0.5)
 end)
 
--------------------------------------------------------------------------------
--- 3. Large size 3.
--------------------------------------------------------------------------------
+---------------------
+-- 3. Large size 3 --
+---------------------
 hs.hotkey.bind(preKeys, "3", function()
   local window = hs.window.focusedWindow()
   local frame  = window:frame()
@@ -46,16 +46,16 @@ hs.hotkey.bind(preKeys, "3", function()
   hs.alert.show("Size 3", 0.5)
 end)
 
--------------------------------------------------------------------------------
--- 4. Placeholder.
--------------------------------------------------------------------------------
+--------------------
+-- 4. Placeholder --
+--------------------
 hs.hotkey.bind(preKeys, "4", function()
   hs.alert.show("4 - No Action", 0.5)
 end)
 
--------------------------------------------------------------------------------
--- 5. Small size 1.
--------------------------------------------------------------------------------
+---------------------
+-- 5. Small size 1 --
+---------------------
 hs.hotkey.bind(preKeys, "5", function()
   local window = hs.window.focusedWindow()
   local frame  = window:frame()
@@ -67,9 +67,9 @@ hs.hotkey.bind(preKeys, "5", function()
   hs.alert.show("Size 5", 0.5)
 end)
 
--------------------------------------------------------------------------------
--- 6. Small size 2.
--------------------------------------------------------------------------------
+---------------------
+-- 6. Small size 2 --
+---------------------
 hs.hotkey.bind(preKeys, "6", function()
   local window = hs.window.focusedWindow()
   local frame  = window:frame()
@@ -81,16 +81,16 @@ hs.hotkey.bind(preKeys, "6", function()
   hs.alert.show("Size 6", 0.5)
 end)
 
--------------------------------------------------------------------------------
--- 7. Placeholder.
--------------------------------------------------------------------------------
+--------------------
+-- 7. Placeholder --
+--------------------
 hs.hotkey.bind(preKeys, "7", function()
   hs.alert.show("7 - No Action", 0.5)
 end)
 
--------------------------------------------------------------------------------
--- 8. Split window 50% left, or revert.
--------------------------------------------------------------------------------
+-----------------------------------------
+-- 8. Split window 50% left, or revert --
+-----------------------------------------
 frameCacheLeft = {}
 
 hs.hotkey.bind(preKeys, "8", function()
@@ -107,9 +107,9 @@ hs.hotkey.bind(preKeys, "8", function()
   end
 end)
 
--------------------------------------------------------------------------------
--- 9. Split window 50% right, or revert.
--------------------------------------------------------------------------------
+------------------------------------------
+-- 9. Split window 50% right, or revert --
+------------------------------------------
 frameCacheRight = {}
 
 hs.hotkey.bind(preKeys, "9", function()
@@ -126,9 +126,9 @@ hs.hotkey.bind(preKeys, "9", function()
   end
 end)
 
--------------------------------------------------------------------------------
--- 0. Move window to center.
--------------------------------------------------------------------------------
+------------------------------
+-- 0. Move window to center --
+------------------------------
 hs.hotkey.bind(preKeys, "0", function()
   local window = hs.window.focusedWindow()
   local frame  = window:frame()
@@ -141,9 +141,9 @@ hs.hotkey.bind(preKeys, "0", function()
   hs.alert.show("Centered", 0.5)
 end)
 
--------------------------------------------------------------------------------
--- +. Maximize window, or revert.
--------------------------------------------------------------------------------
+-----------------------------------
+-- +. Maximize window, or revert --
+-----------------------------------
 frameCacheMax = {}
 
 hs.hotkey.bind(preKeys, "+", function()
@@ -160,9 +160,9 @@ hs.hotkey.bind(preKeys, "+", function()
   end
 end)
 
--------------------------------------------------------------------------------
--- Move window up, down, left or right.
--------------------------------------------------------------------------------
+-----------------------------------------
+-- Move window up, down, left or right --
+-----------------------------------------
 hs.hotkey.bind(preKeys, "Up", function()
   local window = hs.window.focusedWindow()
   local frame  = window:frame()
