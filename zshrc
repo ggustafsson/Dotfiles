@@ -203,8 +203,7 @@ if [[ $OSTYPE == darwin* ]]; then
   alias caski="brew install --cask --appdir=~/Applications"
   alias caskr="brew uninstall --cask --zap"
 
-  alias ls="ls -FGh"
-  alias gls="gls --classify --color=auto --human-readable"
+  alias ls="gls --classify --color=auto --human-readable"
   alias la="gls -l --all"
   alias ll="gls -l"
 else
@@ -244,8 +243,8 @@ alias du="du -hs"
 alias grep="grep --color=auto"
 alias rgrep="grep --binary-file=without-match --dereference-recursive --exclude-dir .git"
 
-alias hist="\history -i -25"
 alias history="history -i 1"
+alias hist="\history -i -25"
 
 alias ps="ps a -o user,tt,pid,command"
 alias psx="\ps ax -o user,tt,pid,command"
