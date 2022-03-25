@@ -203,9 +203,11 @@ if [[ $OSTYPE == darwin* ]]; then
   alias caski="brew install --cask --appdir=~/Applications"
   alias caskr="brew uninstall --cask --zap"
 
+  alias grep="ggrep --color=auto"
+  alias bgrep="\grep --color=auto"
+
   alias ls="gls --classify --color=auto --human-readable"
-  alias la="gls -l --all"
-  alias ll="gls -l"
+  alias bls="\ls -FGh"
 else
   if type -p apt &> /dev/null; then
     alias apti="sudo apt install"
@@ -215,16 +217,15 @@ else
   fi
 
   alias free="free -h"
-
+  alias grep="grep --color=auto"
   alias ls="ls --classify --color=auto --human-readable"
-  alias la="ls -l --all"
-  alias ll="ls -l"
 fi
 
 alias fd="fd --follow --no-ignore"
 alias hogs="du -sk * | sort --numeric-sort --reverse | head -n 15"
 alias iip="curl icanhazip.com"
 alias mkdir="mkdir -pv"
+alias rgrep="grep --binary-file=without-match --dereference-recursive --exclude-dir .git"
 alias tree="tree --charset ascii"
 alias untar="tar -xvf"
 alias zreload="source ~/.zshenv && source ~/.zshrc"
@@ -240,11 +241,11 @@ alias rm="rm -v"
 alias df="df -h"
 alias du="du -hs"
 
-alias grep="grep --color=auto"
-alias rgrep="grep --binary-file=without-match --dereference-recursive --exclude-dir .git"
-
 alias history="history -i 1"
 alias hist="\history -i -25"
+
+alias la="ls -l --all"
+alias ll="ls -l"
 
 alias ps="ps a -o user,tt,pid,command"
 alias psx="\ps ax -o user,tt,pid,command"
