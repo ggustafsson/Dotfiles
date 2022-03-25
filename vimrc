@@ -70,6 +70,7 @@ set wildignorecase
 set wildmode=longest,list
 
 
+let g:fern#drawer_width = 35
 let g:mapleader = ","
 
 let g:ale_sign_error = "💀 "
