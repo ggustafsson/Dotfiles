@@ -234,7 +234,7 @@ alias mv="mv -vi"
 alias rm="rm -v"
 
 alias df="df -h"
-alias du="du -hs"
+alias du="du -sh"
 
 alias history="history -i 1"
 alias hist="\history -i -25"
