@@ -1,4 +1,3 @@
-export GREP_COLORS="fn=01;34:ln=00;34:se=01;30" # File, line & separator.
 export LS_COLORS="rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32"
 
 export EDITOR=vim
@@ -203,9 +202,6 @@ if [[ $OSTYPE == darwin* ]]; then
   alias caski="brew install --cask --appdir=~/Applications"
   alias caskr="brew uninstall --cask --zap"
 
-  alias grep="ggrep --color=auto"
-  alias bgrep="\grep --color=auto"
-
   alias ls="gls --classify --color=auto --human-readable"
   alias bls="\ls -FGh"
 else
@@ -217,15 +213,14 @@ else
   fi
 
   alias free="free -h"
-  alias grep="grep --color=auto"
   alias ls="ls --classify --color=auto --human-readable"
 fi
 
 alias fd="fd --follow --no-ignore"
+alias grep="grep --color=auto"
 alias hogs="du -sk * | sort --numeric-sort --reverse | head -n 15"
 alias iip="curl icanhazip.com"
 alias mkdir="mkdir -pv"
-alias rgrep="grep --binary-file=without-match --dereference-recursive --exclude-dir .git"
 alias tree="tree --charset ascii"
 alias untar="tar -xvf"
 alias zreload="source ~/.zshenv && source ~/.zshrc"
@@ -255,6 +250,7 @@ alias pyjson="python3 -m json.tool"
 alias pyweb="python3 -m http.server 8080"
 
 alias rg="rg --follow --no-ignore --sort path"
+alias rgrep="rg --no-heading"
 alias xxx="rg '\b(FIXME|TODO|XXX)(:|$| )'"
 
 alias svtplay-dl="svtplay-dl --resume"
