@@ -12,6 +12,7 @@ if [[ $HOST == Onett ]]; then
   playbook=setup_macos_home.yml
 elif [[ $HOST == Twoson ]]; then
   playbook=setup_macos_work.yml
+  git_pull=true
 elif [[ $HOST == Coruscant ]]; then
   playbook=setup_macos_home_legacy.yml
 else
@@ -21,10 +22,13 @@ fi
 
 directory=~/Projects/Ansible
 
-print -P "%F{cyan}git pull @ ${directory/$HOME/~}:%f"
-git -C $directory pull
+if [[ $git_pull == true ]]; then
+  print -P "%F{cyan}git pull @ ${directory/$HOME/~}:%f"
+  git -C $directory pull
+  echo
+fi
 
-print -P "\n%F{cyan}ansible-playbook ${playbook}:%f"
+print -P "%F{cyan}ansible-playbook ${playbook}:%f"
 confirm || exit 1
 pushd $directory
 ansible-playbook $playbook --ask-become
