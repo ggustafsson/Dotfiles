@@ -3,17 +3,17 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleIdentifier</key>
-	<string>org.sil.ukelele.keyboardlayout.swedish-pro-nodeadkeys</string>
+	<string>org.sil.ukelele.keyboardlayout.</string>
 	<key>CFBundleName</key>
-	<string>Swedish - Pro - No Dead Keys</string>
+	<string></string>
 	<key>CFBundleVersion</key>
 	<string></string>
-	<key>KLInfo_Swedish - Pro - No Dead Keys</key>
+	<key>KLInfo_Swedish - No Dead Keys</key>
 	<dict>
 		<key>TICapsLockLanguageSwitchCapable</key>
 		<false/>
 		<key>TISInputSourceID</key>
-		<string>org.sil.ukelele.keyboardlayout.swedish-pro-nodeadkeys.swedish-pro-nodeadkeys</string>
+		<string>org.sil.ukelele.keyboardlayout..swedish-nodeadkeys</string>
 		<key>TISIntendedLanguage</key>
 		<string>sv</string>
 	</dict>
