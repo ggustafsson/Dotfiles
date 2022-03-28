@@ -1,0 +1,15 @@
+#!/usr/bin/env zsh
+
+# Description: Like 'locate' but for macOS.
+#
+# Usage: locate <name>
+#
+# Creator: Göran Gustafsson (gustafsson.g at gmail.com)
+# License: BSD 3-Clause
+
+if [[ $# -eq 0 ]]; then
+  echo "Usage: ${0:t} [NAME]..."
+  exit
+fi
+
+mdfind -name $* | sort

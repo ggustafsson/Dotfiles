@@ -191,7 +191,6 @@ PROMPT2='$(prompt_mode 2) ' # Used when entering multi-line commands.
 
 if [[ $OSTYPE == darwin* ]]; then
   alias beep="afplay /System/Library/Sounds/Glass.aiff"
-  alias locate="mdfind -name"
   alias tim="caffeinate tim" # Give Tim a cup of Joe! :)
   alias wifiscan="/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport --scan"
 
