@@ -195,11 +195,6 @@ if [[ $OSTYPE == darwin* ]]; then
   alias tim="caffeinate tim" # Give Tim a cup of Joe! :)
   alias wifiscan="/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport --scan"
 
-  alias brewi="brew install"
-  alias brewr="brew uninstall"
-  alias brews="brew search"
-  alias brewu="brew update && brew upgrade"
-
   alias caski="brew install --cask --appdir=~/Applications"
   alias caskr="brew uninstall --cask --zap"
 
@@ -219,6 +214,13 @@ else
   alias free="free -h"
   alias grep="grep --color=auto"
   alias ls="ls --classify --color=auto --human-readable"
+fi
+
+if type -p brew &> /dev/null; then
+  alias brewi="brew install"
+  alias brewr="brew uninstall"
+  alias brews="brew search"
+  alias brewu="brew update && brew upgrade"
 fi
 
 alias fd="fd --follow --no-ignore"
