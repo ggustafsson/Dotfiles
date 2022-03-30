@@ -53,4 +53,9 @@ for directory in ${projects_path}/*(N); do
   popd
 done
 
-print -P $output | column -s ":" -t
+if [[ -n $output ]]; then
+  print -P "%F{cyan}${projects_path:t}:%f"
+  print -P $output | column -s ":" -t
+else
+  echo "No Git repos found under '${projects_path/$HOME/~}'."
+fi
