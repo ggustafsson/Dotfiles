@@ -9,9 +9,9 @@
 
 # TODO: Remove Coruscant after legacy decom.
 if [[ $HOST == (Onett|Coruscant) ]]; then
-  choices=(1 "maint-ansible" on 2 "rmhogs" on 3 "backup" on 4 "backup2srv" off)
+  choices=(1 "maint-ansible" on 2 "rmhogs" on 3 "backup" on 4 "backup2srv" on 5 "gitpl" off)
 else
-  choices=(1 "maint-ansible" on 2 "rmhogs" on)
+  choices=(1 "maint-ansible" on 2 "rmhogs" on 3 "backup" off 4 "backup2srv" off 5 "gitpl" on)
 fi
 
 selections=$(dialog \
@@ -38,6 +38,10 @@ for selection in ${(z)selections}; do
     4)
       echo
       backup2srv
+      ;;
+    5)
+      echo
+      gitpl
       ;;
   esac
 done

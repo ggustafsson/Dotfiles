@@ -5,6 +5,8 @@
 # Checks if a todo file exist at root level of repository.
 #
 # Example:
+#
+#   Projects:
 #   Ansible         master
 #   Dot-Files       master + todo
 #   Project-Assets  master
