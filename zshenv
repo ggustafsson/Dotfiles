@@ -30,10 +30,10 @@ export LANG=en_US.UTF-8
 if [[ $OSTYPE == darwin* ]]; then
   # TODO: Adjust path after legacy decom.
   path=(
+    ~/.local/bin(N)
     ${GOPATH}/bin(N)
     ~/Scripts/macOS(N)
     ~/Scripts(N)
-    ~/.local/bin(N)
     /opt/homebrew/opt/curl/bin(N)
     /opt/homebrew/opt/ruby/bin(N)
     /opt/homebrew/opt/python/libexec/bin(N)
@@ -52,10 +52,10 @@ if [[ $OSTYPE == darwin* ]]; then
 else
   # TODO: Double check this after playing around with Docker.
   path=(
+    ~/.local/bin(N)
     ${GOPATH}/bin(N)
     ~/Scripts/Linux(N)
     ~/Scripts(N)
-    ~/.local/bin(N)
     ~/.linuxbrew/bin(N)
     ~/.linuxbrew/sbin(N)
     /usr/local/bin
