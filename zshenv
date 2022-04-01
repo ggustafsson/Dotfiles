@@ -50,7 +50,6 @@ if [[ $OSTYPE == darwin* ]]; then
     /sbin
   )
 else
-  # TODO: Double check this after playing around with Docker.
   path=(
     ~/.local/bin(N)
     ${GOPATH}/bin(N)
