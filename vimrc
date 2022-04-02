@@ -299,9 +299,7 @@ function! InsertTemplate(file)
   execute "%s/#YEAR#/\\=system(\"date +'%Y' | tr -d '\n'\")/ge"
   execute "%s/#DATE#/\\=system(\"date +'%Y-%m-%d' | tr -d '\n'\")/ge"
 endfunction
-" Search for '#[A-Z]' here because of ':help function-search-undo'.
 command! -nargs=1 -complete=file InsertTemplate call InsertTemplate(<q-args>)
-  \ | /#[A-Z]
 
 " Display syntax group used at cursor position.
 function! SyntaxGroup()
