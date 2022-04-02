@@ -19,7 +19,6 @@ backup_objects=(
   ~/Documents
   ~/Dropbox
   ~/Golang/src
-  ~/Library/Application\ Support/OpenEmu
   ~/Library/Safari/Bookmarks.plist
   ~/Movies
   ~/Music/MP3
