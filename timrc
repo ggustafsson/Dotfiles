@@ -11,7 +11,7 @@ work_cmd="say start working now"
 break_cmd="say take a break now"
 long_break_cmd="say take a long break now"
 
-pomodoro_cmd="say work is now over. you win && open ~/Storage/Celebrate.flv"
+pomodoro_cmd="say work is now over. you win"
 #pomodoro_repeat_cmd=0
 
 #pomodoro_work=25
