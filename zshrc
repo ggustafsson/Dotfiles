@@ -270,8 +270,8 @@ if [[ -d ~/.local/share/fzf/shell ]]; then
   bindkey "^J" fzf-cd-widget   && bindkey -r "^[c"
 fi
 
-if [[ -d ~/.zsh/zsh-autosuggestions ]]; then
-  source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+if [[ -d ~/.local/share/zsh-autosuggestions ]]; then
+  source ~/.local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 fi
 
 if [[ -f ~/.zshrc_local ]]; then
