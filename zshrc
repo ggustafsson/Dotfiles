@@ -23,7 +23,7 @@ else
 fi
 
 tmp=~/Documents/Text/Tmp.txt
-todo=~/Documents/Text/Todo.txt
+todo=~/Documents/Text/Todo.md
 
 
 setopt correct # Try to correct the spelling of commands.
