@@ -72,6 +72,7 @@ set wildmode=longest,list
 
 let g:fern#drawer_width = 35
 let g:mapleader = ","
+let g:markdown_folding = 1
 
 let g:ale_sign_error = "💀 "
 let g:ale_sign_warning = "🔥 "
