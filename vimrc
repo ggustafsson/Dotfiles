@@ -103,6 +103,7 @@ nnoremap <Leader>ed :edit <C-R>=escape(expand("%:p:h"), ' \')<CR>/
 nnoremap <Leader>ef :FzfFiles<CR>
 nnoremap <Leader>eh :edit ~/
 nnoremap <Leader>er :FzfHistory<CR>
+nnoremap <Leader>et :edit ~/Documents/Text/
 nnoremap <Leader>ft :FzfFiletypes<CR>
 nnoremap <Leader>he :FzfHelptags<CR>
 nnoremap <Leader>in :InsertTemplate ~/.vim/templates/
@@ -119,7 +120,6 @@ nnoremap <Leader>sp :setlocal spell! spell?<CR>
 nnoremap <Leader>ss :mksession! ~/.vim/session.vim<CR>
 nnoremap <Leader>t4 :setlocal noexpandtab shiftwidth=4 softtabstop=0 tabstop=4<CR>
 nnoremap <Leader>t8 :setlocal noexpandtab shiftwidth=8 softtabstop=0 tabstop=8<CR>
-nnoremap <Leader>te :edit ~/Documents/Text/
 nnoremap <Leader>tm :edit ~/Documents/Text/Tmp.txt \| :setlocal nobuflisted<CR>
 nnoremap <Leader>to :edit ~/Documents/Text/Todo.txt \| :setlocal nobuflisted<CR>
 nnoremap <Leader>tr :Fern . -drawer -toggle<CR>
