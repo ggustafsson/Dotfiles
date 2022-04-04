@@ -82,16 +82,16 @@ bindkey -M viins $terminfo[kdch1] delete-char
 bindkey -M vicmd $terminfo[kdch1] delete-char
 
 # Home & End keys.
-bindkey -M vicmd $terminfo[khome] beginning-of-line
 bindkey -M viins $terminfo[khome] beginning-of-line
-bindkey -M vicmd $terminfo[kend] end-of-line
+bindkey -M vicmd $terminfo[khome] beginning-of-line
 bindkey -M viins $terminfo[kend] end-of-line
+bindkey -M vicmd $terminfo[kend] end-of-line
 
 # Page Up & Page Down keys.
-bindkey -M vicmd $terminfo[kpp] up-line-or-beginning-search
 bindkey -M viins $terminfo[kpp] up-line-or-beginning-search
-bindkey -M vicmd $terminfo[knp] down-line-or-beginning-search
+bindkey -M vicmd $terminfo[kpp] up-line-or-beginning-search
 bindkey -M viins $terminfo[knp] down-line-or-beginning-search
+bindkey -M vicmd $terminfo[knp] down-line-or-beginning-search
 
 bindkey "jj" vi-cmd-mode
 bindkey "^V" edit-command-line
