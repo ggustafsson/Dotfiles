@@ -1,19 +1,13 @@
 {
     "editor.fontFamily": "SF Mono",
-    "editor.fontSize": 12,
+    "editor.fontSize": 15,
     "terminal.integrated.fontSize": 12,
 
     "workbench.colorCustomizations": {
         "editor.background": "#181818"
     },
 
-    "python.defaultInterpreterPath": "/opt/homebrew/bin/python3",
-    "vscode-neovim.neovimExecutablePaths.darwin": "/opt/homebrew/bin/nvim",
-
     "editor.cursorBlinking": "solid",
     "editor.matchBrackets": "near",
-    "editor.occurrencesHighlight": false,
-
-    "editor.lineNumbers": "relative",
-    "editor.scrollBeyondLastLine": false
+    "editor.occurrencesHighlight": false
 }

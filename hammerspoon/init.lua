@@ -9,14 +9,6 @@ preKeys = {"cmd", "ctrl"}
 ---------------------------
 dofile("windows.lua")
 
---------------------------------
--- Toggle Hammerspoon console --
---------------------------------
-hs.hotkey.bind(preKeys, "h", function()
-  hs.toggleConsole()
-  hs.window.frontmostWindow():focus() -- Focus on previous window afterwards.
-end)
-
 ----------------------------------------
 -- Automatically reload configuration --
 ----------------------------------------
