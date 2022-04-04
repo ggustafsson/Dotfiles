@@ -177,9 +177,6 @@ nnoremap gL <Cmd>call GoToLocation("previous")<CR>
 
 inoremap jj <Esc>
 
-inoremap <expr><Tab> CompletionTab()
-inoremap <C-N> <C-X><C-O>
-
 inoremap <C-X><C-F> <Plug>(fzf-complete-path)
 inoremap <C-X><C-K> <Plug>(fzf-complete-word)
 inoremap <C-X><C-L> <Plug>(fzf-complete-line)
@@ -201,20 +198,6 @@ function! ColorColumn()
     setlocal colorcolumn=+1 colorcolumn?
   else
     setlocal colorcolumn= colorcolumn?
-  endif
-endfunction
-
-" Turn tab key into <C-N> (keyword completion) if there is a character left of
-" cursor position, normal tab character is inserted otherwise.
-"
-" inoremap <expr><Tab> CompletionTab()
-function! CompletionTab()
-  let l:char = getline(".")[col(".")-2] " Character left of cursor.
-
-  if empty(char) || char == " " || char =~ "\t"
-    return "\<Tab>"
-  else
-    return "\<C-N>"
   endif
 endfunction
 
