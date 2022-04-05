@@ -176,6 +176,11 @@ nnoremap gB <Cmd>bprevious<CR>
 nnoremap gl <Cmd>call GoToLocation("next")<CR>
 nnoremap gL <Cmd>call GoToLocation("previous")<CR>
 
+" Mark relative jumps with j/k so CTRL-I and CTRL-O works.
+nnoremap <expr>j (v:count > 1 ? "m'" . v:count : '') . "j"
+nnoremap <expr>k (v:count > 1 ? "m'" . v:count : '') . "k"
+
+" Move visual block down/up and keep visual selection.
 vnoremap <C-J> :m '>+1<CR>gv=gv
 vnoremap <C-K> :m '<-2<CR>gv=gv
 
