@@ -7,7 +7,6 @@
         "editor.background": "#181818"
     },
 
-    "editor.cursorBlinking": "solid",
     "editor.matchBrackets": "near",
     "editor.occurrencesHighlight": false
 }
