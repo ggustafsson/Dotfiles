@@ -139,9 +139,6 @@ vnoremap <Leader>cl :!column -t \| sed 's/\( *\) /\1/g'<CR>
 nnoremap <Leader>cp :%yank *<CR>
 vnoremap <Leader>cp "*y
 
-nnoremap <Leader>ne :enew<CR>
-vnoremap <Leader>ne y:enew<CR>PGdd
-
 nnoremap <Leader>re :%s//gc<Left><Left><Left>
 vnoremap <Leader>re :s/\%V/gc<Left><Left><Left>
 
