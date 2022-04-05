@@ -79,7 +79,7 @@ let g:ale_sign_warning = "🔥 "
 let g:ale_sign_style_error = "⚡️ "
 let g:ale_sign_style_warning = "⚡️ "
 
-let g:fzf_action = {'ctrl-t': 'tab split', 'ctrl-s': 'split', 'ctrl-v': 'vsplit'}
+let g:fzf_action = {"ctrl-t": "tab split", "ctrl-s": "split", "ctrl-v": "vsplit"}
 let g:fzf_command_prefix = "Fzf"
 
 let g:go_metalinter_autosave = 1
@@ -177,8 +177,8 @@ nnoremap gl <Cmd>call GoToLocation("next")<CR>
 nnoremap gL <Cmd>call GoToLocation("previous")<CR>
 
 " Mark relative jumps with j/k so CTRL-I and CTRL-O works.
-nnoremap <expr>j (v:count > 1 ? "m'" . v:count : '') . "j"
-nnoremap <expr>k (v:count > 1 ? "m'" . v:count : '') . "k"
+nnoremap <expr>j (v:count > 1 ? "m'" .. v:count : "") .. "j"
+nnoremap <expr>k (v:count > 1 ? "m'" .. v:count : "") .. "k"
 
 nnoremap <C-W>t <Cmd>tabedit<CR>
 
