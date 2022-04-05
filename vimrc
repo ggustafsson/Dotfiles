@@ -167,6 +167,7 @@ vnoremap <Leader>so :sort<CR>
 nnoremap <C-L> <Cmd>nohlsearch<CR><C-L>
 vnoremap <C-L> <Esc><Cmd>nohlsearch<CR><C-L>
 
+nnoremap Q <Nop>
 nnoremap Y y$
 
 " These key combos are unused and similar to 'gt' and 'gT' for tabs.
@@ -174,6 +175,9 @@ nnoremap gb <Cmd>bnext<CR>
 nnoremap gB <Cmd>bprevious<CR>
 nnoremap gl <Cmd>call GoToLocation("next")<CR>
 nnoremap gL <Cmd>call GoToLocation("previous")<CR>
+
+vnoremap <C-J> :m '>+1<CR>gv=gv
+vnoremap <C-K> :m '<-2<CR>gv=gv
 
 inoremap jj <Esc>
 
