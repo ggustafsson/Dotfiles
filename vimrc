@@ -164,6 +164,7 @@ vnoremap <Leader>so :sort<CR>
 nnoremap <Backspace> <Cmd>nohlsearch<CR><C-L>
 vnoremap <Backspace> <Esc><Cmd>nohlsearch<CR><C-L>
 nnoremap <Space> <Nop>
+vnoremap <Space> <Nop>
 
 nnoremap Q <Nop>
 nnoremap Y y$
