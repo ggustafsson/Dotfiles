@@ -10,9 +10,7 @@
 
 url="https://cheat.sh"
 
-# TODO: Switch after migrating over to NeoVim for realz.
-#pager="nvim -R -c 'setlocal filetype=cheat nolist | nmap q :q<CR>' -"
-pager="nvim -R -c 'setlocal nolist | nmap q :q<CR>' -"
+pager="nvim -R -c 'setlocal filetype=cheat nolist | nmap q <Cmd>q<CR>' -"
 
 if [[ $# -ge 1 ]]; then
   # Replace spaces with + that is needed in the URL.
