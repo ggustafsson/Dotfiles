@@ -343,9 +343,10 @@ function VimTabLine()
 endfunction
 set tabline=%!VimTabLine()
 
+
 augroup Main
   autocmd!
-  autocmd BufWritePost ~/.vimrc source %
+  autocmd BufWritePost $MYVIMRC source %
 
   " If last cursor position still exist then go to it.
   autocmd BufReadPost *
