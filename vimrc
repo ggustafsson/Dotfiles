@@ -71,7 +71,7 @@ set wildmode=longest,list
 
 
 let g:fern#drawer_width = 35
-let g:mapleader = "\<Space>"
+let g:mapleader = ","
 let g:markdown_folding = 1
 
 let g:ale_sign_error = "💀 "
@@ -161,10 +161,8 @@ vnoremap <Leader>re :s/\%V/gc<Left><Left><Left>
 nnoremap <Leader>so :sort<CR>
 vnoremap <Leader>so :sort<CR>
 
-nnoremap <Backspace> <Cmd>nohlsearch<CR><C-L>
-vnoremap <Backspace> <Esc><Cmd>nohlsearch<CR><C-L>
-nnoremap <Space> <Nop>
-vnoremap <Space> <Nop>
+nnoremap <C-L> <Cmd>nohlsearch<CR><C-L>
+vnoremap <C-L> <Esc><Cmd>nohlsearch<CR><C-L>
 
 nnoremap Q <Nop>
 nnoremap Y y$
