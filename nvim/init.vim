@@ -1,22 +1,16 @@
-set guicursor=
+if !exists("g:dont_run_again_if_we_have_already_bought_chicken_nuggets")
+  colorscheme electric-boogaloo
+
+  let g:dont_run_again_if_we_have_already_bought_chicken_nuggets = 1
+endif
 
 
-"if !exists("g:dont_run_again_if_we_have_already_bought_chicken_nuggets")
-"  filetype plugin indent on
-"  packadd! matchit " Makes % jump to matching HTML tags, if/else/endif, etc.
-"
-"  syntax enable
-"  colorscheme electric-boogaloo
-"
-"  let g:dont_run_again_if_we_have_already_bought_chicken_nuggets = 1
-"endif
-"
-"
 "set autoread
 "set backspace=indent,eol,start
 "set confirm
 "set encoding=utf-8
 "set formatoptions+=jlnor " See ':help fo-table'.
+set guicursor=
 "set history=999
 "set mouse=nvi " Why the heck would you want command-line mode here?
 "set nofoldenable
@@ -345,20 +339,23 @@ set guicursor=
 "  return string
 "endfunction
 "set tabline=%!VimTabLine()
-"
-"augroup Main
-"  autocmd!
-"  autocmd BufWritePost ~/.vimrc source %
-"
-"  " If last cursor position still exist then go to it.
-"  autocmd BufReadPost *
-"    \ if line("'\"") >= 1 && line("'\"") <= line("$") && &filetype !~# "commit"
-"    \ |   execute "normal! g`\""
-"    \ | endif
-"
-"  autocmd BufNewFile,BufReadPost *.conf,config
-"    \ setlocal filetype=conf
-"
+
+
+augroup Main
+  autocmd!
+  autocmd BufWritePost $MYVIMRC source %
+
+  " If last cursor position still exist then go to it.
+  autocmd BufReadPost *
+    \ if line("'\"") >= 1 && line("'\"") <= line("$") && &filetype !~# "commit"
+    \ |   execute "normal! g`\""
+    \ | endif
+
+  autocmd TextYankPost * silent! lua vim.highlight.on_yank {higroup="Search", timeout=200}
+
+  autocmd BufNewFile,BufReadPost *.conf,config
+    \ setlocal filetype=conf
+
 "  autocmd FileType fern
 "    \ setlocal nonumber norelativenumber
 "
@@ -385,7 +382,4 @@ set guicursor=
 "    \ statusline+=%=
 "    \ statusline+=%-11.(%l,%v\ %)
 "    \ statusline+=%(%P\ %)
-"augroup END
-
-
-autocmd TextYankPost * silent! lua vim.highlight.on_yank {higroup="Search", timeout=200}
+augroup END
