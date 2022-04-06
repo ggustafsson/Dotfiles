@@ -161,8 +161,9 @@ vnoremap <Leader>re :s/\%V/gc<Left><Left><Left>
 nnoremap <Leader>so :sort<CR>
 vnoremap <Leader>so :sort<CR>
 
-nnoremap <C-L> <Cmd>nohlsearch<CR><C-L>
-vnoremap <C-L> <Esc><Cmd>nohlsearch<CR><C-L>
+nnoremap <Backspace> <Cmd>nohlsearch<CR><C-L>
+vnoremap <Backspace> <Esc><Cmd>nohlsearch<CR><C-L>
+nnoremap <Space> <Nop>
 
 nnoremap Q <Nop>
 nnoremap Y y$
