@@ -123,6 +123,22 @@ vnoremap <Leader>ne y:enew<CR>PGdd
 nnoremap <Leader>re :%s//gc<Left><Left><Left>
 vnoremap <Leader>re :s/\%V/gc<Left><Left><Left>
 
+" XXX: Locale files are broken under macOS and the latest Ubuntu Desktop LTS
+" version don't include Vim with ':sort l' support yet. Using the default
+" incorrect but stable sort until the future arrives...
+"
+" Vim 8.2.3950 @ macOS 11.6.2 Big Sur:
+"   :sort   - en_US.UTF-8     - 1 2 3 A B C U V W a b c u v w Ä Å Ö ä å ö
+"   :sort l - en_US.UTF-8     - 1 2 3 A Å Ä B C Ö U V W a å ä b c ö u v w
+"   :sort l - sv_SE.UTF-8     - 1 2 3 A B C U V W a b c u v w Ä Å Ö ä å ö
+"   :sort l - sv_SE.ISO8859-1 - 1 2 3 A B C U V W Å Ä Ö a b c u v w å ä ö
+"                               + v & w are treated as the same letter.
+"
+" Vim 8.1.2269 @ Ubuntu Desktop 20.04.3 LTS:
+"   :sort   - en_US.UTF-8     - 1 2 3 A B C U V W a b c u v w Ä Å Ö ä å ö
+"   :sort l - en_US.UTF-8     - Invalid argument: l
+"   :sort l - sv_SE.UTF-8     - Invalid argument: l
+"   :sort l - sv_SE.ISO8859-1 - Invalid argument: l
 nnoremap <Leader>so :sort<CR>
 vnoremap <Leader>so :sort<CR>
 
