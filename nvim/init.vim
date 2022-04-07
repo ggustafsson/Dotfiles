@@ -31,9 +31,9 @@ set smartindent
 
 set backup
 set backupdir=~/.local/share/nvim/backup
-"set directory=~/.vim/swap
+"set directory=~/.local/share/nvim/swap
 set undofile
-"set undodir=~/.vim/undo
+"set undodir=~/.local/share/nvim/undo
 
 set cursorline
 set cursorlineopt=number
@@ -107,18 +107,18 @@ nnoremap <Leader>er :FzfHistory<CR>
 nnoremap <Leader>et :edit ~/Documents/Text/
 nnoremap <Leader>ft :FzfFiletypes<CR>
 nnoremap <Leader>he :FzfHelptags<CR>
-nnoremap <Leader>in :InsertTemplate ~/.vim/templates/
+nnoremap <Leader>in :InsertTemplate ~/.config/nvim/templates/
 nnoremap <Leader>li :setlocal list! list?<CR>
 nnoremap <Leader>lo :silent! lwindow \| cwindow<CR>
 nnoremap <Leader>ma :FzfMarks<CR>
 nnoremap <Leader>nu :setlocal number! relativenumber!<CR>
 nnoremap <Leader>rg :FzfRg<Space>
-nnoremap <Leader>rs :source ~/.vim/session.vim<CR>
+nnoremap <Leader>rs :source ~/.local/share/nvim/session.vim<CR>
 nnoremap <Leader>s2 :setlocal expandtab shiftwidth=2 softtabstop=2<CR>
 nnoremap <Leader>s4 :setlocal expandtab shiftwidth=4 softtabstop=4<CR>
 nnoremap <Leader>se :FzfLines<CR>
 nnoremap <Leader>sp :setlocal spell! spell?<CR>
-nnoremap <Leader>ss :mksession! ~/.vim/session.vim<CR>
+nnoremap <Leader>ss :mksession! ~/.local/share/nvim/session.vim<CR>
 nnoremap <Leader>t4 :setlocal noexpandtab shiftwidth=4 softtabstop=0 tabstop=4<CR>
 nnoremap <Leader>t8 :setlocal noexpandtab shiftwidth=8 softtabstop=0 tabstop=8<CR>
 nnoremap <Leader>tm :edit ~/Documents/Text/Tmp.txt \| :setlocal nobuflisted<CR>
