@@ -1,0 +1,26 @@
+body {
+  color: #000000;
+  background-color: #ffffff;
+  font-family: serif;
+  font-size: 1em;
+  line-height: 1.5em;
+}
+
+a {
+  color: #1c1ba8;
+}
+
+a:visited {
+  color: #651297;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: sans-serif;
+  margin-bottom: 0; /* Less spacing between headers and paragraphs below. */
+}
+
+p {
+  /* Less spacing between paragraphs and headers. */
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
