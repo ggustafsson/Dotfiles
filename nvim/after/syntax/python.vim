@@ -4,3 +4,4 @@ syntax match PreProc /^#!.*/
 
 " Match Python docstrings as regular comments.
 syntax region Comment start=/"""/ end=/"""/
+syntax region Comment start=/'''/ end=/'''/
