@@ -58,7 +58,7 @@ set statusline+=%-12.(\ %l,%v\ %) " 99999,999 would still have two spaces.
 set statusline+=%(%P\ %)
 
 set list
-set listchars=tab:!-,trail:-,precedes:<,extends:>
+set listchars=tab:!-,trail:-,nbsp:+,precedes:<,extends:>
 
 set number
 set relativenumber
@@ -138,6 +138,9 @@ vnoremap <Leader>cl :!column -t \| sed 's/\( *\) /\1/g'<CR>
 
 nnoremap <Leader>cp :%yank *<CR>
 vnoremap <Leader>cp "*y
+
+nnoremap <Leader>ne :enew<CR>
+vnoremap <Leader>ne y:enew<CR>PGdd
 
 nnoremap <Leader>re :%s//gc<Left><Left><Left>
 vnoremap <Leader>re :s/\%V/gc<Left><Left><Left>
@@ -350,9 +353,10 @@ augroup Main
 
   " If last cursor position still exist then go to it.
   autocmd BufReadPost *
-    \ if line("'\"") >= 1 && line("'\"") <= line("$") && &filetype !~# "commit"
-    \ |   execute "normal! g`\""
-    \ | endif
+    \ if line("'\"") >= 1 && line("'\"") <= line("$") &&
+    \     &filetype !~# "commit" |
+    \   execute "normal! g`\"" |
+    \ endif
 
   autocmd BufNewFile,BufReadPost *.conf,config
     \ setlocal filetype=conf
@@ -378,9 +382,9 @@ augroup Main
   " Quickfix and location list windows.
   autocmd FileType qf
     \ setlocal norelativenumber
-    \ statusline=\ %(%t\ %)
-    \ statusline+=%(%{exists('w:quickfix_title')?''.w:quickfix_title:''}\ %)
-    \ statusline+=%=
-    \ statusline+=%-11.(%l,%v\ %)
-    \ statusline+=%(%P\ %)
+    \   statusline=\ %(%t\ %)
+    \   statusline+=%(%{exists('w:quickfix_title')?''.w:quickfix_title:''}\ %)
+    \   statusline+=%=
+    \   statusline+=%-11.(%l,%v\ %)
+    \   statusline+=%(%P\ %)
 augroup END

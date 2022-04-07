@@ -1,39 +1,24 @@
 if !exists("g:dont_run_again_if_we_have_already_bought_chicken_nuggets")
-  filetype plugin indent on
-  packadd! matchit " Makes % jump to matching HTML tags, if/else/endif, etc.
-
-  syntax enable
   colorscheme electric-boogaloo
 
   let g:dont_run_again_if_we_have_already_bought_chicken_nuggets = 1
 endif
 
 
-set autoread
-set backspace=indent,eol,start
 set confirm
-set encoding=utf-8
-set formatoptions+=jlnor " See ':help fo-table'.
-set history=999
+set formatoptions+=lnor " See ':help fo-table'.
+set guicursor=
 set mouse=nvi " Why the heck would you want command-line mode here?
 set nofoldenable
 set nowrap
-set nrformats-=octal " CTRL-A on 007 != 010. Shaken, not stirred! :)
-set omnifunc=syntaxcomplete#Complete
-set pastetoggle=<C-P> " Overrides 'Find previous keyword' under insert mode.
-set sessionoptions-=options
+set smartindent
 set spelllang=en,sv
 set textwidth=79
-set virtualedit=block
-
-set autoindent
-set smartindent
+set wildignorecase
 
 set backup
 set backupdir=~/.local/share/nvim/backup
-"set directory=~/.local/share/nvim/swap
 set undofile
-"set undodir=~/.local/share/nvim/undo
 
 set cursorline
 set cursorlineopt=number
@@ -42,11 +27,7 @@ set expandtab
 set shiftwidth=2
 set softtabstop=2
 
-set hlsearch
-set incsearch
-
 " ~/.vimrc [+] [dos] [latin1] [vim] [paste]        142,47     30%
-set laststatus=2
 set statusline=\ %(%f\ %)
 set statusline+=%(%m\ %)
 set statusline+=%([%{&fileformat=='unix'?'':&fileformat}]\ %)
@@ -58,16 +39,13 @@ set statusline+=%-12.(\ %l,%v\ %) " 99999,999 would still have two spaces.
 set statusline+=%(%P\ %)
 
 set list
-set listchars=tab:!-,trail:-,precedes:<,extends:>
+set listchars=tab:!-,trail:-,nbsp:+,precedes:<,extends:>
 
 set number
 set relativenumber
 
 set splitbelow
 set splitright
-
-set wildignorecase
-set wildmode=longest,list
 
 
 let g:fern#drawer_width = 35
@@ -139,33 +117,17 @@ vnoremap <Leader>cl :!column -t \| sed 's/\( *\) /\1/g'<CR>
 nnoremap <Leader>cp :%yank *<CR>
 vnoremap <Leader>cp "*y
 
+nnoremap <Leader>ne :enew<CR>
+vnoremap <Leader>ne y:enew<CR>PGdd
+
 nnoremap <Leader>re :%s//gc<Left><Left><Left>
 vnoremap <Leader>re :s/\%V/gc<Left><Left><Left>
 
-" XXX: Locale files are broken under macOS and the latest Ubuntu Desktop LTS
-" version don't include Vim with ':sort l' support yet. Using the default
-" incorrect but stable sort until the future arrives...
-"
-" Vim 8.2.3950 @ macOS 11.6.2 Big Sur:
-"   :sort   - en_US.UTF-8     - 1 2 3 A B C U V W a b c u v w Ä Å Ö ä å ö
-"   :sort l - en_US.UTF-8     - 1 2 3 A Å Ä B C Ö U V W a å ä b c ö u v w
-"   :sort l - sv_SE.UTF-8     - 1 2 3 A B C U V W a b c u v w Ä Å Ö ä å ö
-"   :sort l - sv_SE.ISO8859-1 - 1 2 3 A B C U V W Å Ä Ö a b c u v w å ä ö
-"                               + v & w are treated as the same letter.
-"
-" Vim 8.1.2269 @ Ubuntu Desktop 20.04.3 LTS:
-"   :sort   - en_US.UTF-8     - 1 2 3 A B C U V W a b c u v w Ä Å Ö ä å ö
-"   :sort l - en_US.UTF-8     - Invalid argument: l
-"   :sort l - sv_SE.UTF-8     - Invalid argument: l
-"   :sort l - sv_SE.ISO8859-1 - Invalid argument: l
 nnoremap <Leader>so :sort<CR>
 vnoremap <Leader>so :sort<CR>
 
-nnoremap <C-L> <Cmd>nohlsearch<CR><C-L>
-vnoremap <C-L> <Esc><Cmd>nohlsearch<CR><C-L>
-
+nnoremap <C-W>t <Cmd>tabedit<CR>
 nnoremap Q <Nop>
-nnoremap Y y$
 
 " These key combos are unused and similar to 'gt' and 'gT' for tabs.
 nnoremap gb <Cmd>bnext<CR>
@@ -177,7 +139,7 @@ nnoremap gL <Cmd>call GoToLocation("previous")<CR>
 nnoremap <expr>j (v:count > 1 ? "m'" .. v:count : "") .. "j"
 nnoremap <expr>k (v:count > 1 ? "m'" .. v:count : "") .. "k"
 
-nnoremap <C-W>t <Cmd>tabedit<CR>
+vnoremap <C-L> <Esc><Cmd>nohlsearch<Bar>diffupdate<CR><C-L>
 
 " Move visual block down/up and keep visual selection.
 vnoremap <C-J> :m '>+1<CR>gv=gv
@@ -348,11 +310,20 @@ augroup Main
   autocmd!
   autocmd BufWritePost $MYVIMRC source %
 
+  autocmd TextYankPost *
+    \ silent! lua vim.highlight.on_yank {higroup="Search", timeout=200}
+
   " If last cursor position still exist then go to it.
-  autocmd BufReadPost *
-    \ if line("'\"") >= 1 && line("'\"") <= line("$") && &filetype !~# "commit"
-    \ |   execute "normal! g`\""
-    \ | endif
+  autocmd BufRead * autocmd FileType <buffer> ++once
+    \ if &filetype !~# 'commit\|rebase' &&
+    \     line("'\"") > 1 && line("'\"") <= line("$") |
+    \   execute 'normal! g`"' |
+    \ endif
+
+  autocmd Filetype *
+    \ if &omnifunc == "" |
+    \   setlocal omnifunc=syntaxcomplete#Complete |
+    \ endif
 
   autocmd BufNewFile,BufReadPost *.conf,config
     \ setlocal filetype=conf
@@ -378,9 +349,9 @@ augroup Main
   " Quickfix and location list windows.
   autocmd FileType qf
     \ setlocal norelativenumber
-    \ statusline=\ %(%t\ %)
-    \ statusline+=%(%{exists('w:quickfix_title')?''.w:quickfix_title:''}\ %)
-    \ statusline+=%=
-    \ statusline+=%-11.(%l,%v\ %)
-    \ statusline+=%(%P\ %)
+    \   statusline=\ %(%t\ %)
+    \   statusline+=%(%{exists('w:quickfix_title')?''.w:quickfix_title:''}\ %)
+    \   statusline+=%=
+    \   statusline+=%-11.(%l,%v\ %)
+    \   statusline+=%(%P\ %)
 augroup END

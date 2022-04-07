@@ -244,7 +244,6 @@ alias iip="curl icanhazip.com"
 alias mkdir="mkdir -pv"
 alias tree="tree --charset ascii"
 alias untar="tar -xvf"
-alias vim="nvim"
 alias zreload="source ~/.zshenv && source ~/.zshrc"
 
 alias cdh="dirs -v | tac"
@@ -277,6 +276,9 @@ alias xxx="rg '\b(FIXME|TODO|XXX)(:|$| )'"
 
 alias svtplay-dl="svtplay-dl --resume"
 alias youtube-dl="youtube-dl --continue --output '%(title)s.%(ext)s'"
+
+alias vim="nvim"
+alias vimdiff='nvim -d'
 
 
 if [[ -d ~/.local/share/fzf/shell ]]; then
