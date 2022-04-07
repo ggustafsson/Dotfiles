@@ -49,7 +49,7 @@ set splitright
 
 
 let g:fern#drawer_width = 35
-let g:mapleader = ","
+let g:mapleader = " "
 let g:markdown_folding = 1
 
 let g:ale_sign_error = "💀 "
@@ -114,9 +114,6 @@ nnoremap <Leader>xx :FzfRg \b(FIXME\|TODO\|XXX)(:\|$\| )<CR>
 nnoremap <Leader>cl :%!column -t \| sed 's/\( *\) /\1/g'<CR>
 vnoremap <Leader>cl :!column -t \| sed 's/\( *\) /\1/g'<CR>
 
-nnoremap <Leader>cp :%yank *<CR>
-vnoremap <Leader>cp "*y
-
 nnoremap <Leader>ne :enew<CR>
 vnoremap <Leader>ne y:enew<CR>PGdd
 
@@ -142,20 +139,37 @@ vnoremap <Leader>re :s/\%V/gc<Left><Left><Left>
 nnoremap <Leader>so :sort<CR>
 vnoremap <Leader>so :sort<CR>
 
+" Like 'p' and 'P' but last yanked instead of last deleted.
+nnoremap <Leader>P "0P
+nnoremap <Leader>p "0p
+
+" Like 'y', 'yy' and 'Y' but use system clipboard.
+nnoremap <Leader>Y  "*y$
+nnoremap <Leader>yy "*yy
+vnoremap <Leader>y  "*y
+
+
+" Fixes for crappy default mappings...
 nnoremap <C-W>t <Cmd>tabedit<CR>
-nnoremap Q <Nop>
+cnoremap <C-A>  <Home>
+
+nnoremap <Backspace> <Cmd>nohlsearch<Bar>diffupdate<CR><C-L>
+vnoremap <Backspace> <Esc><Cmd>nohlsearch<Bar>diffupdate<CR><C-L>
+vnoremap <C-L>       <Esc><Cmd>nohlsearch<Bar>diffupdate<CR><C-L>
+
+nnoremap <Space> <Nop>
+nnoremap Q       <Nop>
+
+" Mark relative jumps with j/k so CTRL-I and CTRL-O works.
+nnoremap <expr>j (v:count > 1 ? "m'" .. v:count : "") .. "j"
+nnoremap <expr>k (v:count > 1 ? "m'" .. v:count : "") .. "k"
+
 
 " These key combos are unused and similar to 'gt' and 'gT' for tabs.
 nnoremap gb <Cmd>bnext<CR>
 nnoremap gB <Cmd>bprevious<CR>
 nnoremap gl <Cmd>call GoToLocation("next")<CR>
 nnoremap gL <Cmd>call GoToLocation("previous")<CR>
-
-" Mark relative jumps with j/k so CTRL-I and CTRL-O works.
-nnoremap <expr>j (v:count > 1 ? "m'" .. v:count : "") .. "j"
-nnoremap <expr>k (v:count > 1 ? "m'" .. v:count : "") .. "k"
-
-vnoremap <C-L> <Esc><Cmd>nohlsearch<Bar>diffupdate<CR><C-L>
 
 " Move visual block down/up and keep visual selection.
 vnoremap <C-J> :m '>+1<CR>gv=gv
@@ -171,8 +185,6 @@ inoremap <C-X><C-L> <Plug>(fzf-complete-line)
 " until last character. Like 'w' (word), 'p' (paragraph) etc.
 xnoremap il ^og_
 onoremap il <Cmd>normal vil<CR>
-
-cnoremap <C-A> <Home>
 
 
 command! -nargs=* -complete=help Help vertical help <args>
