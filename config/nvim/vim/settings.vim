@@ -16,6 +16,7 @@ set smartindent
 set spelllang=en,sv
 set tabline=%!NvimTabLine()
 set textwidth=79
+set timeoutlen=5000
 set wildignorecase
 
 set backup
