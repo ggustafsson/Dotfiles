@@ -19,9 +19,6 @@ augroup Main
   autocmd BufNewFile,BufReadPost *.conf,config
     \ setlocal filetype=conf
 
-  autocmd FileType fern
-    \ setlocal nonumber norelativenumber
-
   autocmd FileType gitcommit
     \ setlocal nolist spell textwidth=72
 

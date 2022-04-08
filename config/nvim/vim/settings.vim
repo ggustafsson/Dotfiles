@@ -10,6 +10,7 @@ set formatoptions+=lnor " See ':help fo-table'.
 set guicursor=
 set mouse=nvi " Why the heck would you want command-line mode here?
 set nofoldenable
+set nohidden
 set nowrap
 set smartindent
 set spelllang=en,sv
@@ -49,7 +50,6 @@ set splitbelow
 set splitright
 
 
-let g:fern#drawer_width = 35
 let g:mapleader = " "
 let g:markdown_folding = 1
 
