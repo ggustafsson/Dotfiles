@@ -1,4 +1,4 @@
-require("Comment").setup {
+require("comment").setup {
   toggler = {
     line = "gcc",
     block = "gCC",
