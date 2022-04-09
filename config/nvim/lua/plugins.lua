@@ -1,7 +1,7 @@
 require("cmp").setup {
   sources = {
-    { name = "buffer" },
     { name = "nvim_lsp" },
+    { name = "buffer" },
     { name = "path" },
   },
 }
@@ -30,7 +30,6 @@ require("nvim-treesitter.configs").setup {
   textobjects = {
     select = {
       enable = true,
-
       lookahead = true,
 
       keymaps = {
