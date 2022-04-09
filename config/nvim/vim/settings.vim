@@ -41,7 +41,7 @@ set statusline+=%-12.(\ %l,%v\ %) " 99999,999 would still have two spaces.
 set statusline+=%(%P\ %)
 
 set list
-set listchars=tab:!-,trail:-,nbsp:+,precedes:<,extends:>
+set listchars=tab:>\ ,trail:-,nbsp:+,precedes:<,extends:>
 
 set number
 set relativenumber
