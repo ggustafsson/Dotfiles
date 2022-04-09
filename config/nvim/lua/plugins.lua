@@ -19,8 +19,6 @@ require("comment").setup({
 
 require("gitsigns").setup()
 
-require("nvim-tree").setup()
-
 require("nvim-treesitter.configs").setup({
   ensure_installed = "maintained",
 
