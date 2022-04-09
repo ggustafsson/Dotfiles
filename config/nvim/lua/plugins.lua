@@ -25,7 +25,6 @@ require("nvim-treesitter.configs").setup({
   highlight = {
     enable = true,
     disable = { "vim" },
-    additional_vim_regex_highlighting = false,
   },
 
   textobjects = {
@@ -44,9 +43,10 @@ require("nvim-treesitter.configs").setup({
 
 require("trouble").setup({
   icons = false,
+  indent_lines = false,
+
   fold_open = "v",
   fold_closed = ">",
-  indent_lines = false,
 
   signs = {
     error = "error",
