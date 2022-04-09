@@ -1,12 +1,12 @@
-require("cmp").setup {
+require("cmp").setup({
   sources = {
     { name = "nvim_lsp" },
     { name = "buffer" },
     { name = "path" },
   },
-}
+})
 
-require("comment").setup {
+require("comment").setup({
   toggler = {
     line = "gcc",
     block = "gCC",
@@ -15,11 +15,11 @@ require("comment").setup {
     line = "gc",
     block = "gC",
   },
-}
+})
 
 require("gitsigns").setup()
 
-require("nvim-treesitter.configs").setup {
+require("nvim-treesitter.configs").setup({
   ensure_installed = "maintained",
 
   highlight = {
@@ -40,4 +40,4 @@ require("nvim-treesitter.configs").setup {
       },
     },
   },
-}
+})
