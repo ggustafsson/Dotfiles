@@ -90,8 +90,8 @@ function! InsertTemplate(file)
     execute ".-read " .. fnameescape(a:file)
   endif
 
-  execute "%s/#YEAR#/\\=system(\"date +'%Y' | tr -d '\n'\")/ge"
-  execute "%s/#DATE#/\\=system(\"date +'%Y-%m-%d' | tr -d '\n'\")/ge"
+  execute "%s/#YEAR#/" .. strftime("%Y") .. "/ge"
+  execute "%s/#DATE#/" .. strftime("%Y-%m-%d") .. "/ge"
 endfunction
 
 " Display syntax group used at cursor position.
