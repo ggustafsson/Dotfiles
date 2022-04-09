@@ -5,16 +5,6 @@ require("cmp").setup({
     { name = "path" },
   },
 })
-require("cmp").setup.cmdline(":", {
-  sources = {
-    { name = "cmdline" },
-  },
-})
-require("cmp").setup.cmdline("/", {
-  sources = {
-    { name = "buffer" },
-  },
-})
 
 require("comment").setup({
   toggler = {
