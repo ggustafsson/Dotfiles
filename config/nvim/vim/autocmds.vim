@@ -25,9 +25,6 @@ augroup Main
   autocmd FileType go
     \ setlocal noexpandtab shiftwidth=4 softtabstop=0 tabstop=4 nolist
 
-  autocmd FileType godoc
-    \ setlocal nolist
-
   autocmd FileType json,markdown,python
     \ setlocal expandtab shiftwidth=4 softtabstop=4
 
