@@ -4,7 +4,6 @@ command! -nargs=* -complete=help Help vertical help <args>
 command! -nargs=1 -complete=file InsertTemplate call InsertTemplate(<q-args>)
 command! -nargs=0 SyntaxGroup call SyntaxGroup()
 
-
 " Toggle 'colorcolumn' setting on and off.
 function! ColorColumn()
   if empty(&colorcolumn)
@@ -13,7 +12,6 @@ function! ColorColumn()
     setlocal colorcolumn= colorcolumn?
   endif
 endfunction
-
 
 " Change file encoding plus file format, convert tabs to spaces and remove
 " trailing whitespaces.
@@ -34,7 +32,6 @@ function! FixFile(spaces)
   normal! `l
 endfunction
 
-
 " Convert tabs to 2, 4 or 8 spaces.
 function! FixTabs(spaces)
   if a:spaces !~ "^[248]$"
@@ -48,7 +45,6 @@ function! FixTabs(spaces)
   let &l:tabstop = a:spaces
   retab
 endfunction
-
 
 " Jump to next or previous location list entry. If location list is empty jump
 " to next or previous quickfix list entry instead.
@@ -80,7 +76,6 @@ function! GoToLocation(action)
   endtry
 endfunction
 
-
 " Insert file above cursor, replace #YEAR# with 'YYYY' and replace '#DATE#'
 " with 'YYYY-MM-DD'. If buffer has only one empty line then remove it after
 " insert so HTML templates and similar works better.
@@ -99,7 +94,6 @@ function! InsertTemplate(file)
   execute "%s/#DATE#/\\=system(\"date +'%Y-%m-%d' | tr -d '\n'\")/ge"
 endfunction
 
-
 " Display syntax group used at cursor position.
 function! SyntaxGroup()
   let l:syntax_id = synID(line("."), col("."), 1)
@@ -110,7 +104,6 @@ function! SyntaxGroup()
   execute "highlight " . syntax_trans
 endfunction
 
-
 " Undo all changes since last file save. Unsaved buffers are emptied.
 function! UndoAll()
   let l:filename = expand("%")
@@ -120,7 +113,6 @@ function! UndoAll()
     earlier 1f
   endif
 endfunction
-
 
 " 1:.vimrc  2:Xresources  3:[No Name]        X
 function NvimTabLine()

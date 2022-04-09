@@ -78,7 +78,6 @@ nnoremap <Leader>Y  "*y$
 nnoremap <Leader>yy "*yy
 vnoremap <Leader>y  "*y
 
-
 " Fixes for crappy default mappings...
 nnoremap <C-W>t <Cmd>tabedit<CR>
 cnoremap <C-A>  <Home>
@@ -93,7 +92,6 @@ nnoremap Q       <Nop>
 " Mark relative jumps with j/k so CTRL-I and CTRL-O works.
 nnoremap <expr>j (v:count > 1 ? "m'" .. v:count : "") .. "j"
 nnoremap <expr>k (v:count > 1 ? "m'" .. v:count : "") .. "k"
-
 
 " These key combos are unused and similar to 'gt' and 'gT' for tabs.
 nnoremap gb <Cmd>bnext<CR>

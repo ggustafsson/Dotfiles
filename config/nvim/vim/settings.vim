@@ -4,7 +4,6 @@ if !exists("g:dont_run_again_if_we_have_already_bought_chicken_nuggets")
   let g:dont_run_again_if_we_have_already_bought_chicken_nuggets = 1
 endif
 
-
 set confirm
 set formatoptions+=lnor " See ':help fo-table'.
 set guicursor=
@@ -49,7 +48,6 @@ set relativenumber
 
 set splitbelow
 set splitright
-
 
 let g:mapleader = " "
 let g:markdown_folding = 1
