@@ -23,7 +23,7 @@ augroup Main
     \ setlocal nolist spell textwidth=72
 
   autocmd FileType go
-    \ setlocal noexpandtab shiftwidth=4 softtabstop=0 tabstop=4 nolist
+    \ setlocal noexpandtab shiftwidth=4 softtabstop=0 tabstop=4
 
   autocmd FileType json,markdown,python
     \ setlocal expandtab shiftwidth=4 softtabstop=4
