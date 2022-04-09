@@ -8,29 +8,31 @@ require("cmp").setup({
 
 require("comment").setup({
   toggler = {
-    line = "gcc",
+    line  = "gcc",
     block = "gCC",
   },
   opleader = {
-    line = "gc",
+    line  = "gc",
     block = "gC",
   },
 })
 
 require("gitsigns").setup()
 
+require("nvim-tree").setup()
+
 require("nvim-treesitter.configs").setup({
   ensure_installed = "maintained",
 
   highlight = {
     enable = true,
+    disable = { "vim" },
     additional_vim_regex_highlighting = false,
   },
 
   textobjects = {
     select = {
       enable = true,
-      lookahead = true,
 
       keymaps = {
         ["af"] = "@function.outer",

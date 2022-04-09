@@ -32,6 +32,7 @@ nnoremap <Leader>t4 :setlocal noexpandtab shiftwidth=4 softtabstop=0 tabstop=4<C
 nnoremap <Leader>t8 :setlocal noexpandtab shiftwidth=8 softtabstop=0 tabstop=8<CR>
 nnoremap <Leader>tm :edit ~/Documents/Text/Tmp.txt \| :setlocal nobuflisted<CR>
 nnoremap <Leader>to :edit ~/Documents/Text/Todo.md \| :setlocal nobuflisted<CR>
+nnoremap <Leader>tr :NvimTreeToggle<CR>
 nnoremap <Leader>tw :setlocal textwidth=79
 nnoremap <Leader>un :call UndoAll()<CR>
 nnoremap <Leader>ut :MundoToggle<CR>
@@ -78,9 +79,7 @@ nnoremap <Leader>Y  "*y$
 nnoremap <Leader>yy "*yy
 vnoremap <Leader>y  "*y
 
-" Fixes for crappy default mappings...
 nnoremap <C-W>t <Cmd>tabedit<CR>
-cnoremap <C-A>  <Home>
 
 nnoremap <Backspace> <Cmd>nohlsearch<Bar>diffupdate<CR><C-L>
 vnoremap <Backspace> <Esc><Cmd>nohlsearch<Bar>diffupdate<CR><C-L>
@@ -89,15 +88,15 @@ vnoremap <C-L>       <Esc><Cmd>nohlsearch<Bar>diffupdate<CR><C-L>
 nnoremap <Space> <Nop>
 nnoremap Q       <Nop>
 
-" Mark relative jumps with j/k so CTRL-I and CTRL-O works.
-nnoremap <expr>j (v:count > 1 ? "m'" .. v:count : "") .. "j"
-nnoremap <expr>k (v:count > 1 ? "m'" .. v:count : "") .. "k"
-
 " These key combos are unused and similar to 'gt' and 'gT' for tabs.
 nnoremap gb <Cmd>bnext<CR>
 nnoremap gB <Cmd>bprevious<CR>
 nnoremap gl <Cmd>call GoToLocation("next")<CR>
 nnoremap gL <Cmd>call GoToLocation("previous")<CR>
+
+" Mark relative jumps with j/k so CTRL-I and CTRL-O works.
+nnoremap <expr>j (v:count > 1 ? "m'" .. v:count : "") .. "j"
+nnoremap <expr>k (v:count > 1 ? "m'" .. v:count : "") .. "k"
 
 " Move visual block down/up and keep visual selection.
 vnoremap <C-J> :m '>+1<CR>gv=gv
@@ -113,3 +112,5 @@ inoremap <C-X><C-L> <Plug>(fzf-complete-line)
 " until last character. Like 'w' (word), 'p' (paragraph) etc.
 xnoremap il ^og_
 onoremap il <Cmd>normal vil<CR>
+
+cnoremap <C-A> <Home>

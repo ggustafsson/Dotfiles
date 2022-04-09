@@ -52,16 +52,8 @@ set splitright
 let g:mapleader = " "
 let g:markdown_folding = 1
 
-let g:ale_sign_error = "💀 "
-let g:ale_sign_warning = "🔥 "
-let g:ale_sign_style_error = "⚡️ "
-let g:ale_sign_style_warning = "⚡️ "
-
 let g:fzf_action = {"ctrl-t": "tab split", "ctrl-s": "split", "ctrl-v": "vsplit"}
 let g:fzf_command_prefix = "Fzf"
-
-let g:go_metalinter_autosave = 1
-let g:go_template_autocreate = 0
 
 let g:mundo_preview_statusline = " Mundo Preview"
 let g:mundo_tree_statusline = " Mundo Tree"
