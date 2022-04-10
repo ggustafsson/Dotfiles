@@ -16,8 +16,6 @@ set smartindent
 set spelllang=en,sv
 set tabline=%!NvimTabLine()
 set textwidth=79
-set timeoutlen=5000
-set wildignorecase
 
 set backup
 set backupdir=~/.local/share/nvim/backup
@@ -50,7 +48,10 @@ set relativenumber
 set splitbelow
 set splitright
 
-let g:mapleader = " "
+set wildignorecase
+set wildmode=longest,list
+
+let g:mapleader = ","
 let g:markdown_folding = 1
 
 let g:fzf_action = {"ctrl-t": "tab split", "ctrl-s": "split", "ctrl-v": "vsplit"}

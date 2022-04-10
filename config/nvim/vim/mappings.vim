@@ -80,12 +80,7 @@ vnoremap <Leader>y  "*y
 
 nnoremap <C-W>t <Cmd>tabedit<CR>
 
-nnoremap <Backspace> <Cmd>nohlsearch<Bar>diffupdate<CR><C-L>
-vnoremap <Backspace> <Esc><Cmd>nohlsearch<Bar>diffupdate<CR><C-L>
-vnoremap <C-L>       <Esc><Cmd>nohlsearch<Bar>diffupdate<CR><C-L>
-
-nnoremap <Space> <Nop>
-nnoremap Q       <Nop>
+nnoremap Q <Nop>
 
 " These key combos are unused and similar to 'gt' and 'gT' for tabs.
 nnoremap gb <Cmd>bnext<CR>
@@ -97,9 +92,7 @@ nnoremap gL <Cmd>call GoToLocation("previous")<CR>
 nnoremap <expr>j (v:count > 1 ? "m'" .. v:count : "") .. "j"
 nnoremap <expr>k (v:count > 1 ? "m'" .. v:count : "") .. "k"
 
-" Move visual block down/up and keep visual selection.
-vnoremap <C-J> :m '>+1<CR>gv=gv
-vnoremap <C-K> :m '<-2<CR>gv=gv
+vnoremap <C-L> <Esc><Cmd>nohlsearch<Bar>diffupdate<CR><C-L>
 
 inoremap jj <Esc>
 
