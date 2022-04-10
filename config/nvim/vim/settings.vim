@@ -1,5 +1,5 @@
 if !exists("g:dont_run_again_if_we_have_already_bought_chicken_nuggets")
-  colorscheme defaultz
+  colorscheme electric-boogaloo
 
   let g:dont_run_again_if_we_have_already_bought_chicken_nuggets = 1
 endif
