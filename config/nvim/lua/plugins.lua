@@ -6,7 +6,7 @@ require("cmp").setup({
   },
 })
 
-require("comment").setup({
+require("Comment").setup({
   toggler = {
     line  = "gcc",
     block = "gCC",
