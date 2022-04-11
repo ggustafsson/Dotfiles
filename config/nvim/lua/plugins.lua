@@ -1,5 +1,7 @@
 require("cmp").setup({
+  -- Order of sources also sets priority.
   sources = {
+    { name = 'luasnip' },
     { name = "nvim_lsp" },
     { name = "buffer" },
     { name = "path" },
@@ -18,6 +20,10 @@ require("Comment").setup({
 })
 
 require("gitsigns").setup()
+
+require("luasnip.loaders.from_lua").load({
+  paths = "./snippets"
+})
 
 require("nvim-treesitter.configs").setup({
   ensure_installed = "all",
