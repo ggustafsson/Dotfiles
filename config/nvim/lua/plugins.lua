@@ -1,7 +1,6 @@
 require("cmp").setup({
   -- Order of sources also sets priority.
   sources = {
-    { name = 'luasnip' },
     { name = "nvim_lsp" },
     { name = "buffer" },
     { name = "path" },
@@ -18,8 +17,6 @@ require("Comment").setup({
     block = "gC",
   },
 })
-
-require("gitsigns").setup()
 
 require("nvim-treesitter.configs").setup({
   ensure_installed = "all",
@@ -41,20 +38,4 @@ require("nvim-treesitter.configs").setup({
       },
     },
   },
-})
-
-require("trouble").setup({
-  icons = false,
-  indent_lines = false,
-
-  fold_open = "v",
-  fold_closed = ">",
-
-  signs = {
-    error = "error",
-    warning = "warn",
-    hint = "hint",
-    information = "info",
-  },
-  use_diagnostic_signs = false,
 })
