@@ -20,7 +20,7 @@ else
   exit 1
 fi
 
-directory=~/Projects/Ansible
+directory=~/Projects/Ansiblebot
 
 if [[ $git_pull == true ]]; then
   print -P "%F{cyan}git pull @ ${directory/$HOME/~}:%f"

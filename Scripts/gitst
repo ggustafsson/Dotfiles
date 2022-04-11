@@ -7,7 +7,7 @@
 # Example:
 #
 #   Projects:
-#   Ansible         master
+#   Ansiblebot      master
 #   Dotfiles        master + todo
 #   Project-Assets  master
 #   ...
