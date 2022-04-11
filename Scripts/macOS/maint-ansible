@@ -23,7 +23,7 @@ fi
 directory=~/Projects/Ansiblebot
 
 if [[ $git_pull == true ]]; then
-  print -P "%F{cyan}git pull @ ${directory/$HOME/~}:%f"
+  print -P "%F{cyan}git pull @ ${directory/${HOME}/~}:%f"
   git -C $directory pull
   echo
 fi

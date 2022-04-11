@@ -23,7 +23,7 @@ if [[ ! -d $projects_path ]]; then
   exit 1
 fi
 
-echo "Updating all Git repos under '${projects_path/$HOME/~}'..."
+echo "Updating all Git repos under '${projects_path/${HOME}/~}'..."
 
 for directory in ${projects_path}/*(N); do
   if ! git -C $directory rev-parse --is-inside-work-tree &> /dev/null; then
