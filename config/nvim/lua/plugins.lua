@@ -1,5 +1,5 @@
 require("cmp").setup({
-  -- Order of sources also sets priority.
+  -- Order of sources sets priority.
   sources = {
     { name = "nvim_lsp" },
     { name = "buffer" },
