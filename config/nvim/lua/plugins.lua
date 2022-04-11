@@ -21,10 +21,6 @@ require("Comment").setup({
 
 require("gitsigns").setup()
 
-require("luasnip.loaders.from_lua").load({
-  paths = "./snippets"
-})
-
 require("nvim-treesitter.configs").setup({
   ensure_installed = "all",
 
