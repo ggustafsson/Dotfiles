@@ -242,7 +242,6 @@ alias fd="fd --follow --no-ignore"
 alias hogs="du -sk * | sort --numeric-sort --reverse | head -n 15"
 alias iip="curl icanhazip.com"
 alias mkdir="mkdir -pv"
-alias tree="tree --charset ascii"
 alias untar="tar -xvf"
 alias zreload="source ~/.zshenv && source ~/.zshrc"
 
@@ -276,6 +275,9 @@ alias xxx="rg '\b(FIXME|TODO|XXX)(:|$| )'"
 
 alias svtplay-dl="svtplay-dl --resume"
 alias youtube-dl="youtube-dl --continue --output '%(title)s.%(ext)s'"
+
+alias tree="tree --charset ascii"
+alias treed="tree -d -L 2"
 
 alias vim="nvim"
 alias vimdiff='nvim -d'
