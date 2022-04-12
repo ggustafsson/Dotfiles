@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-# Description: Like 'locate' but for macOS.
+# Description: Like "locate" but for macOS.
 #
 # Usage: locate <name>
 #

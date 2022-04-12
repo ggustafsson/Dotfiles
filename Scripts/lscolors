@@ -12,7 +12,7 @@ if [[ ! $LS_COLORS ]]; then
   exit 1
 fi
 
-# Options here are based on output from 'dircolors' version 9.0.
+# Options here are based on output from "dircolors" version 9.0.
 typeset -A names
 names[bd]="block device"
 names[ca]="capability"
