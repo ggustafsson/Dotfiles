@@ -8,7 +8,9 @@ export LESS=FRi # --quit-if-one-screen --RAW-CONTROL-CHARS --ignore-case
 export PAGER=less
 export MANPAGER='nvim +Man!'
 
+# Improves behaviour of "&" and "|" when used after tab completion.
 ZLE_REMOVE_SUFFIX_CHARS=$' \t\n;' # Removed "&|" from defaults to keep space.
+ZLE_SPACE_SUFFIX_CHARS=$'&|' # Add space before "&|" if missing.
 
 HISTFILE=~/.zhistory
 HISTSIZE=9999
