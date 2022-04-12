@@ -1,0 +1,23 @@
+#!/usr/bin/env zsh
+
+# Description: Run "Ranger" and afterwards change directory in current shell.
+#
+# ~/.zshrc:
+#
+#   alias rngr="source rngr"
+#
+# Usage: rngr
+#
+# Creator: Göran Gustafsson (gustafsson.g at gmail.com)
+# License: BSD 3-Clause
+
+last_path=~/.local/share/ranger/last_path
+
+ranger \
+  --cmd="map Q chain shell echo %d > $last_path; quitall" \
+  --cmd="map q chain shell echo %d > $last_path; quit" \
+  $*
+
+if [[ -f $last_path ]]; then
+  cd -- "$(< $last_path)"
+fi
