@@ -15,7 +15,7 @@
 	fucked-up-beyond-all-repair  = reset --hard origin/master
 
 [core]
-	excludesfile = ~/.gitignore_global
+	excludesFile = ~/.gitignore_global
 
 [init]
 	defaultBranch = master
