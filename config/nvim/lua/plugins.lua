@@ -1,13 +1,4 @@
-require("cmp").setup({
-  -- Order of sources sets priority.
-  sources = {
-    { name = "nvim_lsp" },
-    { name = "buffer" },
-    { name = "path" },
-  },
-})
-
-require("Comment").setup({
+require("Comment").setup {
   toggler = {
     line  = "gcc",
     block = "gCC",
@@ -16,9 +7,9 @@ require("Comment").setup({
     line  = "gc",
     block = "gC",
   },
-})
+}
 
-require("nvim-treesitter.configs").setup({
+require("nvim-treesitter.configs").setup {
   ensure_installed = "all",
 
   highlight = {
@@ -41,4 +32,4 @@ require("nvim-treesitter.configs").setup({
       },
     },
   },
-})
+}
