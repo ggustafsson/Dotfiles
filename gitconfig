@@ -20,6 +20,9 @@
 [init]
 	defaultBranch = master
 
+[pull]
+	rebase = true
+
 [user]
 	name  = Göran Gustafsson
 	email = gustafsson.g@gmail.com
