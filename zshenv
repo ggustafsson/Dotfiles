@@ -24,8 +24,10 @@ else
   export LC_COLLATE=sv_SE.UTF-8
 fi
 
-export GOPATH=~/Golang
 export LANG=en_US.UTF-8
+
+export GOPATH=~/Golang
+export PYTHONUSERBASE=~/.local
 
 if [[ $OSTYPE == darwin* ]]; then
   # TODO: Adjust path after legacy decom.
