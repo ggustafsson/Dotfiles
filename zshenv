@@ -55,8 +55,8 @@ else
     ${GOPATH}/bin(N)
     ~/Scripts/Linux(N)
     ~/Scripts(N)
-    ~/.linuxbrew/bin(N)
-    ~/.linuxbrew/sbin(N)
+    /home/linuxbrew/.linuxbrew/bin(N)
+    /home/linuxbrew/.linuxbrew/sbin(N)
     /usr/local/bin
     /usr/local/sbin
     /usr/bin
