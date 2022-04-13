@@ -10,14 +10,21 @@ require("Comment").setup {
 }
 
 require("nvim-treesitter.configs").setup {
-  ensure_installed = "all",
+  ensure_installed = {
+    "bash",
+    "css",
+    "go",
+    "html",
+    "json",
+    "python",
+    "yaml",
+  },
 
   highlight = {
     enable = true,
-    disable = {
-      "vim",
-      "yaml",
-    },
+     disable = {
+       "yaml",
+     },
   },
 
   textobjects = {
