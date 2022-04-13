@@ -4,7 +4,8 @@ local lspconfig = require "lspconfig"
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
 
--- FIXME: Uncomment "ansiblels" after https://github.com/Homebrew/homebrew-core/pull/99170
+-- FIXME: Uncomment "ansiblels" after merge:
+-- https://github.com/Homebrew/homebrew-core/pull/99170
 local servers = {
   -- "ansiblels",
   "bashls",

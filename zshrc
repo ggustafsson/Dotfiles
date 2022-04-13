@@ -248,6 +248,7 @@ alias rngr="source rngr"
 alias untar="tar -xvf"
 alias zreload="source ~/.zshenv && source ~/.zshrc"
 
+alias cdb="source cdb"
 alias cdh="dirs -v | tac"
 alias cdj='[[ -f ~/.cds_path ]] && cd -- "$(< ~/.cds_path)"'
 alias cds='echo "Saving current path."; echo $PWD >| ~/.cds_path'

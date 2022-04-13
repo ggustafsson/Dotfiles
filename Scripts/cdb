@@ -1,0 +1,39 @@
+#!/usr/bin/env zsh
+
+# Description: Like "cd .." but if an argument is supplied then $PWD is
+# searched through for a match. If one is found then the current directory is
+# changed to the matching directory.
+#
+# Example:
+#
+#   /Users/GLEG/Development/Ruby $ cdb Us
+#   /Users $
+#
+# ~/.zshrc:
+#
+#   alias cdb="source cdb"
+#
+# Usage: cdb
+#        cdb <pattern>
+#
+# Original script created by Vigneshwaran Raveendran:
+#   <https://github.com/vigneshwaranr/bd/blob/master/bd>
+# Modified by Göran Gustafsson (gustafsson.g at gmail.com).
+
+if [[ $# -ge 2 ]]; then
+  echo "Usage: ${0:t} [PATTERN]..."
+  exit
+fi
+
+if [[ -n $1 ]]; then
+  new_pwd=$(echo $PWD | sed 's|\(.*/'${1}'[^/]*/\).*|\1|')
+
+  if [[ $new_pwd != $PWD ]]; then
+    cd -- $new_pwd
+  else
+    echo "No result found!"
+    exit 1
+  fi
+else
+  cd ..
+fi
