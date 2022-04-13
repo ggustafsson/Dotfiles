@@ -31,9 +31,9 @@ if [[ $OSTYPE == darwin* ]]; then
   # TODO: Adjust path after legacy decom.
   path=(
     ~/.local/bin(N)
-    ${GOPATH}/bin(N)
     ~/Scripts/macOS(N)
     ~/Scripts(N)
+    ${GOPATH}/bin(N)
     /opt/homebrew/opt/curl/bin(N)
     /opt/homebrew/opt/ruby/bin(N)
     /opt/homebrew/opt/python/libexec/bin(N)
@@ -52,9 +52,9 @@ if [[ $OSTYPE == darwin* ]]; then
 else
   path=(
     ~/.local/bin(N)
-    ${GOPATH}/bin(N)
     ~/Scripts/Linux(N)
     ~/Scripts(N)
+    ${GOPATH}/bin(N)
     /home/linuxbrew/.linuxbrew/bin(N)
     /home/linuxbrew/.linuxbrew/sbin(N)
     /usr/local/bin
