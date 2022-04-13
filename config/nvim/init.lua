@@ -5,4 +5,5 @@ vim.cmd "source ~/.config/nvim/vim/autocmds.vim"
 
 require "plugins"
 require "language-servers"
+require "linters-fmt"
 require "completions"

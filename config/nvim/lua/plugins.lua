@@ -9,6 +9,8 @@ require("Comment").setup {
   },
 }
 
+require("luasnip.loaders.from_snipmate").lazy_load()
+
 require("nvim-treesitter.configs").setup {
   ensure_installed = {
     "bash",
