@@ -11,8 +11,16 @@ require("Comment").setup {
 
 require("luasnip.loaders.from_snipmate").lazy_load()
 
+vim.g.nvim_tree_add_trailing = 1
 vim.g.nvim_tree_show_icons = '{"git": 0, "folders": 0, "files": 0, "folder_arrows": 0}'
-require("nvim-tree").setup()
+vim.g.nvim_tree_symlink_arrow = " -> "
+require("nvim-tree").setup {
+  view = {
+    number = true,
+    relativenumber = true,
+    signcolumn = "no",
+  },
+}
 
 require("nvim-treesitter.configs").setup {
   ensure_installed = {
