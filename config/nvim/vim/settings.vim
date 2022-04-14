@@ -8,6 +8,7 @@ set completeopt=menu,menuone,noselect
 set confirm
 set formatoptions+=lnor " See ':help fo-table'.
 set guicursor=
+set inccommand=
 set mouse=nvi " Why the heck would you want command-line mode here?
 set nofoldenable
 set nohidden
