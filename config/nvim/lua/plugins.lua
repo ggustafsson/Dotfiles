@@ -19,6 +19,7 @@ require("nvim-treesitter.configs").setup {
     "html",
     "json",
     "python",
+    "ruby",
     "yaml",
   },
 
