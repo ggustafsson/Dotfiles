@@ -45,6 +45,10 @@ require("nvim-treesitter.configs").setup {
      },
   },
 
+  matchup = {
+    enable = true,
+  },
+
   textobjects = {
     select = {
       enable = true,

@@ -52,9 +52,7 @@ set splitright
 
 let g:mapleader = ","
 let g:markdown_folding = 1
+let g:matchup_matchparen_offscreen = {"method": "status_manual"}
 
 let g:fzf_action = {"ctrl-t": "tab split", "ctrl-s": "split", "ctrl-v": "vsplit"}
 let g:fzf_command_prefix = "Fzf"
-
-let g:mundo_preview_statusline = " Mundo Preview"
-let g:mundo_tree_statusline = " Mundo Tree"

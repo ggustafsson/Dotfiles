@@ -35,7 +35,6 @@ nnoremap <Leader>to :edit ~/Documents/Text/Todo.md \| :setlocal nobuflisted<CR>
 nnoremap <Leader>tr :NvimTreeToggle<CR>
 nnoremap <Leader>tw :setlocal textwidth=79
 nnoremap <Leader>un :call UndoAll()<CR>
-nnoremap <Leader>ut :UndotreeToggle<CR>
 nnoremap <Leader>wi :FzfWindows<CR>
 nnoremap <Leader>wr :setlocal wrap! wrap?<CR>
 nnoremap <Leader>ws ml:%s/\s\+$//e \| nohlsearch<CR>`l
