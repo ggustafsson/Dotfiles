@@ -8,8 +8,8 @@ cmp.setup {
     end,
   },
   mapping = {
-    ["<C-P>"] = cmp.mapping.select_prev_item(),
     ["<C-N>"] = cmp.mapping.select_next_item(),
+    ["<C-P>"] = cmp.mapping.select_prev_item(),
     ["<C-D>"] = cmp.mapping.scroll_docs(-4),
     ["<C-F>"] = cmp.mapping.scroll_docs(4),
     ["<C-Y>"] = cmp.mapping.complete(),
