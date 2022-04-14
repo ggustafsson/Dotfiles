@@ -16,6 +16,7 @@ vim.g.nvim_tree_show_icons = '{"git": 0, "folders": 0, "files": 0, "folder_arrow
 vim.g.nvim_tree_symlink_arrow = " -> "
 require("nvim-tree").setup {
   view = {
+    width = 35,
     number = true,
     relativenumber = true,
     signcolumn = "no",
