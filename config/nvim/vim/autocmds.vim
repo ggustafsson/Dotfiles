@@ -41,13 +41,4 @@ augroup Main
 
   autocmd FileType yaml,yaml.ansible
     \ setlocal indentkeys-=0#
-
-  " Quickfix and location list windows.
-  autocmd FileType qf
-    \ setlocal norelativenumber
-    \   statusline=\ %(%t\ %)
-    \   statusline+=%(%{exists('w:quickfix_title')?''.w:quickfix_title:''}\ %)
-    \   statusline+=%=
-    \   statusline+=%-11.(%l,%v\ %)
-    \   statusline+=%(%P\ %)
 augroup END
