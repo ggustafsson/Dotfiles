@@ -21,6 +21,9 @@ require("nvim-tree").setup {
     relativenumber = true,
     signcolumn = "no",
   },
+  filters = {
+    dotfiles = true,
+  },
 }
 
 require("nvim-treesitter.configs").setup {
