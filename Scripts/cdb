@@ -1,8 +1,7 @@
 #!/usr/bin/env zsh
 
-# Description: Like "cd .." but if an argument is supplied then $PWD is
-# searched through for a match. If one is found then the current directory is
-# changed to the matching directory.
+# Description: Like "cd .." but on steroids. If argument is supplied then
+# current directory is changed to closest directory matching pattern.
 #
 # Example:
 #
