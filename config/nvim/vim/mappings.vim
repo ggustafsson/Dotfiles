@@ -32,6 +32,7 @@ nnoremap <Leader>t4 :setlocal noexpandtab shiftwidth=4 softtabstop=0 tabstop=4<C
 nnoremap <Leader>t8 :setlocal noexpandtab shiftwidth=8 softtabstop=0 tabstop=8<CR>
 nnoremap <Leader>tm :edit ~/Documents/Text/Tmp.txt \| :setlocal nobuflisted<CR>
 nnoremap <Leader>to :edit ~/Documents/Text/Todo.md \| :setlocal nobuflisted<CR>
+nnoremap <Leader>tr :NvimTreeToggle<CR>
 nnoremap <Leader>tw :setlocal textwidth=79
 nnoremap <Leader>un :call UndoAll()<CR>
 nnoremap <Leader>ut :UndotreeToggle<CR>
