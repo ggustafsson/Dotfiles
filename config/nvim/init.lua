@@ -14,8 +14,8 @@ function file_exists(name)
 end
 
 function source_config(name)
-  file =  os.getenv("HOME") .. "/.config/nvim/lua/" .. name .. ".lua"
-  if file_exists(file) then
+  path = os.getenv("HOME") .. "/.config/nvim/lua/" .. name .. ".lua"
+  if file_exists(path) then
     require(name)
   end
 end
