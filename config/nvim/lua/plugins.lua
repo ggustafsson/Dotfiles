@@ -28,9 +28,7 @@ require("nvim-tree").setup {
   },
 }
 
--- FIXME: E896: Argument of get() must be a List, Dictionary or Blob
--- vim.g.matchup_matchparen_offscreen = '{"method": "status_manual"}'
-vim.cmd 'let g:matchup_matchparen_offscreen = {"method": "status_manual"}'
+vim.g.matchup_matchparen_offscreen = { method = "status_manual" }
 require("nvim-treesitter.configs").setup {
   ensure_installed = {
     "bash",
