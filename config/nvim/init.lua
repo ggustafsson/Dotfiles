@@ -14,15 +14,10 @@ function file_exists(name)
 end
 
 function source_config(name)
-  -- XXX: Decide on dofile() or require()...
-  -- if file_exists(name) then
-  --   dofile(name)
-  -- end
-  file = "lua/" .. name .. ".lua"
+  file =  os.getenv("HOME") .. "/.config/nvim/lua/" .. name .. ".lua"
   if file_exists(file) then
     require(name)
   end
 end
 
--- source_config "lua/local.lua"
 source_config "local"
