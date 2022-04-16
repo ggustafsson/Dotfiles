@@ -21,6 +21,14 @@ end
 
 -- lspconfig.ansiblels.setup {}
 lspconfig.bashls.setup {}
-lspconfig.gopls.setup {}
+
+-- Disable formatting from LSP so "null-ls" can run "goimports" instead.
+lspconfig.gopls.setup {
+  on_attach = function(client)
+    client.resolved_capabilities.document_formatting = false
+    client.resolved_capabilities.document_range_formatting = false
+  end,
+}
+
 lspconfig.pyright.setup {}
 lspconfig.yamlls.setup {}
