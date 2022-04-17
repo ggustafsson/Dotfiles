@@ -2,7 +2,7 @@ augroup Main
   autocmd!
 
   autocmd TextYankPost *
-    \ silent! lua vim.highlight.on_yank {higroup="Search", timeout=200}
+    \ silent! lua vim.highlight.on_yank { higroup = "Search", timeout = 200 }
 
   " If last cursor position still exist then go to it.
   autocmd BufRead * autocmd FileType <buffer> ++once
