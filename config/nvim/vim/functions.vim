@@ -90,8 +90,10 @@ function! InsertTemplate(file)
     execute ".-read " .. fnameescape(a:file)
   endif
 
+  normal! ml
   execute "%s/#YEAR#/" .. strftime("%Y") .. "/ge"
   execute "%s/#DATE#/" .. strftime("%Y-%m-%d") .. "/ge"
+  normal! `l
 endfunction
 
 " Display syntax group used at cursor position.
