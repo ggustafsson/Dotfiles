@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
-# Description:
+# Description: 
 #
-# Usage:
+# Usage: 
 #
 # Changelog:
 #   #DATE# - Initial version created by Göran Gustafsson.

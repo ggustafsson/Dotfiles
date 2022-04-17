@@ -1,22 +1,6 @@
-# Title
+# 
 
-## Description
-
-
-
-## Usage
-
-
-
-## Installation
-
-
-
-## Configuration
-
-
-
-## Dependencies
+## 
 
 
 
