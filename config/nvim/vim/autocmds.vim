@@ -30,14 +30,11 @@ augroup Main
   autocmd FileType gitcommit
     \ setlocal nolist spell textwidth=72
 
-  autocmd FileType go
+  autocmd FileType go,snippets
     \ setlocal noexpandtab shiftwidth=4 softtabstop=0 tabstop=4
 
   autocmd FileType json,markdown,python
     \ setlocal expandtab shiftwidth=4 softtabstop=4
-
-  autocmd FileType snippets
-    \ setlocal noexpandtab shiftwidth=4 softtabstop=0 tabstop=4
 
   autocmd FileType yaml,yaml.ansible
     \ setlocal indentkeys-=0#
