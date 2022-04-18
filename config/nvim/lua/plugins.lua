@@ -41,6 +41,13 @@ require("nvim-treesitter.configs").setup {
     "yaml",
   },
 
+  autotag = {
+    enable = true,
+    filetypes = {
+      "html",
+    },
+  },
+
   highlight = {
     enable = true,
      disable = {
