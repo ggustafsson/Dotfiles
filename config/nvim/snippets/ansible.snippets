@@ -113,14 +113,14 @@ snippet stat
 	    path: $2
 	  register: $3
 
-snippet symbolic
+snippet symlink
 	- name: $1
 	  ansible.builtin.file:
 	    src: $2
 	    dest: $3
 	    state: link
 
-snippet symbolic-loop
+snippet symlink-loop
 	- name: $1
 	  ansible.builtin.file:
 	    src: $2/{{ item.src }}
