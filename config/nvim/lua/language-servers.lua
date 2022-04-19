@@ -19,14 +19,20 @@ end
 
 lspconfig.ansiblels.setup {}
 lspconfig.bashls.setup {}
-
--- Disable formatting from LSP so "null-ls" can run "goimports" instead.
 lspconfig.gopls.setup {
+  -- Disable formatting from LSP so "null-ls" can run "goimports" instead.
   on_attach = function(client)
     client.resolved_capabilities.document_formatting = false
     client.resolved_capabilities.document_range_formatting = false
   end,
 }
-
 lspconfig.pyright.setup {}
 lspconfig.yamlls.setup {}
+
+local on_attach = function(client, bufnr)
+  vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
+
+  vim.api.nvim_buf_set_keymap(bufnr, "n", "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
+  vim.api.nvim_buf_set_keymap(bufnr, "n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts)
+  vim.api.nvim_buf_set_keymap(bufnr, "n", "K", "<Cmd>lua vim.lsp.buf.hover()<CR>", opts)
+end
