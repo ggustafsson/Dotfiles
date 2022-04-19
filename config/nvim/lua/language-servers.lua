@@ -17,7 +17,7 @@ for _, lsp in ipairs(servers) do
   }
 end
 
--- lspconfig.ansiblels.setup {}
+lspconfig.ansiblels.setup {}
 lspconfig.bashls.setup {}
 
 -- Disable formatting from LSP so "null-ls" can run "goimports" instead.
