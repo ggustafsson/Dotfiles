@@ -281,7 +281,7 @@ alias svtplay-dl="svtplay-dl --resume"
 alias youtube-dl="youtube-dl --continue --output '%(title)s.%(ext)s'"
 
 alias tree="tree --charset ascii"
-alias treed="tree -d -L 2"
+alias treed="tree -d"
 
 alias vim="nvim"
 alias vimdiff='nvim -d'
