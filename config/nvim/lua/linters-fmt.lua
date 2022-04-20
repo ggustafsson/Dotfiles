@@ -10,10 +10,8 @@ local sources = {
   null_ls.builtins.diagnostics.yamllint,
   null_ls.builtins.diagnostics.zsh,
 
-  null_ls.builtins.formatting.autopep8,
   null_ls.builtins.formatting.goimports,
   null_ls.builtins.formatting.terraform_fmt,
-  null_ls.builtins.formatting.tidy,
 }
 
 null_ls.setup {
