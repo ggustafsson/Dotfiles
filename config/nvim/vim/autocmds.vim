@@ -27,7 +27,7 @@ augroup Main
   autocmd BufRead,BufNewFile *.conf,config
     \ setlocal filetype=conf
 
-  autocmd BufRead,BufNewFile */Ansiblebot/*.yml
+  autocmd BufRead,BufNewFile */Ansiblebot/**.yml
     \ setlocal filetype=yaml.ansible
 
   autocmd FileType gitcommit
