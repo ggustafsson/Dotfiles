@@ -5,8 +5,7 @@ if [[ $OSTYPE == darwin* ]]; then
     #/usr/bin/ssh-add --apple-use-keychain -q ~/.ssh/id_ed25519
   fi
 else
-  text=$(hostname | sed $'s/-/\t/')
   print -P "%F{yellow}"
-  figlet -c -f ~/.local/share/figlet/bigmoney-nw.flf $text 2> /dev/null
+  figlet -c -f ~/.local/share/figlet/bigmoney-nw.flf ${HOST/-/ } 2> /dev/null
   print -Pn "%f"
 fi
