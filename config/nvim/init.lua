@@ -13,11 +13,19 @@ function file_exists(name)
   return file ~= nil and io.close(file)
 end
 
-function source_config(name)
+function source_lua(name)
   local path = os.getenv("HOME") .. "/.config/nvim/lua/" .. name .. ".lua"
   if file_exists(path) then
     require(name)
   end
 end
 
-source_config "local"
+function source_vim(name)
+  local path = os.getenv("HOME") .. "/.config/nvim/vim/" .. name .. ".vim"
+  if file_exists(path) then
+    vim.cmd("source " .. path)
+  end
+end
+
+source_lua "local"
+source_vim "local"
