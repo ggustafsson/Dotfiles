@@ -1,7 +1,9 @@
-vim.cmd "source ~/.config/nvim/vim/settings.vim"
-vim.cmd "source ~/.config/nvim/vim/mappings.vim"
-vim.cmd "source ~/.config/nvim/vim/functions.vim"
-vim.cmd "source ~/.config/nvim/vim/autocmds.vim"
+vim.cmd [[
+  source ~/.config/nvim/vim/settings.vim
+  source ~/.config/nvim/vim/mappings.vim
+  source ~/.config/nvim/vim/functions.vim
+  source ~/.config/nvim/vim/autocmds.vim
+]]
 
 require "plugins"
 require "language-servers"
