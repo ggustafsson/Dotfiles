@@ -12,7 +12,7 @@
 	st = status
 
 	forgive-me-for-i-have-sinned = reset --soft HEAD~1
-	fucked-up-beyond-all-repair  = reset --hard origin/master
+	fucked-up-beyond-all-repair  = reset --hard @{upstream}
 
 [core]
 	excludesFile = ~/.gitignore_global
