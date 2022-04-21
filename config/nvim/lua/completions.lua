@@ -8,11 +8,16 @@ cmp.setup {
     end,
   },
   mapping = {
+    ["<C-Space>"] = cmp.mapping.complete(),
     ["<C-N>"] = cmp.mapping.select_next_item(),
     ["<C-P>"] = cmp.mapping.select_prev_item(),
     ["<C-D>"] = cmp.mapping.scroll_docs(4),
     ["<C-U>"] = cmp.mapping.scroll_docs(-4),
     ["<C-E>"] = cmp.mapping.close(),
+    ["<C-Y>"] = cmp.mapping.confirm {
+      behavior = cmp.ConfirmBehavior.Replace,
+      select = true,
+    },
     ["<CR>"] = cmp.mapping.confirm {
       behavior = cmp.ConfirmBehavior.Replace,
       select = true,
