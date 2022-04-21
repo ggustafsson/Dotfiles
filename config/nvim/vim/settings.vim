@@ -15,7 +15,7 @@ set nohidden
 set nowrap
 set smartindent
 set spelllang=en,sv
-set tabline=%!NvimTabLine()
+set tabline=%!VimTabLine()
 set textwidth=79
 
 set backup
@@ -29,13 +29,13 @@ set expandtab
 set shiftwidth=2
 set softtabstop=2
 
-" ~/.vimrc [+] [dos] [latin1] [vim] [paste]        142,47     30%
-set statusline=\ %(%f\ %)
+" [3] ~/.vimrc [+] [dos] [latin1] [vim]        142,47    30%
+set statusline=\ %([%{VimBufferCount()}]\ %)
+set statusline+=%(%f\ %)
 set statusline+=%(%m\ %)
 set statusline+=%([%{&fileformat=='unix'?'':&fileformat}]\ %)
 set statusline+=%([%{&fileencoding=='utf-8'?'':&fileencoding}]\ %)
 set statusline+=%(%y\ %)
-set statusline+=%(%{&paste?'[paste]':''}\ %)
 set statusline+=%=
 set statusline+=%-12.(\ %l,%v\ %) " 99999,999 would still have two spaces.
 set statusline+=%(%P\ %)
