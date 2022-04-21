@@ -78,6 +78,7 @@ nnoremap <Leader>Y  "*y$
 nnoremap <Leader>yy "*yy
 vnoremap <Leader>y  "*y
 
+nnoremap <C-G> 1<C-G>
 nnoremap <C-W>t <Cmd>tabedit<CR>
 
 nnoremap Q <Nop>
