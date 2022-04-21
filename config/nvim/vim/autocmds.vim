@@ -24,8 +24,11 @@ augroup Main
   autocmd BufNewFile *.sh   InsertTemplate ~/.config/nvim/templates/Bash.sh
   autocmd BufNewFile *.zsh  InsertTemplate ~/.config/nvim/templates/Zsh.zsh
 
-  autocmd BufNewFile,BufReadPost *.conf,config
+  autocmd BufRead,BufNewFile *.conf,config
     \ setlocal filetype=conf
+
+  autocmd BufRead,BufNewFile */Ansiblebot/*.yml
+    \ setlocal filetype=yaml.ansible
 
   autocmd FileType gitcommit
     \ setlocal nolist spell textwidth=72
