@@ -16,13 +16,7 @@ HISTFILE=~/.zhistory
 HISTSIZE=9999
 SAVEHIST=$HISTSIZE
 
-if [[ $OSTYPE == darwin* ]]; then
-  hash -d ext=/Volumes/External
-  hash -d key=/Volumes/Keychain
-  hash -d msd=/Volumes/MicroSD # TODO: Remove after legacy decom.
-else
-  hash -d ext=/media/external
-fi
+cd_list=~/.cd_list
 
 tmp=~/Documents/Text/Tmp.txt
 todo=~/Documents/Text/Todo.md
@@ -249,9 +243,10 @@ alias untar="tar -xvf"
 alias zreload="source ~/.zshenv && source ~/.zshrc"
 
 alias cdb="source cdb"
+alias cde='nvim $cd_list'
 alias cdh="dirs -v | tac"
-alias cdj='[[ -f ~/.cds_path ]] && cd -- "$(< ~/.cds_path)"'
-alias cds='echo "Saving current path."; echo $PWD >| ~/.cds_path'
+alias cdj='[[ -s $cd_list ]] && cd -- "$(cat $cd_list | fzf --tac)"'
+alias cds='echo "Adding $PWD to cd list."; echo $PWD >>| $cd_list'
 
 alias cp="cp -vi"
 alias mv="mv -vi"
