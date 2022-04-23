@@ -5,29 +5,18 @@ vim.cmd [[
   source ~/.config/nvim/vim/autocmds.vim
 ]]
 
+require "lua-functions"
 require "plugins"
 require "language-servers"
 require "linters-fmt"
 require "completions"
 
-function file_exists(name)
-  local file = io.open(name, "r")
-  return file ~= nil and io.close(file)
+local local_lua = "~/.config/nvim/lua/local.lua"
+if file_exists(local_lua) then
+  require "local"
 end
 
-function source_lua(name)
-  local path = os.getenv("HOME") .. "/.config/nvim/lua/" .. name .. ".lua"
-  if file_exists(path) then
-    require(name)
-  end
+local local_vim = "~/.config/nvim/vim/local.vim"
+if file_exists(local_vim) then
+  vim.cmd("source " .. local_vim)
 end
-
-function source_vim(name)
-  local path = os.getenv("HOME") .. "/.config/nvim/vim/" .. name .. ".vim"
-  if file_exists(path) then
-    vim.cmd("source " .. path)
-  end
-end
-
-source_lua "local"
-source_vim "local"
