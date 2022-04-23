@@ -16,14 +16,6 @@ augroup Main
     \   setlocal omnifunc=syntaxcomplete#Complete |
     \ endif
 
-  autocmd BufNewFile README.md InsertTemplate ~/.config/nvim/templates/README.md
-  autocmd BufNewFile *.css  InsertTemplate ~/.config/nvim/templates/CSS.css
-  autocmd BufNewFile *.go   InsertTemplate ~/.config/nvim/templates/Golang.go
-  autocmd BufNewFile *.html InsertTemplate ~/.config/nvim/templates/HTML.html
-  autocmd BufNewFile *.py   InsertTemplate ~/.config/nvim/templates/Python.py
-  autocmd BufNewFile *.sh   InsertTemplate ~/.config/nvim/templates/Bash.sh
-  autocmd BufNewFile *.zsh  InsertTemplate ~/.config/nvim/templates/Zsh.zsh
-
   autocmd BufRead,BufNewFile *.conf,config
     \ setlocal filetype=conf
 

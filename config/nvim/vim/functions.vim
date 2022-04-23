@@ -116,12 +116,6 @@ function! UndoAll()
   endif
 endfunction
 
-" Return total buffer count. Used in statusline with %{VimBufferCount()}.
-function VimBufferCount()
-  let string = len(getbufinfo({"buflisted": 1}))
-  return string
-endfunction
-
 " 1:.vimrc  2:Xresources  3:[No Name]        X
 function VimTabLine()
   let string = ""

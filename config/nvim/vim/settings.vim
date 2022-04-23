@@ -29,9 +29,8 @@ set expandtab
 set shiftwidth=2
 set softtabstop=2
 
-" [3] ~/.vimrc [+] [dos] [latin1] [vim]        142,47    30%
-set statusline=\ %([%{VimBufferCount()}]\ %)
-set statusline+=%(%f\ %)
+" ~/.vimrc [+] [dos] [latin1] [vim]        142,47    30%
+set statusline=\ %(%f\ %)
 set statusline+=%(%m\ %)
 set statusline+=%([%{&fileformat=='unix'?'':&fileformat}]\ %)
 set statusline+=%([%{&fileencoding=='utf-8'?'':&fileencoding}]\ %)
