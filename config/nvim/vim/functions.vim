@@ -102,8 +102,8 @@ function! SyntaxGroup()
   let l:syntax_name = synIDattr(l:syntax_id, "name")
   let l:syntax_trans = synIDattr(synIDtrans(l:syntax_id), "name")
 
-  echo syntax_name . " -> " . syntax_trans
-  execute "highlight " . syntax_trans
+  echo syntax_name .. " -> " .. syntax_trans
+  execute "highlight " .. syntax_trans
 endfunction
 
 " Undo all changes since last file save. Unsaved buffers are emptied.
