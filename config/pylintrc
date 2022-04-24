@@ -1,3 +1,4 @@
-disable =
-  # XXX: invalid-name is broken. https://github.com/PyCQA/pylint/issues/2018
-  invalid-name
+[MESSAGES CONTROL]
+
+# XXX: invalid-name is broken. https://github.com/PyCQA/pylint/issues/2018
+disable = invalid-name
