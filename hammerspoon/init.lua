@@ -2,12 +2,12 @@
 -- Settings and variables --
 ----------------------------
 hs.window.animationDuration = 0
-preKeys = {"cmd", "ctrl"}
+preKeys = {'cmd', 'ctrl'}
 
 ---------------------------
 -- Separate config files --
 ---------------------------
-dofile("windows.lua")
+dofile('windows.lua')
 
 ----------------------------------------
 -- Automatically reload configuration --
@@ -16,7 +16,7 @@ function reloadConfig(files)
   local modified = false
 
   for _,file in pairs(files) do
-    if file:sub(-4) == ".lua" then
+    if file:sub(-4) == '.lua' then
       modified = true
     end
   end
@@ -27,7 +27,7 @@ function reloadConfig(files)
 end
 
 -- Catch in variable to avoid Lua's garbage collection.
-watcher = hs.pathwatcher.new(os.getenv("HOME") .. "/.hammerspoon/",
+watcher = hs.pathwatcher.new(os.getenv('HOME') .. '/.hammerspoon/',
   reloadConfig):start()
 
-hs.alert.show("There Is No Spoon", 1)
+hs.alert.show('There Is No Spoon', 1)
