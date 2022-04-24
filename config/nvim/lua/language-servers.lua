@@ -1,15 +1,15 @@
-local cmp_nvim_lsp = require 'cmp_nvim_lsp'
-local lspconfig = require 'lspconfig'
+local cmp_nvim_lsp = require "cmp_nvim_lsp"
+local lspconfig = require "lspconfig"
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
 
 local servers = {
-  'ansiblels',
-  'bashls',
-  'gopls',
-  'pyright',
-  'yamlls',
+  "ansiblels",
+  "bashls",
+  "gopls",
+  "pyright",
+  "yamlls",
 }
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
@@ -30,9 +30,9 @@ lspconfig.pyright.setup {}
 lspconfig.yamlls.setup {}
 
 local on_attach = function(client, bufnr)
-  vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+  vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, "n", "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
+  vim.api.nvim_buf_set_keymap(bufnr, "n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts)
+  vim.api.nvim_buf_set_keymap(bufnr, "n", "K",  "<Cmd>lua vim.lsp.buf.hover()<CR>", opts)
 end
