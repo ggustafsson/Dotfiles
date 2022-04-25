@@ -243,10 +243,11 @@ alias untar="tar -xvf"
 alias zreload="source ~/.zshenv && source ~/.zshrc"
 
 alias cdb="source cdb"
-alias cde='nvim $cd_list'
 alias cdh="dirs -v | tac"
-alias cdj='[[ -s $cd_list ]] && cd -- "$(cat $cd_list | fzf --tac)"'
-alias cds='echo "Adding $PWD to cd list."; echo $PWD >>| $cd_list'
+
+alias cds='echo $PWD | tee -a $cd_list'
+alias cdj='[[ -f $cd_list ]] && cd -- "$(cat $cd_list | fzf --tac)"'
+alias cdc='rm $cd_list &> /dev/null'
 
 alias cp="cp -vi"
 alias mv="mv -vi"
