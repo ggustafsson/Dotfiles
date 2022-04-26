@@ -28,7 +28,6 @@ export GOPATH=~/Golang
 export LANG=en_US.UTF-8
 
 if [[ $OSTYPE == darwin* ]]; then
-  # TODO: Adjust path after legacy decom.
   path=(
     ~/.local/bin(N)
     ~/Scripts/macOS(N)
@@ -39,9 +38,6 @@ if [[ $OSTYPE == darwin* ]]; then
     /opt/homebrew/opt/python/libexec/bin(N)
     /opt/homebrew/bin(N)
     /opt/homebrew/sbin(N)
-    /usr/local/opt/curl/bin(N)
-    /usr/local/opt/ruby/bin(N)
-    /usr/local/opt/python/libexec/bin(N)
     /usr/local/bin(N)
     /usr/local/sbin(N)
     /usr/bin

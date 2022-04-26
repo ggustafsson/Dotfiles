@@ -7,18 +7,19 @@
 # Creator: Göran Gustafsson (gustafsson.g at gmail.com)
 # License: BSD 3-Clause
 
-# TODO: Rewrite after legacy decom.
-if [[ $HOST == Onett ]]; then
-  playbook=setup_macos_home.yml
-elif [[ $HOST == Twoson ]]; then
-  playbook=setup_macos_work.yml
-  git_pull=true
-elif [[ $HOST == Coruscant ]]; then
-  playbook=setup_macos_home_legacy.yml
-else
-  echo "Could not determine which Ansible playbook to use! Exiting..."
-  exit 1
-fi
+case $HOST in
+  Onett)
+    playbook=setup_macos_home.yml
+  ;;
+  Twoson)
+    git_pull=true
+    playbook=setup_macos_work.yml
+  ;;
+  *)
+    echo "Could not determine which Ansible playbook to use! Exiting..."
+    exit 1
+  ;;
+esac
 
 directory=~/Projects/Ansiblebot
 

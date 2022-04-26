@@ -7,8 +7,7 @@
 # Creator: Göran Gustafsson (gustafsson.g at gmail.com)
 # License: BSD 3-Clause
 
-# TODO: Remove Coruscant after legacy decom.
-if [[ $HOST == (Onett|Coruscant) ]]; then
+if [[ $HOST == Onett ]]; then
   choices=(1 "maint-ansible" on 2 "rmhogs" on 3 "backup" on 4 "backup2srv" on 5 "gitpl" off)
 else
   choices=(1 "maint-ansible" on 2 "rmhogs" on 3 "backup" off 4 "backup2srv" off 5 "gitpl" on)

@@ -17,14 +17,6 @@ HISTSIZE=9999
 SAVEHIST=$HISTSIZE
 
 
-if [[ $OSTYPE == darwin* ]]; then
-  hash -d ext=/Volumes/External
-  hash -d key=/Volumes/Keychain
-  hash -d msd=/Volumes/MicroSD # TODO: Remove after legacy decom.
-else
-  hash -d ext=/media/external
-fi
-
 cd_list=~/.cd_list
 
 tmp=~/Documents/Text/Tmp.txt
