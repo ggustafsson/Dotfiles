@@ -23,6 +23,9 @@
 [pull]
 	rebase = true
 
+[push]
+	default = current
+
 [user]
 	name  = Göran Gustafsson
 	email = gustafsson.g@gmail.com
