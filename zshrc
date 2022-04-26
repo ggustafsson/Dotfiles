@@ -207,9 +207,6 @@ if [[ $OSTYPE == darwin* ]]; then
   alias tim="caffeinate tim" # Give Tim a cup of Joe! :)
   alias wifiscan="/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport --scan"
 
-  alias caski="brew install --cask --appdir=~/Applications"
-  alias caskr="brew uninstall --cask --zap"
-
   alias grep="ggrep --color=auto"
   alias bgrep="\grep --color=auto"
 
