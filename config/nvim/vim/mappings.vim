@@ -1,6 +1,7 @@
 if has("mac")
   nnoremap <Leader>fi :silent !open "%:p:h"<CR>:redraw!<CR>
   nnoremap <Leader>op :silent !open "%"<CR>:redraw!<CR>
+  nnoremap <Leader>vs :silent !open -a "Visual Studio Code" "%"<CR>:redraw!<CR>
 endif
 
 nnoremap <Leader>/  :FzfHistory/<CR>
