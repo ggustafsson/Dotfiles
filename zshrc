@@ -16,6 +16,15 @@ SAVEHIST=$HISTSIZE
 ZLE_REMOVE_SUFFIX_CHARS=$' \t\n;' # Removed "&|" from defaults to keep space.
 ZLE_SPACE_SUFFIX_CHARS=$'&|' # Add space before "&|" if missing.
 
+
+if [[ $OSTYPE == darwin* ]]; then
+  hash -d ext1=/Volumes/External\ 1
+  hash -d ext2=/Volumes/External\ 2
+  hash -d key=/Volumes/Keychain
+else
+  hash -d ext=/media/external
+fi
+
 cd_list=~/.cd_list
 tmp=~/Documents/Text/Tmp.txt
 
@@ -132,7 +141,7 @@ zle -N zle-keymap-select
 
 # Display hostname according to various rules.
 function prompt_host {
-  if [[ $OSTYPE == darwin* ]]; then
+  if [[ $HOST == Onett ]]; then
     echo "🏠 %F{green}${HOST}%f "
   elif grep -qs docker /proc/1/cgroup; then
     echo "🐳 %F{cyan}${HOST}%f "

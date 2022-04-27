@@ -11,7 +11,6 @@ set guicursor=
 set inccommand=
 set mouse=nvi " Why the heck would you want command-line mode here?
 set nofoldenable
-set nohidden
 set nowrap
 set smartindent
 set spelllang=en,sv
