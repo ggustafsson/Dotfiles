@@ -1,4 +1,0 @@
-skip_list:
-  - git-latest
-  - package-latest
-  - risky-shell-pipe
