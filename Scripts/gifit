@@ -10,7 +10,7 @@
 # Creator: Göran Gustafsson (gustafsson.g at gmail.com)
 # License: BSD 3-Clause
 
-if [[ ! $# -ge 2 ]]; then
+if [[ $# -lt 2 ]]; then
   echo "Usage: ${0:t} [FILENAMES]..."
   exit
 fi

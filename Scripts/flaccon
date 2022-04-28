@@ -41,7 +41,7 @@ for arg; do
     continue
   fi
 
-  if [[ ! $arg == *.flac ]]; then
+  if [[ $arg != *.flac ]]; then
     echo "\nFile '${arg}' does not end with '.flac'! Skipping..."
     continue
   fi

@@ -44,3 +44,7 @@ for selection in ${(z)selections}; do
       ;;
   esac
 done
+
+if [[ -n $selections ]]; then
+  notify Maintenance 'Finished running!'
+fi
