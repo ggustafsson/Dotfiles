@@ -1,3 +1,7 @@
+if vim.g.vscode then
+  return
+end
+
 vim.cmd [[
   source ~/.config/nvim/vim/settings.vim
   source ~/.config/nvim/vim/mappings.vim

@@ -1,14 +1,20 @@
 [
     {
         "key": "cmd+[Minus]",
-        "command": "editor.action.fontZoomIn"
+        "command": "editor.action.fontZoomIn",
     },
     {
         "key": "cmd+-",
-        "command": "editor.action.fontZoomOut"
+        "command": "editor.action.fontZoomOut",
     },
     {
         "key": "cmd+0",
-        "command": "editor.action.fontZoomReset"
-    }
+        "command": "editor.action.fontZoomReset",
+    },
+    {
+        "key": "j",
+        "command": "vscode-neovim.compositeEscape1",
+        "args": "j",
+        "when": "neovim.mode == insert && editorTextFocus",
+    },
 ]

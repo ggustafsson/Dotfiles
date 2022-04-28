@@ -4,9 +4,16 @@
     "terminal.integrated.fontSize": 12,
 
     "workbench.colorCustomizations": {
-        "editor.background": "#181818"
+        "editor.background": "#181818",
     },
 
+    "editor.lineNumbers": "relative",
     "editor.matchBrackets": "near",
-    "editor.occurrencesHighlight": false
+    "editor.occurrencesHighlight": false,
+    "editor.scrollBeyondLastLine": false,
+
+    "vscode-neovim.neovimExecutablePaths.darwin": "/opt/homebrew/bin/nvim",
+
+    "telemetry.telemetryLevel": "off",
+    "redhat.telemetry.enabled": false,
 }
