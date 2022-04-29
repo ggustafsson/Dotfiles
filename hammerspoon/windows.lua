@@ -6,7 +6,7 @@ hs.hotkey.bind(preKeys, "1", function()
   local frame  = window:frame()
   local screen = window:screen():frame()
 
-  frame.y = 0
+  frame.y = screen.y
   frame.w = 1250
   frame.h = screen.h
   window:setFrame(frame)
@@ -22,7 +22,7 @@ hs.hotkey.bind(preKeys, "2", function()
   local frame  = window:frame()
   local screen = window:screen():frame()
 
-  frame.y = 0
+  frame.y = screen.y
   frame.w = 1050
   frame.h = screen.h
   window:setFrame(frame)
@@ -38,7 +38,7 @@ hs.hotkey.bind(preKeys, "3", function()
   local frame  = window:frame()
   local screen = window:screen():frame()
 
-  frame.y = 0
+  frame.y = screen.y
   frame.w = 850
   frame.h = screen.h
   window:setFrame(frame)
@@ -131,13 +131,8 @@ end)
 ------------------------------
 hs.hotkey.bind(preKeys, "0", function()
   local window = hs.window.focusedWindow()
-  local frame  = window:frame()
-  local screen = window:screen():frame()
 
-  frame.x = (screen.w / 2) - (frame.w / 2)
-  frame.y = (screen.h / 2) - (frame.h / 2)
-  window:setFrame(frame)
-
+  window:centerOnScreen()
   hs.alert.show("Centered", 0.5)
 end)
 
