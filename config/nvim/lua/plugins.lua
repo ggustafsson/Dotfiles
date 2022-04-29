@@ -16,10 +16,11 @@ vim.g.nvim_tree_show_icons = { files = 0, folders = 0, folder_arrows = 0, git = 
 vim.g.nvim_tree_symlink_arrow = " -> "
 require("nvim-tree").setup {
   view = {
-    width = 35,
     number = true,
+    preserve_window_proportions = true,
     relativenumber = true,
     signcolumn = "no",
+    width = 35,
   },
   filters = {
     dotfiles = true,

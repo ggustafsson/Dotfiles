@@ -10,6 +10,7 @@ set formatoptions+=lnor " See ':help fo-table'.
 set guicursor=
 set inccommand=
 set mouse=nvi " Why the heck would you want command-line mode here?
+set noequalalways
 set nofoldenable
 set nowrap
 set smartindent
