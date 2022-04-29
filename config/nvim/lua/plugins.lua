@@ -17,7 +17,6 @@ vim.g.nvim_tree_symlink_arrow = " -> "
 require("nvim-tree").setup {
   view = {
     number = true,
-    preserve_window_proportions = true,
     relativenumber = true,
     signcolumn = "no",
     width = 35,
