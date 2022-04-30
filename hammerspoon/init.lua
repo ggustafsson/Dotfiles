@@ -1,17 +1,19 @@
 ----------------------------
--- Settings and variables --
+-- Settings and Variables --
 ----------------------------
+alertDuration = 0.5
+frameStep = 30
 hs.window.animationDuration = 0
 preKeys = {"cmd", "ctrl"}
 
 ---------------------------
--- Separate config files --
+-- Separate Config Files --
 ---------------------------
 dofile("windows.lua")
 
-----------------------------------------
--- Automatically reload configuration --
-----------------------------------------
+-----------------------------
+-- Automatic Config Reload --
+-----------------------------
 function reloadConfig(files)
   local modified = false
 
@@ -26,7 +28,7 @@ function reloadConfig(files)
   end
 end
 
--- Catch in variable to avoid Lua"s garbage collection.
+-- Catch in variable to avoid Lua's garbage collection.
 watcher = hs.pathwatcher.new(os.getenv("HOME") .. "/.hammerspoon/",
   reloadConfig):start()
 

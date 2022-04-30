@@ -1,6 +1,6 @@
----------------------
--- 1. Large size 1 --
----------------------
+-------------------------
+-- Key 1: Large Size 1 --
+-------------------------
 hs.hotkey.bind(preKeys, "1", function()
   local window = hs.window.focusedWindow()
   local frame  = window:frame()
@@ -10,13 +10,12 @@ hs.hotkey.bind(preKeys, "1", function()
   frame.w = 1250
   frame.h = screen.h
   window:setFrame(frame)
-
-  hs.alert.show("Size 1", 0.5)
+  hs.alert.show("Size 1", alertDuration)
 end)
 
----------------------
--- 2. Large size 2 --
----------------------
+-------------------------
+-- Key 2: Large Size 2 --
+-------------------------
 hs.hotkey.bind(preKeys, "2", function()
   local window = hs.window.focusedWindow()
   local frame  = window:frame()
@@ -26,13 +25,12 @@ hs.hotkey.bind(preKeys, "2", function()
   frame.w = 1050
   frame.h = screen.h
   window:setFrame(frame)
-
-  hs.alert.show("Size 2", 0.5)
+  hs.alert.show("Size 2", alertDuration)
 end)
 
----------------------
--- 3. Large size 3 --
----------------------
+-------------------------
+-- Key 3: Large Size 3 --
+-------------------------
 hs.hotkey.bind(preKeys, "3", function()
   local window = hs.window.focusedWindow()
   local frame  = window:frame()
@@ -42,20 +40,19 @@ hs.hotkey.bind(preKeys, "3", function()
   frame.w = 850
   frame.h = screen.h
   window:setFrame(frame)
-
-  hs.alert.show("Size 3", 0.5)
+  hs.alert.show("Size 3", alertDuration)
 end)
 
---------------------
--- 4. Placeholder --
---------------------
+------------------------
+-- Key 4: Placeholder --
+------------------------
 hs.hotkey.bind(preKeys, "4", function()
-  hs.alert.show("4 - No Action", 0.5)
+  hs.alert.show("4 - No Action", alertDuration)
 end)
 
----------------------
--- 5. Small size 1 --
----------------------
+-------------------------
+-- Key 5: Small Size 1 --
+-------------------------
 hs.hotkey.bind(preKeys, "5", function()
   local window = hs.window.focusedWindow()
   local frame  = window:frame()
@@ -63,13 +60,12 @@ hs.hotkey.bind(preKeys, "5", function()
   frame.w = 900
   frame.h = 600
   window:setFrame(frame)
-
-  hs.alert.show("Size 5", 0.5)
+  hs.alert.show("Size 5", alertDuration)
 end)
 
----------------------
--- 6. Small size 2 --
----------------------
+-------------------------
+-- Key 6: Small Size 2 --
+-------------------------
 hs.hotkey.bind(preKeys, "6", function()
   local window = hs.window.focusedWindow()
   local frame  = window:frame()
@@ -77,19 +73,18 @@ hs.hotkey.bind(preKeys, "6", function()
   frame.w = 1000
   frame.h = 750
   window:setFrame(frame)
-
-  hs.alert.show("Size 6", 0.5)
+  hs.alert.show("Size 6", alertDuration)
 end)
 
---------------------
--- 7. Placeholder --
---------------------
+------------------------
+-- Key 7: Placeholder --
+------------------------
 hs.hotkey.bind(preKeys, "7", function()
-  hs.alert.show("7 - No Action", 0.5)
+  hs.alert.show("7 - No Action", alertDuration)
 end)
 
 -----------------------------------------
--- 8. Split window 50% left, or revert --
+-- Key 8: Split Window Left, or Revert --
 -----------------------------------------
 frameCacheLeft = {}
 
@@ -99,16 +94,16 @@ hs.hotkey.bind(preKeys, "8", function()
   if frameCacheLeft[window:id()] then
     window:setFrame(frameCacheLeft[window:id()])
     frameCacheLeft[window:id()] = nil
-    hs.alert.show("Reverted", 0.5)
+    hs.alert.show("Reverted", alertDuration)
   else
     frameCacheLeft[window:id()] = window:frame()
     window:moveToUnit(hs.layout.left50)
-    hs.alert.show("Left Split", 0.5)
+    hs.alert.show("Left Split", alertDuration)
   end
 end)
 
 ------------------------------------------
--- 9. Split window 50% right, or revert --
+-- Key 9: Split Window Right, or Revert --
 ------------------------------------------
 frameCacheRight = {}
 
@@ -118,27 +113,27 @@ hs.hotkey.bind(preKeys, "9", function()
   if frameCacheRight[window:id()] then
     window:setFrame(frameCacheRight[window:id()])
     frameCacheRight[window:id()] = nil
-    hs.alert.show("Reverted", 0.5)
+    hs.alert.show("Reverted", alertDuration)
   else
     frameCacheRight[window:id()] = window:frame()
     window:moveToUnit(hs.layout.right50)
-    hs.alert.show("Right Split", 0.5)
+    hs.alert.show("Right Split", alertDuration)
   end
 end)
 
-------------------------------
--- 0. Move window to center --
-------------------------------
+----------------------------------
+-- Key 0: Move Window to Center --
+----------------------------------
 hs.hotkey.bind(preKeys, "0", function()
   local window = hs.window.focusedWindow()
 
   window:centerOnScreen()
-  hs.alert.show("Centered", 0.5)
+  hs.alert.show("Centered", alertDuration)
 end)
 
------------------------------------
--- +. Maximize window, or revert --
------------------------------------
+---------------------------------------
+-- Key +: Maximize Window, or Revert --
+---------------------------------------
 frameCacheMax = {}
 
 hs.hotkey.bind(preKeys, "+", function()
@@ -147,45 +142,54 @@ hs.hotkey.bind(preKeys, "+", function()
   if frameCacheMax[window:id()] then
     window:setFrame(frameCacheMax[window:id()])
     frameCacheMax[window:id()] = nil
-    hs.alert.show("Reverted", 0.5)
+    hs.alert.show("Reverted", alertDuration)
   else
     frameCacheMax[window:id()] = window:frame()
     window:maximize()
-    hs.alert.show("Maximized", 0.5)
+    hs.alert.show("Maximized", alertDuration)
   end
 end)
 
------------------------------------------
--- Move window up, down, left or right --
------------------------------------------
-hs.hotkey.bind(preKeys, "Up", function()
+-----------------------------
+-- Key h: Move Window Left --
+-----------------------------
+hs.hotkey.bind(preKeys, "h", function()
   local window = hs.window.focusedWindow()
   local frame  = window:frame()
 
-  frame.y = frame.y - 30
+  frame.x = frame.x - frameStep
   window:setFrame(frame)
 end)
 
-hs.hotkey.bind(preKeys, "Down", function()
+-----------------------------
+-- Key j: Move Window Down --
+-----------------------------
+hs.hotkey.bind(preKeys, "j", function()
   local window = hs.window.focusedWindow()
   local frame  = window:frame()
 
-  frame.y = frame.y + 30
+  frame.y = frame.y + frameStep
   window:setFrame(frame)
 end)
 
-hs.hotkey.bind(preKeys, "Left", function()
+---------------------------
+-- Key k: Move Window Up --
+---------------------------
+hs.hotkey.bind(preKeys, "k", function()
   local window = hs.window.focusedWindow()
   local frame  = window:frame()
 
-  frame.x = frame.x - 30
+  frame.y = frame.y - frameStep
   window:setFrame(frame)
 end)
 
-hs.hotkey.bind(preKeys, "Right", function()
+------------------------------
+-- Key l: Move Window Right --
+------------------------------
+hs.hotkey.bind(preKeys, "l", function()
   local window = hs.window.focusedWindow()
   local frame  = window:frame()
 
-  frame.x = frame.x + 30
+  frame.x = frame.x + frameStep
   window:setFrame(frame)
 end)
