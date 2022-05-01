@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 
-# Description: Open temporary file in $EDITOR and copy content to system
-# clipboard afterwards.
+# Description: Opens temporary file in $EDITOR and copies content to system
+# clipboard afterwards. Preferably executed through system wide key binding.
 #   __
 #  /  \
 #  |  |      .------------------.
