@@ -3,12 +3,6 @@
 # Description: Frontend for https://cheat.sh. Supports local cheatsheets and
 # displays everything in Nvim pager with custom cheat filetype for highlights.
 #
-# Shell variables:
-#
-#   CHT_DIR   - Directory path to local cheatsheets.
-#   CHT_URL   - URL address to cheat.sh service.
-#   CHT_PAGER - Pager program used for output.
-#
 # ~/.config/nvim/syntax/cheat.vim:
 #
 #   syntax match Comment /^#.*/
@@ -19,9 +13,9 @@
 # Creator: Göran Gustafsson (gustafsson.g at gmail.com)
 # License: BSD 3-Clause
 
-CHT_DIR=${CHT_DIR:=~/Documents/Text/Cheatsheets}
-CHT_URL=${CHT_URL:="https://cheat.sh"}
-CHT_PAGER=${CHT_PAGER:="nvim -R -c 'setlocal filetype=cheat nolist | nmap q <Cmd>q<CR>' -"}
+cht_dir=~/Documents/Text/Cheatsheets
+cht_url=https://cheat.sh
+cht_pager="nvim -R -c 'setlocal filetype=cheat nolist | nmap q <Cmd>q<CR>' -"
 
 if [[ $# -ge 1 ]]; then
   # Replace spaces with + that is needed in the URL.
@@ -29,7 +23,7 @@ if [[ $# -ge 1 ]]; then
 
   # Replace spaces with - that is needed in the file path.
   cht_name=${*/ /-}
-  cht_path="${CHT_DIR}/${cht_name}.txt"
+  cht_path="${cht_dir}/${cht_name}.txt"
 
   if [[ -f $cht_path ]]; then
     # Fetch local cheatsheet and fix some formatting issues.
@@ -45,7 +39,7 @@ if [[ $# -ge 1 ]]; then
   # Remove empty lines at start and end: /./,$!d
   # Append two empty lines before each header: s/#\[X/\n\n## \[X/g
   # Replace multiple empty lines with one: /^$/N;/^\n$/D
-  response=$(curl --no-progress-meter "${CHT_URL}/${cht_query}?T" | \
+  response=$(curl --no-progress-meter "${cht_url}/${cht_query}?T" | \
     sed -e '/^$/N;/^\n$/D' \
         -e 's/#\[cheat/\n\n## \[cheat/g' \
         -e 's/#\[tldr/\n\n## \[tldr/g' | \
@@ -53,7 +47,7 @@ if [[ $# -ge 1 ]]; then
 
   output="${output}$response"
 
-  echo $output | eval $CHT_PAGER
+  echo $output | eval $cht_pager
 else
-  curl --no-progress-meter "${CHT_URL}/:help"
+  curl --no-progress-meter "${cht_url}/:help"
 fi

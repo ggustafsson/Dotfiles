@@ -1,0 +1,20 @@
+#!/usr/bin/env zsh
+
+# Description: Open temporary file in $EDITOR and copy content to system
+# clipboard afterwards.
+#
+# Usage: clippy
+#
+# Creator: Göran Gustafsson (gustafsson.g at gmail.com)
+# License: BSD 3-Clause
+
+copy_cmd=pbcopy
+
+tmp=$(mktemp)
+eval "$EDITOR $tmp"
+
+if [[ $? == 0 && -f $tmp ]]; then
+  # Strips content of EOF newline.
+  content=$(cat $tmp)
+  echo -n $content | eval $copy_cmd
+fi
