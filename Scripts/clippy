@@ -2,19 +2,34 @@
 
 # Description: Open temporary file in $EDITOR and copy content to system
 # clipboard afterwards.
+#   __
+#  /  \
+#  |  |      .------------------.
+#  @  @      | It looks like    |
+#  || ||     | you would rather |
+#  || ||  <--| use a real       |
+#  |\_/|     | text editor!     |
+#  \___/     '------------------'
 #
 # Usage: clippy
 #
 # Creator: Göran Gustafsson (gustafsson.g at gmail.com)
 # License: BSD 3-Clause
 
-copy_cmd=pbcopy
+if whence -p pbcopy &> /dev/null; then
+  copy_cmd=pbcopy
+elif whence -p xsel &> /dev/null; then
+  copy_cmd=xsel
+else
+  echo "Failed to find clipboard command! Exiting..."
+  exit 1
+fi
 
-tmp=$(mktemp)
-eval $EDITOR $tmp
+tmp_file=$(mktemp)
+eval ${EDITOR:=nvim} $tmp_file
 
-if [[ $? == 0 && -f $tmp ]]; then
+if [[ $? == 0 && -f $tmp_file ]]; then
   # Strips content of EOF newline.
-  content=$(cat $tmp)
+  content=$(cat $tmp_file)
   echo -n $content | eval $copy_cmd
 fi

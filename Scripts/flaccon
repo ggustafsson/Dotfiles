@@ -27,7 +27,7 @@ if [[ $1 == (-i|--ignore-case) ]]; then
   capitalize=0
   shift # Removes $1 from argument list.
 else
-  if type -p title &> /dev/null; then
+  if whence -p title &> /dev/null; then
     capitalize=1
   else
     echo "\nCommand 'title' not found! Skipping capitalization..."

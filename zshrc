@@ -219,7 +219,7 @@ if [[ $OSTYPE == darwin* ]]; then
   alias ls="gls --classify --color=auto --human-readable"
   alias bls="\ls -FGh"
 else
-  if type -p apt &> /dev/null; then
+  if whence -p apt &> /dev/null; then
     alias apti="sudo apt install"
     alias aptr="sudo apt remove"
     alias apts="apt search"
@@ -231,7 +231,7 @@ else
   alias ls="ls --classify --color=auto --human-readable"
 fi
 
-if type -p brew &> /dev/null; then
+if whence -p brew &> /dev/null; then
   alias brewi="brew install"
   alias brewr="brew uninstall"
   alias brews="brew search"
