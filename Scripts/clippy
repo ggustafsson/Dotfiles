@@ -11,7 +11,7 @@
 copy_cmd=pbcopy
 
 tmp=$(mktemp)
-eval "$EDITOR $tmp"
+eval $EDITOR $tmp
 
 if [[ $? == 0 && -f $tmp ]]; then
   # Strips content of EOF newline.
