@@ -9,6 +9,7 @@
 
 session1=alpha
 session2=omega
+session3=xxxxx
 
 # For future reference:
 #   split-window -h creates vertically divided panes...
@@ -16,6 +17,10 @@ session2=omega
 
 tmux new-session -d -s $session1
 tmux new-session -d -s $session2
+
+if [[ $HOST == Twoson ]]; then
+  tmux new-session -d -s $session3
+fi
 
 if [[ -z $TMUX ]]; then
   tmux attach-session -t $session1
