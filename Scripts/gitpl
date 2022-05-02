@@ -29,13 +29,13 @@ for directory in ${projects_path}/*(N); do
   if ! git -C $directory rev-parse --is-inside-work-tree &> /dev/null; then
     continue
   else
-    found_repo=true
+    found_repo=1
   fi
 
   print -P "\n%F{cyan}${directory:t}:%f"
   git -C $directory pull
 done
 
-if [[ $found_repo != true ]]; then
+if [[ $found_repo -ne 1 ]]; then
   echo "No Git repos found."
 fi

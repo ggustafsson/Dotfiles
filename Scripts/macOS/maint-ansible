@@ -12,7 +12,7 @@ case $HOST in
     playbook=setup_macos_home.yml
   ;;
   Twoson)
-    git_pull=true
+    git_pull=1
     playbook=setup_macos_work.yml
   ;;
   *)
@@ -23,7 +23,7 @@ esac
 
 directory=~/Projects/Ansiblebot
 
-if [[ $git_pull == true ]]; then
+if [[ $git_pull -eq 1 ]]; then
   print -P "%F{cyan}git pull @ ${directory/${HOME}/~}:%f"
   git -C $directory pull
   echo
