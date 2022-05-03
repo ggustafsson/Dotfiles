@@ -1,17 +1,18 @@
 #!/usr/bin/env python3
 
-"""
-Description:
+"""1
 
-Usage:
+2
 
-Creator: Göran Gustafsson (gustafsson.g at gmail.com)
+Usage: 3
+
+Author: Göran Gustafsson (gustafsson.g at gmail.com)
 License: BSD 3-Clause
 """
 
 
 def main():
-    """X"""
+    #4
 
 
 if __name__ == "__main__":

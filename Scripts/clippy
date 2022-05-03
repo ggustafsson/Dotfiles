@@ -13,7 +13,7 @@
 #
 # Usage: clippy
 #
-# Creator: Göran Gustafsson (gustafsson.g at gmail.com)
+# Author: Göran Gustafsson (gustafsson.g at gmail.com)
 # License: BSD 3-Clause
 
 if whence -p pbcopy &> /dev/null; then

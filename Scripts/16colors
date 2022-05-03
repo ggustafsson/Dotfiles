@@ -4,7 +4,7 @@
 #
 # Usage: 16colors
 #
-# Creator: Göran Gustafsson (gustafsson.g at gmail.com)
+# Author: Göran Gustafsson (gustafsson.g at gmail.com)
 # License: BSD 3-Clause
 
 for number in {30..37}; do

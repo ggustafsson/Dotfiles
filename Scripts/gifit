@@ -7,7 +7,7 @@
 # Usage: gifit <file1> <file2> ...
 #        gifit *.jpg
 #
-# Creator: Göran Gustafsson (gustafsson.g at gmail.com)
+# Author: Göran Gustafsson (gustafsson.g at gmail.com)
 # License: BSD 3-Clause
 
 if [[ $# -lt 2 ]]; then

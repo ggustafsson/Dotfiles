@@ -8,7 +8,7 @@
 # Usage: perm -s <path1> <path2> ...
 #        perm -l <path1> <path2> ...
 #
-# Creator: Göran Gustafsson (gustafsson.g at gmail.com)
+# Author: Göran Gustafsson (gustafsson.g at gmail.com)
 # License: BSD 3-Clause
 
 if [[ $# -ge 2 && $1 == (-l|--loose) ]]; then

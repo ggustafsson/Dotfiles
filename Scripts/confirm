@@ -7,7 +7,7 @@
 # Usage: confirm && x
 #        confirm || exit 1
 #
-# Creator: Göran Gustafsson (gustafsson.g at gmail.com)
+# Author: Göran Gustafsson (gustafsson.g at gmail.com)
 # License: BSD 3-Clause
 
 read -q "REPLY?Are you sure you want to proceed? [y/n] "

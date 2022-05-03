@@ -10,7 +10,7 @@
 # Usage: cht
 #        cht <query>
 #
-# Creator: Göran Gustafsson (gustafsson.g at gmail.com)
+# Author: Göran Gustafsson (gustafsson.g at gmail.com)
 # License: BSD 3-Clause
 
 cht_dir=~/Documents/Text/Cheatsheets

@@ -4,7 +4,7 @@
 #
 # Usage: qlopen <file(s)>
 #
-# Creator: Göran Gustafsson (gustafsson.g at gmail.com)
+# Author: Göran Gustafsson (gustafsson.g at gmail.com)
 # License: BSD 3-Clause
 
 if [[ $# -eq 0 ]]; then

@@ -8,7 +8,7 @@
 #
 # Usage: rngr
 #
-# Creator: Göran Gustafsson (gustafsson.g at gmail.com)
+# Author: Göran Gustafsson (gustafsson.g at gmail.com)
 # License: BSD 3-Clause
 
 last_path=~/.local/share/ranger/last_path

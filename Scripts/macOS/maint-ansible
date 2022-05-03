@@ -4,7 +4,7 @@
 #
 # Usage: maint-ansible
 #
-# Creator: Göran Gustafsson (gustafsson.g at gmail.com)
+# Author: Göran Gustafsson (gustafsson.g at gmail.com)
 # License: BSD 3-Clause
 
 case $HOST in

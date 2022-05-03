@@ -1,8 +1,8 @@
 #!/usr/bin/env zsh
 
-# Description:
+# Description: 1
 #
-# Usage:
+# Usage: 2
 #
-# Creator: Göran Gustafsson (gustafsson.g at gmail.com)
+# Author: Göran Gustafsson (gustafsson.g at gmail.com)
 # License: BSD 3-Clause
