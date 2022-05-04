@@ -14,6 +14,9 @@
 
     "vscode-neovim.neovimExecutablePaths.darwin": "/opt/homebrew/bin/nvim",
 
+    "markdown.preview.fontSize": 12,
+    "markdown.preview.lineHeight": 1.5,
+
     "telemetry.telemetryLevel": "off",
     "redhat.telemetry.enabled": false,
 }
