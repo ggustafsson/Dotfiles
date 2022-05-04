@@ -10,6 +10,7 @@
     "editor.lineNumbers": "relative",
     "editor.matchBrackets": "near",
     "editor.occurrencesHighlight": false,
+    "editor.renderFinalNewline": false,
     "editor.scrollBeyondLastLine": false,
 
     "vscode-neovim.neovimExecutablePaths.darwin": "/opt/homebrew/bin/nvim",
