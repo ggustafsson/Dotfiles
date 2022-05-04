@@ -1,19 +1,24 @@
 {
     "editor.fontFamily": "SF Mono",
     "editor.fontSize": 12,
-
     "workbench.colorCustomizations": {
         "editor.background": "#181818",
     },
 
     "editor.lineNumbers": "relative",
     "editor.renderFinalNewline": false,
-    "editor.scrollBeyondLastLine": false,
 
     "editor.matchBrackets": "near",
     "editor.occurrencesHighlight": false,
 
+    "editor.minimap.enabled": false,
+    "editor.scrollBeyondLastLine": false,
+
     "markdown.preview.fontSize": 12,
+    "[markdown]": {
+        "editor.wordWrap": "off",
+    },
+
     "vscode-neovim.neovimExecutablePaths.darwin": "/opt/homebrew/bin/nvim",
 
     "redhat.telemetry.enabled": false,
