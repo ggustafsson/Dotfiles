@@ -22,7 +22,7 @@ augroup Main
   autocmd BufRead,BufNewFile */Ansiblebot/*.yml
     \ setlocal filetype=yaml.ansible
 
-  autocmd BufRead,BufNewFile */Cheatsheets/*.txt
+  autocmd BufRead,BufNewFile */Cheats/*.txt
     \ setlocal filetype=cheat
 
   autocmd FileType gitcommit

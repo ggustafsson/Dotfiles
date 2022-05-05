@@ -13,7 +13,7 @@
 # Author: Göran Gustafsson (gustafsson.g at gmail.com)
 # License: BSD 3-Clause
 
-cht_dir=~/Documents/Text/Cheatsheets
+cht_dir=~/Documents/Text/Cheats
 cht_url=https://cheat.sh
 cht_pager="nvim -R -c 'setlocal filetype=cheat nolist | nmap q <Cmd>q<CR>' -"
 
