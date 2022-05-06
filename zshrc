@@ -219,23 +219,9 @@ if [[ $OSTYPE == darwin* ]]; then
   alias ls="gls --classify --color=auto --human-readable"
   alias bls="\ls -FGh"
 else
-  if whence -p apt &> /dev/null; then
-    alias apti="sudo apt install"
-    alias aptr="sudo apt remove"
-    alias apts="apt search"
-    alias aptu="sudo apt update && sudo apt full-upgrade && sudo apt autoremove"
-  fi
-
   alias free="free -h"
   alias grep="grep --color=auto"
   alias ls="ls --classify --color=auto --human-readable"
-fi
-
-if whence -p brew &> /dev/null; then
-  alias brewi="brew install"
-  alias brewr="brew uninstall"
-  alias brews="brew search"
-  alias brewu="brew update && brew upgrade"
 fi
 
 alias fd="fd --follow --no-ignore"
@@ -275,7 +261,7 @@ alias pyweb="python3 -m http.server 8080"
 
 alias rg="rg --follow --no-ignore --sort path"
 alias rgrep="rg --no-heading"
-alias xxx="rg '\b(FIXME|TODO|XXX)(:|$| )'"
+alias xxx="rg '\b(FIXME|NOTE|TODO|XXX)(:|$| )'"
 
 alias svtplay-dl="svtplay-dl --resume"
 alias youtube-dl="youtube-dl --continue --output '%(title)s.%(ext)s'"

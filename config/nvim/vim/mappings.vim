@@ -39,7 +39,7 @@ nnoremap <Leader>un :call UndoAll()<CR>
 nnoremap <Leader>wi :FzfWindows<CR>
 nnoremap <Leader>wr :setlocal wrap! wrap?<CR>
 nnoremap <Leader>ws ml:%s/\s\+$//e \| nohlsearch<CR>`l
-nnoremap <Leader>xx :FzfRg \b(FIXME\|TODO\|XXX)(:\|$\| )<CR>
+nnoremap <Leader>xx :FzfRg \b(FIXME\|NOTE\|TODO\|XXX)(:\|$\| )<CR>
 
 " sed turns two spaces delimiter into one space.
 nnoremap <Leader>cl :%!column -t \| sed 's/\( *\) /\1/g'<CR>
