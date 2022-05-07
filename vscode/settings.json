@@ -1,4 +1,6 @@
 {
+    "editor.bracketPairColorization.enabled": false,
+
     "editor.fontFamily": "SF Mono",
     "editor.fontSize": 12,
 
@@ -16,9 +18,8 @@
         "editor.wordWrap": "off",
     },
 
-    "vscode-neovim.neovimExecutablePaths.darwin": "/opt/homebrew/bin/nvim",
-    "workbench.colorTheme": "Default Light+",
-
     "redhat.telemetry.enabled": false,
     "telemetry.telemetryLevel": "off",
+
+    "vscode-neovim.neovimExecutablePaths.darwin": "/opt/homebrew/bin/nvim",
 }
