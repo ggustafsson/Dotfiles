@@ -13,6 +13,14 @@ function! ColorColumn()
   endif
 endfunction
 
+" Start documentation editing setup in new tab.
+function! EditDocs()
+  " FIXME: Make this setup better. Maybe even patch nvim-tree.lua.
+  tabedit
+  tcd ~/Documents/Text
+  NvimTreeToggle
+endfunction
+
 " Change file encoding plus file format, convert tabs to spaces and remove
 " trailing whitespaces.
 function! FixFile(spaces)
