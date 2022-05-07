@@ -25,8 +25,8 @@ else
   hash -d ext=/media/external
 fi
 
-cd_list=~/.cd_list
-tmp=~/Documents/Text/Tmp.txt
+tmp=~/Documents/Text/Temporary.txt
+todo=~/Documents/Text/Todo.md
 
 
 setopt correct # Try to correct the spelling of commands.
@@ -235,9 +235,9 @@ alias zreload="source ~/.zshenv && source ~/.zshrc"
 alias cdb="source cdb"
 alias cdh="dirs -v | tac"
 
-alias cds='echo $PWD | tee -a $cd_list'
-alias cdj='[[ -f $cd_list ]] && cd -- "$(cat $cd_list | fzf --tac)"'
-alias cdc='rm $cd_list &> /dev/null'
+alias cds='echo $PWD | tee -a ~/.cd_list'
+alias cdj='[[ -f ~/.cd_list ]] && cd -- "$(cat ~/.cd_list | fzf --tac)"'
+alias cdc='rm ~/.cd_list &> /dev/null'
 
 alias cp="cp -vi"
 alias mv="mv -vi"

@@ -10,14 +10,13 @@ nnoremap <Leader>bd :bdelete<CR>
 nnoremap <Leader>bu :FzfBuffers<CR>
 nnoremap <Leader>cc :call ColorColumn()<CR>
 nnoremap <Leader>cd :cd <C-R>=escape(expand("%:p:h"), ' \')<CR>/
+nnoremap <Leader>do :call EditDocs()
 nnoremap <Leader>ed :edit <C-R>=escape(expand("%:p:h"), ' \')<CR>/
-nnoremap <Leader>ef :FzfFiles<CR>
 nnoremap <Leader>eh :edit ~/
-nnoremap <Leader>er :FzfHistory<CR>
-nnoremap <Leader>et :edit ~/Documents/Text/
+nnoremap <Leader>ff :FzfFiles<CR>
 nnoremap <Leader>ft :FzfFiletypes<CR>
 nnoremap <Leader>he :FzfHelptags<CR>
-nnoremap <Leader>in :InsertTemplate ~/.config/nvim/templates/
+nnoremap <Leader>hi :FzfHistory<CR>
 nnoremap <Leader>li :setlocal list! list?<CR>
 nnoremap <Leader>lo :silent! lwindow \| cwindow<CR>
 nnoremap <Leader>ma :FzfMarks<CR>
@@ -31,7 +30,8 @@ nnoremap <Leader>sp :setlocal spell! spell?<CR>
 nnoremap <Leader>ss :mksession! ~/.local/share/nvim/session.vim<CR>
 nnoremap <Leader>t4 :setlocal noexpandtab shiftwidth=4 softtabstop=0 tabstop=4<CR>
 nnoremap <Leader>t8 :setlocal noexpandtab shiftwidth=8 softtabstop=0 tabstop=8<CR>
-nnoremap <Leader>tm :edit ~/Documents/Text/Tmp.txt \| :setlocal nobuflisted<CR>
+nnoremap <Leader>te :InsertTemplate ~/.config/nvim/templates/
+nnoremap <Leader>tm :edit ~/Documents/Text/Temporary.txt \| :setlocal nobuflisted<CR>
 nnoremap <Leader>to :edit ~/Documents/Text/Todo.md \| :setlocal nobuflisted<CR>
 nnoremap <Leader>tr :NvimTreeToggle<CR>
 nnoremap <Leader>tw :setlocal textwidth=79
