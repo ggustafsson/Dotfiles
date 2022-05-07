@@ -9,6 +9,8 @@ require("Comment").setup {
   },
 }
 
+require("gitsigns").setup()
+
 require("luasnip.loaders.from_snipmate").lazy_load()
 
 vim.g.nvim_tree_add_trailing = 1
