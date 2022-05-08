@@ -13,12 +13,11 @@ function! ColorColumn()
   endif
 endfunction
 
-" Start documentation editing setup in new tab.
+" Start custom documentation mode in a separate tab.
 function! DocsMode()
   tabnew
   tcd ~/Documents/Text
-  " FIXME: Look into tree tab state. Maybe even patch nvim-tree.lua.
-  NvimTreeOpen ~/Documents/Text
+  " FIXME: Open up Ranger or something...
 endfunction
 
 " Change file encoding plus file format, convert tabs to spaces and remove
