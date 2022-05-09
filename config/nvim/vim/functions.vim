@@ -17,7 +17,7 @@ endfunction
 function! DocsMode()
   tabnew
   tcd ~/Documents/Text
-  " FIXME: Open up Ranger or something...
+  NnnExplorer
 endfunction
 
 " Change file encoding plus file format, convert tabs to spaces and remove

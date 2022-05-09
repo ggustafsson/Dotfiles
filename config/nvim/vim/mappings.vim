@@ -11,8 +11,8 @@ nnoremap <Leader>bu :FzfBuffers<CR>
 nnoremap <Leader>cc :call ColorColumn()<CR>
 nnoremap <Leader>cd :cd <C-R>=escape(expand("%:p:h"), ' \')<CR>/
 nnoremap <Leader>do :call DocsMode()<CR>
-nnoremap <Leader>ed :edit <C-R>=escape(expand("%:p:h"), ' \')<CR>/
-nnoremap <Leader>eh :edit ~/
+nnoremap <Leader>ed :NnnPicker <C-R>=escape(expand("%:p:h"), ' \')<CR>/<CR>
+nnoremap <Leader>eh :NnnPicker ~/<CR>
 nnoremap <Leader>ff :FzfFiles<CR>
 nnoremap <Leader>ft :FzfFiletypes<CR>
 nnoremap <Leader>he :FzfHelptags<CR>
@@ -33,6 +33,7 @@ nnoremap <Leader>t8 :setlocal noexpandtab shiftwidth=8 softtabstop=0 tabstop=8<C
 nnoremap <Leader>te :InsertTemplate ~/.config/nvim/templates/
 nnoremap <Leader>tm :edit ~/Documents/Text/Temporary.txt \| :setlocal nobuflisted<CR>
 nnoremap <Leader>to :edit ~/Documents/Text/Todo.md \| :setlocal nobuflisted<CR>
+nnoremap <Leader>tr :NnnExplorer<CR>
 nnoremap <Leader>tw :setlocal textwidth=79
 nnoremap <Leader>un :call UndoAll()<CR>
 nnoremap <Leader>wi :FzfWindows<CR>
