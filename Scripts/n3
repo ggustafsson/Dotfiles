@@ -1,0 +1,21 @@
+#!/usr/bin/env zsh
+
+# Description: Run "nnn" and afterwards change directory in current shell.
+#
+# ~/.zshrc:
+#
+#   alias n3="source n3"
+#
+# Usage: nnn
+#
+# Author: Göran Gustafsson (gustafsson.g at gmail.com)
+# License: BSD 3-Clause
+
+last_path=~/.config/nnn/.lastd
+
+nnn $*
+
+if [[ -f $last_path ]]; then
+  source $last_path
+  rm $last_path &> /dev/null
+fi

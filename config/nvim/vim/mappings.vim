@@ -28,6 +28,7 @@ nnoremap <Leader>s4 :setlocal expandtab shiftwidth=4 softtabstop=4<CR>
 nnoremap <Leader>se :FzfLines<CR>
 nnoremap <Leader>sp :setlocal spell! spell?<CR>
 nnoremap <Leader>ss :mksession! ~/.local/share/nvim/session.vim<CR>
+nnoremap <Leader>t2 :setlocal noexpandtab shiftwidth=2 softtabstop=0 tabstop=2<CR>
 nnoremap <Leader>t4 :setlocal noexpandtab shiftwidth=4 softtabstop=0 tabstop=4<CR>
 nnoremap <Leader>t8 :setlocal noexpandtab shiftwidth=8 softtabstop=0 tabstop=8<CR>
 nnoremap <Leader>te :InsertTemplate ~/.config/nvim/templates/

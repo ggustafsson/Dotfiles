@@ -28,7 +28,7 @@ if [[ -n $1 ]]; then
   new_pwd=$(echo $PWD | sed 's|\(.*/'${1}'[^/]*/\).*|\1|')
 
   if [[ $new_pwd != $PWD ]]; then
-    cd -- $new_pwd
+    cd "$new_pwd"
   else
     echo "No result found!"
     exit 1

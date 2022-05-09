@@ -4,7 +4,7 @@ export LS_COLORS="rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;
 export EDITOR=nvim
 export VISUAL=$EDITOR
 
-export LESS=FRi # --quit-if-one-screen --RAW-CONTROL-CHARS --ignore-case
+export LESS=Ri # --RAW-CONTROL-CHARS --ignore-case
 export PAGER=less
 export MANPAGER='nvim +Man!'
 
@@ -228,7 +228,7 @@ alias fd="fd --follow --no-ignore"
 alias hogs="du -sk * | sort --numeric-sort --reverse | head -n 15"
 alias iip="curl icanhazip.com"
 alias mkdir="mkdir -pv"
-alias rngr="source rngr"
+alias n3="source n3"
 alias untar="tar -xvf"
 alias zreload="source ~/.zshenv && source ~/.zshrc"
 
@@ -236,7 +236,7 @@ alias cdb="source cdb"
 alias cdh="dirs -v | tac"
 
 alias cds='echo $PWD | tee -a ~/.cd_list'
-alias cdj='[[ -f ~/.cd_list ]] && cd -- "$(cat ~/.cd_list | fzf --tac)"'
+alias cdj='[[ -f ~/.cd_list ]] && cd "$(cat ~/.cd_list | fzf --tac)"'
 alias cdc='rm ~/.cd_list &> /dev/null'
 
 alias cp="cp -vi"
