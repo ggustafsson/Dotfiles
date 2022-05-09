@@ -17,6 +17,7 @@ endfunction
 function! DocsMode()
   tabnew
   tcd ~/Documents/Text
+  " FIXME: File is loaded in window under previous tab instead of current tab.
   NnnExplorer
 endfunction
 

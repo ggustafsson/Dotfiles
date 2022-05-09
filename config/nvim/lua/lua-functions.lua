@@ -1,3 +1,4 @@
+-- Check if file exist and return true or false.
 function file_exists(name)
   local name = name:gsub("^~", os.getenv("HOME"))
   local file = io.open(name, "r")

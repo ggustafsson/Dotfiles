@@ -1,7 +1,7 @@
 if has("mac")
-  nnoremap <Leader>fi :silent !open "%:p:h"<CR>:redraw!<CR>
-  nnoremap <Leader>op :silent !open "%"<CR>:redraw!<CR>
-  nnoremap <Leader>vs :silent !open -a "Visual Studio Code" "%"<CR>:redraw!<CR>
+  nnoremap <Leader>fi :silent !open %:p:h<CR>
+  nnoremap <Leader>op :silent !open %<CR>
+  nnoremap <Leader>vs :silent !open -a "Visual Studio Code" %<CR>
 endif
 
 nnoremap <Leader>/  :FzfHistory/<CR>
@@ -11,9 +11,9 @@ nnoremap <Leader>bu :FzfBuffers<CR>
 nnoremap <Leader>cc :call ColorColumn()<CR>
 nnoremap <Leader>cd :cd <C-R>=escape(expand("%:p:h"), ' \')<CR>/
 nnoremap <Leader>do :call DocsMode()<CR>
-nnoremap <Leader>ed :NnnPicker <C-R>=escape(expand("%:p:h"), ' \')<CR>/<CR>
+nnoremap <Leader>ed :NnnPicker %:p:h<CR>
+nnoremap <Leader>ef :FzfFiles<CR>
 nnoremap <Leader>eh :NnnPicker ~/<CR>
-nnoremap <Leader>ff :FzfFiles<CR>
 nnoremap <Leader>ft :FzfFiletypes<CR>
 nnoremap <Leader>he :FzfHelptags<CR>
 nnoremap <Leader>hi :FzfHistory<CR>
@@ -82,7 +82,7 @@ vnoremap <Leader>y  "*y
 nnoremap <C-G> 1<C-G>
 
 nnoremap <C-W>C <Cmd>tabclose<CR>
-nnoremap <C-W>t <Cmd>tabedit<CR>
+nnoremap <C-W>t <Cmd>tabnew<CR>
 
 nnoremap Q <Nop>
 
