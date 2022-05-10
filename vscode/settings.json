@@ -18,6 +18,11 @@
         "editor.wordWrap": "off",
     },
 
+    "plantuml.render": "PlantUMLServer",
+    "plantuml.server": "http://127.0.0.1:8080",
+    "plantuml.exportOutDir": ".",
+    "plantuml.exportSubFolder": false,
+
     "redhat.telemetry.enabled": false,
     "telemetry.telemetryLevel": "off",
 
