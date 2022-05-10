@@ -18,15 +18,14 @@ require("nnn").setup {
   explorer = {
     width = 28,
   },
+  -- XXX: Look into if <C-G> can be improved.
   mappings = {
     { "<C-E>", builtin.populate_cmdline },
+    { "<C-G>", builtin.cd_to_path },
     { "<C-S>", builtin.open_in_split },
     { "<C-T>", builtin.open_in_tab },
     { "<C-V>", builtin.open_in_vsplit },
     { "<C-Y>", builtin.copy_to_clipboard },
-
-    -- XXX: Look into using the nnn <C-G> function instead.
-    -- { "<C-W>", builtin.cd_to_path },
   },
   replace_netrw = "picker",
 }

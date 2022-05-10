@@ -18,6 +18,7 @@
 
 [core]
 	excludesFile = ~/.gitignore_global
+	pager = less -FRX
 
 [init]
 	defaultBranch = master

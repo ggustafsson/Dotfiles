@@ -2,6 +2,7 @@ command! -nargs=1 FixFile call FixFile(<args>)
 command! -nargs=1 FixTabs call FixTabs(<args>)
 command! -nargs=* -complete=help Help vertical help <args>
 command! -nargs=1 -complete=file InsertTemplate call InsertTemplate(<q-args>)
+command! -nargs=1 S let @/ = <q-args> | normal n
 command! -nargs=0 SyntaxGroup call SyntaxGroup()
 
 " Toggle 'colorcolumn' setting on and off.
@@ -17,8 +18,8 @@ endfunction
 function! DocsMode()
   tabnew
   tcd ~/Documents/Text
-  " FIXME: File is loaded in window under previous tab instead of current tab.
-  NnnExplorer
+  " XXX: https://github.com/luukvbaal/nnn.nvim/issues/47
+  lua vim.schedule(function() require("nnn").toggle("explorer") end)
 endfunction
 
 " Change file encoding plus file format, convert tabs to spaces and remove
