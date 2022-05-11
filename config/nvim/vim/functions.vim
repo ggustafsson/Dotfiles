@@ -14,13 +14,6 @@ function! ColorColumn()
   endif
 endfunction
 
-" Start custom documentation mode in a separate tab.
-function! DocsMode()
-  tabnew
-  tcd ~/Documents/Text
-  NnnExplorer
-endfunction
-
 " Change file encoding plus file format, convert tabs to spaces and remove
 " trailing whitespaces.
 function! FixFile(spaces)
