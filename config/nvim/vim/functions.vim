@@ -18,8 +18,7 @@ endfunction
 function! DocsMode()
   tabnew
   tcd ~/Documents/Text
-  " XXX: https://github.com/luukvbaal/nnn.nvim/issues/47
-  lua vim.schedule(function() require("nnn").toggle("explorer") end)
+  NnnExplorer
 endfunction
 
 " Change file encoding plus file format, convert tabs to spaces and remove
