@@ -271,6 +271,7 @@ alias treed="tree -d"
 
 alias vim="nvim"
 alias vimdiff='nvim -d'
+alias docs="nvim -c 'tcd ~/Documents/Text' -c FzfFiles"
 
 
 if [[ -d ~/.local/share/fzf/shell ]]; then
