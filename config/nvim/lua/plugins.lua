@@ -18,6 +18,9 @@ require("nnn").setup {
   explorer = {
     width = 28,
   },
+  windownav = {
+    next = "<C-W><C-W>",
+  },
   -- XXX: Look into if <C-G> can be improved.
   mappings = {
     { "<C-E>", builtin.populate_cmdline },
