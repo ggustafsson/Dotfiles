@@ -9,7 +9,6 @@ preKeys = {"cmd", "ctrl"}
 ---------------------------
 -- Separate Config Files --
 ---------------------------
-dofile("applications.lua")
 dofile("windows.lua")
 
 -----------------------------
