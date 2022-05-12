@@ -9,8 +9,6 @@ require("Comment").setup {
   },
 }
 
-require("gitsigns").setup()
-
 require("luasnip.loaders.from_snipmate").lazy_load()
 
 local builtin = require("nnn").builtin
