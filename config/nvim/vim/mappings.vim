@@ -50,10 +50,8 @@ vnoremap <Leader>cl :!column -t \| sed 's/\( *\) /\1/g'<CR>
 nnoremap <Leader>ne :enew<CR>
 vnoremap <Leader>ne y:enew<CR>PGdd
 
-nnoremap <Leader>RE :%s++gc<Left><Left><Left>
-vnoremap <Leader>RE :s+\%V+gc<Left><Left><Left>
-nnoremap <Leader>re :%s//gc<Left><Left><Left>
-vnoremap <Leader>re :s/\%V/gc<Left><Left><Left>
+nnoremap <Leader>re :%s++gc<Left><Left><Left>
+vnoremap <Leader>re :s+\%V+gc<Left><Left><Left>
 
 " XXX: Locale files are broken under macOS and the latest Ubuntu Desktop LTS
 " version don't include Vim with ':sort l' support yet. Using the default
