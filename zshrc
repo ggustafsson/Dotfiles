@@ -277,6 +277,7 @@ alias youtube-dl="youtube-dl --continue --output '%(title)s.%(ext)s'"
 alias tree="tree --charset ascii"
 alias treed="tree -d"
 
+alias view="nvim -R -c 'nmap q <Cmd>q<CR>'"
 alias vim="nvim"
 alias vimdiff='nvim -d'
 
