@@ -130,6 +130,7 @@ zstyle ":completion:*" special-dirs true # Make "cd ..<tab>" append "/" etc.
 
 if [[ $OSTYPE == darwin* ]]; then
   compdef _man man2pdf
+  compdef _nnn n3
 fi
 
 
