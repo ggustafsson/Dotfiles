@@ -1,3 +1,9 @@
+if [[ $OSTYPE == darwin* ]]; then
+  export FPATH=/opt/homebrew/share/zsh/site-functions:$FPATH
+else
+  export FPATH=/home/linuxbrew/.linuxbrew/share/zsh/site-functions:$FPATH
+fi
+
 export FZF_DEFAULT_OPTS="--bind ctrl-a:select-all,ctrl-d:deselect-all"
 export GREP_COLORS="fn=01;34:ln=00;34:se=01;30" # File, line & separator.
 export LS_COLORS="rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32"
@@ -13,14 +19,14 @@ HISTFILE=~/.zhistory
 HISTSIZE=9999
 SAVEHIST=$HISTSIZE
 
-# Improves behaviour of "&" and "|" when used after tab completion.
+# Improves behaviour of "&" and "|" input immediately after tab completion.
 ZLE_REMOVE_SUFFIX_CHARS=$' \t\n;' # Removed "&|" from defaults to keep space.
 ZLE_SPACE_SUFFIX_CHARS=$'&|' # Add space before "&|" if missing.
 
 
 if [[ $OSTYPE == darwin* ]]; then
-  hash -d ext1=/Volumes/External\ 1
-  hash -d ext2=/Volumes/External\ 2
+  hash -d ext1="/Volumes/External 1"
+  hash -d ext2="/Volumes/External 2"
   hash -d key=/Volumes/Keychain
 else
   hash -d ext=/media/external
@@ -225,6 +231,7 @@ else
   alias ls="ls --classify --color=auto --human-readable"
 fi
 
+alias docs="nvim -c 'tcd ~/Documents/Text' -c FzfFiles"
 alias fd="fd --follow --no-ignore"
 alias hogs="du -sk * | sort --numeric-sort --reverse | head -n 15"
 alias iip="curl icanhazip.com"
@@ -234,11 +241,10 @@ alias untar="tar -xvf"
 alias zreload="source ~/.zshenv && source ~/.zshrc"
 
 alias cdb="source cdb"
-alias cdh="dirs -v | tac"
-
-alias cds='echo $PWD | tee -a ~/.cd_list'
-alias cdj='[[ -f ~/.cd_list ]] && cd "$(cat ~/.cd_list | fzf --tac)"'
 alias cdc='rm ~/.cd_list &> /dev/null'
+alias cdh="dirs -v | tac"
+alias cdj='[[ -f ~/.cd_list ]] && cd "$(cat ~/.cd_list | fzf --tac)"'
+alias cds='echo $PWD | tee -a ~/.cd_list'
 
 alias cp="cp -vi"
 alias mv="mv -vi"
@@ -272,7 +278,6 @@ alias treed="tree -d"
 
 alias vim="nvim"
 alias vimdiff='nvim -d'
-alias docs="nvim -c 'tcd ~/Documents/Text' -c FzfFiles"
 
 
 if [[ -d ~/.local/share/fzf/shell ]]; then
