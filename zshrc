@@ -130,8 +130,9 @@ zstyle ":completion:*" special-dirs true # Make "cd ..<tab>" append "/" etc.
 
 if [[ $OSTYPE == darwin* ]]; then
   compdef _man man2pdf
-  compdef _nnn n3
 fi
+
+compdef _nnn n3
 
 
 # Custom Vi replace function that change a variable before and after entering

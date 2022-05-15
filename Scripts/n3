@@ -4,6 +4,7 @@
 #
 # ~/.zshrc:
 #
+#   compdef _nnn n3
 #   alias n3="source n3"
 #
 # Usage: nnn
