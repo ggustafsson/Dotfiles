@@ -12,11 +12,10 @@
 # Author: Göran Gustafsson (gustafsson.g at gmail.com)
 # License: BSD 3-Clause
 
-last_path=~/.config/nnn/.lastd
+last_dir=~/.config/nnn/.lastd
 
 nnn $*
 
-if [[ -f $last_path ]]; then
-  source $last_path
-  rm $last_path &> /dev/null
+if [[ -f $last_dir ]]; then
+  source $last_dir && rm $last_dir &> /dev/null
 fi
