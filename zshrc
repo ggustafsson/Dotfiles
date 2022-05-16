@@ -244,10 +244,10 @@ alias untar="tar -xvf"
 alias zreload="source ~/.zshenv && source ~/.zshrc"
 
 alias cdb="source cdb"
-alias cdc='rm ~/.cd_list &> /dev/null'
+alias cdc='rm ~/.dirlist &> /dev/null'
 alias cdh="dirs -v | tac"
-alias cdj='[[ -f ~/.cd_list ]] && cd "$(cat ~/.cd_list | fzf --tac)"'
-alias cds='echo $PWD | tee -a ~/.cd_list'
+alias cdj='[[ -f ~/.dirlist ]] && cd "$(cat ~/.dirlist | fzf --tac)"'
+alias cds='echo $PWD | tee -a ~/.dirlist'
 
 alias cp="cp -vi"
 alias mv="mv -vi"
