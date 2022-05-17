@@ -10,7 +10,7 @@ nnoremap <Leader>bd :bdelete<CR>
 nnoremap <Leader>bu :FzfBuffers<CR>
 nnoremap <Leader>cc :call ColorColumn()<CR>
 nnoremap <Leader>cd :cd <C-R>=escape(expand("%:p:h"), ' \')<CR>/
-nnoremap <Leader>do :NnnExplorer ~/Documents/Text<CR>
+nnoremap <Leader>do :tcd ~/Documents/Text \| NnnExplorer<CR>
 nnoremap <Leader>ed :edit <C-R>=escape(expand("%:p:h"), ' \')<CR>/
 nnoremap <Leader>ef :FzfFiles<CR>
 nnoremap <Leader>eh :edit ~/

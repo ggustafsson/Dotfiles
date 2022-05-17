@@ -9,6 +9,7 @@ set confirm
 set formatoptions+=lnor " See ':help fo-table'.
 set guicursor=
 set inccommand=
+set list
 set mouse=nvi " Why the heck would you want command-line mode here?
 set nofoldenable
 set nowrap
@@ -37,9 +38,6 @@ set statusline+=%(%y\ %)
 set statusline+=%=
 set statusline+=%-12.(\ %l,%v\ %) " 99999,999 would still have two spaces.
 set statusline+=%(%P\ %)
-
-set list
-set listchars=tab:>\ ,trail:-,nbsp:+,precedes:<,extends:>
 
 set number
 set relativenumber
