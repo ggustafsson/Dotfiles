@@ -7,8 +7,8 @@
 #
 #   syntax match Comment /^#.*/
 #
-# Usage: cht
-#        cht <query>
+# Usage: cheat
+#        cheat <query>
 #
 # Author: Göran Gustafsson (gustafsson.g at gmail.com)
 # License: BSD 3-Clause
