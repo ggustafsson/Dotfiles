@@ -8,9 +8,9 @@
 # License: BSD 3-Clause
 
 if [[ $HOST == Onett ]]; then
-  choices=(1 "maint-ansible" on 2 "rmhogs" on 3 "backup" on 4 "backup2srv" on 5 "ext2srv" on 6 "gitpl" off)
+  choices=(1 "maint-ansible" on 2 "rmhogs" on 3 "backup" on 4 "backup2srv" on 5 "gitpl" off)
 else
-  choices=(1 "maint-ansible" on 2 "rmhogs" on 3 "backup" off 4 "backup2srv" off 5 "ext2srv" off 6 "gitpl" on)
+  choices=(1 "maint-ansible" on 2 "rmhogs" on 3 "backup" off 4 "backup2srv" off 5 "gitpl" on)
 fi
 
 selections=$(dialog \
@@ -39,10 +39,6 @@ for selection in ${(z)selections}; do
       backup2srv
       ;;
     5)
-      echo
-      ext2srv
-      ;;
-    6)
       echo
       gitpl
       ;;

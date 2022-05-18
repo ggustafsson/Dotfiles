@@ -13,6 +13,8 @@ destination=/media/external
 backup_objects=(
   ~/Music/FLAC
   ~/Music/MP3
+  /Volumes/External\ 1/Movies
+  /Volumes/External\ 1/Series
 )
 
 echo -n "SSH test connection to server '${server}'..."
@@ -30,7 +32,6 @@ for object in $backup_objects; do
     rsync --archive --chmod=D755,F644 --delete --human-readable --progress \
       $object -e ssh ${server}:$destination
   else
-    echo "\nObject '${object}' not found! Exiting..."
-    exit 1
+    echo "\nObject '${object}' not found! Skipping..."
   fi
 done
