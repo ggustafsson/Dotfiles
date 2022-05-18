@@ -1,8 +1,8 @@
 #!/usr/bin/env zsh
 
-# Description: Backs up miscellaneous files/directories to server with Rsync.
+# Description: Syncs miscellaneous files/directories to server with Rsync.
 #
-# Usage: backup2srv
+# Usage: ext2srv
 #
 # Author: Göran Gustafsson (gustafsson.g at gmail.com)
 # License: BSD 3-Clause
@@ -10,9 +10,9 @@
 server=ubuntu-tv1
 destination=/media/external
 
-backup_objects=(
-  ~/Music/FLAC
-  ~/Music/MP3
+sync_objects=(
+  /Volumes/External\ 1/Movies
+  /Volumes/External\ 1/Series
 )
 
 echo -n "SSH test connection to server '${server}'..."
@@ -22,11 +22,11 @@ if ! ssh -o ConnectTimeout=10 -q $server exit; then
 fi
 echo " OK!\n"
 
-echo "Backing up to server '${server}'."
+echo "Syncing data to server '${server}'."
 
-for object in $backup_objects; do
+for object in $sync_objects; do
   if [[ -a $object ]]; then
-    print -P "\n%F{green}Backing up: ${object/${HOME}/~}%f"
+    print -P "\n%F{green}Syncing: ${object/${HOME}/~}%f"
     rsync --archive --chmod=D755,F644 --delete --human-readable --progress \
       $object -e ssh ${server}:$destination
   else

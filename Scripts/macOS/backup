@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-# Description: Backs up various files/directories to external device.
+# Description: Backs up miscellaneous files/directories to external device.
 #
 # Usage: backup
 #
