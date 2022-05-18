@@ -25,7 +25,7 @@ backup_objects=(
   ~/Pictures
   ~/Projects
   ~/Sites
-  ~/X-Files
+  ~/Storage
 )
 
 if [[ ! -d $destination ]]; then
