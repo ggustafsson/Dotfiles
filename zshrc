@@ -26,9 +26,10 @@ ZLE_SPACE_SUFFIX_CHARS=$'&|' # Add space before "&|" if missing.
 
 
 if [[ $OSTYPE == darwin* ]]; then
-  hash -d ext1="/Volumes/External 1"
-  hash -d ext2="/Volumes/External 2"
-  hash -d key=/Volumes/Keychain
+  hash -d ext1=/Volumes/External\ 1
+  hash -d ext2=/Volumes/External\ 2
+  hash -d key1=/Volumes/Keychain\ 1
+  hash -d key2=/Volumes/Keychain\ 2
 else
   hash -d ext=/media/external
 fi

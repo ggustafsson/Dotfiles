@@ -11,7 +11,7 @@ if [[ $1 != (-y|--yes) ]]; then
   confirm || exit 1
 fi
 
-destination=/Volumes/Keychain
+destination=/Volumes/Keychain\ 1
 
 backup_objects=(
   ~/.ssh
