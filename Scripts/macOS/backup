@@ -13,16 +13,15 @@ fi
 
 destination=/Volumes/Keychain
 
-# TODO: Adjust list after buying larger USB flash drive.
 backup_objects=(
   ~/.ssh
   ~/Documents
   ~/Dropbox
-  ~/Golang/src
-  ~/Library/Safari/Bookmarks.plist
+  ~/Golang
   ~/Movies
-  ~/Music/MP3
+  ~/Music
   ~/Pictures
+  ~/Playground
   ~/Projects
   ~/Sites
   ~/Storage
