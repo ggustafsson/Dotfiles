@@ -1,9 +1,8 @@
 command! -nargs=1 FixFile call FixFile(<args>)
 command! -nargs=1 FixTabs call FixTabs(<args>)
-command! -nargs=* -complete=file GitDiff call GitDiff(<q-args>)
 command! -nargs=* -complete=help Help vertical help <args>
 command! -nargs=1 -complete=file InsertTemplate call InsertTemplate(<q-args>)
-command! -nargs=1 S let @/ = <q-args> | normal n
+command! -nargs=1 S let @/ = <q-args> | normal n " Same as / in normal mode.
 command! -nargs=0 SyntaxGroup call SyntaxGroup()
 
 " Toggle 'colorcolumn' setting on and off.
@@ -49,16 +48,15 @@ function! FixTabs(spaces)
 endfunction
 
 " Run 'git diff' on active open file.
-function! GitDiff(input)
-  if !empty(a:input)
-    let l:file = expand(a:input)
-  else
-    let l:file = expand("%:p")
-  endif
+function! GitDiff()
+  let l:file = fnameescape(expand("%:p"))
+  let l:path = fnameescape(expand("%:p:h"))
 
-  if filereadable(l:file)
-    let l:cmd = "terminal git --no-pager diff -- " .. l:file
-    execute l:cmd
+  if !empty(file)
+    " FIXME: Look into opening up in floating window instead.
+    let l:cmd = "git -C " .. l:path .. " --no-pager diff -- " .. l:file
+    execute "terminal " .. l:cmd
+    setlocal nobuflisted
   endif
 endfunction
 

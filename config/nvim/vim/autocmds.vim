@@ -8,7 +8,7 @@ augroup Main
   autocmd BufRead * autocmd FileType <buffer> ++once
     \ if &filetype !~# "commit\|rebase" &&
     \     line("'\"") > 1 && line("'\"") <= line("$") |
-    \   execute 'normal! g`"' |
+    \   execute 'normal! g`"zz' |
     \ endif
 
   autocmd Filetype *

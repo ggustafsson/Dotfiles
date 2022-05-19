@@ -52,4 +52,5 @@ let g:mapleader = ","
 let g:markdown_folding = 1
 
 let g:fzf_action = {"ctrl-t": "tab split", "ctrl-s": "split", "ctrl-v": "vsplit"}
+let g:fzf_colors = {"border": ["fg", "VertSplit"]}
 let g:fzf_command_prefix = "Fzf"

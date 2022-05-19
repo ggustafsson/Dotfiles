@@ -16,6 +16,11 @@ require("nnn").setup {
   explorer = {
     width = 28,
   },
+  picker = {
+    style = {
+      border = "rounded"
+    },
+  },
   windownav = {
     next = "<C-W><C-W>",
   },
