@@ -15,7 +15,7 @@ fi
 
 selections=$(dialog \
   --default-button "Cancel" \
-  --checklist "Select maintenance commands:" 0 40 0 \
+  --checklist "Select maintenance commands..." 0 40 0 \
   $choices 2>&1 > /dev/tty)
 
 clear

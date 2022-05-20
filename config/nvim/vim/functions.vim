@@ -19,6 +19,8 @@ function! DocsMode()
   " FIXME: Open new tab if there are buffers/windows open in current.
   tcd ~/Documents/Text
   NnnExplorer
+  wincmd w
+  FzfFiles
 endfunction
 
 " Change file encoding plus file format, convert tabs to spaces and remove

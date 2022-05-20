@@ -26,10 +26,6 @@ else
   exit 1
 fi
 
-if [[ $VISUAL == *vim* ]]; then
-  VISUAL="$VISUAL -c startinsert"
-fi
-
 tmp_file=$(mktemp)
 eval ${VISUAL:=nvim} $tmp_file
 
