@@ -14,6 +14,15 @@ function! ColorColumn()
   endif
 endfunction
 
+" Start custom documentation mode.
+function! DocsMode()
+  " FIXME: Open new tab if there are buffers/windows open in current.
+  tcd ~/Documents/Text
+  NnnExplorer
+  wincmd w
+  FzfFiles
+endfunction
+
 " Change file encoding plus file format, convert tabs to spaces and remove
 " trailing whitespaces.
 function! FixFile(spaces)
@@ -45,19 +54,6 @@ function! FixTabs(spaces)
   let &l:softtabstop = a:spaces
   let &l:tabstop = a:spaces
   retab
-endfunction
-
-" Run 'git diff' on active open file.
-function! GitDiff()
-  let l:file = fnameescape(expand("%:p"))
-  let l:path = fnameescape(expand("%:p:h"))
-
-  if !empty(file)
-    " FIXME: Look into opening up in floating window instead.
-    let l:cmd = "git -C " .. l:path .. " --no-pager diff -- " .. l:file
-    execute "terminal " .. l:cmd
-    setlocal nobuflisted
-  endif
 endfunction
 
 " Jump to next or previous location list entry. If location list is empty jump

@@ -10,12 +10,11 @@ nnoremap <Leader>bd :bdelete<CR>
 nnoremap <Leader>bu :FzfBuffers<CR>
 nnoremap <Leader>cc :call ColorColumn()<CR>
 nnoremap <Leader>cd :cd <C-R>=fnameescape(expand("%:p:h"))<CR>/
-nnoremap <Leader>do :tcd ~/Documents/Text \| NnnExplorer<CR>
+nnoremap <Leader>do :call DocsMode()<CR>
 nnoremap <Leader>ed :edit <C-R>=fnameescape(expand("%:p:h"))<CR>/
 nnoremap <Leader>ef :FzfFiles<CR>
 nnoremap <Leader>eh :edit ~/
 nnoremap <Leader>ft :FzfFiletypes<CR>
-nnoremap <Leader>gd :call GitDiff()<CR>
 nnoremap <Leader>he :FzfHelptags<CR>
 nnoremap <Leader>hi :FzfHistory<CR>
 nnoremap <Leader>li :setlocal list! list?<CR>

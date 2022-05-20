@@ -235,7 +235,6 @@ else
   alias ls="ls --classify --color=auto --human-readable"
 fi
 
-alias docs="nvim -c 'tcd ~/Documents/Text' -c FzfFiles"
 alias fd="fd --follow --no-ignore"
 alias hogs="du -sk * | sort --numeric-sort --reverse | head -n 15"
 alias iip="curl icanhazip.com"
