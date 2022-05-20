@@ -2,7 +2,7 @@
 
 # Description: Start new (or attach existing) custom Tmux sessions.
 #
-# Usage: tmuxa
+# Usage: tmux-init
 #
 # Author: Göran Gustafsson (gustafsson.g at gmail.com)
 # License: BSD 3-Clause
@@ -22,6 +22,7 @@ if [[ $HOST == Twoson ]]; then
   tmux new-session -d -s $session3
 fi
 
+# Don't attach if already inside of Tmux.
 if [[ -z $TMUX ]]; then
   tmux attach-session -t $session1
 fi
