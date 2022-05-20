@@ -1,7 +1,8 @@
 #!/usr/bin/env zsh
 
-# Description: Opens temporary file in $EDITOR and copies content to system
-# clipboard afterwards. Preferably executed through system wide key binding.
+# Description: Opens temporary file in $VISUAL and copies content to system
+# clipboard afterwards. Preferably executed through system wide key binding or
+# in Tmux "display-popup" window.
 #   __
 #  /  \
 #  |  |      .------------------.
@@ -25,8 +26,12 @@ else
   exit 1
 fi
 
+if [[ $VISUAL == *vim* ]]; then
+  VISUAL="$VISUAL -c startinsert"
+fi
+
 tmp_file=$(mktemp)
-eval ${EDITOR:=nvim} $tmp_file
+eval ${VISUAL:=nvim} $tmp_file
 
 if [[ $? -eq 0 && -f $tmp_file ]]; then
   # Strips content of EOF newline.
