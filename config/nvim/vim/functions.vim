@@ -91,8 +91,8 @@ function! GoToLoc(action)
   endtry
 endfunction
 
-" Open temporary file and insert template if matching one is found. Used for
-" language agnostic Go Playground.
+" Open temporary file and insert template if matching one is found. Used in
+" combo with Run() for language agnostic playground (e.g. Go Playground).
 function! Play(filetype)
   let l:tmp = tempname() .. "." .. a:filetype
   let l:template = expand("~/.config/nvim/templates/Playground.") .. a:filetype
@@ -104,6 +104,15 @@ function! Play(filetype)
   write
 endfunction
 command! -nargs=1 Play call Play(<q-args>)
+
+" Quickly execute current file.
+function! Run(...)
+  " FIXME: Implement me!
+  " !go run %
+  " !./%
+  " etc
+endfunction
+command! -nargs=* Run call Run(<q-args>)
 
 " Display syntax group used at cursor position.
 function! SyntaxGroup()
