@@ -7,7 +7,11 @@
 # Author: Göran Gustafsson (gustafsson.g at gmail.com)
 # License: BSD 3-Clause
 
-dir=~/Projects
+if [[ $HOST == Twoson ]]; then
+  dir=~/Bitbucket
+else
+  dir=~/Projects
+fi
 
 tmux \
   new-window -c $dir nvim \; \
