@@ -15,7 +15,7 @@ set nofoldenable
 set nowrap
 set smartindent
 set spelllang=en,sv
-set tabline=%!VimTabLine()
+set tabline=%!TabLine()
 set textwidth=79
 
 set backup

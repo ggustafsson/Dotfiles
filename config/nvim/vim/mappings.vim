@@ -15,6 +15,7 @@ nnoremap <Leader>ed :edit <C-R>=fnameescape(expand("%:p:h"))<CR>/
 nnoremap <Leader>ef :FzfFiles<CR>
 nnoremap <Leader>eh :edit ~/
 nnoremap <Leader>ft :FzfFiletypes<CR>
+nnoremap <Leader>gp :call GoPlay()<CR>
 nnoremap <Leader>he :FzfHelptags<CR>
 nnoremap <Leader>hi :FzfHistory<CR>
 nnoremap <Leader>li :setlocal list! list?<CR>
@@ -31,7 +32,7 @@ nnoremap <Leader>ss :mksession! ~/.local/share/nvim/session.vim<CR>
 nnoremap <Leader>t2 :setlocal noexpandtab shiftwidth=2 softtabstop=0 tabstop=2<CR>
 nnoremap <Leader>t4 :setlocal noexpandtab shiftwidth=4 softtabstop=0 tabstop=4<CR>
 nnoremap <Leader>t8 :setlocal noexpandtab shiftwidth=8 softtabstop=0 tabstop=8<CR>
-nnoremap <Leader>te :InsertTemplate ~/.config/nvim/templates/
+nnoremap <Leader>te :Template ~/.config/nvim/templates/
 nnoremap <Leader>tm :edit ~/Documents/Text/Temporary.txt \| :setlocal nobuflisted<CR>
 nnoremap <Leader>to :edit ~/Documents/Text/Todo.md \| :setlocal nobuflisted<CR>
 nnoremap <Leader>tr :NnnExplorer<CR>
@@ -90,8 +91,8 @@ nnoremap Q <Nop>
 " These key combos are unused and similar to 'gt' and 'gT' for tabs.
 nnoremap gb <Cmd>bnext<CR>
 nnoremap gB <Cmd>bprevious<CR>
-nnoremap gl <Cmd>call GoToLocation("next")<CR>
-nnoremap gL <Cmd>call GoToLocation("previous")<CR>
+nnoremap gl <Cmd>call GoToLoc("next")<CR>
+nnoremap gL <Cmd>call GoToLoc("prev")<CR>
 
 " Mark relative jumps with j/k so CTRL-I and CTRL-O works.
 nnoremap <expr>j (v:count > 1 ? "m'" .. v:count : "") .. "j"

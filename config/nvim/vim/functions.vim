@@ -1,9 +1,5 @@
-command! -nargs=1 FixFile call FixFile(<args>)
-command! -nargs=1 FixTabs call FixTabs(<args>)
 command! -nargs=* -complete=help Help vertical help <args>
-command! -nargs=1 -complete=file InsertTemplate call InsertTemplate(<q-args>)
 command! -nargs=1 S let @/ = <q-args> | normal n " Same as / in normal mode.
-command! -nargs=0 SyntaxGroup call SyntaxGroup()
 
 " Toggle 'colorcolumn' setting on and off.
 function! ColorColumn()
@@ -48,6 +44,7 @@ function! FixFile(spaces)
   nohlsearch
   normal! `l
 endfunction
+command! -nargs=1 FixFile call FixFile(<args>)
 
 " Convert tabs to 2, 4 or 8 spaces.
 function! FixTabs(spaces)
@@ -62,14 +59,23 @@ function! FixTabs(spaces)
   let &l:tabstop = a:spaces
   retab
 endfunction
+command! -nargs=1 FixTabs call FixTabs(<args>)
+
+" Open temporary Golang playground.
+function! GoPlay()
+  let tmp = tempname() .. ".go"
+  execute "edit " .. tmp
+  execute "Template ~/.config/nvim/templates/Playground.go"
+  write
+endfunction
 
 " Jump to next or previous location list entry. If location list is empty jump
 " to next or previous quickfix list entry instead.
-function! GoToLocation(action)
+function! GoToLoc(action)
   if a:action == "next"
     let l:cmds_loclist  = {"next": "lnext", "rotate": "lfirst"}
     let l:cmds_quickfix = {"next": "cnext", "rotate": "cfirst"}
-  elseif a:action == "previous"
+  elseif a:action == "prev"
     let l:cmds_loclist  = {"next": "lprevious", "rotate": "llast"}
     let l:cmds_quickfix = {"next": "cprevious", "rotate": "clast"}
   else
@@ -96,7 +102,7 @@ endfunction
 " Insert file above cursor, replace #YEAR# with 'YYYY' and replace '#DATE#'
 " with 'YYYY-MM-DD'. If buffer has only one empty line then remove it after
 " insert so HTML templates and similar works better.
-function! InsertTemplate(file)
+function! Template(file)
   let l:lines = line("$")
   let l:text = getline(".")
 
@@ -112,6 +118,7 @@ function! InsertTemplate(file)
   execute "%s/#DATE#/" .. strftime("%Y-%m-%d") .. "/ge"
   normal! `l
 endfunction
+command! -nargs=1 -complete=file Template call Template(<q-args>)
 
 " Display syntax group used at cursor position.
 function! SyntaxGroup()
@@ -122,19 +129,10 @@ function! SyntaxGroup()
   echo syntax_name .. " -> " .. syntax_trans
   execute "highlight " .. syntax_trans
 endfunction
-
-" Undo all changes since last file save. Unsaved buffers are emptied.
-function! UndoAll()
-  let l:filename = expand("%")
-  if !empty(filename)
-    edit!
-  else
-    earlier 1f
-  endif
-endfunction
+command! -nargs=0 SyntaxGroup call SyntaxGroup()
 
 " 1:.vimrc  2:Xresources  3:[No Name]        X
-function VimTabLine()
+function TabLine()
   let string = ""
   for i in range(tabpagenr("$"))
     let tabnr = i + 1
@@ -159,4 +157,14 @@ function VimTabLine()
     let string .= "%=%#TabLine#%999X X "
   endif
   return string
+endfunction
+
+" Undo all changes since last file save. Unsaved buffers are emptied.
+function! UndoAll()
+  let l:filename = expand("%")
+  if !empty(filename)
+    edit!
+  else
+    earlier 1f
+  endif
 endfunction
