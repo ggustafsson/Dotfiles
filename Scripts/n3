@@ -7,7 +7,7 @@
 #   compdef _nnn n3
 #   alias n3="source n3"
 #
-# Usage: nnn
+# Usage: n3
 #
 # Author: Göran Gustafsson (gustafsson.g at gmail.com)
 # License: BSD 3-Clause

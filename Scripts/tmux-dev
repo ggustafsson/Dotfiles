@@ -1,0 +1,16 @@
+#!/usr/bin/env zsh
+
+# Description: Start custom Tmux development setup.
+#
+# Usage: tmux-dev
+#
+# Author: Göran Gustafsson (gustafsson.g at gmail.com)
+# License: BSD 3-Clause
+
+dir=~/Projects
+
+tmux \
+  new-window -c $dir nvim \; \
+  split-window -v -c $dir -l "25%" \; \
+  select-pane -t :.+ \; \
+  rename-window dev

@@ -244,7 +244,7 @@ alias untar="tar -xvf"
 alias zreload="source ~/.zshenv && source ~/.zshrc"
 
 alias cdb="source cdb"
-alias cdc='rm ~/.dirlist &> /dev/null'
+alias cdc="rm ~/.dirlist &> /dev/null"
 alias cdh="dirs -v | tac"
 alias cdj='[[ -f ~/.dirlist ]] && cd "$(cat ~/.dirlist | fzf --tac)"'
 alias cds='echo $PWD | tee -a ~/.dirlist'
@@ -279,9 +279,8 @@ alias youtube-dl="youtube-dl --continue --output '%(title)s.%(ext)s'"
 alias tree="tree --charset ascii"
 alias treed="tree -d"
 
-alias view="nvim -R -c 'nmap q <Cmd>q<CR>'"
 alias vim="nvim"
-alias vimdiff='nvim -d'
+alias vimdiff="nvim -d"
 
 
 if [[ -d ~/.local/share/fzf/shell ]]; then

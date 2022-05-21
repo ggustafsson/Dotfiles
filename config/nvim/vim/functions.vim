@@ -14,12 +14,19 @@ function! ColorColumn()
   endif
 endfunction
 
-" Start custom documentation mode.
+" Start custom documentation editing mode.
 function! DocsMode()
   " FIXME: Open new tab if there are buffers/windows open in current.
   tcd ~/Documents/Text
   NnnExplorer
   wincmd w
+  FzfFiles
+endfunction
+
+" Start custom documentation viewing mode. Used from Tmux with:
+"   popup -E -h 60% -w 60% view -c 'call DocsView()'
+function! DocsView()
+  cd ~/Documents/Text
   FzfFiles
 endfunction
 
