@@ -61,14 +61,6 @@ function! FixTabs(spaces)
 endfunction
 command! -nargs=1 FixTabs call FixTabs(<args>)
 
-" Open temporary Golang playground.
-function! GoPlay()
-  let tmp = tempname() .. ".go"
-  execute "edit " .. tmp
-  execute "Template ~/.config/nvim/templates/Playground.go"
-  write
-endfunction
-
 " Jump to next or previous location list entry. If location list is empty jump
 " to next or previous quickfix list entry instead.
 function! GoToLoc(action)
@@ -99,26 +91,19 @@ function! GoToLoc(action)
   endtry
 endfunction
 
-" Insert file above cursor, replace #YEAR# with 'YYYY' and replace '#DATE#'
-" with 'YYYY-MM-DD'. If buffer has only one empty line then remove it after
-" insert so HTML templates and similar works better.
-function! Template(file)
-  let l:lines = line("$")
-  let l:text = getline(".")
+" Open temporary file and insert template if matching one is found. Used for
+" language agnostic Go Playground.
+function! Play(filetype)
+  let l:tmp = tempname() .. "." .. a:filetype
+  let l:template = expand("~/.config/nvim/templates/Playground.") .. a:filetype
 
-  if lines == 1 && empty(text)
-    execute "read " .. fnameescape(a:file)
-    normal! ggdd
-  else
-    execute ".-read " .. fnameescape(a:file)
+  execute "edit " .. tmp
+  if filereadable(l:template)
+    execute "Template " .. l:template
   endif
-
-  normal! ml
-  execute "%s/#YEAR#/" .. strftime("%Y") .. "/ge"
-  execute "%s/#DATE#/" .. strftime("%Y-%m-%d") .. "/ge"
-  normal! `l
+  write
 endfunction
-command! -nargs=1 -complete=file Template call Template(<q-args>)
+command! -nargs=1 Play call Play(<q-args>)
 
 " Display syntax group used at cursor position.
 function! SyntaxGroup()
@@ -158,6 +143,27 @@ function TabLine()
   endif
   return string
 endfunction
+
+" Insert file above cursor, replace #YEAR# with 'YYYY' and replace '#DATE#'
+" with 'YYYY-MM-DD'. If buffer has only one empty line then remove it after
+" insert so HTML templates and similar works better.
+function! Template(file)
+  let l:lines = line("$")
+  let l:text = getline(".")
+
+  if lines == 1 && empty(text)
+    execute "read " .. fnameescape(a:file)
+    normal! ggdd
+  else
+    execute ".-read " .. fnameescape(a:file)
+  endif
+
+  normal! ml
+  execute "%s/#YEAR#/" .. strftime("%Y") .. "/ge"
+  execute "%s/#DATE#/" .. strftime("%Y-%m-%d") .. "/ge"
+  normal! `l
+endfunction
+command! -nargs=1 -complete=file Template call Template(<q-args>)
 
 " Undo all changes since last file save. Unsaved buffers are emptied.
 function! UndoAll()

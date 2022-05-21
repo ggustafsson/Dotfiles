@@ -15,7 +15,6 @@ nnoremap <Leader>ed :edit <C-R>=fnameescape(expand("%:p:h"))<CR>/
 nnoremap <Leader>ef :FzfFiles<CR>
 nnoremap <Leader>eh :edit ~/
 nnoremap <Leader>ft :FzfFiletypes<CR>
-nnoremap <Leader>gp :call GoPlay()<CR>
 nnoremap <Leader>he :FzfHelptags<CR>
 nnoremap <Leader>hi :FzfHistory<CR>
 nnoremap <Leader>li :setlocal list! list?<CR>
