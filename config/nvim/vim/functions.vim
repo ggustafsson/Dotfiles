@@ -13,8 +13,7 @@ endfunction
 " Start custom documentation editing mode.
 function! DocsMode()
   " FIXME: Open new tab if there are buffers/windows open in current.
-  let dir = "~/Documents/Text"
-  execute "tcd " .. dir
+  tcd ~/Documents/Text
   NnnExplorer
   wincmd w
   FzfFiles
@@ -23,8 +22,7 @@ endfunction
 " Start custom documentation viewing mode. Used from Tmux with:
 "   popup -E -h 60% -w 60% view -c 'call DocsView()'
 function! DocsView()
-  let dir = "~/Documents/Text"
-  execute "cd " .. dir
+  cd ~/Documents/Text
   FzfFiles
 endfunction
 
