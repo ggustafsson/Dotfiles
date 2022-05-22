@@ -65,60 +65,79 @@ command! -nargs=1 FixTabs call FixTabs(<args>)
 " to next or previous quickfix list entry instead.
 function! GoToLoc(action)
   if a:action == "next"
-    let l:cmds_loclist  = {"next": "lnext", "rotate": "lfirst"}
-    let l:cmds_quickfix = {"next": "cnext", "rotate": "cfirst"}
+    let cmds_loclist  = {"next": "lnext", "rotate": "lfirst"}
+    let cmds_quickfix = {"next": "cnext", "rotate": "cfirst"}
   elseif a:action == "prev"
-    let l:cmds_loclist  = {"next": "lprevious", "rotate": "llast"}
-    let l:cmds_quickfix = {"next": "cprevious", "rotate": "clast"}
+    let cmds_loclist  = {"next": "lprevious", "rotate": "llast"}
+    let cmds_quickfix = {"next": "cprevious", "rotate": "clast"}
   else
     return
   endif
 
   try
-    execute l:cmds_loclist.next
+    execute cmds_loclist.next
   catch /:E553:/ " E553: No more items
-    execute l:cmds_loclist.rotate
+    execute cmds_loclist.rotate
   catch /:E42:\|:E776:/ " E42: No Errors + E776: No location list
     try
-      execute l:cmds_quickfix.next
+      execute cmds_quickfix.next
     catch /:E553:/ " E553: No more items
-      execute l:cmds_quickfix.rotate
+      execute cmds_quickfix.rotate
     catch /:E42:/ " E42: No Errors
       return
     endtry
   catch /:E926:/ " E926: Current location list was changed
-    execute l:cmds_loclist.next
+    execute cmds_loclist.next
   endtry
 endfunction
 
 " Open temporary file and insert template if matching one is found. Used in
 " combo with Run() for language agnostic playground (e.g. Go Playground).
 function! Play(filetype)
-  let l:tmp = tempname() .. "." .. a:filetype
-  let l:template = expand("~/.config/nvim/templates/Playground.") .. a:filetype
+  let tmp = tempname() .. "." .. a:filetype
+  let template = expand("~/.config/nvim/templates/Playground.") .. a:filetype
 
   execute "edit " .. tmp
-  if filereadable(l:template)
-    execute "Template " .. l:template
+  if filereadable(template)
+    execute "Template " .. template
   endif
   write
+  silent !chmod +x "%"
 endfunction
 command! -nargs=1 Play call Play(<q-args>)
 
-" Quickly execute current file.
-function! Run(...)
-  " FIXME: Implement me!
-  " !go run %
-  " !./%
-  " etc
+" Execute shell command inside of Tmux popup window.
+function! Pop(cmd)
+  if !empty($TMUX)
+    let tmux = "tmux popup"
+    execute "silent !" .. tmux .. " " .. a:cmd
+  else
+    echo "Pop only works inside of Tmux!"
+  endif
 endfunction
-command! -nargs=* Run call Run(<q-args>)
+command! -nargs=* Pop call Pop(<q-args>)
+
+" Execute current file. Use command in variable 'b:runprg' or run file as-is.
+function! Run()
+  if exists("b:runprg")
+    let cmd = b:runprg
+  else
+    let cmd = "%:p"
+  endif
+
+  if !empty($TMUX)
+    execute "Pop " .. cmd
+  else
+    execute "!" .. cmd
+  endif
+endfunction
+command! -nargs=0 Run call Run()
 
 " Display syntax group used at cursor position.
 function! SyntaxGroup()
-  let l:syntax_id = synID(line("."), col("."), 1)
-  let l:syntax_name = synIDattr(l:syntax_id, "name")
-  let l:syntax_trans = synIDattr(synIDtrans(l:syntax_id), "name")
+  let syntax_id = synID(line("."), col("."), 1)
+  let syntax_name = synIDattr(syntax_id, "name")
+  let syntax_trans = synIDattr(synIDtrans(syntax_id), "name")
 
   echo syntax_name .. " -> " .. syntax_trans
   execute "highlight " .. syntax_trans
@@ -157,8 +176,8 @@ endfunction
 " with 'YYYY-MM-DD'. If buffer has only one empty line then remove it after
 " insert so HTML templates and similar works better.
 function! Template(file)
-  let l:lines = line("$")
-  let l:text = getline(".")
+  let lines = line("$")
+  let text = getline(".")
 
   if lines == 1 && empty(text)
     execute "read " .. fnameescape(a:file)
@@ -176,7 +195,7 @@ command! -nargs=1 -complete=file Template call Template(<q-args>)
 
 " Undo all changes since last file save. Unsaved buffers are emptied.
 function! UndoAll()
-  let l:filename = expand("%")
+  let filename = expand("%")
   if !empty(filename)
     edit!
   else

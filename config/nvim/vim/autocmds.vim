@@ -32,6 +32,7 @@ augroup Main
     \ setlocal noexpandtab shiftwidth=4 softtabstop=0 tabstop=4
 
   autocmd FileType go
+    \ let b:runprg = "go run %" |
     \ setlocal noexpandtab shiftwidth=4 softtabstop=0 tabstop=4
     \   listchars=tab:\ \ ,trail:-,nbsp:+,precedes:<,extends:>
 
