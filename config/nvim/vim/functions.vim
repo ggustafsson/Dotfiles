@@ -13,7 +13,8 @@ endfunction
 " Start custom documentation editing mode.
 function! DocsMode()
   " FIXME: Open new tab if there are buffers/windows open in current.
-  tcd ~/Documents/Text
+  let dir = "~/Documents/Text"
+  execute "tcd " .. dir
   NnnExplorer
   wincmd w
   FzfFiles
@@ -22,7 +23,8 @@ endfunction
 " Start custom documentation viewing mode. Used from Tmux with:
 "   popup -E -h 60% -w 60% view -c 'call DocsView()'
 function! DocsView()
-  cd ~/Documents/Text
+  let dir = "~/Documents/Text"
+  execute "cd " .. dir
   FzfFiles
 endfunction
 
@@ -37,7 +39,7 @@ function! FixFile(spaces)
   setlocal fileencoding=utf-8
   setlocal fileformat=unix
 
-  FixTabs(a:spaces)
+  FixTabs a:spaces
 
   normal! ml
   %s/\s\+$//e " Removes trailing whitespaces.

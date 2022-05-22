@@ -7,8 +7,6 @@
 # Author: Göran Gustafsson (gustafsson.g at gmail.com)
 # License: BSD 3-Clause
 
-dir=~/Documents/Text
-
 tmux \
-  new-window -c $dir nvim -c "call DocsMode()" \; \
+  new-window nvim -c "call DocsMode()" \; \
   rename-window docs
