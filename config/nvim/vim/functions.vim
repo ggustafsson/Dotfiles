@@ -37,7 +37,7 @@ function! FixFile(spaces)
   setlocal fileencoding=utf-8
   setlocal fileformat=unix
 
-  call FixTabs(a:spaces)
+  FixTabs(a:spaces)
 
   normal! ml
   %s/\s\+$//e " Removes trailing whitespaces.

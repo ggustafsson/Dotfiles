@@ -32,8 +32,8 @@ nnoremap <Leader>t2 :setlocal noexpandtab shiftwidth=2 softtabstop=0 tabstop=2<C
 nnoremap <Leader>t4 :setlocal noexpandtab shiftwidth=4 softtabstop=0 tabstop=4<CR>
 nnoremap <Leader>t8 :setlocal noexpandtab shiftwidth=8 softtabstop=0 tabstop=8<CR>
 nnoremap <Leader>te :Template ~/.config/nvim/templates/
-nnoremap <Leader>tm :edit ~/Documents/Text/Temporary.txt \| :setlocal nobuflisted<CR>
-nnoremap <Leader>to :edit ~/Documents/Text/Todo.md \| :setlocal nobuflisted<CR>
+nnoremap <Leader>tm :edit ~/Documents/Text/Temporary.txt \| setlocal nobuflisted<CR>
+nnoremap <Leader>to :edit ~/Documents/Text/Todo.md \| setlocal nobuflisted<CR>
 nnoremap <Leader>tr :NnnExplorer<CR>
 nnoremap <Leader>tw :setlocal textwidth=79
 nnoremap <Leader>un :call UndoAll()<CR>
