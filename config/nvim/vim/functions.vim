@@ -94,10 +94,10 @@ endfunction
 " Open temporary file and insert template if matching one is found. Used in
 " combo with Run() for language agnostic playground (e.g. Go Playground).
 function! Play(filetype)
-  let tmp = tempname() .. "." .. a:filetype
+  let file = tempname() .. "." .. a:filetype
   let template = expand("~/.config/nvim/templates/Playground.") .. a:filetype
 
-  execute "edit " .. tmp
+  execute "edit " .. file
   if filereadable(template)
     execute "Template " .. template
   endif
