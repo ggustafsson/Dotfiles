@@ -32,6 +32,7 @@ export LANG=en_US.UTF-8
 if [[ $OSTYPE == darwin* ]]; then
   path=(
     ~/.local/bin(N)
+    ~/.rd/bin(N)
     ~/Scripts/macOS(N)
     ~/Scripts(N)
     ~/Projects/Kjell/macOS(N)

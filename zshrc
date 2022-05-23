@@ -6,7 +6,6 @@ fi
 
 export FZF_DEFAULT_OPTS="--bind ctrl-a:select-all,ctrl-d:deselect-all"
 export LS_COLORS="rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32"
-export NNN_FCOLORS=0b0b0c0a00000e00090b0d09
 
 export EDITOR=nvim
 export VISUAL=$EDITOR
@@ -14,6 +13,10 @@ export VISUAL=$EDITOR
 export LESS=Ri # --RAW-CONTROL-CHARS --ignore-case
 export PAGER=less
 export MANPAGER='nvim +Man!'
+
+export NNN_COLORS=#0e0e0e0e
+export NNN_FCOLORS=0b0b0c0a00000e00090b0d09 # Same as LS_COLORS.
+export NNN_OPTS=doU # Detail mode, open with Enter & show user:group.
 
 HISTFILE=~/.zhistory
 HISTSIZE=9999
