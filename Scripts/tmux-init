@@ -7,9 +7,9 @@
 # Author: Göran Gustafsson (gustafsson.g at gmail.com)
 # License: BSD 3-Clause
 
-session1=ABC
-session2=XYZ
-session3=123
+session1=alpha
+session2=omega
+session3=xxxxx
 
 # For future reference:
 #   split-window -h creates vertically divided panes...
