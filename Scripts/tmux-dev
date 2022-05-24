@@ -13,6 +13,8 @@ else
   dir=~/Projects
 fi
 
+# FIXME: Add fzf cd thingie before split...
+
 tmux \
   new-window -c $dir nvim \; \
   split-window -v -c $dir -l "25%" \; \
