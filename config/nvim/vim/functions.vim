@@ -12,7 +12,9 @@ endfunction
 
 " Start custom documentation editing mode.
 function! DocsMode()
-  " FIXME: Open new tab if there are buffers/windows open in current.
+  if len(tabpagebuflist()) > 1 || !empty(expand("%"))
+    tabnew
+  endif
   tcd ~/Documents/Text
   NnnExplorer
   wincmd w

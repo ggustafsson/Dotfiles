@@ -31,6 +31,5 @@ fi
 
 print -P "%F{cyan}ansible-playbook ${playbook}:%f"
 confirm || exit 1
-pushd $directory
-ansible-playbook $playbook --ask-become
-popd
+cd $directory
+ansible-playbook $playbook --ask-become || exit $?

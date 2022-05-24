@@ -9,14 +9,15 @@
 
 if [[ $HOST == Twoson ]]; then
   dir=~/Bitbucket
+  cmd_fd='$(fd --type directory --max-depth 2 --strip-cwd-prefix | fzf --tac)'
 else
   dir=~/Projects
+  cmd_fd='$(fd --type directory --max-depth 1 --strip-cwd-prefix | fzf --tac)'
 fi
 
-# FIXME: Add fzf cd thingie before split...
+cmd_cd="cd ${dir}/$cmd_fd"
+cmd_tmux="tmux split-window -v -l 25% \; select-pane -t :.+"
 
 tmux \
-  new-window -c $dir nvim \; \
-  split-window -v -c $dir -l "25%" \; \
-  select-pane -t :.+ \; \
+  new-window -c $dir "${cmd_cd}; ${cmd_tmux}; nvim" \; \
   rename-window dev

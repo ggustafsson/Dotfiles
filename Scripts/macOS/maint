@@ -45,14 +45,12 @@ for selection in ${(z)selections}; do
   esac
 
   if [[ $? -ne 0 ]]; then
-    failed=1
+    notify Maintenance 'Job failed!'
+    echo "Maintenance job failed! Exiting..."
+    exit 1
   fi
 done
 
 if [[ -n $selections ]]; then
-  if [[ $failed -eq 1 ]]; then
-    notify Maintenance 'Finished with failed jobs...'
-  else
-    notify Maintenance 'Finished running!'
-  fi
+  notify Maintenance 'Finished running!'
 fi
