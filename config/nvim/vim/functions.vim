@@ -1,3 +1,5 @@
+command! Reload source $MYVIMRC
+
 command! -nargs=* -complete=help Help vertical help <args>
 command! -nargs=1 S let @/ = <q-args> | normal n " Same as / in normal mode.
 
@@ -111,7 +113,8 @@ command! -nargs=1 Play call Play(<q-args>)
 " Execute shell command inside of Tmux popup window.
 function! Pop(cmd)
   if !empty($TMUX)
-    let tmux = "tmux popup"
+    let cwd = getcwd()
+    let tmux = "tmux popup -d " .. cwd
     execute "silent !" .. tmux .. " " .. a:cmd
   else
     echo "Pop only works inside of Tmux!"
