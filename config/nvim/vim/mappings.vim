@@ -6,7 +6,6 @@ endif
 
 nnoremap <Leader>/  :FzfHistory/<CR>
 nnoremap <Leader>:  :FzfHistory:<CR>
-nnoremap <Leader>bd :bdelete<CR>
 nnoremap <Leader>bu :FzfBuffers<CR>
 nnoremap <Leader>cc :call ColorColumn()<CR>
 nnoremap <Leader>cd :cd <C-R>=fnameescape(expand("%:p:h"))<CR>/
