@@ -18,10 +18,8 @@ require("nnn").setup {
   },
   picker = {
     style = {
-      -- FIXME: Patch nnn.nvim to get same size as Fzf and Tmux display-popup.
-      border = "rounded",
-      height = 0.8,
-      width = 0.8,
+      height = 1,
+      width = 1,
     },
   },
   windownav = {
