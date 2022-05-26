@@ -114,7 +114,7 @@ command! -nargs=1 Play call Play(<q-args>)
 function! Pop(cmd)
   if !empty($TMUX)
     let cwd = getcwd()
-    let tmux = "tmux popup -d " .. cwd
+    let tmux = "tmux popup -d '" .. cwd .. "'"
     execute "silent !" .. tmux .. " " .. a:cmd
   else
     echo "Pop only works inside of Tmux!"
@@ -124,6 +124,12 @@ command! -nargs=* Pop call Pop(<q-args>)
 
 " Execute current file. Use command in variable 'b:runprg' or run file as-is.
 function! Run()
+  let file = expand("%")
+  if empty(file)
+    echo "Nothing to run!"
+    return
+  endif
+
   if exists("b:runprg")
     let cmd = b:runprg
   else
@@ -200,8 +206,8 @@ command! -nargs=1 -complete=file Template call Template(<q-args>)
 
 " Undo all changes since last file save. Unsaved buffers are emptied.
 function! UndoAll()
-  let filename = expand("%")
-  if !empty(filename)
+  let file = expand("%")
+  if !empty(file)
     edit!
   else
     earlier 1f
