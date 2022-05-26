@@ -12,10 +12,10 @@
 # Author: Göran Gustafsson (gustafsson.g at gmail.com)
 # License: BSD 3-Clause
 
-last_dir=~/.config/nnn/.lastd
+export NNN_TMPFILE=~/.config/nnn/.lastd
 
 nnn $*
 
-if [[ -f $last_dir ]]; then
-  source $last_dir && rm $last_dir &> /dev/null
+if [[ -f $NNN_TMPFILE ]]; then
+  source $NNN_TMPFILE && rm $NNN_TMPFILE &> /dev/null
 fi
