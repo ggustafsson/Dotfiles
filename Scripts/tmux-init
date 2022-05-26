@@ -11,9 +11,7 @@ session1=alpha
 session2=omega
 session3=xxxxx
 
-# For future reference:
-#   split-window -h creates vertically divided panes...
-#   split-window -v creates horizontally divided panes...
+cd # Always start at $HOME.
 
 tmux new-session -d -s $session1
 tmux new-session -d -s $session2
