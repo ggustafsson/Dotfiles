@@ -242,7 +242,7 @@ alias n3="source n3"
 alias untar="tar -xvf"
 alias zreload="source ~/.zshenv && source ~/.zshrc"
 
-alias cdc="rm ~/.dirlist &> /dev/null"
+alias cdc="rm -f ~/.dirlist > /dev/null"
 alias cdh="dirs -v | tac"
 alias cdj='[[ -f ~/.dirlist ]] && cd "$(cat ~/.dirlist | fzf --tac)"'
 alias cds='echo $PWD | tee -a ~/.dirlist'

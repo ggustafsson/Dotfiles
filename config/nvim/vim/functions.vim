@@ -1,5 +1,3 @@
-command! Reload source $MYVIMRC
-
 command! -nargs=* -complete=help Help vertical help <args>
 command! -nargs=1 S let @/ = <q-args> | normal n " Same as / in normal mode.
 

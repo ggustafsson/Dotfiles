@@ -17,5 +17,6 @@ export NNN_TMPFILE=~/.config/nnn/.lastd
 nnn $*
 
 if [[ -f $NNN_TMPFILE ]]; then
-  source $NNN_TMPFILE && rm $NNN_TMPFILE &> /dev/null
+  source $NNN_TMPFILE
+  rm -f $NNN_TMPFILE > /dev/null
 fi

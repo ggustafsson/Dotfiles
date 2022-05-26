@@ -25,14 +25,10 @@ require("nnn").setup {
   windownav = {
     next = "<C-W><C-W>",
   },
-  -- XXX: Look into if <C-G> can be improved.
   mappings = {
-    { "<C-E>", builtin.populate_cmdline },
-    { "<C-G>", builtin.cd_to_path },
     { "<C-S>", builtin.open_in_split },
     { "<C-T>", builtin.open_in_tab },
     { "<C-V>", builtin.open_in_vsplit },
-    { "<C-Y>", builtin.copy_to_clipboard },
   },
   replace_netrw = "picker",
 }
