@@ -2,7 +2,7 @@
 
 # Description: 1
 #
-# Usage: 2
+# Usage: #FILE#
 #
 # Changelog:
 #   #DATE# - Initial version created by Göran Gustafsson.

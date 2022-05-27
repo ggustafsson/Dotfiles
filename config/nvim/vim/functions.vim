@@ -181,21 +181,27 @@ function TabLine()
   return string
 endfunction
 
-" Insert file above cursor, replace #YEAR# with 'YYYY' and replace '#DATE#'
-" with 'YYYY-MM-DD'. If buffer has only one empty line then remove it after
-" insert so HTML templates and similar works better.
+" Insert template file above cursor and perform several substitutions.
+"
+" '#FILE#' -> 'Filename'
+" '#YEAR#' -> 'YYYY'
+" '#DATE#' -> 'YYYY-MM-DD'
 function! Template(file)
+  let name = expand("%:t:r") " Filename without extension.
   let lines = line("$")
   let text = getline(".")
 
   if lines == 1 && empty(text)
     execute "read " .. fnameescape(a:file)
-    normal! ggdd
+    1delete
   else
     execute ".-read " .. fnameescape(a:file)
   endif
 
   normal! ml
+  if !empty(name)
+    execute "%s/#FILE#/" .. name .. "/ge"
+  endif
   execute "%s/#YEAR#/" .. strftime("%Y") .. "/ge"
   execute "%s/#DATE#/" .. strftime("%Y-%m-%d") .. "/ge"
   normal! `l

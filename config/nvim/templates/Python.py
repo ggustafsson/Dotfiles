@@ -4,7 +4,7 @@
 
 2
 
-Usage: 3
+Usage: #FILE#
 
 Author: Göran Gustafsson (gustafsson.g at gmail.com)
 License: BSD 3-Clause
@@ -12,7 +12,7 @@ License: BSD 3-Clause
 
 
 def main():
-    #4
+    #3
 
 
 if __name__ == "__main__":
