@@ -244,7 +244,7 @@ alias zreload="source ~/.zshenv && source ~/.zshrc"
 
 alias cdc="rm -f ~/.dirlist > /dev/null"
 alias cdh="dirs -v | tac"
-alias cdj='[[ -f ~/.dirlist ]] && cd "$(cat ~/.dirlist | fzf --tac)"'
+alias cdj='[[ -f ~/.dirlist ]] && cd "$(cat ~/.dirlist | fzf --reverse)"'
 alias cds='echo $PWD | tee -a ~/.dirlist'
 
 alias cp="cp -vi"
