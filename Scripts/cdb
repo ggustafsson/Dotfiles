@@ -19,20 +19,14 @@
 #   <https://github.com/vigneshwaranr/bd/blob/master/bd>
 # Modified by Göran Gustafsson (gustafsson.g at gmail.com).
 
-if [[ $# -ge 2 ]]; then
-  echo "Usage: ${0:t} [PATTERN]..."
-  exit
-fi
-
-if [[ -n $1 ]]; then
+if [[ $# -eq 1 ]]; then
   new_pwd=$(echo $PWD | sed 's|\(.*/'${1}'[^/]*/\).*|\1|')
 
   if [[ $new_pwd != $PWD ]]; then
     cd "$new_pwd"
   else
     echo "No result found!"
-    exit 1
   fi
 else
-  cd ..
+  echo "Usage: ${0:t} [PATTERN]..."
 fi
