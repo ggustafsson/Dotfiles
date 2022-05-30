@@ -5,7 +5,7 @@
 #
 # Example:
 #
-#   /Users/GLEG/Development/Ruby $ cdb Us
+#   /Users/GLEG/Development/Python $ cdb Us
 #   /Users $
 #
 # ~/.zshrc:
@@ -25,8 +25,10 @@ if [[ $# -eq 1 ]]; then
   if [[ $new_pwd != $PWD ]]; then
     cd "$new_pwd"
   else
-    echo "No result found!"
+    echo "No match found!"
   fi
+elif [[ $# -eq 0 ]]; then
+  cd ..
 else
   echo "Usage: ${0:t} [PATTERN]..."
 fi

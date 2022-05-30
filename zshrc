@@ -237,7 +237,6 @@ fi
 alias fd="fd --follow --no-ignore"
 alias hogs="du -sk * | sort --numeric-sort --reverse | head -n 15"
 alias iip="curl icanhazip.com"
-alias mkdir="mkdir -pv"
 alias n3="source n3"
 alias tree="tree --charset ascii"
 alias untar="tar -xvf"
@@ -261,6 +260,9 @@ alias hist="\history -i -25"
 
 alias la="ls -l --all"
 alias ll="ls -l"
+
+alias mkcd="source mkcd"
+alias mkdir="mkdir -pv"
 
 alias ps="ps a -o user,tt,pid,command"
 alias psx="\ps ax -o user,tt,pid,command"

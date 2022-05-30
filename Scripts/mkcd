@@ -1,0 +1,21 @@
+#!/usr/bin/env zsh
+
+# Description: Create directory and change current working directory to it.
+#
+# ~/.zshrc:
+#
+#   alias mkcd="source mkcd"
+#
+# Usage: mkcd <path>
+#        mkcd <dir1/dir2/...>
+#
+# Author: Göran Gustafsson (gustafsson.g at gmail.com)
+# License: BSD 3-Clause
+
+if [[ ! $# -eq 1 ]]; then
+  echo "Usage: ${0:t} [PATH]..."
+  exit
+fi
+
+mkdir -pv "$1"
+cd "$1"
