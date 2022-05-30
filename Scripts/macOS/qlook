@@ -2,7 +2,7 @@
 
 # Description: Opens one or several files in Quick Look.
 #
-# Usage: qlopen <file(s)>
+# Usage: qlook <file(s)>
 #
 # Author: Göran Gustafsson (gustafsson.g at gmail.com)
 # License: BSD 3-Clause
