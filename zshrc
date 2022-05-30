@@ -239,12 +239,14 @@ alias hogs="du -sk * | sort --numeric-sort --reverse | head -n 15"
 alias iip="curl icanhazip.com"
 alias mkdir="mkdir -pv"
 alias n3="source n3"
+alias tree="tree --charset ascii"
 alias untar="tar -xvf"
 alias zreload="source ~/.zshenv && source ~/.zshrc"
 
+alias cdb="source cdb"
 alias cdc="rm -f ~/.dirlist > /dev/null"
 alias cdh="dirs -v | tac"
-alias cdj='[[ -f ~/.dirlist ]] && cd "$(cat ~/.dirlist | fzf --reverse)"'
+alias cdj='[[ -f ~/.dirlist ]] && cd "$(cat ~/.dirlist | fzf --tac)"'
 alias cds='echo $PWD | tee -a ~/.dirlist'
 
 alias cp="cp -vi"
@@ -273,9 +275,6 @@ alias xxx="rg '\b(FIXME|NOTE|TODO|XXX)(:|$| )'"
 
 alias svtplay-dl="svtplay-dl --resume"
 alias youtube-dl="youtube-dl --continue --output '%(title)s.%(ext)s'"
-
-alias tree="tree --charset ascii"
-alias treed="tree -d"
 
 alias vim="nvim"
 alias vimdiff="nvim -d"
