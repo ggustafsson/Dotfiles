@@ -1,0 +1,15 @@
+#!/usr/bin/env zsh
+
+# Description: Lookup word in builtin Dictionary.app.
+#
+# Usage: dict <word>
+#
+# Author: Göran Gustafsson (gustafsson.g at gmail.com)
+# License: BSD 3-Clause
+
+if [[ $# -eq 0 ]]; then
+  echo "Usage: ${0:t} [WORD]..."
+  exit
+fi
+
+open "dict://$*"
