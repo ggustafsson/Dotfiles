@@ -12,6 +12,11 @@
 # Author: Göran Gustafsson (gustafsson.g at gmail.com)
 # License: BSD 3-Clause
 
+if [[ $NNNLVL -ge 1 ]]; then
+  echo "nnn is already running..."
+  return
+fi
+
 export NNN_TMPFILE=~/.config/nnn/.lastd
 
 nnn $*

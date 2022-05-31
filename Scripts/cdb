@@ -15,17 +15,17 @@
 # Usage: cdb
 #        cdb <pattern>
 #
-# Original script created by Vigneshwaran Raveendran:
-#   <https://github.com/vigneshwaranr/bd/blob/master/bd>
-# Modified by Göran Gustafsson (gustafsson.g at gmail.com).
+# Original script: https://github.com/vigneshwaranr/bd/blob/master/bd
+# Modified by: Göran Gustafsson (gustafsson.g at gmail.com)
 
 if [[ $# -eq 1 ]]; then
-  new_pwd=$(echo $PWD | sed 's|\(.*/'${1}'[^/]*/\).*|\1|')
+  dir=$(echo $PWD | sed 's|\(.*/'${1}'[^/]*/\).*|\1|')
 
-  if [[ $new_pwd != $PWD ]]; then
-    cd "$new_pwd"
+  if [[ $dir != $PWD ]]; then
+    cd "$dir"
   else
     echo "No match found!"
+    return
   fi
 elif [[ $# -eq 0 ]]; then
   cd ..

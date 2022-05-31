@@ -14,7 +14,7 @@
 
 if [[ ! $# -eq 1 ]]; then
   echo "Usage: ${0:t} [PATH]..."
-  exit
+  return
 fi
 
 mkdir -pv "$1"
