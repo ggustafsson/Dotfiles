@@ -27,16 +27,6 @@ ZLE_REMOVE_SUFFIX_CHARS=$' \t\n;' # Removed "&|" from defaults to keep space.
 ZLE_SPACE_SUFFIX_CHARS=$'&|' # Add space before "&|" if missing.
 
 
-if [[ $OSTYPE == darwin* ]]; then
-  hash -d ext1=/Volumes/External\ 1
-  hash -d ext2=/Volumes/External\ 2
-  hash -d key1=/Volumes/Keychain\ 1
-  hash -d key2=/Volumes/Keychain\ 2
-else
-  hash -d ext=/media/external
-fi
-
-
 setopt correct # Try to correct the spelling of commands.
 setopt extendedglob
 setopt interactivecomments
@@ -243,10 +233,7 @@ alias untar="tar -xvf"
 alias zreload="source ~/.zshenv && source ~/.zshrc"
 
 alias cdb="source cdb"
-alias cdc="rm -f ~/.dirlist > /dev/null"
 alias cdh="dirs -v | tac"
-alias cdj='[[ -f ~/.dirlist ]] && cd "$(cat ~/.dirlist | fzf --tac)"'
-alias cds='echo $PWD | tee -a ~/.dirlist'
 
 alias cp="cp -vi"
 alias mv="mv -vi"
