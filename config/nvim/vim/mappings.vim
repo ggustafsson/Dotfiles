@@ -12,14 +12,15 @@ nnoremap <Leader>cc :call ColorColumn()<CR>
 nnoremap <Leader>cd :cd <C-R>=fnameescape(expand("%:p:h"))<CR>/
 nnoremap <Leader>do :call DocsMode()<CR>
 nnoremap <Leader>ed :edit <C-R>=fnameescape(expand("%:p:h"))<CR>/
-nnoremap <Leader>ef :FzfFiles<CR>
 nnoremap <Leader>eh :edit ~/
+nnoremap <Leader>ff :FzfFiles<CR>
 nnoremap <Leader>ft :FzfFiletypes<CR>
 nnoremap <Leader>he :FzfHelptags<CR>
 nnoremap <Leader>hi :FzfHistory<CR>
 nnoremap <Leader>li :setlocal list! list?<CR>
 nnoremap <Leader>lo :silent! lwindow \| cwindow<CR>
 nnoremap <Leader>ma :FzfMarks<CR>
+nnoremap <Leader>nn :NnnPicker<CR>
 nnoremap <Leader>nu :setlocal number! relativenumber!<CR>
 nnoremap <Leader>rg :FzfRg<Space>
 nnoremap <Leader>rs :source ~/.local/share/nvim/session.vim<CR>
