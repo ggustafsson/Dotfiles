@@ -22,6 +22,9 @@ export NNN_TMPFILE=~/.config/nnn/.lastd
 nnn $*
 
 if [[ -f $NNN_TMPFILE ]]; then
-  source $NNN_TMPFILE
+  ignore_dir=$HOME/.config/nnn/bookmarks
+  if ! grep -qs $ignore_dir $NNN_TMPFILE; then
+    source $NNN_TMPFILE
+  fi
   rm -f $NNN_TMPFILE > /dev/null
 fi
