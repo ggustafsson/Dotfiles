@@ -236,6 +236,7 @@ alias cdb="source cdb"
 alias cdh="dirs -v | tac"
 
 alias cp="cp -vi"
+alias ln="ln -v"
 alias mv="mv -vi"
 alias rm="rm -v"
 
