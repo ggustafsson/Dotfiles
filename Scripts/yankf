@@ -38,7 +38,7 @@ else
     fi
   done
   if [[ -n $list ]]; then
-    content=$(printf "%s\n" ${list[@]})
+    content=$(printf "%s\n" $list)
     echo $content
     echo -n $content | eval $copy_cmd
   fi
