@@ -29,8 +29,7 @@ fi
 tmp_file=$(mktemp)
 eval ${VISUAL:=nvim} $tmp_file
 
-if [[ $? -eq 0 && -f $tmp_file ]]; then
-  # Strips content of EOF newline.
+if [[ $? -eq 0 && -s $tmp_file ]]; then
   content=$(cat $tmp_file)
   echo -n $content | eval $copy_cmd
 fi

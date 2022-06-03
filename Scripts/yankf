@@ -25,10 +25,10 @@ fi
 
 if [[ $1 == (-n|--nnn) ]]; then
   selection=${NNN_SEL:-${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.selection}
-  if [[ -f $selection ]]; then
+  if [[ -s $selection ]]; then
     content=$(tr '\0' '\n' < $selection)
     echo -n $content | eval $copy_cmd
-  else
+  elif [[ -s $nnn ]]; then
     echo -n ${nnn:a} | eval $copy_cmd
   fi
 else
@@ -38,7 +38,6 @@ else
     fi
   done
   if [[ -n $list ]]; then
-    # Strips content of EOF newline.
     content=$(printf "%s\n" ${list[@]})
     echo $content
     echo -n $content | eval $copy_cmd
