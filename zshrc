@@ -17,6 +17,7 @@ export MANPAGER='nvim +Man!'
 export NNN_COLORS=#0e0e0e0e
 export NNN_FCOLORS=0b0b0c0a00000e08090b0d09 # Same as LS_COLORS.
 export NNN_OPTS=doU # Detail mode, open only on Enter & show user:group.
+export NNN_PLUG='y:!yankf --nnn*'
 
 HISTFILE=~/.zhistory
 HISTSIZE=9999
