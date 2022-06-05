@@ -29,7 +29,7 @@ echo "Backing up to server '${server}'."
 for object in $backup_objects; do
   if [[ -a $object ]]; then
     print -P "\n%F{green}Backing up: ${object/${HOME}/~}%f"
-    rsync --archive --chmod=D755,F644 --human-readable --progress \
+    rsync --archive --chmod=D755,F644 --human-readable --progress --verbose \
       $object -e ssh ${server}:$destination
   else
     echo "\nObject '${object}' not found! Skipping..."
