@@ -250,7 +250,7 @@ alias mkcd="source mkcd"
 alias mkdir="mkdir -pv"
 
 alias n3="source n3"
-alias la="n3 -H"
+alias la="n3 -dH"
 alias ll="n3 -d"
 
 alias ps="ps a -o user,tt,pid,command"
