@@ -20,6 +20,7 @@ require("nnn").setup {
     style = {
       height = 1,
       width = 1,
+      border = "rounded",
     },
   },
   windownav = {
