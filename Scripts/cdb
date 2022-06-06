@@ -20,13 +20,12 @@
 
 if [[ $# -eq 1 ]]; then
   dir=$(echo $PWD | sed 's|\(.*/'${1}'[^/]*/\).*|\1|')
-
   if [[ $dir != $PWD ]]; then
     cd "$dir"
   else
     echo "No match found!"
-    return
   fi
+  unset dir
 elif [[ $# -eq 0 ]]; then
   cd ..
 else
