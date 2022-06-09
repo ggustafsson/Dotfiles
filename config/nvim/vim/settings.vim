@@ -6,7 +6,6 @@ endif
 
 set completeopt=menu,menuone,noselect
 set confirm
-set formatoptions+=lnor " See ':help fo-table'.
 set guicursor=
 set inccommand=
 set list
@@ -28,6 +27,10 @@ set cursorlineopt=number
 set expandtab
 set shiftwidth=2
 set softtabstop=2
+
+" See ':help fo-table' for explanation.
+set formatoptions-=t
+set formatoptions+=lnor
 
 " ~/.vimrc [+] [dos] [latin1] [vim]        142,47    30%
 set statusline=\ %(%f\ %)
