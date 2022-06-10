@@ -3,6 +3,7 @@
 # Description: Backs up miscellaneous files/directories to external device.
 #
 # Usage: backup
+#        backup --yes
 #
 # Author: Göran Gustafsson (gustafsson.g at gmail.com)
 # License: BSD 3-Clause

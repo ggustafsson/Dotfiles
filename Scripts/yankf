@@ -10,7 +10,9 @@
 # License: BSD 3-Clause
 
 if [[ $# -lt 1 ]]; then
-  echo "Usage: ${0:t} [OPTION]... [PATH(S)]..."
+  echo "Usage: ${0:t} [OPTION]... [PATH(S)]...
+
+  -n, --nnn  Run as non-interactive nnn plugin."
   exit
 fi
 

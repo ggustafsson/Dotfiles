@@ -7,7 +7,7 @@
 # Dependencies: flac and lame. title is optional.
 #
 # Usage: flaccon <file>
-#        flaccon -i <file>
+#        flaccon --ignore-case <file>
 #        flaccon *.flac
 #        find . -type f -iname "*.flac" -exec flaccon "{}" \;
 #
