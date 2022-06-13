@@ -1,3 +1,5 @@
+" XXX: Forced to use file instead of autocmd to load in correct order.
+
 setlocal norelativenumber
 
 " [Quickfix List] :setqflist()        1/9    All

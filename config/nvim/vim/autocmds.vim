@@ -33,8 +33,11 @@ augroup Main
     \ setlocal noexpandtab shiftwidth=4 softtabstop=0 tabstop=4
     \   listchars=tab:\ \ ,trail:-,nbsp:+,precedes:<,extends:>
 
-  autocmd FileType json,markdown,python
+  autocmd FileType json,python
     \ setlocal expandtab shiftwidth=4 softtabstop=4
+
+  autocmd FileType markdown
+    \ setlocal expandtab shiftwidth=4 softtabstop=4 formatoptions-=t
 
   autocmd FileType yaml,yaml.ansible
     \ setlocal indentkeys-=0#
