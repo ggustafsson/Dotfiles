@@ -194,7 +194,7 @@ function prompt_mode {
 
     # if $? == true then green
     # if $? == false then red
-    echo "%(?.%B%F{green}.%F{red})${char}%f%b"
+    echo "%B%(?.%F{green}.%F{red})${char}%f%b"
   fi
 }
 
