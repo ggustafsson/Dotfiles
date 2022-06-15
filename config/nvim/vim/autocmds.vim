@@ -16,14 +16,13 @@ augroup Main
     \   setlocal omnifunc=syntaxcomplete#Complete |
     \ endif
 
-  autocmd BufRead,BufNewFile *.conf,config
-    \ setlocal filetype=conf
-
-  autocmd BufRead,BufNewFile */Ansiblebot/*.yml
-    \ setlocal filetype=yaml.ansible
+  autocmd BufRead,BufNewFile gitconfig          setlocal filetype=gitconfig
+  autocmd BufRead,BufNewFile */Ansiblebot/*.yml setlocal filetype=yaml.ansible
+  autocmd BufRead,BufNewFile */ssh/config       setlocal filetype=sshconfig
+  autocmd BufRead,BufNewFile */yamllint/config  setlocal filetype=yaml
 
   autocmd FileType gitcommit
-    \ setlocal nolist spell textwidth=72
+    \ setlocal nolist spell
 
   autocmd FileType gitconfig,snippets
     \ setlocal noexpandtab shiftwidth=4 softtabstop=0 tabstop=4
