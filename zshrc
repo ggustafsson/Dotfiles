@@ -16,7 +16,7 @@ export MANPAGER='nvim +Man!'
 
 export NNN_COLORS=#0e0e0e0e
 export NNN_FCOLORS=0b0b0c0a00000e08090b0d09 # Same as LS_COLORS.
-export NNN_OPTS=doU # Detail mode, open only on Enter & show user:group.
+export NNN_OPTS=AUdo # No auto-enter, user:group, detail mode & open on Enter.
 export NNN_PLUG='y:-!yankf --nnn*'
 export NNN_TMPFILE=~/.config/nnn/.lastd
 
@@ -144,17 +144,17 @@ zle -N zle-keymap-select
 # Display hostname according to various rules.
 function prompt_host {
   if [[ $HOST == Onett ]]; then
-    echo "🏠 %F{green}${HOST}%f "
+    echo "🏠 %B%F{green}${HOST}%f%b "
   elif grep -qs docker /proc/1/cgroup; then
-    echo "🐳 %F{cyan}${HOST}%f "
+    echo "🐳 %B%F{cyan}${HOST}%f%b "
   else
-    echo "💀 %F{yellow}${HOST}%f "
+    echo "💀 %B%F{yellow}${HOST}%f%b "
   fi
 }
 
 # Display current path but limit depth to two levels.
 function prompt_path {
-  echo "📁 %F{blue}%2d%f"
+  echo "📁 %B%F{blue}%2d%f%b"
 }
 
 # Display Git branch name. State is indicated through color.
@@ -165,9 +165,9 @@ function prompt_git {
 
   branch=$(git branch --show-current 2> /dev/null)
   if [[ -n $(git status --porcelain 2> /dev/null) ]]; then
-    echo " 📦 %F{red}${branch}%f"
+    echo " 📦 %B%F{red}${branch}%f%b"
   else
-    echo " 📦 %F{green}${branch}%f"
+    echo " 📦 %B%F{green}${branch}%f%b"
   fi
 }
 
@@ -175,16 +175,16 @@ function prompt_git {
 function prompt_todo {
   files=(.todo(N) .todo.*(N) TODO(N) TODO.*(N))
   if [[ -n $files ]]; then
-    echo " 📄 %F{magenta}todo%f"
+    echo " 📄 %B%F{magenta}todo%f%b"
   fi
 }
 
 # Display current Vi mode. Insert ">>" or "++", command "<<" and replace "**".
 function prompt_mode {
   if [[ $KEYMAP == vicmd ]]; then
-    echo "%F{red}<<%f"
+    echo "%B%F{red}<<%f%b"
   elif [[ $prompt_replace == 1 ]]; then
-    echo "%F{red}**%f"
+    echo "%B%F{red}**%f%b"
   else
     if [[ $1 == 2 ]]; then
       char="++"
@@ -194,7 +194,7 @@ function prompt_mode {
 
     # if $? == true then green
     # if $? == false then red
-    echo "%(?.%F{green}.%F{red})${char}%f"
+    echo "%(?.%B%F{green}.%F{red})${char}%f%b"
   fi
 }
 

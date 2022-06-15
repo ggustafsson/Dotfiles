@@ -24,12 +24,12 @@ esac
 directory=~/Projects/Ansiblebot
 
 if [[ $git_pull -eq 1 ]]; then
-  print -P "%F{cyan}git pull @ ${directory/${HOME}/~}:%f"
+  print -P "%B%F{cyan}git pull @ ${directory/${HOME}/~}:%f%b"
   git -C $directory pull
   echo
 fi
 
-print -P "%F{cyan}ansible-playbook ${playbook}:%f"
+print -P "%B%F{cyan}ansible-playbook ${playbook}:%f%b"
 confirm || exit 1
 cd $directory
 ansible-playbook $playbook --ask-become || exit $?

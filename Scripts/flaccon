@@ -63,7 +63,7 @@ for arg; do
     typeset ${tag}=$value
   done
 
-  print -P "\n%F{cyan}Converting file: ${arg/${HOME}/~}%f\n"
+  print -P "\n%B%F{cyan}Converting file: ${arg/${HOME}/~}%f%b\n"
 
   # Print out all tag information.
   for tag in $tags; do

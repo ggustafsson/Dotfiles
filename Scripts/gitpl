@@ -32,7 +32,7 @@ for directory in ${projects_path}/*(N); do
     found_repo=1
   fi
 
-  print -P "\n%F{cyan}${directory:t}:%f"
+  print -P "\n%B%F{cyan}${directory:t}:%f%b"
   git -C $directory pull
 done
 
