@@ -38,6 +38,9 @@ augroup Main
   autocmd FileType markdown
     \ setlocal expandtab shiftwidth=4 softtabstop=4 formatoptions-=t
 
+  autocmd FileType markdown,text
+    \ setlocal linebreak
+
   autocmd FileType yaml,yaml.ansible
     \ setlocal indentkeys-=0#
 augroup END

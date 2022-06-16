@@ -9,4 +9,4 @@
 # Author: Göran Gustafsson (gustafsson.g at gmail.com)
 # License: BSD 3-Clause
 
-nvim -R -c "nmap q <Cmd>q<CR>" $*
+nvim -R -c "nmap q <Cmd>q<CR>" -c "set nolist" $*

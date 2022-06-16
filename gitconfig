@@ -20,16 +20,6 @@
 	excludesFile = ~/.gitignore_global
 	pager = less -FRX
 
-[color "diff"]
-	frag = brightblue
-	new = brightgreen
-	old = brightred
-
-[color "status"]
-	added = brightgreen
-	changed = brightred
-	untracked = brightred
-
 [init]
 	defaultBranch = master
 
