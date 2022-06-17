@@ -11,29 +11,29 @@
 *.color0: #121212
 *.color8: #808080
 
-! Red - 210, LightCoral, #ff8787, rgb(255,135,135)
-*.color1: #ff8787
-*.color9: #ff8787
+! Red - 203, IndianRed1, #ff5f5f, rgb(255,95,95)
+*.color1: #ff5f5f
+*.color9: #ff5f5f
 
-! Green - 121, PaleGreen1, #87ffaf, rgb(135,255,175)
-*.color2:  #87ffaf
-*.color10: #87ffaf
+! Green - 120, LightGreen, #87ff87, rgb(135,255,135)
+*.color2:  #87ff87
+*.color10: #87ff87
 
-! Yellow - 229, Wheat1, #ffffaf, rgb(255,255,175)
-*.color3:  #ffffaf
-*.color11: #ffffaf
+! Yellow - 228, Khaki1, #ffff87, rgb(255,255,135)
+*.color3:  #ffff87
+*.color11: #ffff87
 
-! Blue - 81, SteelBlue1, #5fd7ff, rgb(95,215,255)
-*.color4:  #5fd7ff
-*.color12: #5fd7ff
+! Blue - 45, Turquoise2, #00d7ff, rgb(0,215,255)
+*.color4:  #00d7ff
+*.color12: #00d7ff
 
-! Magenta - 183, Plum2, #d7afff, rgb(215,175,255)
-*.color5:  #d7afff
-*.color13: #d7afff
+! Magenta - 177, Violet, #d787ff, rgb(215,135,255)
+*.color5:  #d787ff
+*.color13: #d787ff
 
-! Cyan - 86, Aquamarine1, #5fffd7, rgb(95,255,215)
-*.color6:  #5fffd7
-*.color14: #5fffd7
+! Cyan - 49, MediumSpringGreen, #00ffaf, rgb(0,255,175)
+*.color6:  #00ffaf
+*.color14: #00ffaf
 
 ! White - 231, Grey100, #ffffff, rgb(255,255,255)
 *.color7:  #ffffff
