@@ -240,6 +240,7 @@ alias zreload="source ~/.zshenv && source ~/.zshrc"
 
 alias cdb="source cdb"
 alias cdh="dirs -v | tac"
+alias cdj="source cdj"
 
 alias cp="cp -vi"
 alias ln="ln -v"

@@ -14,7 +14,7 @@
 
 if [[ $NNNLVL -ge 1 ]]; then
   echo "nnn is already running..."
-  return
+  return 1
 fi
 
 if [[ -z $NNN_TMPFILE ]]; then

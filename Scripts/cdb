@@ -19,13 +19,13 @@
 # Modified by: Göran Gustafsson (gustafsson.g at gmail.com)
 
 if [[ $# -eq 1 ]]; then
-  dir=$(echo $PWD | sed 's|\(.*/'${1}'[^/]*/\).*|\1|')
-  if [[ $dir != $PWD ]]; then
-    cd "$dir"
+  cdb_dir=$(echo $PWD | sed 's|\(.*/'${1}'[^/]*/\).*|\1|')
+  if [[ $cdb_dir != $PWD ]]; then
+    cd "$cdb_dir"
   else
     echo "No match found!"
   fi
-  unset dir
+  unset cdb_dir
 elif [[ $# -eq 0 ]]; then
   cd ..
 else
