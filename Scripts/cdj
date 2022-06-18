@@ -15,7 +15,7 @@
 cdj_nnn=${XDG_CONFIG_HOME:-$HOME/.config}/nnn/bookmarks
 
 if [[ -d $cdj_nnn ]]; then
-  cdj_dir=$cdj_nn
+  cdj_dir=$cdj_nnn
 elif [[ -d ~/.bookmarks ]]; then
   cdj_dir=~/.bookmarks
 else
