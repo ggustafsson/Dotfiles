@@ -1,10 +1,11 @@
 #!/usr/bin/env zsh
 
-# Description: Lookup full path to file(s) and copy list to clipboard. Flag
-# -n/-nnn starts non-interactive mode for use as nnn plugin.
+# Description: Lookup full path to files/directories and copy list to
+# clipboard. Flag --nnn starts non-interactive mode for use as nnn plugin.
 #
-# Usage: yankf <path> ...
-#        yankf --nnn
+# Usage: yankp <file> ...
+#        yankp .
+#        yankp --nnn
 #
 # Author: Göran Gustafsson (gustafsson.g at gmail.com)
 # License: BSD 3-Clause
