@@ -29,7 +29,7 @@ ZLE_REMOVE_SUFFIX_CHARS=$' \t\n;' # Removed "&|" from defaults to keep space.
 ZLE_SPACE_SUFFIX_CHARS=$'&|' # Add space before "&|" if missing.
 
 
-setopt correct # Try to correct the spelling of commands.
+setopt correct # Try to correct spelling of commands.
 setopt extendedglob
 setopt interactivecomments
 setopt noclobber # Don't allow overwrites of existing files with ">".
@@ -99,7 +99,7 @@ bindkey -M vicmd $terminfo[knp] down-line-or-beginning-search
 bindkey "jj" vi-cmd-mode
 bindkey "^V" edit-command-line
 
-# Search for history entry matching current line up to the cursor position.
+# Search for history entry matching current line up to cursor position.
 bindkey "^[[A" up-line-or-beginning-search
 bindkey "^[[B" down-line-or-beginning-search
 
@@ -215,6 +215,9 @@ if [[ $OSTYPE == darwin* ]]; then
   alias tim="caffeinate tim" # Give Tim a cup of Joe! :)
   alias wifiscan="/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport --scan"
 
+  alias copy="gsed -z '$ s/\n$//' | pbcopy" # sed removes last newline.
+  alias paste="pbpaste"
+
   alias grep="ggrep --color=auto"
   alias bgrep="\grep --color=auto"
 
@@ -230,6 +233,7 @@ alias fd="fd --follow --no-ignore"
 alias hogs="du -sk * | sort --numeric-sort --reverse | head -n 15"
 alias iip="curl icanhazip.com"
 alias n3="source n3"
+alias nocol="sed 's/\x1B\[[0-9;]\{1,\}m//g'" # Strips all color codes.
 alias tree="tree --charset ascii"
 alias untar="tar -xvf"
 alias zreload="source ~/.zshenv && source ~/.zshrc"
