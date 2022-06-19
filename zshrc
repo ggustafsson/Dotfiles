@@ -274,6 +274,7 @@ alias svtplay-dl="svtplay-dl --resume"
 alias youtube-dl="youtube-dl --continue --output '%(title)s.%(ext)s'"
 
 alias vim="nvim"
+alias vimbck="bck --edit"
 alias vimdiff="nvim -d"
 
 

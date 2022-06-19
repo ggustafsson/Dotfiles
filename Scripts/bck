@@ -1,13 +1,15 @@
 #!/usr/bin/env zsh
 
-# Description: Quickly run "cp file{,.bck}" on one or more files. Flag --nnn
-# starts non-interactive mode for use as nnn plugin.
+# Description: Quickly run "cp file{,.bck}" on one or more files and optionally
+# open in editor. Flag --nnn starts non-interactive mode for use as nnn plugin.
 #
 # ~/.zshrc:
 #
 #   export NNN_PLUG='b:!bck --nnn*'
+#   alias vimbck="bck --edit"
 #
 # Usage: bck <file> ...
+#        bck --edit <file> ...
 #        bck --nnn
 #
 # Author: Göran Gustafsson (gustafsson.g at gmail.com)
@@ -45,5 +47,14 @@ if [[ $1 == (-n|--nnn) ]]; then
     mkbck --nnn $nnn
   fi
 else
-  mkbck $*
+  if [[ $1 == (-e|--edit) ]]; then
+    shift
+    mkbck $*
+    echo -n "\nPress 'Return' to continue..."
+    read -s wait_for_input &&
+    echo
+    eval ${VISUAL:=nvim} $*
+  else
+    mkbck $*
+  fi
 fi
