@@ -1,0 +1,49 @@
+#!/usr/bin/env zsh
+
+# Description: Quickly run "cp file{,.bck}" on one or more files. Flag --nnn
+# starts non-interactive mode for use as nnn plugin.
+#
+# ~/.zshrc:
+#
+#   export NNN_PLUG='b:!bck --nnn*'
+#
+# Usage: bck <file> ...
+#        bck --nnn
+#
+# Author: Göran Gustafsson (gustafsson.g at gmail.com)
+# License: BSD 3-Clause
+
+if [[ $# -lt 1 ]]; then
+  echo "Usage: ${0:t} [OPTION]... [PATH(S)]...
+
+  -n, --nnn  Run as non-interactive nnn plugin."
+  exit
+fi
+
+mkbck() {
+  if [[ $1 == --nnn ]]; then
+    cmd="cp -n"
+    shift
+  else
+    cmd="cp -vi"
+  fi
+
+  for arg; do
+    if [[ -f $arg ]]; then
+      eval "$cmd '${arg}' '${arg}.bck'"
+    fi
+  done
+}
+
+if [[ $1 == (-n|--nnn) ]]; then
+  selection=${NNN_SEL:-${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.selection}
+  if [[ -s $selection ]]; then
+    IFS=$'\n'
+    list=($(tr '\0' '\n' < $selection))
+    mkbck --nnn $list
+  elif [[ -s $nnn ]]; then
+    mkbck --nnn $nnn
+  fi
+else
+  mkbck $*
+fi

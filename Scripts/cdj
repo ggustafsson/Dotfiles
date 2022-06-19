@@ -13,7 +13,6 @@
 # License: BSD 3-Clause
 
 cdj_nnn=${XDG_CONFIG_HOME:-$HOME/.config}/nnn/bookmarks
-
 if [[ -d $cdj_nnn ]]; then
   cdj_dir=$cdj_nnn
 elif [[ -d ~/.bookmarks ]]; then
@@ -24,19 +23,14 @@ else
 fi
 
 cdj_sel=$(\ls "$cdj_dir" | fzf --tac)
-
 if [[ -z $cdj_sel ]]; then
   echo "Nothing selected! Exiting..."
   return 1
 fi
 
 cdj_dst=$(readlink "${cdj_dir}/$cdj_sel") # Destination of symbolic link.
-
 echo $cdj_dst
 cd "$cdj_dst"
 
 # Be nice and clean up before leaving...
-unset cdj_dir
-unset cdj_dst
-unset cdj_nnn
-unset cdj_sel
+unset cdj_dir cdj_dst cdj_nnn cdj_sel

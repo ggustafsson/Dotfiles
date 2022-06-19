@@ -3,6 +3,10 @@
 # Description: Lookup full path to files/directories and copy list to
 # clipboard. Flag --nnn starts non-interactive mode for use as nnn plugin.
 #
+# ~/.zshrc:
+#
+#   export NNN_PLUG='y:-!yankp --nnn*'
+#
 # Usage: yankp <file> ...
 #        yankp .
 #        yankp --nnn

@@ -17,7 +17,7 @@ export MANPAGER='nvim +Man!'
 export NNN_COLORS=#0e0e0e0e
 export NNN_FCOLORS=0b0b0c0a00000e08090b0d09 # Same as LS_COLORS.
 export NNN_OPTS=AUdo # No auto-enter, user:group, detail mode & open on Enter.
-export NNN_PLUG='y:-!yankp --nnn*'
+export NNN_PLUG='b:!bck --nnn*;y:-!yankp --nnn*'
 export NNN_TMPFILE=~/.config/nnn/.lastd
 
 HISTFILE=~/.zhistory
