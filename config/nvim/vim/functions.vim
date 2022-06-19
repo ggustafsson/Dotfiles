@@ -10,7 +10,8 @@ function! ColorColumn()
   endif
 endfunction
 
-" Start custom development mode.
+" Start custom development mode. Used from Tmux with:
+"   new-window nvim -c 'call DevMode()'
 function! DevMode()
   if len(tabpagebuflist()) > 1 || !empty(expand("%"))
     tabnew
@@ -19,7 +20,8 @@ function! DevMode()
   NnnExplorer
 endfunction
 
-" Start custom documentation editing mode.
+" Start custom documentation editing mode. Used from Tmux with:
+"   new-window nvim -c 'call DocsMode()'
 function! DocsMode()
   if len(tabpagebuflist()) > 1 || !empty(expand("%"))
     tabnew

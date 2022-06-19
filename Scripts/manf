@@ -1,0 +1,23 @@
+#!/usr/bin/env zsh
+
+# Description: Open man page interactively. For use in Tmux popup window.
+#
+# ~/.tmux.conf:
+#
+#   bind Enter menu -T "#[align=centre] Launcher " \
+#     "Open Man" m "popup -EE -h 60% -w 60% manf"
+#
+# Usage: manf
+#
+# Author: Göran Gustafsson (gustafsson.g at gmail.com)
+# License: BSD 3-Clause
+
+page=$(dialog --inputbox "Enter man page..." 0 40 2>&1 > /dev/tty)
+clear
+man $page
+
+if [[ $? -ne 0 ]]; then
+  echo -n "\nPress 'Return' to continue..."
+  read -s wait_for_input
+  echo
+fi

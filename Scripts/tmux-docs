@@ -2,6 +2,11 @@
 
 # Description: Start custom Tmux documentation setup.
 #
+# ~/.tmux.conf:
+#
+#   bind Enter menu -T "#[align=centre] Launcher " \
+#     "Docs Mode" 2 "run-shell tmux-docs"
+#
 # Usage: tmux-docs
 #
 # Author: Göran Gustafsson (gustafsson.g at gmail.com)
@@ -9,4 +14,5 @@
 
 tmux \
   new-window nvim -c "call DocsMode()" \; \
+  move-window -b -t 1 \; \
   rename-window docs

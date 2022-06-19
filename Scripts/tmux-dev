@@ -2,6 +2,11 @@
 
 # Description: Start custom Tmux development setup.
 #
+# ~/.tmux.conf:
+#
+#   bind Enter menu -T "#[align=centre] Launcher " \
+#     "Dev Mode" 1 "run-shell tmux-dev"
+#
 # Usage: tmux-dev
 #
 # Author: Göran Gustafsson (gustafsson.g at gmail.com)
@@ -9,4 +14,5 @@
 
 tmux \
   new-window nvim -c "call DevMode()" \; \
+  move-window -b -t 1 \; \
   rename-window dev

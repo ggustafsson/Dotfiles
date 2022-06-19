@@ -51,7 +51,7 @@ else
     shift
     mkbck $*
     echo -n "\nPress 'Return' to continue..."
-    read -s wait_for_input &&
+    read -s wait_for_input
     echo
     eval ${VISUAL:=nvim} $*
   else

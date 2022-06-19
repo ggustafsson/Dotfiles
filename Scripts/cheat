@@ -1,11 +1,17 @@
 #!/usr/bin/env zsh
 
 # Description: Frontend for https://cheat.sh. Result is displayed in Nvim pager
-# with custom cheat filetype for highlights.
+# with custom cheat filetype for highlights. Flag --ask starts interactive mode
+# for use in Tmux popup window.
 #
 # ~/.config/nvim/syntax/cheat.vim:
 #
 #   syntax match Comment /^#.*/
+#
+# ~/.tmux.conf:
+#
+#   bind Enter menu -T "#[align=centre] Launcher " \
+#     "Open Cheat" c "popup -EE -h 60% -w 60% cheat --ask"
 #
 # Usage: cheat
 #        cheat <query>
