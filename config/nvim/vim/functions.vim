@@ -15,7 +15,8 @@ function! DevMode()
   if len(tabpagebuflist()) > 1 || !empty(expand("%"))
     tabnew
   endif
-  NnnPicker
+  tcd ~/Projects
+  NnnExplorer
 endfunction
 
 " Start custom documentation editing mode.
