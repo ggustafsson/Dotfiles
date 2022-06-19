@@ -1,0 +1,12 @@
+#!/usr/bin/env zsh
+
+# Description: Start custom Tmux documentation setup.
+#
+# Usage: tmux-docs
+#
+# Author: Göran Gustafsson (gustafsson.g at gmail.com)
+# License: BSD 3-Clause
+
+tmux \
+  new-window nvim -c "call DocsMode()" \; \
+  rename-window docs
