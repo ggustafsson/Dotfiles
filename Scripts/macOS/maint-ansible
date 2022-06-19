@@ -10,15 +10,14 @@
 case $HOST in
   Onett)
     playbook=setup_macos_home.yml
-  ;;
+    ;;
   Twoson)
     git_pull=1
     playbook=setup_macos_work.yml
-  ;;
+    ;;
   *)
     echo "Could not determine which Ansible playbook to use! Exiting..."
     exit 1
-  ;;
 esac
 
 directory=~/Projects/Ansiblebot
