@@ -8,7 +8,5 @@
 # License: BSD 3-Clause
 
 tmux \
-  new-window nvim \; \
-  split-window -v -l 25% \; \
-  select-pane -t :.+ \; \
+  new-window nvim -c "call DevMode()" \; \
   rename-window dev

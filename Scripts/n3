@@ -30,6 +30,5 @@ if [[ -f $NNN_TMPFILE ]]; then
 fi
 
 if [[ $local_tmpfile -eq 1 ]]; then
-  unset NNN_TMPFILE
-  unset local_tmpfile
+  unset NNN_TMPFILE local_tmpfile
 fi

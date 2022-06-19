@@ -10,6 +10,14 @@ function! ColorColumn()
   endif
 endfunction
 
+" Start custom development mode.
+function! DevMode()
+  if len(tabpagebuflist()) > 1 || !empty(expand("%"))
+    tabnew
+  endif
+  NnnPicker
+endfunction
+
 " Start custom documentation editing mode.
 function! DocsMode()
   if len(tabpagebuflist()) > 1 || !empty(expand("%"))
