@@ -18,7 +18,8 @@
 if [[ $# -lt 1 ]]; then
   echo "Usage: ${0:t} [OPTION]... [PATH(S)]...
 
-  -n, --nnn  Run as non-interactive nnn plugin."
+  -e, --edit  Open file(s) with $VISUAL afterwards.
+  -n, --nnn   Run as non-interactive nnn plugin."
   exit
 fi
 
