@@ -14,5 +14,4 @@
 
 tmux \
   new-window nvim -c "call DevMode()" \; \
-  move-window -b -t 1 \; \
   rename-window dev
