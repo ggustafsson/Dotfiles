@@ -235,6 +235,7 @@ alias n3="source n3"
 alias nocol="sed 's/\x1B\[[0-9;]\{1,\}m//g'" # Strips all color codes.
 alias tree="tree --charset ascii"
 alias untar="tar -xvf"
+alias watch="watch --color --difference"
 alias zreload="source ~/.zshenv && source ~/.zshrc"
 
 alias cdb="source cdb"
