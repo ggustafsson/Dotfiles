@@ -23,11 +23,14 @@ endfunction
 
 " Start custom development mode. Used from Tmux with:
 "   new-window nvim -c 'call DevMode()'
-function! DevMode()
+"   new-window nvim -c 'call DevMode("#{pane_current_path}")'
+function! DevMode(...)
   if len(tabpagebuflist()) > 1 || !empty(expand("%"))
     tabnew
   endif
-  tcd ~/Projects
+  if exists("a:1") && isdirectory(a:1)
+    execute "tcd " .. a:1
+  endif
   NnnExplorer
 endfunction
 

@@ -220,12 +220,12 @@ if [[ $OSTYPE == darwin* ]]; then
   alias grep="ggrep --color=auto"
   alias bgrep="\grep --color=auto"
 
-  alias ls="gls --classify --color=auto --human-readable --literal"
+  alias ls="gls --classify=auto --color=auto --human-readable --literal"
   alias bls="\ls -FGh"
 else
   alias free="free -h"
   alias grep="grep --color=auto"
-  alias ls="ls --classify --color=auto --human-readable --literal"
+  alias ls="ls --classify=auto --color=auto --human-readable --literal"
 fi
 
 alias fd="fd --follow --no-ignore"
