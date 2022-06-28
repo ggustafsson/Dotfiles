@@ -1,6 +1,7 @@
 #!/usr/bin/env zsh
 
-# Description: Deletes various space hogging files/directories.
+# Description: Deletes various space hogging files/directories and unused
+# Docker container images.
 #
 # Usage: rmhogs
 #
@@ -16,7 +17,7 @@ remove_objects=(
   ~/Library/iTunes/iPhone\ Software\ Updates
 )
 
-echo "Deleting space hogging files."
+echo "Removing space hogging files..."
 
 for object in $remove_objects; do
   if [[ -a $object ]]; then
@@ -24,3 +25,6 @@ for object in $remove_objects; do
     rm -rfv $object
   fi
 done
+
+echo "\nRemoving dangling Docker images...\n"
+docker image prune --force
