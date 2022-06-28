@@ -96,7 +96,7 @@ nnoremap gB <Cmd>bprevious<CR>
 nnoremap gl <Cmd>call GoToLoc("next")<CR>
 nnoremap gL <Cmd>call GoToLoc("prev")<CR>
 
-" Mark relative jumps with j/k so CTRL-I and CTRL-O works.
+" Mark relative jumps with 'j' and 'k' so CTRL-I and CTRL-O works.
 nnoremap <expr>j (v:count > 1 ? "m'" .. v:count : "") .. "j"
 nnoremap <expr>k (v:count > 1 ? "m'" .. v:count : "") .. "k"
 

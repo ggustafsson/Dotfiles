@@ -22,6 +22,7 @@ if [[ -z $NNN_TMPFILE ]]; then
   local_tmpfile=1
 fi
 
+# less --clear-screen = Output on top of screen.
 LESS=${LESS}c nnn $*
 
 if [[ -f $NNN_TMPFILE ]]; then
