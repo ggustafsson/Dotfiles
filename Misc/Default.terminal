@@ -404,7 +404,7 @@
 	<key>BlinkText</key>
 	<true/>
 	<key>CursorBlink</key>
-	<true/>
+	<false/>
 	<key>CursorColor</key>
 	<data>
 	YnBsaXN0MDDUAQIDBAUGBwpYJHZlcnNpb25ZJGFyY2hpdmVyVCR0b3BYJG9iamVjdHMS
