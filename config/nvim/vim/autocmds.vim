@@ -16,9 +16,9 @@ augroup Main
     \   setlocal omnifunc=syntaxcomplete#Complete |
     \ endif
 
-  autocmd BufRead,BufNewFile gitconfig          setlocal filetype=gitconfig
+  autocmd BufRead,BufNewFile gitconfig*         setlocal filetype=gitconfig
+  autocmd BufRead,BufNewFile */{,.}ssh/config*  setlocal filetype=sshconfig
   autocmd BufRead,BufNewFile */Ansiblebot/*.yml setlocal filetype=yaml.ansible
-  autocmd BufRead,BufNewFile */ssh/config       setlocal filetype=sshconfig
   autocmd BufRead,BufNewFile */yamllint/config  setlocal filetype=yaml
 
   autocmd FileType gitcommit
