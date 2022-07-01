@@ -5,7 +5,7 @@ command! -nargs=1 S let @/ = <q-args> | normal n " Same as / in normal mode.
 function! Bdelete()
   bnext
   try
-    bdelete #
+    bdelete # " FIXME: Replace # with specific buffer to avoid issues.
   catch /:E516:/ " E516: No buffers were deleted
     bdelete
   endtry
