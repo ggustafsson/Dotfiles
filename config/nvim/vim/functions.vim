@@ -3,9 +3,11 @@ command! -nargs=1 S let @/ = <q-args> | normal n " Same as / in normal mode.
 
 " Go to next buffer and then close previous buffer.
 function! Bdelete()
+  let buf = bufnr()
   bnext
   try
-    bdelete # " FIXME: Replace # with specific buffer to avoid issues.
+    " Unload specific buffer instead of # to avoid issues with some plugins.
+    execute "bdelete " .. buf
   catch /:E516:/ " E516: No buffers were deleted
     bdelete
   endtry
