@@ -1,3 +1,5 @@
+let g:mapleader = ","
+
 if has("mac")
   nnoremap <Leader>fi :silent !open %:p:h<CR>
   nnoremap <Leader>op :silent !open %<CR>

@@ -3,17 +3,17 @@ if vim.g.vscode then
 end
 
 vim.cmd [[
-  source ~/.config/nvim/vim/settings.vim
-  source ~/.config/nvim/vim/mappings.vim
-  source ~/.config/nvim/vim/functions.vim
   source ~/.config/nvim/vim/autocmds.vim
+  source ~/.config/nvim/vim/functions.vim
+  source ~/.config/nvim/vim/mappings.vim
+  source ~/.config/nvim/vim/settings.vim
 ]]
 
+require "completions"
+require "language-servers"
+require "linters-formatters"
 require "lua-functions"
 require "plugins"
-require "language-servers"
-require "linters-fmt"
-require "completions"
 
 local local_lua = "~/.config/nvim/lua/local.lua"
 if file_exists(local_lua) then

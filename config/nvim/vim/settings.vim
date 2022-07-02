@@ -51,7 +51,6 @@ set splitright
 set wildignorecase
 set wildmode=longest,list
 
-let g:mapleader = ","
 let g:markdown_folding = 1
 
 let g:fzf_action = {"ctrl-s": "split", "ctrl-v": "vsplit", "ctrl-t": "tab split"}
