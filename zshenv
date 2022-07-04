@@ -26,17 +26,17 @@ else
   export LC_COLLATE=sv_SE.UTF-8
 fi
 
-export GOPATH=~/Golang
+export GOPATH=~/.golang
 export LANG=en_US.UTF-8
 
 if [[ $OSTYPE == darwin* ]]; then
   path=(
     ~/.local/bin(N)
+    ${GOPATH}/bin(N)
     ~/Projects/Kjell/src/macos(N)
     ~/Projects/Kjell/src(N)
     ~/Projects/Pyttipanna/src/macos(N)
     ~/Projects/Pyttipanna/src(N)
-    ${GOPATH}/bin(N)
     /opt/homebrew/opt/curl/bin(N)
     /opt/homebrew/opt/ruby/bin(N)
     /opt/homebrew/opt/python/libexec/bin(N)
@@ -52,11 +52,11 @@ if [[ $OSTYPE == darwin* ]]; then
 else
   path=(
     ~/.local/bin(N)
+    ${GOPATH}/bin(N)
     ~/Projects/Kjell/src/linux(N)
     ~/Projects/Kjell/src(N)
     ~/Projects/Pyttipanna/src/linux(N)
     ~/Projects/Pyttipanna/src(N)
-    ${GOPATH}/bin(N)
     /home/linuxbrew/.linuxbrew/bin(N)
     /home/linuxbrew/.linuxbrew/sbin(N)
     /usr/local/bin
