@@ -18,8 +18,8 @@ require("nnn").setup {
   },
   picker = {
     style = {
-      height = 1,
-      width = 1,
+      height = 0.8,
+      width = 0.8,
       border = "rounded",
     },
   },
