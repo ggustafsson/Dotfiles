@@ -212,7 +212,6 @@ PROMPT2='$(prompt_mode 2) ' # Used when entering multi-line commands.
 if [[ $OSTYPE == darwin* ]]; then
   alias beep="afplay /System/Library/Sounds/Glass.aiff"
   alias tim="caffeinate tim" # Give Tim a cup of Joe! :)
-  alias wifiscan="/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport --scan"
 
   alias copy="gsed -z '$ s/\n$//' | pbcopy" # sed removes last newline.
   alias paste="pbpaste"
@@ -231,13 +230,13 @@ fi
 alias fd="fd --follow --no-ignore"
 alias hogs="du -sk * | sort --numeric-sort --reverse | head -n 15"
 alias iip="curl icanhazip.com"
+alias mkdir="mkdir -pv"
 alias n3="source n3"
 alias nocol="sed 's/\x1B\[[0-9;]\{1,\}m//g'" # Strips all color codes.
 alias tree="tree --charset ascii"
 alias untar="tar -xvf"
 alias watch="watch --color --difference"
-alias xlines="tr '\n' '\0' | xargs -0 -o"
-alias zreload="source ~/.zshenv && source ~/.zshrc"
+alias xlns="tr '\n' '\0' | xargs -0 -o"
 
 alias cdb="source cdb"
 alias cdh="dirs -v | tac"
@@ -253,9 +252,6 @@ alias du="du -sh"
 
 alias history="history -i 1"
 alias hist="\history -i -25"
-
-alias mkcd="source mkcd"
-alias mkdir="mkdir -pv"
 
 alias la="ls -l --all"
 alias ll="ls -l"
