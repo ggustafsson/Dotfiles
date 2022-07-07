@@ -236,6 +236,7 @@ alias nocol="sed 's/\x1B\[[0-9;]\{1,\}m//g'" # Strips all color codes.
 alias tree="tree --charset ascii"
 alias untar="tar -xvf"
 alias watch="watch --color --difference"
+alias xlines="tr '\n' '\0' | xargs -0 -o"
 alias zreload="source ~/.zshenv && source ~/.zshrc"
 
 alias cdb="source cdb"
@@ -274,7 +275,6 @@ alias svtplay-dl="svtplay-dl --resume"
 alias youtube-dl="youtube-dl --continue --output '%(title)s.%(ext)s'"
 
 alias vim="nvim"
-alias vimbck="bck --edit"
 alias vimdiff="nvim -d"
 
 
