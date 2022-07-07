@@ -12,7 +12,6 @@ nnoremap <Leader>bd :Bdelete<CR>
 nnoremap <Leader>bu :FzfBuffers<CR>
 nnoremap <Leader>cc :call ColorColumn()<CR>
 nnoremap <Leader>cd :cd <C-R>=fnameescape(expand("%:p:h"))<CR>/
-nnoremap <Leader>de :call DevMode()<CR>
 nnoremap <Leader>do :call DocsMode()<CR>
 nnoremap <Leader>ed :edit <C-R>=fnameescape(expand("%:p:h"))<CR>/
 nnoremap <Leader>eh :edit ~/

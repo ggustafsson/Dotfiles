@@ -23,35 +23,13 @@ function! ColorColumn()
   endif
 endfunction
 
-" Start custom development mode. Used from Tmux with:
-"   new-window nvim -c 'call DevMode()'
-"   new-window nvim -c 'call DevMode("#{pane_current_path}")'
-function! DevMode(...)
-  if len(tabpagebuflist()) > 1 || !empty(expand("%"))
-    tabnew
-  endif
-  if exists("a:1") && isdirectory(a:1)
-    execute "tcd " .. a:1
-  endif
-  NnnExplorer
-endfunction
-
-" Start custom documentation editing mode. Used from Tmux with:
-"   new-window nvim -c 'call DocsMode()'
+" Start custom documentation mode. Used from Tmux with:
+"   popup -E -h 60% -w 60% view -c 'call DocsMode()'
 function! DocsMode()
   if len(tabpagebuflist()) > 1 || !empty(expand("%"))
     tabnew
   endif
   tcd ~/Documents/Text
-  NnnExplorer
-  wincmd w
-  FzfFiles
-endfunction
-
-" Start custom documentation viewing mode. Used from Tmux with:
-"   popup -E -h 60% -w 60% view -c 'call DocsView()'
-function! DocsView()
-  cd ~/Documents/Text
   FzfFiles
 endfunction
 
