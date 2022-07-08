@@ -213,7 +213,7 @@ if [[ $OSTYPE == darwin* ]]; then
   alias beep="afplay /System/Library/Sounds/Glass.aiff"
   alias tim="caffeinate tim" # Give Tim a cup of Joe! :)
 
-  alias copy="gsed -z '$ s/\n$//' | pbcopy" # sed removes last newline.
+  alias copy="pbcopy"
   alias paste="pbpaste"
 
   alias grep="ggrep --color=auto"
