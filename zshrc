@@ -211,10 +211,8 @@ PROMPT2='$(prompt_mode 2) ' # Used when entering multi-line commands.
 
 if [[ $OSTYPE == darwin* ]]; then
   alias beep="afplay /System/Library/Sounds/Glass.aiff"
+  alias put="pbpaste"
   alias tim="caffeinate tim" # Give Tim a cup of Joe! :)
-
-  alias copy="gsed -z '$ s/\n$//' | pbcopy" # sed removes last newline.
-  alias paste="pbpaste"
 
   alias grep="ggrep --color=auto"
   alias bgrep="\grep --color=auto"
@@ -237,6 +235,7 @@ alias tree="tree --charset ascii"
 alias untar="tar -xvf"
 alias watch="watch --color --difference"
 alias xlns="tr '\n' '\0' | xargs -0 -o"
+alias zreload="source ~/.zshenv && source ~/.zshrc"
 
 alias cdb="source cdb"
 alias cdh="dirs -v | tac"

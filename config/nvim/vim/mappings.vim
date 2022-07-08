@@ -4,6 +4,7 @@ if has("mac")
   nnoremap <Leader>fi :silent !open %:p:h<CR>
   nnoremap <Leader>op :silent !open %<CR>
   nnoremap <Leader>vs :silent !open -a "Visual Studio Code" %<CR>
+  nnoremap <Leader>ya :silent w !yank<CR>
 endif
 
 nnoremap <Leader>/  :FzfHistory/<CR>
@@ -12,7 +13,6 @@ nnoremap <Leader>bd :Bdelete<CR>
 nnoremap <Leader>bu :FzfBuffers<CR>
 nnoremap <Leader>cc :call ColorColumn()<CR>
 nnoremap <Leader>cd :cd <C-R>=fnameescape(expand("%:p:h"))<CR>/
-nnoremap <Leader>cp :%y*<CR>
 nnoremap <Leader>do :call DocsMode()<CR>
 nnoremap <Leader>ed :edit <C-R>=fnameescape(expand("%:p:h"))<CR>/
 nnoremap <Leader>eh :edit ~/
