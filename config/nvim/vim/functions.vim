@@ -148,15 +148,19 @@ endfunction
 command! -nargs=0 Run call Run()
 
 " Display syntax group used at cursor position.
-function! SyntaxGroup()
+function! SyntaxInfo()
   let syntax_id = synID(line("."), col("."), 1)
   let syntax_name = synIDattr(syntax_id, "name")
   let syntax_trans = synIDattr(synIDtrans(syntax_id), "name")
 
-  echo syntax_name .. " -> " .. syntax_trans
-  execute "highlight " .. syntax_trans
+  if !empty(syntax_name)
+    echo syntax_name .. " -> " .. syntax_trans
+    execute "highlight " .. syntax_trans
+  else
+    echo "No syntax info found!"
+  endif
 endfunction
-command! -nargs=0 SyntaxGroup call SyntaxGroup()
+command! -nargs=0 SyntaxInfo call SyntaxInfo()
 
 " 1:.vimrc  2:Xresources  3:[No Name]        X
 function TabLine()
