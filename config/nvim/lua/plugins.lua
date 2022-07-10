@@ -34,7 +34,6 @@ require("nnn").setup {
   replace_netrw = "picker",
 }
 
-vim.g.matchup_matchparen_offscreen = { method = "status_manual" }
 require("nvim-treesitter.configs").setup {
   ensure_installed = {
     "bash",
@@ -59,9 +58,5 @@ require("nvim-treesitter.configs").setup {
      disable = {
        "yaml",
      },
-  },
-
-  matchup = {
-    enable = true,
   },
 }
