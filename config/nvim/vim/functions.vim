@@ -1,19 +1,6 @@
 command! -nargs=* -complete=help Help vertical help <args>
 command! -nargs=1 S let @/ = <q-args> | normal n " Same as / in normal mode.
 
-" Go to next buffer and then close previous buffer.
-function! Bdelete()
-  let buf = bufnr()
-  bnext
-  try
-    " Unload specific buffer instead of # to avoid issues with some plugins.
-    execute "bdelete " .. buf
-  catch /:E516:/ " E516: No buffers were deleted
-    bdelete
-  endtry
-endfunction
-command! -nargs=0 Bdelete call Bdelete()
-
 " Toggle 'colorcolumn' setting on and off.
 function! ColorColumn()
   if empty(&colorcolumn)
