@@ -3,7 +3,7 @@ umask 077
 
 
 if [[ $OSTYPE == darwin* ]]; then
-  export HOMEBREW_CASK_OPTS="--appdir=~/Applications"
+  export HOMEBREW_CASK_OPTS="--appdir=$HOME/Applications"
 
   # XXX: Swedish sorting order under macOS is wrong because of broken locale
   # files, picking the least messed up option.
@@ -26,13 +26,13 @@ else
   export LC_COLLATE=sv_SE.UTF-8
 fi
 
-export GOPATH=~/.golang
+export GOPATH=$HOME/.golang
 export LANG=en_US.UTF-8
 
 if [[ $OSTYPE == darwin* ]]; then
   path=(
     ~/.local/bin(N)
-    ${GOPATH}/bin(N)
+    $GOPATH/bin(N)
     ~/Projects/Kjell/src/macos(N)
     ~/Projects/Kjell/src(N)
     ~/Projects/Pyttipanna/src/macos(N)
@@ -52,7 +52,7 @@ if [[ $OSTYPE == darwin* ]]; then
 else
   path=(
     ~/.local/bin(N)
-    ${GOPATH}/bin(N)
+    $GOPATH/bin(N)
     ~/Projects/Kjell/src/linux(N)
     ~/Projects/Kjell/src(N)
     ~/Projects/Pyttipanna/src/linux(N)

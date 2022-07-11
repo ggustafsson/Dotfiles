@@ -16,10 +16,10 @@ export MANPAGER='nvim +Man!'
 
 export NNN_COLORS=#0e0e0e0e
 export NNN_FCOLORS=0b0b0c0a00000e08090b0d09 # Same as LS_COLORS.
-export NNN_OPTS=AUdo # No auto-enter, user:group, detail mode & open on Enter.
+export NNN_OPTS=AUdo # !auto-enter, user:group, detail mode & !open with l
 export NNN_PLUG='b:!bck --nnn*;y:-!yankp --nnn*'
 
-HISTFILE=~/.zhistory
+HISTFILE=$HOME/.zhistory
 HISTSIZE=9999
 SAVEHIST=$HISTSIZE
 
@@ -74,7 +74,7 @@ for mode in viopp visual; do
     bindkey -M $mode $seq select-quoted
   done
   # a( i( a) i) a[ i[ a] i] a{ i{ a} i} a< i< a> i>
-  for seq in {a,i}${(s..)^:-'()[]{}<>'}; do
+  for seq in {a,i}{\(,\),\[,\],\{,\},\<,\>}; do
     bindkey -M $mode $seq select-bracketed
   done
 done
@@ -143,11 +143,11 @@ zle -N zle-keymap-select
 # Display hostname according to various rules.
 function prompt_host {
   if [[ $HOST == Onett ]]; then
-    echo "🏠 %B%F{green}${HOST}%f%b "
+    echo "🏠 %B%F{green}$HOST%f%b "
   elif grep -qs docker /proc/1/cgroup; then
-    echo "🐳 %B%F{cyan}${HOST}%f%b "
+    echo "🐳 %B%F{cyan}$HOST%f%b "
   else
-    echo "💀 %B%F{yellow}${HOST}%f%b "
+    echo "💀 %B%F{yellow}$HOST%f%b "
   fi
 }
 
@@ -164,9 +164,9 @@ function prompt_git {
 
   branch=$(git branch --show-current 2> /dev/null)
   if [[ -n $(git status --porcelain 2> /dev/null) ]]; then
-    echo " 📦 %B%F{red}${branch}%f%b"
+    echo " 📦 %B%F{red}$branch%f%b"
   else
-    echo " 📦 %B%F{green}${branch}%f%b"
+    echo " 📦 %B%F{green}$branch%f%b"
   fi
 }
 
@@ -193,7 +193,7 @@ function prompt_mode {
 
     # if $? == true then green
     # if $? == false then red
-    echo "%B%(?.%F{green}.%F{red})${char}%f%b"
+    echo "%B%(?.%F{green}.%F{red})$char%f%b"
   fi
 }
 
