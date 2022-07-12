@@ -85,11 +85,10 @@ nnoremap <Leader>Y  "*y$
 nnoremap <Leader>yy "*yy
 vnoremap <Leader>y  "*y
 
+" Display full path to current file.
 nnoremap <C-G> 1<C-G>
 
-nnoremap <C-W>C <Cmd>tabclose<CR>
-nnoremap <C-W>t <Cmd>tabnew<CR>
-
+" Disable to avoid unintended triggering.
 nnoremap Q <Nop>
 
 " These key combos are unused and similar to 'gt' and 'gT' for tabs.
@@ -102,6 +101,7 @@ nnoremap gL <Cmd>call GoToLoc("prev")<CR>
 nnoremap <expr>j (v:count > 1 ? "m'" .. v:count : "") .. "j"
 nnoremap <expr>k (v:count > 1 ? "m'" .. v:count : "") .. "k"
 
+" Default binding with nohlsearch added.
 vnoremap <C-L> <Esc><Cmd>nohlsearch<Bar>diffupdate<CR><C-L>
 
 inoremap jj <Esc>
@@ -115,4 +115,5 @@ inoremap <C-X><C-L> <Plug>(fzf-complete-line)
 xnoremap il ^og_
 onoremap il <Cmd>normal vil<CR>
 
+" Make Nvim behave like everything else. Ctrl-E, Ctrl-U etc already works.
 cnoremap <C-A> <Home>

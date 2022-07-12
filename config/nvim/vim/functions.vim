@@ -13,9 +13,6 @@ endfunction
 " Start custom documentation mode. Used from Tmux with:
 "   popup -E -h 60% -w 60% view -c 'call DocsMode()'
 function! DocsMode()
-  if len(tabpagebuflist()) > 1 || !empty(expand("%"))
-    tabnew
-  endif
   tcd ~/Documents/Text
   FzfFiles
 endfunction
@@ -148,34 +145,6 @@ function! SyntaxInfo()
   endif
 endfunction
 command! -nargs=0 SyntaxInfo call SyntaxInfo()
-
-" 1:.vimrc  2:Xresources  3:[No Name]        X
-function TabLine()
-  let string = ""
-  for i in range(tabpagenr("$"))
-    let tabnr = i + 1
-    let string .= "%" .. (tabnr) .. "T" " Set tab number for mouse clicks.
-    if tabnr == tabpagenr()
-      let string .= "%#TabLineSel#"
-    else
-      let string .= "%#TabLine#"
-    endif
-    let buflist = tabpagebuflist(tabnr)
-    let winnr = tabpagewinnr(tabnr)
-    let file = bufname(buflist[winnr - 1])
-    if file == ""
-      let file = "[No Name]"
-    else
-      let file = fnamemodify(file, ":p:t")
-    endif
-    let string .= " " .. tabnr .. ":" .. file .. " "
-  endfor
-  let string .= "%#TabLineFill#%T"
-  if tabpagenr("$") > 1
-    let string .= "%=%#TabLine#%999X X "
-  endif
-  return string
-endfunction
 
 " Insert template file above cursor and perform several substitutions.
 "

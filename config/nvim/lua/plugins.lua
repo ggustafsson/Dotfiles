@@ -28,7 +28,6 @@ require("nnn").setup {
   },
   mappings = {
     { "<C-S>", builtin.open_in_split },
-    { "<C-T>", builtin.open_in_tab },
     { "<C-V>", builtin.open_in_vsplit },
   },
   replace_netrw = "picker",
