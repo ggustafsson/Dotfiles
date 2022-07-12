@@ -42,5 +42,5 @@ augroup Main
     \ setlocal linebreak
 
   autocmd FileType yaml,yaml.ansible
-    \ setlocal indentkeys-=0#
+    \ setlocal indentkeys-=0# " Disable auto-indenting comments.
 augroup END

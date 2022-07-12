@@ -1,4 +1,4 @@
-" Highlight keywords FIXME TODO XXX like usual.
+" Highlight keywords FIXME TODO XXX like usual in ansible.cfg etc.
 syntax case match
 syn clear CfgComment
 syn match CfgComment "#.*"    contains=CfgTodo,@Spell
