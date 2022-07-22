@@ -20,8 +20,10 @@ require("nvim-treesitter.configs").setup {
     "go",
     "html",
     "json",
+    "lua",
     "python",
     "ruby",
+    "rust",
     "yaml",
   },
 
