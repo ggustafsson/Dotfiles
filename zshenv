@@ -32,6 +32,7 @@ export LANG=en_US.UTF-8
 if [[ $OSTYPE == darwin* ]]; then
   path=(
     ~/.local/bin(N)
+    ~/.cargo/bin(N)
     $GOPATH/bin(N)
     ~/Projects/Kjell/src/macos(N)
     ~/Projects/Kjell/src(N)
@@ -52,6 +53,7 @@ if [[ $OSTYPE == darwin* ]]; then
 else
   path=(
     ~/.local/bin(N)
+    ~/.cargo/bin(N)
     $GOPATH/bin(N)
     ~/Projects/Kjell/src/linux(N)
     ~/Projects/Kjell/src(N)
