@@ -102,7 +102,7 @@ function! Pop(cmd)
   if !empty($TMUX)
     let cwd = getcwd()
     let tmux = "tmux popup -d '" .. cwd .. "'"
-    execute "silent !" .. tmux .. " " .. a:cmd
+    execute "silent !" .. tmux .. " '" .. a:cmd .. "'"
   else
     echo "Pop only works inside of Tmux!"
   endif

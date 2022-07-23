@@ -41,6 +41,9 @@ augroup Main
   autocmd FileType markdown,text
     \ setlocal linebreak
 
+  autocmd FileType rust
+    \ let b:runprg = "rustc -o /tmp/rustc-output '%' && /tmp/rustc-output" |
+
   autocmd FileType yaml,yaml.ansible
     \ setlocal indentkeys-=0# " Disable auto-indenting comments.
 augroup END
