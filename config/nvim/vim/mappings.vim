@@ -9,16 +9,19 @@ endif
 
 nnoremap <Leader>/  :FzfHistory/<CR>
 nnoremap <Leader>:  :FzfHistory:<CR>
+nnoremap <Leader>bd :bdelete<CR>
 nnoremap <Leader>bu :FzfBuffers<CR>
 nnoremap <Leader>cc :call ColorColumn()<CR>
-nnoremap <Leader>cd :cd <C-R>=fnameescape(expand("%:p:h"))<CR>/
+nnoremap <Leader>cd :cd <C-R>=getcwd()<CR>/
 nnoremap <Leader>do :call DocsMode()<CR>
 nnoremap <Leader>ed :edit <C-R>=fnameescape(expand("%:p:h"))<CR>/
-nnoremap <Leader>ff :FzfFiles<CR>
+nnoremap <Leader>ef :FzfFiles<CR>
+nnoremap <Leader>eh :edit ~/
 nnoremap <Leader>ft :FzfFiletypes<CR>
 nnoremap <Leader>he :FzfHelptags<CR>
 nnoremap <Leader>hi :FzfHistory<CR>
 nnoremap <Leader>li :setlocal list! list?<CR>
+nnoremap <Leader>lo :silent! lwindow \| cwindow<CR>
 nnoremap <Leader>ma :FzfMarks<CR>
 nnoremap <Leader>nu :setlocal number! relativenumber!<CR>
 nnoremap <Leader>rg :FzfRg<Space>
@@ -45,6 +48,9 @@ nnoremap <Leader>xx :FzfRg \b(FIXME\|NOTE\|TODO\|XXX)(:\|$\| )<CR>
 nnoremap <Leader>cl :%!column -t \| sed 's/\( *\) /\1/g'<CR>
 vnoremap <Leader>cl :!column -t  \| sed 's/\( *\) /\1/g'<CR>
 
+nnoremap <Leader>ne :enew<CR>
+vnoremap <Leader>ne y:enew<CR>PGdd
+
 nnoremap <Leader>re :%s++gc<Left><Left><Left>
 vnoremap <Leader>re :s+\%V+gc<Left><Left><Left>
 
@@ -63,11 +69,14 @@ vnoremap <Leader>y  "*y
 " Display full path to current file.
 nnoremap <C-G> 1<C-G>
 
-nnoremap <C-J> <Cmd>call GoToLoc("next")<CR>
-nnoremap <C-K> <Cmd>call GoToLoc("prev")<CR>
-
 " Disable to avoid unintended triggering.
 nnoremap Q <Nop>
+
+" These key combos are unused and similar to 'gt' and 'gT' for tabs.
+nnoremap gb <Cmd>bnext<CR>
+nnoremap gB <Cmd>bprevious<CR>
+nnoremap gl <Cmd>call GoToLoc("next")<CR>
+nnoremap gL <Cmd>call GoToLoc("prev")<CR>
 
 " Mark relative jumps with 'j' and 'k' so CTRL-I and CTRL-O works.
 nnoremap <expr>j (v:count > 1 ? "m'" .. v:count : "") .. "j"
