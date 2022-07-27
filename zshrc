@@ -223,7 +223,10 @@ if [[ $OSTYPE == darwin* ]]; then
 else
   alias free="free -h"
   alias grep="grep --color=auto"
-  alias ls="ls --classify=auto --color=auto --human-readable --literal"
+
+  # XXX: Coreutils is outdated on Ubuntu 22.04 LTS.
+  #alias ls="ls --classify=auto --color=auto --human-readable --literal"
+  alias ls="ls --classify --color=auto --human-readable --literal"
 fi
 
 alias fd="fd --follow --no-ignore"
