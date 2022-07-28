@@ -13,7 +13,7 @@ nnoremap <Leader>bd :bdelete<CR>
 nnoremap <Leader>bu :FzfBuffers<CR>
 nnoremap <Leader>cc :call ColorColumn()<CR>
 nnoremap <Leader>cd :cd <C-R>=getcwd()<CR>/
-nnoremap <Leader>do :call DocsMode()<CR>
+nnoremap <Leader>do :edit ~/Documents/Text<CR>
 nnoremap <Leader>ed :edit <C-R>=fnameescape(expand("%:p:h"))<CR>/
 nnoremap <Leader>eh :edit ~/
 nnoremap <Leader>fd :FzfFiles<CR>
@@ -36,8 +36,6 @@ nnoremap <Leader>t2 :setlocal noexpandtab shiftwidth=2 softtabstop=0 tabstop=2<C
 nnoremap <Leader>t4 :setlocal noexpandtab shiftwidth=4 softtabstop=0 tabstop=4<CR>
 nnoremap <Leader>t8 :setlocal noexpandtab shiftwidth=8 softtabstop=0 tabstop=8<CR>
 nnoremap <Leader>te :Template ~/.config/nvim/templates/
-nnoremap <Leader>tm :edit ~/Documents/Text/Temporary.txt<CR>
-nnoremap <Leader>to :edit ~/Documents/Text/Todo.md<CR>
 nnoremap <Leader>tw :setlocal textwidth=79
 nnoremap <Leader>un :call UndoAll()<CR>
 nnoremap <Leader>wi :FzfWindows<CR>

@@ -10,13 +10,6 @@ function! ColorColumn()
   endif
 endfunction
 
-" Start custom documentation mode. Used from Tmux with:
-"   popup -E -h 60% -w 60% view -c 'call DocsMode()'
-function! DocsMode()
-  tcd ~/Documents/Text
-  FzfFiles
-endfunction
-
 " Change file encoding plus file format, convert tabs to spaces and remove
 " trailing whitespaces.
 function! FixFile(spaces)
