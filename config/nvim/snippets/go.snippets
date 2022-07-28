@@ -2,22 +2,26 @@ snippet for
 	for $1 {
 		$2
 	}
-
 snippet func
-	func $1($2) {
-		$3
+	func $1($2) $3 {
+		$4
 	}
-
+snippet func-anon
+	func($1) {
+		$2
+	}($3)
 snippet if
 	if $1 {
 		$2
 	}
-
 snippet if-err
 	if err != nil {
 		$1
 	}
-
+snippet struct
+	type $1 struct {
+		$2
+	}
 snippet switch
 	switch $1 {
 	case "$2":
@@ -27,7 +31,6 @@ snippet switch
 	default:
 		$6
 	}
-
 snippet type
 	type $1 {
 		$2

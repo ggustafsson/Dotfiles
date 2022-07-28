@@ -5,12 +5,10 @@ snippet apt
 	      - $2
 	    state: latest
 	  become: true
-
 snippet command
 	- name: $1
 	  ansible.builtin.command:
 	    cmd: $2
-
 snippet copy
 	- name: $1
 	  ansible.builtin.copy:
@@ -19,7 +17,6 @@ snippet copy
 	    owner: $4
 	    group: $5
 	    mode: $6
-
 snippet directory
 	- name: $1
 	  ansible.builtin.file:
@@ -28,7 +25,6 @@ snippet directory
 	    owner: $3
 	    group: $4
 	    mode: $5
-
 snippet directory-loop
 	- name: $1
 	  ansible.builtin.file:
@@ -39,7 +35,6 @@ snippet directory-loop
 	    mode: $5
 	  loop:
 	    - $6
-
 snippet file
 	- name: $1
 	  ansible.builtin.file:
@@ -47,7 +42,6 @@ snippet file
 	    owner: $3
 	    group: $4
 	    mode: $5
-
 snippet file-loop
 	- name: $1
 	  ansible.builtin.file:
@@ -57,13 +51,11 @@ snippet file-loop
 	    mode: $5
 	  loop:
 	    - $6
-
 snippet git
 	- name: $1
 	  ansible.builtin.git:
 	    repo: $2
 	    dest: $3
-
 snippet git-loop
 	- name: $1
 	  ansible.builtin.git:
@@ -72,14 +64,12 @@ snippet git-loop
 	  loop:
 	    - repo: $3
 	      dest: $4
-
 snippet homebrew
 	- name: $1
 	  community.general.homebrew:
 	    name:
 	      - $2
 	    state: latest
-
 snippet homebrew-cask
 	- name: $1
 	  community.general.homebrew_cask:
@@ -87,39 +77,34 @@ snippet homebrew-cask
 	      - $2
 	    state: latest
 	    install_options: appdir=~/Applications
-
 snippet pip
 	- name: $1
 	  ansible.builtin.pip:
 	    name:
 	      - $2
 	    state: latest
-
+	    executable: "{{ pip_exec }}"
 snippet service
 	- name: $1
 	  ansible.builtin.service:
 	    name: $2
 	    state: $3
 	  become: true
-
 snippet shell
 	- name: $1
 	  ansible.builtin.shell:
 	    cmd: $2
-
 snippet stat
 	- name: $1
 	  ansible.builtin.stat:
 	    path: $2
 	  register: $3
-
 snippet symlink
 	- name: $1
 	  ansible.builtin.file:
 	    src: $2
 	    dest: $3
 	    state: link
-
 snippet symlink-loop
 	- name: $1
 	  ansible.builtin.file:
@@ -129,7 +114,6 @@ snippet symlink-loop
 	  loop:
 	    - src: $4
 	      dest: $5
-
 snippet template
 	- name: $1
 	  ansible.builtin.template:
@@ -138,14 +122,12 @@ snippet template
 	    owner: $4
 	    group: $5
 	    mode: $6
-
 snippet url
 	- name: $1
 	  ansible.builtin.get_url:
 	    url: $2
 	    dest: $3
 	    mode: $4
-
 snippet url-loop
 	- name: $1
 	  ansible.builtin.get_url:
