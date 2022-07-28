@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 
-"""1
+"""X
 
-2
+X
 
 Usage: #FILE#
 
@@ -12,7 +12,7 @@ License: BSD 3-Clause
 
 
 def main():
-    #3
+    X
 
 
 if __name__ == "__main__":

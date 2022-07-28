@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# Description: 1
+# Description: X
 #
 # Usage: #FILE#
 #

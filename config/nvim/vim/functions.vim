@@ -171,7 +171,8 @@ function! Template(file)
   execute "%s/#DATE#/" .. strftime("%Y-%m-%d") .. "/ge"
   normal! `l
 endfunction
-command! -nargs=1 -complete=file Template call Template(<q-args>)
+command! -nargs=1 -complete=file Template call Template(<q-args>) |
+  \ execute "normal /\\<X\\>\<CR>"
 
 " Undo all changes since last file save. Unsaved buffers are emptied.
 function! UndoAll()
