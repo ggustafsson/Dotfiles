@@ -9,7 +9,7 @@ set confirm
 set guicursor=
 set inccommand=
 set list
-set mouse=nvi " Why the heck would you want command-line mode here?
+set mouse=nvi " XXX: https://github.com/neovim/neovim/pull/19290#issuecomment-1186515224
 set nofoldenable
 set nowrap
 set smartindent
