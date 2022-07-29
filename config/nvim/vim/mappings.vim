@@ -13,7 +13,7 @@ nnoremap <Leader>bd :bdelete<CR>
 nnoremap <Leader>bu :FzfBuffers<CR>
 nnoremap <Leader>cc :call ColorColumn()<CR>
 nnoremap <Leader>cd :cd <C-R>=getcwd()<CR>/
-nnoremap <Leader>do :edit ~/Documents/Text<CR>
+nnoremap <Leader>do :FzfFiles ~/Documents/Text<CR>
 nnoremap <Leader>ed :edit <C-R>=fnameescape(expand("%:p:h"))<CR>/
 nnoremap <Leader>eh :edit ~/
 nnoremap <Leader>fd :FzfFiles<CR>

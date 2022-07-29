@@ -15,8 +15,8 @@ export PAGER=less
 export MANPAGER='nvim +Man!'
 
 export NNN_COLORS=#0e0e0e0e
-export NNN_FCOLORS=0b0b0c0a00000e08090b0d09 # Same as LS_COLORS.
-export NNN_OPTS=AUdo # !auto-enter, user:group, detail mode & !open with l
+export NNN_FCOLORS=0b0b0c0a00000e08090b0d09 # Same as "LS_COLORS".
+export NNN_OPTS=ARUdo # See "nnn -h" for details.
 export NNN_PLUG='b:!bck --nnn*;y:-!yankp --nnn*'
 export NNN_TMPFILE=$HOME/.config/nnn/.lastd
 
