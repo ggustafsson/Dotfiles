@@ -25,7 +25,7 @@
 # accept all cookies if desired.  The default is "FALSE" which will
 # prompt for each cookie.  Set accept_all_cookies to "TRUE" to accept
 # all cookies.
-accept_all_cookies=off
+accept_all_cookies=on
 
 # anonftp_password allows the user to tell Lynx to use the personal
 # email address as the password for anonymous ftp.  If no value is given,
