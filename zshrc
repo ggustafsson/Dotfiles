@@ -143,17 +143,17 @@ zle -N zle-keymap-select
 # Display hostname according to various rules.
 function prompt_host {
   if [[ $HOST == Onett ]]; then
-    echo "🏠 %B%F{green}$HOST%f%b "
+    echo "🏠 %B%F{green}$HOST%f%b"
   elif grep -qs docker /proc/1/cgroup; then
-    echo "🐳 %B%F{cyan}$HOST%f%b "
+    echo "🐳 %B%F{cyan}$HOST%f%b"
   else
-    echo "💀 %B%F{yellow}$HOST%f%b "
+    echo "💀 %B%F{yellow}$HOST%f%b"
   fi
 }
 
 # Display current path but limit depth to two levels.
 function prompt_path {
-  echo "📁 %B%F{blue}%2d%f%b"
+  echo " 📁 %B%F{blue}%2d%f%b"
 }
 
 # Display Git branch name. State is indicated through color.
