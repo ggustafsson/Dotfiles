@@ -93,8 +93,7 @@ command! -nargs=1 Play call Play(<q-args>)
 " Execute shell command inside of Tmux popup window.
 function! Pop(cmd)
   if !empty($TMUX)
-    let cwd = getcwd()
-    let tmux = "tmux popup -d '" .. cwd .. "'"
+    let tmux = "tmux popup -d '" .. getcwd() .. "'"
     execute "silent !" .. tmux .. " '" .. a:cmd .. "'"
   else
     echo "Pop only works inside of Tmux!"
@@ -104,8 +103,8 @@ command! -nargs=* Pop call Pop(<q-args>)
 
 " Execute current file. Use command in variable 'b:runprg' or run file as-is.
 function! Run()
-  let file = expand("%")
-  if empty(file)
+  " Check if buffer is named or not.
+  if empty(expand("%"))
     echo "Nothing to run!"
     return
   endif
@@ -113,7 +112,7 @@ function! Run()
   if exists("b:runprg")
     let cmd = b:runprg
   else
-    let cmd = "%:p"
+    let cmd = "%:p" " Full path to current file.
   endif
 
   if !empty($TMUX)
@@ -125,6 +124,7 @@ endfunction
 command! -nargs=0 Run call Run()
 
 " Display syntax group used at cursor position.
+" XXX: Does not work on filetypes with treesitter enabled.
 function! SyntaxInfo()
   let syntax_id = synID(line("."), col("."), 1)
   let syntax_name = synIDattr(syntax_id, "name")
@@ -141,21 +141,19 @@ command! -nargs=0 SyntaxInfo call SyntaxInfo()
 
 " Insert template file above cursor and perform several substitutions.
 "
-" '#FILE#' -> 'Filename'
-" '#YEAR#' -> 'YYYY'
-" '#DATE#' -> 'YYYY-MM-DD'
+" #FILE# -> Filename
+" #YEAR# -> YYYY
+" #DATE# -> YYYY-MM-DD
 function! Template(file)
-  let name = expand("%:t:r") " Filename without extension.
-  let lines = line("$")
-  let text = getline(".")
-
-  if lines == 1 && empty(text)
+  " Check number of lines + content of current line.
+  if line("$") == 1 && empty(getline("."))
     execute "read " .. fnameescape(a:file)
     1delete
   else
     execute ".-read " .. fnameescape(a:file)
   endif
 
+  let name = expand("%:t:r") " Filename without extension.
   normal! ml
   if !empty(name)
     execute "%s/#FILE#/" .. name .. "/ge"
@@ -169,8 +167,8 @@ command! -nargs=1 -complete=file Template call Template(<q-args>) |
 
 " Undo all changes since last file save. Unsaved buffers are emptied.
 function! UndoAll()
-  let file = expand("%")
-  if !empty(file)
+  " Check if buffer is named or not.
+  if !empty(expand("%"))
     edit!
   else
     earlier 1f
