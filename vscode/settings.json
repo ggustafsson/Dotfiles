@@ -2,7 +2,7 @@
     "editor.bracketPairColorization.enabled": false,
 
     "editor.fontFamily": "SF Mono",
-    "editor.fontSize": 12,
+    "editor.fontSize": 13,
 
     "editor.lineNumbers": "relative",
     "editor.renderFinalNewline": false,
@@ -14,9 +14,7 @@
     "editor.scrollBeyondLastLine": false,
 
     "markdown.preview.fontSize": 13,
-    "[markdown]": {
-        "editor.wordWrap": "off",
-    },
+    "vscode-neovim.neovimExecutablePaths.darwin": "/opt/homebrew/bin/nvim",
 
     "plantuml.render": "PlantUMLServer",
     "plantuml.server": "http://127.0.0.1:8080",
@@ -25,6 +23,4 @@
 
     "redhat.telemetry.enabled": false,
     "telemetry.telemetryLevel": "off",
-
-    "vscode-neovim.neovimExecutablePaths.darwin": "/opt/homebrew/bin/nvim",
 }
