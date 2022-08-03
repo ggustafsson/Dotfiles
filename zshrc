@@ -252,8 +252,8 @@ alias rm="rm -v"
 alias df="df -h"
 alias du="du -sh"
 
-alias history="history -i 1"
 alias hist="\history -i -25"
+alias history="history -i 1"
 
 alias la="ls -l --all"
 alias ll="ls -l"
@@ -273,7 +273,9 @@ alias svtplay-dl="svtplay-dl --resume"
 alias youtube-dl="youtube-dl --continue --output '%(title)s.%(ext)s'"
 
 alias vim="nvim"
+alias vimd="nvim -d"
 alias vimdiff="nvim -d"
+alias docs="nvim -c 'FzfFiles ~/Documents/Text'"
 
 
 if [[ -d ~/.local/share/fzf/shell ]]; then
