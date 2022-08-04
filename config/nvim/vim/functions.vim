@@ -163,7 +163,7 @@ function! Template(file)
   normal! `l
 endfunction
 command! -nargs=1 -complete=file Template call Template(<q-args>) |
-  \ execute "normal /\\<X\\>\<CR>"
+  \ execute "silent! normal /\\<X\\>\<CR>"
 
 " Undo all changes since last file save. Unsaved buffers are emptied.
 function! UndoAll()

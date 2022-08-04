@@ -212,6 +212,7 @@ PROMPT2='$(prompt_mode 2) ' # Used when entering multi-line commands.
 if [[ $OSTYPE == darwin* ]]; then
   alias beep="afplay /System/Library/Sounds/Glass.aiff"
   alias put="pbpaste"
+  alias stat="stat -x"
   alias tim="caffeinate tim" # Give Tim a cup of Joe! :)
 
   alias grep="ggrep --color=auto"

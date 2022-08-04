@@ -25,6 +25,7 @@ nnoremap <Leader>hi :FzfHistory<CR>
 nnoremap <Leader>li :setlocal list! list?<CR>
 nnoremap <Leader>lo :silent! lwindow \| cwindow<CR>
 nnoremap <Leader>ma :FzfMarks<CR>
+nnoremap <Leader>no :edit ~/Documents/Text/Notes/<C-R>=strftime("%F")<CR>\ -\ .md<Left><Left><Left>
 nnoremap <Leader>nu :setlocal number! relativenumber!<CR>
 nnoremap <Leader>rg :FzfRg<Space>
 nnoremap <Leader>rs :source ~/.local/share/nvim/session.vim<CR>
