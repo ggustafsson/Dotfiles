@@ -17,8 +17,6 @@ for _, lsp in ipairs(servers) do
   }
 end
 
-lspconfig.ansiblels.setup {}
-lspconfig.bashls.setup {}
 lspconfig.gopls.setup {
   -- Disable formatting from LSP so null-ls can run goimports instead.
   on_attach = function(client)
@@ -26,8 +24,6 @@ lspconfig.gopls.setup {
     client.resolved_capabilities.document_range_formatting = false
   end,
 }
-lspconfig.pyright.setup {}
-lspconfig.yamlls.setup {}
 
 local on_attach = function(client, bufnr)
   vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
