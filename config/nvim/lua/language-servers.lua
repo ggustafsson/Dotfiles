@@ -5,8 +5,8 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
 
 local servers = {
-  "ansiblels",
-  "bashls",
+  "ansiblels", -- Includes "ansible-lint".
+  "bashls",    -- Includes "ShellCheck".
   "gopls",
   "pyright",
   "rust_analyzer",
