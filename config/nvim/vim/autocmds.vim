@@ -21,8 +21,8 @@ augroup Main
   autocmd BufRead,BufNewFile */Ansiblebot/*.yml setlocal filetype=yaml.ansible
   autocmd BufRead,BufNewFile */yamllint/config  setlocal filetype=yaml
 
+  autocmd BufNewFile */Text/Brain/*  Template ~/.config/nvim/templates/Note.md
   autocmd BufNewFile */Text/Cheats/* Template ~/.config/nvim/templates/Cheat.md
-  autocmd BufNewFile */Text/Notes/*  Template ~/.config/nvim/templates/Note.md
 
   autocmd FileType gitcommit
     \ setlocal nolist spell
