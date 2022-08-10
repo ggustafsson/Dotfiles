@@ -277,7 +277,6 @@ alias youtube-dl="youtube-dl --continue --output '%(title)s.%(ext)s'"
 alias vim="nvim"
 alias vimd="nvim -d"
 alias vimdiff="nvim -d"
-alias docs="nvim -c 'FzfFiles ~/Documents/Text'"
 
 
 if [[ -d ~/.local/share/fzf/shell ]]; then

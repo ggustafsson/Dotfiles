@@ -141,9 +141,10 @@ command! -nargs=0 SyntaxInfo call SyntaxInfo()
 
 " Insert template file above cursor and perform several substitutions.
 "
-" #FILE# -> Filename
-" #YEAR# -> YYYY
-" #DATE# -> YYYY-MM-DD
+" #FILE#  -> Filename
+" #TITLE# -> Replace -_ with space
+" #YEAR#  -> YYYY
+" #DATE#  -> YYYY-MM-DD
 function! Template(file)
   " Check number of lines + content of current line.
   if line("$") == 1 && empty(getline("."))
@@ -156,7 +157,9 @@ function! Template(file)
   let name = expand("%:t:r") " Filename without extension.
   normal! ml
   if !empty(name)
+    let title = substitute(name, "[-_]", " ", "g")
     execute "%s/#FILE#/" .. name .. "/ge"
+    execute "%s/#TITLE#/" .. title .. "/ge"
   endif
   execute "%s/#YEAR#/" .. strftime("%Y") .. "/ge"
   execute "%s/#DATE#/" .. strftime("%Y-%m-%d") .. "/ge"

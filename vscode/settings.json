@@ -1,19 +1,17 @@
 {
     "editor.bracketPairColorization.enabled": false,
-
     "editor.fontFamily": "SF Mono",
     "editor.fontSize": 13,
-
     "editor.lineNumbers": "relative",
-    "editor.renderFinalNewline": false,
-
     "editor.matchBrackets": "near",
-    "editor.occurrencesHighlight": false,
-
     "editor.minimap.enabled": false,
+    "editor.occurrencesHighlight": false,
+    "editor.renderFinalNewline": false,
     "editor.scrollBeyondLastLine": false,
 
-    "markdown.preview.fontSize": 13,
+    "telemetry.telemetryLevel": "off",
+    "redhat.telemetry.enabled": false,
+
     "vscode-neovim.neovimExecutablePaths.darwin": "/opt/homebrew/bin/nvim",
 
     "plantuml.render": "PlantUMLServer",
@@ -21,6 +19,7 @@
     "plantuml.exportOutDir": ".",
     "plantuml.exportSubFolder": false,
 
-    "redhat.telemetry.enabled": false,
-    "telemetry.telemetryLevel": "off",
+    "[markdown]": {
+        "editor.wordWrap": "off",
+    },
 }
