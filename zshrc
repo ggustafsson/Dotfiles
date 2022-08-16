@@ -163,6 +163,9 @@ function prompt_git {
   fi
 
   branch=$(git branch --show-current 2> /dev/null)
+  if [[ -z $branch ]]; then
+    branch="?" # Detached HEAD etc...
+  fi
   if [[ -n $(git status --porcelain 2> /dev/null) ]]; then
     echo " 📦 %B%F{red}$branch%f%b"
   else
