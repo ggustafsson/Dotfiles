@@ -14,7 +14,7 @@ endfunction
 " trailing whitespaces.
 function! FixFile(spaces)
   if a:spaces !~ "^[248]$"
-    echo "Select 2, 4 or 8 spaces!"
+    echo "Specify 2, 4 or 8 spaces!"
     return
   endif
 
@@ -33,7 +33,7 @@ command! -nargs=1 FixFile call FixFile(<args>)
 " Convert tabs to 2, 4 or 8 spaces.
 function! FixTabs(spaces)
   if a:spaces !~ "^[248]$"
-    echo "Select 2, 4 or 8 spaces!"
+    echo "Specify 2, 4 or 8 spaces!"
     return
   endif
 
@@ -146,6 +146,11 @@ command! -nargs=0 SyntaxInfo call SyntaxInfo()
 " #YEAR#  -> YYYY
 " #DATE#  -> YYYY-MM-DD
 function! Template(file)
+  if !filereadable(a:file)
+    echo "Failed to read template file!"
+    return
+  endif
+
   " Check number of lines + content of current line.
   if line("$") == 1 && empty(getline("."))
     execute "read " .. fnameescape(a:file)
