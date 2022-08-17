@@ -86,8 +86,6 @@ nnoremap <expr>k (v:count > 1 ? "m'" .. v:count : "") .. "k"
 " Default binding with nohlsearch added.
 vnoremap <C-L> <Esc><Cmd>nohlsearch<Bar>diffupdate<CR><C-L>
 
-inoremap jj <Esc>
-
 inoremap <C-X><C-F> <Plug>(fzf-complete-path)
 inoremap <C-X><C-K> <Plug>(fzf-complete-word)
 inoremap <C-X><C-L> <Plug>(fzf-complete-line)

@@ -11,10 +11,4 @@
         "key": "cmd+0",
         "command": "editor.action.fontZoomReset",
     },
-    {
-        "key": "j",
-        "command": "vscode-neovim.compositeEscape1",
-        "args": "j",
-        "when": "neovim.mode == insert && editorTextFocus",
-    },
 ]

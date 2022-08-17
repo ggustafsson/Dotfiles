@@ -95,7 +95,6 @@ bindkey -M vicmd $terminfo[kpp] up-line-or-beginning-search
 bindkey -M viins $terminfo[knp] down-line-or-beginning-search
 bindkey -M vicmd $terminfo[knp] down-line-or-beginning-search
 
-bindkey "jj" vi-cmd-mode
 bindkey "^V" edit-command-line
 
 # Search for history entry matching current line up to cursor position.
