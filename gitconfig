@@ -10,6 +10,7 @@
 	pu = push
 	sh = show
 	st = status
+	sw = switch
 
 	commit-and-run = commit --all --message='Commit and run...'
 
