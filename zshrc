@@ -233,6 +233,7 @@ else
   alias ls="ls --classify --color=auto --human-readable --literal"
 fi
 
+alias crg="cargo"
 alias fd="fd --follow --no-ignore"
 alias hogs="du -sk * | sort --numeric-sort --reverse | head -n 15"
 alias iip="curl icanhazip.com"
