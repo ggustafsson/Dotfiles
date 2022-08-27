@@ -8,9 +8,12 @@
 	lo = log
 	pl = pull
 	pu = push
+	rb = rebase
+	re = restore
 	sh = show
 	st = status
 	sw = switch
+	ta = tag
 
 	commit-and-run = commit --all --message='Commit and run...'
 
