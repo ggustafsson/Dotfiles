@@ -1,5 +1,6 @@
 [alias]
 	ad = add
+	ap = apply
 	br = branch
 	ch = checkout
 	cl = clone
@@ -12,6 +13,7 @@
 	re = restore
 	sh = show
 	st = status
+	su = submodule
 	sw = switch
 	ta = tag
 

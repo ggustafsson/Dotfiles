@@ -41,7 +41,6 @@ setopt histexpiredupsfirst
 setopt histignoredups
 setopt histignorespace
 setopt histreduceblanks
-setopt histverify # "!" and "!!" commands are expanded instead of executed.
 setopt incappendhistory
 
 setopt autopushd
@@ -97,7 +96,8 @@ bindkey -M vicmd $terminfo[kpp] up-line-or-beginning-search
 bindkey -M viins $terminfo[knp] down-line-or-beginning-search
 bindkey -M vicmd $terminfo[knp] down-line-or-beginning-search
 
-bindkey "^V" edit-command-line
+bindkey -M viins "^V" edit-command-line
+bindkey -M vicmd "^V" edit-command-line
 
 # Search for history entry matching current line up to cursor position.
 bindkey "^[[A" up-line-or-beginning-search
@@ -108,11 +108,8 @@ bindkey "^A"  beginning-of-line
 bindkey "^E"  end-of-line
 bindkey "^R"  history-incremental-search-backward
 bindkey "^U"  kill-whole-line
-bindkey "^[." insert-last-word
-bindkey "^['" quote-line
 bindkey "^[b" backward-word
 bindkey "^[f" forward-word
-bindkey "^[h" run-help
 
 
 zstyle ":completion:*" insert-tab pending # No tab characters at prompt.
@@ -241,7 +238,7 @@ alias mkdir="mkdir -pv"
 alias n3="source n3"
 alias nocol="sed 's/\x1B\[[0-9;]\{1,\}m//g'" # Strips all color codes.
 alias now="date '+%a %-e %b  %T  %F'"
-alias tree="tree --charset ascii"
+alias treed="tree -d"
 alias untar="tar -xvf"
 alias watch="watch --color --difference"
 alias xlns="tr '\n' '\0' | xargs -0 -o"
