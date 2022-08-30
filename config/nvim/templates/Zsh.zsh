@@ -4,5 +4,5 @@
 #
 # Usage: #FILE#
 #
-# Author: Göran Gustafsson (gustafsson.g at gmail.com)
+# Author: Göran Gustafsson <gustafsson.g@gmail.com>
 # License: BSD 3-Clause
