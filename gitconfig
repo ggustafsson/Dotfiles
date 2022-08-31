@@ -11,6 +11,7 @@
 	pu = push
 	rb = rebase
 	re = restore
+	rv = revert
 	sh = show
 	st = status
 	su = submodule
