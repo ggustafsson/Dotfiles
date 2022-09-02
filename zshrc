@@ -19,7 +19,7 @@ export NNN_FCOLORS=0b0b0c0a00000e08090b0d09 # Same as "LS_COLORS".
 export NNN_OPTS=ARUdo # See "nnn -h" for details.
 export NNN_PLUG='b:!bck --nnn*;y:-!yankp --nnn*'
 
-KEYTIMEOUT=1 # Don't wait for Esc meta keys.
+KEYTIMEOUT=30 # Default timeout is 40. Zzzzzz...
 
 HISTFILE=$HOME/.zhistory
 HISTSIZE=9999
@@ -108,6 +108,7 @@ bindkey "^A"  beginning-of-line
 bindkey "^E"  end-of-line
 bindkey "^R"  history-incremental-search-backward
 bindkey "^U"  kill-whole-line
+bindkey "^[." insert-last-word
 bindkey "^[b" backward-word
 bindkey "^[f" forward-word
 
