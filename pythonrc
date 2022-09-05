@@ -1,1 +1,4 @@
 import pprint
+import sys
+
+sys.ps1 = "\n>>> "
