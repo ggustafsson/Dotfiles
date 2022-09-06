@@ -1,5 +1,6 @@
 import os
-import pprint
 import sys
+
+from pprint import pprint
 
 sys.ps1 = "\n>>> "
