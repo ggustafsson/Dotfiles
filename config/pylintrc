@@ -3,4 +3,8 @@
 # XXX: invalid-name is broken. https://github.com/PyCQA/pylint/issues/2018
 #
 # Docstrings are important but I don't want to see when others have missed it.
-disable = invalid-name, missing-function-docstring, missing-module-docstring
+disable =
+  invalid-name,
+  missing-class-docstring,
+  missing-function-docstring,
+  missing-module-docstring
