@@ -1,14 +1,11 @@
 #!/usr/bin/env python3
 
-"""X
-
-X
-
-Usage: #FILE#
-
-Author: Göran Gustafsson <gustafsson.g@gmail.com>
-License: BSD 3-Clause
-"""
+# Description: X
+#
+# Usage: #FILE#
+#
+# Author: Göran Gustafsson <gustafsson.g@gmail.com>
+# License: BSD 3-Clause
 
 
 def main():
