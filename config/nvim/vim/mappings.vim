@@ -60,6 +60,9 @@ vnoremap <Leader>re :s+\%V+gc<Left><Left><Left>
 nnoremap <Leader>so :sort<CR>
 vnoremap <Leader>so :sort<CR>
 
+nnoremap <Leader>ti :.!title<CR>
+vnoremap <Leader>ti :!title<CR>
+
 " Like 'p' and 'P' but last yanked instead of last deleted.
 nnoremap <Leader>P "0P
 nnoremap <Leader>p "0p
