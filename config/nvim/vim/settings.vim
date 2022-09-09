@@ -12,7 +12,6 @@ set list
 set mouse=nvi " XXX: https://github.com/neovim/neovim/pull/19290#issuecomment-1186515224
 set nofoldenable
 set nowrap
-set smartindent
 set spelllang=en,sv
 set textwidth=79
 
