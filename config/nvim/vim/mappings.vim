@@ -5,8 +5,6 @@ if has("mac")
   nnoremap <Leader>op :silent !open "%"<CR>
   nnoremap <Leader>vs :silent !open -a "Visual Studio Code" "%"<CR>
   nnoremap <Leader>ya :silent w !yank<CR>
-
-  nnoremap gx :silent !open "<cfile>"<CR>
 endif
 
 nnoremap <Leader>/  :FzfHistory/<CR>
