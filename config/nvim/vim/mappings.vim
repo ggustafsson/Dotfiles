@@ -2,6 +2,7 @@ let g:mapleader = ","
 
 if has("mac")
   nnoremap <Leader>fi :silent !open "%:p:h"<CR>
+  nnoremap <Leader>no :edit ~/Documents/Text/Brain/<C-R>=strftime("%Y%m%d")<CR>-.md<Left><Left><Left>
   nnoremap <Leader>op :silent !open "%"<CR>
   nnoremap <Leader>vs :silent !open -a "Visual Studio Code" "%"<CR>
   nnoremap <Leader>ya :silent w !yank<CR>
@@ -25,7 +26,6 @@ nnoremap <Leader>hi :FzfHistory<CR>
 nnoremap <Leader>li :setlocal list! list?<CR>
 nnoremap <Leader>lo :silent! lwindow \| cwindow<CR>
 nnoremap <Leader>ma :FzfMarks<CR>
-nnoremap <Leader>no :edit ~/Documents/Text/Brain/<C-R>=strftime("%Y%m%d")<CR>-.md<Left><Left><Left>
 nnoremap <Leader>nu :setlocal number! relativenumber!<CR>
 nnoremap <Leader>rg :FzfRg<Space>
 nnoremap <Leader>rs :source ~/.local/share/nvim/session.vim<CR>
