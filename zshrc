@@ -168,6 +168,8 @@ function prompt_git {
   fi
   if [[ -n $(git status --porcelain 2> /dev/null) ]]; then
     echo " 📦 %B%F{red}$branch%f%b"
+  elif [[ -n $(git log @{upstream}.. 2> /dev/null) ]]; then
+    echo " 📦 %B%F{yellow}$branch%f%b"
   else
     echo " 📦 %B%F{green}$branch%f%b"
   fi
