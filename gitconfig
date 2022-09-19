@@ -37,7 +37,7 @@
 	autoSetupRemote = true
 
 [user]
-	name  = Göran Gustafsson
+	name = Göran Gustafsson
 	email = gustafsson.g@gmail.com
 
 [include]
