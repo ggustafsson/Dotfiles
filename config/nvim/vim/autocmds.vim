@@ -6,7 +6,8 @@ augroup Main
 
   " If last cursor position still exist then go to it.
   autocmd BufRead * autocmd FileType <buffer> ++once
-    \ if &filetype !~# 'commit\|rebase' &&
+    \ if &diff != 1 &&
+    \     &filetype !~# 'commit\|rebase' &&
     \     line("'\"") > 1 && line("'\"") <= line("$") |
     \   execute 'normal! g`"' |
     \ endif
