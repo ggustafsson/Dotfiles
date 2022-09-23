@@ -167,9 +167,9 @@ function prompt_git {
     branch="?" # Detached HEAD etc...
   fi
   if [[ -n $(git status --porcelain 2> /dev/null) ]]; then
-    echo " 📦 %B%F{red}$branch%f%b"
+    echo " 📦 %B%F{red}$branch*%f%b"
   elif [[ -n $(git log --max-count 1 @{upstream}.. 2> /dev/null) ]]; then
-    echo " 📦 %B%F{yellow}$branch%f%b"
+    echo " 📦 %B%F{yellow}$branch+%f%b"
   else
     echo " 📦 %B%F{green}$branch%f%b"
   fi
