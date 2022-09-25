@@ -1,7 +1,8 @@
 {
     "editor.bracketPairColorization.enabled": false,
+    "editor.cursorBlinking": "solid",
     "editor.fontFamily": "SF Mono",
-    "editor.fontSize": 13,
+    "editor.fontSize": 12,
     "editor.lineNumbers": "relative",
     "editor.matchBrackets": "near",
     "editor.minimap.enabled": false,
