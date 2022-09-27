@@ -1,6 +1,7 @@
 command! -nargs=* -complete=help Help vertical help <args>
 command! -nargs=1 S let @/ = <q-args> | normal n " Same as / in normal mode.
 
+
 " Toggle 'colorcolumn' setting on and off.
 function! ColorColumn()
   if empty(&colorcolumn)
@@ -9,6 +10,7 @@ function! ColorColumn()
     setlocal colorcolumn= colorcolumn?
   endif
 endfunction
+
 
 " Change file encoding plus file format, convert tabs to spaces and remove
 " trailing whitespaces.
@@ -30,6 +32,7 @@ function! FixFile(spaces)
 endfunction
 command! -nargs=1 FixFile call FixFile(<args>)
 
+
 " Convert tabs to 2, 4 or 8 spaces.
 function! FixTabs(spaces)
   if a:spaces !~ "^[248]$"
@@ -44,6 +47,7 @@ function! FixTabs(spaces)
   retab
 endfunction
 command! -nargs=1 FixTabs call FixTabs(<args>)
+
 
 " Jump to next or previous location list entry. If location list is empty jump
 " to next or previous quickfix list entry instead.
@@ -75,6 +79,7 @@ function! GoToLoc(action)
   endtry
 endfunction
 
+
 " Open temporary file and insert template if matching one is found. Used in
 " combo with Run() for language agnostic playground (e.g. Go Playground).
 function! Play(filetype)
@@ -90,6 +95,7 @@ function! Play(filetype)
 endfunction
 command! -nargs=1 Play call Play(<q-args>)
 
+
 " Execute shell command inside of Tmux popup window.
 function! Pop(cmd)
   if !empty($TMUX)
@@ -100,6 +106,7 @@ function! Pop(cmd)
   endif
 endfunction
 command! -nargs=* Pop call Pop(<q-args>)
+
 
 " Execute current file. Use command in variable 'b:runprg' or run file as-is.
 function! Run()
@@ -123,6 +130,7 @@ function! Run()
 endfunction
 command! -nargs=0 Run call Run()
 
+
 " Display syntax group used at cursor position.
 " XXX: Does not work on filetypes with treesitter enabled.
 function! SyntaxInfo()
@@ -138,6 +146,40 @@ function! SyntaxInfo()
   endif
 endfunction
 command! -nargs=0 SyntaxInfo call SyntaxInfo()
+
+
+" Simple custom tabline that sucks less than default.
+"
+" 1:.vimrc  2:Xresources  3:[No Name]        X
+"
+" set tabline=%!TabLine()
+function TabLine()
+  let string = ""
+  for i in range(tabpagenr("$"))
+    let tabnr = i + 1
+    let string .= "%" .. (tabnr) .. "T" " Set tab number for mouse clicks.
+    if tabnr == tabpagenr()
+      let string .= "%#TabLineSel#"
+    else
+      let string .= "%#TabLine#"
+    endif
+    let buflist = tabpagebuflist(tabnr)
+    let winnr = tabpagewinnr(tabnr)
+    let file = bufname(buflist[winnr - 1])
+    if file == ""
+      let file = "[No Name]"
+    else
+      let file = fnamemodify(file, ":p:t")
+    endif
+    let string .= " " .. tabnr .. ":" .. file .. " "
+  endfor
+  let string .= "%#TabLineFill#%T"
+  if tabpagenr("$") > 1
+    let string .= "%=%#TabLine#%999X X "
+  endif
+  return string
+endfunction
+
 
 " Insert template file above cursor and perform several substitutions.
 "
@@ -172,6 +214,7 @@ function! Template(file)
 endfunction
 command! -nargs=1 -complete=file Template call Template(<q-args>) |
   \ execute "silent! normal /\\<X\\>\<CR>"
+
 
 " Undo all changes since last file save. Unsaved buffers are emptied.
 function! UndoAll()

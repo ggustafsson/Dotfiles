@@ -13,6 +13,7 @@ set mouse=nvi " XXX: https://github.com/neovim/neovim/pull/19290#issuecomment-11
 set nofoldenable
 set nowrap
 set spelllang=en,sv
+set tabline=%!TabLine()
 set textwidth=79
 
 set backup
