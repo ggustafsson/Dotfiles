@@ -13,7 +13,7 @@ nnoremap <Leader>:  :FzfHistory:<CR>
 nnoremap <Leader>bd :bdelete<CR>
 nnoremap <Leader>bu :FzfBuffers<CR>
 nnoremap <Leader>cc :call ColorColumn()<CR>
-nnoremap <Leader>cd :cd <C-R>=getcwd()<CR>/
+nnoremap <Leader>cd :tcd <C-R>=getcwd()<CR>/
 nnoremap <Leader>do :FzfFiles ~/Documents/Text<CR>
 nnoremap <Leader>ed :edit <C-R>=fnameescape(expand("%:p:h"))<CR>/
 nnoremap <Leader>eh :edit ~/
@@ -72,6 +72,9 @@ vnoremap <Leader>y  "*y
 
 " Display full path to current file.
 nnoremap <C-G> 1<C-G>
+
+nnoremap <C-W>C <Cmd>tabclose<CR>
+nnoremap <C-W>t <Cmd>tabnew<CR>
 
 " Disable to avoid unintended triggering.
 nnoremap Q <Nop>

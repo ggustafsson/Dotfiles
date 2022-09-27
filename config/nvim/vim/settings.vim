@@ -51,7 +51,7 @@ set wildmode=longest,list
 
 let g:markdown_folding = 1
 
-let g:fzf_action = {"ctrl-s": "split", "ctrl-v": "vsplit"}
+let g:fzf_action = {"ctrl-s": "split", "ctrl-v": "vsplit", "ctrl-t": "tab split"}
 let g:fzf_colors = {"border": ["fg", "VertSplit"]}
 let g:fzf_command_prefix = "Fzf"
 let g:fzf_layout = {"window": {"height": 0.8, "width": 1}}
