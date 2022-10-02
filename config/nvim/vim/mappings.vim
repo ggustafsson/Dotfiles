@@ -39,7 +39,7 @@ nnoremap <Leader>t4 :setlocal noexpandtab shiftwidth=4 softtabstop=0 tabstop=4<C
 nnoremap <Leader>t8 :setlocal noexpandtab shiftwidth=8 softtabstop=0 tabstop=8<CR>
 nnoremap <Leader>te :Template ~/.config/nvim/templates/
 nnoremap <Leader>tw :setlocal textwidth=79
-nnoremap <Leader>un :call UndoAll()<CR>
+nnoremap <Leader>un :undo!<CR>
 nnoremap <Leader>wi :FzfWindows<CR>
 nnoremap <Leader>wr :setlocal wrap! wrap?<CR>
 nnoremap <Leader>ws ml:%s/\s\+$//e \| nohlsearch<CR>`l

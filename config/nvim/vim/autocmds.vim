@@ -12,7 +12,7 @@ augroup Main
     \   execute 'normal! g`"' |
     \ endif
 
-  autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()
+  autocmd BufWritePre * lua vim.lsp.buf.format()
 
   autocmd Filetype *
     \ if &omnifunc == "" |

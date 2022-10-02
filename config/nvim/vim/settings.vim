@@ -9,7 +9,6 @@ set confirm
 set guicursor=
 set inccommand=
 set list
-set mouse=nvi " XXX: https://github.com/neovim/neovim/pull/19290#issuecomment-1186515224
 set nofoldenable
 set nowrap
 set spelllang=en,sv

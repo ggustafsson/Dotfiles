@@ -214,14 +214,3 @@ function! Template(file)
 endfunction
 command! -nargs=1 -complete=file Template call Template(<q-args>) |
   \ execute "silent! normal /\\<X\\>\<CR>"
-
-
-" Undo all changes since last file save. Unsaved buffers are emptied.
-function! UndoAll()
-  " Check if buffer is named or not.
-  if !empty(expand("%"))
-    edit!
-  else
-    earlier 1f
-  endif
-endfunction
