@@ -37,7 +37,7 @@ require("nvim-treesitter.configs").setup {
   highlight = {
     enable = true,
      disable = {
-       "help",
+       "help", -- XXX: No space before keyword bug.
        "yaml",
      },
   },
