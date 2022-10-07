@@ -1,4 +1,4 @@
-# #NAME#
+# #TITLE#
 
 ## Commands
 
