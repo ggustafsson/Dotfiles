@@ -183,8 +183,9 @@ endfunction
 
 " Insert template file above cursor and perform several substitutions.
 "
-" #FILE#  -> Filename
-" #TITLE# -> Replace -_ with space
+" #FILE#  -> Filename with extension
+" #NAME#  -> Filename without extension
+" #TITLE# -> Filename without extension and -_
 " #YEAR#  -> YYYY
 " #DATE#  -> YYYY-MM-DD
 function! Template(file)
@@ -201,11 +202,13 @@ function! Template(file)
     execute ".-read " .. fnameescape(a:file)
   endif
 
-  let name = expand("%:t:r") " Filename without extension.
   normal! ml
-  if !empty(name)
+  if !empty(expand("%s"))
+    let file = expand("%:t") " t for tail.
+    let name = expand("%:t:r") " t for tail and r for root.
     let title = substitute(name, "[-_]", " ", "g")
-    execute "%s/#FILE#/" .. name .. "/ge"
+    execute "%s/#FILE#/" .. file .. "/ge"
+    execute "%s/#NAME#/" .. name .. "/ge"
     execute "%s/#TITLE#/" .. title .. "/ge"
   endif
   execute "%s/#YEAR#/" .. strftime("%Y") .. "/ge"

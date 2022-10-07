@@ -2,7 +2,7 @@
 //
 // Usage:
 //
-//	#FILE#
+//	X
 //
 // Author: Göran Gustafsson <gustafsson.g@gmail.com>
 //
