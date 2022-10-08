@@ -185,7 +185,8 @@ endfunction
 "
 " #FILE#  -> Filename with extension
 " #NAME#  -> Filename without extension
-" #TITLE# -> Filename without extension and underscores
+" #TITLE# -> Filename without extension +
+"            replace "-" with " - " and "_" with " "
 " #YEAR#  -> YYYY
 " #DATE#  -> YYYY-MM-DD
 function! Template(file)
@@ -206,7 +207,8 @@ function! Template(file)
   if !empty(expand("%s"))
     let file = expand("%:t") " t for tail.
     let name = expand("%:t:r") " t for tail and r for root.
-    let title = substitute(name, "_", " ", "g")
+    let name_sep = substitute(name, "-", " - ", "g")
+    let title = substitute(name_sep, "_", " ", "g")
     execute "%s/#FILE#/" .. file .. "/ge"
     execute "%s/#NAME#/" .. name .. "/ge"
     execute "%s/#TITLE#/" .. title .. "/ge"
