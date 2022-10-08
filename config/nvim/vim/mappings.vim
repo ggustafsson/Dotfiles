@@ -2,7 +2,7 @@ let g:mapleader = ","
 
 if has("mac")
   nnoremap <Leader>fi :silent !open "%:p:h"<CR>
-  nnoremap <Leader>no :edit ~/Documents/Text/Brain/<C-R>=strftime("%Y%m%d")<CR>-.md<Left><Left><Left>
+  nnoremap <Leader>no :edit ~/Documents/Text/Brain/<C-R>=strftime("%Y%m%d")<CR>_.md<Left><Left><Left>
   nnoremap <Leader>op :silent !open "%"<CR>
   nnoremap <Leader>vs :silent !open -a "Visual Studio Code" "%"<CR>
   nnoremap <Leader>ya :silent w !yank<CR>
