@@ -17,15 +17,13 @@ null_ls.setup {
     -- XXX: https://github.com/neovim/neovim/pull/19677
     vim.bo.formatexpr = ""
 
-    if client.server_capabilities.document_formatting then
-      local group = vim.api.nvim_create_augroup("LspFormatting", {})
-      vim.api.nvim_create_autocmd("BufWritePre", {
-        group = group,
-        buffer = bufnr,
-        callback = function()
-          vim.lsp.buf.format()
-        end,
-      })
-    end
+    local group = vim.api.nvim_create_augroup("LspFormatting", {})
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      group = group,
+      buffer = bufnr,
+      callback = function()
+        vim.lsp.buf.format()
+      end,
+    })
   end,
 }

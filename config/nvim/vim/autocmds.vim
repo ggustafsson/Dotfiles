@@ -12,8 +12,6 @@ augroup Main
     \   execute 'normal! g`"' |
     \ endif
 
-  autocmd BufWritePre * lua vim.lsp.buf.format()
-
   autocmd Filetype *
     \ if &omnifunc == "" |
     \   setlocal omnifunc=syntaxcomplete#Complete |
