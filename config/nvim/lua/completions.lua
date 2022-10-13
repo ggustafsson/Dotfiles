@@ -9,11 +9,13 @@ cmp.setup {
     { name = "buffer" },
     { name = "path" },
   },
+
   snippet = {
     expand = function(args)
       luasnip.lsp_expand(args.body)
     end,
   },
+
   mapping = {
     ["<C-E>"] = cmp.mapping.abort(),
     ["<C-D>"] = cmp.mapping.scroll_docs(4),
