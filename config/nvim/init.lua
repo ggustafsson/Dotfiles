@@ -9,8 +9,8 @@ vim.cmd [[
   source ~/.config/nvim/vim/settings.vim
 ]]
 
-require "plugins"
 require "functions"
+require "plugins"
 
 require "completions"
 require "languages"

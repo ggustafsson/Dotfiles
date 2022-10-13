@@ -12,18 +12,4 @@ local sources = {
 
 null_ls.setup {
   sources = sources,
-
-  on_attach = function(client, bufnr)
-    -- XXX: https://github.com/neovim/neovim/pull/19677
-    vim.bo.formatexpr = ""
-
-    local group = vim.api.nvim_create_augroup("LspFormatting", {})
-    vim.api.nvim_create_autocmd("BufWritePre", {
-      group = group,
-      buffer = bufnr,
-      callback = function()
-        vim.lsp.buf.format()
-      end,
-    })
-  end,
 }
