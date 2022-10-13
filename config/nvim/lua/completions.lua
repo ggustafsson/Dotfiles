@@ -20,15 +20,8 @@ cmp.setup {
     ["<C-U>"] = cmp.mapping.scroll_docs(-4),
     ["<C-N>"] = cmp.mapping.select_next_item(),
     ["<C-P>"] = cmp.mapping.select_prev_item(),
-
-    ["<C-Y>"] = cmp.mapping.confirm {
-      behavior = cmp.ConfirmBehavior.Replace,
-      select = true,
-    },
-    ["<CR>"] = cmp.mapping.confirm {
-      behavior = cmp.ConfirmBehavior.Replace,
-      select = true,
-    },
+    ["<C-Y>"] = cmp.mapping.confirm(),
+    ["<CR>"]  = cmp.mapping.confirm(),
 
     ["<Tab>"] = function(fallback)
       if cmp.visible() then
