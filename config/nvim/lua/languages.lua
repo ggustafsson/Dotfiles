@@ -4,6 +4,7 @@ local servers = {
   "ansiblels", -- Includes "ansible-lint".
   "bashls",    -- Includes "ShellCheck".
   "gopls",
+  "hls",
   "pyright",
   "rust_analyzer",
   "yamlls",

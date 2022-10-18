@@ -3,4 +3,4 @@ import sys
 
 from pprint import pprint
 
-sys.ps1 = "\n>>> "
+sys.ps1 = "\n\033[92m>>>\033[0m "
