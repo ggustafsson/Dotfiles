@@ -2,7 +2,7 @@
     "editor.bracketPairColorization.enabled": false,
     "editor.cursorBlinking": "solid",
     "editor.fontFamily": "SF Mono",
-    "editor.fontSize": 12,
+    "editor.fontSize": 13,
     "editor.lineNumbers": "relative",
     "editor.matchBrackets": "near",
     "editor.minimap.enabled": false,
@@ -13,6 +13,7 @@
     "telemetry.telemetryLevel": "off",
     "redhat.telemetry.enabled": false,
 
+    "haskell.manageHLS": "PATH",
     "vscode-neovim.neovimExecutablePaths.darwin": "/opt/homebrew/bin/nvim",
 
     "plantuml.render": "PlantUMLServer",
