@@ -10,7 +10,8 @@ local servers = {
   "yamlls",
 }
 
-local on_attach = function(client, bufnr)
+-- Using global variable to allow for usage in 'local.lua' file.
+lsp_on_attach = function(client, bufnr)
   vim.api.nvim_buf_set_option(bufnr, "formatexpr", "")
   vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
@@ -30,6 +31,6 @@ end
 
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
-    on_attach = on_attach,
+    on_attach = lsp_on_attach,
   }
 end
