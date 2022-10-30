@@ -97,9 +97,9 @@ inoremap <C-X><C-K> <Plug>(fzf-complete-word)
 inoremap <C-X><C-L> <Plug>(fzf-complete-line)
 
 " Text object consisting of all text inside current line, first character up
-" until last character. Like 'w' (word), 'p' (paragraph) etc.
+" until last character. Like 'w' (word), 'p' (paragraph), etc.
 xnoremap il ^og_
 onoremap il <Cmd>normal vil<CR>
 
-" Make Nvim behave like everything else. Ctrl-E, Ctrl-U etc already works.
+" Make Nvim behave like everything else. Ctrl-E, Ctrl-U, etc already works.
 cnoremap <C-A> <Home>
