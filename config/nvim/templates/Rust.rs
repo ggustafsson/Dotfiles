@@ -2,7 +2,9 @@
 //!
 //! Usage:
 //!
-//!     X
+//! ```text
+//! X
+//! ```
 //!
 //! Author: Göran Gustafsson <gustafsson.g@gmail.com>
 //!
