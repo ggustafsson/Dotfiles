@@ -1,5 +1,6 @@
 if [[ $OSTYPE == darwin* ]]; then
   export FPATH=/opt/homebrew/share/zsh/site-functions:$FPATH
+  export GPG_TTY=$(tty)
 else
   export FPATH=/home/linuxbrew/.linuxbrew/share/zsh/site-functions:$FPATH
 fi
