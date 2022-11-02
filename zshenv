@@ -33,6 +33,7 @@ if [[ $OSTYPE == darwin* ]]; then
   path=(
     ~/.local/bin(N)
     ~/.cargo/bin(N)
+    ~/.ghcup/bin(N)
     $GOPATH/bin(N)
     ~/Projects/Kjell/src/macos(N)
     ~/Projects/Kjell/src(N)
@@ -53,6 +54,7 @@ else
   path=(
     ~/.local/bin(N)
     ~/.cargo/bin(N)
+    ~/.ghcup/bin(N)
     $GOPATH/bin(N)
     ~/Projects/Kjell/src/linux(N)
     ~/Projects/Kjell/src(N)
