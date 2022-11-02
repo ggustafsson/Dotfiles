@@ -1,4 +1,6 @@
 {
+    "vscode-neovim.neovimExecutablePaths.darwin": "/opt/homebrew/bin/nvim",
+
     "editor.bracketPairColorization.enabled": false,
     "editor.cursorBlinking": "solid",
     "editor.fontFamily": "SF Mono",
@@ -12,9 +14,6 @@
 
     "telemetry.telemetryLevel": "off",
     "redhat.telemetry.enabled": false,
-
-    "haskell.manageHLS": "PATH",
-    "vscode-neovim.neovimExecutablePaths.darwin": "/opt/homebrew/bin/nvim",
 
     "plantuml.render": "PlantUMLServer",
     "plantuml.server": "http://127.0.0.1:8080",
