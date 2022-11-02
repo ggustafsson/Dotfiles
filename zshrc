@@ -237,7 +237,6 @@ fi
 
 alias crg="cargo"
 alias fd="fd --follow --no-ignore"
-alias ha="ghci"
 alias hogs="du -sk * | sort --numeric-sort --reverse | head -n 15"
 alias iip="curl icanhazip.com"
 alias mkdir="mkdir -pv"
@@ -249,6 +248,9 @@ alias untar="tar -xvf"
 alias watch="watch --color --difference"
 alias xlns="tr '\n' '\0' | xargs -0 -o"
 alias zreload="source ~/.zshenv && source ~/.zshrc"
+
+alias cbl="cabal"
+alias ha="ghci"
 
 alias cdb="source cdb"
 alias cdh="dirs -v | tac"
