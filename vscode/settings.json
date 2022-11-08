@@ -1,4 +1,5 @@
 {
+    "markdown-mermaid.darkModeTheme": "default",
     "vscode-neovim.neovimExecutablePaths.darwin": "/opt/homebrew/bin/nvim",
 
     "editor.bracketPairColorization.enabled": false,
