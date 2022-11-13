@@ -1,12 +1,12 @@
 local lspconfig = require "lspconfig"
 
+-- rust-analyzer is configured separately.
 local servers = {
   "ansiblels", -- Includes "ansible-lint".
   "bashls",    -- Includes "ShellCheck".
   "gopls",
   "hls",
   "pyright",
-  "rust_analyzer",
   "yamlls",
 }
 
@@ -28,6 +28,17 @@ lsp_on_attach = function(client, bufnr)
     end,
   })
 end
+
+lspconfig["rust_analyzer"].setup {
+  on_attach = lsp_on_attach,
+  settings = {
+    ["rust-analyzer"] = {
+      checkOnSave = {
+        command = "clippy"
+      },
+    }
+  },
+}
 
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
