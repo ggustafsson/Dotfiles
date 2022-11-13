@@ -9,12 +9,11 @@ vim.cmd [[
   source ~/.config/nvim/vim/settings.vim
 ]]
 
-require "functions"
-require "plugins"
-
 require "completions"
+require "functions"
 require "languages"
 require "lint-format"
+require "plugins"
 
 local local_lua = "~/.config/nvim/lua/local.lua"
 if file_exists(local_lua) then
