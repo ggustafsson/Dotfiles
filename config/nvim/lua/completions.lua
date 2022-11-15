@@ -1,5 +1,7 @@
+require("luasnip.loaders.from_snipmate").lazy_load()
+
 local cmp = require "cmp"
-local luasnip = require("luasnip.loaders.from_snipmate").lazy_load()
+local luasnip = require "luasnip"
 
 cmp.setup {
   sources = {
