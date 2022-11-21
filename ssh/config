@@ -1,4 +1,4 @@
 ConnectTimeout 30
-ServerAliveInterval 30
+ServerAliveInterval 60
 
 Include ~/.ssh/config_local
