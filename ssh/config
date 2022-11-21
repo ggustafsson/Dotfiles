@@ -1,23 +1,4 @@
+ConnectTimeout 30
+ServerAliveInterval 30
+
 Include ~/.ssh/config_local
-
-Host *
-  ConnectTimeout 30
-  ServerAliveInterval 30
-
-Host router-home1
-  User ubnt
-  HostName 192.168.1.1
-
-Host ubuntu-tv1
-  User gleg
-  HostName 192.168.0.2
-  Port 443
-
-Host ubuntu-vm1
-  User gleg
-  HostName 127.0.0.1
-  Port 2222
-
-Host wifi-home1
-  User ubnt
-  HostName 192.168.1.254
