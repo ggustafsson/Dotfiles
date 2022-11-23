@@ -48,6 +48,7 @@ lspconfig["sumneko_lua"].setup {
         version = "LuaJIT",
       },
       diagnostics = {
+        disable = {"lowercase-global", "redefined-local"},
         globals = {"hs", "vim"},
       },
       workspace = {
