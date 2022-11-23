@@ -1,6 +1,6 @@
 local lspconfig = require "lspconfig"
 
--- rust-analyzer is configured separately.
+-- lua-language-server & rust-analyzer is configured later.
 local servers = {
   "ansiblels", -- Includes "ansible-lint".
   "bashls",    -- Includes "ShellCheck".
@@ -11,7 +11,7 @@ local servers = {
 }
 
 -- Using global variable to allow for usage in 'local.lua' file.
-lsp_on_attach = function(client, bufnr)
+lsp_on_attach = function(_, bufnr)
   vim.api.nvim_buf_set_option(bufnr, "formatexpr", "")
   vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
@@ -37,6 +37,27 @@ lspconfig["rust_analyzer"].setup {
         command = "clippy"
       },
     }
+  },
+}
+
+-- Also known as "lua-language-server".
+lspconfig["sumneko_lua"].setup {
+  settings = {
+    Lua = {
+      runtime = {
+        version = "LuaJIT",
+      },
+      diagnostics = {
+        globals = {"hs", "vim"},
+      },
+      workspace = {
+        checkThirdParty = false,
+        library = vim.api.nvim_get_runtime_file("", true),
+      },
+      telemetry = {
+        enable = false,
+      },
+    },
   },
 }
 
