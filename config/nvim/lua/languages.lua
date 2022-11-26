@@ -34,9 +34,9 @@ lspconfig["rust_analyzer"].setup {
   settings = {
     ["rust-analyzer"] = {
       checkOnSave = {
-        command = "clippy"
+        command = "clippy",
       },
-    }
+    },
   },
 }
 
@@ -49,12 +49,21 @@ lspconfig["sumneko_lua"].setup {
         version = "LuaJIT",
       },
       diagnostics = {
-        disable = {"lowercase-global", "redefined-local"},
-        globals = {"hs", "vim"},
+        disable = {
+          "lowercase-global",
+          "redefined-local",
+        },
+        globals = {
+          "hs",
+          "vim",
+        },
       },
       workspace = {
         checkThirdParty = false,
         library = vim.api.nvim_get_runtime_file("", true),
+      },
+      format = {
+        enable = false,
       },
       telemetry = {
         enable = false,

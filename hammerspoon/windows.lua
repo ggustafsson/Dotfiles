@@ -55,7 +55,7 @@ end)
 -------------------------
 hs.hotkey.bind(preKeys, "5", function()
   local window = hs.window.focusedWindow()
-  local frame  = window:frame()
+  local frame = window:frame()
 
   frame.w = 1000
   frame.h = 700
@@ -68,7 +68,7 @@ end)
 -------------------------
 hs.hotkey.bind(preKeys, "6", function()
   local window = hs.window.focusedWindow()
-  local frame  = window:frame()
+  local frame = window:frame()
 
   frame.w = 1100
   frame.h = 850
@@ -155,7 +155,7 @@ end)
 -----------------------------
 hs.hotkey.bind(preKeys, "h", function()
   local window = hs.window.focusedWindow()
-  local frame  = window:frame()
+  local frame = window:frame()
 
   frame.x = frame.x - frameStep
   window:setFrame(frame)
@@ -166,7 +166,7 @@ end)
 -----------------------------
 hs.hotkey.bind(preKeys, "j", function()
   local window = hs.window.focusedWindow()
-  local frame  = window:frame()
+  local frame = window:frame()
 
   frame.y = frame.y + frameStep
   window:setFrame(frame)
@@ -177,7 +177,7 @@ end)
 ---------------------------
 hs.hotkey.bind(preKeys, "k", function()
   local window = hs.window.focusedWindow()
-  local frame  = window:frame()
+  local frame = window:frame()
 
   frame.y = frame.y - frameStep
   window:setFrame(frame)
@@ -188,7 +188,7 @@ end)
 ------------------------------
 hs.hotkey.bind(preKeys, "l", function()
   local window = hs.window.focusedWindow()
-  local frame  = window:frame()
+  local frame = window:frame()
 
   frame.x = frame.x + frameStep
   window:setFrame(frame)

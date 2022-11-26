@@ -4,7 +4,7 @@
 hs.window.animationDuration = 0
 
 alertDuration = 0.5
-frameStep = 50
+frameStep = 40
 preKeys = {"cmd", "ctrl"}
 
 ---------------------------
@@ -18,7 +18,7 @@ dofile("windows.lua")
 function reloadConfig(files)
   local modified = false
 
-  for _,file in pairs(files) do
+  for _, file in pairs(files) do
     if file:sub(-4) == ".lua" then
       modified = true
     end
