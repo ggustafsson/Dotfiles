@@ -42,6 +42,7 @@ lspconfig["rust_analyzer"].setup {
 
 -- Also known as "lua-language-server".
 lspconfig["sumneko_lua"].setup {
+  on_attach = lsp_on_attach,
   settings = {
     Lua = {
       runtime = {
