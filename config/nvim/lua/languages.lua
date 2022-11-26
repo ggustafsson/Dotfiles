@@ -1,10 +1,8 @@
 local lspconfig = require "lspconfig"
 
--- lua-language-server & rust-analyzer is configured later.
 local servers = {
   "ansiblels", -- Includes "ansible-lint".
   "bashls",    -- Includes "ShellCheck".
-  "gopls",
   "hls",
   "pyright",
   "yamlls",
@@ -28,6 +26,15 @@ lsp_on_attach = function(_, bufnr)
     end,
   })
 end
+
+lspconfig["gopls"].setup {
+  on_attach = lsp_on_attach,
+  settings = {
+    gopls = {
+      staticcheck = true,
+    },
+  },
+}
 
 lspconfig["rust_analyzer"].setup {
   on_attach = lsp_on_attach,
