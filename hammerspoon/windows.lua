@@ -7,7 +7,7 @@ hs.hotkey.bind(preKeys, "1", function()
   local screen = window:screen():frame()
 
   frame.y = screen.y
-  frame.w = 1250
+  frame.w = 1400
   frame.h = screen.h
   window:setFrame(frame)
   hs.alert.show("Size 1", alertDuration)
@@ -22,7 +22,7 @@ hs.hotkey.bind(preKeys, "2", function()
   local screen = window:screen():frame()
 
   frame.y = screen.y
-  frame.w = 1050
+  frame.w = 1200
   frame.h = screen.h
   window:setFrame(frame)
   hs.alert.show("Size 2", alertDuration)
@@ -37,7 +37,7 @@ hs.hotkey.bind(preKeys, "3", function()
   local screen = window:screen():frame()
 
   frame.y = screen.y
-  frame.w = 850
+  frame.w = 1000
   frame.h = screen.h
   window:setFrame(frame)
   hs.alert.show("Size 3", alertDuration)
@@ -57,8 +57,8 @@ hs.hotkey.bind(preKeys, "5", function()
   local window = hs.window.focusedWindow()
   local frame  = window:frame()
 
-  frame.w = 900
-  frame.h = 600
+  frame.w = 1000
+  frame.h = 700
   window:setFrame(frame)
   hs.alert.show("Size 5", alertDuration)
 end)
@@ -70,8 +70,8 @@ hs.hotkey.bind(preKeys, "6", function()
   local window = hs.window.focusedWindow()
   local frame  = window:frame()
 
-  frame.w = 1000
-  frame.h = 750
+  frame.w = 1100
+  frame.h = 850
   window:setFrame(frame)
   hs.alert.show("Size 6", alertDuration)
 end)

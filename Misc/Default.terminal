@@ -487,7 +487,7 @@
 	<data>
 	YnBsaXN0MDDUAQIDBAUGBwpYJHZlcnNpb25ZJGFyY2hpdmVyVCR0b3BYJG9iamVjdHMS
 	AAGGoF8QD05TS2V5ZWRBcmNoaXZlctEICVRyb290gAGkCwwVFlUkbnVsbNQNDg8QERIT
-	FFZOU1NpemVYTlNmRmxhZ3NWTlNOYW1lViRjbGFzcyNAKAAAAAAAABAQgAKAA15TRk1v
+	FFZOU1NpemVYTlNmRmxhZ3NWTlNOYW1lViRjbGFzcyNAKgAAAAAAABAQgAKAA15TRk1v
 	bm8tUmVndWxhctIXGBkaWiRjbGFzc25hbWVYJGNsYXNzZXNWTlNGb250ohkbWE5TT2Jq
 	ZWN0CBEaJCkyN0lMUVNYXmdud36FjpCSlKOos7zDxgAAAAAAAAEBAAAAAAAAABwAAAAA
 	AAAAAAAAAAAAAADP
@@ -495,7 +495,7 @@
 	<key>FontAntialias</key>
 	<true/>
 	<key>FontHeightSpacing</key>
-	<real>1.01</real>
+	<integer>1</integer>
 	<key>FontWidthSpacing</key>
 	<integer>1</integer>
 	<key>ProfileCurrentVersion</key>
@@ -653,7 +653,7 @@
 	<key>VisualBell</key>
 	<false/>
 	<key>columnCount</key>
-	<integer>101</integer>
+	<integer>110</integer>
 	<key>keyMapBoundKeys</key>
 	<dict>
 		<key>#F739</key>
@@ -787,7 +787,7 @@
 		</dict>
 	</array>
 	<key>rowCount</key>
-	<integer>30</integer>
+	<integer>35</integer>
 	<key>shellExitAction</key>
 	<integer>1</integer>
 	<key>type</key>

@@ -1,9 +1,10 @@
 ----------------------------
 -- Settings and Variables --
 ----------------------------
-alertDuration = 0.5
-frameStep = 30
 hs.window.animationDuration = 0
+
+alertDuration = 0.5
+frameStep = 50
 preKeys = {"cmd", "ctrl"}
 
 ---------------------------
