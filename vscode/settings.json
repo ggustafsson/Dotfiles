@@ -21,6 +21,9 @@
     "plantuml.exportOutDir": ".",
     "plantuml.exportSubFolder": false,
 
+    "python.linting.flake8Enabled": true,
+    "python.linting.pylintEnabled": true,
+
     "[markdown]": {
         "editor.wordWrap": "off",
     },
