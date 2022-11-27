@@ -22,7 +22,9 @@
     "plantuml.exportSubFolder": false,
 
     "python.linting.flake8Enabled": true,
+    "python.linting.flake8Path": "/opt/homebrew/bin/flake8",
     "python.linting.pylintEnabled": true,
+    "python.linting.pylintPath": "/opt/homebrew/bin/pylint",
 
     "[markdown]": {
         "editor.wordWrap": "off",
