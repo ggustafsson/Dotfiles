@@ -24,7 +24,7 @@ nnoremap <Leader>ft :FzfFiletypes<CR>
 nnoremap <Leader>he :FzfHelptags<CR>
 nnoremap <Leader>hi :FzfHistory<CR>
 nnoremap <Leader>li :setlocal list! list?<CR>
-nnoremap <Leader>lo :silent! lwindow \| cwindow<CR>
+nnoremap <Leader>ll :call ClearLocList()<CR>
 nnoremap <Leader>ma :FzfMarks<CR>
 nnoremap <Leader>nu :setlocal number! relativenumber!<CR>
 nnoremap <Leader>rg :FzfRg<Space>

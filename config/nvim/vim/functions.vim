@@ -1,5 +1,16 @@
 command! -nargs=* -complete=help Help vertical help <args>
+command! -nargs=0 Reload source $MYVIMRC
 command! -nargs=1 S let @/ = <q-args> | normal n " Same as / in normal mode.
+
+
+" Clear quickfix/location lists and close open windows.
+function! ClearLocList()
+  cexpr []
+  cclose
+
+  lexpr []
+  lclose
+endfunction
 
 
 " Toggle 'colorcolumn' setting on and off.
