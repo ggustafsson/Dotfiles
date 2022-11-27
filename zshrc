@@ -231,7 +231,7 @@ else
   alias free="free -h"
   alias grep="grep --color=auto"
 
-  # XXX: Coreutils is outdated on Ubuntu 22.04 LTS.
+  # FIXME: Coreutils is outdated on Ubuntu 22.10.
   #alias ls="ls --classify=auto --color=auto --human-readable --literal"
   alias ls="ls --classify --color=auto --human-readable --literal"
 fi
