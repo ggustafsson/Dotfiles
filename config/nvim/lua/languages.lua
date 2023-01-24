@@ -3,7 +3,6 @@ local lspconfig = require "lspconfig"
 local servers = {
   "ansiblels", -- Includes "ansible-lint".
   "bashls",    -- Includes "ShellCheck".
-  "hls",
   "pyright",
   "yamlls",
 }

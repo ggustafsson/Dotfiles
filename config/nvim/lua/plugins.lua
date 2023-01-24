@@ -16,7 +16,6 @@ require("nvim-treesitter.configs").setup {
     "bash",
     "css",
     "go",
-    "haskell",
     "html",
     "json",
     "lua",

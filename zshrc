@@ -251,9 +251,6 @@ alias watch="watch --color --difference"
 alias xlns="tr '\n' '\0' | xargs -0 -o"
 alias zreload="source ~/.zshenv && source ~/.zshrc"
 
-alias cbl="cabal"
-alias ha="ghci"
-
 alias cdb="source cdb"
 alias cdh="dirs -v | tac"
 alias cdj="source cdj"
