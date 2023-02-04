@@ -11,7 +11,7 @@
     "editor.matchBrackets": "near",
     "editor.minimap.enabled": false,
     "editor.occurrencesHighlight": false,
-    "editor.renderFinalNewline": false,
+    "editor.renderFinalNewline": "off",
     "editor.scrollBeyondLastLine": false,
 
     "telemetry.telemetryLevel": "off",
