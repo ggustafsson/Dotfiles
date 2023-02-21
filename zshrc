@@ -251,6 +251,11 @@ alias watch="watch --color --difference"
 alias xlns="tr '\n' '\0' | xargs -0 -o"
 alias zreload="source ~/.zshenv && source ~/.zshrc"
 
+alias dog="view"
+alias vim="nvim"
+alias vimd="nvim -d"
+alias vimdiff="nvim -d"
+
 alias cdb="source cdb"
 alias cdh="dirs -v | tac"
 alias cdj="source cdj"
@@ -282,10 +287,6 @@ alias xxx="rg '\b(FIXME|NOTE|TODO|XXX)(:|$| )'"
 
 alias svtplay-dl="svtplay-dl --resume"
 alias youtube-dl="youtube-dl --continue --output '%(title)s.%(ext)s'"
-
-alias vim="nvim"
-alias vimd="nvim -d"
-alias vimdiff="nvim -d"
 
 
 if [[ -d ~/.local/share/fzf/shell ]]; then

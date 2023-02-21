@@ -38,7 +38,6 @@ if [[ $OSTYPE == darwin* ]]; then
     ~/Projects/Kjell/src(N)
     ~/Projects/Pyttipanna/src(N)
     /opt/homebrew/opt/curl/bin(N)
-    /opt/homebrew/opt/python/libexec/bin(N)
     /opt/homebrew/opt/ruby/bin(N)
     /opt/homebrew/bin(N)
     /opt/homebrew/sbin(N)
