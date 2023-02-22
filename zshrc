@@ -220,7 +220,6 @@ if [[ $OSTYPE == darwin* ]]; then
   alias beep="afplay /System/Library/Sounds/Glass.aiff"
   alias put="pbpaste"
   alias stat="stat -x"
-  alias tim="caffeinate tim" # Give Tim a cup of Joe! :)
 
   alias grep="ggrep --color=auto"
   alias bgrep="\grep --color=auto"
@@ -240,12 +239,10 @@ alias crg="cargo"
 alias fd="fd --follow --no-ignore"
 alias hogs="du -sk * | sort --numeric-sort --reverse | head -n 15"
 alias iip="curl icanhazip.com"
-alias killa="killall"
 alias mkdir="mkdir -pv"
 alias n3="source n3"
 alias nocol="sed 's/\x1B\[[0-9;]\{1,\}m//g'" # Strips all color codes.
 alias now="date '+%a %-e %b  %T  %F'"
-alias treed="tree -d"
 alias untar="tar -xvf"
 alias watch="watch --color --difference"
 alias xlns="tr '\n' '\0' | xargs -0 -o"
@@ -253,7 +250,6 @@ alias zreload="source ~/.zshenv && source ~/.zshrc"
 
 alias dog="view"
 alias vim="nvim"
-alias vimd="nvim -d"
 alias vimdiff="nvim -d"
 
 alias cdb="source cdb"
