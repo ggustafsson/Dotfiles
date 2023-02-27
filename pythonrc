@@ -3,5 +3,5 @@ import sys
 
 from pprint import pprint
 
-sys.ps1 = "\n\001\033[96m\002>>>\001\033[0m\002 "
-sys.ps2 = "\001\033[96m\002...\001\033[0m\002 "
+sys.ps1 = "\n\033[96m>>>\033[0m "
+sys.ps2 = "\033[96m...\033[0m "
