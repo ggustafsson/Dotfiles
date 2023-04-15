@@ -54,19 +54,19 @@ lspconfig["lua_ls"].setup {
       runtime = {
         version = "LuaJIT",
       },
+      workspace = {
+        checkThirdParty = false,
+        library = vim.api.nvim_get_runtime_file("", true),
+      },
       diagnostics = {
         disable = {
           "lowercase-global",
           "redefined-local",
         },
         globals = {
-          "hs",
+          "hs", -- Hammerspoon.
           "vim",
         },
-      },
-      workspace = {
-        checkThirdParty = false,
-        library = vim.api.nvim_get_runtime_file("", true),
       },
       format = {
         enable = false,
