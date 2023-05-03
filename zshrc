@@ -229,20 +229,17 @@ if [[ $OSTYPE == darwin* ]]; then
 else
   alias free="free -h"
   alias grep="grep --color=auto"
-
-  # FIXME: Coreutils is outdated on Ubuntu 22.10.
-  #alias ls="ls --classify=auto --color=auto --human-readable --literal"
-  alias ls="ls --classify --color=auto --human-readable --literal"
+  alias ls="ls --classify=auto --color=auto --human-readable --literal"
 fi
 
 alias crg="cargo"
 alias fd="fd --follow --no-ignore"
-alias hogs="du -sk * | sort --numeric-sort --reverse | head -n 15"
 alias iip="curl icanhazip.com"
 alias mkdir="mkdir -pv"
 alias n3="source n3"
 alias nocol="sed 's/\x1B\[[0-9;]\{1,\}m//g'" # Strips all color codes.
 alias now="date '+%a %-e %b  %T  %F'"
+alias uniqs="sort | uniq"
 alias untar="tar -xvf"
 alias watch="watch --color --difference"
 alias xlns="tr '\n' '\0' | xargs -0 -o"
@@ -262,7 +259,7 @@ alias mv="mv -vi"
 alias rm="rm -v"
 
 alias df="df -h"
-alias du="du -sh"
+alias du="du -hs"
 
 alias hist="\history -i -25"
 alias history="history -i 1"
