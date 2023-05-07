@@ -235,7 +235,6 @@ fi
 alias crg="cargo"
 alias fd="fd --follow --no-ignore"
 alias iip="curl icanhazip.com"
-alias mkdir="mkdir -pv"
 alias n3="source n3"
 alias nocol="sed 's/\x1B\[[0-9;]\{1,\}m//g'" # Strips all color codes.
 alias now="date '+%a %-e %b  %T  %F'"
@@ -250,11 +249,12 @@ alias vim="nvim"
 alias vimdiff="nvim -d"
 
 alias cdb="source cdb"
-alias cdh="dirs -v | tac"
 alias cdj="source cdj"
+alias dirs="dirs -v"
 
 alias cp="cp -vi"
 alias ln="ln -v"
+alias mkdir="mkdir -pv"
 alias mv="mv -vi"
 alias rm="rm -v"
 
