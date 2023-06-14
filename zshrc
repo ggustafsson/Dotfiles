@@ -221,14 +221,14 @@ if [[ $OSTYPE == darwin* ]]; then
   alias put="pbpaste"
   alias stat="stat -x"
 
-  alias grep="ggrep --color=auto"
-  alias bgrep="\grep --color=auto"
+  alias grep="ggrep --binary-files=without-match --color=auto"
+  alias bgrep="\grep --binary-files=without-match --color=auto"
 
   alias ls="gls --classify=auto --color=auto --human-readable --literal"
   alias bls="\ls -FGh"
 else
   alias free="free -h"
-  alias grep="grep --color=auto"
+  alias grep="grep --binary-files=without-match --color=auto"
   alias ls="ls --classify=auto --color=auto --human-readable --literal"
 fi
 
