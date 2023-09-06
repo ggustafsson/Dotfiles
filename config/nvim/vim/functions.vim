@@ -1,4 +1,5 @@
 command! -nargs=* -complete=help Help vertical help <args>
+command! -nargs=0 LspQf lua vim.diagnostic.setqflist()
 command! -nargs=0 Reload source $MYVIMRC
 command! -nargs=1 S let @/ = <q-args> | normal n " Same as / in normal mode.
 
