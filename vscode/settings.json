@@ -1,7 +1,6 @@
 {
     "markdown-mermaid.darkModeTheme": "default",
     "terminal.integrated.fontSize": 13,
-    "vscode-neovim.neovimExecutablePaths.darwin": "/opt/homebrew/bin/nvim",
 
     "editor.bracketPairColorization.enabled": false,
     "editor.cursorBlinking": "solid",
@@ -26,6 +25,11 @@
     "python.linting.flake8Path": "/opt/homebrew/bin/flake8",
     "python.linting.pylintEnabled": true,
     "python.linting.pylintPath": "/opt/homebrew/bin/pylint",
+
+    "vscode-neovim.neovimExecutablePaths.darwin": "/opt/homebrew/bin/nvim",
+    "extensions.experimental.affinity": {
+        "asvetliakov.vscode-neovim": 1,
+    },
 
     "[markdown]": {
         "editor.wordWrap": "off",
