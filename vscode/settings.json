@@ -21,11 +21,6 @@
     "plantuml.exportOutDir": ".",
     "plantuml.exportSubFolder": false,
 
-    "python.linting.flake8Enabled": true,
-    "python.linting.flake8Path": "/opt/homebrew/bin/flake8",
-    "python.linting.pylintEnabled": true,
-    "python.linting.pylintPath": "/opt/homebrew/bin/pylint",
-
     "vscode-neovim.neovimExecutablePaths.darwin": "/opt/homebrew/bin/nvim",
     "extensions.experimental.affinity": {
         "asvetliakov.vscode-neovim": 1,
