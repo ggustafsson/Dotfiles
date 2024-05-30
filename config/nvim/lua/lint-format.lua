@@ -1,7 +1,8 @@
 local null_ls = require "null-ls"
 
 local sources = {
-  null_ls.builtins.diagnostics.flake8,
+  require("none-ls.diagnostics.flake8"),
+
   null_ls.builtins.diagnostics.pylint,
   null_ls.builtins.diagnostics.tidy,
   null_ls.builtins.diagnostics.yamllint,
