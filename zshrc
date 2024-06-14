@@ -5,7 +5,7 @@ else
   export FPATH=/home/linuxbrew/.linuxbrew/share/zsh/site-functions:$FPATH
 fi
 
-export FZF_DEFAULT_OPTS="--bind ctrl-a:toggle-all,ctrl-d:deselect-all --color 16,hl:bright-red,hl+:reverse:yellow,info:bright-black,marker:reverse:-1,pointer:bright-cyan --marker +"
+export FZF_DEFAULT_OPTS="--bind ctrl-a:toggle-all,ctrl-d:deselect-all --color 16,hl:bright-red,hl+:reverse:yellow,info:bright-black,marker:reverse:-1,pointer:bright-cyan --marker + --pointer '>'"
 export LS_COLORS="rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=30;41:sg=30;43:ca=30;41:tw=30;42:ow=30;42:st=30;44:ex=01;32"
 export PYTHONSTARTUP=$HOME/.pythonrc
 
