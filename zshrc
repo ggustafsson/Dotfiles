@@ -76,6 +76,7 @@ for mode in viopp visual; do
   for seq in {a,i}{\',\",\`}; do
     bindkey -M $mode $seq select-quoted
   done
+
   # a( i( a) i) a[ i[ a] i] a{ i{ a} i} a< i< a> i>
   for seq in {a,i}{\(,\),\[,\],\{,\},\<,\>}; do
     bindkey -M $mode $seq select-bracketed
