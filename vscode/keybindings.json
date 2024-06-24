@@ -1,14 +1,24 @@
 [
     {
         "key": "cmd+[Minus]",
-        "command": "editor.action.fontZoomIn",
+        "command": "editor.action.fontZoomIn"
     },
     {
         "key": "cmd+-",
-        "command": "editor.action.fontZoomOut",
+        "command": "editor.action.fontZoomOut"
     },
     {
         "key": "cmd+0",
-        "command": "editor.action.fontZoomReset",
+        "command": "editor.action.fontZoomReset"
     },
+    {
+        "key": "ctrl+d",
+        "command": "vscode-neovim.send",
+        "args": "<C-d>"
+    },
+    {
+        "key": "ctrl+u",
+        "command": "vscode-neovim.send",
+        "args": "<C-u>"
+    }
 ]
