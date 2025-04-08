@@ -1,3 +1,5 @@
+StrictHostKeyChecking accept-new
+
 ConnectTimeout 30
 ServerAliveInterval 60
 
