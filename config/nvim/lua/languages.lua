@@ -1,16 +1,79 @@
-local lspconfig = require "lspconfig"
-
 local servers = {
-  "ansiblels", -- Includes "ansible-lint".
-  "bashls",    -- Includes "ShellCheck".
-  "pyright",
-  "yamlls",
+  -- Includes "ansible-lint".
+  ansiblels = {
+    on_attach = lsp_on_attach,
+  },
+
+  -- Includes "ShellCheck".
+  bashls = {
+    on_attach = lsp_on_attach,
+  },
+
+  gopls = {
+    on_attach = lsp_on_attach,
+    settings = {
+      gopls = {
+        staticcheck = true,
+      },
+    },
+  },
+
+  -- Also known as "lua-language-server".
+  lua_ls = {
+    on_attach = lsp_on_attach,
+    settings = {
+      Lua = {
+        runtime = {
+          version = "LuaJIT",
+        },
+        workspace = {
+          checkThirdParty = false,
+          library = vim.api.nvim_get_runtime_file("", true),
+        },
+        diagnostics = {
+          disable = {
+            "lowercase-global",
+            "redefined-local",
+          },
+          globals = {
+            "hs", -- Hammerspoon.
+            "vim",
+          },
+        },
+        format = {
+          enable = false,
+        },
+        telemetry = {
+          enable = false,
+        },
+      },
+    },
+  },
+
+  pyright = {
+    on_attach = lsp_on_attach,
+  },
+
+  rust_analyzer = {
+    on_attach = lsp_on_attach,
+    settings = {
+      ["rust-analyzer"] = {
+        checkOnSave = {
+          command = "clippy",
+        },
+      },
+    },
+  },
+
+  yamlls = {
+    on_attach = lsp_on_attach,
+  },
 }
 
 -- Using global variable to allow for usage in 'local.lua' file.
 lsp_on_attach = function(_, bufnr)
-  vim.api.nvim_buf_set_option(bufnr, "formatexpr", "")
-  vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
+  vim.api.nvim_set_option_value("formatexpr", "", { buf = bufnr })
+  vim.api.nvim_set_option_value("omnifunc", "v:lua.vim.lsp.omnifunc", { buf = bufnr })
 
   vim.api.nvim_buf_set_keymap(bufnr, "n", "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", {})
   vim.api.nvim_buf_set_keymap(bufnr, "n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", {})
@@ -26,60 +89,7 @@ lsp_on_attach = function(_, bufnr)
   })
 end
 
-lspconfig["gopls"].setup {
-  on_attach = lsp_on_attach,
-  settings = {
-    gopls = {
-      staticcheck = true,
-    },
-  },
-}
-
-lspconfig["rust_analyzer"].setup {
-  on_attach = lsp_on_attach,
-  settings = {
-    ["rust-analyzer"] = {
-      checkOnSave = {
-        command = "clippy",
-      },
-    },
-  },
-}
-
--- Also known as "lua-language-server".
-lspconfig["lua_ls"].setup {
-  on_attach = lsp_on_attach,
-  settings = {
-    Lua = {
-      runtime = {
-        version = "LuaJIT",
-      },
-      workspace = {
-        checkThirdParty = false,
-        library = vim.api.nvim_get_runtime_file("", true),
-      },
-      diagnostics = {
-        disable = {
-          "lowercase-global",
-          "redefined-local",
-        },
-        globals = {
-          "hs", -- Hammerspoon.
-          "vim",
-        },
-      },
-      format = {
-        enable = false,
-      },
-      telemetry = {
-        enable = false,
-      },
-    },
-  },
-}
-
-for _, lsp in ipairs(servers) do
-  lspconfig[lsp].setup {
-    on_attach = lsp_on_attach,
-  }
+for server, options in pairs(servers) do
+  vim.lsp.config(server, options)
+  vim.lsp.enable(server)
 end
