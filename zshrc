@@ -178,14 +178,6 @@ function prompt_git {
   fi
 }
 
-# Display info if a todo file is found in current directory.
-function prompt_todo {
-  files=(.todo(N) .todo.*(N) TODO(N) TODO.*(N))
-  if [[ -n $files ]]; then
-    echo " 📄 %B%F{magenta}todo%f%b"
-  fi
-}
-
 # Display current Vi mode. Insert ">>" or "++", command "<<" and replace "**".
 function prompt_mode {
   if [[ $KEYMAP == vicmd ]]; then
@@ -205,15 +197,15 @@ function prompt_mode {
   fi
 }
 
-# 🏠 Onett 📁 Projects/Dotfiles 📦 master 📄 todo
+# 🏠 Onett 📁 Projects/Dotfiles 📦 master
 # >>
 #
-# 🐳 ubuntu-lxc1 📁 Projects/Dotfiles 📦 master 📄 todo
+# 🐳 ubuntu-lxc1 📁 Projects/Dotfiles 📦 master
 # >>
 #
-# 💀 Twoson 📁 Projects/Dotfiles 📦 master 📄 todo
+# 💀 Twoson 📁 Projects/Dotfiles 📦 master
 # >>
-PROMPT=$'\n$(prompt_host)$(prompt_path)$(prompt_git)$(prompt_todo)\n$(prompt_mode) '
+PROMPT=$'\n$(prompt_host)$(prompt_path)$(prompt_git)\n$(prompt_mode) '
 PROMPT2='$(prompt_mode 2) ' # Used when entering multi-line commands.
 
 
