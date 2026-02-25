@@ -231,7 +231,6 @@ alias iip="curl icanhazip.com"
 alias n3="source n3"
 alias nocol="sed 's/\x1B\[[0-9;]\{1,\}m//g'" # Strips all color codes.
 alias now="date '+%a %-e %b  %T  %F'"
-alias uniqs="sort | uniq"
 alias untar="tar -xvf"
 alias watch="watch --color --difference"
 alias xlns="tr '\n' '\0' | xargs -0 -o"
