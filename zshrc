@@ -60,6 +60,7 @@ autoload -U up-line-or-beginning-search && zle -N up-line-or-beginning-search
 
 autoload -U select-bracketed && zle -N select-bracketed
 autoload -U select-quoted && zle -N select-quoted
+autoload -U select-word-style && select-word-style bash
 
 
 bindkey -v
