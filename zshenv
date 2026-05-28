@@ -39,6 +39,7 @@ if [[ $OSTYPE == darwin* ]]; then
     ~/Projects/Pyttipanna/src(N)
     /opt/homebrew/opt/curl/bin(N)
     /opt/homebrew/opt/ruby/bin(N)
+    /opt/homebrew/opt/rustup/bin(N)
     /opt/homebrew/bin(N)
     /opt/homebrew/sbin(N)
     /usr/local/bin(N)
@@ -56,6 +57,7 @@ else
     ~/Projects/Kjell/src/linux(N)
     ~/Projects/Kjell/src(N)
     ~/Projects/Pyttipanna/src(N)
+    /home/linuxbrew/.linuxbrew/opt/rustup/bin(N)
     /home/linuxbrew/.linuxbrew/bin(N)
     /home/linuxbrew/.linuxbrew/sbin(N)
     /usr/local/bin
