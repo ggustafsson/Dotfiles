@@ -22,6 +22,7 @@ export NNN_OPTS=ARUdo # See "nnn -h" for details.
 export NNN_PLUG='b:!bck --nnn*;y:-!yankp --nnn*'
 
 KEYTIMEOUT=30 # Default timeout is 40. Zzzzzz...
+WORDCHARS=${WORDCHARS/\/} # Remove / to improve Ctrl-W deletion.
 
 HISTFILE=$HOME/.zhistory
 HISTSIZE=9999
@@ -60,7 +61,6 @@ autoload -U up-line-or-beginning-search && zle -N up-line-or-beginning-search
 
 autoload -U select-bracketed && zle -N select-bracketed
 autoload -U select-quoted && zle -N select-quoted
-autoload -U select-word-style && select-word-style bash
 
 
 bindkey -v
