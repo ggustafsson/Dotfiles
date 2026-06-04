@@ -22,11 +22,15 @@ export NNN_OPTS=ARUdo # See "nnn -h" for details.
 export NNN_PLUG='b:!bck --nnn*;y:-!yankp --nnn*'
 
 KEYTIMEOUT=30 # Default timeout is 40. Zzzzzz...
-WORDCHARS=${WORDCHARS/\/} # Remove / to improve Ctrl-W deletion.
 
 HISTFILE=$HOME/.zhistory
 HISTSIZE=9999
 SAVEHIST=$HISTSIZE
+
+# Improve behaviour of Ctrl-W deletion.
+WORDCHARS+=\'\"
+WORDCHARS=${WORDCHARS/\/}
+WORDCHARS=${WORDCHARS/=/}
 
 # Improves behaviour of "&" and "|" input immediately after tab completion.
 ZLE_REMOVE_SUFFIX_CHARS=$' \t\n;' # Removed "&|" from defaults to keep space.
