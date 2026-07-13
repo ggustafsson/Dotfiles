@@ -29,8 +29,8 @@ SAVEHIST=$HISTSIZE
 
 # Improve behaviour of Ctrl-W deletion.
 WORDCHARS+=\'\"
+WORDCHARS=${WORDCHARS/=}
 WORDCHARS=${WORDCHARS/\/}
-WORDCHARS=${WORDCHARS/=/}
 
 # Improves behaviour of "&" and "|" input immediately after tab completion.
 ZLE_REMOVE_SUFFIX_CHARS=$' \t\n;' # Removed "&|" from defaults to keep space.
