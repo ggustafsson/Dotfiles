@@ -1,3 +1,5 @@
+require('ansible').setup()
+
 require("nnn-dir").setup()
 
 require('nvim-treesitter').install {
@@ -6,6 +8,7 @@ require('nvim-treesitter').install {
   "go",
   "html",
   "javascript",
+  "jinja",
   "json",
   "lua",
   "python",

@@ -12,11 +12,6 @@ augroup Main
     \   execute 'normal! g`"' |
     \ endif
 
-  autocmd Filetype *
-    \ if &omnifunc == "" |
-    \   setlocal omnifunc=syntaxcomplete#Complete |
-    \ endif
-
   autocmd BufRead,BufNewFile */{,.}gitconfig*   setlocal filetype=gitconfig
   autocmd BufRead,BufNewFile */{,.}pythonrc     setlocal filetype=python
   autocmd BufRead,BufNewFile */{,.}ssh/config*  setlocal filetype=sshconfig
@@ -25,6 +20,11 @@ augroup Main
 
   autocmd BufNewFile */Text/Brain/*  Template ~/.config/nvim/templates/Note.md
   autocmd BufNewFile */Text/Cheats/* Template ~/.config/nvim/templates/Cheat.md
+
+  autocmd FileType *
+    \ if &omnifunc == "" |
+    \   setlocal omnifunc=syntaxcomplete#Complete |
+    \ endif
 
   autocmd FileType gitcommit
     \ setlocal nolist spell

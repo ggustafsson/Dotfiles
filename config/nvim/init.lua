@@ -9,6 +9,7 @@ vim.cmd [[
   source ~/.config/nvim/vim/settings.vim
 ]]
 
+require "autocmds"
 require "completions"
 require "functions"
 require "languages"
