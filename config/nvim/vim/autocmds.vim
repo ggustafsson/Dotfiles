@@ -47,6 +47,5 @@ augroup Main
     \ setlocal linebreak
 
   autocmd FileType rust
-    \ let b:runprg = "rustc -o /tmp/rustc-output '%' && /tmp/rustc-output" |
-    \ setlocal textwidth=79
+    \ let b:runprg = "rustc -o /tmp/rustc-output '%' && /tmp/rustc-output"
 augroup END
