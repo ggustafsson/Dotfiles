@@ -13,8 +13,8 @@
     "editor.renderFinalNewline": "off",
     "editor.scrollBeyondLastLine": false,
 
-    "telemetry.telemetryLevel": "off",
     "redhat.telemetry.enabled": false,
+    "telemetry.telemetryLevel": "off",
 
     "plantuml.render": "PlantUMLServer",
     "plantuml.server": "http://127.0.0.1:8080",
@@ -26,7 +26,18 @@
         "asvetliakov.vscode-neovim": 1
     },
 
+    "yaml.disableSchemaDetection": [
+        "**/docker-compose.yml",
+        "**/docker-compose.yaml",
+        "**/docker-compose.*.yml",
+        "**/docker-compose.*.yaml",
+        "**/compose.yml",
+        "**/compose.yaml",
+        "**/compose.*.yml",
+        "**/compose.*.yaml"
+    ],
+
     "[markdown]": {
         "editor.wordWrap": "off"
-    }
+    },
 }
