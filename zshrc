@@ -265,9 +265,6 @@ alias history="history -i 1"
 alias la="ls -l --all"
 alias ll="ls -l"
 
-alias ps="ps a -o user,tt,pid,command"
-alias psx="\ps ax -o user,tt,pid,command"
-
 alias py="python3"
 alias pyjson="python3 -m json.tool"
 alias pyweb="python3 -m http.server 8080"
