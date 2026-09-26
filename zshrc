@@ -217,6 +217,7 @@ PROMPT2='$(prompt_mode 2) ' # Used when entering multi-line commands.
 
 if [[ $OSTYPE == darwin* ]]; then
   alias beep="afplay /System/Library/Sounds/Glass.aiff"
+  alias cnt="docker exec -it ubuntu-cnt1 /bin/login $USER"
   alias put="pbpaste"
   alias stat="stat -x"
 
