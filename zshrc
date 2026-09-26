@@ -151,13 +151,11 @@ zle -N zle-keymap-select
 
 # Display hostname according to various rules.
 function prompt_host {
-  if [[ $HOST == Onett ]]; then
-    echo "🏠 %B%F{green}$HOST%f%b"
-  elif grep -qs docker /proc/1/cgroup; then
-    echo "🐳 %B%F{cyan}$HOST%f%b"
-  else
-    echo "💀 %B%F{yellow}$HOST%f%b"
-  fi
+  case $HOST in
+    Onett)       echo "🏠 %B%F{green}$HOST%f%b"  ;;
+    ubuntu-cnt*) echo "🐳 %B%F{cyan}$HOST%f%b"   ;;
+    *)           echo "💀 %B%F{yellow}$HOST%f%b" ;;
+  esac
 }
 
 # Display current path but limit depth to two levels.
@@ -206,7 +204,7 @@ function prompt_mode {
 # 🏠 Onett 📁 Projects/Dotfiles 📦 master
 # >>
 #
-# 🐳 ubuntu-lxc1 📁 Projects/Dotfiles 📦 master
+# 🐳 ubuntu-cnt1 📁 Projects/Dotfiles 📦 master
 # >>
 #
 # 💀 Twoson 📁 Projects/Dotfiles 📦 master
