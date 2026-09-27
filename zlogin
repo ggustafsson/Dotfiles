@@ -3,7 +3,7 @@ if [[ $OSTYPE == darwin* ]]; then
     /usr/bin/ssh-add --apple-use-keychain -q ~/.ssh/id_ed25519
   fi
 else
-  print -P "%F{yellow}"
+  print -P "\n%F{yellow}"
   figlet -c -f ~/.local/share/figlet/bigmoney-nw.flf ${HOST/-/ } 2> /dev/null
   print -Pn "%f"
 fi
