@@ -3,6 +3,11 @@ if [[ $OSTYPE == darwin* ]]; then
   export GPG_TTY=$(tty)
 else
   export FPATH=/home/linuxbrew/.linuxbrew/share/zsh/site-functions:$FPATH
+
+  case $TERM in
+    linux) export TERM=linux-16color  ;;
+    xterm) export TERM=xterm-256color ;;
+  esac
 fi
 
 export FZF_DEFAULT_OPTS="--bind ctrl-a:toggle-all,ctrl-d:deselect-all --color base16,bg+:-1,fg+:yellow,hl:bright-red,hl+:reverse:yellow,info:bright-black,marker:reverse:-1,pointer:bright-cyan --gutter ' ' --marker + --no-scrollbar --pointer '>'"
