@@ -1,5 +1,4 @@
 {
-    "markdown-mermaid.darkModeTheme": "default",
     "terminal.integrated.fontSize": 13,
 
     "editor.bracketPairColorization.enabled": false,
@@ -15,11 +14,6 @@
 
     "redhat.telemetry.enabled": false,
     "telemetry.telemetryLevel": "off",
-
-    "plantuml.render": "PlantUMLServer",
-    "plantuml.server": "http://127.0.0.1:8080",
-    "plantuml.exportOutDir": ".",
-    "plantuml.exportSubFolder": false,
 
     "vscode-neovim.neovimExecutablePaths.darwin": "/opt/homebrew/bin/nvim",
     "extensions.experimental.affinity": {
