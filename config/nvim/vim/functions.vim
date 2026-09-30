@@ -231,3 +231,21 @@ function! Template(file)
 endfunction
 command! -nargs=1 -complete=file Template call Template(<q-args>) |
   \ execute "silent! normal /\\<X\\>\<CR>"
+
+
+" Toggle tree-sitter highlighting on and off.
+let g:ts_highlight_enabled = 1
+function! TSToggle()
+  if g:ts_highlight_enabled == 1
+    lua vim.treesitter.stop()
+    let g:ts_highlight_enabled = 0
+    echo "Tree-sitter highlighting off"
+  else
+    if luaeval("pcall(vim.treesitter.start)")
+      let g:ts_highlight_enabled = 1
+      echo "Tree-sitter highlighting on"
+    else
+      echo "Tree-sitter highlighting failed (No parser available)"
+    endif
+  endif
+endfunction
