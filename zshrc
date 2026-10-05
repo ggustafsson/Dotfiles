@@ -1,6 +1,6 @@
 if [[ $OSTYPE == darwin* ]]; then
   export FPATH=/opt/homebrew/share/zsh/site-functions:$FPATH
-  export GPG_TTY=$(tty)
+  export GPG_TTY=$TTY
 else
   export FPATH=/home/linuxbrew/.linuxbrew/share/zsh/site-functions:$FPATH
 
@@ -235,7 +235,6 @@ else
   alias ls="ls --classify=auto --color=auto --human-readable --literal"
 fi
 
-alias crg="cargo"
 alias fd="fd --follow --no-ignore"
 alias iip="curl icanhazip.com"
 alias n3="source n3"
@@ -243,10 +242,9 @@ alias nocol="sed 's/\x1B\[[0-9;]\{1,\}m//g'" # Strips all color codes.
 alias now="date '+%a %-e %b  %T  %F'"
 alias untar="tar -xvf"
 alias watch="watch --color --difference"
-alias xlns="tr '\n' '\0' | xargs -0 -o"
+alias xrows="tr '\n' '\0' | xargs -0 -o"
 alias zreload="source ~/.zshenv && source ~/.zshrc"
 
-alias dog="view"
 alias vim="nvim"
 alias vimdiff="nvim -d"
 
@@ -276,9 +274,6 @@ alias pyweb="python3 -m http.server 8080"
 alias rg="rg --follow --no-ignore --sort path"
 alias rgrep="rg --no-heading"
 alias xxx="rg '\b(FIXME|NOTE|TODO|XXX)(:|$| )'"
-
-alias svtplay-dl="svtplay-dl --resume"
-alias youtube-dl="youtube-dl --continue --output '%(title)s.%(ext)s'"
 
 
 if [[ -d ~/.local/share/fzf/shell ]]; then
