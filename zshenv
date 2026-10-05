@@ -37,6 +37,7 @@ if [[ $OSTYPE == darwin* ]]; then
     $GOPATH/bin(N)
     ~/Projects/Kjell/src/macos(N)
     ~/Projects/Kjell/src(N)
+    ~/Projects/Kvickt/Scripts(N)
     ~/Projects/Pyttipanna/src(N)
     /opt/homebrew/opt/curl/bin(N)
     /opt/homebrew/opt/ruby/bin(N)
