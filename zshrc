@@ -219,6 +219,7 @@ PROMPT2='$(prompt_mode 2) ' # Used when entering multi-line commands.
 
 
 if [[ $OSTYPE == darwin* ]]; then
+  alias ansible-lint='matches=(/opt/homebrew/opt/ansible/libexec/lib/python3.*/site-packages/ansible_collections(N)) ANSIBLE_COLLECTIONS_PATH=$matches[1] ansible-lint'
   alias beep="afplay /System/Library/Sounds/Glass.aiff"
   alias cnt1="docker exec -it ubuntu-cnt1 /bin/login $USER"
   alias put="pbpaste"
