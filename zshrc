@@ -159,6 +159,7 @@ function prompt_host {
   case $HOST in
     Onett)       echo "🏠 %B%F{green}$HOST%f%b"  ;;
     ubuntu-cnt*) echo "🐳 %B%F{cyan}$HOST%f%b"   ;;
+    ubuntu-srv*) echo "💀 %B%F{red}$HOST%f%b"    ;;
     *)           echo "💀 %B%F{yellow}$HOST%f%b" ;;
   esac
 }
@@ -209,10 +210,10 @@ function prompt_mode {
 # 🏠 Onett 📁 Projects/Dotfiles 📦 master
 # >>
 #
-# 🐳 ubuntu-cnt1 📁 Projects/Dotfiles 📦 master
+# 💀 Twoson 📁 Projects/Dotfiles 📦 master
 # >>
 #
-# 💀 Twoson 📁 Projects/Dotfiles 📦 master
+# 🐳 ubuntu-cnt1 📁 Projects/Dotfiles 📦 master
 # >>
 PROMPT=$'\n$(prompt_host)$(prompt_path)$(prompt_git)\n$(prompt_mode) '
 PROMPT2='$(prompt_mode 2) ' # Used when entering multi-line commands.

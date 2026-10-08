@@ -18,6 +18,7 @@
 	sw = switch
 	ta = tag
 
+	ace-of-rebase = !git fetch origin && git rebase origin/$(git symbolic-ref refs/remotes/origin/HEAD | sed 's+^refs/remotes/origin/++')
 	commit-and-run = commit --all --message='Commit and run...'
 	forgive-me-for-i-have-sinned = reset --soft HEAD~1
 	fucked-up-beyond-all-repair = reset --hard @{upstream}
