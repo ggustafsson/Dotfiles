@@ -237,7 +237,6 @@ else
 fi
 
 alias fd="fd --follow --no-ignore"
-alias iip="curl icanhazip.com"
 alias n3="source n3"
 alias nocol="sed 's/\x1B\[[0-9;]\{1,\}m//g'" # Strips all color codes.
 alias now="date '+%a %-e %b  %T  %F'"
@@ -245,9 +244,6 @@ alias untar="tar -xvf"
 alias watch="watch --color --difference"
 alias xrows="tr '\n' '\0' | xargs -0 -o"
 alias zreload="source ~/.zshenv && source ~/.zshrc"
-
-alias vim="nvim"
-alias vimdiff="nvim -d"
 
 alias cdb="source cdb"
 alias cdj="source cdj"
@@ -265,6 +261,9 @@ alias du="du -hs"
 alias hist="\history -i -25"
 alias history="history -i 1"
 
+alias iip="curl ifconfig.co"
+alias iipp="curl -w '\n' ifconfig.co/json"
+
 alias la="ls -l --all"
 alias ll="ls -l"
 
@@ -275,6 +274,9 @@ alias pyweb="python3 -m http.server 8080"
 alias rg="rg --follow --no-ignore --sort path"
 alias rgrep="rg --no-heading"
 alias xxx="rg '\b(FIXME|NOTE|TODO|XXX)(:|$| )'"
+
+alias vim="nvim"
+alias vimdiff="nvim -d"
 
 
 if [[ -d ~/.local/share/fzf/shell ]]; then
