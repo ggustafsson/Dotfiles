@@ -159,7 +159,7 @@ function prompt_host {
   case $HOST in
     Onett)       echo "🏠 %B%F{green}$HOST%f%b"  ;;
     ubuntu-cnt*) echo "🐳 %B%F{cyan}$HOST%f%b"   ;;
-    ubuntu-srv*) echo "💀 %B%F{red}$HOST%f%b"    ;;
+    ubuntu-srv*) echo "💀 %B%F{magenta}$HOST%f%b"    ;;
     *)           echo "💀 %B%F{yellow}$HOST%f%b" ;;
   esac
 }
