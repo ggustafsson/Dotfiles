@@ -3,7 +3,6 @@ umask 077
 
 
 if [[ $OSTYPE == darwin* ]]; then
-  export HOMEBREW_CASK_OPTS="--appdir=$HOME/Applications"
   export XDG_CONFIG_HOME=$HOME/.config
 
   # XXX: Swedish sorting order under macOS is wrong because of broken locale
