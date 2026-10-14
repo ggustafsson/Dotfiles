@@ -17,8 +17,10 @@ endfunction
 " Toggle 'colorcolumn' setting on and off.
 function! ColorColumn()
   if empty(&colorcolumn)
+    setlocal cursorcolumn
     setlocal colorcolumn=+1 colorcolumn?
   else
+    setlocal nocursorcolumn
     setlocal colorcolumn= colorcolumn?
   endif
 endfunction
