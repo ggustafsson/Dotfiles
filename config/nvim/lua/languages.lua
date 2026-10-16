@@ -2,6 +2,9 @@ local servers = {
   -- Includes "ansible-lint".
   ansiblels = {
     on_attach = lsp_on_attach,
+    filetypes = {
+      "ansible",
+    },
   },
 
   -- Includes "ShellCheck".
@@ -58,7 +61,8 @@ local servers = {
     on_attach = lsp_on_attach,
     settings = {
       ["rust-analyzer"] = {
-        checkOnSave = {
+        checkOnSave = true,
+        check = {
           command = "clippy",
         },
       },

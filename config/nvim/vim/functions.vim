@@ -14,11 +14,14 @@ function! ClearLocList()
 endfunction
 
 
-" Toggle 'colorcolumn' setting on and off.
+" Toggle 'colorcolumn' setting on and off. Also sets 'leadmultispace'.
 function! ColorColumn()
   if empty(&colorcolumn)
+    let l:spaces = repeat('\ ', max([0, &shiftwidth - 1]))
+    execute "setlocal listchars+=leadmultispace:│" .. l:spaces
     setlocal colorcolumn=+1 colorcolumn?
   else
+    setlocal listchars<
     setlocal colorcolumn= colorcolumn?
   endif
 endfunction

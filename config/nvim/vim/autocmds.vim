@@ -1,4 +1,4 @@
-augroup Main
+augroup Custom
   autocmd!
 
   autocmd TextYankPost *
