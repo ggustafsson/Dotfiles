@@ -16,7 +16,6 @@ require "lint-format"
 require "plugins"
 require "settings"
 
-local local_lua = "~/.config/nvim/lua/local.lua"
-if file_exists(local_lua) then
+if file_exists("~/.config/nvim/lua/local.lua") then
   require "local"
 end

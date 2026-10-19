@@ -16,7 +16,7 @@ vim.o.textwidth = 79
 vim.o.wrap = false
 
 vim.o.backup = true
-vim.o.backupdir = "~/.local/share/nvim/backup"
+vim.o.backupdir = vim.fn.expand("~/.local/share/nvim/backup")
 vim.o.undofile = true
 
 vim.o.cursorline = true
