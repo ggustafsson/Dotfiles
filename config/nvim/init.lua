@@ -20,8 +20,3 @@ local local_lua = "~/.config/nvim/lua/local.lua"
 if file_exists(local_lua) then
   require "local"
 end
-
-local local_vim = "~/.config/nvim/vim/local.vim"
-if file_exists(local_vim) then
-  vim.cmd("source " .. local_vim)
-end

@@ -1,51 +1,47 @@
-augroup Custom
-  autocmd!
+autocmd TextYankPost *
+  \ silent! lua vim.highlight.on_yank { higroup = "Search", timeout = 200 }
 
-  autocmd TextYankPost *
-    \ silent! lua vim.highlight.on_yank { higroup = "Search", timeout = 200 }
+" If last cursor position still exist then go to it.
+autocmd BufRead * autocmd FileType <buffer> ++once
+  \ if &diff != 1 &&
+  \     &filetype !~# 'commit\|rebase' &&
+  \     line("'\"") > 1 && line("'\"") <= line("$") |
+  \   execute 'normal! g`"' |
+  \ endif
 
-  " If last cursor position still exist then go to it.
-  autocmd BufRead * autocmd FileType <buffer> ++once
-    \ if &diff != 1 &&
-    \     &filetype !~# 'commit\|rebase' &&
-    \     line("'\"") > 1 && line("'\"") <= line("$") |
-    \   execute 'normal! g`"' |
-    \ endif
+autocmd BufRead,BufNewFile */{,.}gitconfig*   setlocal filetype=gitconfig
+autocmd BufRead,BufNewFile */{,.}pythonrc     setlocal filetype=python
+autocmd BufRead,BufNewFile */{,.}ssh/config*  setlocal filetype=sshconfig
+autocmd BufRead,BufNewFile */Ansiblebot/*.yml setlocal filetype=ansible
+autocmd BufRead,BufNewFile */yamllint/config  setlocal filetype=yaml
 
-  autocmd BufRead,BufNewFile */{,.}gitconfig*   setlocal filetype=gitconfig
-  autocmd BufRead,BufNewFile */{,.}pythonrc     setlocal filetype=python
-  autocmd BufRead,BufNewFile */{,.}ssh/config*  setlocal filetype=sshconfig
-  autocmd BufRead,BufNewFile */Ansiblebot/*.yml setlocal filetype=ansible
-  autocmd BufRead,BufNewFile */yamllint/config  setlocal filetype=yaml
+autocmd BufNewFile */Text/Brain/*  Template ~/.config/nvim/templates/Note.md
+autocmd BufNewFile */Text/Cheats/* Template ~/.config/nvim/templates/Cheat.md
 
-  autocmd BufNewFile */Text/Brain/*  Template ~/.config/nvim/templates/Note.md
-  autocmd BufNewFile */Text/Cheats/* Template ~/.config/nvim/templates/Cheat.md
+autocmd FileType *
+  \ if &omnifunc == "" |
+  \   setlocal omnifunc=syntaxcomplete#Complete |
+  \ endif
 
-  autocmd FileType *
-    \ if &omnifunc == "" |
-    \   setlocal omnifunc=syntaxcomplete#Complete |
-    \ endif
+autocmd FileType gitcommit
+  \ setlocal nolist spell
 
-  autocmd FileType gitcommit
-    \ setlocal nolist spell
+autocmd FileType gitconfig,snippets
+  \ setlocal noexpandtab shiftwidth=4 softtabstop=0 tabstop=4
 
-  autocmd FileType gitconfig,snippets
-    \ setlocal noexpandtab shiftwidth=4 softtabstop=0 tabstop=4
+autocmd FileType go
+  \ let b:runprg = "go run '%'" |
+  \ setlocal noexpandtab shiftwidth=4 softtabstop=0 tabstop=4
+  \   listchars=tab:\ \ ,trail:-,nbsp:+,precedes:<,extends:>
 
-  autocmd FileType go
-    \ let b:runprg = "go run '%'" |
-    \ setlocal noexpandtab shiftwidth=4 softtabstop=0 tabstop=4
-    \   listchars=tab:\ \ ,trail:-,nbsp:+,precedes:<,extends:>
+autocmd FileType json,python
+  \ setlocal expandtab shiftwidth=4 softtabstop=4
 
-  autocmd FileType json,python
-    \ setlocal expandtab shiftwidth=4 softtabstop=4
+autocmd FileType markdown
+  \ setlocal expandtab shiftwidth=4 softtabstop=4 formatoptions-=t
 
-  autocmd FileType markdown
-    \ setlocal expandtab shiftwidth=4 softtabstop=4 formatoptions-=t
+autocmd FileType markdown,text
+  \ setlocal linebreak
 
-  autocmd FileType markdown,text
-    \ setlocal linebreak
-
-  autocmd FileType rust
-    \ let b:runprg = "rustc -o /tmp/rustc-output '%' && /tmp/rustc-output"
-augroup END
+autocmd FileType rust
+  \ let b:runprg = "rustc -o /tmp/rustc-output '%' && /tmp/rustc-output"

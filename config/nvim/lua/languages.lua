@@ -83,9 +83,7 @@ lsp_on_attach = function(_, bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, "n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", {})
   vim.api.nvim_buf_set_keymap(bufnr, "n", "K",  "<Cmd>lua vim.lsp.buf.hover()<CR>", {})
 
-  local group = vim.api.nvim_create_augroup("LspFormatting", {})
   vim.api.nvim_create_autocmd("BufWritePre", {
-    group = group,
     buffer = bufnr,
     callback = function()
       vim.lsp.buf.format()

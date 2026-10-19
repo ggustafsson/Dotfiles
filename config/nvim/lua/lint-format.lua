@@ -15,9 +15,7 @@ null_ls.setup {
   sources = sources,
 }
 
-local group = vim.api.nvim_create_augroup("NullLsFormatting", {})
 vim.api.nvim_create_autocmd("BufWritePre", {
-  group = group,
   pattern = {
     "*.go",
   },
