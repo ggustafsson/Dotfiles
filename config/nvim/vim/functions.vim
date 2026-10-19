@@ -99,7 +99,7 @@ endfunction
 " combo with Run() for language agnostic playground (e.g. Go Playground).
 function! Play(filetype)
   let file = tempname() .. "." .. a:filetype
-  let template = expand("~/.config/nvim/templates/Playground.") .. a:filetype
+  let template = expand("~/.config/nvim/templates/playground.") .. a:filetype
 
   execute "edit " .. file
   if filereadable(template)

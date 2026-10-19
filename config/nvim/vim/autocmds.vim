@@ -15,8 +15,8 @@ autocmd BufRead,BufNewFile */{,.}ssh/config*  setlocal filetype=sshconfig
 autocmd BufRead,BufNewFile */Ansiblebot/*.yml setlocal filetype=ansible
 autocmd BufRead,BufNewFile */yamllint/config  setlocal filetype=yaml
 
-autocmd BufNewFile */Text/Brain/*  Template ~/.config/nvim/templates/Note.md
-autocmd BufNewFile */Text/Cheats/* Template ~/.config/nvim/templates/Cheat.md
+autocmd BufNewFile */Text/Brain/*  Template ~/.config/nvim/templates/note.md
+autocmd BufNewFile */Text/Cheats/* Template ~/.config/nvim/templates/cheat.md
 
 autocmd FileType *
   \ if &omnifunc == "" |
