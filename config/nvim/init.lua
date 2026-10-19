@@ -6,7 +6,6 @@ vim.cmd [[
   source ~/.config/nvim/vim/autocmds.vim
   source ~/.config/nvim/vim/functions.vim
   source ~/.config/nvim/vim/mappings.vim
-  source ~/.config/nvim/vim/settings.vim
 ]]
 
 require "autocmds"
@@ -15,6 +14,7 @@ require "functions"
 require "languages"
 require "lint-format"
 require "plugins"
+require "settings"
 
 local local_lua = "~/.config/nvim/lua/local.lua"
 if file_exists(local_lua) then
