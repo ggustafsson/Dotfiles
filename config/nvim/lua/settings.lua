@@ -1,37 +1,37 @@
-if not vim.g.dont_run_again_if_we_have_already_bought_chicken_nuggets then
+if not vim.g.dont_run_again_if_we_already_have_chicken_nuggets then
   vim.cmd.colorscheme "16x256"
 
-  vim.g.dont_run_again_if_we_have_already_bought_chicken_nuggets = 1
+  vim.g.dont_run_again_if_we_already_have_chicken_nuggets = 1
 end
 
-vim.o.completeopt = "menu,menuone,noselect"
-vim.o.confirm = true
-vim.o.foldenable = false
-vim.o.guicursor = ""
-vim.o.inccommand = ""
-vim.o.list = true
-vim.o.spelllang = "en,sv"
-vim.o.tabline = "%!v:lua.TabLine()"
-vim.o.textwidth = 79
-vim.o.wrap = false
+vim.opt.completeopt = { "menu", "menuone", "noselect" }
+vim.opt.confirm = true
+vim.opt.foldenable = false
+vim.opt.guicursor = ""
+vim.opt.inccommand = ""
+vim.opt.list = true
+vim.opt.spelllang = { "en", "sv" }
+vim.opt.tabline = "%!v:lua.TabLine()"
+vim.opt.textwidth = 79
+vim.opt.wrap = false
 
-vim.o.backup = true
-vim.o.backupdir = vim.fn.expand("~/.local/share/nvim/backup")
-vim.o.undofile = true
+vim.opt.backup = true
+vim.opt.backupdir = vim.fn.expand("~/.local/share/nvim/backup")
+vim.opt.undofile = true
 
-vim.o.cursorline = true
-vim.o.cursorlineopt = "number"
+vim.opt.cursorline = true
+vim.opt.cursorlineopt = "number"
 
-vim.o.expandtab = true
-vim.o.shiftwidth = 2
-vim.o.softtabstop = 2
+vim.opt.expandtab = true
+vim.opt.shiftwidth = 2
+vim.opt.softtabstop = 2
 
 -- See ':help fo-table' for explanation.
 vim.opt.formatoptions:remove("t")
 vim.opt.formatoptions:append("lnor")
 
 -- ~/.vimrc [+] [dos] [latin1] [vim]        142,47    30%
-vim.o.statusline = table.concat {
+vim.opt.statusline = table.concat {
   " %(%f %)",
   "%(%m %)",
   "%([%{&fileformat=='unix'?'':&fileformat}] %)",
@@ -42,14 +42,14 @@ vim.o.statusline = table.concat {
   "%(%P %)",
 }
 
-vim.o.number = true
-vim.o.relativenumber = true
+vim.opt.number = true
+vim.opt.relativenumber = true
 
-vim.o.splitbelow = true
-vim.o.splitright = true
+vim.opt.splitbelow = true
+vim.opt.splitright = true
 
-vim.o.wildignorecase = true
-vim.o.wildmode = "longest,list"
+vim.opt.wildignorecase = true
+vim.opt.wildmode = { "longest", "list" }
 
 vim.g.markdown_folding = 1
 
