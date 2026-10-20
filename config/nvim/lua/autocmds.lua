@@ -1,4 +1,5 @@
-local function autocmd(event, pattern, callback)
+-- Simplify autocmd creation.
+function autocmd(event, pattern, callback)
   vim.api.nvim_create_autocmd(event, {
     pattern = pattern,
     callback = callback,
@@ -9,35 +10,17 @@ autocmd("TextYankPost", "*", function()
   vim.highlight.on_yank { higroup = "Search", timeout = 200 }
 end)
 
--- Enable tree-sitter if filetype is supported.
-autocmd("FileType", "*", function(args)
-  local ft = vim.bo[args.buf].filetype
-  local lang = vim.treesitter.language.get_lang(ft) or args.match
-
-  if vim.treesitter.language.add(lang) then
-    vim.treesitter.start(args.buf, lang)
-    vim.opt_local.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
-    vim.opt_local.foldmethod = 'expr'
-  end
-end)
-
 -- If last cursor position still exist then go to it.
-autocmd("BufRead", "*", function(args)
-  vim.api.nvim_create_autocmd("FileType", {
-    buffer = args.buf,
-    once = true,
-    callback = function()
-      local line = vim.api.nvim_buf_get_mark(0, '"')[1]
-      if not vim.wo.diff
-        and not vim.bo.filetype:find "commit"
-        and not vim.bo.filetype:find "rebase"
-        and line > 1
-        and line <= vim.fn.line "$"
-      then
-        vim.cmd 'normal! g`"'
-      end
-    end,
-  })
+autocmd("BufReadPost", "*", function()
+  local line = vim.api.nvim_buf_get_mark(0, '"')[1]
+  if not vim.wo.diff
+    and not vim.bo.filetype:find "commit"
+    and not vim.bo.filetype:find "rebase"
+    and line > 1
+    and line <= vim.fn.line "$"
+  then
+    vim.cmd 'normal! g`"'
+  end
 end)
 
 autocmd({ "BufRead", "BufNewFile" }, "*/{,.}gitconfig*", function()
@@ -65,6 +48,18 @@ autocmd("BufNewFile", "*/Text/Brain/*", function()
 end)
 autocmd("BufNewFile", "*/Text/Cheats/*", function()
   vim.cmd "Template ~/.config/nvim/templates/Cheat.md"
+end)
+
+-- Enable tree-sitter if filetype is supported.
+autocmd("FileType", "*", function(args)
+  local ft = vim.bo[args.buf].filetype
+  local lang = vim.treesitter.language.get_lang(ft) or args.match
+
+  if vim.treesitter.language.add(lang) then
+    vim.treesitter.start(args.buf, lang)
+    vim.opt_local.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+    vim.opt_local.foldmethod = "expr"
+  end
 end)
 
 autocmd("FileType", "gitcommit", function()
@@ -103,6 +98,17 @@ end)
 
 autocmd("FileType", { "markdown", "text" }, function()
   vim.opt_local.linebreak = true
+end)
+
+autocmd("FileType", "qf", function()
+  vim.opt_local.relativenumber = false
+  vim.opt_local.statusline = table.concat({
+    " %(%q %)",
+    "%(%{exists('w:quickfix_title')?''.w:quickfix_title:''} %)",
+    "%=",
+    "%-12.( %l/%L %)",
+    " %(%P %)",
+  })
 end)
 
 autocmd("FileType", "rust", function(args)
