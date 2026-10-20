@@ -1,10 +1,110 @@
-vim.api.nvim_create_autocmd("FileType", {
-  callback = function(args)
-    local ft = vim.bo[args.buf].filetype
-    local lang = vim.treesitter.language.get_lang(ft) or args.match
+local function autocmd(event, pattern, callback)
+  vim.api.nvim_create_autocmd(event, {
+    pattern = pattern,
+    callback = callback,
+  })
+end
 
-    if vim.treesitter.language.add(lang) then
-      vim.treesitter.start(args.buf, lang)
-    end
-  end,
-})
+autocmd("TextYankPost", "*", function()
+  vim.highlight.on_yank { higroup = "Search", timeout = 200 }
+end)
+
+-- Enable tree-sitter if filetype is supported.
+autocmd("FileType", "*", function(args)
+  local ft = vim.bo[args.buf].filetype
+  local lang = vim.treesitter.language.get_lang(ft) or args.match
+
+  if vim.treesitter.language.add(lang) then
+    vim.treesitter.start(args.buf, lang)
+    vim.opt_local.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+    vim.opt_local.foldmethod = 'expr'
+  end
+end)
+
+-- If last cursor position still exist then go to it.
+autocmd("BufRead", "*", function(args)
+  vim.api.nvim_create_autocmd("FileType", {
+    buffer = args.buf,
+    once = true,
+    callback = function()
+      local line = vim.api.nvim_buf_get_mark(0, '"')[1]
+      if not vim.wo.diff
+        and not vim.bo.filetype:find "commit"
+        and not vim.bo.filetype:find "rebase"
+        and line > 1
+        and line <= vim.fn.line "$"
+      then
+        vim.cmd 'normal! g`"'
+      end
+    end,
+  })
+end)
+
+autocmd({ "BufRead", "BufNewFile" }, "*/{,.}gitconfig*", function()
+  vim.bo.filetype = "gitconfig"
+end)
+
+autocmd({ "BufRead", "BufNewFile" }, "*/{,.}pythonrc", function()
+  vim.bo.filetype = "python"
+end)
+
+autocmd({ "BufRead", "BufNewFile" }, "*/{,.}ssh/config*", function()
+  vim.bo.filetype = "sshconfig"
+end)
+
+autocmd({ "BufRead", "BufNewFile" }, "*/Ansiblebot/*.yml", function()
+  vim.bo.filetype = "ansible"
+end)
+
+autocmd({ "BufRead", "BufNewFile" }, "*/yamllint/config", function()
+  vim.bo.filetype = "yaml"
+end)
+
+autocmd("BufNewFile", "*/Text/Brain/*", function()
+  vim.cmd "Template ~/.config/nvim/templates/Note.md"
+end)
+autocmd("BufNewFile", "*/Text/Cheats/*", function()
+  vim.cmd "Template ~/.config/nvim/templates/Cheat.md"
+end)
+
+autocmd("FileType", "gitcommit", function()
+  vim.opt_local.list = false
+  vim.opt_local.spell = true
+end)
+
+autocmd("FileType", { "gitconfig", "snippets" }, function()
+  vim.opt_local.expandtab = false
+  vim.opt_local.shiftwidth = 4
+  vim.opt_local.softtabstop = 0
+  vim.opt_local.tabstop = 4
+end)
+
+autocmd("FileType", "go", function(args)
+  vim.b[args.buf].runprg = "go run '%'"
+  vim.opt_local.expandtab = false
+  vim.opt_local.listchars = { tab = "  ", trail = "-", nbsp = "+", precedes = "<", extends = ">" }
+  vim.opt_local.shiftwidth = 4
+  vim.opt_local.softtabstop = 0
+  vim.opt_local.tabstop = 4
+end)
+
+autocmd("FileType", { "json", "python" }, function()
+  vim.opt_local.expandtab = true
+  vim.opt_local.shiftwidth = 4
+  vim.opt_local.softtabstop = 4
+end)
+
+autocmd("FileType", "markdown", function()
+  vim.opt_local.expandtab = true
+  vim.opt_local.formatoptions:remove "t"
+  vim.opt_local.shiftwidth = 4
+  vim.opt_local.softtabstop = 4
+end)
+
+autocmd("FileType", { "markdown", "text" }, function()
+  vim.opt_local.linebreak = true
+end)
+
+autocmd("FileType", "rust", function(args)
+  vim.b[args.buf].runprg = "rustc -o /tmp/rustc-output '%' && /tmp/rustc-output"
+end)

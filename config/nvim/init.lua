@@ -3,7 +3,6 @@ if vim.g.vscode then
 end
 
 vim.cmd [[
-  source ~/.config/nvim/vim/autocmds.vim
   source ~/.config/nvim/vim/functions.vim
   source ~/.config/nvim/vim/mappings.vim
 ]]
