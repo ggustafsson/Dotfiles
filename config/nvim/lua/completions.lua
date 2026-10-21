@@ -3,7 +3,7 @@ require("luasnip.loaders.from_snipmate").lazy_load()
 local cmp = require("cmp")
 local luasnip = require("luasnip")
 
-cmp.setup {
+cmp.setup({
   sources = {
     { name = "luasnip" },
     { name = "nvim_lsp" },
@@ -47,4 +47,4 @@ cmp.setup {
       end
     end,
   },
-}
+})

@@ -10,14 +10,17 @@ autocmd("TextYankPost", "*", function()
 end)
 
 -- If last cursor position still exist then go to it.
-autocmd("BufReadPost", "*", function()
-  if vim.wo.diff or vim.bo.filetype == "gitcommit" then
+autocmd("BufReadPost", "*", function(args)
+  local filename = vim.api.nvim_buf_get_name(args.buf)
+  if vim.wo.diff
+    or filename:match("COMMIT_EDITMSG")
+    or filename:match("MERGE_MSG")
+  then
     return
   end
 
   local mark = vim.api.nvim_buf_get_mark(0, '"')
   local lines = vim.api.nvim_buf_line_count(0)
-
   if mark[1] > 1 and mark[1] <= lines then
     pcall(vim.api.nvim_win_set_cursor, 0, mark)
   end
@@ -55,7 +58,6 @@ end)
 autocmd("FileType", "*", function(args)
   local ft = vim.bo[args.buf].filetype
   local lang = vim.treesitter.language.get_lang(ft) or args.match
-
   if vim.treesitter.language.add(lang) then
     vim.treesitter.start(args.buf, lang)
     vim.opt_local.foldexpr = "v:lua.vim.treesitter.foldexpr()"
