@@ -157,10 +157,10 @@ zle -N zle-keymap-select
 # Display hostname according to various rules.
 function prompt_host {
   case $HOST in
-    Onett)       echo "🏠 %B%F{green}$HOST%f%b"  ;;
-    ubuntu-cnt*) echo "🐳 %B%F{cyan}$HOST%f%b"   ;;
-    ubuntu-srv*) echo "💀 %B%F{magenta}$HOST%f%b"    ;;
-    *)           echo "💀 %B%F{yellow}$HOST%f%b" ;;
+    Onett)       echo "🏠 %B%F{green}$HOST%f%b"   ;;
+    ubuntu-cnt*) echo "🐳 %B%F{cyan}$HOST%f%b"    ;;
+    ubuntu-srv*) echo "💀 %B%F{magenta}$HOST%f%b" ;;
+    *)           echo "💀 %B%F{yellow}$HOST%f%b"  ;;
   esac
 }
 
@@ -222,6 +222,7 @@ PROMPT2='$(prompt_mode 2) ' # Used when entering multi-line commands.
 if [[ $OSTYPE == darwin* ]]; then
   alias ansible-lint='matches=(/opt/homebrew/opt/ansible/libexec/lib/python3.*/site-packages/ansible_collections(N)) ANSIBLE_COLLECTIONS_PATH=$matches[1] ansible-lint'
   alias beep="afplay /System/Library/Sounds/Glass.aiff"
+  alias caffeinate="caffeinate -di"
   alias cnt1="docker exec -it ubuntu-cnt1 /bin/login $USER"
   alias put="pbpaste"
   alias stat="stat -x"

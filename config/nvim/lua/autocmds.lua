@@ -44,10 +44,10 @@ autocmd({ "BufRead", "BufNewFile" }, "*/yamllint/config", function()
 end)
 
 autocmd("BufNewFile", "*/Text/Brain/*", function()
-  vim.cmd "Template ~/.config/nvim/templates/Note.md"
+  vim.cmd "Template ~/.config/nvim/templates/note.md"
 end)
 autocmd("BufNewFile", "*/Text/Cheats/*", function()
-  vim.cmd "Template ~/.config/nvim/templates/Cheat.md"
+  vim.cmd "Template ~/.config/nvim/templates/cheat.md"
 end)
 
 -- Enable tree-sitter if filetype is supported.
