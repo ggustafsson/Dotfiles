@@ -11,7 +11,7 @@ vim.opt.guicursor = ""
 vim.opt.inccommand = ""
 vim.opt.list = true
 vim.opt.spelllang = { "en", "sv" }
-vim.opt.tabline = "%!TabLine()"
+vim.opt.tabline = "%!v:lua.tab_line()"
 vim.opt.textwidth = 79
 vim.opt.wrap = false
 

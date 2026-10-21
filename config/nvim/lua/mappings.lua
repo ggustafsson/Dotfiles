@@ -1,10 +1,10 @@
 vim.g.mapleader = ","
 
 if vim.fn.has "mac" == 1 then
-  vim.keymap.set("n", "<Leader>fi", ":silent !open \"%:p:h\"<CR>")
-  vim.keymap.set("n", "<Leader>no", ":edit ~/Documents/Text/Brain/<C-R>=strftime(\"%Y%m%d\")<CR>_.md<Left><Left><Left>")
-  vim.keymap.set("n", "<Leader>op", ":silent !open \"%\"<CR>")
-  vim.keymap.set("n", "<Leader>vs", ":silent !open -a \"Visual Studio Code\" \"%\"<CR>")
+  vim.keymap.set("n", "<Leader>fi", ":silent !open '%:p:h'<CR>")
+  vim.keymap.set("n", "<Leader>no", ":edit ~/Documents/Text/Brain/<C-R>=strftime('%Y%m%d')<CR>_.md<Left><Left><Left>")
+  vim.keymap.set("n", "<Leader>op", ":silent !open '%'<CR>")
+  vim.keymap.set("n", "<Leader>vs", ":silent !open -a 'Visual Studio Code' '%'<CR>")
   vim.keymap.set("n", "<Leader>ya", ":silent w !yank<CR>")
 end
 
@@ -12,10 +12,10 @@ vim.keymap.set("n", "<Leader>/",  ":FzfHistory/<CR>")
 vim.keymap.set("n", "<Leader>:",  ":FzfHistory:<CR>")
 vim.keymap.set("n", "<Leader>bd", ":bdelete<CR>")
 vim.keymap.set("n", "<Leader>bu", ":FzfBuffers<CR>")
-vim.keymap.set("n", "<Leader>cc", ":call ColorColumn()<CR>")
+vim.keymap.set("n", "<Leader>cc", ":lua toggle_cc()<CR>")
 vim.keymap.set("n", "<Leader>cd", ":tcd <C-R>=getcwd()<CR>/")
 vim.keymap.set("n", "<Leader>do", ":FzfFiles ~/Documents/Text<CR>")
-vim.keymap.set("n", "<Leader>ed", ":edit <C-R>=fnameescape(expand(\"%:p:h\"))<CR>/")
+vim.keymap.set("n", "<Leader>ed", ":edit <C-R>=fnameescape(expand('%:p:h'))<CR>/")
 vim.keymap.set("n", "<Leader>eh", ":edit ~/")
 vim.keymap.set("n", "<Leader>et", ":edit ~/Documents/Text/")
 vim.keymap.set("n", "<Leader>fd", ":FzfFiles<CR>")
@@ -24,9 +24,9 @@ vim.keymap.set("n", "<Leader>ft", ":FzfFiletypes<CR>")
 vim.keymap.set("n", "<Leader>he", ":FzfHelptags<CR>")
 vim.keymap.set("n", "<Leader>hi", ":FzfHistory<CR>")
 vim.keymap.set("n", "<Leader>li", ":setlocal list! list?<CR>")
-vim.keymap.set("n", "<Leader>ll", ":call ClearLocList()<CR>")
 vim.keymap.set("n", "<Leader>ma", ":FzfMarks<CR>")
 vim.keymap.set("n", "<Leader>nu", ":setlocal number! relativenumber!<CR>")
+vim.keymap.set("n", "<Leader>qf", ":lua vim.diagnostic.setqflist()<CR>")
 vim.keymap.set("n", "<Leader>rg", ":FzfRg<Space>")
 vim.keymap.set("n", "<Leader>rs", ":source ~/.local/share/nvim/session.vim<CR>")
 vim.keymap.set("n", "<Leader>s2", ":setlocal expandtab shiftwidth=2 softtabstop=2<CR>")
@@ -38,7 +38,7 @@ vim.keymap.set("n", "<Leader>t2", ":setlocal noexpandtab shiftwidth=2 softtabsto
 vim.keymap.set("n", "<Leader>t4", ":setlocal noexpandtab shiftwidth=4 softtabstop=0 tabstop=4<CR>")
 vim.keymap.set("n", "<Leader>t8", ":setlocal noexpandtab shiftwidth=8 softtabstop=0 tabstop=8<CR>")
 vim.keymap.set("n", "<Leader>te", ":Template ~/.config/nvim/templates/")
-vim.keymap.set("n", "<Leader>ts", ":call TSToggle()<CR>")
+vim.keymap.set("n", "<Leader>ts", ":lua toggle_ts()<CR>")
 vim.keymap.set("n", "<Leader>tw", ":setlocal textwidth=79")
 vim.keymap.set("n", "<Leader>un", ":undo!<CR>")
 vim.keymap.set("n", "<Leader>wi", ":FzfWindows<CR>")
@@ -67,9 +67,9 @@ vim.keymap.set("n", "<Leader>P", '"0P')
 vim.keymap.set("n", "<Leader>p", '"0p')
 
 -- Like 'y', 'yy' and 'Y' but use system clipboard.
-vim.keymap.set("n", "<Leader>Y", '"*y$')
+vim.keymap.set("n", "<Leader>Y",  '"*y$')
 vim.keymap.set("n", "<Leader>yy", '"*yy')
-vim.keymap.set("v", "<Leader>y", '"*y')
+vim.keymap.set("v", "<Leader>y",  '"*y')
 
 -- Display full path to current file.
 vim.keymap.set("n", "<C-G>", "1<C-G>")
@@ -83,8 +83,8 @@ vim.keymap.set("n", "Q", "<Nop>")
 -- These key combos are unused and similar to 'gt' and 'gT' for tabs.
 vim.keymap.set("n", "gb", "<Cmd>bnext<CR>")
 vim.keymap.set("n", "gB", "<Cmd>bprevious<CR>")
-vim.keymap.set("n", "gl", "GoToLoc next")
-vim.keymap.set("n", "gL", "GoToLoc prev")
+vim.keymap.set("n", "gl", "<Cmd>lua goto_loc('next')<CR>")
+vim.keymap.set("n", "gL", "<Cmd>lua goto_loc('prev')<CR>")
 
 -- Mark relative jumps with 'j' and 'k' so CTRL-I and CTRL-O works.
 vim.keymap.set("n", "j", function()

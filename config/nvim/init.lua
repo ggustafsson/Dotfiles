@@ -2,8 +2,6 @@ if vim.g.vscode then
   return
 end
 
-vim.cmd("source ~/.config/nvim/vim/functions.vim")
-
 require("autocmds")
 require("completions")
 require("functions")
