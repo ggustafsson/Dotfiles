@@ -1,5 +1,5 @@
 if not vim.g.dont_run_again_if_we_already_have_chicken_nuggets then
-  vim.cmd.colorscheme "16x256"
+  vim.cmd.colorscheme("16x256")
 
   vim.g.dont_run_again_if_we_already_have_chicken_nuggets = 1
 end
@@ -31,7 +31,7 @@ vim.opt.formatoptions:remove("t")
 vim.opt.formatoptions:append("lnor")
 
 -- ~/.vimrc [+] [dos] [latin1] [vim]        142,47    30%
-vim.opt.statusline = table.concat {
+vim.opt.statusline = table.concat({
   " %(%f %)",
   "%(%m %)",
   "%([%{&fileformat=='unix'?'':&fileformat}] %)",
@@ -40,7 +40,7 @@ vim.opt.statusline = table.concat {
   "%=",
   "%-12.( %l,%v %)", -- 99999,999 would still have two spaces.
   "%(%P %)",
-}
+})
 
 vim.opt.number = true
 vim.opt.relativenumber = true

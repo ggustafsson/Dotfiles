@@ -1,4 +1,3 @@
--- Simplify autocmd creation.
 function autocmd(event, pattern, callback)
   vim.api.nvim_create_autocmd(event, {
     pattern = pattern,
@@ -7,19 +6,20 @@ function autocmd(event, pattern, callback)
 end
 
 autocmd("TextYankPost", "*", function()
-  vim.highlight.on_yank { higroup = "Search", timeout = 200 }
+  vim.highlight.on_yank({ higroup = "Search", timeout = 200 })
 end)
 
 -- If last cursor position still exist then go to it.
 autocmd("BufReadPost", "*", function()
-  local line = vim.api.nvim_buf_get_mark(0, '"')[1]
-  if not vim.wo.diff
-    and not vim.bo.filetype:find "commit"
-    and not vim.bo.filetype:find "rebase"
-    and line > 1
-    and line <= vim.fn.line "$"
-  then
-    vim.cmd 'normal! g`"'
+  if vim.wo.diff or vim.bo.filetype == "gitcommit" then
+    return
+  end
+
+  local mark = vim.api.nvim_buf_get_mark(0, '"')
+  local lines = vim.api.nvim_buf_line_count(0)
+
+  if mark[1] > 1 and mark[1] <= lines then
+    pcall(vim.api.nvim_win_set_cursor, 0, mark)
   end
 end)
 
@@ -44,10 +44,11 @@ autocmd({ "BufRead", "BufNewFile" }, "*/yamllint/config", function()
 end)
 
 autocmd("BufNewFile", "*/Text/Brain/*", function()
-  vim.cmd "Template ~/.config/nvim/templates/note.md"
+  vim.cmd("Template ~/.config/nvim/templates/note.md")
 end)
+
 autocmd("BufNewFile", "*/Text/Cheats/*", function()
-  vim.cmd "Template ~/.config/nvim/templates/cheat.md"
+  vim.cmd("Template ~/.config/nvim/templates/cheat.md")
 end)
 
 -- Enable tree-sitter if filetype is supported.
@@ -91,7 +92,7 @@ end)
 
 autocmd("FileType", "markdown", function()
   vim.opt_local.expandtab = true
-  vim.opt_local.formatoptions:remove "t"
+  vim.opt_local.formatoptions:remove("t")
   vim.opt_local.shiftwidth = 4
   vim.opt_local.softtabstop = 4
 end)

@@ -1,6 +1,6 @@
 require("ansible").setup()
 
-require("gitsigns").setup {
+require("gitsigns").setup({
   signs = {
     add    = { text = "+" },
     change = { text = "+" },
@@ -9,11 +9,11 @@ require("gitsigns").setup {
     add    = { text = "+" },
     change = { text = "+" },
   },
-}
+})
 
 require("nnn-dir").setup()
 
-require("nvim-treesitter").install {
+require("nvim-treesitter").install({
   "bash",
   "css",
   "go",
@@ -27,6 +27,6 @@ require("nvim-treesitter").install {
   "rust",
   "yaml",
   "zsh",
-}
+})
 
 require("nvim-ts-autotag").setup()
