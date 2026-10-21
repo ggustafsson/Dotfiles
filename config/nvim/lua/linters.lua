@@ -1,4 +1,4 @@
-local null_ls = require "null-ls"
+local null_ls = require("null-ls")
 
 local sources = {
   require("none-ls.diagnostics.flake8"), -- Part of none-ls-extras.nvim
@@ -13,13 +13,4 @@ local sources = {
 
 null_ls.setup({
   sources = sources,
-})
-
-vim.api.nvim_create_autocmd("BufWritePre", {
-  pattern = {
-    "*.go",
-  },
-  callback = function()
-    vim.lsp.buf.format()
-  end,
 })

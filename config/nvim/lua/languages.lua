@@ -1,19 +1,15 @@
 local servers = {
   -- Includes "ansible-lint".
   ansiblels = {
-    on_attach = lsp_on_attach,
     filetypes = {
       "ansible",
     },
   },
 
   -- Includes "ShellCheck".
-  bashls = {
-    on_attach = lsp_on_attach,
-  },
+  bashls = {},
 
   gopls = {
-    on_attach = lsp_on_attach,
     settings = {
       gopls = {
         staticcheck = true,
@@ -23,7 +19,6 @@ local servers = {
 
   -- Also known as "lua-language-server".
   lua_ls = {
-    on_attach = lsp_on_attach,
     settings = {
       Lua = {
         runtime = {
@@ -53,12 +48,9 @@ local servers = {
     },
   },
 
-  pyright = {
-    on_attach = lsp_on_attach,
-  },
+  pyright = {},
 
   rust_analyzer = {
-    on_attach = lsp_on_attach,
     settings = {
       ["rust-analyzer"] = {
         checkOnSave = true,
@@ -69,27 +61,29 @@ local servers = {
     },
   },
 
-  yamlls = {
-    on_attach = lsp_on_attach,
-  },
+  yamlls = {},
 }
 
--- Using global variable to allow for usage in 'local.lua' file.
-lsp_on_attach = function(_, bufnr)
-  vim.api.nvim_set_option_value("formatexpr", "", { buf = bufnr })
-  vim.api.nvim_set_option_value("omnifunc", "v:lua.vim.lsp.omnifunc", { buf = bufnr })
+vim.api.nvim_create_autocmd("LspAttach", {
+  group = vim.api.nvim_create_augroup("LspConfig", {}),
+  callback = function(args)
+    vim.opt_local.formatexpr = ""
+    vim.opt_local.omnifunc = "v:lua.vim.lsp.omnifunc"
 
-  vim.api.nvim_buf_set_keymap(bufnr, "n", "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", {})
-  vim.api.nvim_buf_set_keymap(bufnr, "n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", {})
-  vim.api.nvim_buf_set_keymap(bufnr, "n", "K",  "<Cmd>lua vim.lsp.buf.hover()<CR>", {})
+    local opts = { buffer = args.buf }
+    vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+    vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
+    vim.keymap.set("n", "K",  vim.lsp.buf.hover, opts)
 
-  vim.api.nvim_create_autocmd("BufWritePre", {
-    buffer = bufnr,
-    callback = function()
-      vim.lsp.buf.format()
-    end,
-  })
-end
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      group = vim.api.nvim_create_augroup("LspFormat", {}),
+      buffer = args.buf,
+      callback = function()
+        vim.lsp.buf.format({ async = false })
+      end,
+    })
+  end,
+})
 
 for server, options in pairs(servers) do
   vim.lsp.config(server, options)

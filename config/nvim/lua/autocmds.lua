@@ -1,16 +1,18 @@
+local group = vim.api.nvim_create_augroup("Custom", {})
 function autocmd(event, pattern, callback)
   vim.api.nvim_create_autocmd(event, {
+    group = group,
     pattern = pattern,
     callback = callback,
   })
 end
 
-autocmd("TextYankPost", "*", function()
+autocmd("TextYankPost", nil, function()
   vim.highlight.on_yank({ higroup = "Search", timeout = 200 })
 end)
 
 -- If last cursor position still exist then go to it.
-autocmd("BufReadPost", "*", function(args)
+autocmd("BufReadPost", nil, function(args)
   local filename = vim.api.nvim_buf_get_name(args.buf)
   if vim.wo.diff
     or filename:match("COMMIT_EDITMSG")
@@ -27,23 +29,23 @@ autocmd("BufReadPost", "*", function(args)
 end)
 
 autocmd({ "BufRead", "BufNewFile" }, "*/{,.}gitconfig*", function()
-  vim.bo.filetype = "gitconfig"
+  vim.opt_local.filetype = "gitconfig"
 end)
 
 autocmd({ "BufRead", "BufNewFile" }, "*/{,.}pythonrc", function()
-  vim.bo.filetype = "python"
+  vim.opt_local.filetype = "python"
 end)
 
 autocmd({ "BufRead", "BufNewFile" }, "*/{,.}ssh/config*", function()
-  vim.bo.filetype = "sshconfig"
+  vim.opt_local.filetype = "sshconfig"
 end)
 
 autocmd({ "BufRead", "BufNewFile" }, "*/Ansiblebot/*.yml", function()
-  vim.bo.filetype = "ansible"
+  vim.opt_local.filetype = "ansible"
 end)
 
 autocmd({ "BufRead", "BufNewFile" }, "*/yamllint/config", function()
-  vim.bo.filetype = "yaml"
+  vim.opt_local.filetype = "yaml"
 end)
 
 autocmd("BufNewFile", "*/Text/Brain/*", function()
@@ -55,13 +57,19 @@ autocmd("BufNewFile", "*/Text/Cheats/*", function()
 end)
 
 -- Enable tree-sitter if filetype is supported.
-autocmd("FileType", "*", function(args)
-  local ft = vim.bo[args.buf].filetype
+autocmd("FileType", nil, function(args)
+  local ft = vim.bo.filetype
   local lang = vim.treesitter.language.get_lang(ft) or args.match
   if vim.treesitter.language.add(lang) then
     vim.treesitter.start(args.buf, lang)
     vim.opt_local.foldexpr = "v:lua.vim.treesitter.foldexpr()"
     vim.opt_local.foldmethod = "expr"
+  end
+end)
+
+autocmd("FileType", nil, function()
+  if vim.bo.omnifunc == "" then
+    vim.opt_local.omnifunc = "syntaxcomplete#Complete"
   end
 end)
 
@@ -77,8 +85,8 @@ autocmd("FileType", { "gitconfig", "snippets" }, function()
   vim.opt_local.tabstop = 4
 end)
 
-autocmd("FileType", "go", function(args)
-  vim.b[args.buf].runprg = "go run '%'"
+autocmd("FileType", "go", function()
+  vim.b.runprg = "go run '%'"
   vim.opt_local.expandtab = false
   vim.opt_local.listchars = { tab = "  ", trail = "-", nbsp = "+", precedes = "<", extends = ">" }
   vim.opt_local.shiftwidth = 4
@@ -114,6 +122,6 @@ autocmd("FileType", "qf", function()
   })
 end)
 
-autocmd("FileType", "rust", function(args)
-  vim.b[args.buf].runprg = "rustc -o /tmp/rustc-output '%' && /tmp/rustc-output"
+autocmd("FileType", "rust", function()
+  vim.b.runprg = "rustc -o /tmp/rustc-output '%' && /tmp/rustc-output"
 end)

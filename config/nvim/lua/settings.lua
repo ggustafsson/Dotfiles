@@ -51,8 +51,6 @@ vim.opt.splitright = true
 vim.opt.wildignorecase = true
 vim.opt.wildmode = { "longest", "list" }
 
-vim.g.markdown_folding = 1
-
 vim.g.fzf_action = { ["ctrl-s"] = "split", ["ctrl-v"] = "vsplit", ["ctrl-t"] = "tab split" }
 vim.g.fzf_colors = { border = { "fg", "VertSplit" } }
 vim.g.fzf_command_prefix = "Fzf"
