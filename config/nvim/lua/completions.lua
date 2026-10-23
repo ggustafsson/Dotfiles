@@ -47,4 +47,15 @@ cmp.setup({
       end
     end,
   },
+
+  window = {
+    completion = {
+      border = "rounded",
+      winhighlight = "FloatBorder:CmpBorder",
+    },
+    documentation = {
+      border = "rounded",
+      winhighlight = "Normal:CmpDoc,FloatBorder:CmpDocBorder",
+    },
+  },
 })

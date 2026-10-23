@@ -1,8 +1,4 @@
-if not vim.g.dont_run_again_if_we_already_have_chicken_nuggets then
-  vim.cmd.colorscheme("16x256")
-
-  vim.g.dont_run_again_if_we_already_have_chicken_nuggets = 1
-end
+vim.cmd.colorscheme("16x256")
 
 vim.opt.completeopt = { "menu", "menuone", "noselect" }
 vim.opt.confirm = true
@@ -13,6 +9,7 @@ vim.opt.list = true
 vim.opt.spelllang = { "en", "sv" }
 vim.opt.tabline = "%!v:lua.tab_line()"
 vim.opt.textwidth = 79
+vim.opt.winborder = "rounded"
 vim.opt.wrap = false
 
 vim.opt.backup = true

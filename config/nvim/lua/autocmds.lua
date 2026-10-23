@@ -67,12 +67,6 @@ autocmd("FileType", nil, function(args)
   end
 end)
 
-autocmd("FileType", nil, function()
-  if vim.bo.omnifunc == "" then
-    vim.opt_local.omnifunc = "syntaxcomplete#Complete"
-  end
-end)
-
 autocmd("FileType", "gitcommit", function()
   vim.opt_local.list = false
   vim.opt_local.spell = true
