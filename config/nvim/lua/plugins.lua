@@ -1,5 +1,16 @@
 require("ansible").setup()
 
+require("comment").setup {
+  opleader = {
+    line  = "gc",
+    block = "gC",
+  },
+  toggler = {
+    line  = "gcc",
+    block = "gCC",
+  },
+}
+
 require("gitsigns").setup({
   signs = {
     add    = { text = "+" },
