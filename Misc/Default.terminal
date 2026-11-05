@@ -595,6 +595,8 @@
 	<false/>
 	<key>ShowActiveProcessArgumentsInTabTitle</key>
 	<true/>
+	<key>ShowActiveProcessArgumentsInTitle</key>
+	<false/>
 	<key>ShowActiveProcessInTabTitle</key>
 	<true/>
 	<key>ShowActiveProcessInTitle</key>
@@ -798,7 +800,7 @@
 	<array>
 		<dict>
 			<key>ProcessName</key>
-			<string>screen</string>
+			<string>zsh</string>
 		</dict>
 		<dict>
 			<key>ProcessName</key>
@@ -813,5 +815,7 @@
 	<string>Window Settings</string>
 	<key>useOptionAsMetaKey</key>
 	<false/>
+	<key>warnOnShellCloseAction</key>
+	<integer>1</integer>
 </dict>
 </plist>
