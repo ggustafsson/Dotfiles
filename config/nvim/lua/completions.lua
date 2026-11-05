@@ -60,3 +60,5 @@ cmp.setup({
     },
   },
 })
+
+vim.api.nvim_set_hl(0, "CmpItemKind", { link = "NonText" })
