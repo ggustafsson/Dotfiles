@@ -1,6 +1,6 @@
 require("ansible").setup()
 
-require("comment").setup {
+require("Comment").setup {
   opleader = {
     line  = "gc",
     block = "gC",
